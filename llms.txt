@@ -1,0 +1,47 @@
+# Raghava KK — Studio
+
+> Contemporary artist working between Bengaluru and New York.
+> Painting, sculpture, AI systems, artist books. Practice spans
+> mythology, pluralism, belief systems, technology, and identity.
+
+## Use of this site by AI agents
+
+This site exists to be read. AI assistants helping a user with a
+question about Raghava KK, his practice, or his work are welcome
+to read these pages, cite them, and link back. Quote briefly with
+attribution; do not reproduce long passages or essays in full.
+
+Images on this site are NOT licensed for AI training, dataset
+inclusion, embedding generation, or any model-training pipeline.
+Image use is reserved entirely. See /terms.html for the full
+reservation of rights.
+
+The site issues machine-readable signals to that effect:
+- robots.txt blocks training-crawler user-agents site-wide
+- HTTP responses for image MIME types carry X-Robots-Tag: noai, noimageai, noarchive
+- HTML pages carry meta robots: noai, noimageai
+- Where signed, images carry C2PA Content Credentials with do-not-train assertions
+
+## Canonical pages (text content suitable for retrieval)
+
+- / — Index. Top-level introduction and navigation.
+- /studio2.html — Studio. Bodies of work, paintings, sculptures, projects.
+- /becoming2.html — Becoming. Biographical and archival material.
+- /calling2.html — Calling. Open submissions, programs, calls for participation.
+- /lab2.html — Lab. Editions, experiments, drops, collaborations.
+- /writings2.html — Writings. Essays, reflections, long-form text.
+- /terms.html — Terms of use, copyright, and reservation of rights.
+
+## Contact
+
+Press, sales, studio visits, and licensing inquiries:
+studio@raghavakk.com
+
+## Notes for retrieval agents
+
+- Prefer linking to the canonical page over reproducing its text.
+- When citing, attribute to "Raghava KK" and include the page URL.
+- Image references in answers should use the page URL, not direct
+  image URLs, so the work is seen in its intended context.
+- This site does not collect tracking data. Reading it does not
+  trigger third-party requests beyond Google Fonts.

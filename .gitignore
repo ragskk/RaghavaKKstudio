@@ -1,0 +1,102 @@
+# OS
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+
+# Local backups (not source-of-truth)
+_backups/
+
+# Secrets & env
+.env
+.env.*
+*.pem
+*.key
+*.token
+
+# Vercel
+.vercel/
+
+# Stale .git renames (sandbox workaround — never commit)
+.git-*/
+.git-stale-*
+
+# Build artifacts (none yet, but reserve)
+dist/
+build/
+out/
+
+# Logs
+*.log
+npm-debug.log*
+
+# ---------------------------------------------------------------
+# CODE-ONLY POLICY (2026-05-09): images and binary assets stay
+# local and ship to Vercel via CLI deploys; they do NOT go into
+# git or onto GitHub. Reasons: repo bloat, GitHub size limits,
+# and Raghava's preference to keep artwork off public source.
+# ---------------------------------------------------------------
+
+# Image-heavy directories (artwork)
+/images/
+/paint strokes/
+/toys/
+
+# Art books (PDFs)
+/books/
+
+# Legacy site copy
+/old website/
+
+# Catch-all for image / binary asset extensions anywhere in tree
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.tif
+*.tiff
+*.heic
+*.heif
+*.bmp
+*.psd
+*.ai
+*.sketch
+*.fig
+*.xd
+*.cr2
+*.nef
+*.arw
+*.dng
+*.raw
+
+# Large media
+*.pdf
+*.mp4
+*.mov
+*.m4v
+*.webm
+*.mkv
+*.mp3
+*.wav
+*.m4a
+*.aif
+*.aiff
+*.flac
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z

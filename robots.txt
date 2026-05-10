@@ -1,0 +1,176 @@
+# =====================================================================
+# robots.txt — raghavakk.com
+# Last updated: 2026-05-09
+#
+# Policy:
+#   - Search engines and AI assistants doing live retrieval are welcome.
+#     The site is meant to be findable and useful as a citation source.
+#   - AI training crawlers are denied access to images and disallowed
+#     site-wide where their published user-agent indicates training use.
+#   - Compliance is voluntary. This file is necessary, not sufficient.
+#     It stops well-behaved crawlers and creates legal grounds against
+#     the rest. See terms.html for full reservation of rights.
+# =====================================================================
+
+# ---------- Search engines (allow) ----------
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Disallow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# ---------- AI assistants doing live retrieval (allow) ----------
+# These bots crawl on-demand to answer a user's current question.
+# They typically do not retain content for training.
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# ---------- AI training crawlers (deny) ----------
+# These bots ingest content to train future models. Site-wide deny.
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: Meta-ExternalFetcher
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: Omgili
+Disallow: /
+
+User-agent: Cotoyogi
+Disallow: /
+
+User-agent: TimpiBot
+Disallow: /
+
+User-agent: Webzio-Extended
+Disallow: /
+
+User-agent: ICC-Crawler
+Disallow: /
+
+User-agent: AwarioBot
+Disallow: /
+
+User-agent: AwarioSmartBot
+Disallow: /
+
+User-agent: AwarioRssBot
+Disallow: /
+
+User-agent: SemrushBot-OCOB
+Disallow: /
+
+User-agent: VelenPublicWebCrawler
+Disallow: /
+
+User-agent: img2dataset
+Disallow: /
+
+User-agent: Cohere-ai
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: AI2Bot
+Disallow: /
+
+User-agent: Ai2Bot-Dolma
+Disallow: /
+
+User-agent: AndiBot
+Disallow: /
+
+User-agent: PanguBot
+Disallow: /
+
+User-agent: Kangaroo
+Disallow: /
+
+User-agent: NovaAct
+Disallow: /
+
+User-agent: Operator
+Disallow: /
+
+# ---------- Default for any other bot ----------
+# Block image directories from any unknown crawler.
+# General pages remain accessible (the public site is meant to be read).
+User-agent: *
+Disallow: /images/
+Disallow: /paint%20strokes/
+Disallow: /paint strokes/
+Disallow: /toys/
+Disallow: /books/
+Disallow: /_backups/
+Disallow: /old%20website/
+Disallow: /old website/
+
+Sitemap: https://raghavakk.com/sitemap.xml

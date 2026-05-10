@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Restless Lab, Raghava KK</title>
+  <meta name="description" content="Toys, books, apps, and toolkits from the studio of Raghava KK." />
+  <meta name="theme-color" content="#F4F1EA" />
+  <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
+  <meta name="robots" content="index, follow, noai, noimageai" />
+  <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./protect.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    :root {
+      --paper:#F4F1EA; --paper-2:#ECE7DA; --paper-3:#E3DCC8;
+      --ink:#0E0E0C; --ink-2:#2B2A26; --muted:#8B8579;
+      --rule:#1A1A17; --rule-soft:rgba(14,14,12,0.18);
+      --red:#E63D22;
+      --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+      --display:'Instrument Serif','Fraunces',Georgia,serif;
+      --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+      --edge:clamp(1rem,2.6vw,2.4rem);
+      --ease:cubic-bezier(.2,.7,.2,1);
+      --ease-out:cubic-bezier(.16,1,.3,1);
+    }
+    html { font-size: 16.5px; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
+    html, body { background: var(--paper); color: var(--ink); font-family: var(--serif); font-feature-settings: "ss01" 1, "ss02" 1, "kern" 1, "liga" 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; overflow-x: hidden; }
+    body { min-height: 100vh; cursor: none; background-image: radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px), linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%); background-size: 3px 3px, auto; }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.5; mix-blend-mode: multiply; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+
+    .cursor { position: fixed; top:0; left:0; width:18px; height:18px; border-radius:50%; background: var(--ink); mix-blend-mode: difference; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .25s var(--ease), height .25s var(--ease), background .25s var(--ease); }
+    .cursor.is-link { width: 56px; height: 56px; background: var(--red); mix-blend-mode: normal; }
+    .cursor.is-open { width: 76px; height: 76px; background: var(--ink); mix-blend-mode: normal; }
+    .cursor.is-open::after { content: "open"; position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--paper); }
+    @media (hover: none), (pointer: coarse) { body { cursor: auto; } .cursor { display: none; } }
+
+    .tape { position: relative; z-index: 3; width: 100%; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; overflow: hidden; border-bottom: 1px solid var(--ink); }
+    .tape-track { display: flex; gap: 4rem; padding: 0.6rem 0; white-space: nowrap; animation: tape-scroll 60s linear infinite; width: max-content; }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    .masthead { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; padding: 1.2rem var(--edge) 0.9rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); }
+    .masthead .left, .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center { font-family: var(--display); font-style: italic; font-size: clamp(0.95rem, 1.1vw, 1.05rem); letter-spacing: 0.04em; text-transform: none; color: var(--ink); }
+    .masthead .stamp { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.18rem 0.5rem; border: 1px solid var(--rule); border-radius: 999px; }
+    .masthead .stamp.live::before { content: ""; width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: pulse 1.6s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+    .masthead .breadcrumb { color: var(--ink); text-decoration: none; transition: color .2s var(--ease); }
+    .masthead .breadcrumb:hover { color: var(--red); }
+
+    .page-head { position: relative; z-index: 2; padding: clamp(2.5rem, 7vh, 5rem) var(--edge) 1.5rem; max-width: 1480px; margin: 0 auto; display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.4rem; align-items: end; }
+    .page-head .titleblock { grid-column: 1 / span 8; }
+    .page-head .meta { grid-column: 9 / span 4; align-self: end; }
+    .page-stamp { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.3rem 0.65rem; border: 1px solid var(--ink); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); background: var(--paper); }
+    .page-title { font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(3rem, 11vw, 9.5rem); line-height: 0.92; letter-spacing: -0.02em; margin-top: 0.6rem; color: var(--ink); }
+    .page-title em { font-style: normal; color: var(--red); }
+    .page-lede { font-family: var(--serif); font-style: italic; font-size: clamp(1.1rem, 1.7vw, 1.4rem); line-height: 1.4; max-width: 46ch; margin-top: 1rem; color: var(--ink); }
+    .meta-block { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 0.55rem; line-height: 1.85; }
+    .meta-block .accent { color: var(--red); }
+    @media (max-width: 880px) { .page-head .titleblock, .page-head .meta { grid-column: 1 / -1; } }
+
+    /* DROPS — featured at top */
+    .drops-section { max-width: 1480px; margin: 0 auto; padding: clamp(2rem, 5vh, 3rem) var(--edge); border-top: 1px solid var(--rule); }
+    .drops-head { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.4rem; align-items: end; margin-bottom: 1.4rem; }
+    .drops-head h2 { grid-column: 1 / span 6; font-family: var(--display); font-style: italic; font-size: clamp(2rem, 5vw, 4rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.015em; color: var(--ink); }
+    .drops-head h2 em { font-style: normal; color: var(--red); }
+    .drops-head .legend { grid-column: 7 / span 6; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-2); border-top: 1px solid var(--rule-soft); padding-top: 0.55rem; line-height: 1.7; text-align: right; }
+    @media (max-width: 880px) { .drops-head h2, .drops-head .legend { grid-column: 1 / -1; text-align: left; } }
+    /* Carousel — horizontally scrollable, snap points, smaller cards */
+    .drops-carousel {
+      display: flex;
+      gap: 0.8rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 0.4rem 0 0.8rem;
+      margin: 0 calc(-1 * var(--edge));
+      padding-left: var(--edge);
+      padding-right: var(--edge);
+      scrollbar-width: thin;
+      scrollbar-color: var(--rule-soft) transparent;
+    }
+    .drops-carousel::-webkit-scrollbar { height: 6px; }
+    .drops-carousel::-webkit-scrollbar-thumb { background: var(--rule-soft); border-radius: 3px; }
+
+    .drop-card { flex: 0 0 230px; scroll-snap-align: start; position: relative; background: var(--paper); border: 1px solid var(--rule); padding: 0; cursor: pointer; text-align: left; font: inherit; color: inherit; display: flex; flex-direction: column; transition: transform .35s var(--ease), box-shadow .35s var(--ease); overflow: hidden; }
+    .drop-card:hover { transform: translateY(-3px); box-shadow: 6px 6px 0 var(--ink); }
+    .drop-card .drop-thumb { aspect-ratio: 4/5; background: var(--paper-2); overflow: hidden; border-bottom: 1px solid var(--rule); position: relative; }
+    .drop-card .drop-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; -webkit-user-drag: none; }
+    .drop-card .drop-thumb .placeholder-glyph { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--display); font-style: italic; font-size: 2rem; color: var(--ink); }
+    .drop-card .drop-thumb .kind-badge { position: absolute; top: 0.5rem; left: 0.5rem; font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; padding: 0.2rem 0.45rem; background: var(--ink); color: var(--paper); }
+    .drop-card .drop-meta { padding: 0.75rem 0.85rem 0.85rem; display: flex; flex-direction: column; gap: 0.25rem; }
+    .drop-card .drop-num { font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+    .drop-card .drop-title { font-family: var(--display); font-style: italic; font-size: 1.1rem; line-height: 1.05; letter-spacing: -0.005em; color: var(--ink); }
+    .drop-card .drop-line { display: none; }
+
+    /* VIEW TOGGLE — list or grid */
+    .view-toggle { display: inline-flex; margin-left: auto; gap: 0; border: 1px solid var(--rule-soft); }
+    .view-toggle button { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; background: var(--paper); color: var(--ink-2); border: none; padding: 0.5rem 0.75rem; cursor: pointer; border-right: 1px solid var(--rule-soft); transition: background .2s var(--ease), color .2s var(--ease); }
+    .view-toggle button:last-child { border-right: none; }
+    .view-toggle button:hover { color: var(--ink); }
+    .view-toggle button.active { background: var(--ink); color: var(--paper); }
+
+    /* LIST VIEW — single column of rows, the original ledger feel */
+    .inventory-list { display: flex; flex-direction: column; }
+    /* Author display rules override UA's [hidden] {display:none}, so force it back */
+    .inventory-list[hidden], .inventory-grid[hidden] { display: none !important; }
+    .lab-row { display: grid; grid-template-columns: 90px 1fr 110px; gap: 1.4rem; align-items: start; padding: 1.1rem 0.4rem; border-bottom: 1px solid var(--rule-soft); cursor: pointer; transition: padding .25s var(--ease), background .25s var(--ease); }
+    .lab-row:hover { background: var(--paper-2); padding-left: 1rem; padding-right: 1rem; }
+    .lab-row.is-hidden { display: none; }
+    .lab-row .row-thumb { width: 90px; height: 120px; background: var(--paper-2); overflow: hidden; position: relative; flex-shrink: 0; transition: transform .35s var(--ease); border: 1px solid var(--rule-soft); }
+    .lab-row:hover .row-thumb { transform: rotate(-1.5deg) translateY(-2px); box-shadow: 4px 4px 0 var(--ink); }
+    .lab-row .row-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; -webkit-user-drag: none; }
+    .lab-row .row-thumb .placeholder-glyph { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--display); font-style: italic; font-size: 1.4rem; color: var(--ink-2); padding: 0.3rem; text-align: center; line-height: 1; }
+    .lab-row .row-thumb .kind-badge { position: absolute; top: 0.4rem; left: 0.4rem; font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.18rem 0.4rem; background: rgba(14,14,12,0.85); color: var(--paper); }
+    .lab-row .row-thumb .ext-badge { position: absolute; top: 0.4rem; right: 0.4rem; font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; padding: 0.15rem 0.35rem; background: var(--red); color: var(--paper); }
+    .lab-row .row-body { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+    .lab-row .row-title { font-family: var(--display); font-style: italic; font-size: clamp(1.15rem, 1.5vw, 1.4rem); line-height: 1.2; letter-spacing: -0.005em; color: var(--ink); }
+    .lab-row .row-num { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+    .lab-row .row-line { font-family: var(--serif); font-style: italic; font-size: 0.92rem; line-height: 1.45; color: var(--ink-2); }
+    .lab-row .row-status { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-2); text-align: right; padding-top: 0.3rem; display: flex; flex-direction: column; gap: 0.3rem; align-items: flex-end; }
+    .lab-row .row-status .year { color: var(--muted); }
+    .lab-row .row-status .status { display: inline-flex; align-items: center; gap: 0.35rem; }
+    .lab-row .row-status .status::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--muted); }
+    .lab-row .row-status .status.shipped::before, .lab-row .row-status .status.live::before { background: var(--red); }
+    .lab-row .row-status .status.shipped, .lab-row .row-status .status.live { color: var(--ink); }
+    @media (max-width: 720px) {
+      .lab-row { grid-template-columns: 70px 1fr; gap: 1rem; }
+      .lab-row .row-thumb { width: 70px; height: 95px; }
+      .lab-row .row-status { grid-column: 2; align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 0.6rem; padding-top: 0.2rem; text-align: left; }
+    }
+
+    /* FILTER BAR */
+    .filter-bar { max-width: 1480px; margin: 0 auto; padding: 0 var(--edge); display: flex; flex-wrap: wrap; gap: 0.5rem 0.6rem; align-items: baseline; border-top: 1px solid var(--rule); padding-top: 1.6rem; }
+    .filter-bar .label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-right: 0.5rem; }
+    .filter-chip { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; padding: 0.45rem 0.75rem; border: 1px solid var(--rule-soft); background: var(--paper); color: var(--ink-2); cursor: pointer; transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease); }
+    .filter-chip:hover { border-color: var(--ink); color: var(--ink); }
+    .filter-chip.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .filter-chip .count { color: var(--muted); margin-left: 0.4rem; }
+    .filter-chip.active .count { color: var(--paper); opacity: 0.6; }
+
+    /* INVENTORY GRID */
+    .inventory { max-width: 1480px; margin: 0 auto; padding: 1.4rem var(--edge) 2rem; }
+    .inventory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+    .lab-card { position: relative; background: var(--paper); border: 1px solid var(--rule-soft); padding: 0; cursor: pointer; text-align: left; font: inherit; color: inherit; display: flex; flex-direction: column; transition: border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease); overflow: hidden; min-height: 280px; }
+    .lab-card:hover { border-color: var(--ink); transform: translateY(-2px); box-shadow: 5px 5px 0 var(--ink); }
+    .lab-card.is-hidden { display: none; }
+    .lab-thumb { aspect-ratio: 4/5; background: var(--paper-2); overflow: hidden; border-bottom: 1px solid var(--rule-soft); position: relative; }
+    .lab-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; -webkit-user-drag: none; }
+    .lab-thumb .placeholder-glyph { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--display); font-style: italic; font-size: 2rem; color: var(--ink-2); padding: 0.5rem; text-align: center; line-height: 1; }
+    .lab-thumb .kind-badge { position: absolute; top: 0.5rem; left: 0.5rem; font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; padding: 0.2rem 0.45rem; background: rgba(14,14,12,0.85); color: var(--paper); }
+    .lab-thumb .ext-badge { position: absolute; top: 0.5rem; right: 0.5rem; font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; padding: 0.2rem 0.45rem; background: var(--red); color: var(--paper); }
+    .lab-meta { padding: 0.85rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.3rem; flex: 1; }
+    .lab-num { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+    .lab-title { font-family: var(--display); font-style: italic; font-size: 1.1rem; line-height: 1.1; letter-spacing: -0.005em; color: var(--ink); }
+    .lab-line { font-family: var(--serif); font-style: italic; font-size: 0.85rem; line-height: 1.35; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .lab-foot { margin-top: auto; padding-top: 0.5rem; display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+    .lab-foot .status { display: inline-flex; align-items: center; gap: 0.35rem; }
+    .lab-foot .status::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--muted); }
+    .lab-foot .status.shipped::before, .lab-foot .status.live::before { background: var(--red); }
+    .lab-foot .status.shipped, .lab-foot .status.live { color: var(--ink); }
+
+    .empty-msg { padding: 3rem 1rem; text-align: center; font-family: var(--display); font-style: italic; font-size: 1.2rem; color: var(--muted); grid-column: 1 / -1; }
+
+    /* COLOPHON */
+    .colophon { position: relative; z-index: 2; padding: clamp(2rem, 5vh, 3.5rem) var(--edge); display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.2rem; max-width: 1480px; margin: 0 auto; align-items: end; font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); border-top: 1px solid var(--rule); }
+    .colophon a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: color .25s var(--ease), border-color .25s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.4rem; }
+    .colophon .col.c-a { grid-column: 1 / span 4; }
+    .colophon .col.c-b { grid-column: 5 / span 4; }
+    .colophon .col.c-c { grid-column: 9 / span 4; align-items: flex-end; }
+    .colophon h3 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(1.4rem, 2.2vw, 2rem); letter-spacing: -0.01em; text-transform: none; color: var(--ink); line-height: 1; margin-bottom: 0.4rem; }
+    .colophon .seal { width: 88px; height: 88px; border: 1px solid var(--ink); border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-style: italic; font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--ink); transform: rotate(-6deg); position: relative; }
+    .colophon .seal::before { content: ""; position: absolute; inset: 5px; border: 1px dashed var(--rule-soft); border-radius: 50%; }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; display: block; }
+    /* ─── TYPOGRAPHIC THUMB ───────────────────────────────────────
+       Cards with no image (apps + writings) render as printed specimen
+       cards. Each kind has its own visual character:
+         · WRITING — magazine cover. Headline + dek + ¶ + read action.
+         · APP     — system tile. Title + mono spec line + ⌬ AI Studio.
+       Shared chrome: kind label + accession on top, red rule underneath. */
+    .type-thumb {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      padding: 0.95rem 1rem 0.9rem;
+      background: var(--paper-2);
+      pointer-events: none;
+      overflow: hidden;
+    }
+    /* Kind-specific surface textures */
+    .type-thumb.kind-writing {
+      background-color: var(--paper-2);
+      background-image:
+        repeating-linear-gradient(180deg,
+          transparent 0,
+          transparent calc(1.4em - 1px),
+          rgba(14,14,12,0.045) calc(1.4em - 1px),
+          rgba(14,14,12,0.045) 1.4em);
+    }
+    .type-thumb.kind-app {
+      background-color: var(--paper-2);
+      background-image: radial-gradient(rgba(14,14,12,0.07) 1px, transparent 1px);
+      background-size: 7px 7px;
+    }
+    /* Top: glyph + kind + accession */
+    .type-thumb .tt-top {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      gap: 0.4rem;
+      align-items: baseline;
+      flex-shrink: 0;
+    }
+    .type-thumb .tt-glyph {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--red);
+      line-height: 1;
+    }
+    .type-thumb .tt-rule {
+      width: 32px;
+      height: 1px;
+      background: var(--red);
+      margin: 0.45rem 0 0.5rem;
+      flex-shrink: 0;
+    }
+    /* Title — same styling, kind variants tweak below */
+    .type-thumb .tt-title {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1rem, 1.55vw, 1.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    /* Dek — appears below title. Different fonts per kind. */
+    .type-thumb .tt-dek {
+      margin-top: 0.5rem;
+      flex: 1;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      color: var(--ink-2);
+    }
+    .type-thumb.kind-writing .tt-dek {
+      font-family: var(--serif); font-style: italic;
+      font-size: 0.78rem;
+      line-height: 1.45;
+    }
+    .type-thumb.kind-app .tt-dek {
+      font-family: var(--mono); font-style: normal;
+      font-size: 0.66rem;
+      line-height: 1.55;
+      letter-spacing: 0.02em;
+    }
+    /* Bottom action line */
+    .type-thumb .tt-bottom {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      padding-top: 0.5rem;
+      margin-top: 0.5rem;
+      border-top: 1px solid var(--rule-soft);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
+    .type-thumb .tt-bottom .action { color: var(--ink); }
+    .type-thumb .tt-bottom .arrow { color: var(--red); font-family: var(--display); font-style: italic; font-size: 13px; }
+
+    /* Hover: subtle paper darken + arrow shift */
+    .lab-card:hover .lab-thumb .type-thumb,
+    .drop-card:hover .drop-thumb .type-thumb { background-color: var(--paper-3); }
+    .lab-card:hover .lab-thumb .type-thumb .tt-bottom .arrow,
+    .drop-card:hover .drop-thumb .type-thumb .tt-bottom .arrow { color: var(--ink); transform: translateX(2px); }
+
+    /* List-row variant — kind-indicator card only.
+       The full title sits in the row-body next to the thumb,
+       so we suppress title/dek/action inside the tiny thumb. */
+    .lab-row .row-thumb .type-thumb { padding: 0.5rem 0.55rem; justify-content: flex-start; align-items: flex-start; }
+    .lab-row .row-thumb .type-thumb .tt-top { font-size: 7.5px; letter-spacing: 0.18em; }
+    .lab-row .row-thumb .type-thumb .tt-glyph { font-size: 18px; line-height: 1; color: var(--ink); margin-bottom: 0.2rem; display: block; }
+    .lab-row .row-thumb .type-thumb .tt-top { display: flex; flex-direction: column; gap: 0.1rem; }
+    .lab-row .row-thumb .type-thumb .tt-rule { width: 14px; margin: 0.4rem 0 0; }
+    .lab-row .row-thumb .type-thumb .tt-title,
+    .lab-row .row-thumb .type-thumb .tt-dek,
+    .lab-row .row-thumb .type-thumb .tt-bottom { display: none; }
+
+    /* Kind-badge gets a tiny glyph prefix in all card types. */
+    .kind-badge .badge-glyph { color: var(--red); font-family: var(--display); font-style: italic; margin-right: 0.25rem; font-size: 1.05em; line-height: 1; vertical-align: -1px; }
+    @media (max-width: 880px) { .colophon .col.c-a, .colophon .col.c-b, .colophon .col.c-c { grid-column: 1 / -1; align-items: flex-start; } }
+
+    /* MODAL — shared shell */
+    .modal { position: fixed; inset: 0; background: rgba(14,14,12,0.94); display: none; align-items: stretch; justify-content: center; z-index: 1000; padding: clamp(1rem, 3vh, 2rem); opacity: 0; transition: opacity .25s var(--ease); }
+    .modal[aria-hidden="false"] { display: flex; opacity: 1; }
+    .modal-frame { background: var(--paper); width: 100%; max-width: 1280px; display: flex; flex-direction: column; border: 1px solid var(--ink); box-shadow: 0 30px 80px rgba(0,0,0,0.5); overflow: hidden; }
+    .modal-bar { display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1rem; border-bottom: 1px solid var(--rule); background: var(--paper); gap: 1rem; }
+    .modal-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .modal-meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; color: var(--muted); white-space: nowrap; padding: 0 0.6rem; }
+    .modal-actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
+    .modal-action { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; background: var(--ink); border: 1px solid var(--ink); color: var(--paper); padding: 0.5rem 0.8rem; cursor: pointer; text-decoration: none; transition: background .2s var(--ease); }
+    .modal-action:hover { background: var(--red); border-color: var(--red); color: var(--paper); }
+    .modal-action.ghost { background: var(--paper); color: var(--ink); }
+    .modal-action.ghost:hover { background: var(--ink); color: var(--paper); }
+
+    /* SPREAD GALLERY */
+    .spread-stage { flex: 1; min-height: 60vh; background: #1d1d1b; position: relative; display: flex; align-items: center; justify-content: center; padding: 1rem clamp(2rem, 6vw, 4rem); overflow: hidden; gap: 0; }
+    /* In 2-up, a single 1px line of the dark stage shows as the spine */
+    .spread-stage[data-mode="double"] { gap: 1px; }
+    /* Force the spread image to fit (object-fit: contain) — overrides any
+       generic `img` rule via higher specificity inside the stage. */
+    .spread-stage .spread-img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; box-shadow: 0 10px 40px rgba(0,0,0,0.5); user-select: none; -webkit-user-drag: none; opacity: 0; transition: opacity .35s var(--ease); }
+    .spread-stage .spread-img.loaded { opacity: 1; }
+    .spread-stage .spread-img.errored { opacity: 0.6; outline: 2px solid var(--red); outline-offset: 4px; }
+    .spread-stage .spread-img.errored::after { content: "spread failed to load"; color: var(--red); }
+    /* Single vs. double spread view */
+    .spread-stage[data-mode="single"] .spread-img-2 { display: none; }
+    .spread-stage[data-mode="double"] .spread-img,
+    .spread-stage[data-mode="double"] .spread-img-2 { max-width: 50%; }
+    .spread-stage[data-mode="double"] .spread-img-2.alone { display: none; }
+    /* Fullscreen styling — the modal-frame goes edge-to-edge when entered */
+    #bookModal .modal-frame:fullscreen,
+    #bookModal .modal-frame:-webkit-full-screen { max-width: 100%; width: 100%; height: 100vh; max-height: 100vh; border: 0; }
+    #bookModal .modal-frame:fullscreen .spread-stage,
+    #bookModal .modal-frame:-webkit-full-screen .spread-stage { min-height: 0; flex: 1; }
+    .spread-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border: 1px solid rgba(244,241,234,0.4); background: rgba(14,14,12,0.6); color: var(--paper); cursor: pointer; font-size: 1.4rem; display: grid; place-items: center; transition: background .2s var(--ease), border-color .2s var(--ease); }
+    .spread-nav:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+    .spread-nav.prev { left: 1rem; }
+    .spread-nav.next { right: 1rem; }
+    .spread-nav:disabled { opacity: 0.25; cursor: not-allowed; }
+    .spread-counter { position: absolute; bottom: 0.8rem; right: 1rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--paper); opacity: 0.7; }
+
+    .spread-thumbs { background: var(--ink); border-top: 1px solid var(--ink); padding: 0.6rem 0.8rem; overflow-x: auto; overflow-y: hidden; display: flex; gap: 0.35rem; scrollbar-width: thin; scrollbar-color: rgba(244,241,234,0.3) transparent; }
+    .spread-thumbs::-webkit-scrollbar { height: 6px; }
+    .spread-thumbs::-webkit-scrollbar-thumb { background: rgba(244,241,234,0.3); border-radius: 3px; }
+    .spread-thumb { flex-shrink: 0; width: 36px; height: 48px; border: 1px solid transparent; cursor: pointer; padding: 0; background: rgba(244,241,234,0.08); position: relative; transition: border-color .2s var(--ease), transform .2s var(--ease); }
+    .spread-thumb:hover { transform: translateY(-2px); }
+    .spread-thumb.active { border-color: var(--red); transform: translateY(-3px); }
+    .spread-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.65; }
+    .spread-thumb.active img { opacity: 1; }
+    .spread-thumbs .label { display: inline-flex; align-items: center; padding: 0 0.6rem; flex-shrink: 0; font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,241,234,0.5); }
+
+    /* COVER FALLBACK (books without spreads) */
+    .cover-fallback { flex: 1; min-height: 60vh; background: #1d1d1b; display: grid; place-items: center; padding: 2rem; }
+    .cover-fallback-inner { display: flex; flex-direction: column; align-items: center; gap: 1.4rem; max-width: 320px; text-align: center; }
+    .cover-fallback img { max-width: 100%; box-shadow: 0 10px 40px rgba(0,0,0,0.5); user-select: none; -webkit-user-drag: none; }
+    .cover-fallback p { color: var(--paper); font-family: var(--serif); font-style: italic; font-size: 0.95rem; opacity: 0.8; }
+
+    /* TOY MODAL — collage */
+    .modal.toy .modal-frame { background: var(--paper); }
+    .modal-body-collage { flex: 1; min-height: 60vh; max-height: 78vh; overflow-y: auto; padding: clamp(1.5rem, 4vh, 3rem) clamp(1.5rem, 4vw, 3rem); background: var(--paper); position: relative; background-image: radial-gradient(rgba(14,14,12,0.05) 1px, transparent 1px); background-size: 14px 14px; }
+    .toy-collage { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(1rem, 3vw, 2.5rem); max-width: 1100px; margin: 0 auto; align-items: center; }
+    .toy-collage figure { position: relative; transform: rotate(var(--rot, 0deg)); transition: transform .5s var(--ease); display: flex; flex-direction: column; gap: 0.6rem; }
+    .toy-collage figure:hover { transform: rotate(0deg) scale(1.04); }
+    .toy-collage img { width: 100%; height: auto; display: block; mix-blend-mode: multiply; filter: contrast(1.05) saturate(1.05); user-select: none; -webkit-user-drag: none; }
+    .toy-collage figcaption { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-2); text-align: center; }
+    .toy-collage figure:nth-child(1) { --rot: -3deg; }
+    .toy-collage figure:nth-child(2) { --rot: 2deg; }
+    .toy-collage figure:nth-child(3) { --rot: -1.5deg; }
+    .toy-collage figure:nth-child(4) { --rot: 3deg; }
+    .toy-collage figure:nth-child(5) { --rot: -2deg; }
+    .toy-collage figure:nth-child(6) { --rot: 2.4deg; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+    ::selection { background: var(--red); color: var(--paper); }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <div class="tape" role="presentation">
+    <div class="tape-track">
+      <span>Restless Lab</span><span class="dot"></span>
+      <span>Toys, Books, Apps, Toolkits</span><span class="dot"></span>
+      <span>Things made in the margins of paintings</span><span class="dot"></span>
+      <span>Drops · Editions · Experiments</span><span class="dot"></span>
+      <span>Restless Lab</span><span class="dot"></span>
+      <span>Toys, Books, Apps, Toolkits</span><span class="dot"></span>
+      <span>Things made in the margins of paintings</span><span class="dot"></span>
+      <span>Drops · Editions · Experiments</span><span class="dot"></span>
+    </div>
+  </div>
+
+  <header class="masthead">
+    <div class="left">
+      <a href="./Index2.html" class="breadcrumb">← Raghava KK</a>
+      <span class="stamp live">Lab Active</span>
+    </div>
+    <div class="center">where the doodles get loud</div>
+    <div class="right">
+      <span id="dateStamp">SUN · 03 MAY 2026</span>
+      <span id="timeStamp">--:--</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="titleblock">
+        <span class="page-stamp reveal">Inventory · ongoing</span>
+        <h1 class="page-title reveal">Restless <em>Lab</em>.</h1>
+        <p class="page-lede reveal">Things made in the margins of paintings, toys, books, apps, and a few that escaped before they were finished.</p>
+      </div>
+      <div class="meta">
+        <div class="meta-block reveal">
+          <div>Catalog <span class="accent" id="catalogRange">RKK-LAB-001…</span></div>
+          <div>Items <span id="itemCount">—</span></div>
+          <div>Press studio@raghavakk.com</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LATEST DROPS -->
+    <section class="drops-section">
+      <div class="drops-head">
+        <h2 class="reveal">Latest <em>drops</em>.</h2>
+        <div class="legend reveal">most recent · scroll →</div>
+      </div>
+      <div class="drops-carousel" id="dropsCarousel"></div>
+    </section>
+
+    <!-- FILTER + INVENTORY -->
+    <div class="filter-bar">
+      <span class="label">Filter ·</span>
+      <div id="filters" style="display: flex; gap: 0.5rem; flex-wrap: wrap;"></div>
+      <div class="view-toggle" role="tablist" aria-label="View">
+        <button type="button" class="view-btn active" data-view="list" role="tab">List</button>
+        <button type="button" class="view-btn" data-view="grid" role="tab">Grid</button>
+      </div>
+    </div>
+    <section class="inventory">
+      <div class="inventory-list" id="inventoryList" hidden></div>
+      <div class="inventory-grid" id="inventoryGrid"></div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <div class="col c-a">
+      <h3>Lab inquiries.</h3>
+      <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
+      <span>Drops · Editions · Collaborations</span>
+    </div>
+    <div class="col c-b">
+      <span>Studio · Bengaluru</span>
+      <span>Studio · New York</span>
+      <span>Inventory · ongoing</span>
+    </div>
+    <div class="col c-c">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK &middot; <a href="./terms.html">Terms</a></span>
+    </div>
+  </footer>
+
+  <!-- BOOK MODAL — spread gallery -->
+  <div class="modal" id="bookModal" role="dialog" aria-modal="true" aria-labelledby="bookTitle" aria-hidden="true">
+    <div class="modal-frame">
+      <div class="modal-bar">
+        <span class="modal-title" id="bookTitle">Book</span>
+        <span class="modal-meta" id="bookMeta">—</span>
+        <div class="modal-actions">
+          <button type="button" id="bookSpreadMode" class="modal-action ghost" aria-label="Toggle 2-up spread view">2-up ⊟</button>
+          <button type="button" id="bookFullscreen" class="modal-action ghost" aria-label="Toggle full screen">Full ⤢</button>
+          <a href="#" id="bookOpenPdf" class="modal-action ghost" target="_blank" rel="noopener">Open PDF ↗</a>
+          <a href="#" id="bookDownload" class="modal-action ghost" download>Download</a>
+          <button type="button" id="bookClose" class="modal-action" aria-label="Close">Close ×</button>
+        </div>
+      </div>
+      <div class="spread-stage" id="spreadStage" data-mode="single">
+        <button type="button" class="spread-nav prev" id="spreadPrev" aria-label="Previous spread">‹</button>
+        <img class="spread-img" id="spreadImg" alt="" />
+        <img class="spread-img spread-img-2" id="spreadImg2" alt="" />
+        <button type="button" class="spread-nav next" id="spreadNext" aria-label="Next spread">›</button>
+        <span class="spread-counter" id="spreadCounter">— / —</span>
+        <div class="cover-fallback" id="coverFallback" hidden>
+          <div class="cover-fallback-inner">
+            <img id="coverFallbackImg" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="spread-thumbs" id="spreadThumbs"></div>
+    </div>
+  </div>
+
+  <!-- TOY MODAL — collage -->
+  <div class="modal toy" id="toyModal" role="dialog" aria-modal="true" aria-labelledby="toyTitle" aria-hidden="true">
+    <div class="modal-frame">
+      <div class="modal-bar">
+        <span class="modal-title" id="toyTitle">Drop</span>
+        <div class="modal-actions">
+          <button type="button" id="toyClose" class="modal-action" aria-label="Close">Close ×</button>
+        </div>
+      </div>
+      <div class="modal-body-collage">
+        <div class="toy-collage" id="toyGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // ─────────────────────────────────────────────────────
+  // LAB INVENTORY — single source of truth.
+  // To add or remove: just edit this array.
+  // ─────────────────────────────────────────────────────
+  const SPREADS = {
+    '33M Gods':                         { folder: '33M_Gods',            count: 26, pad: 2 },
+    'Chris book':                       { folder: 'Chris_book',          count: 7,  pad: 1 },
+    'MAYBE you KNOW ME':                { folder: 'MAYBE_you_KNOW_ME',   count: 24, pad: 2 },
+    'On Being me!':                     { folder: 'On_Being_me',         count: 30, pad: 2 },
+    'MASCULYNE':                        { folder: 'MASCULYNE',           count: 20, pad: 2 },
+    'Restless Frequency':               { folder: 'Restless_Frequency',  count: 110,pad: 3 },
+    'Superstar Rajinikanth Made Me':    { folder: 'Superstar_Rajinikanth',count: 30, pad: 2 },
+    'ATTITUDES':                        { folder: 'ATTITUDES',           count: 56, pad: 2 },
+    'Elite Sample':                     { folder: 'Elite_Sample',        count: 12, pad: 2 },
+    "The Machine Didn't Kill Me, It Rewrote Me": { folder: 'Machine_Rewrote_Me', count: 92, pad: 2 }
+  };
+
+  const TOY_DROPS = {
+    'demi-gs':          { title: 'Demi-Gs', images: ['./images/toys/demi-gs/01.jpg','./images/toys/demi-gs/02.jpg','./images/toys/demi-gs/03.jpg','./images/toys/demi-gs/04.jpg'] },
+    'retired-gods':     { title: 'Retired Gods', images: ['./images/toys/retired-gods/01.jpg','./images/toys/retired-gods/02.jpg','./images/toys/retired-gods/03.jpg','./images/toys/retired-gods/04.jpg'] },
+    'the-doomscrollers':{ title: 'The Doomscrollers', images: ['./images/toys/the-doomscrollers/01.jpg','./images/toys/the-doomscrollers/02.jpg','./images/toys/the-doomscrollers/03.jpg'] },
+    'power-fluff-toys': { title: 'Power Fluff Toys', images: ['./images/studio/09-powerfluff/9A.jpg','./images/studio/09-powerfluff/9B.jpg','./images/studio/09-powerfluff/9C.jpg','./images/studio/09-powerfluff/9D.jpg','./images/studio/09-powerfluff/9E.jpg','./images/studio/09-powerfluff/9F.jpg'] },
+    'toy-faces':        { title: 'Toy Faces', images: ['./images/studio/13-toy-faces/13A.jpg','./images/studio/13-toy-faces/13B.jpg','./images/studio/13-toy-faces/13C.jpg','./images/studio/13-toy-faces/13D.jpg','./images/studio/13-toy-faces/13E.jpg','./images/studio/13-toy-faces/13F.jpg'] }
+  };
+
+  const ITEMS = [
+    // ─── TOYS ───
+    { kind: 'toy',  category: 'Toys',  toy: 'demi-gs',         title: 'Demi-Gs',         year: 2025, date: '2025-12', accession: 1,  thumb: './images/toys/demi-gs/01.jpg',         line: 'Drop · 4 pieces · sculptural figures', status: 'shipped' },
+    { kind: 'toy',  category: 'Toys',  toy: 'retired-gods',    title: 'Retired Gods',    year: 2026, date: '2026-01', accession: 2,  thumb: './images/toys/retired-gods/01.jpg',    line: 'Drop · 4 pieces · ceramic-doll style', status: 'shipped' },
+    { kind: 'toy',  category: 'Toys',  toy: 'the-doomscrollers',title:'The Doomscrollers',year: 2026, date: '2026-02', accession: 3,  thumb: './images/toys/the-doomscrollers/01.jpg',line: 'Drop · 3 pieces · phygital sculptures', status: 'shipped' },
+    { kind: 'toy',  category: 'Toys',  toy: 'power-fluff-toys',title: 'Power Fluff Toys',year: 2022, date: '2022-08', accession: 4,  thumb: './images/studio/09-powerfluff/9A.jpg', line: 'Drop · 6 pieces · phygital 3D holograms', status: 'shipped' },
+    { kind: 'toy',  category: 'Toys',  toy: 'toy-faces',       title: 'Toy Faces',       year: 2023, date: '2023-06', accession: 21, thumb: './images/studio/13-toy-faces/13A.jpg', line: "Drop · 6 pieces · children's toy faces enlarged until they read as deities", status: 'shipped' },
+
+    // ─── BOOKS — ART ───
+    { kind: 'book', category: 'Books', subcategory: 'Art Books', title: '33M Gods',                       year: 2026, date: '2026-03', accession: 5,  thumb: './images/books/art_33M_Gods.jpg',                          pdf: './books/art%20books/33M%20Gods.pdf',                       filename: '33M Gods.pdf',                       line: 'Artist book · 26 spreads · the operating premise of Calling All Gods', status: 'shipped' },
+    { kind: 'book', category: 'Books', subcategory: 'Art Books', title: 'Chris book',                     year: 2024, date: '2024-09', accession: 6,  thumb: './images/books/art_Chris_book.jpg',                        pdf: './books/art%20books/Chris%20book.pdf',                     filename: 'Chris book.pdf',                     line: 'Artist book · 7 spreads · printed edition',                   status: 'shipped' },
+    { kind: 'book', category: 'Books', subcategory: 'Art Books', title: 'MAYBE you KNOW ME',              year: 2024, date: '2024-08', accession: 7,  thumb: './images/books/art_MAYBE_you_KNOW_ME.jpg',                 pdf: './books/art%20books/MAYBE%20you%20KNOW%20ME.pdf',          filename: 'MAYBE you KNOW ME.pdf',              line: 'Artist book · 24 spreads · self-portrait under different names', status: 'shipped' },
+    { kind: 'book', category: 'Books', subcategory: 'Art Books', title: 'On Being me!',                   year: 2024, date: '2024-07', accession: 8,  thumb: './images/books/art_On_Being_me!.jpg',                      pdf: './books/art%20books/On%20Being%20me!.pdf',                 filename: 'On Being me!.pdf',                   line: 'Artist book · 30 spreads · the practice as autobiography',    status: 'shipped' },
+    { kind: 'book', category: 'Books', subcategory: 'Art Books', title: 'MASCULYNE',                      year: 2024, date: '2024-06', accession: 9,  thumb: './images/books/art_RKK_-_MASCULYNE.jpg',                   pdf: './books/art%20books/RKK%20-%20MASCULYNE.pdf',              filename: 'MASCULYNE.pdf',                      line: 'Artist book · 20 spreads · the body, masculinity, the mirror', status: 'shipped' },
+    { kind: 'book', category: 'Books', subcategory: 'Art Books', title: 'Restless Frequency',             year: 2024, date: '2024-05', accession: 10, thumb: './images/books/art_Restless_Frequency.jpg',                pdf: './books/art%20books/Restless%20Frequency.pdf',             filename: 'Restless Frequency.pdf',             line: 'Artist book · 110 spreads · long-form picture essay',         status: 'shipped' },
+    { kind: 'book', category: 'Books', subcategory: 'Art Books', title: 'Superstar Rajinikanth Made Me',  year: 2024, date: '2024-04', accession: 11, thumb: './images/books/art_Superstar_Rajinikanth_Made_Me.jpg',    pdf: './books/art%20books/Superstar%20Rajinikanth%20Made%20Me.pdf', filename: 'Superstar Rajinikanth Made Me.pdf', line: 'Artist book · 30 spreads · how cinema makes a self',          status: 'shipped' },
+    // ─── BOOKS — TEXT ───
+    { kind: 'book', category: 'Books', subcategory: 'Text-Only Books', title: 'ATTITUDES',                                         year: 2024, date: '2024-12', accession: 12, thumb: './images/books/text_ATTITUDES-Print.jpg',                       pdf: './books/text%20only%20books/ATTITUDES-Print.pdf',                                                  filename: 'ATTITUDES.pdf',                                            line: 'A5 booklet · 56 spreads · spine-to-Canva production',         status: 'shipped' },
+    { kind: 'book', category: 'Books', subcategory: 'Text-Only Books', title: 'Artist Not Found',                                  year: 2025, date: '2025-09', accession: 13, thumb: './images/books/text_Artist_Not_Found.jpg',                      pdf: './books/text%20only%20books/Artist%20Not%20Found,%20Raghava%20KK,%202025.pdf',                     filename: 'Artist Not Found.pdf',                                     line: 'A5 booklet · text-only edition',                              status: 'shipped' },
+    { kind: 'book', category: 'Books', subcategory: 'Text-Only Books', title: 'Elite Sample',                                      year: 2024, date: '2024-03', accession: 14, thumb: './images/books/text_Elite-Sample_copy.pdf.jpg',                 pdf: './books/text%20only%20books/Elite-Sample%20copy.pdf.pdf',                                          filename: 'Elite Sample.pdf',                                         line: 'A5 booklet · 12 spreads · text-only edition',                 status: 'shipped' },
+    { kind: 'book', category: 'Books', subcategory: 'Text-Only Books', title: "The Machine Didn't Kill Me, It Rewrote Me",         year: 2025, date: '2025-06', accession: 15, thumb: './images/books/text_The-Machine-Didnt-Kill-Me-It-Rewrote-Me-Print-2025-06-03.jpg', pdf: './books/text%20only%20books/The-Machine-Didnt-Kill-Me-It-Rewrote-Me-Print-2025-06-03.pdf',         filename: "The Machine Didn't Kill Me, It Rewrote Me.pdf",            line: 'A5 booklet · 92 spreads · the machine essay',                 status: 'shipped' },
+    { kind: 'book', category: 'Books', subcategory: 'Text-Only Books', title: 'The Raghava KK Studio Projects Book',               year: 2024, date: '2024-12', accession: 16, thumb: './images/books/text_Studio_Projects_Book.jpg',                  pdf: './books/text%20only%20books/The-Raghava-KK-Studio-Projects-Book-Print-2024-12-28.pdf',             filename: 'The Raghava KK Studio Projects Book.pdf',                  line: 'A5 booklet · text-only edition',                              status: 'shipped' },
+    { kind: 'book', category: 'Books', subcategory: 'Text-Only Books', title: 'the duck forgot it was whole',                      year: 2024, date: '2024-10', accession: 17, thumb: './images/books/text_the_duck_forgot_it_was_whole.jpg',          pdf: './books/text%20only%20books/the%20duck%20forgot%20it%20was%20whole.pdf',                          filename: 'the duck forgot it was whole.pdf',                         line: 'A5 booklet · text-only edition',                              status: 'shipped' },
+
+    // ─── APPS — Google AI Studio (full set, can be pruned later) ───
+    { kind: 'app', category: 'Apps', title: 'Sacred Entity Generator',           year: 2026, date: '2026-02', accession: 22, glyph: 'SE',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221hvKoEGx-j2sq5OLmFlel8j8g6IxlqffC%22%5D,%22action%22:%22open%22%7D', line: "Generates 'Possible Sacred Entities' with ontology, rituals, and visual iconography.", status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'Conversations Inside Raghava KK\'s Head', year: 2026, date: '2026-01', accession: 23, glyph: 'CV', ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221JauX2vpcE7zDa3OPrNxO9HpRLhcJS-Cm%22%5D,%22action%22:%22open%22%7D', line: 'Two characters in alternating philosophical dialogue that descends into madness.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'AUNTY TRIBUNAL (Bua Sabha)',         year: 2026, date: '2026-01', accession: 24, glyph: 'AT',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221pM01Nu1MuEmgQ9LjN7FmrGwqAZ416Ate%22%5D,%22action%22:%22open%22%7D', line: 'Indian aunties roast contemporary art, then translate to academic theory.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'Doll creation',                      year: 2026, date: '2026-01', accession: 25, glyph: 'DC',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221PIlTENNHWU2CoolA9ECvWC9_Y4L8f_hu%22%5D,%22action%22:%22open%22%7D', line: 'Ceramic art toy doll simulator that evolves through Gemini transcription.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'Rugify Studio',                      year: 2026, date: '2026-01', accession: 26, glyph: 'RS',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221Krgo8hVuDFdk9-88kqViG8o3SNGduBCT%22%5D,%22action%22:%22open%22%7D', line: 'Turn paintings into gallery-ready organic art rugs.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'Generative Ink Brushes',             year: 2026, date: '2026-01', accession: 27, glyph: 'GI',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221giumNczhWDeQzYWFEG_jg3SamwjrPcj9%22%5D,%22action%22:%22open%22%7D', line: 'p5.js painting playground with custom physics-based brushes.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'Procedural Mark Maker',              year: 2026, date: '2026-01', accession: 28, glyph: 'PM',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221UGHErCsg7_PMfG0Ox_ws2bCTPrb5RdVl%22%5D,%22action%22:%22open%22%7D', line: 'Agentic drawing tool where strokes decide their own completion.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'GOSSIP: Unofficial India Art Fair 2026 Guide', year: 2026, date: '2026-01', accession: 29, glyph: 'IAF', ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221R-CAHt4jrq2_l2x867hxOu4VFliCBCaW%22%5D,%22action%22:%22open%22%7D', line: 'Approved gossip companion app for the fair.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'Indian Art Investor Intelligence',   year: 2026, date: '2026-01', accession: 30, glyph: 'AII', ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221MpYxDtP_lDyWi2CGEZXNzCrafJKXd0QF%22%5D,%22action%22:%22open%22%7D', line: 'Performance metrics, auction tracking, and repeat-sale ROI for the Indian art market.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'Art Critic Support System',          year: 2026, date: '2026-01', accession: 31, glyph: 'ACS', ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221SByZ1vK1ULPOy3S6PhU2OT3S3Mfkb-AN%22%5D,%22action%22:%22open%22%7D', line: 'Four-agent system (Memory, Market, Language, Working Model) for human critics.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'Neosis Foresight',                   year: 2026, date: '2026-01', accession: 32, glyph: 'NF',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221ExAsm22rDRkAbCrFt08oRptk6RIt6Dni%22%5D,%22action%22:%22open%22%7D', line: 'Experimental foresight prototype.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'Segmented Reel Architect',           year: 2026, date: '2026-01', accession: 33, glyph: 'SRA', ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2211mT_qy-XlJ4Li_qBa9uidxhAvq-VQYXd%22%5D,%22action%22:%22open%22%7D', line: 'AI video reel production in approved 8-second segments with TTS.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'TimberSep: Stem Separator',          year: 2026, date: '2026-02', accession: 34, glyph: 'TS',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2216crqxsEUiHmgcl6pq6ulG6zYFKXC18Uu%22%5D,%22action%22:%22open%22%7D', line: 'Audio stem separator using STFT, HPSS, and phase-cancellation. No AI.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'MIDI Rhythm Master',                 year: 2026, date: '2026-02', accession: 35, glyph: 'MR',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221QnYkWhvAiKltgC8Fu1F0xzS7-XbFfIBn%22%5D,%22action%22:%22open%22%7D', line: 'MIDI rhythm game with real-time accuracy tracking and AI coaching.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'EvoJump: RL Platformer Lab',         year: 2026, date: '2026-02', accession: 36, glyph: 'EJ',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221iXUO4c9OHw6VXbROaH_bW90I7Sg_GfRv%22%5D,%22action%22:%22open%22%7D', line: 'Design platformer levels and train a neuroevolution agent to solve them.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'EchoPaths',                          year: 2026, date: '2026-02', accession: 37, glyph: 'EP',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221KH9VhbL0JGsCn-N9uG5pReDMdvj2yw2e%22%5D,%22action%22:%22open%22%7D', line: 'Real-route audio stories synced to a journey\'s exact duration.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'Bren Residences Project Tracker',    year: 2026, date: '2026-02', accession: 38, glyph: 'BR',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221_YDKm8V3bkTho0pgxkWTcQGNJZYkm6va%22%5D,%22action%22:%22open%22%7D', line: 'State-machine project control interface for real-estate lifecycles.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'Hex Gems: Dungeon Mode',             year: 2026, date: '2026-01', accession: 39, glyph: 'HG',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221YoqrNHNBBqNgntonikorXVJCL-AtI6dP%22%5D,%22action%22:%22open%22%7D', line: 'Industrial-style deck-building dungeon crawler.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'Alpine x86 Browser Terminal',        year: 2026, date: '2026-02', accession: 40, glyph: 'AX',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221KOwjXO8Blg9rbS7Ri0hfije-kicrTYk7%22%5D,%22action%22:%22open%22%7D', line: 'Browser-based Linux Alpine via v86 with serial terminal.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'AlpineFlow (JSLinux Container)',     year: 2026, date: '2026-02', accession: 41, glyph: 'AF',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221MRxIqL0WQgQXHwFqRHB5aayNNhoaT0pJ%22%5D,%22action%22:%22open%22%7D', line: 'Virtual Alpine Linux via JSLinux + Gemini-powered kernel assistant.', status: 'live' },
+    { kind: 'app', category: 'Apps', title: 'WinContainer',                       year: 2026, date: '2026-02', accession: 42, glyph: 'WC',  ext: 'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221Lw9wB0oC1Yx9RlGeVPO-kYhUtSCUb9VP%22%5D,%22action%22:%22open%22%7D', line: 'High-fidelity Windows 11 simulation with window manager and terminal.', status: 'live' },
+
+    // ─── WRITINGS — long-form essays ───
+    { kind: 'writing', category: 'Writings', title: 'What India Can Really Export to the World', year: 2026, date: '2026-04', accession: 43, ext: './writings2.html#india-export',     line: 'Two narrativizations, both forms of lying. A protocol for pluralism that refuses to become a movement. 11 min read.', status: 'live' },
+    { kind: 'writing', category: 'Writings', title: 'God as the Sum of All Perspectives',         year: 2026, date: '2026-04', accession: 44, ext: './writings2.html#god-perspectives', line: 'Not a being. The total field in which all partial perspectives arise, contend, and disappear. 5 min read.', status: 'live' },
+    { kind: 'writing', category: 'Writings', title: 'My Journey with God',                        year: 2026, date: '2026-04', accession: 45, ext: './writings2.html#journey-with-god', line: 'From inherited authority through dismantling to the only God I can stand by. 3 min read.', status: 'live' }
+  ];
+
+  // ─────────────────────────────────────────────────────
+  // RENDER
+  // ─────────────────────────────────────────────────────
+  function escAttr(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function fmtAccession(n) { return 'RKK-LAB-' + String(n).padStart(3, '0'); }
+
+  // Kind-specific glyphs and labels, used everywhere
+  const KIND_GLYPH = { toy: '◉', book: '▢', app: '⌬', writing: '¶' };
+  const KIND_LABEL = { toy: 'Toy',  book: 'Book',  app: 'App',  writing: 'Essay' };
+
+  function kindBadge(kind) {
+    const g = KIND_GLYPH[kind] || '·';
+    const l = (KIND_LABEL[kind] || kind).toLowerCase();
+    return `<span class="badge-glyph">${g}</span>${escAttr(l)}`;
+  }
+
+  // Read-time extractor for writings (line ends with "X min read.")
+  function readTimeFor(item) {
+    const m = (item.line || '').match(/(\d+)\s*min\s*read/i);
+    return m ? `${m[1]} min` : null;
+  }
+
+  // Typographic specimen card for kinds without an image (apps + writings).
+  // Each kind gets its own visual character.
+  function typeThumb(item) {
+    const isWriting = item.kind === 'writing';
+    const glyph     = KIND_GLYPH[item.kind] || '·';
+    const label     = KIND_LABEL[item.kind] || item.kind;
+    const acc       = '№ ' + String(item.accession).padStart(3, '0');
+
+    let dek = '';
+    let actionLeft = '';
+    if (isWriting) {
+      const rt = readTimeFor(item);
+      const cleanLine = (item.line || '').replace(/\.?\s*\d+\s*min\s*read\.?$/i, '').trim();
+      dek = cleanLine;
+      actionLeft = rt ? `Read · ${rt}` : 'Read';
+    } else { // app
+      dek = item.line || '';
+      actionLeft = 'AI Studio';
+    }
+
+    return `<span class="type-thumb kind-${escAttr(item.kind)}">`
+      + `<span class="tt-top"><span class="tt-glyph">${glyph}</span> ${escAttr(label)} · ${escAttr(acc)}</span>`
+      + `<span class="tt-rule" aria-hidden="true"></span>`
+      + `<span class="tt-title">${escAttr(item.title)}</span>`
+      + (dek ? `<span class="tt-dek">${escAttr(dek)}</span>` : '')
+      + `<span class="tt-bottom"><span class="action">${escAttr(actionLeft)}</span><span class="arrow">→</span></span>`
+      + `</span>`;
+  }
+
+  // counters in the meta block
+  document.getElementById('itemCount').textContent = ITEMS.length;
+  const minAcc = Math.min(...ITEMS.map(i => i.accession));
+  const maxAcc = Math.max(...ITEMS.map(i => i.accession));
+  document.getElementById('catalogRange').textContent = fmtAccession(minAcc) + '…' + String(maxAcc).padStart(3,'0');
+
+  // DROPS — most recent 8, horizontal carousel
+  const dropsList = ITEMS.slice().sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, 8);
+  const dropsCarouselEl = document.getElementById('dropsCarousel');
+  dropsCarouselEl.innerHTML = dropsList.map(item => {
+    const titleInThumb = (item.kind === 'app' || item.kind === 'writing') && !item.thumb;
+    return `
+    <button type="button" class="drop-card reveal" data-id="${escAttr(item.title)}">
+      <div class="drop-thumb">
+        ${item.thumb
+          ? `<img src="${escAttr(item.thumb)}" alt="${escAttr(item.title)}" loading="lazy" />`
+          : ((item.kind === 'app' || item.kind === 'writing')
+                    ? typeThumb(item)
+                    : `<span class="placeholder-glyph">${escAttr(item.glyph || '·')}</span>`)}
+        <span class="kind-badge">${kindBadge(item.kind)}</span>
+      </div>
+      <div class="drop-meta">
+        <span class="drop-num">${fmtAccession(item.accession)} · ${escAttr(item.year)}</span>
+        ${titleInThumb ? '' : `<span class="drop-title">${escAttr(item.title)}</span>`}
+      </div>
+    </button>
+  `;
+  }).join('');
+
+  // VIEW TOGGLE — list (default) or grid
+  let activeView = 'list';
+  const listEl = document.getElementById('inventoryList');
+  const gridEl = document.getElementById('inventoryGrid');
+  document.querySelectorAll('.view-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      activeView = b.dataset.view;
+      document.querySelectorAll('.view-btn').forEach(x => x.classList.toggle('active', x === b));
+      renderInventory();
+    });
+  });
+  // start in list mode
+  gridEl.hidden = true;
+  listEl.hidden = false;
+
+  // FILTERS
+  const categories = ['All', 'Toys', 'Books', 'Apps', 'Writings'];
+  let activeFilter = 'All';
+  const filtersEl = document.getElementById('filters');
+  filtersEl.innerHTML = categories.map(c => {
+    const count = c === 'All' ? ITEMS.length : ITEMS.filter(i => i.category === c).length;
+    return `<button type="button" class="filter-chip ${c === 'All' ? 'active' : ''}" data-cat="${escAttr(c)}">${escAttr(c)}<span class="count">${count}</span></button>`;
+  }).join('');
+  filtersEl.querySelectorAll('.filter-chip').forEach(b => {
+    b.addEventListener('click', () => {
+      activeFilter = b.dataset.cat;
+      filtersEl.querySelectorAll('.filter-chip').forEach(x => x.classList.toggle('active', x === b));
+      renderInventory();
+    });
+  });
+
+  // INVENTORY — supports both list and grid views
+  function renderInventory() {
+    const items = activeFilter === 'All' ? ITEMS : ITEMS.filter(i => i.category === activeFilter);
+
+    if (activeView === 'list') {
+      gridEl.hidden = true;
+      listEl.hidden = false;
+      if (!items.length) {
+        listEl.innerHTML = `<div class="empty-msg">Nothing here yet.</div>`;
+      } else {
+        listEl.innerHTML = items.map(item => {
+          const ext = (item.kind === 'app' || item.kind === 'writing') ? `<span class="ext-badge">↗</span>` : '';
+          return `
+            <div class="lab-row" data-id="${escAttr(item.title)}" role="button" tabindex="0">
+              <div class="row-thumb">
+                ${item.thumb
+                  ? `<img src="${escAttr(item.thumb)}" alt="${escAttr(item.title)}" loading="lazy" />`
+                  : ((item.kind === 'app' || item.kind === 'writing')
+                    ? typeThumb(item)
+                    : `<span class="placeholder-glyph">${escAttr(item.glyph || '·')}</span>`)}
+                <span class="kind-badge">${kindBadge(item.kind)}</span>
+                ${ext}
+              </div>
+              <div class="row-body">
+                <span class="row-num">${fmtAccession(item.accession)} · ${escAttr(item.category)}</span>
+                <span class="row-title">${escAttr(item.title)}</span>
+                <span class="row-line">${escAttr(item.line || '')}</span>
+              </div>
+              <div class="row-status">
+                <span class="year">${escAttr(item.year)}</span>
+                <span class="status ${escAttr(item.status)}">${escAttr(item.status)}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    } else {
+      // grid view
+      listEl.hidden = true;
+      gridEl.hidden = false;
+      if (!items.length) {
+        gridEl.innerHTML = `<div class="empty-msg">Nothing here yet.</div>`;
+      } else {
+        gridEl.innerHTML = items.map(item => {
+          const ext = (item.kind === 'app' || item.kind === 'writing') ? `<span class="ext-badge">↗</span>` : '';
+          const titleInThumb = (item.kind === 'app' || item.kind === 'writing') && !item.thumb;
+          return `
+            <button type="button" class="lab-card" data-id="${escAttr(item.title)}">
+              <div class="lab-thumb">
+                ${item.thumb
+                  ? `<img src="${escAttr(item.thumb)}" alt="${escAttr(item.title)}" loading="lazy" />`
+                  : ((item.kind === 'app' || item.kind === 'writing')
+                    ? typeThumb(item)
+                    : `<span class="placeholder-glyph">${escAttr(item.glyph || '·')}</span>`)}
+                <span class="kind-badge">${kindBadge(item.kind)}</span>
+                ${ext}
+              </div>
+              <div class="lab-meta">
+                <span class="lab-num">${fmtAccession(item.accession)}</span>
+                ${titleInThumb ? '' : `<span class="lab-title">${escAttr(item.title)}</span>`}
+                ${titleInThumb ? '' : `<span class="lab-line">${escAttr(item.line || '')}</span>`}
+                <div class="lab-foot">
+                  <span>${escAttr(item.year)}</span>
+                  <span class="status ${escAttr(item.status)}">${escAttr(item.status)}</span>
+                </div>
+              </div>
+            </button>
+          `;
+        }).join('');
+      }
+    }
+    bindCardClicks();
+  }
+
+  function bindCardClicks() {
+    document.querySelectorAll('.lab-card, .drop-card, .lab-row').forEach(card => {
+      if (card.__bound) return;
+      card.__bound = true;
+      const open = () => {
+        const id = card.dataset.id;
+        const item = ITEMS.find(x => x.title === id);
+        if (!item) return;
+        if (item.kind === 'book') openBook(item);
+        else if (item.kind === 'toy') openToy(item.toy);
+        else if (item.kind === 'app' && item.ext) window.open(item.ext, '_blank', 'noopener');
+        else if (item.kind === 'writing' && item.ext) window.location.href = item.ext;
+      };
+      card.addEventListener('click', open);
+      // keyboard for divs marked as buttons
+      if (card.classList.contains('lab-row')) {
+        card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+      }
+    });
+  }
+  renderInventory();
+  bindCardClicks();
+
+  // ─────────────────────────────────────────────────────
+  // BOOK MODAL — spread gallery
+  // ─────────────────────────────────────────────────────
+  const bookModal = document.getElementById('bookModal');
+  const bookTitle = document.getElementById('bookTitle');
+  const bookMeta = document.getElementById('bookMeta');
+  const bookOpenPdf = document.getElementById('bookOpenPdf');
+  const bookDownload = document.getElementById('bookDownload');
+  const bookClose = document.getElementById('bookClose');
+  const spreadStage = document.getElementById('spreadStage');
+  const spreadImg = document.getElementById('spreadImg');
+  const spreadImg2 = document.getElementById('spreadImg2');
+  let spreadMode = 'single';
+  const spreadPrev = document.getElementById('spreadPrev');
+  const spreadNext = document.getElementById('spreadNext');
+  const spreadCounter = document.getElementById('spreadCounter');
+  const spreadThumbs = document.getElementById('spreadThumbs');
+  const coverFallback = document.getElementById('coverFallback');
+  const coverFallbackImg = document.getElementById('coverFallbackImg');
+
+  let currentBook = null;
+  let currentPage = 0;
+  let bookLastFocus = null;
+
+  function spreadUrl(book, n) {
+    const num = String(n).padStart(book.spreads.pad, '0');
+    return `./images/spreads/${book.spreads.folder}/p-${num}.jpg`;
+  }
+
+  function openBook(item) {
+    bookLastFocus = document.activeElement;
+    currentBook = { ...item, spreads: SPREADS[item.title] || null };
+    currentPage = 1;
+
+    bookTitle.textContent = item.title.toUpperCase();
+    bookOpenPdf.href = item.pdf;
+    bookDownload.href = item.pdf;
+    if (item.filename) bookDownload.setAttribute('download', item.filename);
+
+    if (currentBook.spreads) {
+      // Spread mode
+      spreadImg.style.display = '';
+      spreadPrev.style.display = '';
+      spreadNext.style.display = '';
+      spreadCounter.style.display = '';
+      spreadThumbs.style.display = '';
+      coverFallback.hidden = true;
+      bookMeta.textContent = '1 / ' + currentBook.spreads.count;
+      renderThumbs();
+      goToPage(1);
+    } else {
+      // Cover-only fallback
+      spreadImg.style.display = 'none';
+      spreadPrev.style.display = 'none';
+      spreadNext.style.display = 'none';
+      spreadCounter.style.display = 'none';
+      coverFallback.hidden = false;
+      coverFallbackImg.src = item.thumb;
+      coverFallbackImg.alt = item.title;
+      bookMeta.textContent = 'cover only';
+      spreadThumbs.innerHTML = '';
+      spreadThumbs.style.display = 'none';
+    }
+
+    bookModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => bookClose.focus(), 60);
+  }
+
+  function closeBook() {
+    bookModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    spreadImg.removeAttribute('src');
+    spreadImg.classList.remove('loaded');
+    if (bookLastFocus && typeof bookLastFocus.focus === 'function') bookLastFocus.focus();
+  }
+
+  function renderThumbs() {
+    if (!currentBook || !currentBook.spreads) return;
+    const total = currentBook.spreads.count;
+    const html = ['<span class="label">' + total + ' spreads</span>'];
+    for (let i = 1; i <= total; i++) {
+      html.push(`<button type="button" class="spread-thumb${i === currentPage ? ' active' : ''}" data-page="${i}" aria-label="Spread ${i}"><img src="${spreadUrl(currentBook, i)}" alt="" loading="lazy" decoding="async" /></button>`);
+    }
+    spreadThumbs.innerHTML = html.join('');
+    spreadThumbs.querySelectorAll('.spread-thumb').forEach(b => {
+      b.addEventListener('click', () => goToPage(parseInt(b.dataset.page, 10)));
+    });
+  }
+
+  // Helper: load a single page into a target img element.
+  function loadIntoImg(targetImg, n) {
+    if (!currentBook || !currentBook.spreads) return;
+    targetImg.classList.remove('loaded', 'errored', 'alone');
+    const url = spreadUrl(currentBook, n);
+    const onLoad = () => { targetImg.classList.add('loaded'); cleanup(); };
+    const onError = () => {
+      console.warn('[lab2] spread failed to load:', url);
+      targetImg.classList.add('errored');
+      cleanup();
+    };
+    function cleanup() {
+      targetImg.removeEventListener('load', onLoad);
+      targetImg.removeEventListener('error', onError);
+    }
+    targetImg.addEventListener('load', onLoad);
+    targetImg.addEventListener('error', onError);
+    targetImg.src = url;
+    targetImg.dataset.page = String(n);
+    // Cached-image race guard
+    if (targetImg.complete && targetImg.naturalWidth > 0) {
+      targetImg.classList.add('loaded');
+      cleanup();
+    }
+  }
+
+  function goToPage(n) {
+    if (!currentBook || !currentBook.spreads) return;
+    const total = currentBook.spreads.count;
+    if (n < 1 || n > total) return;
+    currentPage = n;
+
+    if (spreadMode === 'double') {
+      // 2-up: show pages [n, n+1]. If n+1 doesn't exist, show n alone.
+      loadIntoImg(spreadImg, n);
+      if (n + 1 <= total) {
+        loadIntoImg(spreadImg2, n + 1);
+        spreadImg2.classList.remove('alone');
+      } else {
+        spreadImg2.removeAttribute('src');
+        spreadImg2.classList.add('alone');
+      }
+      const right = Math.min(n + 1, total);
+      const label = (n === right) ? `${n} / ${total}` : `${n}-${right} / ${total}`;
+      spreadCounter.textContent = label;
+      bookMeta.textContent = label;
+    } else {
+      // Single
+      loadIntoImg(spreadImg, n);
+      spreadCounter.textContent = n + ' / ' + total;
+      bookMeta.textContent = n + ' / ' + total;
+    }
+
+    // Preload neighbors
+    const lookahead = spreadMode === 'double' ? 2 : 1;
+    for (let i = 1; i <= lookahead + 1; i++) {
+      if (n + i <= total) { const im = new Image(); im.src = spreadUrl(currentBook, n + i); }
+      if (n - i >= 1)     { const im = new Image(); im.src = spreadUrl(currentBook, n - i); }
+    }
+
+    spreadCounter.textContent = n + ' / ' + total;
+    bookMeta.textContent = n + ' / ' + total;
+    spreadPrev.disabled = n <= 1;
+    spreadNext.disabled = n >= total;
+
+    // active thumb
+    spreadThumbs.querySelectorAll('.spread-thumb').forEach(b => b.classList.toggle('active', parseInt(b.dataset.page,10) === n));
+    // scroll active thumb into view
+    const active = spreadThumbs.querySelector('.spread-thumb.active');
+    if (active) active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  function step() { return spreadMode === 'double' ? 2 : 1; }
+  spreadPrev.addEventListener('click', () => goToPage(currentPage - step()));
+  spreadNext.addEventListener('click', () => goToPage(currentPage + step()));
+
+  // 2-up / single toggle
+  const bookSpreadMode = document.getElementById('bookSpreadMode');
+  function setSpreadMode(mode) {
+    spreadMode = mode === 'double' ? 'double' : 'single';
+    spreadStage.dataset.mode = spreadMode;
+    bookSpreadMode.textContent = spreadMode === 'double' ? 'Single ⊞' : '2-up ⊟';
+    bookSpreadMode.setAttribute('aria-label', spreadMode === 'double' ? 'Switch to single page view' : 'Switch to 2-up spread view');
+    // Snap currentPage to a left-page anchor when going double (odd-aligned reading)
+    if (spreadMode === 'double' && currentPage % 2 === 0 && currentPage > 1) {
+      currentPage = currentPage - 1;
+    }
+    if (currentBook && currentBook.spreads) goToPage(currentPage);
+  }
+  bookSpreadMode.addEventListener('click', () => setSpreadMode(spreadMode === 'double' ? 'single' : 'double'));
+  bookClose.addEventListener('click', closeBook);
+  bookModal.addEventListener('click', (e) => { if (e.target === bookModal) closeBook(); });
+
+  // Fullscreen — toggle the modal-frame in/out of native fullscreen.
+  const bookFs = document.getElementById('bookFullscreen');
+  function toggleBookFullscreen() {
+    const target = bookModal.querySelector('.modal-frame');
+    if (!document.fullscreenElement) {
+      const req = target.requestFullscreen || target.webkitRequestFullscreen || target.msRequestFullscreen;
+      if (req) req.call(target).catch(() => {});
+    } else {
+      const exit = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+      if (exit) exit.call(document).catch(() => {});
+    }
+  }
+  if (bookFs) bookFs.addEventListener('click', toggleBookFullscreen);
+  document.addEventListener('fullscreenchange', () => {
+    if (bookFs) bookFs.textContent = document.fullscreenElement ? 'Exit ⤡' : 'Full ⤢';
+  });
+
+  // touch swipe
+  let bookTx = null, bookTy = null;
+  spreadStage.addEventListener('touchstart', (e) => {
+    const t = e.touches[0]; bookTx = t.clientX; bookTy = t.clientY;
+  }, { passive: true });
+  spreadStage.addEventListener('touchend', (e) => {
+    if (bookTx === null) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - bookTx, dy = t.clientY - bookTy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) goToPage(currentPage + 1); else goToPage(currentPage - 1);
+    }
+    bookTx = bookTy = null;
+  });
+
+  // ─────────────────────────────────────────────────────
+  // TOY MODAL — collage
+  // ─────────────────────────────────────────────────────
+  const toyModal = document.getElementById('toyModal');
+  const toyTitle = document.getElementById('toyTitle');
+  const toyGrid = document.getElementById('toyGrid');
+  const toyClose = document.getElementById('toyClose');
+  let toyLast = null;
+
+  function openToy(slug) {
+    const drop = TOY_DROPS[slug]; if (!drop) return;
+    toyLast = document.activeElement;
+    toyTitle.textContent = drop.title.toUpperCase() + ' / DROP';
+    toyGrid.innerHTML = drop.images.map((src, i) => `
+      <figure>
+        <img src="${escAttr(src)}" alt="${escAttr(drop.title)} · ${i+1}" loading="lazy" draggable="false" />
+        <figcaption>fig. ${String(i+1).padStart(2,'0')}</figcaption>
+      </figure>
+    `).join('');
+    toyModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => toyClose.focus(), 50);
+  }
+  function closeToy() {
+    toyModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    toyGrid.innerHTML = '';
+    if (toyLast && typeof toyLast.focus === 'function') toyLast.focus();
+  }
+  toyClose.addEventListener('click', closeToy);
+  toyModal.addEventListener('click', (e) => { if (e.target === toyModal) closeToy(); });
+
+  // ─────────────────────────────────────────────────────
+  // GLOBAL: keyboard, cursor, time, reveals
+  // ─────────────────────────────────────────────────────
+  document.addEventListener('keydown', (e) => {
+    if (bookModal.getAttribute('aria-hidden') === 'false') {
+      if (e.key === 'Escape') closeBook();
+      else if (e.key === 'ArrowRight') goToPage(currentPage + step());
+      else if (e.key === 'ArrowLeft')  goToPage(currentPage - step());
+      else if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleBookFullscreen(); }
+      else if (e.key === '2')                  { e.preventDefault(); setSpreadMode(spreadMode === 'double' ? 'single' : 'double'); }
+    } else if (toyModal.getAttribute('aria-hidden') === 'false') {
+      if (e.key === 'Escape') closeToy();
+    }
+  });
+
+  // cursor
+  const cursor = document.getElementById('cursor');
+  const isCoarse = matchMedia('(pointer: coarse)').matches;
+  let cx = innerWidth/2, cy = innerHeight/2, ttx = cx, tty = cy;
+  function loop() {
+    ttx += (cx - ttx) * 0.22; tty += (cy - tty) * 0.22;
+    cursor.style.transform = 'translate(' + ttx + 'px, ' + tty + 'px) translate(-50%,-50%)';
+    requestAnimationFrame(loop);
+  }
+  if (!isCoarse) {
+    addEventListener('pointermove', (e) => { cx = e.clientX; cy = e.clientY; }, { passive: true });
+    loop();
+    const rebind = () => {
+      document.querySelectorAll('a, button, .lab-card, .drop-card, .filter-chip').forEach(el => {
+        if (el.__cBound) return;
+        el.__cBound = true;
+        const klass = (el.classList.contains('lab-card') || el.classList.contains('drop-card')) ? 'is-open' : 'is-link';
+        el.addEventListener('pointerenter', () => cursor.classList.add(klass));
+        el.addEventListener('pointerleave', () => cursor.classList.remove('is-link', 'is-open'));
+      });
+    };
+    rebind();
+    new MutationObserver(rebind).observe(document.body, { childList: true, subtree: true });
+  }
+
+  // time
+  const dateEl = document.getElementById('dateStamp');
+  const timeEl = document.getElementById('timeStamp');
+  const fmt = n => n < 10 ? '0' + n : '' + n;
+  function tick() {
+    const d = new Date();
+    const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+    const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+    if (dateEl) dateEl.textContent = days[d.getDay()] + ' · ' + fmt(d.getDate()) + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+    if (timeEl) timeEl.textContent = fmt(d.getHours()) + ':' + fmt(d.getMinutes()) + ':' + fmt(d.getSeconds());
+  }
+  tick(); setInterval(tick, 1000);
+
+  // reveals
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+  <script src="./protect.js" defer></script>
+</body>
+</html>

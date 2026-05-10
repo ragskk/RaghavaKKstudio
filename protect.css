@@ -1,0 +1,71 @@
+/* ─────────────────────────────────────────────────────────────────
+   protect.css — image friction layer
+   Honest scope: this is friction, not security. Anyone with browser
+   dev tools or a screenshot tool defeats it in seconds. It exists to
+   stop casual right-click-saving and drag-to-desktop, which is ~90%
+   of unauthorized image copying. Real protection lives in:
+     - 2400px web cap (publish quality, never source quality)
+     - vercel.json X-Robots-Tag: noai, noimageai
+     - robots.txt training-bot bans
+     - terms.html copyright reservation
+     - EXIF copyright stamps embedded in the files themselves
+     - C2PA content credentials on signed exports (future)
+   See terms.html and llms.txt for the full reservation of rights.
+   ───────────────────────────────────────────────────────────────── */
+
+/* Block native drag-to-desktop on every <img>. */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Logos and favicons are small enough that touch-callout disabled
+   doesn't hurt; this only applies to <img> tags so background-image
+   logos stay accessible to assistive tech as before. */
+
+/* Optional: a transparent overlay class that sites can wrap around a
+   high-value image to make "save image as" land on the overlay rather
+   than the image. Apply by adding the wrap to a parent: */
+.protect-wrap {
+  position: relative;
+  display: inline-block;
+}
+.protect-wrap > img {
+  display: block;
+}
+.protect-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: transparent;
+  pointer-events: auto;
+}
+
+/* When JS has hooked the page, expose a class so we can toggle
+   features like print-protection. */
+html.protected {
+  /* Hide images from the print preview (browsers will skip them
+     when @media print suppresses background and image rendering). */
+}
+@media print {
+  html.protected img {
+    visibility: hidden;
+  }
+  html.protected::before {
+    content: "Images on this site are reserved. Print disabled by design. Contact studio@raghavakk.com for licensing.";
+    display: block;
+    padding: 2em;
+    font-family: serif;
+    font-size: 14pt;
+  }
+}

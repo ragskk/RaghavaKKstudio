@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Raghava KK, God-Maker, Painter, Restless Lab</title>
+  <meta name="description" content="Raghava KK. I make gods. Studio between Bengaluru and New York." />
+  <meta name="theme-color" content="#F4F1EA" />
+  <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
+  <meta name="robots" content="index, follow, noai, noimageai" />
+  <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./protect.css" />
+  <style>
+    /* ───────────────────────────────────────────────────────────
+       RAGHAVA KK · INDEX №2026 · COLLAGE EDITION
+       Yale-school typographic rigor × MSCHF irreverence
+       ─────────────────────────────────────────────────────────── */
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      /* Surface */
+      --paper:        #F4F1EA;
+      --paper-2:      #ECE7DA;
+      --paper-3:      #E3DCC8;
+      --ink:          #0E0E0C;
+      --ink-2:        #2B2A26;
+      --muted:        #8B8579;
+      --rule:         #1A1A17;
+      --rule-soft:    rgba(14,14,12,0.18);
+
+      /* Accents (Yale-ish, chromatic, calibrated) */
+      --red:          #E63D22;
+      --red-deep:     #B31E12;
+      --yellow:       #F4D44A;
+      --cobalt:       #2A4DD0;
+      --green:        #2EBF63;
+      --pink:         #F4A8B8;
+      --violet:       #5C2A9D;
+
+      /* Typography */
+      --serif:        'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --display:      'Instrument Serif', 'Fraunces', Georgia, serif;
+      --grotesk:      'Space Grotesk', 'Inter', system-ui, sans-serif;
+      --mono:         'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+      /* Rhythm */
+      --gutter:       clamp(1rem, 2.4vw, 2rem);
+      --edge:         clamp(1rem, 2.6vw, 2.4rem);
+
+      /* Motion */
+      --ease:         cubic-bezier(.2,.7,.2,1);
+      --ease-in:      cubic-bezier(.7,0,.84,0);
+      --ease-out:     cubic-bezier(.16,1,.3,1);
+    }
+
+    html { font-size: 16.5px; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
+
+    html, body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-feature-settings: "ss01" 1, "ss02" 1, "kern" 1, "liga" 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      cursor: none; /* custom cursor */
+      background-image:
+        radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      background-size: 3px 3px, auto;
+      background-position: 0 0, 0 0;
+    }
+
+    /* Subtle paper grain */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.5;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    /* ─── CUSTOM CURSOR ─── */
+    .cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--ink);
+      mix-blend-mode: difference;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width .25s var(--ease), height .25s var(--ease), background .25s var(--ease);
+    }
+    .cursor.is-link { width: 56px; height: 56px; background: var(--red); mix-blend-mode: normal; }
+    .cursor.is-drag { width: 72px; height: 72px; background: var(--yellow); mix-blend-mode: normal; }
+    .cursor.is-drag::after {
+      content: "drag";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    @media (hover: none), (pointer: coarse) {
+      body { cursor: auto; }
+      .cursor { display: none; }
+    }
+
+    /* ─── TOP TAPE / EDITION BAR ─── */
+    .tape {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      overflow: hidden;
+      border-bottom: 1px solid var(--ink);
+    }
+    .tape-track {
+      display: flex;
+      gap: 4rem;
+      padding: 0.6rem 0;
+      white-space: nowrap;
+      animation: tape-scroll 60s linear infinite;
+      width: max-content;
+    }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── EDITION HEADER (broadsheet style) ─── */
+    .masthead {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: end;
+      gap: 1rem;
+      padding: 1.2rem var(--edge) 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .masthead .left,
+    .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      letter-spacing: 0.04em;
+      text-transform: none;
+      color: var(--ink);
+    }
+    .masthead .stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.18rem 0.5rem;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+    }
+    .masthead .stamp.live::before {
+      content: "";
+      width: 6px; height: 6px; background: var(--red); border-radius: 50%;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.7); }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      z-index: 2;
+      padding: clamp(2.5rem, 8vh, 6rem) var(--edge) clamp(2.5rem, 6vh, 5rem);
+      min-height: min(92vh, 940px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-content: center;
+      overflow: visible;
+    }
+
+    .hero-grid {
+      position: relative;
+      max-width: 1480px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      gap: 0.6rem 0.9rem;
+      flex-wrap: wrap;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      margin-bottom: 1.2rem;
+    }
+    /* Flat editorial labels — not buttons. The status pill is the only
+       interactive element and links to studio. */
+    .hero-eyebrow .tag { color: var(--ink-2); }
+    .hero-eyebrow .sep { color: var(--muted); opacity: 0.55; }
+    .hero-eyebrow .now-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.28rem 0.6rem 0.3rem;
+      background: var(--red); color: var(--paper);
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background .25s var(--ease), transform .25s var(--ease);
+    }
+    .hero-eyebrow .now-link:hover { background: var(--ink); transform: translateY(-1px); }
+    .hero-eyebrow .now-link::before { content: ""; width: 6px; height: 6px; background: var(--paper); border-radius: 50%; animation: pulse 1.6s ease-in-out infinite; }
+
+    .wordmark {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(4.2rem, 14vw, 13rem);
+      line-height: 0.86;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .wordmark .amp {
+      font-style: italic;
+      color: var(--red);
+      display: inline-block;
+      transition: transform .6s var(--ease), color .4s var(--ease);
+    }
+    .wordmark:hover .amp { transform: rotate(-9deg) scale(1.05); color: var(--cobalt); }
+
+    .wordmark .underline {
+      position: absolute;
+      left: 0; bottom: -0.04em;
+      width: 100%;
+      height: 4px;
+      background: var(--red);
+      transform-origin: left center;
+      transform: scaleX(0);
+      transition: transform .9s var(--ease-out);
+    }
+    .reveal-on .wordmark .underline { transform: scaleX(1); }
+
+    .thesis {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+      margin-top: 1rem;
+      max-width: 26ch;
+      line-height: 1.18;
+    }
+
+    .gods-trigger {
+      font: inherit;
+      color: var(--red);
+      background: none;
+      border: none;
+      padding: 0 0.05em;
+      cursor: pointer;
+      letter-spacing: inherit;
+      font-style: italic;
+      position: relative;
+      transition: color .25s var(--ease);
+    }
+    .gods-trigger::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0.06em;
+      border-bottom: 1.5px dotted var(--red);
+      opacity: 1;
+    }
+    .gods-trigger:hover, .gods-trigger:focus-visible { color: var(--cobalt); outline: none; }
+    .gods-trigger:hover::after { border-bottom-color: var(--cobalt); }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.2rem;
+      margin-top: clamp(2rem, 4vh, 3rem);
+      align-items: end;
+    }
+
+    .gods-counter {
+      grid-column: 1 / span 6;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .gods-counter strong {
+      display: block;
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(2.6rem, 6.5vw, 5.4rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+      margin-top: 0.1em;
+    }
+    .gods-counter strong em {
+      font-style: italic;
+      color: var(--red);
+    }
+    /* live tick pulse, flashes briefly when a new god is added */
+    #counterNum {
+      transition: color .35s var(--ease);
+    }
+    #counterNum.pulse {
+      color: var(--red);
+      transition: color 0s;
+    }
+    .gods-counter small {
+      display: block;
+      margin-top: 0.4rem;
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    .hero-bio {
+      grid-column: 8 / span 5;
+      font-family: var(--serif);
+      font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+      line-height: 1.55;
+      color: var(--ink-2);
+      max-width: 38ch;
+      position: relative;
+    }
+    .hero-bio::before {
+      content: "fig. 01, colophon";
+      position: absolute;
+      top: -1.4rem; left: 0;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hero-bio b { font-weight: 600; color: var(--ink); }
+    .hero-bio i { color: var(--red); font-style: italic; }
+
+    @media (max-width: 880px) {
+      .gods-counter, .hero-bio { grid-column: 1 / -1; }
+    }
+
+    /* ─── STICKER LAYER ─── */
+    .sticker-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .sticker {
+      position: absolute;
+      width: var(--w, 160px);
+      height: auto;
+      pointer-events: auto;
+      cursor: grab;
+      will-change: transform;
+      mix-blend-mode: multiply;
+      filter: contrast(1.05) saturate(1.05);
+      user-select: none;
+      -webkit-user-drag: none;
+      transform: translate(var(--tx, 0px), var(--ty, 0px)) rotate(var(--rot, 0deg));
+      transition: filter .3s var(--ease), transform .9s var(--ease-out);
+      animation: sticker-idle var(--idle-dur, 8s) ease-in-out infinite alternate;
+    }
+    .sticker:active { cursor: grabbing; transition: none; animation: none; filter: contrast(1.1) saturate(1.15) drop-shadow(0 12px 16px rgba(0,0,0,0.18)); }
+    .sticker.dragging { transition: none; animation: none; z-index: 50; }
+    .sticker:hover { filter: contrast(1.1) saturate(1.15) drop-shadow(0 8px 12px rgba(0,0,0,0.12)); }
+
+    @keyframes sticker-idle {
+      0%   { transform: translate(var(--tx,0px), var(--ty,0px)) rotate(var(--rot,0deg)); }
+      100% { transform: translate(calc(var(--tx,0px) + var(--wob-x, 6px)), calc(var(--ty,0px) + var(--wob-y, -4px))) rotate(calc(var(--rot,0deg) + var(--wob-r, 1.4deg))); }
+    }
+
+    .sticker-tag {
+      position: absolute;
+      pointer-events: none;
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--yellow);
+      padding: 0.2rem 0.45rem;
+      border: 1px solid var(--ink);
+      transform: rotate(-4deg);
+      box-shadow: 2px 2px 0 var(--ink);
+      white-space: nowrap;
+    }
+
+    /* ─── SHUFFLE BUTTON ─── */
+    .shuffle {
+      position: absolute;
+      right: 0;
+      top: -0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 0.85rem;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
+    }
+    .shuffle:hover { background: var(--red); transform: translateY(-2px) rotate(-1deg); }
+    .shuffle .arrow { display: inline-block; transition: transform .4s var(--ease); }
+    .shuffle:hover .arrow { transform: rotate(180deg); }
+
+    /* ─── MANIFESTO STRIP ─── */
+    .manifesto {
+      position: relative;
+      z-index: 2;
+      padding: clamp(3rem, 8vh, 6rem) var(--edge);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      background: var(--paper-2);
+      overflow: hidden;
+    }
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.6rem;
+      max-width: 1480px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .manifesto h2 {
+      grid-column: 1 / span 4;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      font-weight: 500;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--rule);
+    }
+    .quotes {
+      grid-column: 5 / span 8;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+    .quote {
+      font-family: var(--display);
+      font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .quote em { color: var(--red); font-style: italic; }
+    .quote .marg {
+      display: block;
+      margin-top: 0.45rem;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-style: normal;
+    }
+    .quote:nth-child(2) { padding-left: clamp(0rem, 6vw, 4rem); }
+    .quote:nth-child(3) { padding-left: clamp(0rem, 12vw, 8rem); }
+    .quote:nth-child(odd) { font-style: italic; }
+    @media (max-width: 880px) {
+      .manifesto h2, .quotes { grid-column: 1 / -1; }
+      .quote:nth-child(2), .quote:nth-child(3) { padding-left: 0; }
+    }
+
+    /* ─── DOORS / CARDS ─── */
+    .doors-section {
+      position: relative;
+      z-index: 2;
+      padding: clamp(3rem, 8vh, 7rem) var(--edge);
+    }
+    .doors-head {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.4rem;
+      max-width: 1480px;
+      margin: 0 auto 2rem;
+      align-items: end;
+    }
+    .doors-head h2 {
+      grid-column: 1 / span 7;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+    .doors-head h2 em { font-style: normal; color: var(--red); }
+    .doors-head .legend {
+      grid-column: 9 / span 4;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      line-height: 1.7;
+      border-top: 1px solid var(--rule);
+      padding-top: 0.6rem;
+    }
+    @media (max-width: 880px) {
+      .doors-head h2, .doors-head .legend { grid-column: 1 / -1; }
+    }
+
+    /* DOORS, editorial table of contents */
+    .doors {
+      max-width: 1480px;
+      margin: 0 auto;
+      border-top: 1px solid var(--rule);
+    }
+    .door-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr) minmax(0, 0.9fr) 80px;
+      gap: clamp(1rem, 2.5vw, 2rem);
+      align-items: center;
+      padding: clamp(1.4rem, 3.4vh, 2.4rem) 0.4rem;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+      isolation: isolate;
+      overflow: hidden;
+      transition: padding .35s var(--ease);
+    }
+    .door-row:hover { padding-left: 1.4rem; padding-right: 1.4rem; }
+
+    .door-num {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color .3s var(--ease);
+    }
+    .door-row:hover .door-num { color: var(--red); }
+
+    .door-title {
+      font-family: var(--display);
+      font-style: normal;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 6.4vw, 5.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      transition: transform .5s var(--ease), color .3s var(--ease);
+      transform-origin: left center;
+    }
+    .door-row:hover .door-title { transform: translateX(8px); font-style: italic; }
+
+    .door-spec {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+      line-height: 1.4;
+      color: var(--ink-2);
+      max-width: 32ch;
+    }
+    .door-spec .lab {
+      display: block;
+      font-family: var(--mono);
+      font-style: normal;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .door-arrow {
+      justify-self: end;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      border: 1px solid var(--ink);
+      display: grid; place-items: center;
+      font-family: var(--display); font-style: italic;
+      font-size: 1.4rem;
+      color: var(--ink); background: var(--paper);
+      transition: background .35s var(--ease), color .35s var(--ease), transform .5s var(--ease);
+    }
+    .door-row:hover .door-arrow { background: var(--red); color: var(--paper); border-color: var(--red); transform: rotate(-12deg) scale(1.1); }
+
+    /* Specimen reveal, small framed image floats in on hover */
+    .door-specimen {
+      position: absolute;
+      right: 7%;
+      top: 50%;
+      width: 130px;
+      transform: translate(40px, -50%) rotate(-4deg) scale(0.88);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+      transition: opacity .45s var(--ease), transform .55s var(--ease-out);
+      box-shadow: 0 18px 40px rgba(14,14,12,0.20), 0 2px 0 rgba(14,14,12,0.05);
+      background: var(--paper);
+      padding: 8px 8px 22px;
+    }
+    .door-specimen img {
+      width: 100%; height: 110px; object-fit: cover; display: block;
+      filter: saturate(0.82) contrast(0.95);
+      user-select: none; -webkit-user-drag: none;
+    }
+    .door-specimen::after {
+      content: attr(data-cap);
+      position: absolute; left: 8px; right: 8px; bottom: 5px;
+      font-family: var(--mono); font-size: 8.5px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2); text-align: center;
+    }
+    .door-row:hover .door-specimen { opacity: 1; transform: translate(0, -50%) rotate(-4deg) scale(1); }
+
+    /* Soft red wash on hover */
+    .door-row::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: var(--red);
+      opacity: 0;
+      transition: opacity .35s var(--ease);
+      z-index: -1;
+      mix-blend-mode: multiply;
+    }
+    .door-row:hover::before { opacity: 0.04; }
+
+    @media (max-width: 880px) {
+      .door-row { grid-template-columns: 60px 1fr 44px; padding: 1.4rem 0.2rem; }
+      .door-spec { display: none; }
+      .door-specimen { display: none; }
+      .door-arrow { width: 44px; height: 44px; font-size: 1.1rem; }
+      .door-title { font-size: clamp(1.8rem, 8vw, 3rem); }
+    }
+
+    /* ─── ARCHIVE FEED ─── */
+    .archive {
+      position: relative;
+      z-index: 2;
+      padding: clamp(3rem, 8vh, 6rem) var(--edge);
+      border-top: 1px solid var(--rule);
+      background: var(--paper);
+    }
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.4rem;
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+    .archive h2 {
+      grid-column: 1 / span 4;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.015em;
+    }
+    .archive h2 em { font-style: normal; color: var(--cobalt); }
+    .archive ol {
+      grid-column: 5 / span 8;
+      list-style: none;
+      counter-reset: archive;
+      border-top: 1px solid var(--rule);
+    }
+    .archive li {
+      counter-increment: archive;
+      display: grid;
+      grid-template-columns: 60px 110px 1fr auto;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule-soft);
+      align-items: baseline;
+      font-family: var(--serif);
+      font-size: 1rem;
+      transition: background .25s var(--ease), padding .25s var(--ease);
+    }
+    .archive li:hover { background: var(--paper-2); padding-left: 0.6rem; padding-right: 0.6rem; }
+    .archive li:hover .what { color: var(--ink); }
+    .archive li:hover .archive-link::after { transform: translate(4px, -4px); opacity: 1; }
+    .archive li::before {
+      content: counter(archive, decimal-leading-zero);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+    }
+    .archive .archive-link {
+      display: contents;
+      color: inherit;
+      text-decoration: none;
+    }
+    .archive li {
+      position: relative;
+      cursor: pointer;
+    }
+    .archive li::after {
+      content: "↗";
+      position: absolute;
+      right: 0;
+      top: 1.05rem;
+      font-family: var(--display);
+      font-style: italic;
+      color: var(--red);
+      opacity: 0;
+      transform: translate(0, 0);
+      transition: transform .35s var(--ease), opacity .35s var(--ease);
+      pointer-events: none;
+    }
+    .archive li .date {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .archive li .what { font-size: 1.05rem; line-height: 1.3; color: var(--ink); }
+    .archive li .what em { color: var(--red); font-style: italic; }
+    .archive li .where {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: right;
+    }
+    @media (max-width: 880px) {
+      .archive h2, .archive ol { grid-column: 1 / -1; }
+      .archive li { grid-template-columns: 1fr; gap: 0.2rem; }
+      .archive li::before { display: none; }
+    }
+
+    /* ─── BOTTOM MARQUEE ─── */
+    .marquee-bottom {
+      position: relative;
+      z-index: 2;
+      background: var(--red);
+      color: var(--paper);
+      overflow: hidden;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+    .marquee-bottom .track {
+      display: flex;
+      gap: 3rem;
+      padding: 1.2rem 0;
+      white-space: nowrap;
+      animation: tape-scroll 38s linear infinite;
+      width: max-content;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(2rem, 4.5vw, 4rem);
+      letter-spacing: -0.01em;
+    }
+    .marquee-bottom .track .star {
+      display: inline-block;
+      transform: rotate(0deg);
+      animation: spin 6s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── COLOPHON FOOTER ─── */
+    .colophon {
+      position: relative;
+      z-index: 2;
+      padding: clamp(2rem, 5vh, 3.5rem) var(--edge);
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.2rem;
+      max-width: 1480px;
+      margin: 0 auto;
+      align-items: end;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .colophon a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: color .25s var(--ease), border-color .25s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.4rem; }
+    .colophon .col.c-a { grid-column: 1 / span 4; }
+    .colophon .col.c-b { grid-column: 5 / span 4; }
+    .colophon .col.c-c { grid-column: 9 / span 4; align-items: flex-end; }
+    .colophon h3 {
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      letter-spacing: -0.01em;
+      text-transform: none;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .colophon .seal {
+      width: 88px; height: 88px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 14px;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ink);
+      transform: rotate(-6deg);
+      position: relative;
+    }
+    .colophon .seal::before {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border: 1px dashed var(--rule-soft);
+      border-radius: 50%;
+    }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; display: block; }
+    @media (max-width: 880px) {
+      .colophon .col.c-a, .colophon .col.c-b, .colophon .col.c-c { grid-column: 1 / -1; align-items: flex-start; }
+    }
+
+    /* ─── MODAL (preserved + restyled) ─── */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(14,14,12,0.94);
+      display: none;
+      align-items: stretch;
+      justify-content: center;
+      z-index: 1000;
+      padding: clamp(1rem, 3vh, 2rem);
+      opacity: 0;
+      transition: opacity .25s var(--ease);
+    }
+    .modal[aria-hidden="false"] { display: flex; opacity: 1; }
+    .modal-frame {
+      background: var(--paper);
+      width: 100%;
+      max-width: 1180px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--ink);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .modal-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--rule);
+      background: var(--paper);
+    }
+    .modal-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .modal-title .sep { color: var(--muted); margin: 0 0.55rem; }
+    .modal-close {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      color: var(--paper);
+      padding: 0.5rem 0.8rem;
+      cursor: pointer;
+      transition: background .2s var(--ease), color .2s var(--ease);
+    }
+    .modal-close:hover { background: var(--red); border-color: var(--red); color: var(--paper); }
+    .modal-body { flex: 1; min-height: 70vh; background: #2a2a26; position: relative; }
+    .modal-body iframe { width: 100%; height: 100%; border: 0; display: block; background: #2a2a26; }
+    .modal-loading {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--muted); pointer-events: none;
+    }
+
+    /* ─── REVEAL on intersection ─── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ─── A11Y / Reduced motion ─── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .sticker { animation: none !important; }
+      .tape-track, .marquee-bottom .track { animation: none !important; }
+    }
+
+    ::selection { background: var(--red); color: var(--paper); }
+
+    /* Hide scrollbar styling */
+    html::-webkit-scrollbar { width: 10px; height: 10px; }
+    html::-webkit-scrollbar-track { background: var(--paper-2); }
+    html::-webkit-scrollbar-thumb { background: var(--ink); }
+
+  </style>
+</head>
+<body>
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <!-- Edition tape -->
+  <div class="tape" role="presentation">
+    <div class="tape-track" id="tapeTrack">
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Edition №2026</span><span class="dot"></span>
+      <span>I make gods</span><span class="dot"></span>
+      <span>Studio · Bengaluru ⇄ New York</span><span class="dot"></span>
+      <span>Now showing: Calling All Gods · Parsons · Dec 2026</span><span class="dot"></span>
+      <span>33,000,000 deities and counting</span><span class="dot"></span>
+      <span>The studio runs on belief and electricity</span><span class="dot"></span>
+      <!-- duplicate for seamless loop -->
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Edition №2026</span><span class="dot"></span>
+      <span>I make gods</span><span class="dot"></span>
+      <span>Studio · Bengaluru ⇄ New York</span><span class="dot"></span>
+      <span>Now showing: Calling All Gods · Parsons · Dec 2026</span><span class="dot"></span>
+      <span>33,000,000 deities and counting</span><span class="dot"></span>
+      <span>The studio runs on belief and electricity</span><span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- Masthead -->
+  <header class="masthead" role="banner">
+    <div class="left">
+      <span>Vol. III · Iss. 04</span>
+      <span class="stamp live">Studio Live</span>
+    </div>
+    <div class="center">an artist working between gods &amp; algorithms</div>
+    <div class="right">
+      <span id="dateStamp">SUN · 03 MAY 2026</span>
+      <span id="timeStamp">--:--</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-grid reveal-on">
+        <button class="shuffle" id="shuffleBtn" aria-label="Shuffle stickers">
+          <span class="arrow">↻</span>
+          <span>shuffle</span>
+        </button>
+
+        <p class="hero-eyebrow reveal">
+          <span class="tag">Painter</span>
+          <span class="sep">·</span>
+          <span class="tag">Sculptor</span>
+          <span class="sep">·</span>
+          <span class="tag">God-Maker</span>
+          <span class="sep">·</span>
+          <span class="tag">Lab Resident</span>
+        </p>
+
+        <h1 class="wordmark reveal" id="wordmark">
+          Raghava<br>
+          KK<span class="amp">.</span>
+          <span class="underline" aria-hidden="true"></span>
+        </h1>
+
+        <p class="thesis reveal">
+          I make
+          <button type="button" class="gods-trigger" id="godsTrigger" aria-haspopup="dialog" aria-controls="godsModal" aria-label="Open: 33M Gods, an artist book">gods</button>
+         , and the systems they live in.
+        </p>
+
+        <div class="hero-meta">
+          <div class="gods-counter reveal">
+            <span>Counted to date</span>
+            <strong><span id="counterNum">0</span><em>.</em></strong>
+            <small>fig. 02, population of the pantheon · live</small>
+          </div>
+          <div class="hero-bio reveal">
+            Contemporary artist working between <b>Bengaluru</b> and <b>New York</b>. The practice runs on
+            painting, sculpture, ceramics, books, AI systems, and a stubborn belief in <i>pluralism</i>, 
+            the idea that more than one thing can be true at once.
+          </div>
+        </div>
+
+        <!-- Sticker layer (positions set by JS) -->
+        <div class="sticker-layer" id="stickerLayer" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto" id="manifesto">
+      <div class="manifesto-grid">
+        <h2>Working notes / 2026</h2>
+        <div class="quotes">
+          <p class="quote reveal">Pluralism is a <em>practice</em>, not a position.</p>
+          <p class="quote reveal">The studio runs on <em>belief</em> and electricity.<span class="marg">, studio log, march</span></p>
+          <p class="quote reveal">Every god begins as a <em>doodle</em>.<span class="marg">see also: 33m gods, 2026</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOORS -->
+    <section class="doors-section" id="doors">
+      <div class="doors-head">
+        <h2 class="reveal">Four <em>doors</em>.<br>Pick one.</h2>
+        <div class="legend reveal">
+          a working index of the practice.<br>
+          updated whenever something happens.
+        </div>
+      </div>
+
+      <nav class="doors" aria-label="Sections">
+        <a href="./calling2.html" class="door-row reveal">
+          <span class="door-num">№ 01</span>
+          <h3 class="door-title">Calling All Gods</h3>
+          <span class="door-spec"><span class="lab">Solo · Parsons · Dec 2026</span>An open call to deities currently in operational use.</span>
+          <span class="door-arrow" aria-hidden="true">→</span>
+          <span class="door-specimen" data-cap="Vishwaroopa"><img src="./images/Vishwaroopa.jpg" alt="" /></span>
+        </a>
+
+        <a href="./studio2.html" class="door-row reveal">
+          <span class="door-num">№ 02</span>
+          <h3 class="door-title">Studio</h3>
+          <span class="door-spec"><span class="lab">Practice · 15 Series · 2011 →</span>Paintings, sculptures, holograms, where the gods get tested.</span>
+          <span class="door-arrow" aria-hidden="true">→</span>
+          <span class="door-specimen" data-cap="Studio"><img src="./images/two%20paintings%20together.png" alt="" /></span>
+        </a>
+
+        <a href="./lab2.html" class="door-row reveal">
+          <span class="door-num">№ 03</span>
+          <h3 class="door-title">Restless Lab</h3>
+          <span class="door-spec"><span class="lab">Margins · Toys · Books · Apps</span>Things made in the margins of paintings. Where the doodles get loud.</span>
+          <span class="door-arrow" aria-hidden="true">→</span>
+          <span class="door-specimen" data-cap="Power Fluff"><img src="./toys/power%20fluff%20toys/9A.png" alt="" /></span>
+        </a>
+
+        <a href="./becoming2.html" class="door-row reveal">
+          <span class="door-num">№ 04</span>
+          <h3 class="door-title">Becoming Archived</h3>
+          <span class="door-spec"><span class="lab">Archive · 1979 → ongoing</span>A working archive. Held in process. Updated when something becomes addressable.</span>
+          <span class="door-arrow" aria-hidden="true">→</span>
+          <span class="door-specimen" data-cap="33M Gods"><img src="./images/books/art_33M_Gods.jpg" alt="" /></span>
+        </a>
+      </nav>
+    </section>
+
+    <!-- ARCHIVE FEED -->
+    <section class="archive" id="archiveFeed">
+      <div class="archive-grid">
+        <h2 class="reveal">Recently <em>logged</em>.</h2>
+        <ol id="archiveList" aria-live="polite"></ol>
+      </div>
+    </section>
+  </main>
+
+  <!-- Colophon footer -->
+  <footer class="colophon" role="contentinfo">
+    <div class="col c-a">
+      <h3>Get in touch.</h3>
+      <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
+      <span>Press · Sales · Studio visits</span>
+    </div>
+    <div class="col c-b">
+      <a href="./writings2.html">Writings →</a>
+      <span>Studio · Bengaluru</span>
+      <span>Studio · New York</span>
+      <span>By appointment</span>
+    </div>
+    <div class="col c-c">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK &middot; <a href="./terms.html">Terms</a></span>
+    </div>
+  </footer>
+
+  <!-- 33M Gods Modal -->
+  <div class="modal" id="godsModal" role="dialog" aria-modal="true" aria-labelledby="godsModalTitle" aria-hidden="true">
+    <div class="modal-frame" role="document">
+      <div class="modal-bar">
+        <span class="modal-title" id="godsModalTitle">33M Gods <span class="sep">/</span> Raghava KK</span>
+        <button type="button" class="modal-close" id="godsModalClose" aria-label="Close">Close ×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-loading" id="godsModalLoading">Loading · 33M Gods</div>
+        <iframe id="godsModalFrame" title="33M Gods, full book" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Living Archive: slim recent-facts feed (top 12 by date) -->
+  <script src="./living-archive/recent.js" defer></script>
+
+  <script>
+  /* ───────────────────────────────────────────────────────────
+     INTERACTION LAYER
+     ─────────────────────────────────────────────────────────── */
+  (function () {
+    'use strict';
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+
+    /* ─── Custom cursor ─── */
+    const cursor = document.getElementById('cursor');
+    let cx = window.innerWidth/2, cy = window.innerHeight/2;
+    let tx = cx, ty = cy;
+    function loopCursor() {
+      tx += (cx - tx) * 0.22;
+      ty += (cy - ty) * 0.22;
+      cursor.style.transform = `translate(${tx}px, ${ty}px) translate(-50%, -50%)`;
+      requestAnimationFrame(loopCursor);
+    }
+    if (!isCoarse) {
+      window.addEventListener('pointermove', (e) => { cx = e.clientX; cy = e.clientY; }, { passive: true });
+      loopCursor();
+      document.querySelectorAll('a, button, .gods-trigger, .door-row, .shuffle, .wordmark').forEach(el => {
+        el.addEventListener('pointerenter', () => cursor.classList.add('is-link'));
+        el.addEventListener('pointerleave', () => cursor.classList.remove('is-link'));
+      });
+    }
+
+    /* ─── Time + Date stamp ─── */
+    const dateEl = document.getElementById('dateStamp');
+    const timeEl = document.getElementById('timeStamp');
+    function fmt(n) { return n < 10 ? '0' + n : '' + n; }
+    function tick() {
+      const d = new Date();
+      const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+      const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      if (dateEl) dateEl.textContent = `${days[d.getDay()]} · ${fmt(d.getDate())} ${months[d.getMonth()]} ${d.getFullYear()}`;
+      if (timeEl) timeEl.textContent = `${fmt(d.getHours())}:${fmt(d.getMinutes())}:${fmt(d.getSeconds())}`;
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    /* ─── God counter, live ticker, simulates ongoing pantheon growth ───
+       Initial value is derived from current time so it always feels
+       progressing, not random per reload. Ticks up 1 every ~1.4–3.6s
+       to suggest a new god being made somewhere. */
+    const counterEl = document.getElementById('counterNum');
+    let started = false;
+    let livingCount = 0;
+    let tickerHandle = null;
+
+    function computeStart() {
+      // A "since" baseline so each visit reflects a slightly higher number.
+      const baseEpoch = Date.UTC(2026, 0, 1, 0, 0, 0); // Jan 1 2026 UTC
+      const secondsSince = Math.max(0, (Date.now() - baseEpoch) / 1000);
+      // ~1 god every 8s of clock time, plus a small per-session jitter.
+      const grown = Math.floor(secondsSince / 8);
+      const jitter = Math.floor(Math.random() * 6500);
+      return 33_000_000 + grown + jitter;
+    }
+
+    function tickOnce() {
+      const delay = 1400 + Math.random() * 2200; // 1.4–3.6s
+      tickerHandle = setTimeout(() => {
+        livingCount += 1;
+        if (counterEl) {
+          counterEl.textContent = livingCount.toLocaleString('en-US');
+          counterEl.classList.add('pulse');
+          setTimeout(() => counterEl.classList.remove('pulse'), 280);
+        }
+        tickOnce();
+      }, delay);
+    }
+
+    function runCounter() {
+      if (started || !counterEl) return;
+      started = true;
+      livingCount = computeStart();
+      // Quick countup to the live starting value, then begin the live ticker.
+      const dur = reduceMotion ? 150 : 1800;
+      const start = performance.now();
+      const target = livingCount;
+      function step(now) {
+        const t = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - t, 3);
+        const n = Math.floor(eased * target);
+        counterEl.textContent = n.toLocaleString('en-US');
+        if (t < 1) requestAnimationFrame(step);
+        else {
+          counterEl.textContent = target.toLocaleString('en-US');
+          if (!reduceMotion) tickOnce();
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    // Pause the ticker when the tab is hidden, no spamming the document.
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && tickerHandle) {
+        clearTimeout(tickerHandle); tickerHandle = null;
+      } else if (!document.hidden && started && !tickerHandle && !reduceMotion) {
+        tickOnce();
+      }
+    });
+
+    /* ─── Reveal on intersection ─── */
+    const reveals = document.querySelectorAll('.reveal');
+    const heroBlock = document.querySelector('.reveal-on');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          if (entry.target === heroBlock || entry.target.closest('#hero')) {
+            runCounter();
+          }
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    reveals.forEach(el => io.observe(el));
+    if (heroBlock) heroBlock.classList.add('in');
+
+    // start counter immediately on load too (hero is above the fold)
+    setTimeout(runCounter, 250);
+
+    /* ─── STICKERS ─── */
+    const layer = document.getElementById('stickerLayer');
+    const STICKERS = [
+      { src: './toys/Retired%20gods/ChatGPT%20Image%20Jan%2024%2C%202026%2C%2001_35_31%20PM.png', w: 150, tag: null },
+      { src: './toys/Retired%20gods/ChatGPT%20Image%20Jan%2024%2C%202026%2C%2001_49_43%20PM.png', w: 140, tag: 'retired god' },
+      { src: './toys/Retired%20gods/Gemini_Generated_Image_l2ugnl2ugnl2ugnl.png', w: 140, tag: null },
+      { src: './toys/The%20Doomscrollers/doomscroller%201.png', w: 160, tag: 'doomscroller' },
+      { src: './toys/The%20Doomscrollers/doomscroller%202.png', w: 150, tag: null },
+      { src: './toys/power%20fluff%20toys/9A.png', w: 130, tag: 'power fluff' },
+      { src: './toys/power%20fluff%20toys/9D.png', w: 130, tag: null }
+    ];
+
+    // Right-edge only. The left half is for the wordmark, thesis, counter, 
+    // never put stickers there. Two right zones, well above and well below
+    // the bio block (which sits roughly top: 55–82% on the right column).
+    const ZONES = [
+      { left: [82, 96],  top: [-2, 14]  },  // top-right (above bio)
+      { left: [80, 94],  top: [86, 98]  }   // bottom-right (below bio)
+    ];
+
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+    function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+    function shuffle(arr) {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    let stickerEls = [];
+
+    function placeStickers() {
+      layer.innerHTML = '';
+      stickerEls = [];
+      // restraint: right-edge only. cap at the number of right zones (2).
+      const w = window.innerWidth;
+      const count = w < 700 ? 1 : 2;
+      const stickers = shuffle(STICKERS).slice(0, count);
+      const zones = shuffle(ZONES).slice(0, count);
+
+      stickers.forEach((s, i) => {
+        const z = zones[i];
+        const left = rand(z.left[0], z.left[1]);
+        const top  = rand(z.top[0], z.top[1]);
+        const rot  = rand(-14, 14);
+        const sw   = w < 700 ? Math.max(96, s.w * 0.6) : s.w;
+
+        const img = document.createElement('img');
+        img.className = 'sticker';
+        img.src = s.src;
+        img.alt = '';
+        img.draggable = false;
+        img.style.left = left + '%';
+        img.style.top = top + '%';
+        img.style.setProperty('--w', sw + 'px');
+        img.style.setProperty('--rot', rot + 'deg');
+        img.style.setProperty('--tx', '0px');
+        img.style.setProperty('--ty', '0px');
+        img.style.setProperty('--idle-dur', rand(6, 12).toFixed(2) + 's');
+        img.style.setProperty('--wob-x', rand(-10, 10).toFixed(1) + 'px');
+        img.style.setProperty('--wob-y', rand(-10, 10).toFixed(1) + 'px');
+        img.style.setProperty('--wob-r', rand(-3, 3).toFixed(1) + 'deg');
+        img.style.zIndex = String(10 + i);
+        layer.appendChild(img);
+        stickerEls.push(img);
+
+        if (s.tag) {
+          const tag = document.createElement('span');
+          tag.className = 'sticker-tag';
+          tag.textContent = s.tag;
+          tag.style.left = `calc(${left}% + ${sw * 0.4}px)`;
+          tag.style.top  = `calc(${top}% - 14px)`;
+          tag.style.transform = `rotate(${rand(-6, 6).toFixed(1)}deg)`;
+          layer.appendChild(tag);
+        }
+
+        attachDrag(img);
+      });
+    }
+
+    function attachDrag(el) {
+      let startX = 0, startY = 0, baseX = 0, baseY = 0, dragging = false;
+      el.addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        dragging = true;
+        el.classList.add('dragging');
+        el.setPointerCapture(e.pointerId);
+        startX = e.clientX; startY = e.clientY;
+        baseX = parseFloat(getComputedStyle(el).getPropertyValue('--tx')) || 0;
+        baseY = parseFloat(getComputedStyle(el).getPropertyValue('--ty')) || 0;
+        if (cursor) cursor.classList.add('is-drag');
+      });
+      el.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        el.style.setProperty('--tx', (baseX + dx) + 'px');
+        el.style.setProperty('--ty', (baseY + dy) + 'px');
+      });
+      function end() {
+        dragging = false;
+        el.classList.remove('dragging');
+        if (cursor) cursor.classList.remove('is-drag');
+      }
+      el.addEventListener('pointerup', end);
+      el.addEventListener('pointercancel', end);
+      el.addEventListener('lostpointercapture', end);
+    }
+
+    placeStickers();
+    window.addEventListener('resize', () => {
+      // Throttle
+      clearTimeout(window.__stickerTO);
+      window.__stickerTO = setTimeout(placeStickers, 220);
+    });
+
+    /* ─── Shuffle button + 'g' key ─── */
+    const shuffleBtn = document.getElementById('shuffleBtn');
+    if (shuffleBtn) shuffleBtn.addEventListener('click', placeStickers);
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'g' || e.key === 'G') placeStickers();
+    });
+
+    /* ─── Door rows: cursor magnetic on the arrow only ─── */
+    if (!isCoarse && !reduceMotion) {
+      document.querySelectorAll('.door-row').forEach(row => {
+        const arrow = row.querySelector('.door-arrow');
+        row.addEventListener('pointermove', (e) => {
+          if (!arrow) return;
+          const r = row.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width - 0.5;
+          const py = (e.clientY - r.top) / r.height - 0.5;
+          arrow.style.transform = `translate(${px * 6}px, ${py * 6}px) rotate(-12deg) scale(1.1)`;
+        });
+        row.addEventListener('pointerleave', () => {
+          if (arrow) arrow.style.transform = '';
+        });
+      });
+    }
+
+    /* ─── Wordmark triple-click easter egg: confetti of mini stickers ─── */
+    const wm = document.getElementById('wordmark');
+    let clicks = 0, clickTO;
+    if (wm) {
+      wm.addEventListener('click', () => {
+        clicks++;
+        clearTimeout(clickTO);
+        clickTO = setTimeout(() => clicks = 0, 600);
+        if (clicks >= 3) {
+          clicks = 0;
+          confettiBurst();
+        }
+      });
+    }
+
+    function confettiBurst() {
+      const burst = 18;
+      for (let i = 0; i < burst; i++) {
+        const s = pick(STICKERS);
+        const img = document.createElement('img');
+        img.src = s.src;
+        img.style.position = 'fixed';
+        img.style.left = (window.innerWidth/2) + 'px';
+        img.style.top = (window.innerHeight/3) + 'px';
+        img.style.width = '80px';
+        img.style.height = 'auto';
+        img.style.pointerEvents = 'none';
+        img.style.zIndex = '9000';
+        img.style.mixBlendMode = 'multiply';
+        img.style.transform = `translate(-50%,-50%) rotate(${rand(-30,30)}deg)`;
+        img.style.transition = 'transform 1.4s cubic-bezier(.16,1,.3,1), opacity 1.4s ease-out';
+        document.body.appendChild(img);
+        const tx = rand(-window.innerWidth*0.45, window.innerWidth*0.45);
+        const ty = rand(-window.innerHeight*0.4, window.innerHeight*0.5);
+        requestAnimationFrame(() => {
+          img.style.transform = `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) rotate(${rand(-180,180)}deg)`;
+          img.style.opacity = '0';
+        });
+        setTimeout(() => img.remove(), 1500);
+      }
+    }
+
+    /* ─── Recently logged: render from window.RECENT_FACTS ─── */
+    const archiveListEl = document.getElementById('archiveList');
+    function escAttr(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+    function fmtDate(iso, prec) {
+      if (!iso) return '';
+      // ISO-ish: YYYY, YYYY-MM, YYYY-MM-DD
+      const parts = String(iso).split('-');
+      const yy = (parts[0] || '').slice(-2);
+      if (prec === 'day' && parts.length >= 3) return `${yy}.${parts[1]}.${parts[2]}`;
+      if (prec === 'month' && parts.length >= 2) return `${yy}.${parts[1]}`;
+      return parts[0] || iso;
+    }
+    function shortClaim(s, n) {
+      if (!s) return '';
+      const t = String(s).trim();
+      if (t.length <= n) return t;
+      // cut at word boundary
+      const cut = t.slice(0, n);
+      const lastSpace = cut.lastIndexOf(' ');
+      return (lastSpace > 40 ? cut.slice(0, lastSpace) : cut) + '…';
+    }
+    function renderArchive() {
+      if (!archiveListEl) return;
+      const data = (window.RECENT_FACTS && window.RECENT_FACTS.facts) || [];
+      if (!data.length) {
+        archiveListEl.innerHTML = `<li class="reveal in"><span class="date">—</span><span class="what" style="color:var(--muted)">archive feed loading…</span><span class="where">—</span></li>`;
+        return;
+      }
+      // Render top 6 for the home page
+      const items = data.slice(0, 6);
+      archiveListEl.innerHTML = items.map(f => {
+        const date = fmtDate(f.date, f.date_precision);
+        const what = shortClaim(f.claim, 100);
+        const where = (f.work_type || 'event').replace(/-/g, ' ');
+        const href = `becoming2.html#${encodeURIComponent(f.id)}`;
+        return `
+          <li class="reveal">
+            <a class="archive-link" href="${href}" aria-label="open in living archive: ${escAttr(f.claim || '')}">
+              <span class="date">${escAttr(date)}</span>
+              <span class="what">${escAttr(what)}</span>
+              <span class="where">${escAttr(where)}</span>
+            </a>
+          </li>
+        `;
+      }).join('');
+      // Trigger reveal on the new items now that they're in DOM
+      archiveListEl.querySelectorAll('.reveal').forEach(el => {
+        // observe via the existing IO if attached, else just show
+        el.classList.add('in');
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', renderArchive);
+    } else {
+      renderArchive();
+    }
+    // recent.js loads with defer; if it lands after DOMContentLoaded, retry once
+    setTimeout(renderArchive, 200);
+
+    /* ─── Modal (33M Gods) ─── */
+    const trigger = document.getElementById('godsTrigger');
+    const modal = document.getElementById('godsModal');
+    const closeBtn = document.getElementById('godsModalClose');
+    const frame = document.getElementById('godsModalFrame');
+    const loading = document.getElementById('godsModalLoading');
+    const pdfPath = './books/art%20books/33M%20Gods.pdf';
+    let lastFocus = null;
+
+    function openModal() {
+      lastFocus = document.activeElement;
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (!frame.src) {
+        frame.src = pdfPath + '#view=Fit';
+        frame.addEventListener('load', () => { loading.style.display = 'none'; }, { once: true });
+      } else {
+        loading.style.display = 'none';
+      }
+      setTimeout(() => closeBtn.focus(), 50);
+    }
+    function closeModal() {
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+    if (trigger) trigger.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+    });
+
+  })();
+  </script>
+
+  <script src="./draw.js" defer></script>
+  <script src="./protect.js" defer></script>
+</body>
+</html>
