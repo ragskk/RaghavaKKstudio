@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Site Map · Raghava KK</title>
+  <meta name="description" content="A working map of every room in the studio." />
+  <meta name="theme-color" content="#F4F1EA" />
+  <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
+  <meta name="robots" content="index, follow, noai, noimageai" />
+  <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./protect.css" />
+  <style>
+    /* ───────────────────────────────────────────────────────────
+       RAGHAVA KK · SITE MAP
+       Hand-drawn hub-and-spoke. Same drawing language as Field №01:
+       graphite lines + boxes, red synaptic pulses traveling between
+       connected pages.
+       ─────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --paper:        #F4F1EA;
+      --paper-2:      #ECE7DA;
+      --paper-3:      #E3DCC8;
+      --ink:          #0E0E0C;
+      --ink-2:        #2B2A26;
+      --muted:        #8B8579;
+      --rule:         #1A1A17;
+      --rule-soft:    rgba(14,14,12,0.18);
+      --red:          #E63D22;
+
+      --serif:        'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --display:      'Instrument Serif', 'Fraunces', Georgia, serif;
+      --mono:         'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+      --edge:         clamp(1rem, 2.6vw, 2.4rem);
+      --ease:         cubic-bezier(.2,.7,.2,1);
+      --ease-out:     cubic-bezier(.16,1,.3,1);
+    }
+    html { font-size: 16.5px; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
+    html, body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    body {
+      min-height: 100vh;
+      background-image:
+        radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      background-size: 3px 3px, auto;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0;
+      pointer-events: none; z-index: 1;
+      opacity: 0.5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    /* TAPE */
+    .tape {
+      position: relative; z-index: 3; width: 100%;
+      background: var(--ink); color: var(--paper);
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      overflow: hidden; border-bottom: 1px solid var(--ink);
+    }
+    .tape-track {
+      display: flex; gap: 4rem;
+      padding: 0.6rem 0;
+      white-space: nowrap;
+      animation: tape-scroll 60s linear infinite;
+      width: max-content;
+    }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* MASTHEAD */
+    .masthead {
+      position: relative; z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: end; gap: 1rem;
+      padding: 1.2rem var(--edge) 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .masthead .left, .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center {
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      letter-spacing: 0.04em; text-transform: none;
+      color: var(--ink);
+    }
+    .masthead .stamp {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.18rem 0.5rem;
+      border: 1px solid var(--rule); border-radius: 999px;
+    }
+    .home-link { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .home-link:hover { color: var(--red); border-bottom-color: var(--red); }
+
+    /* PAGE HEAD */
+    .page-head {
+      position: relative; z-index: 2;
+      padding: clamp(2.5rem, 6vh, 4.5rem) var(--edge) clamp(1.5rem, 3vh, 2.5rem);
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2);
+      margin-bottom: 0.9rem;
+    }
+    .eyebrow .num { color: var(--muted); margin-right: 0.6rem; }
+    .head-title {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.4rem, 5.8vw, 4.8rem);
+      line-height: 1.04; letter-spacing: -0.015em;
+      color: var(--ink); max-width: 22ch;
+    }
+    .head-title em { color: var(--red); font-style: italic; }
+    .head-dek {
+      margin-top: 1rem;
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.0rem, 1.4vw, 1.2rem);
+      line-height: 1.45;
+      color: var(--ink-2);
+      max-width: 60ch;
+    }
+    .head-dek b { color: var(--ink); font-weight: 400; font-style: normal; font-family: var(--serif); }
+
+    /* MAP FRAME */
+    .map-wrap {
+      position: relative; z-index: 2;
+      padding: 0 var(--edge) clamp(2rem, 4vh, 3rem);
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+    .map {
+      position: relative;
+      width: 100%;
+      height: clamp(620px, 80vh, 880px);
+      background: transparent;
+    }
+    .map-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+    .map-nodes {
+      position: absolute; inset: 0;
+      pointer-events: none;
+    }
+    .node {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      pointer-events: auto;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .35s var(--ease);
+      max-width: 220px;
+    }
+    .node .label {
+      display: inline-block;
+      padding: 0.42rem 0.7rem 0.5rem;
+      background: var(--paper);
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 1.0rem;
+      line-height: 1.1;
+      color: var(--ink);
+      white-space: nowrap;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.06), 0 4px 14px rgba(0,0,0,0.10);
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease), color .25s var(--ease);
+    }
+    .node .num {
+      font-family: var(--mono);
+      font-size: 9.5px; letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-right: 0.45em;
+      font-style: normal;
+    }
+    .node.is-center .label {
+      font-size: 1.4rem;
+      padding: 0.6rem 0.95rem 0.7rem;
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .node.is-center .num { color: var(--red); }
+
+    .node:hover .label,
+    .node:focus-visible .label {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.08), 0 16px 36px rgba(0,0,0,0.22);
+    }
+    .node:hover .desc,
+    .node:focus-visible .desc {
+      opacity: 1;
+      transform: translate(-50%, 8px);
+    }
+    .node .desc {
+      position: absolute;
+      left: 50%; top: 100%;
+      transform: translate(-50%, 0);
+      margin-top: 0.5rem;
+      width: max-content;
+      max-width: 260px;
+      padding: 0.5rem 0.65rem 0.55rem;
+      background: var(--paper);
+      border: 1px solid var(--rule-soft);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      font-family: var(--mono);
+      font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-2);
+      opacity: 0;
+      transition: opacity .25s var(--ease) .04s, transform .25s var(--ease);
+      pointer-events: none;
+    }
+    .node .desc em { font-style: italic; color: var(--red); text-transform: none; letter-spacing: 0.04em; }
+    .map.has-hover .node:not(.is-hovered) .label { opacity: 0.55; filter: saturate(0.7); }
+
+    .map-marg {
+      position: absolute;
+      left: 0; bottom: -1.6rem;
+      font-family: var(--mono);
+      font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .map-marg .accent { color: var(--red); }
+
+    /* LEGEND */
+    .legend {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: clamp(2rem, 4vh, 3rem) var(--edge) clamp(3rem, 7vh, 5rem);
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.6rem;
+      align-items: start;
+    }
+    .legend .lab {
+      grid-column: 1 / span 4;
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2);
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--rule);
+    }
+    .legend .copy {
+      grid-column: 5 / span 7;
+      font-family: var(--serif);
+      font-size: clamp(0.98rem, 1.05vw, 1.05rem);
+      line-height: 1.55;
+      color: var(--ink-2);
+      max-width: 60ch;
+    }
+    .legend .copy em { color: var(--red); font-style: italic; }
+    @media (max-width: 880px) {
+      .legend .lab, .legend .copy { grid-column: 1 / -1; }
+      .map { height: clamp(560px, 88vh, 760px); }
+      .node .label { font-size: 0.92rem; }
+      .node.is-center .label { font-size: 1.1rem; }
+    }
+
+    /* COLOPHON */
+    .colophon {
+      position: relative; z-index: 2;
+      padding: clamp(2.5rem, 6vh, 4rem) var(--edge) clamp(2rem, 4vh, 3rem);
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.35rem; }
+    .colophon h3 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: 1.05rem; letter-spacing: 0.02em;
+      color: var(--ink); text-transform: none;
+      margin-bottom: 0.2rem;
+    }
+    .colophon a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .seal {
+      width: 60px; height: 60px;
+      border: 1px solid var(--rule); border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--paper);
+      margin-bottom: 0.6rem;
+    }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; }
+    @media (max-width: 720px) {
+      .colophon { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tape-track { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tape" role="presentation">
+    <div class="tape-track">
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Site map</span><span class="dot"></span>
+      <span>Every room in the studio</span><span class="dot"></span>
+      <span>Pulses indicate live conversation</span><span class="dot"></span>
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Site map</span><span class="dot"></span>
+      <span>Every room in the studio</span><span class="dot"></span>
+      <span>Pulses indicate live conversation</span><span class="dot"></span>
+    </div>
+  </div>
+
+  <header class="masthead" role="banner">
+    <div class="left">
+      <span><a class="home-link" href="./Index2.html">← Raghava KK</a></span>
+      <span class="stamp">Site map</span>
+    </div>
+    <div class="center">an artist working between gods &amp; algorithms</div>
+    <div class="right">
+      <span id="dateStamp">MON · 11 MAY 2026</span>
+      <span id="timeStamp">--:--</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <p class="eyebrow"><span class="num">Folio · Site map</span>Every room in the studio</p>
+      <h1 class="head-title">A working map of every <em>room</em>.</h1>
+      <p class="head-dek">
+        The studio's pages, drawn as a small drifting network. Hover any room to read what's inside. The red pulses are signals passing between rooms: when a painting is in conversation with a toy, with an essay, with an archive note, this is what it looks like.
+      </p>
+    </section>
+
+    <section class="map-wrap">
+      <div class="map" id="map" aria-label="Site map">
+        <canvas class="map-canvas" id="mapCanvas" aria-hidden="true"></canvas>
+        <div class="map-nodes" id="mapNodes"></div>
+        <div class="map-marg">fig. 01 · <span class="accent">live</span> · pencil on paper · hover any room</div>
+      </div>
+    </section>
+
+    <section class="legend" aria-labelledby="legend">
+      <h2 class="lab" id="legend">How to read it</h2>
+      <div class="copy">
+        <p>
+          The black node at the centre is the index. Around it, the five primary rooms: studio, lab, calling all gods, becoming archived, excavate. Further out, the secondary pages: about, writings, the field experiment, the terms. Lines are routes, drawn in graphite. A <em>red pulse</em> traveling along a line is the simplest way to say that one room is currently in conversation with another. Click any room to enter it.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon" role="contentinfo">
+    <div class="col">
+      <h3>Get in touch.</h3>
+      <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
+      <span>Press · Sales · Studio visits</span>
+    </div>
+    <div class="col">
+      <a href="./Index2.html">Index →</a>
+      <a href="./about2.html">Short bio →</a>
+      <a href="./network.html">Field №01 →</a>
+      <a href="./writings2.html">Writings →</a>
+    </div>
+    <div class="col">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK · <a href="./terms.html">Terms</a></span>
+    </div>
+  </footer>
+
+  <script>
+  /* ───────────────────────────────────────────────────────────
+     SITE MAP RENDERER
+     Hand-drawn hub-and-spoke with subtle drift + red pulses
+     traveling between connected pages. Reuses the Field №01
+     drawing language (jittered graphite lines, red signal dots).
+     ─────────────────────────────────────────────────────────── */
+  (function () {
+    'use strict';
+
+    /* Date + time */
+    const dateEl = document.getElementById('dateStamp');
+    const timeEl = document.getElementById('timeStamp');
+    function fmt(n) { return n < 10 ? '0' + n : '' + n; }
+    function tick() {
+      const d = new Date();
+      const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+      const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      if (dateEl) dateEl.textContent = `${days[d.getDay()]} · ${fmt(d.getDate())} ${months[d.getMonth()]} ${d.getFullYear()}`;
+      if (timeEl) timeEl.textContent = `${fmt(d.getHours())}:${fmt(d.getMinutes())}:${fmt(d.getSeconds())}`;
+    }
+    tick(); setInterval(tick, 1000);
+
+    /* Node definitions — positions are percentages of the map area. */
+    const NODES = [
+      { id: 'index',    label: 'Raghava KK',          num: '№ 00', href: './Index2.html',    x: 50, y: 50, ring: 'center',
+        desc: 'The index, every door starts here.' },
+      // 5 primary doors — inner ring
+      { id: 'calling',  label: 'Calling All Gods',    num: '№ 01', href: './calling2.html',  x: 25, y: 28, ring: 'inner',
+        desc: 'Solo show, Parsons, <em>December 2026</em>.' },
+      { id: 'studio',   label: 'Studio',              num: '№ 02', href: './studio2.html',   x: 60, y: 16, ring: 'inner',
+        desc: '15 series of paintings, sculptures, holograms.' },
+      { id: 'lab',      label: 'Restless Lab',        num: '№ 03', href: './lab2.html',      x: 84, y: 38, ring: 'inner',
+        desc: 'Toys, books, apps. Where the doodles get loud.' },
+      { id: 'becoming', label: 'Becoming Archived',   num: '№ 04', href: './becoming2.html', x: 75, y: 72, ring: 'inner',
+        desc: 'A working archive, held in process.' },
+      { id: 'excavate', label: 'Excavate With Me',    num: '№ 05', href: './excavate2.html', x: 35, y: 78, ring: 'inner',
+        desc: '10 projects made with collaborators.' },
+      // Secondary pages — outer ring
+      { id: 'about',    label: 'Short bio',           num: 'About',     href: './about2.html',    x: 12, y: 50, ring: 'outer',
+        desc: 'Who, when, where. The short version.' },
+      { id: 'writings', label: 'Writings',            num: '¶',         href: './writings2.html', x: 96, y: 64, ring: 'outer',
+        desc: 'Essays and studio notes.' },
+      { id: 'field',    label: 'Field №01',           num: 'Lab',       href: './network.html',   x: 50, y: 92, ring: 'outer',
+        desc: 'A drifting network of paintings.' },
+      { id: 'terms',    label: 'Terms',               num: '§',         href: './terms.html',     x: 6, y: 86, ring: 'outer',
+        desc: 'Use, reproduction, AI policy.' }
+    ];
+
+    /* Edges — pairs of node ids. Built so the index connects to everyone,
+       the inner ring forms a pentagon, and a few cross-links signal that
+       some rooms talk to each other a lot. */
+    const EDGES = [
+      // hub spokes
+      ['index','calling'], ['index','studio'], ['index','lab'], ['index','becoming'], ['index','excavate'],
+      ['index','about'],   ['index','writings'], ['index','field'], ['index','terms'],
+      // inner pentagon
+      ['calling','studio'], ['studio','lab'], ['lab','becoming'], ['becoming','excavate'], ['excavate','calling'],
+      // cross-links: Field samples Studio + Lab; About cross-refs Studio
+      ['field','studio'], ['field','lab'], ['about','studio'],
+      // bottom links: Excavate → Field (related practices); Becoming → Writings
+      ['excavate','field'], ['becoming','writings']
+    ];
+
+    /* DOM build */
+    const mapEl     = document.getElementById('map');
+    const canvas    = document.getElementById('mapCanvas');
+    const ctx       = canvas.getContext('2d');
+    const nodesWrap = document.getElementById('mapNodes');
+
+    const byId = {};
+    const elById = {};
+    NODES.forEach((n, i) => { n.idx = i; byId[n.id] = n; });
+
+    function escHtml(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    NODES.forEach(n => {
+      const a = document.createElement('a');
+      a.className = 'node' + (n.ring === 'center' ? ' is-center' : '');
+      a.href = n.href;
+      a.style.left = n.x + '%';
+      a.style.top  = n.y + '%';
+      a.innerHTML = `
+        <span class="label"><span class="num">${escHtml(n.num)}</span>${escHtml(n.label)}</span>
+        <span class="desc">${n.desc}</span>
+      `;
+      a.addEventListener('pointerenter', () => {
+        mapEl.classList.add('has-hover');
+        a.classList.add('is-hovered');
+        n.hovered = true;
+      });
+      a.addEventListener('pointerleave', () => {
+        a.classList.remove('is-hovered');
+        n.hovered = false;
+        if (!NODES.some(o => o.hovered)) mapEl.classList.remove('has-hover');
+      });
+      nodesWrap.appendChild(a);
+      elById[n.id] = a;
+    });
+
+    /* Bounds + drift */
+    const bounds = { w: 0, h: 0 };
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    function resize() {
+      const r = mapEl.getBoundingClientRect();
+      bounds.w = r.width;
+      bounds.h = r.height;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width  = Math.round(r.width * dpr);
+      canvas.height = Math.round(r.height * dpr);
+      canvas.style.width  = r.width + 'px';
+      canvas.style.height = r.height + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      computeNodePos();
+    }
+    function computeNodePos() {
+      NODES.forEach((n, i) => {
+        n.baseX = (n.x / 100) * bounds.w;
+        n.baseY = (n.y / 100) * bounds.h;
+        n.phaseX = (i * 1.37) % (Math.PI * 2);
+        n.phaseY = (i * 0.61 + 1.1) % (Math.PI * 2);
+      });
+    }
+
+    /* mulberry32 — stable jitter per edge */
+    function seededRand(seed) {
+      let s = seed | 0;
+      return function () {
+        s = (s + 0x6D2B79F5) | 0;
+        let t = Math.imul(s ^ (s >>> 15), 1 | s);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+
+    function drawHandLine(ax, ay, bx, by, key, hot) {
+      const dx = bx - ax, dy = by - ay;
+      const len = Math.hypot(dx, dy);
+      if (len < 4) return;
+      const nx = -dy / len, ny = dx / len;
+      const segs = Math.max(5, Math.round(len / 28));
+      const rand = seededRand(key);
+      const amp = Math.min(3.2, len * 0.012);
+      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.strokeStyle = hot ? 'rgba(20,18,14,0.78)' : 'rgba(70,65,56,0.40)';
+      ctx.lineWidth   = hot ? 1.2 : 0.9;
+      ctx.beginPath();
+      ctx.moveTo(ax, ay);
+      for (let k = 1; k < segs; k++) {
+        const t = k / segs;
+        const jx = (rand() - 0.5) * amp * 2;
+        const jy = (rand() - 0.5) * amp * 2;
+        ctx.lineTo(ax + dx * t + nx * jx, ay + dy * t + ny * jy);
+      }
+      ctx.lineTo(bx, by);
+      ctx.stroke();
+      if (!hot) {
+        ctx.strokeStyle = 'rgba(70,65,56,0.18)';
+        ctx.lineWidth = 0.6;
+        const r2 = seededRand(key ^ 0x9E3779B9);
+        ctx.beginPath();
+        ctx.moveTo(ax + nx * 0.6, ay + ny * 0.6);
+        for (let k = 1; k < segs; k++) {
+          const t = k / segs;
+          const jx = (r2() - 0.5) * amp * 1.4;
+          const jy = (r2() - 0.5) * amp * 1.4;
+          ctx.lineTo(ax + dx * t + nx * (jx + 0.6), ay + dy * t + ny * (jy + 0.6));
+        }
+        ctx.lineTo(bx + nx * 0.6, by + ny * 0.6);
+        ctx.stroke();
+      }
+    }
+
+    /* Current node positions (base + drift) */
+    function nodePos(n, now) {
+      const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const amp = reduceMotion ? 0 : 4.5;
+      const dx = Math.sin((now / 2200) + n.phaseX) * amp;
+      const dy = Math.cos((now / 2700) + n.phaseY) * amp;
+      return { x: n.baseX + dx, y: n.baseY + dy };
+    }
+
+    /* Pulses */
+    let pulses = [];
+    let lastPulseT = 0;
+    function maybeSpawnPulse(now) {
+      if (now - lastPulseT < 220) return;
+      if (pulses.length >= 8) return;
+      if (Math.random() > 0.6) return;
+      const e = EDGES[Math.floor(Math.random() * EDGES.length)];
+      pulses.push({
+        a: e[0], b: e[1],
+        spawnT: now,
+        duration: 900 * (0.85 + Math.random() * 0.4),
+      });
+      lastPulseT = now;
+    }
+
+    function paintFrame(now) {
+      ctx.clearRect(0, 0, bounds.w, bounds.h);
+      // Cache current positions
+      const pos = {};
+      NODES.forEach(n => { pos[n.id] = nodePos(n, now); });
+
+      // Hover state lookup
+      let hoveredId = null;
+      for (const n of NODES) if (n.hovered) { hoveredId = n.id; break; }
+
+      // Draw all edges
+      EDGES.forEach((e, i) => {
+        const a = pos[e[0]];
+        const b = pos[e[1]];
+        if (!a || !b) return;
+        const hot = hoveredId && (e[0] === hoveredId || e[1] === hoveredId);
+        drawHandLine(a.x, a.y, b.x, b.y, (i + 1) * 17, hot);
+      });
+
+      // Reflect drift on DOM nodes
+      NODES.forEach(n => {
+        const p = pos[n.id];
+        const el = elById[n.id];
+        if (el) el.style.transform = `translate(-50%, -50%) translate(${(p.x - n.baseX).toFixed(2)}px, ${(p.y - n.baseY).toFixed(2)}px)`;
+      });
+
+      // Pulses
+      maybeSpawnPulse(now);
+      const alive = [];
+      for (const p of pulses) {
+        const tp = (now - p.spawnT) / p.duration;
+        if (tp >= 1) continue;
+        const a = pos[p.a];
+        const b = pos[p.b];
+        if (!a || !b) continue;
+        const u = 1 - Math.pow(1 - tp, 2);
+        const px = a.x + (b.x - a.x) * u;
+        const py = a.y + (b.y - a.y) * u;
+        const alpha = Math.sin(tp * Math.PI);
+        if (alpha > 0.02) {
+          ctx.save();
+          // soft halo
+          ctx.globalAlpha = alpha * 0.18;
+          ctx.fillStyle = 'rgba(230,61,34,1)';
+          ctx.beginPath();
+          ctx.arc(px, py, 2.55, 0, Math.PI * 2);
+          ctx.fill();
+          // crisp core
+          ctx.globalAlpha = alpha;
+          ctx.beginPath();
+          ctx.arc(px, py, 1.7, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+        alive.push(p);
+      }
+      pulses = alive;
+    }
+
+    let raf = 0;
+    let running = true;
+    function loop(now) {
+      if (running) paintFrame(now);
+      raf = requestAnimationFrame(loop);
+    }
+    function start() { if (!raf) raf = requestAnimationFrame(loop); }
+    function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+
+    /* Pause when off-screen / tab hidden */
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(en => { if (en.isIntersecting) start(); else stop(); });
+      }, { threshold: 0.01, rootMargin: '120px 0px' });
+      io.observe(mapEl);
+    } else {
+      start();
+    }
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop(); else if (running) start();
+    });
+
+    let resizeT = 0;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeT);
+      resizeT = setTimeout(resize, 120);
+    });
+
+    /* Boot */
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => { resize(); start(); }, { once: true });
+    } else {
+      resize(); start();
+    }
+  })();
+  </script>
+</body>
+</html>

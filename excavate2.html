@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Excavate With Me, Raghava KK</title>
+  <meta name="description" content="Collaborations: nineteen projects plus the 64/1 collective, made with institutions, companies, and researchers. Each entry records the client, brief, process, output, and where the work is now." />
+  <meta name="theme-color" content="#F4F1EA" />
+  <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
+  <meta name="robots" content="index, follow, noai, noimageai" />
+  <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./protect.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --paper:#F4F1EA; --paper-2:#ECE7DA; --paper-3:#E3DCC8;
+      --ink:#0E0E0C; --ink-2:#2B2A26; --muted:#8B8579;
+      --rule:#1A1A17; --rule-soft:rgba(14,14,12,0.18);
+      --red:#E63D22;
+      --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+      --display:'Instrument Serif','Fraunces',Georgia,serif;
+      --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+      --edge:clamp(1rem,2.6vw,2.4rem);
+      --ease:cubic-bezier(.2,.7,.2,1);
+      --ease-out:cubic-bezier(.16,1,.3,1);
+      --container: 1180px;
+    }
+
+    html { font-size: 16.5px; scroll-behavior: smooth; }
+    @media (min-width: 1280px) { html { font-size: 17px; } }
+
+    html, body {
+      background: var(--paper); color: var(--ink); font-family: var(--serif);
+      font-feature-settings: "ss01" 1, "ss02" 1, "kern" 1, "liga" 1;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility; overflow-x: hidden;
+    }
+    body {
+      min-height: 100vh; cursor: none;
+      background-image:
+        radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      background-size: 3px 3px, auto;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+      opacity: 0.5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    .cursor { position: fixed; top:0; left:0; width:18px; height:18px; border-radius:50%; background: var(--ink); mix-blend-mode: difference; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .25s var(--ease), height .25s var(--ease), background .25s var(--ease); }
+    .cursor.is-link { width: 56px; height: 56px; background: var(--red); mix-blend-mode: normal; }
+    @media (hover: none), (pointer: coarse) { body { cursor: auto; } .cursor { display: none; } }
+
+    /* TAPE + MASTHEAD */
+    .tape { position: relative; z-index: 3; width: 100%; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; overflow: hidden; border-bottom: 1px solid var(--ink); }
+    .tape-track { display: flex; gap: 4rem; padding: 0.6rem 0; white-space: nowrap; animation: tape-scroll 60s linear infinite; width: max-content; }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    .masthead { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; padding: 1.2rem var(--edge) 0.9rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); background: var(--paper); }
+    .masthead .left, .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center { font-family: var(--display); font-style: italic; font-size: clamp(0.95rem, 1.1vw, 1.05rem); letter-spacing: 0.04em; text-transform: none; color: var(--ink); }
+    .masthead .stamp { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.18rem 0.5rem; border: 1px solid var(--rule); border-radius: 999px; }
+    .masthead .stamp.live::before { content: ""; width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: pulse 1.6s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+    .masthead .breadcrumb { color: var(--ink); text-decoration: none; transition: color .2s var(--ease); }
+    .masthead .breadcrumb:hover { color: var(--red); }
+
+    /* ─── HERO BANNER (smaller, contained) ─── */
+    .hero {
+      position: relative; z-index: 2;
+      max-width: var(--container); margin: 0 auto;
+      padding: clamp(2rem, 5vh, 3.5rem) var(--edge) 0;
+    }
+    .hero-stamp {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.65rem; border: 1px solid var(--ink);
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink); background: var(--paper);
+      margin-bottom: 0.9rem;
+    }
+    .hero-title {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.8rem, 7vw, 5.6rem);
+      line-height: 0.94; letter-spacing: -0.022em;
+      color: var(--ink); margin-bottom: 0.8rem;
+    }
+    .hero-title em { font-style: normal; color: var(--red); }
+    .hero-lede {
+      font-family: var(--serif);
+      font-size: clamp(1rem, 1.2vw, 1.13rem);
+      line-height: 1.55; max-width: 64ch;
+      color: var(--ink-2); margin-bottom: clamp(1.4rem, 3vh, 2rem);
+    }
+    .hero-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      max-height: 420px;
+      overflow: hidden;
+      background: var(--paper-3);
+      box-shadow: 0 1px 0 rgba(14,14,12,0.06), 0 14px 40px rgba(14,14,12,0.08);
+    }
+    .hero-frame img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: saturate(0.94) contrast(1.0);
+      transform: scale(1.03);
+      transition: transform 14s linear;
+      user-select: none; -webkit-user-drag: none;
+    }
+    .hero-frame.in img { transform: scale(1); }
+    .hero-fig {
+      padding-top: 0.45rem;
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted);
+      display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .hero-fig .ph { color: var(--red); }
+
+    /* ─── NOTE / FRAMING (replaces 'manifesto') ─── */
+    .note {
+      position: relative; z-index: 2;
+      max-width: var(--container); margin: 0 auto;
+      padding: clamp(2.4rem, 6vh, 4rem) var(--edge) clamp(1.5rem, 4vh, 2.5rem);
+    }
+    .note-grid {
+      display: grid; grid-template-columns: 3fr 9fr;
+      gap: clamp(1.4rem, 3vw, 2.4rem);
+      align-items: start;
+    }
+    .note h2 {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 500;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--rule);
+    }
+    .note-body {
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 1.25vw, 1.18rem);
+      line-height: 1.55;
+      color: var(--ink);
+      display: flex; flex-direction: column; gap: 0.9rem;
+      max-width: 68ch;
+    }
+    .note-body em { font-style: italic; color: var(--ink); }
+    @media (max-width: 760px) {
+      .note-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FOLD ROWS (menu items that expand inline) ─── */
+    @supports (interpolate-size: allow-keywords) {
+      :root { interpolate-size: allow-keywords; }
+    }
+
+    .folds {
+      max-width: var(--container); margin: 0 auto;
+      padding: 0 var(--edge) clamp(2rem, 5vh, 3rem);
+    }
+    .fold {
+      border-top: 1px solid var(--rule-soft);
+      position: relative;
+      overflow: visible;
+    }
+    .fold:last-of-type { border-bottom: 1px solid var(--rule-soft); }
+    .fold > summary {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 70px minmax(0, 1fr) 44px;
+      gap: clamp(0.8rem, 1.8vw, 1.4rem);
+      align-items: center;
+      padding: clamp(0.95rem, 2.4vh, 1.4rem) 0.4rem;
+      transition: padding .35s var(--ease), background .25s var(--ease);
+      position: relative;
+      isolation: isolate;
+    }
+    .fold > summary::-webkit-details-marker { display: none; }
+    .fold > summary::marker { content: ""; }
+    .fold > summary:hover {
+      background: var(--paper-2);
+      padding-left: 1rem; padding-right: 1rem;
+    }
+
+    .fold-num {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--muted);
+      transition: color .25s var(--ease);
+      align-self: start;
+      padding-top: 0.35rem;
+    }
+    .fold > summary:hover .fold-num { color: var(--red); }
+    .fold-num em { color: var(--red); font-style: normal; }
+
+    .fold-text {
+      min-width: 0;
+      display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .fold-title {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.45rem, 2.6vw, 2.2rem);
+      line-height: 1.04; letter-spacing: -0.018em;
+      color: var(--ink);
+      transition: transform .35s var(--ease);
+      transform-origin: left center;
+    }
+    .fold-title em { font-style: normal; color: var(--red); }
+    .fold > summary:hover .fold-title { transform: translateX(4px); }
+    .fold-meta {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--ink-2);
+      line-height: 1.4;
+    }
+    .fold-meta .sep { color: var(--muted); margin: 0 0.35rem; opacity: 0.7; }
+    .fold-tease {
+      font-family: var(--serif);
+      font-size: 0.95rem; line-height: 1.4;
+      color: var(--ink-2);
+      max-width: 64ch;
+    }
+
+    .fold-chevron {
+      width: 36px; height: 36px;
+      display: grid; place-items: center;
+      font-family: var(--display); font-style: italic;
+      font-size: 1.3rem;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      border-radius: 50%;
+      align-self: start;
+      margin-top: 0.15rem;
+      transition: transform .45s var(--ease), color .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
+      flex-shrink: 0;
+    }
+    .fold > summary:hover .fold-chevron {
+      background: var(--red); color: var(--paper); border-color: var(--red);
+      transform: rotate(-10deg) scale(1.08);
+    }
+    .fold[open] > summary .fold-chevron {
+      background: var(--red); color: var(--paper); border-color: var(--red);
+      transform: rotate(45deg);
+    }
+
+    /* Hover specimen, like Index2's door-specimen */
+    .fold-specimen {
+      position: absolute;
+      right: clamp(5%, 8vw, 12%);
+      top: 50%;
+      width: 120px;
+      transform: translate(40px, -50%) rotate(-4deg) scale(0.88);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 3;
+      transition: opacity .45s var(--ease), transform .55s var(--ease-out);
+      box-shadow: 0 18px 40px rgba(14,14,12,0.20), 0 2px 0 rgba(14,14,12,0.05);
+      background: var(--paper);
+      padding: 7px 7px 20px;
+    }
+    .fold-specimen img {
+      width: 100%; height: 100px; object-fit: cover; display: block;
+      filter: saturate(0.86) contrast(0.95);
+      user-select: none; -webkit-user-drag: none;
+    }
+    .fold-specimen::after {
+      content: attr(data-cap);
+      position: absolute; left: 7px; right: 7px; bottom: 4px;
+      font-family: var(--mono); font-size: 8px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--ink-2); text-align: center;
+    }
+    .fold:not([open]) > summary:hover .fold-specimen {
+      opacity: 1;
+      transform: translate(0, -50%) rotate(-4deg) scale(1);
+    }
+    @media (max-width: 1080px) {
+      .fold-specimen { display: none; }
+    }
+
+    /* Expanded body */
+    .fold-body {
+      padding: clamp(1rem, 3vh, 1.8rem) 0.4rem clamp(2rem, 5vh, 3rem);
+      overflow: hidden;
+    }
+    .fold-subhead {
+      font-family: var(--serif);
+      font-size: clamp(1.02rem, 1.2vw, 1.13rem);
+      line-height: 1.4; color: var(--ink-2);
+      max-width: 64ch; margin-bottom: clamp(1rem, 2.4vh, 1.4rem);
+    }
+    @supports (interpolate-size: allow-keywords) {
+      .fold-body { height: auto; transition: height .4s var(--ease), opacity .35s var(--ease); }
+      .fold:not([open]) .fold-body { height: 0; opacity: 0; }
+      .fold[open] .fold-body { opacity: 1; }
+    }
+    /* Visual breathing room when expanded */
+    .fold[open] { background: linear-gradient(180deg, rgba(236,231,218,0.35) 0%, rgba(244,241,234,0) 60%); }
+    .fold[open] > summary { background: rgba(236,231,218,0.6); padding-left: 1rem; padding-right: 1rem; }
+
+    @media (max-width: 720px) {
+      .fold > summary { grid-template-columns: 60px minmax(0, 1fr) 36px; gap: 0.7rem; }
+      .fold-chevron { width: 30px; height: 30px; font-size: 1.1rem; }
+      .fold-title { font-size: clamp(1.2rem, 5vw, 1.7rem); }
+    }
+
+    /* ─── CONTENTS (table of contents, legacy, retained but unused) ─── */
+    .contents {
+      position: relative; z-index: 2;
+      max-width: var(--container); margin: 0 auto;
+      padding: clamp(2rem, 5vh, 3.5rem) var(--edge) clamp(1rem, 3vh, 2rem);
+      border-top: 1px solid var(--rule);
+      scroll-margin-top: 80px;
+    }
+    .contents-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;
+    }
+    .contents-head h2 {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--ink-2); font-weight: 500;
+    }
+    .contents-head .count {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .contents-list { list-style: none; }
+    .contents-list li { border-top: 1px solid var(--rule-soft); }
+    .contents-list li:last-child { border-bottom: 1px solid var(--rule-soft); }
+    .contents-row {
+      display: grid;
+      grid-template-columns: 64px minmax(180px, 1fr) 1.6fr 24px;
+      gap: clamp(0.8rem, 1.6vw, 1.4rem);
+      align-items: baseline;
+      padding: 0.85rem 0.4rem;
+      text-decoration: none; color: inherit;
+      transition: background .25s var(--ease), padding .35s var(--ease);
+      position: relative;
+    }
+    .contents-row:hover {
+      background: var(--paper-2);
+      padding-left: 0.8rem; padding-right: 0.8rem;
+    }
+    .contents-row .num {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--muted);
+      transition: color .25s var(--ease);
+    }
+    .contents-row:hover .num { color: var(--red); }
+    .contents-row .ttl {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+      line-height: 1.18; color: var(--ink);
+      transition: transform .35s var(--ease);
+      transform-origin: left center;
+    }
+    .contents-row:hover .ttl { transform: translateX(4px); }
+    .contents-row .tease {
+      font-family: var(--serif);
+      font-size: 0.95rem; line-height: 1.4;
+      color: var(--ink-2); max-width: 60ch;
+    }
+    .contents-row .arrow {
+      font-family: var(--display); font-style: italic;
+      font-size: 1.1rem;
+      color: var(--muted);
+      transition: transform .35s var(--ease), color .25s var(--ease);
+      justify-self: end;
+    }
+    .contents-row:hover .arrow { color: var(--red); transform: translateX(6px); }
+    @media (max-width: 760px) {
+      .contents-row { grid-template-columns: 50px 1fr 20px; gap: 0.8rem; }
+      .contents-row .tease { display: none; }
+    }
+
+    /* Back-to-index link injected at the foot of every entry */
+    .back-up {
+      margin-top: clamp(1.2rem, 3vh, 1.8rem);
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--rule-soft);
+      display: flex; justify-content: flex-end;
+    }
+    .back-up a {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--muted);
+      text-decoration: none;
+      transition: color .25s var(--ease), gap .25s var(--ease);
+    }
+    .back-up a::before { content: "↑"; font-family: var(--display); font-style: italic; }
+    .back-up a:hover { color: var(--red); gap: 0.6rem; }
+
+    /* Metadata: each entity on its own line */
+    .entry-meta dd .line { display: block; }
+    .entry-meta dd .line + .line { margin-top: 0.18rem; }
+
+    /* ─── TIMELINE HEAD ─── */
+    .timeline-head {
+      max-width: var(--container); margin: 0 auto;
+      padding: 1rem var(--edge);
+      border-top: 1px solid var(--rule);
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 1rem; flex-wrap: wrap;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .timeline-head .red { color: var(--red); }
+
+    /* ─── PROJECT ENTRY ─── */
+    .entry {
+      position: relative; z-index: 2;
+      max-width: var(--container); margin: 0 auto;
+      padding: clamp(2.4rem, 5vh, 3.6rem) var(--edge);
+      border-top: 1px solid var(--rule-soft);
+    }
+    .entry-num {
+      display: inline-block;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .entry-num em { color: var(--red); font-style: normal; }
+
+    .entry-title {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.0;
+      letter-spacing: -0.018em;
+      color: var(--ink);
+    }
+    .entry-title em { font-style: normal; color: var(--red); }
+    .entry-sub {
+      font-family: var(--serif);
+      font-size: clamp(1.02rem, 1.2vw, 1.13rem);
+      line-height: 1.4;
+      color: var(--ink-2);
+      max-width: 64ch;
+      margin-top: 0.7rem;
+    }
+
+    /* The body grid: prose left, metadata sidebar right */
+    .entry-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: clamp(1.4rem, 3vw, 2.4rem);
+      align-items: start;
+      margin-top: clamp(1.4rem, 3vh, 2rem);
+    }
+    @media (max-width: 880px) {
+      .entry-body { grid-template-columns: 1fr; }
+    }
+
+    .entry-prose {
+      display: flex; flex-direction: column; gap: 1.1rem;
+      max-width: 64ch;
+    }
+    .entry-prose h4 {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--muted); font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+    .entry-prose p {
+      font-family: var(--serif);
+      font-size: clamp(1rem, 1.15vw, 1.1rem);
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .entry-prose .section + .section { margin-top: 0.5rem; }
+
+    /* Metadata sidebar */
+    .entry-meta {
+      border-top: 1px solid var(--rule);
+      padding-top: 0.8rem;
+    }
+    .entry-meta dl {
+      display: flex; flex-direction: column; gap: 0.65rem;
+    }
+    .entry-meta dl > div {
+      display: grid; grid-template-columns: 92px 1fr; gap: 0.7rem;
+      align-items: baseline;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .entry-meta dl > div:last-child { border-bottom: 0; padding-bottom: 0; }
+    .entry-meta dt {
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--muted); font-weight: 500;
+      padding-top: 0.1rem;
+    }
+    .entry-meta dd {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+    .entry-meta dd a {
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: color .25s var(--ease), border-color .25s var(--ease);
+    }
+    .entry-meta dd a:hover { color: var(--red); border-color: var(--red); }
+    .entry-meta dd.empty { color: var(--muted); font-style: italic; }
+
+    /* Hero plate for the entry, sized contained */
+    .entry-hero {
+      margin-top: clamp(1.2rem, 3vh, 1.8rem);
+      max-width: 880px;
+    }
+    .plate {
+      position: relative;
+      background: var(--paper);
+      box-shadow: 0 1px 0 rgba(14,14,12,0.06), 0 10px 28px rgba(14,14,12,0.08);
+      overflow: hidden;
+    }
+    .plate img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: saturate(0.94) contrast(0.98);
+      display: block;
+      user-select: none; -webkit-user-drag: none;
+      transition: transform .9s var(--ease);
+    }
+    .plate:hover img { transform: scale(1.015); }
+    .plate.landscape { aspect-ratio: 3 / 2; }
+    .plate.portrait { aspect-ratio: 4 / 5; max-width: 480px; }
+    .plate.square { aspect-ratio: 1 / 1; }
+    .plate.wide { aspect-ratio: 16 / 9; }
+    .plate .placeholder-tag {
+      position: absolute; top: 8px; left: 8px;
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--paper); background: var(--red);
+      padding: 0.18rem 0.4rem; z-index: 2;
+    }
+
+    /* Caption beneath any plate */
+    .plate-cap {
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); padding-top: 0.4rem;
+      display: flex; justify-content: space-between; gap: 0.8rem;
+    }
+    .plate-cap .l { color: var(--ink-2); }
+
+    /* Stills row beneath the entry */
+    .stills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(0.5rem, 1vw, 0.8rem);
+      margin-top: clamp(1.2rem, 3vh, 1.8rem);
+      max-width: 880px;
+    }
+    .stills.three { grid-template-columns: repeat(3, 1fr); }
+    .stills .plate { aspect-ratio: 4 / 5; box-shadow: 0 1px 0 rgba(14,14,12,0.06), 0 4px 12px rgba(14,14,12,0.06); }
+    @media (max-width: 600px) {
+      .stills, .stills.three { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Held / reserved entries */
+    .held-block {
+      max-width: 480px;
+      aspect-ratio: 4 / 5;
+      background: var(--paper-2);
+      display: grid; place-items: center;
+      padding: clamp(1.4rem, 3vw, 2rem);
+      border: 1px dashed var(--rule-soft);
+    }
+    .held-block .ts-stamp {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red);
+      text-align: center;
+    }
+
+    /* ─── 64 BY 1 RESERVED ─── */
+    .reserve {
+      position: relative; z-index: 2;
+      max-width: var(--container); margin: 0 auto;
+      padding: clamp(3rem, 7vh, 5rem) var(--edge) clamp(3rem, 7vh, 5rem);
+      border-top: 1px solid var(--rule);
+    }
+    .reserve-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: clamp(1.4rem, 3vw, 2.4rem);
+      align-items: start;
+    }
+    .reserve h2 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 0.98; letter-spacing: -0.022em;
+      color: var(--ink); margin-top: 0.3rem;
+    }
+    .reserve h2 em { font-style: normal; color: var(--red); }
+    .reserve .sub {
+      font-family: var(--serif);
+      font-size: clamp(1rem, 1.18vw, 1.1rem);
+      line-height: 1.5; color: var(--ink-2);
+      max-width: 60ch; margin-top: 0.8rem;
+    }
+    .reserve .holder {
+      border: 1px dashed var(--rule-soft);
+      padding: clamp(1.4rem, 4vh, 2.4rem);
+      display: grid; place-items: center;
+      aspect-ratio: 4 / 5;
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--muted);
+      text-align: center;
+    }
+    @media (max-width: 880px) {
+      .reserve-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── CLOSING ─── */
+    .closing {
+      position: relative; z-index: 2;
+      max-width: var(--container); margin: 0 auto;
+      padding: clamp(3rem, 7vh, 5rem) var(--edge);
+      border-top: 1px solid var(--rule);
+    }
+    .closing p {
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 1.25vw, 1.18rem);
+      line-height: 1.55; color: var(--ink);
+      max-width: 56ch;
+    }
+    .closing p a {
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: color .25s var(--ease), border-color .25s var(--ease);
+    }
+    .closing p a:hover { color: var(--red); border-color: var(--red); }
+
+    /* ─── COLOPHON ─── */
+    .colophon { position: relative; z-index: 2; padding: clamp(2rem, 5vh, 3.5rem) var(--edge); display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.2rem; max-width: 1480px; margin: 0 auto; align-items: end; font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); border-top: 1px solid var(--rule); }
+    .colophon a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: color .25s var(--ease), border-color .25s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.4rem; }
+    .colophon .col.c-a { grid-column: 1 / span 4; }
+    .colophon .col.c-b { grid-column: 5 / span 4; }
+    .colophon .col.c-c { grid-column: 9 / span 4; align-items: flex-end; }
+    .colophon h3 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(1.4rem, 2.2vw, 2rem); letter-spacing: -0.01em; text-transform: none; color: var(--ink); line-height: 1; margin-bottom: 0.4rem; }
+    .colophon .seal { width: 88px; height: 88px; border: 1px solid var(--ink); border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-style: italic; font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--ink); transform: rotate(-6deg); position: relative; }
+    .colophon .seal::before { content: ""; position: absolute; inset: 5px; border: 1px dashed var(--rule-soft); border-radius: 50%; }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; display: block; }
+    @media (max-width: 880px) { .colophon .col.c-a, .colophon .col.c-b, .colophon .col.c-c { grid-column: 1 / -1; align-items: flex-start; } }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-img { opacity: 0; transition: opacity 1s var(--ease-out); }
+    .reveal-img.in { opacity: 1; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .tape-track { animation: none !important; }
+      .hero-frame img { transform: none !important; }
+    }
+    ::selection { background: var(--red); color: var(--paper); }
+    html::-webkit-scrollbar { width: 10px; height: 10px; }
+    html::-webkit-scrollbar-track { background: var(--paper-2); }
+    html::-webkit-scrollbar-thumb { background: var(--ink); }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <!-- Tape -->
+  <div class="tape" role="presentation">
+    <div class="tape-track">
+      <span>Excavate With Me</span><span class="dot"></span>
+      <span>Collaborations · Nineteen projects + 64/1</span><span class="dot"></span>
+      <span>Studio · Bengaluru ⇄ New York</span><span class="dot"></span>
+      <span>Each entry lists client, brief, process, output</span><span class="dot"></span>
+      <span>Excavate With Me</span><span class="dot"></span>
+      <span>Collaborations · Nineteen projects + 64/1</span><span class="dot"></span>
+      <span>Studio · Bengaluru ⇄ New York</span><span class="dot"></span>
+      <span>Each entry lists client, brief, process, output</span><span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="left">
+      <a href="./Index2.html" class="breadcrumb">← Raghava KK</a>
+      <span class="stamp live">Open file</span>
+    </div>
+    <div class="center">collaborations, a catalogue of eighteen projects + 64/1</div>
+    <div class="right">
+      <span>Vol. III · Iss. 04</span>
+      <span>Folio · 05 / 05</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <span class="hero-stamp">Folio № 05 · Excavate With Me</span>
+      <h1 class="hero-title">Excavate <em>with</em> me.</h1>
+      <p class="hero-lede">
+        A catalogue of nineteen collaborations made by the studio between 1999 and 2024, plus the 64/1 collective as a sister section.
+        Each entry below lists the client, the brief, the process in brief, the output, the location and date, the collaborators, and any links.
+      </p>
+      <div class="hero-frame reveal-img" id="heroFrame">
+        <!-- PLACEHOLDER: Replace with a "Raghava working" image. Target: 2400x1050 px landscape (16:7), sRGB JPEG ~85%. -->
+        <img src="./images/studio/04-sublime-machines/4A.jpg" alt="The studio in process, placeholder" />
+      </div>
+      <div class="hero-fig">
+        <span class="ph">Placeholder image, studio process, awaiting portrait</span>
+        <span>Photo · TK</span>
+      </div>
+    </section>
+
+    <!-- FRAMING NOTE -->
+    <section class="note">
+      <div class="note-grid">
+        <h2>A note before the catalogue</h2>
+        <div class="note-body">
+          <p>Collaborations sit alongside the studio's solo work. Nineteen are recorded below, plus the 64/1 collective as its own sister section. Ordered by impact for the viewer rather than by date. Each entry is still individually dated.</p>
+          <p>Each was made with an institution, a company, or a researcher. The form varied. A constant since 2015 is the studio's working method, machine-assisted underpainting finished by hand.</p>
+          <p>Every entry lists the client, the brief, a short process note, the output, the date and location, the collaborators, and any links. Where partner imagery is still being collected, the placeholder is tagged in red.</p>
+        </div>
+      </div>
+    </section>
+
+<!-- TIMELINE HEAD -->
+    <div class="timeline-head">
+      <span>Nineteen projects + 64/1 · 1999 → ongoing</span>
+      <span class="red">Click any row to expand</span>
+    </div>
+
+    <section class="folds" id="folds">
+    <!-- 01 · orgasm-project -->
+    <article class="entry" id="orgasm-project">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>01</em> · 2021 → 2022</span>
+          <div class="fold-text">
+            <h3 class="fold-title">The Orgasm <em>Project</em></h3>
+            <div class="fold-meta">Sotheby's <span class="sep">·</span> EEG <span class="sep">·</span> Oil on canvas</div>
+            <p class="fold-tease">EEG recordings of orgasm turned to oil paint, auctioned at Sotheby's for $94,500.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="La petite mort"><img src="./images/studio/06-orgasm-project/6A.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A series of EEG-derived paintings made with neuroscientist Abhijeet Satani. One work was auctioned at Sotheby's as an NFT for $94,500.</p>
+          <div class="entry-hero">
+        <div class="plate wide reveal-img">
+          <img src="./images/studio/06-orgasm-project/6A.jpg" alt="La petite mort, 2021" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">La petite mort, 2021, oil on canvas, 74 × 74 inches</span><span>6A</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>Neuroscientist Abhijeet Satani approached the studio with a research question: could the EEG signature of an orgasm be turned into a painting that read as art rather than spectacle.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>Volunteers' brain activity was recorded during orgasm using EEG. The signal was fed to the SOZO painting machine (developed in the 2015 ArtMatr collaboration) as input. The machine laid initial passes; the studio finished each canvas by hand. La petite mort I to IV were completed in 2021. The Cyborg Orgasm sequence followed in 2022.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>One work from the series, titled La Petite Mort, was auctioned at Sotheby's as an NFT for $94,500 in 2021. The signal-to-machine-to-hand pipeline established here has been the studio's working method on every series since.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd>Self-initiated</dd></div>
+            <div><dt>Collaborators</dt><dd><span class="line">Abhijeet Satani (neuroscience)</span><span class="line">ArtMatr (SOZO machine)</span></dd></div>
+            <div><dt>Date</dt><dd>2021 → 2022</dd></div>
+            <div><dt>Location</dt><dd>Bengaluru studio</dd></div>
+            <div><dt>Output</dt><dd><span class="line">La petite mort I to IV, 2021</span><span class="line">Cyborg Orgasm 1 to 5, 2022</span><span class="line">Oil on canvas, 74 × 74 inches</span></dd></div>
+            <div><dt>Auction</dt><dd>Sotheby's NFT, $94,500</dd></div>
+            <div><dt>Links</dt><dd><a href="https://www.sothebys.com" target="_blank" rel="noopener">sothebys.com</a></dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="stills">
+        <div>
+          <div class="plate"><img src="./images/studio/06-orgasm-project/6B.jpg" alt="Cyborg Orgasm 1, 2022" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Cyborg Orgasm 1</span><span>6B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/studio/06-orgasm-project/6C.jpg" alt="Cyborg Orgasm 2, 2022" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Cyborg Orgasm 2</span><span>6C</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/studio/06-orgasm-project/6D.jpg" alt="Cyborg Orgasm 3, 2022" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Cyborg Orgasm 3</span><span>6D</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/studio/06-orgasm-project/6E.jpg" alt="Cyborg Orgasm 4, 2022" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Cyborg Orgasm 4</span><span>6E</span></div>
+        </div>
+      </div>
+      <div class="stills">
+        <div>
+          <div class="plate"><img src="./images/excavate/01-orgasm-project/orgasm-process-01.png" alt="The Orgasm Project, process / studio archive" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Process / studio archive</span><span>01·P1</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/01-orgasm-project/orgasm-process-source.jpg" alt="The Orgasm Project, source composite" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Source composite</span><span>01·P2</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/01-orgasm-project/orgasm-process-03.png" alt="The Orgasm Project, process / studio archive" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Process / studio archive</span><span>01·P3</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/01-orgasm-project/orgasm-process-08.png" alt="The Orgasm Project, process / studio archive" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Process / studio archive</span><span>01·P4</span></div>
+        </div>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 02 · impossible-bouquet-2 -->
+    <article class="entry" id="impossible-bouquet-2">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>02</em> · February 2023</span>
+          <div class="fold-text">
+            <h3 class="fold-title">Impossible Bouquet <em>2.0</em></h3>
+            <div class="fold-meta">Gujral Foundation <span class="sep">·</span> AI <span class="sep">·</span> Acrylic + digital print</div>
+            <p class="fold-tease">AI plus paint plus archival cotton rag. Opened India Art Fair 2023.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="Goes the bauble"><img src="./images/studio/14-impossible-bouquet-23/14A.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">The second iteration of the Impossible Bouquet series, presented at the Gujral Foundation's 24 Jor Bagh space in New Delhi. Opened India Art Fair week.</p>
+          <div class="entry-hero">
+        <div class="plate wide reveal-img">
+          <img src="./images/studio/14-impossible-bouquet-23/14A.jpg" alt="Goes the bauble, 2023" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Goes the bauble, 2023, acrylic + digital print on archival cotton rag, 43 × 84.6 inches</span><span>14A</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>Feroze Gujral, founder of the Gujral Foundation, commissioned an exhibition to open India Art Fair week. The brief was to engage AI-assisted painting while keeping the materiality of paint.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>The Impossible Bouquet draws on the 17th-century Dutch still-life tradition, where painters composed bouquets from flowers that bloomed in different seasons and could not coexist. The studio used AI image generation to compose source compositions, printed them as digital prints on archival cotton rag, and overpainted them with acrylic. Eight works were produced across small and large scales.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>Eight works installed at 24 Jor Bagh, 9 to 16 February 2023. The show opened India Art Fair week. The curator-led model has since become the studio's default for institutional exhibitions.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd>Gujral Foundation</dd></div>
+            <div><dt>Curator</dt><dd>Feroze Gujral</dd></div>
+            <div><dt>Date</dt><dd>9 → 16 February 2023</dd></div>
+            <div><dt>Location</dt><dd>24 Jor Bagh, New Delhi</dd></div>
+            <div><dt>Output</dt><dd>8 works, acrylic + digital print on archival cotton rag, 42 × 24 to 60 × 84 inches</dd></div>
+            <div><dt>Context</dt><dd>Opening exhibition, India Art Fair 2023</dd></div>
+            <div><dt>Links</dt><dd><a href="https://gujralfoundation.org/show/the-impossible-bouquet/" target="_blank" rel="noopener">gujralfoundation.org</a></dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="stills">
+        <div>
+          <div class="plate"><img src="./images/studio/14-impossible-bouquet-23/14B.jpg" alt="Of the Machine II" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Of the Machine II</span><span>14B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/studio/14-impossible-bouquet-23/14C.jpg" alt="Language Drawn from Living" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Language Drawn from Living</span><span>14C</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/studio/14-impossible-bouquet-23/14G.jpg" alt="Defenders of the faith" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Defenders of the faith</span><span>14G</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/studio/14-impossible-bouquet-23/14H.jpg" alt="The Existential Condition of Secrets" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">The Existential Condition of Secrets</span><span>14H</span></div>
+        </div>
+      </div>
+      <div class="stills">
+        <div>
+          <div class="plate"><img src="./images/excavate/02-impossible-bouquet-23/install-01.jpg" alt="Install view, 24 Jor Bagh, New Delhi" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Install, 24 Jor Bagh</span><span>02A</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/02-impossible-bouquet-23/install-02.jpg" alt="Install view, 24 Jor Bagh, New Delhi" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Install, 24 Jor Bagh</span><span>02B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/02-impossible-bouquet-23/install-03.jpg" alt="Install view, 24 Jor Bagh, New Delhi" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Install, 24 Jor Bagh</span><span>02C</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/02-impossible-bouquet-23/install-04.jpg" alt="Install view, 24 Jor Bagh, New Delhi" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Install, 24 Jor Bagh</span><span>02D</span></div>
+        </div>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 03 · sozo-hamptons -->
+    <article class="entry" id="sozo-hamptons">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>03</em> · 2015 → 2018</span>
+          <div class="fold-text">
+            <h3 class="fold-title">SOZO painting <em>machine</em></h3>
+            <div class="fold-meta">ArtMatr <span class="sep">·</span> Eric Fischl <span class="sep">·</span> Painting robot</div>
+            <p class="fold-tease">A painting robot developed in The Hamptons with ArtMatr and Eric Fischl.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="MTF, 2018"><img src="./images/studio/08-mtf/8A.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A robotic painting collaborator developed during the Eric Fischl studio residency in The Hamptons, with ArtMatr. The Mysterium Tremendum et Fascinans (MTF) series came out of it.</p>
+          <div class="entry-hero">
+        <div class="plate wide reveal-img">
+          <img src="./images/studio/08-mtf/8A.jpg" alt="MTF, 2018, output of the SOZO collaboration" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Mysterium Tremendum et Fascinans, 2018, oil on canvas</span><span>Output of SOZO collaboration</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>Eric Fischl invited the studio to a Hamptons residency. During the residency, ArtMatr, an MIT Media Lab offshoot that builds painting robots, joined the project. The shared question was whether a machine could paint without becoming the subject of the painting.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>SOZO is a robotic arm that applies underpaintings based on input from the artist. Across the residency and afterwards, the studio developed a working pipeline: the machine lays first passes, the artist edits and finishes by hand. The Mysterium Tremendum et Fascinans (MTF) paintings were completed in 2018.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>The Mysterium Tremendum et Fascinans (MTF) series, four oils on canvas, 2018. The human-signal-to-machine-to-hand pipeline established here has been used in every studio AI series since, including The Orgasm Project and Impossible Bouquet 2.0.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd>Self-initiated</dd></div>
+            <div><dt>Collaborators</dt><dd><span class="line">ArtMatr (MIT Media Lab offshoot)</span><span class="line">Eric Fischl (residency host)</span></dd></div>
+            <div><dt>Date</dt><dd>2015 → 2018</dd></div>
+            <div><dt>Location</dt><dd>The Hamptons, New York</dd></div>
+            <div><dt>Output</dt><dd><span class="line">SOZO painting robot</span><span class="line">Mysterium Tremendum et Fascinans I, 2018</span><span class="line">Mysterium Tremendum et Fascinans II, 2018</span><span class="line">Mysterium Tremendum et Fascinans III, 2018</span><span class="line">Mysterium Tremendum et Fascinans IV, 2018</span></dd></div>
+            <div><dt>Links</dt><dd><a href="https://artmatr.com" target="_blank" rel="noopener">artmatr.com</a></dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="stills three">
+        <div>
+          <div class="plate"><img src="./images/studio/08-mtf/8B.jpg" alt="MTF II, 2018" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">MTF II, 2018</span><span>8B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/studio/08-mtf/8C.jpg" alt="MTF III, 2018" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">MTF III, 2018</span><span>8C</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/studio/08-mtf/8D.jpg" alt="MTF IV, 2018" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">MTF IV, 2018</span><span>8D</span></div>
+        </div>
+      </div>
+      <div class="stills">
+        <div>
+          <div class="plate"><img src="./images/excavate/03-sozo/process-01.png" alt="SOZO process, ArtMatr × Eric Fischl residency" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Hamptons residency, process</span><span>03·P1</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/03-sozo/process-02.jpg" alt="SOZO process, ArtMatr × Eric Fischl residency" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Hamptons residency, process</span><span>03·P2</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/03-sozo/process-03.jpg" alt="SOZO process, ArtMatr × Eric Fischl residency" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Hamptons residency, process</span><span>03·P3</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/03-sozo/process-04.jpg" alt="SOZO process, ArtMatr × Eric Fischl residency" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Hamptons residency, process</span><span>03·P4</span></div>
+        </div>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 04 · royal-enfield -->
+    <article class="entry" id="royal-enfield">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>04</em> · 2023 → 2024</span>
+          <div class="fold-text">
+            <h3 class="fold-title">Where the Wind Tastes of <em>Forgotten</em> Songs</h3>
+            <div class="fold-meta">Royal Enfield <span class="sep">·</span> Immersive <span class="sep">·</span> Palace install</div>
+            <p class="fold-tease">A site-specific palace installation on the Himalayas, commissioned by Royal Enfield.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="Himalaya, Royal Enfield"><img src="./images/excavate/04-royal-enfield/himalaya-01.png" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A site-specific immersive installation commissioned by Royal Enfield, themed around the Himalayas. Combines painting, AI imagery, projection mapping, and original sound design inside a heritage palace setting.</p>
+          <div class="entry-hero">
+        <div class="plate wide reveal-img">
+          <img src="./images/excavate/04-royal-enfield/himalaya-01.png" alt="Where the Wind Tastes of Forgotten Songs, Royal Enfield Himalaya project" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Where the Wind Tastes of Forgotten Songs · Royal Enfield Himalaya project</span><span>04 · Hero</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>Royal Enfield commissioned an installation tied to its Himalayan riding heritage. The brief asked for a work that a non-rider could enter and inhabit, rather than a brand campaign.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>The studio developed a multi-sensory environment organised around the geography of the Himalayas rather than the brand's product. Painted panels, AI-generated imagery, projection mapping, and an original sound design were integrated inside a heritage palace setting. Visitors walked through the work as they would a temple or a mountain pass.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>A walk-through installation, Where the Wind Tastes of Forgotten Songs, presented at the Royal Enfield Art Festival. The place-first method developed here is now the studio's default approach for corporate commissions.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd>Royal Enfield</dd></div>
+            <div><dt>Date</dt><dd>2023 → 2024</dd></div>
+            <div><dt>Location</dt><dd>Heritage palace setting (Himalayas)</dd></div>
+            <div><dt>Output</dt><dd>Site-specific immersive installation, painting + AI + projection mapping + sound</dd></div>
+            <div><dt>Context</dt><dd>Royal Enfield Art Festival</dd></div>
+            <div><dt>Links</dt><dd><a href="https://www.royalenfield.com" target="_blank" rel="noopener">royalenfield.com</a></dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="stills three">
+        <div>
+          <div class="plate"><img src="./images/excavate/04-royal-enfield/himalaya-01.png" alt="Himalaya project, install view" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Himalaya project, install</span><span>04A</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/04-royal-enfield/himalaya-02.png" alt="Himalaya project, install view" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Himalaya project, install</span><span>04B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/Vishwaroopa.jpg" alt="Vishwaroopa, related studio painting" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Vishwaroopa, studio painting</span><span>04C</span></div>
+        </div>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 05 · when-paintings-dance -->
+    <article class="entry" id="when-paintings-dance">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>05</em> · 1999 → 2005</span>
+          <div class="fold-text">
+            <h3 class="fold-title">When Paintings <em>Dance</em></h3>
+            <div class="fold-meta">Kamal Haasan <span class="sep">·</span> Performance <span class="sep">·</span> Watercolour</div>
+            <p class="fold-tease">A year in Kamal Haasan's home; paintings activated by dancers' bodies.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="Taj West End, 1999"><img src="./images/excavate/05-when-paintings-dance/hero-bangalore-taj-west-end.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A performance-art collaboration with actor and filmmaker Kamal Haasan. Watercolour paintings made directly on leotards worn by dancers; performed in India and the United States with Velocity Circus and Cirque du Soleil performers.</p>
+          <div class="entry-hero">
+        <div class="plate wide reveal-img">
+          <img src="./images/excavate/05-when-paintings-dance/hero-bangalore-taj-west-end.jpg" alt="When Paintings Dance, premiere at Taj West End, Bangalore, 1999, with Kamal Haasan" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Premiere, Taj West End, Bangalore, 1999 · with Kamal Haasan</span><span>05 · Hero</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>Kamal Haasan invited the studio to develop a performance work that brought painting and dance into the same frame. The studio worked from Haasan's home for nearly a year on the piece.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>Watercolour was applied directly onto leotards worn by dancers. The choreography activated the painting; each performance produced a distinct, time-based work. The piece premiered in 1999 at the Taj West End in Bangalore.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>America India Foundation adopted the piece for its California fundraising gala. Performances followed in San Francisco with Velocity Circus and Cirque du Soleil dancers; the San Francisco exhibition sold out. The work was restaged in 2005 at the San Jose Convention Center under the title "Anthropomorphism: When Paintings Dance."</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd>Self-initiated, with Kamal Haasan</dd></div>
+            <div><dt>Collaborators</dt><dd><span class="line">Kamal Haasan</span><span class="line">Velocity Circus</span><span class="line">Cirque du Soleil dancers</span></dd></div>
+            <div><dt>Date</dt><dd>1999 → 2005</dd></div>
+            <div><dt>Location</dt><dd><span class="line">Bangalore</span><span class="line">San Francisco</span><span class="line">San Jose</span></dd></div>
+            <div><dt>Output</dt><dd>Live performance piece, watercolour on dancers' costumes</dd></div>
+            <div><dt>Adopted by</dt><dd><span class="line">America India Foundation</span><span class="line">California gala</span></dd></div>
+            <div><dt>Links</dt><dd class="empty">TK</dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="stills three">
+        <div>
+          <div class="plate"><img src="./images/excavate/05-when-paintings-dance/still-01-cambridge-first-test.jpg" alt="When Paintings Dance, first test, Cambridge, Massachusetts" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">First test, Cambridge, Massachusetts</span><span>05A</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/05-when-paintings-dance/still-02-aif-california.jpg" alt="AIF performance, California" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">AIF performance, California</span><span>05B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/05-when-paintings-dance/still-03-cambridge.jpg" alt="Performance, Cambridge, Massachusetts" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Cambridge, Massachusetts</span><span>05C</span></div>
+        </div>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 06 · album-covers -->
+    <article class="entry" id="album-covers">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>06</em> · 2000s → 2010s</span>
+          <div class="fold-text">
+            <h3 class="fold-title">Album <em>covers</em>, Paul Simon and Erykah Badu</h3>
+            <div class="fold-meta">Paul Simon <span class="sep">·</span> Erykah Badu <span class="sep">·</span> Album design</div>
+            <p class="fold-tease">Album cover work for two musicians, plus a Badu DJ fundraiser.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="Paul Simon concert backdrop"><img src="./images/excavate/06-album-covers/paul-simon-concert-backdrop-01.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A long-running design collaboration with two musicians. Album cover artwork for Paul Simon and Erykah Badu, plus a hand-designed visual identity for a Badu DJ-fundraiser in New York.</p>
+          <div class="entry-hero">
+        <div class="plate landscape reveal-img">
+          <img src="./images/excavate/06-album-covers/paul-simon-concert-backdrop-01.jpg" alt="Paul Simon concert backdrop, New York" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Paul Simon concert backdrop, New York</span><span>06 · Hero</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>Paul Simon and Erykah Badu separately commissioned the studio for visual work tied to their music. With Badu, the relationship later extended to a fundraiser in New York where she would DJ.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>Album cover artworks for both musicians were developed as standalone paintings then adapted to record-sleeve format. For the Badu fundraiser, the studio designed T-shirts whose imagery drew on her hair, presence, and politics of self-expression. Badu performed a DJ set at the opening.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>The album cover work continued across the 2000s and into the 2010s. Paul Simon has been a long-standing collector of studio paintings.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Clients</dt><dd><span class="line">Paul Simon</span><span class="line">Erykah Badu</span></dd></div>
+            <div><dt>Date</dt><dd>2000s → 2010s</dd></div>
+            <div><dt>Location</dt><dd><span class="line">New York</span><span class="line">Studio</span></dd></div>
+            <div><dt>Output</dt><dd><span class="line">Album covers (multiple)</span><span class="line">T-shirt designs</span><span class="line">Fundraiser identity</span></dd></div>
+            <div><dt>Note</dt><dd>Paul Simon, long-standing collector of studio paintings</dd></div>
+            <div><dt>Links</dt><dd class="empty">TK</dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="stills">
+        <div>
+          <div class="plate"><img src="./images/excavate/06-album-covers/paul-simon-concert-backdrop-02.jpg" alt="Paul Simon concert backdrop, New York" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Paul Simon backdrop, NYC</span><span>06A</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/06-album-covers/paul-simon-t-shirt.jpg" alt="Paul Simon T-shirt collaboration" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Paul Simon T-shirt</span><span>06B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/06-album-covers/erykah-badu-collaboration.jpg" alt="Erykah Badu collaboration" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Erykah Badu collaboration</span><span>06C</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/06-album-covers/with-paul-simon.jpg" alt="With Paul Simon" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">With Paul Simon</span><span>06D</span></div>
+        </div>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 07 · pop-it -->
+    <article class="entry" id="pop-it">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>07</em> · 2011</span>
+          <div class="fold-text">
+            <h3 class="fold-title"><em>Pop-It</em></h3>
+            <div class="fold-meta">Above Solutions <span class="sep">·</span> iPad app <span class="sep">·</span> Picture book</div>
+            <p class="fold-tease">An iPad book where shaking the device swaps the family on every page.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="Pop-It, iPad"><img src="./images/excavate/07-pop-it/ipad-01.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">An interactive iPad picture book that uses the accelerometer to change the family on every page.</p>
+          <div class="entry-hero">
+        <div class="plate landscape reveal-img">
+          <img src="./images/excavate/07-pop-it/ipad-01.jpg" alt="Pop-It, iPad picture book" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Pop-It · iPad picture book, accelerometer-driven</span><span>07 · Hero</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>Above Solutions, an interactive-book developer, wanted to use the iPad's accelerometer to make a children's book that paper could not. The studio was asked to design the concept and illustrations.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>Pop-It uses a shake-to-change mechanic. The same family appears on every page, but a shake of the device swaps the parents between two fathers, two mothers, or a mother and a father. The child stays the same. Illustrations were hand-drawn and animated for touch.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>Launched at TED Global. Awarded Kirkus Best Books of 2011 (cited as "a first-rate mind expander") and Best of Singapore Art Fair 2011. The accompanying TED Talk, "Shake up your story," is among the studio's most-viewed talks.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd>Above Solutions Pvt.</dd></div>
+            <div><dt>Date</dt><dd>2011</dd></div>
+            <div><dt>Location</dt><dd>Launched at TED Global</dd></div>
+            <div><dt>Output</dt><dd>iPad picture book app</dd></div>
+            <div><dt>Awards</dt><dd><span class="line">Kirkus Best Books of 2011</span><span class="line">Best of Singapore Art Fair 2011</span></dd></div>
+            <div><dt>Links</dt><dd><a href="https://www.kirkusreviews.com/book-reviews/raghava-kk/pop-it/" target="_blank" rel="noopener">Kirkus review</a></dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="stills">
+        <div>
+          <div class="plate"><img src="./images/excavate/07-pop-it/ipad-02.jpg" alt="Pop-It iPad screen" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">iPad screen</span><span>07A</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/07-pop-it/ipad-03.jpg" alt="Pop-It iPad screen" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">iPad screen</span><span>07B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/07-pop-it/ipad-04.jpg" alt="Pop-It iPad screen" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">iPad screen</span><span>07C</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/07-pop-it/ipad-05.jpg" alt="Pop-It iPad screen" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">iPad screen</span><span>07D</span></div>
+        </div>
+      </div>
+      <div class="stills three">
+        <div>
+          <div class="plate"><img src="./images/excavate/07-pop-it/launch-inc-conference.jpg" alt="Pop-It launch at INK Conference" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Launch, INK Conference</span><span>07E</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/07-pop-it/launch-india-pakistan-conference.jpg" alt="Shaking storytelling, India-Pakistan conference" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Shaking storytelling, India–Pakistan conference</span><span>07F</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/studio/09-powerfluff/9A.jpg" alt="Power Fluff, related illustration work" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Power Fluff, related studio work</span><span>07G</span></div>
+        </div>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 08 · must-hash -->
+    <article class="entry" id="must-hash">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>08</em> · 2013 → 2016</span>
+          <div class="fold-text">
+            <h3 class="fold-title">MUST# visual discovery <em>app</em></h3>
+            <div class="fold-meta">Viacom <span class="sep">·</span> iOS app <span class="sep">·</span> Empathy algorithm</div>
+            <p class="fold-tease">An algorithm built inside Viacom to widen taste instead of confirm it.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="MUST# launch with Al Gore"><img src="./images/excavate/08-must-hash/launch-with-al-gore-at-ted.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A visual discovery app built during a Viacom creator-in-residence, designed to widen viewer taste rather than confirm it. Launched on the Apple App Store in 2016.</p>
+          <div class="entry-hero">
+        <div class="plate landscape reveal-img">
+          <img src="./images/excavate/08-must-hash/launch-with-al-gore-at-ted.jpg" alt="MUST# launch with Al Gore at TED" loading="lazy" /></div>
+        <div class="plate-cap"><span class="l">Launch at TED · with Al Gore</span><span>08 · Hero</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>Viacom hosted the studio as creator-in-residence in New York from 2013 to 2016. The brief was to explore what visual recommendation could look like beyond similarity-based engines. Recommendation systems at the time sorted by likeness; Viacom wanted to know what sorting by expansion would look like.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>The studio developed two algorithms with engineering partners. The Visual Empathy Algorithm matched viewers to images outside their stated taste. The Coefficient of Expansion of Empathy measured how far a viewer's preferences could be stretched without losing trust. Both were integrated into a single iOS app, MUST#.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>MUST# launched on the Apple App Store in 2016. Premiered at TED and Viacom HQ. The two-algorithm framework was later re-used in The Orgasm Project (entry № 01) and Impossible Bouquet 2.0 (entry № 02).</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd><span class="line">Viacom</span><span class="line">Creator-in-Residence program</span></dd></div>
+            <div><dt>Date</dt><dd>2013 → 2016</dd></div>
+            <div><dt>Location</dt><dd>New York</dd></div>
+            <div><dt>Output</dt><dd><span class="line">iOS app, MUST#</span><span class="line">Visual Empathy Algorithm</span><span class="line">Coefficient of Expansion of Empathy</span></dd></div>
+            <div><dt>Premiered</dt><dd><span class="line">TED</span><span class="line">Viacom HQ</span></dd></div>
+            <div><dt>Links</dt><dd class="empty">TK</dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="stills three">
+        <div>
+          <div class="plate"><img src="./images/excavate/08-must-hash/launch-at-ted.jpg" alt="MUST# launch at TED" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Launch at TED</span><span>08A</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/08-must-hash/launch-art-project.png" alt="MUST# launch art project" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Launch art project</span><span>08B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/08-must-hash/launch-with-al-gore-at-ted.jpg" alt="MUST# launch with Al Gore" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">With Al Gore, TED</span><span>08C</span></div>
+        </div>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 09 · eye-candy -->
+    <article class="entry" id="eye-candy">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>09</em> · 2020</span>
+          <div class="fold-text">
+            <h3 class="fold-title"><em>Eye</em> Candy</h3>
+            <div class="fold-meta">Under25 Studios <span class="sep">·</span> Instagram <span class="sep">·</span> Performance</div>
+            <p class="fold-tease">A continuous performance work staged on Instagram during lockdown.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="Balance, 2020"><img src="./images/studio/10-eye-candy/10A.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A serial performance-art project staged on Instagram during the COVID-19 lockdown, produced with Under25 Studios. Seven oil paintings entered the studio's archive from this series.</p>
+          <div class="entry-hero">
+        <div class="plate wide reveal-img">
+          <img src="./images/studio/10-eye-candy/10A.jpg" alt="Balance, 2020" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Balance, 2020, oil on canvas, 48 × 36 inches</span><span>10A</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>COVID-19 lockdowns closed galleries. Under25 Studios, a youth-focused media platform in India, asked the studio whether a serious painting practice could happen entirely on Instagram without collapsing into marketing.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>Eye Candy was structured as a continuous work rather than a sequence of posts. The studio produced seven oil paintings, fourteen carousel posts, ten mini-podcasts, seven exhibition videos, and four live sessions over the run. The feed was treated as a venue; carousels as walls; live sessions as openings.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>Three of the paintings, Balance, Conflict, and Personality, entered the Studio archive. The project remains the studio's reference case for platform-native art when given time.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd>Under25 Studios</dd></div>
+            <div><dt>Date</dt><dd>2020</dd></div>
+            <div><dt>Location</dt><dd><span class="line">Instagram</span><span class="line">Bengaluru studio</span></dd></div>
+            <div><dt>Output</dt><dd><span class="line">7 oil paintings</span><span class="line">14 carousel posts</span><span class="line">10 mini-podcasts</span><span class="line">7 exhibition videos</span><span class="line">4 live sessions</span></dd></div>
+            <div><dt>Works in archive</dt><dd><span class="line">Balance</span><span class="line">Conflict</span><span class="line">Personality</span></dd></div>
+            <div><dt>Links</dt><dd class="empty">TK</dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="stills three">
+        <div>
+          <div class="plate"><img src="./images/studio/10-eye-candy/10B.jpg" alt="Conflict, 2020" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Conflict, 2020</span><span>10B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/studio/10-eye-candy/10C.jpg" alt="Personality, 2020" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Personality, 2020</span><span>10C</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/studio/10-eye-candy/10A.jpg" alt="Balance, 2020 (detail)" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Balance, detail</span><span>10A</span></div>
+        </div>
+      </div>
+      <div class="stills three">
+        <div>
+          <div class="plate"><img src="./images/excavate/09-eye-candy/extra-01.jpg" alt="Eye Candy, additional work" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Eye Candy, archive</span><span>09·A</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/09-eye-candy/extra-02.jpg" alt="Eye Candy, additional work" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Eye Candy, archive</span><span>09·B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/09-eye-candy/extra-03.png" alt="Eye Candy, additional work" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Eye Candy, archive</span><span>09·C</span></div>
+        </div>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 10 · ink-fellows -->
+    <article class="entry" id="ink-fellows">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>10</em> · 2010 → 2020</span>
+          <div class="fold-text">
+            <h3 class="fold-title">INK <em>Fellows</em> program</h3>
+            <div class="fold-meta">INK Conference <span class="sep">·</span> Fellowship <span class="sep">·</span> India</div>
+            <p class="fold-tease">Founding and running India's premier multidisciplinary fellowship for a decade.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="Co-chair, 2015"><img src="./images/excavate/10-ink-fellows/co-chair-2015.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A multidisciplinary fellowship program for early-career thinkers in India, run by INK Conference.</p>
+          <div class="entry-hero">
+        <div class="plate landscape reveal-img">
+          <img src="./images/excavate/10-ink-fellows/co-chair-2015.jpg" alt="INK Fellows co-chair, 2015, with Lalitesh Katragadda" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Co-chair, 2015 · with Lalitesh Katragadda</span><span>10 · Hero</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>INK Conference, India's TED-format platform, wanted a fellowship for early-career thinkers across disciplines. Models like TED Fellows existed elsewhere, but not in India.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>Founded the program around 2010 and chaired it solo for the first five years. From 2015, co-chaired it with Lalitesh Katragadda (founder, Google Map Maker) and Anu Sethuram (co-founder, INK). Each cohort was curated annually across fields, science, design, performance, media, and matched with mentors. The December 2011 Jaipur edition was the first major showcase.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>Roughly ten cohorts over a decade. Alumni include founders, researchers, and creative directors. The program is widely cited as India's premier multidisciplinary fellowship.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd>INK Conference</dd></div>
+            <div><dt>Role</dt><dd><span class="line">Founder</span><span class="line">Chair, 2010 to 2015</span><span class="line">Co-chair, 2015 to 2020</span></dd></div>
+            <div><dt>Collaborators</dt><dd><span class="line">Lalitesh Katragadda</span><span class="line">Anu Sethuram</span><span class="line">Nikhil Velpanur</span></dd></div>
+            <div><dt>Date</dt><dd>2010 → 2020</dd></div>
+            <div><dt>Location</dt><dd>India (Jaipur and other cities)</dd></div>
+            <div><dt>Output</dt><dd>~10 annual cohorts, mentorship + curated programming</dd></div>
+            <div><dt>Links</dt><dd class="empty">TK</dd></div>
+          </dl>
+        </aside>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 11 · fidelio -->
+    <article class="entry" id="fidelio">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>11</em> · 2013</span>
+          <div class="fold-text">
+            <h3 class="fold-title">Fidelio, a <em>brainwave</em>-driven conductor</h3>
+            <div class="fold-meta">Visva Subbaraman <span class="sep">·</span> EEG <span class="sep">·</span> Projection</div>
+            <p class="fold-tease">A conductor's EEG translated into projected imagery during Beethoven's Fidelio.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="Skylight Theater, Milwaukee"><img src="./images/excavate/11-fidelio/skylight-milwaukee-01.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A music-and-neuroscience collaboration with conductor Vishwa Subbaraman. EEG-derived signal from the conductor's brain activity was integrated into a performance of Beethoven's Fidelio at the Skylight Music Theatre, Milwaukee.</p>
+          <div class="entry-hero">
+        <div class="plate landscape reveal-img">
+          <img src="./images/excavate/11-fidelio/skylight-milwaukee-01.jpg" alt="Fidelio, brainwave performance, Skylight Music Theatre, Milwaukee" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Skylight Music Theatre, Milwaukee · brainwave performance</span><span>11 · Hero</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>Conductor Vishwa Subbaraman approached the studio about a piece that would visualise the inner concentration of a conductor in real time during a live performance.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>EEG sensors recorded Subbaraman's brain activity during the performance of Beethoven's Fidelio. The studio built a visual system that translated the EEG signal into projected imagery synchronised with the music. The piece was staged at the Skylight Music Theatre, Milwaukee.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>The technical pipeline, brainwave signal to visual output, fed directly into The Orgasm Project (entry № 01), where EEG was again the input layer.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd>Self-initiated with Vishwa Subbaraman</dd></div>
+            <div><dt>Collaborator</dt><dd>Vishwa Subbaraman, conductor</dd></div>
+            <div><dt>Date</dt><dd>2013</dd></div>
+            <div><dt>Location</dt><dd>Skylight Music Theatre, Milwaukee</dd></div>
+            <div><dt>Output</dt><dd>Brainwave-to-visual performance system, integrated with Fidelio</dd></div>
+            <div><dt>Note</dt><dd>Precursor to the EEG pipeline used in The Orgasm Project (2021-22)</dd></div>
+            <div><dt>Links</dt><dd class="empty">TK</dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="stills">
+        <div>
+          <div class="plate"><img src="./images/excavate/11-fidelio/skylight-milwaukee-01.jpg" alt="Skylight Music Theatre, Milwaukee" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Skylight, Milwaukee</span><span>11A</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/11-fidelio/skylight-milwaukee-02.png" alt="Skylight Theatre collaboration with Vishwa Subbaraman" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Skylight, Milwaukee</span><span>11B</span></div>
+        </div>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 12 · story-collective -->
+    <article class="entry" id="story-collective">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>12</em> · 2018 → 2020</span>
+          <div class="fold-text">
+            <h3 class="fold-title">Story <em>Collective</em></h3>
+            <div class="fold-meta">Jay Ahia <span class="sep">·</span> Residency <span class="sep">·</span> India</div>
+            <p class="fold-tease">Five residencies in Rajasthan and Goa, practitioners from unrelated fields.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="Process, TK"><img src="./images/studio/11-toy-trojan/11A.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A multidisciplinary residency program co-created with Jay Ahia, held five times in Rajasthan and Goa before COVID-19 paused the program.</p>
+          <div class="entry-hero">
+        <div class="plate landscape reveal-img">
+          <span class="placeholder-tag">Placeholder</span>
+          <img src="./images/studio/05-catch-em/5A.jpg" alt="Placeholder, awaiting Story Collective residency photos" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Placeholder, awaiting residency photography</span><span>5A · Catch 'em</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>India lacked a recurring residency that put practitioners from unrelated disciplines, writers, designers, technologists, dancers, scientists, in one room long enough to collaborate. Jay Ahia (founder, The Experience Company / BHX) and the studio co-created the format.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>Each edition ran for about a week. Roughly twenty practitioners were invited per edition, given a shared prompt, and asked to collaborate across disciplines. Workshops, demos, and shared meals filled the schedule. The workshop method "Kill Your Talk, Not Your Audience" was developed during these editions.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>Three editions in Rajasthan, two in Goa. COVID-19 paused the program in 2020. Alumni continue to collaborate independently. The workshop format is still used by the studio in mentorship work.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd>Self-initiated</dd></div>
+            <div><dt>Collaborators</dt><dd><span class="line">Jay Ahia</span><span class="line">The Experience Company</span><span class="line">BHX</span></dd></div>
+            <div><dt>Date</dt><dd>2018 → 2020</dd></div>
+            <div><dt>Location</dt><dd><span class="line">Rajasthan (3 editions)</span><span class="line">Goa (2 editions)</span></dd></div>
+            <div><dt>Output</dt><dd><span class="line">5 residency editions</span><span class="line">"Kill Your Talk, Not Your Audience" workshop format</span></dd></div>
+            <div><dt>Status</dt><dd>Paused, COVID-19</dd></div>
+          </dl>
+        </aside>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 13 · fofx -->
+    <article class="entry" id="fofx">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>13</em> · 2018</span>
+          <div class="fold-text">
+            <h3 class="fold-title">FofX <em>Festival</em>, Jim Corbett</h3>
+            <div class="fold-meta">Jay Ahia <span class="sep">·</span> Festival <span class="sep">·</span> Keynote</div>
+            <p class="fold-tease">Opening Jay Ahia's festival for India's young creative leaders.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="Process, TK"><img src="./images/studio/05-catch-em/5B.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">Kick-started Jay Ahia's FofX Festival, a gathering for India's next generation of creative leaders, held at Jim Corbett National Park.</p>
+          <div class="entry-hero">
+        <div class="plate landscape reveal-img">
+          <span class="placeholder-tag">Placeholder</span>
+          <img src="./images/studio/05-catch-em/5B.jpg" alt="Placeholder, awaiting FofX festival photography" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Placeholder, awaiting festival photography</span><span>5B · Catch 'em</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>FofX is a festival for India's young creative leaders, founded by Jay Ahia (The Experience Company / BHX). Ahia invited the studio to open the festival's first major editions.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>The studio kick-started FofX twice, opening the festival with a keynote to the assembled cohort of emerging creators. The 2018 edition was held at Jim Corbett National Park, Uttarakhand.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>The working relationship with Jay Ahia led directly to the co-creation of Story Collective (entry № 12).</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd><span class="line">FofX Festival</span><span class="line">Jay Ahia (founder)</span></dd></div>
+            <div><dt>Collaborators</dt><dd><span class="line">Jay Ahia</span><span class="line">The Experience Company</span><span class="line">BHX</span></dd></div>
+            <div><dt>Date</dt><dd>2018</dd></div>
+            <div><dt>Location</dt><dd>Jim Corbett National Park, Uttarakhand</dd></div>
+            <div><dt>Output</dt><dd>Opening keynote across two editions</dd></div>
+            <div><dt>Links</dt><dd class="empty">TK</dd></div>
+          </dl>
+        </aside>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 14 · taisi -->
+    <article class="entry" id="taisi">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>14</em> · Date TK</span>
+          <div class="fold-text">
+            <h3 class="fold-title">TAISI <em>curation</em></h3>
+            <div class="fold-meta">TAISI <span class="sep">·</span> Curation <span class="sep">·</span> Held</div>
+            <p class="fold-tease">Curation project for The Association of International Schools of India.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">Curation project for The Association of International Schools of India. Entry held, material in assembly.</p>
+          <div class="entry-hero">
+        <div class="held-block">
+          <span class="ts-stamp">Entry reserved · Material in assembly</span>
+        </div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>Note</h4>
+            <p>This entry is reserved. Material is being assembled with the partner. The full file, including dates, location, output, and imagery, will be added to the catalogue when ready.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd><span class="line">TAISI</span><span class="line">The Association of International Schools of India</span></dd></div>
+            <div><dt>Role</dt><dd>Curation</dd></div>
+            <div><dt>Date</dt><dd class="empty">TK</dd></div>
+            <div><dt>Location</dt><dd class="empty">TK</dd></div>
+            <div><dt>Output</dt><dd class="empty">TK</dd></div>
+            <div><dt>Status</dt><dd>Held</dd></div>
+          </dl>
+        </aside>
+      </div>
+        </div>
+      </details>
+    </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 15 · robinhood-library -->
+    <article class="entry" id="robinhood-library">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>15</em> · 2005</span>
+          <div class="fold-text">
+            <h3 class="fold-title">Robin Hood Foundation <em>library</em></h3>
+            <div class="fold-meta">Robin Hood Foundation <span class="sep">·</span> Pentagram <span class="sep">·</span> Library design</div>
+            <p class="fold-tease">A New York school library, designed with Pentagram.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="Library, NYC"><img src="./images/excavate/15-robinhood-library/library-01.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A school library in New York, commissioned by the Robin Hood Foundation and designed in partnership with Pentagram. The studio contributed the artwork that holds the room.</p>
+          <div class="entry-hero">
+        <div class="plate wide reveal-img">
+          <img src="./images/excavate/15-robinhood-library/library-01.jpg" alt="Robin Hood Foundation library, New York" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Robin Hood Foundation library, New York</span><span>15 · Hero</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>The Robin Hood Foundation, a New York anti-poverty foundation, funds school libraries in under-resourced city schools. Pentagram led the design programme. The studio was invited to contribute the artwork that would give one of those libraries its character.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>The studio worked alongside Pentagram on a library where the art was not decoration on the wall but part of the room's architecture: the surfaces children touched, the shelves they walked between, the visual logic of a place built to make them want to stay.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>A finished, in-use library in a New York public school, documented by The Architect's Newspaper. The Robin Hood / Pentagram library programme has gone on to commission dozens more rooms in the same model.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd>Robin Hood Foundation</dd></div>
+            <div><dt>Design partner</dt><dd>Pentagram</dd></div>
+            <div><dt>Date</dt><dd>2005</dd></div>
+            <div><dt>Location</dt><dd>New York public school</dd></div>
+            <div><dt>Output</dt><dd>School library, integrated artwork</dd></div>
+            <div><dt>Links</dt><dd><a href="https://www.archpaper.com/2005/04/the-adventures-of-robin-hood/" target="_blank" rel="noopener">archpaper.com</a></dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="stills three">
+        <div>
+          <div class="plate"><img src="./images/excavate/15-robinhood-library/library-01.jpg" alt="Library, install view" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Install</span><span>15A</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/15-robinhood-library/library-02.jpg" alt="Library, install view" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Install</span><span>15B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/15-robinhood-library/library-03.jpg" alt="Library, install view" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Install</span><span>15C</span></div>
+        </div>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 16 · gradient-descent -->
+    <article class="entry" id="gradient-descent">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>16</em> · Date TK</span>
+          <div class="fold-text">
+            <h3 class="fold-title">Gradient <em>Descent</em></h3>
+            <div class="fold-meta">Nature Morte <span class="sep">·</span> AI <span class="sep">·</span> Curation</div>
+            <p class="fold-tease">The first gallery exhibition built around AI-generated art.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="Gradient Descent, Nature Morte"><img src="./images/excavate/16-gradient-descent/install-01.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A curated group show built around AI-generated artwork, presented at Nature Morte gallery, New Delhi. Cited as the first show of its kind inside a gallery.</p>
+          <div class="entry-hero">
+        <div class="plate wide reveal-img">
+          <img src="./images/excavate/16-gradient-descent/install-01.jpg" alt="Gradient Descent, install at Nature Morte" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Gradient Descent · install at Nature Morte</span><span>16 · Hero</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>Nature Morte, the New Delhi contemporary gallery, gave the studio space to curate a show that took AI-generated work seriously as art, rather than as novelty.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>The studio assembled artists and works that used generative models as part of their making, organised them so the technology disappeared into the question each piece was asking, and wrote the framing for visitors who had never seen the form before.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>Cited by artnet as the first AI-as-art exhibition staged in a gallery. The framework — AI inside the room, not on the press release — has since shaped the studio's own AI shows, including Impossible Bouquet 2.0.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd>Nature Morte</dd></div>
+            <div><dt>Role</dt><dd>Curator</dd></div>
+            <div><dt>Date</dt><dd class="empty">TK</dd></div>
+            <div><dt>Location</dt><dd>Nature Morte, New Delhi</dd></div>
+            <div><dt>Output</dt><dd>Curated group exhibition</dd></div>
+            <div><dt>Links</dt><dd><a href="https://news.artnet.com/art-world/ai-generated-art-gallery-show-133945" target="_blank" rel="noopener">artnet</a></dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="stills three">
+        <div>
+          <div class="plate"><img src="./images/excavate/16-gradient-descent/install-02.jpg" alt="Install, Nature Morte" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Install, Nature Morte</span><span>16A</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/16-gradient-descent/install-03.jpg" alt="Install, Nature Morte" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Install, Nature Morte</span><span>16B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/16-gradient-descent/install-04.jpg" alt="Install, Nature Morte" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">Install, Nature Morte</span><span>16C</span></div>
+        </div>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 17 · shanti-samsara -->
+    <article class="entry" id="shanti-samsara">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>17</em> · 2015</span>
+          <div class="fold-text">
+            <h3 class="fold-title">Shanti <em>Samsara</em></h3>
+            <div class="fold-meta">Ricky Kej <span class="sep">·</span> UN COP21 <span class="sep">·</span> Album</div>
+            <p class="fold-tease">Artistic producer on a 300-musician album launched at the UN Climate Conference.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="With Ricky Kej"><img src="./images/excavate/17-shanti-samsara/with-ricky-kej.png" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">Artistic producer on Shanti Samsara, a global music album led by Grammy winner Ricky Kej. Launched at the 2015 United Nations Climate Change Conference in Paris by Prime Minister Narendra Modi and President François Hollande.</p>
+          <div class="entry-hero">
+        <div class="plate wide reveal-img">
+          <img src="./images/excavate/17-shanti-samsara/with-ricky-kej.png" alt="Shanti Samsara, with Ricky Kej" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">With Ricky Kej · Shanti Samsara collaboration</span><span>17 · Hero</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>Composer Ricky Kej, a Grammy winner, was assembling a record that would tie music to climate as the United Nations met in Paris for COP21. The brief to the studio was artistic direction: what does an album about the earth look like when it has 300 musicians on it.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>The studio worked as artistic producer across the record's visual identity and the staging of its launch. The collaboration ran from the cover artwork inward to how the record presented itself in the room where it was announced.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>Launched on 30 November 2015 at the United Nations Climate Change Conference, Paris, by Prime Minister Narendra Modi and President François Hollande. Over 300 musicians on the record, including 60 Grammy winners.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Lead</dt><dd>Ricky Kej (composer)</dd></div>
+            <div><dt>Role</dt><dd>Artistic producer</dd></div>
+            <div><dt>Date</dt><dd>30 November 2015</dd></div>
+            <div><dt>Launch</dt><dd><span class="line">UN Climate Change Conference (COP21), Paris</span><span class="line">Launched by Narendra Modi and François Hollande</span></dd></div>
+            <div><dt>Scale</dt><dd>300+ musicians, 60 Grammy winners</dd></div>
+            <div><dt>Links</dt><dd class="empty">TK</dd></div>
+          </dl>
+        </aside>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 18 · bezos-workshop -->
+    <article class="entry" id="bezos-workshop">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>18</em> · 2017</span>
+          <div class="fold-text">
+            <h3 class="fold-title">Bezos <em>workshop</em></h3>
+            <div class="fold-meta">Jeff Bezos <span class="sep">·</span> Private gathering <span class="sep">·</span> Workshop</div>
+            <p class="fold-tease">An art workshop for invited creators, hosted by Jeff Bezos.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A workshop on art and creative practice, conducted at Jeff Bezos's invitation for a private gathering of leading creators from around the world.</p>
+          <div class="entry-hero">
+        <div class="held-block">
+          <span class="ts-stamp">Entry held · Imagery in assembly</span>
+        </div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>Jeff Bezos hosts a closed annual gathering for invited thinkers and creators. In 2017 the studio was asked to run an art workshop for the room — what creative practice can teach a roomful of people whose work runs through other media.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>Workshop format, structured around the studio's "Kill Your Talk, Not Your Audience" method later codified during Story Collective (entry № 12).</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>A single-day workshop. Imagery and detail held at the host's request.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Host</dt><dd>Jeff Bezos</dd></div>
+            <div><dt>Role</dt><dd>Workshop facilitator</dd></div>
+            <div><dt>Date</dt><dd>2017</dd></div>
+            <div><dt>Format</dt><dd>Private workshop, invited audience</dd></div>
+            <div><dt>Status</dt><dd>Imagery held</dd></div>
+          </dl>
+        </aside>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- 19 · mona-lisa-2 -->
+    <article class="entry" id="mona-lisa-2">
+      <details class="fold" name="folds">
+        <summary>
+          <span class="fold-num">№ <em>19</em> · Date TK</span>
+          <div class="fold-text">
+            <h3 class="fold-title">Mona Lisa <em>2.0</em></h3>
+            <div class="fold-meta">Brainwave art <span class="sep">·</span> EEG <span class="sep">·</span> Series</div>
+            <p class="fold-tease">An EEG-driven reading of the Mona Lisa, painted from brain signal.</p>
+          </div>
+          <span class="fold-chevron" aria-hidden="true">+</span>
+        <span class="fold-specimen" data-cap="Mona Lisa 2.0"><img src="./images/excavate/19-mona-lisa-2/mona-01.jpg" alt="" loading="lazy" /></span>
+        </summary>
+        <div class="fold-body">
+          <p class="fold-subhead">A series of paintings produced from EEG-recorded responses to Leonardo's Mona Lisa. Brainwave signal becomes the input layer; the resulting compositions are the painting.</p>
+          <div class="entry-hero">
+        <div class="plate wide reveal-img">
+          <img src="./images/excavate/19-mona-lisa-2/mona-01.jpg" alt="Mona Lisa 2.0, brainwave art series" loading="lazy" />
+        </div>
+        <div class="plate-cap"><span class="l">Mona Lisa 2.0 · brainwave art series</span><span>19 · Hero</span></div>
+      </div>
+      <div class="entry-body">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>The brief</h4>
+            <p>If a painting can be made from a conductor's brain (entry № 11, Fidelio) and an orgasm (entry № 01, The Orgasm Project), what does it look like to make one from the act of looking at the most-looked-at painting in the world. Mona Lisa 2.0 was the studio's working answer.</p>
+          </div>
+          <div class="section">
+            <h4>The process</h4>
+            <p>EEG recordings of a viewer responding to Leonardo's Mona Lisa were translated into compositional input for paint. The resulting works are not portraits of the Mona Lisa; they are portraits of the act of seeing her.</p>
+          </div>
+          <div class="section">
+            <h4>Outcome</h4>
+            <p>A multi-panel series in the brainwave-art lineage. Details TK.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Client</dt><dd>Self-initiated</dd></div>
+            <div><dt>Source signal</dt><dd>EEG, viewer response to Mona Lisa</dd></div>
+            <div><dt>Date</dt><dd class="empty">TK</dd></div>
+            <div><dt>Lineage</dt><dd><span class="line">Fidelio (entry № 11)</span><span class="line">The Orgasm Project (entry № 01)</span></dd></div>
+            <div><dt>Output</dt><dd>Brainwave-derived painting series</dd></div>
+            <div><dt>Links</dt><dd class="empty">TK</dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="stills">
+        <div>
+          <div class="plate"><img src="./images/excavate/19-mona-lisa-2/mona-02.jpg" alt="Mona Lisa 2.0, work from the series" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">From the series</span><span>19A</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/19-mona-lisa-2/mona-03.jpg" alt="Mona Lisa 2.0, work from the series" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">From the series</span><span>19B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/19-mona-lisa-2/mona-04.jpg" alt="Mona Lisa 2.0, work from the series" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">From the series</span><span>19C</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/19-mona-lisa-2/mona-05.png" alt="Mona Lisa 2.0, work from the series" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">From the series</span><span>19D</span></div>
+        </div>
+      </div>
+        </div>
+      </details>
+    </article>
+
+    </section>
+
+    <!-- 64 by 1, its own section -->
+    <section class="reserve" id="sixty-four-by-one">
+      <div class="reserve-grid">
+        <div>
+          <span class="entry-num">Sister subsection · 2018 → ongoing</span>
+          <h2>64 <em>by</em> 1.</h2>
+          <p class="sub">An art collective co-founded with Karthik Kalyanaraman in 2018, built to blur the lines between art, art criticism, and art education. Featured on the cover of Marg for the magazine's 75th anniversary issue. Strange Genders, an AI-art collaboration with Harshit Agrawal under the 64/1 banner, was longlisted for the Lumen Prize 2021 and shown in Exostential at the Emami Art Foundation, Kolkata.</p>
+        </div>
+        <div class="reserve-hero">
+          <div class="plate landscape reveal-img">
+            <img src="./images/excavate/19-sixty-four-by-one/founders.jpg" alt="64/1 founders, Karthik Kalyanaraman and Raghava KK" loading="lazy" />
+          </div>
+          <div class="plate-cap"><span class="l">Karthik Kalyanaraman and Raghava KK, co-founders</span><span>64/1 · Founders</span></div>
+        </div>
+      </div>
+
+      <div class="entry-body" style="max-width: var(--container); margin: clamp(1.6rem,3vh,2.4rem) auto 0;">
+        <div class="entry-prose">
+          <div class="section">
+            <h4>What it is</h4>
+            <p>64/1 is a cultural collective for the future, co-founded in 2018 by Karthik Kalyanaraman and the studio. The name is taken from the chess problem of the grain on the chessboard — each square doubling — and is a working frame for how ideas, criticism, and education can compound when held in the same place.</p>
+          </div>
+          <div class="section">
+            <h4>What it does</h4>
+            <p>The collective produces artworks, criticism, and educational programming as a single body of work. Strange Genders, with Harshit Agrawal, is the collective's first published AI-art piece — a collaborative work exhibited as part of Exostential at the Emami Art Foundation, Kolkata, and longlisted for the Lumen Prize 2021.</p>
+          </div>
+          <div class="section">
+            <h4>Where it has been</h4>
+            <p>India's leading culture magazine Marg ran 64/1 on the cover of its 75th anniversary issue, framing the collective as a trailblazer of the next generation of Indian cultural practice.</p>
+          </div>
+        </div>
+        <aside class="entry-meta">
+          <dl>
+            <div><dt>Co-founders</dt><dd><span class="line">Karthik Kalyanaraman</span><span class="line">Raghava KK</span></dd></div>
+            <div><dt>Founded</dt><dd>2018</dd></div>
+            <div><dt>Remit</dt><dd>Art, art criticism, art education</dd></div>
+            <div><dt>Key work</dt><dd><span class="line">Strange Genders, with Harshit Agrawal</span><span class="line">Lumen Prize 2021 longlist</span><span class="line">Exostential, Emami Art Foundation, Kolkata</span></dd></div>
+            <div><dt>Press</dt><dd><a href="https://www.newindianexpress.com/magazine/2021/mar/14/marg-art-magazine-the-trailblazer-at-75-2275379.html" target="_blank" rel="noopener">Marg cover · New Indian Express</a></dd></div>
+          </dl>
+        </aside>
+      </div>
+
+      <div class="stills" style="max-width: var(--container); margin-left: auto; margin-right: auto;">
+        <div>
+          <div class="plate"><img src="./images/excavate/19-sixty-four-by-one/extra-01.png" alt="64/1, additional documentation" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">64/1 archive</span><span>64·A</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/19-sixty-four-by-one/extra-02.png" alt="64/1, additional documentation" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">64/1 archive</span><span>64·B</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/19-sixty-four-by-one/extra-03.jpg" alt="64/1, additional documentation" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">64/1 archive</span><span>64·C</span></div>
+        </div>
+        <div>
+          <div class="plate"><img src="./images/excavate/19-sixty-four-by-one/extra-04.jpg" alt="64/1, additional documentation" loading="lazy" /></div>
+          <div class="plate-cap"><span class="l">64/1 archive</span><span>64·D</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="closing">
+      <p>
+        For collaborations, write to <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>.
+      </p>
+    </section>
+  </main>
+
+  <!-- Colophon -->
+  <footer class="colophon" role="contentinfo">
+    <div class="col c-a">
+      <h3>Get in touch.</h3>
+      <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
+      <span>Press · Sales · Studio visits · Collaborations</span>
+    </div>
+    <div class="col c-b">
+      <a href="./Index2.html">← Index</a>
+      <a href="./calling2.html">Calling All Gods</a>
+      <a href="./studio2.html">Studio</a>
+      <a href="./lab2.html">Restless Lab</a>
+      <a href="./becoming2.html">Becoming Archived</a>
+      <a href="./writings2.html">Writings</a>
+    </div>
+    <div class="col c-c">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK &middot; <a href="./terms.html">Terms</a></span>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    'use strict';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+
+    /* Custom cursor */
+    const cursor = document.getElementById('cursor');
+    let cx = window.innerWidth/2, cy = window.innerHeight/2, tx=cx, ty=cy;
+    function loopCursor(){
+      tx += (cx - tx) * 0.22;
+      ty += (cy - ty) * 0.22;
+      cursor.style.transform = `translate(${tx}px, ${ty}px) translate(-50%, -50%)`;
+      requestAnimationFrame(loopCursor);
+    }
+    if (!isCoarse) {
+      window.addEventListener('pointermove', e => { cx = e.clientX; cy = e.clientY; }, { passive: true });
+      loopCursor();
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('pointerenter', () => cursor.classList.add('is-link'));
+        el.addEventListener('pointerleave', () => cursor.classList.remove('is-link'));
+      });
+    }
+
+    /* Reveal on scroll */
+    const reveals = document.querySelectorAll('.reveal, .reveal-img');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(el => io.observe(el));
+
+    const heroFrame = document.getElementById('heroFrame');
+    if (heroFrame) heroFrame.classList.add('in');
+
+    /* Smooth-scroll on internal anchor clicks, with offset for the sticky tape.
+       If the target contains a <details class="fold">, open it. The native
+       name="folds" attribute already enforces single-open behaviour. */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href').slice(1);
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        const fold = target.querySelector('details.fold');
+        if (fold && !fold.open) fold.open = true;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+        window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
+        history.replaceState(null, '', '#' + id);
+      });
+    });
+
+    /* Open a fold if the page is loaded with a matching hash */
+    function openFromHash() {
+      const hash = window.location.hash;
+      if (!hash) return;
+      const target = document.querySelector(hash);
+      if (!target) return;
+      const fold = target.querySelector('details.fold');
+      if (fold && !fold.open) fold.open = true;
+    }
+    window.addEventListener('hashchange', openFromHash);
+    openFromHash();
+  })();
+  </script>
+
+  <script src="./protect.js" defer></script>
+</body>
+</html>

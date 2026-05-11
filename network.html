@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Field №01, A Drifting Network · Raghava KK</title>
+  <meta name="description" content="An experiment. Paintings drifting in a pencil-grey network. Sampled at random on every visit. A study in plurality." />
+  <meta name="theme-color" content="#F4F1EA" />
+  <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
+  <meta name="robots" content="index, follow, noai, noimageai" />
+  <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./protect.css" />
+  <link rel="stylesheet" href="./css/network-field.css" />
+  <style>
+    /* ───────────────────────────────────────────────────────────
+       RAGHAVA KK · FIELD №01 · A DRIFTING NETWORK
+       Page chrome only — the field's own styles live in
+       ./css/network-field.css (shared with Index2 embedding).
+       ─────────────────────────────────────────────────────────── */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --paper:        #F4F1EA;
+      --paper-2:      #ECE7DA;
+      --paper-3:      #E3DCC8;
+      --ink:          #0E0E0C;
+      --ink-2:        #2B2A26;
+      --muted:        #8B8579;
+      --rule:         #1A1A17;
+      --rule-soft:    rgba(14,14,12,0.18);
+      --red:          #E63D22;
+
+      --serif:        'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --display:      'Instrument Serif', 'Fraunces', Georgia, serif;
+      --mono:         'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+      --gutter:       clamp(1rem, 2.4vw, 2rem);
+      --edge:         clamp(1rem, 2.6vw, 2.4rem);
+      --ease:         cubic-bezier(.2,.7,.2,1);
+      --ease-out:     cubic-bezier(.16,1,.3,1);
+    }
+
+    html { font-size: 16.5px; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
+
+    html, body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-feature-settings: "ss01" 1, "ss02" 1, "kern" 1, "liga" 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    body {
+      min-height: 100vh;
+      background-image:
+        radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      background-size: 3px 3px, auto;
+      background-position: 0 0, 0 0;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 1;
+      opacity: 0.5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    /* ─── TAPE ─── */
+    .tape {
+      position: relative; z-index: 3; width: 100%;
+      background: var(--ink); color: var(--paper);
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      overflow: hidden; border-bottom: 1px solid var(--ink);
+    }
+    .tape-track {
+      display: flex; gap: 4rem;
+      padding: 0.6rem 0;
+      white-space: nowrap;
+      animation: tape-scroll 60s linear infinite;
+      width: max-content;
+    }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── MASTHEAD ─── */
+    .masthead {
+      position: relative; z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: end; gap: 1rem;
+      padding: 1.2rem var(--edge) 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .masthead .left, .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center {
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      letter-spacing: 0.04em; text-transform: none;
+      color: var(--ink);
+    }
+    .masthead .stamp {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.18rem 0.5rem;
+      border: 1px solid var(--rule); border-radius: 999px;
+    }
+    .masthead .stamp.live::before {
+      content: "";
+      width: 6px; height: 6px; background: var(--red); border-radius: 50%;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.35;transform:scale(.7);} }
+    .home-link { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .home-link:hover { color: var(--red); border-bottom-color: var(--red); }
+
+    /* ─── PAGE HEADER ─── */
+    .page-head {
+      position: relative; z-index: 2;
+      padding: clamp(3rem, 7vh, 5rem) var(--edge) clamp(2rem, 4vh, 3rem);
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2);
+      margin-bottom: 0.9rem;
+    }
+    .eyebrow .num { color: var(--muted); margin-right: 0.6rem; }
+    .head-title {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.4rem, 6.2vw, 5.4rem);
+      line-height: 1.02; letter-spacing: -0.015em;
+      color: var(--ink); max-width: 22ch;
+    }
+    .head-title em { font-style: italic; color: var(--red); }
+    .head-dek {
+      margin-top: 1.2rem;
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+      line-height: 1.45;
+      color: var(--ink-2); max-width: 56ch;
+    }
+    .head-dek b { color: var(--ink); font-weight: 400; font-style: normal; font-family: var(--serif); }
+
+    /* ─── FIELD WRAPPER ─── */
+    .field-wrap {
+      position: relative; z-index: 2;
+      padding: 0 var(--edge) clamp(2rem, 4vh, 3rem);
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+    #field {
+      width: 100%;
+      height: clamp(560px, 78vh, 880px);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.15)),
+        var(--paper);
+      border: 1px solid var(--rule-soft);
+      touch-action: pan-y;
+      overflow: visible; /* hovered + edge-fading tiles can extend beyond */
+    }
+    .field-marg {
+      font-family: var(--mono);
+      font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.5rem; padding: 0 0.1rem;
+    }
+    .field-marg .accent { color: var(--red); }
+
+    /* ─── CONTROLS STRIP ─── */
+    .controls {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 0 var(--edge) clamp(3rem, 6vh, 5rem);
+      display: flex;
+      gap: 1.2rem;
+      align-items: baseline;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .controls .meta-line {
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink-2);
+      max-width: 70ch;
+    }
+    .controls .meta-line em { font-style: italic; color: var(--red); text-transform: none; letter-spacing: 0.04em; }
+    .controls .actions { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+    .actions button {
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 0.5rem 0.85rem;
+      background: var(--paper); color: var(--ink);
+      border: 1px solid var(--rule); border-radius: 999px;
+      cursor: pointer;
+      transition: background .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+    }
+    .actions button:hover { background: var(--ink); color: var(--paper); transform: translateY(-1px); }
+    .actions button .glyph { display: inline-block; margin-right: 0.4rem; transition: transform .4s var(--ease); }
+    .actions button#reshuffle:hover .glyph { transform: rotate(180deg); }
+
+    /* ─── COLOPHON ─── */
+    .colophon {
+      position: relative; z-index: 2;
+      padding: clamp(2.5rem, 6vh, 4rem) var(--edge) clamp(2rem, 4vh, 3rem);
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem; align-items: start;
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.35rem; }
+    .colophon h3 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: 1.05rem; letter-spacing: 0.02em;
+      color: var(--ink); text-transform: none;
+      margin-bottom: 0.2rem;
+    }
+    .colophon a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .seal {
+      width: 60px; height: 60px;
+      border: 1px solid var(--rule); border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--paper);
+      margin-bottom: 0.6rem;
+    }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; }
+
+    @media (max-width: 720px) {
+      .colophon { grid-template-columns: 1fr; }
+      .head-title { font-size: clamp(2rem, 9vw, 3rem); }
+      #field { height: clamp(420px, 70vh, 640px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .tape-track { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tape" role="presentation">
+    <div class="tape-track">
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Field №01</span><span class="dot"></span>
+      <span>A Drifting Network</span><span class="dot"></span>
+      <span>Random sample per visit</span><span class="dot"></span>
+      <span>Connections decorative, drift slow</span><span class="dot"></span>
+      <span>Pluralism is a practice, not a position</span><span class="dot"></span>
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Field №01</span><span class="dot"></span>
+      <span>A Drifting Network</span><span class="dot"></span>
+      <span>Random sample per visit</span><span class="dot"></span>
+      <span>Connections decorative, drift slow</span><span class="dot"></span>
+      <span>Pluralism is a practice, not a position</span><span class="dot"></span>
+    </div>
+  </div>
+
+  <header class="masthead" role="banner">
+    <div class="left">
+      <span><a class="home-link" href="./Index2.html">← Raghava KK</a></span>
+      <span class="stamp live">Experiment</span>
+    </div>
+    <div class="center">an artist working between gods &amp; algorithms</div>
+    <div class="right">
+      <span id="dateStamp">SUN · 11 MAY 2026</span>
+      <span id="timeStamp">--:--</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <p class="eyebrow"><span class="num">Field №01</span>A studio experiment</p>
+      <h1 class="head-title">A drifting <em>network</em>, redrawn on every visit.</h1>
+      <p class="head-dek">
+        Around two dozen paintings, sampled at random from across the series, set to drift like a slow flock.
+        The lines are decorative. They wire and rewire by proximity, in graphite. Nothing is being argued.
+        The work is to sit with <b>more than one thing being true at once</b>, and to watch the
+        configurations the room keeps offering.
+      </p>
+    </section>
+
+    <section class="field-wrap">
+      <div id="field" aria-label="A field of drifting painting tiles connected by pencil lines"></div>
+      <p class="field-marg">fig. 01 · <span class="accent">live</span> · pencil on paper, after a fashion</p>
+    </section>
+
+    <section class="controls">
+      <p class="meta-line" id="metaLine">
+        <span id="sampleCount">--</span> of <span id="totalCount">--</span> paintings on screen,
+        connections drawn between each tile and its nearest two neighbors. <em>Hover</em> to enlarge and read.
+      </p>
+      <div class="actions">
+        <button id="reshuffle" type="button" aria-label="Resample the field">
+          <span class="glyph">↻</span><span>resample</span>
+        </button>
+        <button id="freezeBtn" type="button" aria-pressed="false" aria-label="Pause drift">
+          <span class="label">pause</span>
+        </button>
+        <button id="hideBtn" type="button" aria-pressed="false" aria-label="Hide the field">
+          <span class="label">hide</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon" role="contentinfo">
+    <div class="col">
+      <h3>Get in touch.</h3>
+      <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
+      <span>Press · Sales · Studio visits</span>
+    </div>
+    <div class="col">
+      <a href="./studio2.html">Studio →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./Index2.html">Five doors →</a>
+    </div>
+    <div class="col">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK · <a href="./terms.html">Terms</a></span>
+    </div>
+  </footer>
+
+  <!-- Shared network field: data, then physics module -->
+  <script src="./data/network-works.js"></script>
+  <script src="./js/network-field.js"></script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* Date + time stamp */
+    const dateEl = document.getElementById('dateStamp');
+    const timeEl = document.getElementById('timeStamp');
+    function fmt(n) { return n < 10 ? '0' + n : '' + n; }
+    function tick() {
+      const d = new Date();
+      const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+      const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      if (dateEl) dateEl.textContent = `${days[d.getDay()]} · ${fmt(d.getDate())} ${months[d.getMonth()]} ${d.getFullYear()}`;
+      if (timeEl) timeEl.textContent = `${fmt(d.getHours())}:${fmt(d.getMinutes())}:${fmt(d.getSeconds())}`;
+    }
+    tick(); setInterval(tick, 1000);
+
+    const sampleEl = document.getElementById('sampleCount');
+    const totalEl  = document.getElementById('totalCount');
+
+    const api = window.RaghavaNetwork.init({
+      container: '#field',
+      onSampleChange: (n) => { sampleEl.textContent = n; },
+    });
+    totalEl.textContent = api.totalCount();
+
+    const reshuffle = document.getElementById('reshuffle');
+    const freezeBtn = document.getElementById('freezeBtn');
+    const hideBtn   = document.getElementById('hideBtn');
+
+    reshuffle.addEventListener('click', () => api.resample());
+
+    freezeBtn.addEventListener('click', () => {
+      if (api.isRunning()) { api.pause(); freezeBtn.querySelector('.label').textContent = 'resume'; freezeBtn.setAttribute('aria-pressed', 'true'); }
+      else                  { api.resume(); freezeBtn.querySelector('.label').textContent = 'pause';  freezeBtn.setAttribute('aria-pressed', 'false'); }
+    });
+
+    hideBtn.addEventListener('click', () => {
+      if (api.isHidden()) {
+        api.show();
+        hideBtn.querySelector('.label').textContent = 'hide';
+        hideBtn.setAttribute('aria-pressed', 'false');
+      } else {
+        api.hide();
+        hideBtn.querySelector('.label').textContent = 'show';
+        hideBtn.setAttribute('aria-pressed', 'true');
+      }
+    });
+  })();
+  </script>
+</body>
+</html>

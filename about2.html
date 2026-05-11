@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Raghava KK · Short bio</title>
+  <meta name="description" content="Raghava KK is a contemporary artist working between Bengaluru and New York. Painting, sculpture, books, AI systems, and a stubborn belief in pluralism." />
+  <meta name="theme-color" content="#F4F1EA" />
+  <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
+  <meta name="robots" content="index, follow, noai, noimageai" />
+  <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./protect.css" />
+  <style>
+    /* ───────────────────────────────────────────────────────────
+       RAGHAVA KK · ABOUT / SHORT BIO
+       Editorial chrome matching the rest of the site.
+       Single red accent. No em-dashes. Mono caps for utility.
+       ─────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --paper:        #F4F1EA;
+      --paper-2:      #ECE7DA;
+      --paper-3:      #E3DCC8;
+      --ink:          #0E0E0C;
+      --ink-2:        #2B2A26;
+      --muted:        #8B8579;
+      --rule:         #1A1A17;
+      --rule-soft:    rgba(14,14,12,0.18);
+      --red:          #E63D22;
+
+      --serif:        'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --display:      'Instrument Serif', 'Fraunces', Georgia, serif;
+      --mono:         'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+      --edge:         clamp(1rem, 2.6vw, 2.4rem);
+      --ease:         cubic-bezier(.2,.7,.2,1);
+      --ease-out:     cubic-bezier(.16,1,.3,1);
+    }
+
+    html { font-size: 16.5px; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
+    html, body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-feature-settings: "ss01" 1, "ss02" 1, "kern" 1, "liga" 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    body {
+      min-height: 100vh;
+      background-image:
+        radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      background-size: 3px 3px, auto;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0;
+      pointer-events: none; z-index: 1;
+      opacity: 0.5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    /* ─── TAPE ─── */
+    .tape {
+      position: relative; z-index: 3; width: 100%;
+      background: var(--ink); color: var(--paper);
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      overflow: hidden; border-bottom: 1px solid var(--ink);
+    }
+    .tape-track {
+      display: flex; gap: 4rem;
+      padding: 0.6rem 0;
+      white-space: nowrap;
+      animation: tape-scroll 60s linear infinite;
+      width: max-content;
+    }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── MASTHEAD ─── */
+    .masthead {
+      position: relative; z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: end; gap: 1rem;
+      padding: 1.2rem var(--edge) 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .masthead .left, .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center {
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      letter-spacing: 0.04em; text-transform: none;
+      color: var(--ink);
+    }
+    .masthead .stamp {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.18rem 0.5rem;
+      border: 1px solid var(--rule); border-radius: 999px;
+    }
+    .home-link { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .home-link:hover { color: var(--red); border-bottom-color: var(--red); }
+
+    /* ─── HERO ─── */
+    .bio-hero {
+      position: relative; z-index: 2;
+      padding: clamp(2.5rem, 7vh, 5rem) var(--edge) clamp(2rem, 5vh, 3.5rem);
+      max-width: 1480px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.6rem;
+      align-items: start;
+    }
+    .bio-eyebrow {
+      grid-column: 1 / span 4;
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2);
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--rule);
+    }
+    .bio-eyebrow .num { color: var(--muted); margin-right: 0.6rem; }
+    .bio-title {
+      grid-column: 1 / span 8;
+      grid-row: 2;
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.6rem, 6.2vw, 5.4rem);
+      line-height: 1.02; letter-spacing: -0.015em;
+      color: var(--ink);
+      max-width: 22ch;
+      margin-top: 1rem;
+    }
+    .bio-title em { font-style: italic; color: var(--red); }
+    .bio-dek {
+      grid-column: 1 / span 7;
+      grid-row: 3;
+      margin-top: 1.2rem;
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+      line-height: 1.45;
+      color: var(--ink-2);
+      max-width: 56ch;
+    }
+    .bio-dek b { color: var(--ink); font-weight: 400; font-style: normal; font-family: var(--serif); }
+
+    .bio-portrait {
+      grid-column: 9 / span 4;
+      grid-row: 1 / span 3;
+      align-self: start;
+    }
+    .bio-portrait img {
+      width: 100%;
+      height: auto;
+      display: block;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08), 0 14px 36px rgba(0,0,0,0.18);
+      filter: saturate(0.95) contrast(1.02);
+    }
+    .bio-portrait .cap {
+      margin-top: 0.6rem;
+      font-family: var(--mono);
+      font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    @media (max-width: 880px) {
+      .bio-eyebrow, .bio-title, .bio-dek, .bio-portrait { grid-column: 1 / -1; }
+      .bio-portrait { grid-row: auto; margin-top: 1rem; }
+      .bio-title { font-size: clamp(2.2rem, 9vw, 3rem); }
+    }
+
+    /* ─── PROSE BLOCK ─── */
+    .prose-block {
+      position: relative; z-index: 2;
+      padding: clamp(2rem, 5vh, 4rem) var(--edge);
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+    }
+    .prose-grid {
+      max-width: 1480px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.6rem;
+      align-items: start;
+    }
+    .prose-head {
+      grid-column: 1 / span 4;
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2);
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--rule);
+    }
+    .prose-col {
+      grid-column: 5 / span 7;
+      max-width: 60ch;
+      font-family: var(--serif);
+      font-size: clamp(1.0rem, 1.1vw, 1.1rem);
+      line-height: 1.62;
+      color: var(--ink);
+    }
+    .prose-col p + p { margin-top: 1.05em; }
+    .prose-col em { color: var(--red); font-style: italic; }
+    .prose-col i { font-style: italic; color: var(--ink); }
+    @media (max-width: 880px) {
+      .prose-head, .prose-col { grid-column: 1 / -1; }
+    }
+
+    /* ─── SECTION HEADER ─── */
+    .sect-head {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: clamp(3rem, 7vh, 5rem) var(--edge) clamp(1.4rem, 3vh, 2rem);
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.6rem;
+      align-items: end;
+    }
+    .sect-head .lab {
+      grid-column: 1 / span 4;
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2);
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--rule);
+    }
+    .sect-head h2 {
+      grid-column: 5 / span 8;
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2rem, 4.4vw, 3.4rem);
+      line-height: 1.04;
+      color: var(--ink);
+      max-width: 22ch;
+    }
+    .sect-head h2 em { color: var(--red); font-style: italic; }
+    .sect-head .dek {
+      grid-column: 5 / span 7;
+      margin-top: 0.6rem;
+      font-family: var(--serif);
+      font-size: clamp(0.98rem, 1.05vw, 1.05rem);
+      line-height: 1.55;
+      color: var(--ink-2);
+      max-width: 60ch;
+    }
+    @media (max-width: 880px) {
+      .sect-head .lab, .sect-head h2, .sect-head .dek { grid-column: 1 / -1; }
+    }
+
+    /* ─── PHOTO GRID ─── */
+    .photos {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 0 var(--edge) clamp(2rem, 4vh, 3rem);
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.4rem;
+    }
+    .photo {
+      position: relative;
+      background: #fff;
+      padding: 8px 8px 28px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.07), 0 10px 28px rgba(0,0,0,0.10);
+      transition: transform .5s var(--ease-out), box-shadow .4s var(--ease);
+    }
+    .photo:hover { transform: translateY(-3px) rotate(-0.4deg); box-shadow: 0 6px 10px rgba(0,0,0,0.10), 0 22px 44px rgba(0,0,0,0.22); }
+    .photo img { width: 100%; height: auto; display: block; filter: saturate(0.95) contrast(1.02); }
+    .photo .cap {
+      position: absolute;
+      left: 8px; right: 8px; bottom: 7px;
+      font-family: var(--mono);
+      font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .photo .cap em { font-style: italic; color: var(--red); text-transform: none; letter-spacing: 0.04em; }
+    .photo .cap a, .bio-portrait .cap a {
+      color: inherit; text-decoration: none;
+      border-bottom: 1px solid var(--rule-soft);
+      transition: color .2s var(--ease), border-color .2s var(--ease);
+    }
+    .photo .cap a:hover, .bio-portrait .cap a:hover {
+      color: var(--red); border-color: var(--red);
+    }
+    .photo.w-4  { grid-column: span 4; }
+    .photo.w-5  { grid-column: span 5; }
+    .photo.w-6  { grid-column: span 6; }
+    .photo.w-7  { grid-column: span 7; }
+    .photo.w-8  { grid-column: span 8; }
+    .photo.rot-l { transform: rotate(-0.6deg); }
+    .photo.rot-r { transform: rotate(0.5deg); }
+    .photo.rot-l:hover { transform: translateY(-3px) rotate(-1.2deg); }
+    .photo.rot-r:hover { transform: translateY(-3px) rotate(1.0deg); }
+    @media (max-width: 880px) {
+      .photos { grid-template-columns: 1fr; }
+      .photo.w-4, .photo.w-5, .photo.w-6, .photo.w-7, .photo.w-8 { grid-column: 1 / -1; }
+    }
+
+    /* ─── RECOGNITION LIST ─── */
+    .recog {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vh, 4rem) var(--edge) clamp(2.5rem, 6vh, 4.5rem);
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.6rem;
+    }
+    .recog .lab {
+      grid-column: 1 / span 4;
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2);
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--rule);
+    }
+    .recog .list {
+      grid-column: 5 / span 7;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .recog .row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 1rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--rule-soft);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      align-items: baseline;
+    }
+    .recog .row .year {
+      color: var(--muted);
+    }
+    .recog .row .body {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      letter-spacing: 0;
+      text-transform: none;
+      line-height: 1.45;
+    }
+    .recog .row .body em { color: var(--red); font-style: italic; }
+    @media (max-width: 880px) {
+      .recog .lab, .recog .list { grid-column: 1 / -1; }
+      .recog .row { grid-template-columns: 80px 1fr; }
+    }
+
+    /* ─── PHOTO CREDITS ─── */
+    .credits {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: clamp(1.5rem, 3vh, 2.5rem) var(--edge) clamp(1.5rem, 3vh, 2.5rem);
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.6rem;
+      align-items: baseline;
+    }
+    .credits .lab {
+      grid-column: 1 / span 4;
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2);
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--rule);
+    }
+    .credits .body {
+      grid-column: 5 / span 7;
+      font-family: var(--serif);
+      font-size: clamp(0.95rem, 1.0vw, 1.05rem);
+      line-height: 1.55;
+      color: var(--ink-2);
+      max-width: 60ch;
+    }
+    .credits .body em { color: var(--red); font-style: italic; }
+    .credits .body a {
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px solid var(--rule-soft);
+      transition: color .2s var(--ease), border-color .2s var(--ease);
+    }
+    .credits .body a:hover { color: var(--red); border-color: var(--red); }
+    @media (max-width: 880px) {
+      .credits .lab, .credits .body { grid-column: 1 / -1; }
+    }
+
+    /* ─── CONTACT STRIP ─── */
+    .contact {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vh, 4rem) var(--edge) clamp(3rem, 8vh, 6rem);
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.6rem;
+      align-items: end;
+    }
+    .contact h3 {
+      grid-column: 1 / span 6;
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+      line-height: 1.08;
+      color: var(--ink);
+      max-width: 18ch;
+    }
+    .contact h3 em { color: var(--red); font-style: italic; }
+    .contact .meta {
+      grid-column: 8 / span 5;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .contact .meta a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .contact .meta a:hover { color: var(--red); border-color: var(--red); }
+    @media (max-width: 880px) {
+      .contact h3, .contact .meta { grid-column: 1 / -1; }
+    }
+
+    /* ─── COLOPHON ─── */
+    .colophon {
+      position: relative; z-index: 2;
+      padding: clamp(2.5rem, 6vh, 4rem) var(--edge) clamp(2rem, 4vh, 3rem);
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.35rem; }
+    .colophon h3 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: 1.05rem; letter-spacing: 0.02em;
+      color: var(--ink); text-transform: none;
+      margin-bottom: 0.2rem;
+    }
+    .colophon a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .seal {
+      width: 60px; height: 60px;
+      border: 1px solid var(--rule); border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--paper);
+      margin-bottom: 0.6rem;
+    }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; }
+    @media (max-width: 720px) {
+      .colophon { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tape-track { animation: none; }
+      .photo { transition: none; }
+      .photo:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tape" role="presentation">
+    <div class="tape-track">
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Short bio</span><span class="dot"></span>
+      <span>Studio · Bengaluru ⇄ New York</span><span class="dot"></span>
+      <span>An artist working between gods and algorithms</span><span class="dot"></span>
+      <span>Pluralism is a practice, not a position</span><span class="dot"></span>
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Short bio</span><span class="dot"></span>
+      <span>Studio · Bengaluru ⇄ New York</span><span class="dot"></span>
+      <span>An artist working between gods and algorithms</span><span class="dot"></span>
+      <span>Pluralism is a practice, not a position</span><span class="dot"></span>
+    </div>
+  </div>
+
+  <header class="masthead" role="banner">
+    <div class="left">
+      <span><a class="home-link" href="./Index2.html">← Raghava KK</a></span>
+      <span class="stamp">About</span>
+    </div>
+    <div class="center">an artist working between gods &amp; algorithms</div>
+    <div class="right">
+      <span id="dateStamp">MON · 11 MAY 2026</span>
+      <span id="timeStamp">--:--</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="bio-hero">
+      <p class="bio-eyebrow"><span class="num">Folio · About</span>Short bio</p>
+      <h1 class="bio-title">An artist working between <em>gods</em> and algorithms.</h1>
+      <p class="bio-dek">
+        <b>Raghava KK</b> is a contemporary artist working between <b>Bengaluru</b> and <b>New York</b>. The practice runs on painting, sculpture, ceramics, books, AI systems, and a stubborn belief in pluralism, the idea that more than one thing can be true at once.
+      </p>
+      <figure class="bio-portrait">
+        <img src="./images/bio/portrait.jpg" alt="Raghava KK portrait" loading="lazy" />
+        <figcaption class="cap">Studio · Portrait · <a href="https://www.instagram.com/nim.is.hh/" target="_blank" rel="noopener noreferrer">Nimish Jain</a></figcaption>
+      </figure>
+    </section>
+
+    <!-- THE PRACTICE -->
+    <section class="prose-block" aria-labelledby="practice">
+      <div class="prose-grid">
+        <h2 class="prose-head" id="practice">The Practice</h2>
+        <div class="prose-col">
+          <p>
+            The practice runs in two registers. On one side, paint, canvas, clay, hand. On the other, code, sensors, models, performance. They share a single concern, which is the way a culture makes its gods and tests them. <em>What</em> gets to remain holy. What gets retired. Who is allowed to make the next one.
+          </p>
+          <p>
+            Raghava paints. He sculpts. He builds books, toys, and AI systems. He has given two TED talks. He has spoken at Harvard, in conversation with writers and physicists and one or two former heads of state. He has been collected privately and institutionally across India, the United States, and Europe. The work has been called pluralist for two decades. The work prefers the word <i>practice</i>.
+          </p>
+          <p>
+            The current focus is <em>Calling All Gods</em>, a solo show opening at Parsons, New York, in December 2026, built around two paintings and the structural language of being undone and held.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKING WITH MACHINES -->
+    <header class="sect-head">
+      <p class="lab">Section · 01</p>
+      <h2>Held in <em>conversation</em> with machines.</h2>
+      <p class="dek">
+        Brain sensors, projection mapping, generative models, holograms. The studio treats machines the way a 17th-century miniaturist treated apprentices, with affection, suspicion, and a list of instructions.
+      </p>
+    </header>
+    <section class="photos">
+      <figure class="photo w-7 rot-l">
+        <img src="./images/bio/ted-brainwave.jpg" alt="Raghava KK at TED, painting with brainwaves" loading="lazy" />
+        <figcaption class="cap"><em>TED</em> · painting with brainwaves · 2010</figcaption>
+      </figure>
+      <figure class="photo w-5 rot-r">
+        <img src="./images/bio/paintings-dance.jpg" alt="Anthropomorphisms / When Paintings Dance performance" loading="lazy" />
+        <figcaption class="cap"><em>Anthropomorphisms</em> · when paintings dance · california</figcaption>
+      </figure>
+    </section>
+
+    <!-- WORKING WITH PEOPLE -->
+    <header class="sect-head">
+      <p class="lab">Section · 02</p>
+      <h2>Held in <em>conversation</em> with people.</h2>
+      <p class="dek">
+        The studio's most important infrastructure is a conversation. A small selection from twenty years of them.
+      </p>
+    </header>
+    <section class="photos">
+      <figure class="photo w-6 rot-l">
+        <img src="./images/bio/with-bhutto.jpg" alt="With Benazir Bhutto at Harvard" loading="lazy" />
+        <figcaption class="cap"><em>With Benazir Bhutto</em> · harvard · cambridge</figcaption>
+      </figure>
+      <figure class="photo w-6 rot-r">
+        <img src="./images/bio/with-paul-simon.jpg" alt="With Paul Simon" loading="lazy" />
+        <figcaption class="cap"><em>With Paul Simon</em> · musician</figcaption>
+      </figure>
+      <figure class="photo w-5 rot-r">
+        <img src="./images/bio/with-al-gore.jpg" alt="With Al Gore at TED 2010" loading="lazy" />
+        <figcaption class="cap"><em>With Al Gore</em> · ted 2010</figcaption>
+      </figure>
+      <figure class="photo w-7 rot-l">
+        <img src="./images/bio/with-kahneman.jpg" alt="With Daniel Kahneman and Chris Anderson, New York 2011" loading="lazy" />
+        <figcaption class="cap"><em>With Kahneman &amp; Anderson</em> · new york · 2011</figcaption>
+      </figure>
+      <figure class="photo w-8">
+        <img src="./images/bio/teaching-morocco.jpg" alt="Teaching cartooning to children in Essaouira, Morocco" loading="lazy" />
+        <figcaption class="cap"><em>Teaching cartooning</em> · essaouira · morocco</figcaption>
+      </figure>
+    </section>
+
+    <!-- HELD IN PUBLIC -->
+    <header class="sect-head">
+      <p class="lab">Section · 03</p>
+      <h2>Held in <em>public</em>.</h2>
+      <p class="dek">
+        Installations and monumental works. The Robin Hood Foundation library, New York. The Guernica series, restaged for the present.
+      </p>
+    </header>
+    <section class="photos">
+      <figure class="photo w-7 rot-r">
+        <img src="./images/bio/robin-hood-library.jpg" alt="Robin Hood Foundation library installation" loading="lazy" />
+        <figcaption class="cap"><em>Robin Hood Foundation</em> · library installation · new york</figcaption>
+      </figure>
+      <figure class="photo w-5 rot-l">
+        <img src="./images/bio/liberty-guernica.jpg" alt="Raghava KK with La Liberté de Guernica" loading="lazy" />
+        <figcaption class="cap"><em>La Liberté de Guernica</em> · 144" × 312"</figcaption>
+      </figure>
+    </section>
+
+    <!-- RECOGNITION -->
+    <section class="recog" aria-labelledby="recog">
+      <h2 class="lab" id="recog">Selected Recognition</h2>
+      <div class="list">
+        <div class="row"><span class="year">2026 · DEC</span><span class="body"><em>Calling All Gods</em>, solo exhibition, Parsons, New York</span></div>
+        <div class="row"><span class="year">2025</span><span class="body"><em>33 Million Gods</em>, artist book, ongoing</span></div>
+        <div class="row"><span class="year">2022</span><span class="body">TED talk, second appearance</span></div>
+        <div class="row"><span class="year">2022</span><span class="body"><em>Guernica</em> project, launched in Dubai</span></div>
+        <div class="row"><span class="year">2011</span><span class="body">Cambridge / New York residencies, Anthropomorphisms performance work</span></div>
+        <div class="row"><span class="year">2010</span><span class="body">First TED talk, painting with brainwaves</span></div>
+        <div class="row"><span class="year">2000s</span><span class="body">Exhibitions across India, the United States, and Europe; Robin Hood Foundation library installation, New York</span></div>
+        <div class="row"><span class="year">1998</span><span class="body">First published political cartoons; <em>Not Allowed to Cry</em>, Birla House book</span></div>
+        <div class="row"><span class="year">ONGOING</span><span class="body">Held in <em>private</em> and institutional collections across India, the United States, and Europe</span></div>
+      </div>
+    </section>
+
+    <!-- PHOTO CREDITS -->
+    <section class="credits" aria-labelledby="credits">
+      <h2 class="lab" id="credits">Photographs</h2>
+      <p class="body">
+        Studio portraiture by <a href="https://www.instagram.com/nim.is.hh/" target="_blank" rel="noopener noreferrer">Nimish Jain</a> <em>(@nim.is.hh)</em>. Historical and event photos from the studio archive.
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" aria-labelledby="contact">
+      <h2 id="contact" style="grid-column:1/span 12;margin-bottom:1rem;font-family:var(--mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-2);padding-top:0;border:none;font-style:normal;font-weight:500;">Studio</h2>
+      <h3>Press, sales, and studio visits, by <em>appointment</em>.</h3>
+      <div class="meta">
+        <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
+        <span>Studio · Bengaluru</span>
+        <span>Studio · New York</span>
+        <span>By appointment</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon" role="contentinfo">
+    <div class="col">
+      <h3>Get in touch.</h3>
+      <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
+      <span>Press · Sales · Studio visits</span>
+    </div>
+    <div class="col">
+      <a href="./Index2.html">Index →</a>
+      <a href="./studio2.html">Studio →</a>
+      <a href="./lab2.html">Restless Lab →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./excavate2.html">Excavate with me →</a>
+    </div>
+    <div class="col">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK · <a href="./terms.html">Terms</a></span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+    const dateEl = document.getElementById('dateStamp');
+    const timeEl = document.getElementById('timeStamp');
+    function fmt(n) { return n < 10 ? '0' + n : '' + n; }
+    function tick() {
+      const d = new Date();
+      const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+      const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      if (dateEl) dateEl.textContent = `${days[d.getDay()]} · ${fmt(d.getDate())} ${months[d.getMonth()]} ${d.getFullYear()}`;
+      if (timeEl) timeEl.textContent = `${fmt(d.getHours())}:${fmt(d.getMinutes())}:${fmt(d.getSeconds())}`;
+    }
+    tick(); setInterval(tick, 1000);
+  })();
+  </script>
+</body>
+</html>
