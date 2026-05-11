@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
+  <link rel="stylesheet" href="./css/network-field.css" />
   <style>
     /* ───────────────────────────────────────────────────────────
        RAGHAVA KK · INDEX №2026 · COLLAGE EDITION
@@ -218,6 +219,7 @@
 
     .hero-grid {
       position: relative;
+      isolation: isolate; /* contain the network layer's negative z-index */
       max-width: 1480px;
       width: 100%;
       margin: 0 auto;
@@ -330,7 +332,14 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--ink-2);
+      cursor: pointer;
+      display: block;
+      transition: transform .35s var(--ease);
     }
+    .gods-counter:hover small,
+    .gods-counter:focus-visible small { color: var(--red); }
+    .gods-counter:focus-visible { outline: 1.5px solid var(--ink); outline-offset: 6px; }
+    .gods-counter small .open-cue { color: var(--red); font-style: italic; text-transform: none; letter-spacing: 0; }
     .gods-counter strong {
       display: block;
       font-family: var(--display);
@@ -520,6 +529,84 @@
       .manifesto h2, .quotes { grid-column: 1 / -1; }
       .quote:nth-child(2), .quote:nth-child(3) { padding-left: 0; }
     }
+
+    /* ─── HERO NETWORK (front layer) ───
+       The blank zone of the hero is now occupied by the drifting painting
+       network. The layer covers the hero's upper band, sits IN FRONT of
+       the wordmark / thesis / counter / bio, but its wrapper has
+       pointer-events:none so clicks fall through to text where there's
+       no tile. Individual tiles intercept their own pointer events. */
+    .hero-network-layer {
+      position: absolute;
+      top:  clamp(1rem, 3vh, 2.5rem);
+      left: 0;
+      right: 0;
+      height: clamp(360px, 62%, 540px);
+      z-index: 4;            /* above wordmark / thesis / hero-meta in this context */
+      pointer-events: none;  /* tiles override to auto */
+      overflow: visible;     /* hovered tiles + soft fade tiles can extend out */
+    }
+    .hero-network-layer #rkField {
+      width: 100%; height: 100%;
+      background: transparent;
+      pointer-events: none;
+    }
+    /* Tiles render at full strength — they're the focal interaction now. */
+    .hero-network-layer .rk-tile-frame {
+      filter: drop-shadow(0 2px 6px rgba(14,14,12,0.22));
+    }
+    .hero-network-layer .rk-tile:hover .rk-tile-frame {
+      filter: drop-shadow(0 10px 26px rgba(14,14,12,0.32));
+    }
+
+    /* Network controls — small editorial strip, top-right corner of hero. */
+    .hero-network-ctrl {
+      position: absolute;
+      top: clamp(2rem, 5vh, 4rem);
+      right: 0;
+      z-index: 6;
+      display: flex;
+      flex-direction: column;
+      gap: 0.18rem;
+      align-items: flex-end;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      pointer-events: auto;
+    }
+    .hero-network-ctrl .label {
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+    .hero-network-ctrl button {
+      background: transparent;
+      border: none;
+      padding: 0.1rem 0;
+      font: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      color: var(--ink-2);
+      cursor: pointer;
+      border-bottom: 1px solid transparent;
+      transition: color .2s var(--ease), border-color .2s var(--ease);
+    }
+    .hero-network-ctrl button:hover {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+    .hero-network-ctrl button .glyph { display: inline-block; margin-right: 0.25rem; }
+    .hero-network-ctrl[data-hidden="true"] .when-shown { display: none; }
+    .hero-network-ctrl:not([data-hidden="true"]) .when-hidden { display: none; }
+
+    /* Hide overlay on small screens — too crowded with foreground text. */
+    @media (max-width: 880px) {
+      .hero-network-layer { display: none; }
+      .hero-network-ctrl  { display: none; }
+    }
+    /* Always-on hidden flag (set by hide button). */
+    .hero-network-layer[data-hidden="true"] { display: none; }
 
     /* ─── DOORS / CARDS ─── */
     .doors-section {
@@ -1003,10 +1090,21 @@
     <!-- HERO -->
     <section class="hero" id="hero">
       <div class="hero-grid reveal-on">
-        <button class="shuffle" id="shuffleBtn" aria-label="Shuffle stickers">
-          <span class="arrow">↻</span>
-          <span>shuffle</span>
-        </button>
+        <!-- Field №01 overlay — drifts behind the foreground in the hero's blank zone -->
+        <div class="hero-network-layer" id="heroNetworkLayer" aria-hidden="true">
+          <div id="rkField"></div>
+        </div>
+        <div class="hero-network-ctrl" id="heroNetworkCtrl" data-hidden="false">
+          <span class="label">Field №01</span>
+          <button id="rkReshuffle" type="button" class="when-shown" aria-label="Resample the field">
+            <span class="glyph">↻</span>resample
+          </button>
+          <button id="rkFreeze" type="button" class="when-shown" aria-pressed="false" aria-label="Pause drift">
+            <span class="rk-freeze-label">pause</span>
+          </button>
+          <button id="rkHide" type="button" class="when-shown" aria-pressed="false" aria-label="Hide the field">hide</button>
+          <button id="rkShow" type="button" class="when-hidden" aria-label="Show the field">show ↗</button>
+        </div>
 
         <p class="hero-eyebrow reveal">
           <span class="tag">Painter</span>
@@ -1031,10 +1129,13 @@
         </p>
 
         <div class="hero-meta">
-          <div class="gods-counter reveal">
-            <span>Counted to date</span>
+          <div class="gods-counter reveal" id="godsCounter"
+               role="button" tabindex="0"
+               aria-haspopup="dialog" aria-controls="godsModal"
+               aria-label="Open 33,000,000 Gods, the ongoing artwork this live tally belongs to">
+            <span>Gods made so far · live tally</span>
             <strong><span id="counterNum">0</span><em>.</em></strong>
-            <small>fig. 02, population of the pantheon · live</small>
+            <small>from <i>33,000,000 Gods</i>, an ongoing artwork. <span class="open-cue">tap to enter ↗</span></small>
           </div>
           <div class="hero-bio reveal">
             Contemporary artist working between <b>Bengaluru</b> and <b>New York</b>. The practice runs on
@@ -1043,8 +1144,6 @@
           </div>
         </div>
 
-        <!-- Sticker layer (positions set by JS) -->
-        <div class="sticker-layer" id="stickerLayer" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -1063,7 +1162,7 @@
     <!-- DOORS -->
     <section class="doors-section" id="doors">
       <div class="doors-head">
-        <h2 class="reveal">Four <em>doors</em>.<br>Pick one.</h2>
+        <h2 class="reveal">Five <em>doors</em>.<br>Pick one.</h2>
         <div class="legend reveal">
           a working index of the practice.<br>
           updated whenever something happens.
@@ -1102,6 +1201,14 @@
           <span class="door-arrow" aria-hidden="true">→</span>
           <span class="door-specimen" data-cap="33M Gods"><img src="./images/books/art_33M_Gods.jpg" alt="" /></span>
         </a>
+
+        <a href="./excavate2.html" class="door-row reveal">
+          <span class="door-num">№ 05</span>
+          <h3 class="door-title">Excavate With Me</h3>
+          <span class="door-spec"><span class="lab">Collaborations · 2010 → ongoing</span>Ten projects made with people, institutions, and companies who arrived with a real question.</span>
+          <span class="door-arrow" aria-hidden="true">→</span>
+          <span class="door-specimen" data-cap="Cyborg Orgasm 1"><img src="./images/studio/06-orgasm-project/6B.jpg" alt="" /></span>
+        </a>
       </nav>
     </section>
 
@@ -1122,7 +1229,9 @@
       <span>Press · Sales · Studio visits</span>
     </div>
     <div class="col c-b">
+      <a href="./about2.html">Short bio →</a>
       <a href="./writings2.html">Writings →</a>
+      <a href="./sitemap2.html">Site map →</a>
       <span>Studio · Bengaluru</span>
       <span>Studio · New York</span>
       <span>By appointment</span>
@@ -1173,7 +1282,7 @@
     if (!isCoarse) {
       window.addEventListener('pointermove', (e) => { cx = e.clientX; cy = e.clientY; }, { passive: true });
       loopCursor();
-      document.querySelectorAll('a, button, .gods-trigger, .door-row, .shuffle, .wordmark').forEach(el => {
+      document.querySelectorAll('a, button, .gods-trigger, .gods-counter, .door-row, .shuffle, .wordmark').forEach(el => {
         el.addEventListener('pointerenter', () => cursor.classList.add('is-link'));
         el.addEventListener('pointerleave', () => cursor.classList.remove('is-link'));
       });
@@ -1276,130 +1385,11 @@
     // start counter immediately on load too (hero is above the fold)
     setTimeout(runCounter, 250);
 
-    /* ─── STICKERS ─── */
-    const layer = document.getElementById('stickerLayer');
-    const STICKERS = [
-      { src: './toys/Retired%20gods/ChatGPT%20Image%20Jan%2024%2C%202026%2C%2001_35_31%20PM.png', w: 150, tag: null },
-      { src: './toys/Retired%20gods/ChatGPT%20Image%20Jan%2024%2C%202026%2C%2001_49_43%20PM.png', w: 140, tag: 'retired god' },
-      { src: './toys/Retired%20gods/Gemini_Generated_Image_l2ugnl2ugnl2ugnl.png', w: 140, tag: null },
-      { src: './toys/The%20Doomscrollers/doomscroller%201.png', w: 160, tag: 'doomscroller' },
-      { src: './toys/The%20Doomscrollers/doomscroller%202.png', w: 150, tag: null },
-      { src: './toys/power%20fluff%20toys/9A.png', w: 130, tag: 'power fluff' },
-      { src: './toys/power%20fluff%20toys/9D.png', w: 130, tag: null }
-    ];
-
-    // Right-edge only. The left half is for the wordmark, thesis, counter, 
-    // never put stickers there. Two right zones, well above and well below
-    // the bio block (which sits roughly top: 55–82% on the right column).
-    const ZONES = [
-      { left: [82, 96],  top: [-2, 14]  },  // top-right (above bio)
-      { left: [80, 94],  top: [86, 98]  }   // bottom-right (below bio)
-    ];
-
-    function rand(min, max) { return Math.random() * (max - min) + min; }
-    function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-    function shuffle(arr) {
-      const a = arr.slice();
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-      }
-      return a;
-    }
-
-    let stickerEls = [];
-
-    function placeStickers() {
-      layer.innerHTML = '';
-      stickerEls = [];
-      // restraint: right-edge only. cap at the number of right zones (2).
-      const w = window.innerWidth;
-      const count = w < 700 ? 1 : 2;
-      const stickers = shuffle(STICKERS).slice(0, count);
-      const zones = shuffle(ZONES).slice(0, count);
-
-      stickers.forEach((s, i) => {
-        const z = zones[i];
-        const left = rand(z.left[0], z.left[1]);
-        const top  = rand(z.top[0], z.top[1]);
-        const rot  = rand(-14, 14);
-        const sw   = w < 700 ? Math.max(96, s.w * 0.6) : s.w;
-
-        const img = document.createElement('img');
-        img.className = 'sticker';
-        img.src = s.src;
-        img.alt = '';
-        img.draggable = false;
-        img.style.left = left + '%';
-        img.style.top = top + '%';
-        img.style.setProperty('--w', sw + 'px');
-        img.style.setProperty('--rot', rot + 'deg');
-        img.style.setProperty('--tx', '0px');
-        img.style.setProperty('--ty', '0px');
-        img.style.setProperty('--idle-dur', rand(6, 12).toFixed(2) + 's');
-        img.style.setProperty('--wob-x', rand(-10, 10).toFixed(1) + 'px');
-        img.style.setProperty('--wob-y', rand(-10, 10).toFixed(1) + 'px');
-        img.style.setProperty('--wob-r', rand(-3, 3).toFixed(1) + 'deg');
-        img.style.zIndex = String(10 + i);
-        layer.appendChild(img);
-        stickerEls.push(img);
-
-        if (s.tag) {
-          const tag = document.createElement('span');
-          tag.className = 'sticker-tag';
-          tag.textContent = s.tag;
-          tag.style.left = `calc(${left}% + ${sw * 0.4}px)`;
-          tag.style.top  = `calc(${top}% - 14px)`;
-          tag.style.transform = `rotate(${rand(-6, 6).toFixed(1)}deg)`;
-          layer.appendChild(tag);
-        }
-
-        attachDrag(img);
-      });
-    }
-
-    function attachDrag(el) {
-      let startX = 0, startY = 0, baseX = 0, baseY = 0, dragging = false;
-      el.addEventListener('pointerdown', (e) => {
-        e.preventDefault();
-        dragging = true;
-        el.classList.add('dragging');
-        el.setPointerCapture(e.pointerId);
-        startX = e.clientX; startY = e.clientY;
-        baseX = parseFloat(getComputedStyle(el).getPropertyValue('--tx')) || 0;
-        baseY = parseFloat(getComputedStyle(el).getPropertyValue('--ty')) || 0;
-        if (cursor) cursor.classList.add('is-drag');
-      });
-      el.addEventListener('pointermove', (e) => {
-        if (!dragging) return;
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-        el.style.setProperty('--tx', (baseX + dx) + 'px');
-        el.style.setProperty('--ty', (baseY + dy) + 'px');
-      });
-      function end() {
-        dragging = false;
-        el.classList.remove('dragging');
-        if (cursor) cursor.classList.remove('is-drag');
-      }
-      el.addEventListener('pointerup', end);
-      el.addEventListener('pointercancel', end);
-      el.addEventListener('lostpointercapture', end);
-    }
-
-    placeStickers();
-    window.addEventListener('resize', () => {
-      // Throttle
-      clearTimeout(window.__stickerTO);
-      window.__stickerTO = setTimeout(placeStickers, 220);
-    });
-
-    /* ─── Shuffle button + 'g' key ─── */
-    const shuffleBtn = document.getElementById('shuffleBtn');
-    if (shuffleBtn) shuffleBtn.addEventListener('click', placeStickers);
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'g' || e.key === 'G') placeStickers();
-    });
+    /* Stickers + shuffle removed 2026-05-11 — the hero's blank zone is
+       now occupied by the Field №01 network overlay instead. The sticker
+       CSS (.sticker, .sticker-tag, .sticker-layer, .shuffle) is left in
+       place but dormant; restoring stickers later only requires putting
+       the markup back. */
 
     /* ─── Door rows: cursor magnetic on the arrow only ─── */
     if (!isCoarse && !reduceMotion) {
@@ -1418,47 +1408,9 @@
       });
     }
 
-    /* ─── Wordmark triple-click easter egg: confetti of mini stickers ─── */
-    const wm = document.getElementById('wordmark');
-    let clicks = 0, clickTO;
-    if (wm) {
-      wm.addEventListener('click', () => {
-        clicks++;
-        clearTimeout(clickTO);
-        clickTO = setTimeout(() => clicks = 0, 600);
-        if (clicks >= 3) {
-          clicks = 0;
-          confettiBurst();
-        }
-      });
-    }
-
-    function confettiBurst() {
-      const burst = 18;
-      for (let i = 0; i < burst; i++) {
-        const s = pick(STICKERS);
-        const img = document.createElement('img');
-        img.src = s.src;
-        img.style.position = 'fixed';
-        img.style.left = (window.innerWidth/2) + 'px';
-        img.style.top = (window.innerHeight/3) + 'px';
-        img.style.width = '80px';
-        img.style.height = 'auto';
-        img.style.pointerEvents = 'none';
-        img.style.zIndex = '9000';
-        img.style.mixBlendMode = 'multiply';
-        img.style.transform = `translate(-50%,-50%) rotate(${rand(-30,30)}deg)`;
-        img.style.transition = 'transform 1.4s cubic-bezier(.16,1,.3,1), opacity 1.4s ease-out';
-        document.body.appendChild(img);
-        const tx = rand(-window.innerWidth*0.45, window.innerWidth*0.45);
-        const ty = rand(-window.innerHeight*0.4, window.innerHeight*0.5);
-        requestAnimationFrame(() => {
-          img.style.transform = `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) rotate(${rand(-180,180)}deg)`;
-          img.style.opacity = '0';
-        });
-        setTimeout(() => img.remove(), 1500);
-      }
-    }
+    /* Triple-click easter egg removed 2026-05-11 — depended on the
+       sticker dataset which has been retired in favor of the Field №01
+       network overlay. */
 
     /* ─── Recently logged: render from window.RECENT_FACTS ─── */
     const archiveListEl = document.getElementById('archiveList');
@@ -1546,6 +1498,13 @@
       if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
     }
     if (trigger) trigger.addEventListener('click', openModal);
+    const godsCounter = document.getElementById('godsCounter');
+    if (godsCounter) {
+      godsCounter.addEventListener('click', openModal);
+      godsCounter.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); }
+      });
+    }
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e) => {
@@ -1557,5 +1516,68 @@
 
   <script src="./draw.js" defer></script>
   <script src="./protect.js" defer></script>
+
+  <!-- Field №01 overlay — drifting painting network, behind the hero's foreground -->
+  <script src="./data/network-works.js" defer></script>
+  <script src="./js/network-field.js" defer></script>
+  <script defer>
+  (function () {
+    'use strict';
+    function init() {
+      if (!window.RaghavaNetwork || !window.NETWORK_WORKS) return;
+      const layer = document.getElementById('heroNetworkLayer');
+      const ctrl  = document.getElementById('heroNetworkCtrl');
+      if (!layer || !ctrl) return;
+
+      const api = window.RaghavaNetwork.init({
+        container: '#rkField',
+        // Tiles are the focal interactive element on the front layer now,
+        // so they render at full saturation. Easy knobs below — Raghava
+        // tweaks count/size here while iterating.
+        count:     24,        // exact tile count; raise/lower as desired
+        tileBase:  47,        // base tile size in px (~10% smaller)
+        tileHover: 2.8,       // hover scale
+        // Asymmetric bounding ellipse: wide on the right (across the
+        // hero), narrow on the left so most tiles stay off the wordmark.
+        // Stray tiles (~12%) still venture leftward past this bound.
+        outerRxFrac:     0.94,   // right side, wide
+        outerRxFracLeft: 0.42,   // left side, narrow — clears the wordmark
+        outerRyFrac:     0.84,
+        holeRxFrac:      0.18,
+        holeRyFrac:      0.20,
+        // Tune stray so "a few" peel left rather than many.
+        strayFraction: 0.10,     // ~2–3 of 24 tiles
+        strayOuterMul: 2.2,      // when stray, can reach near the left edge
+      });
+
+      const reshuffle = document.getElementById('rkReshuffle');
+      const freezeBtn = document.getElementById('rkFreeze');
+      const hideBtn   = document.getElementById('rkHide');
+      const showBtn   = document.getElementById('rkShow');
+      const freezeLabel = freezeBtn && freezeBtn.querySelector('.rk-freeze-label');
+
+      reshuffle && reshuffle.addEventListener('click', () => api.resample());
+      freezeBtn && freezeBtn.addEventListener('click', () => {
+        if (api.isRunning()) { api.pause(); freezeLabel.textContent = 'resume'; freezeBtn.setAttribute('aria-pressed', 'true'); }
+        else                  { api.resume(); freezeLabel.textContent = 'pause';  freezeBtn.setAttribute('aria-pressed', 'false'); }
+      });
+      hideBtn && hideBtn.addEventListener('click', () => {
+        api.hide();
+        layer.setAttribute('data-hidden', 'true');
+        ctrl.setAttribute('data-hidden', 'true');
+      });
+      showBtn && showBtn.addEventListener('click', () => {
+        layer.removeAttribute('data-hidden');
+        ctrl.setAttribute('data-hidden', 'false');
+        api.show();
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
+  })();
+  </script>
 </body>
 </html>

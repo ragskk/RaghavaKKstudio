@@ -1072,6 +1072,26 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* Deep-link support: ?work=<id> opens that work's vitrine on load.
+       Used by the Field №01 network on Index2 to land a click directly
+       on a specific painting. */
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const wantWork = params.get('work');
+      if (wantWork) {
+        let hit = null;
+        for (const s of SERIES) {
+          const idx = s.works.findIndex(w => w.id === wantWork);
+          if (idx >= 0) { hit = { slug: s.slug, idx }; break; }
+        }
+        if (hit) {
+          // Defer slightly so the index renders first; opening the vitrine
+          // is then a clean transition rather than a jarring on-load modal.
+          setTimeout(() => openVitrine(hit.slug, hit.idx), 60);
+        }
+      }
+    } catch (_) { /* malformed URL — ignore */ }
   })();
   </script>
   <script src="./protect.js" defer></script>

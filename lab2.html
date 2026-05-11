@@ -1113,6 +1113,17 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* Deep-link support: ?toy=<slug> opens that toy's modal on load.
+     Used by the Field №01 network on Index2 to land a click directly
+     on a specific toy. */
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const wantToy = params.get('toy');
+    if (wantToy && typeof openToy === 'function') {
+      setTimeout(() => openToy(wantToy), 60);
+    }
+  } catch (_) { /* malformed URL — ignore */ }
   </script>
   <script src="./protect.js" defer></script>
 </body>

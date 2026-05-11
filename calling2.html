@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Calling All Gods, Raghava KK</title>
-  <meta name="description" content="Calling All Gods. Parsons. December 2026. An open call." />
+  <meta name="description" content="Calling All Gods. Two paintings, four years. A show about being undone and held. Parsons / The New School, December 2026." />
   <meta name="theme-color" content="#F4F1EA" />
   <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
   <meta name="robots" content="index, follow, noai, noimageai" />
@@ -92,29 +92,29 @@
     .plates {
       max-width: 1480px; margin: clamp(2rem, 5vh, 4rem) auto;
       padding: 0 var(--edge);
-      display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.4rem;
-      align-items: end;
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.8rem;
+      align-items: start;
     }
     .plate { position: relative; }
-    .plate.p1 { grid-column: 1 / span 5; }
-    .plate.p2 { grid-column: 7 / span 5; transform: rotate(1.2deg); margin-top: 2.5rem; }
+    .plate.p1 { grid-column: 1 / span 6; }
+    .plate.p2 { grid-column: 7 / span 6; margin-top: 1.6rem; }
     .plate-frame {
       position: relative;
       background: var(--paper);
-      padding: 18px 18px 56px;
+      padding: 14px 14px 50px;
       box-shadow: 0 2px 0 rgba(14,14,12,0.05), 0 18px 40px rgba(14,14,12,0.14);
       transition: transform .5s var(--ease), box-shadow .5s var(--ease);
     }
-    .plate.p1 .plate-frame { transform: rotate(-1.5deg); }
-    .plate-frame:hover { transform: rotate(0deg) scale(1.015); }
+    .plate.p1 .plate-frame { transform: rotate(-0.7deg); }
+    .plate.p2 .plate-frame { transform: rotate(0.9deg); }
+    .plate-frame:hover { transform: rotate(0deg) scale(1.012); }
     .plate-img-wrap {
       position: relative;
-      aspect-ratio: 4 / 3;
       overflow: hidden;
       background: var(--paper-2);
       border: 1px solid var(--rule);
     }
-    .plate-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85) contrast(0.96); user-select: none; -webkit-user-drag: none; }
+    .plate-img-wrap img { width: 100%; height: auto; display: block; filter: saturate(0.92) contrast(0.98); user-select: none; -webkit-user-drag: none; }
     .plate-img-wrap::after {
       content: ""; position: absolute; inset: 0; pointer-events: none;
       background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.14 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
@@ -178,6 +178,48 @@
       float: left; padding: 0.05em 0.1em 0 0;
       color: var(--red);
     }
+
+    /* Premise statement, the four-line distinction */
+    .premise {
+      margin: 0.5rem 0 1.4rem;
+      padding: 1rem 0 1.2rem;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+      line-height: 1.15; letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .premise span { display: inline-block; margin-right: 0.5em; }
+    .premise .held { color: var(--red); }
+
+    /* Spine plate, the combined image inside §4 */
+    .spine-plate {
+      grid-column: 1 / -1 !important;
+      margin: 1.4rem 0 0.6rem;
+    }
+    .spine-plate .plate-frame { transform: none; padding: 16px 16px 52px; box-shadow: 0 2px 0 rgba(14,14,12,0.05), 0 24px 56px rgba(14,14,12,0.16); }
+    .spine-plate .plate-frame:hover { transform: scale(1.005); }
+    .spine-plate .plate-cap .ref { font-size: 1.05rem; }
+
+    /* Four-year wordmark */
+    .yearmark {
+      display: grid; grid-template-columns: auto 1fr; gap: 1.4rem; align-items: baseline;
+      margin: 0.6rem 0 1.2rem;
+      padding: 0.6rem 0 1rem;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .yearmark .num {
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(4rem, 9vw, 7.2rem); line-height: 0.9;
+      letter-spacing: -0.02em; color: var(--red);
+    }
+    .yearmark .label {
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .yearmark .label b { display: block; font-family: var(--display); font-style: italic; font-weight: 400; font-size: 1.2rem; color: var(--ink); letter-spacing: 0; text-transform: none; margin-top: 0.25rem; }
 
     .criteria { list-style: none; margin-top: 1rem; }
     .criteria li {
@@ -316,24 +358,24 @@
   <div class="tape" role="presentation">
     <div class="tape-track">
       <span>Calling All Gods</span><span class="dot"></span>
-      <span>Open Call · Issued May 2026</span><span class="dot"></span>
+      <span>Two paintings · Four years</span><span class="dot"></span>
       <span>Parsons / The New School · December 2026</span><span class="dot"></span>
-      <span>Self-nomination encouraged</span><span class="dot"></span>
-      <span>Theological legitimacy is not a disqualifying criterion</span><span class="dot"></span>
+      <span>Undone and held</span><span class="dot"></span>
+      <span>Vishwaroopa · La Liberté de Guernica</span><span class="dot"></span>
       <span>Calling All Gods</span><span class="dot"></span>
-      <span>Open Call · Issued May 2026</span><span class="dot"></span>
+      <span>Two paintings · Four years</span><span class="dot"></span>
       <span>Parsons / The New School · December 2026</span><span class="dot"></span>
-      <span>Self-nomination encouraged</span><span class="dot"></span>
-      <span>Theological legitimacy is not a disqualifying criterion</span><span class="dot"></span>
+      <span>Undone and held</span><span class="dot"></span>
+      <span>Vishwaroopa · La Liberté de Guernica</span><span class="dot"></span>
     </div>
   </div>
 
   <header class="masthead">
     <div class="left">
       <a href="./Index2.html" class="breadcrumb">← Raghava KK</a>
-      <span class="stamp live">Open Call</span>
+      <span class="stamp live">Show / 2026</span>
     </div>
-    <div class="center">an open call to deities currently in operational use</div>
+    <div class="center">two paintings, four years, a show about being undone and held</div>
     <div class="right">
       <span id="dateStamp">SUN · 03 MAY 2026</span>
       <span id="timeStamp">--:--</span>
@@ -342,17 +384,17 @@
 
   <main>
     <section class="page-head">
-      <span class="page-stamp reveal">Open Call · Issued May 2026</span>
+      <span class="page-stamp reveal">Exhibition · Parsons / December 2026</span>
       <h1 class="page-title reveal">Calling All <em>Gods</em>.</h1>
-      <p class="page-lede reveal">An open call to deities, addressable entities, and any belief structure currently in operational use.</p>
+      <p class="page-lede reveal">Two monumental paintings, four years in the making. A show about being undone, and held. The vocabulary is structural, not therapeutic.</p>
     </section>
 
     <div class="ledger">
-      <span>Parsons · New York</span>
-      <span class="right">December 2026</span>
+      <span>Parsons / The New School · New York</span>
+      <span class="right">December 2026 · Four years</span>
     </div>
 
-    <!-- PLATES -->
+    <!-- PLATES, the two-painting spine -->
     <section class="plates">
       <div class="plate p1 reveal">
         <div class="plate-frame">
@@ -362,7 +404,7 @@
           </div>
           <div class="plate-cap">
             <span class="ref">Vishwaroopa</span>
-            <span>Plate i</span>
+            <span>Plate i · cosmic holding</span>
           </div>
         </div>
       </div>
@@ -370,11 +412,11 @@
         <div class="plate-frame">
           <span class="plate-tape" aria-hidden="true"></span>
           <div class="plate-img-wrap">
-            <img src="./images/two%20paintings%20together.png" alt="Two paintings together, by Raghava KK" loading="lazy" draggable="false" />
+            <img src="./images/studio/03-guernica.jpg" alt="La Liberté de Guernica, painting by Raghava KK" loading="lazy" draggable="false" />
           </div>
           <div class="plate-cap">
-            <span class="ref">Two Paintings Together</span>
-            <span>Plate ii</span>
+            <span class="ref">La Liberté de Guernica</span>
+            <span>Plate ii · human endurance</span>
           </div>
         </div>
       </div>
@@ -383,59 +425,70 @@
     <!-- CLAUSES -->
     <section class="clauses">
       <div class="clause reveal">
-        <div class="clause-num"><span class="big">§ 1</span><span class="label">The Call</span></div>
+        <div class="clause-num"><span class="big">§ 1</span><span class="label">The Premise</span></div>
         <div class="clause-body">
-          <p class="lead-in">The studio of Raghava KK is now accepting submissions from gods, demigods, prophets, prophets-once-removed, idols, household spirits, ancestral attendants, animal incarnations, syncretic composites, brand mascots, algorithmic intermediaries, AI agents currently being addressed in supplication, and any other belief structure presently in operational use.</p>
-          <p><em>Self-nomination encouraged. Theological legitimacy is not a disqualifying criterion.</em></p>
+          <p class="lead-in">The show is built around a single distinction. A person, a body, a self, a world can lose its old form without disappearing. Something holds the fragments in relation long enough for another form to emerge. That structural fact, not anything therapeutic, is the subject.</p>
+          <p class="premise"><span>Not rescued.</span><span>Not healed.</span><span>Not made whole.</span><span class="held"><em>Held.</em></span></p>
+          <p>"Undone and held" is offered as architectural language, not as the language of recovery. The work does not claim that the breaking is a stage on the way to something better. It claims that holding is a condition, and that without it nothing else continues.</p>
         </div>
       </div>
 
       <div class="clause reveal">
-        <div class="clause-num"><span class="big">§ 2</span><span class="label">Eligibility</span></div>
+        <div class="clause-num"><span class="big">§ 2</span><span class="label">Vishwaroopa · Plate i</span></div>
         <div class="clause-body">
-          <p>Candidates may be of any cosmology, any age, any vintage. Multi-armed welcome. Single-attribute welcome. Recently invented welcome. Long-retired welcome. Operational status, currency of worship, and consensus across traditions are not required.</p>
-          <p>Submission is open to entities being addressed by anyone, anywhere, in any tongue, with any frequency.</p>
+          <p>Everything appearing at once. Gods, ideologies, belief systems, time, violence, contradiction, totality. <em>Vishwaroopa</em> is the cosmos as container.</p>
+          <p>The terror in the painting is real. It is not resolved into peace, smoothed into harmony, or talked down. It is held in formation by a divine architecture that does not flinch. The chaos persists. The architecture also persists. Both are true at the same time, and that is the painting's argument.</p>
+          <p>This is cosmic holding. The universe holds everything.<span class="marg">Acrylic on canvas · monumental scale · 2022 – 2026</span></p>
         </div>
       </div>
 
       <div class="clause reveal">
-        <div class="clause-num"><span class="big">§ 3</span><span class="label">Review Criteria</span></div>
+        <div class="clause-num"><span class="big">§ 3</span><span class="label">La Liberté de Guernica · Plate ii</span></div>
         <div class="clause-body">
-          <ul class="criteria">
-            <li><span class="num">i.</span><span class="crit">Iconographic durability <small>The face survives reproduction.</small></span></li>
-            <li><span class="num">ii.</span><span class="crit">Emotional load-bearing <small>Holds weight when addressed sincerely.</small></span></li>
-            <li><span class="num">iii.</span><span class="crit">Cross-cultural portability <small>Travels without losing identity.</small></span></li>
-            <li><span class="num">iv.</span><span class="crit">Retrievability under stress <small>Comes when called.</small></span></li>
-            <li><span class="num">v.</span><span class="crit">Visibility under contemporary lighting <small>Legible to a 2026 audience.</small></span></li>
-          </ul>
+          <p>A single figure standing inside collision. Sacred and disposable. Mythological and cartoon. Ancient and contemporary. <em>La Liberté de Guernica</em> is the human position when nothing divine has been guaranteed.</p>
+          <p>She is not liberated in any triumphant sense. She is surviving. The painting argues that endurance without a guarantee from above is itself a form of dignity, and that the lack of rescue is not the same as abandonment. The figure is upright. The collision continues around her. She remains.</p>
+          <p>This is human endurance. What it feels like to live inside the cosmos that <em>Vishwaroopa</em> describes.<span class="marg">Acrylic on canvas · monumental scale · 2022 – 2026</span></p>
         </div>
       </div>
 
       <div class="clause reveal">
-        <div class="clause-num"><span class="big">§ 4</span><span class="label">The Selected</span></div>
+        <div class="clause-num"><span class="big">§ 4</span><span class="label">The Spine</span></div>
         <div class="clause-body">
-          <div class="selected">
-            <article class="work tk"><span class="accession">CAG-001</span><div class="title-line"><span class="title tk">[Work, title TK]</span><span class="year">[Year]</span><span class="materials">[Medium · dimensions · one-line citation of what the piece argues]</span></div></article>
-            <article class="work tk"><span class="accession">CAG-002</span><div class="title-line"><span class="title tk">[Work, title TK]</span><span class="year">[Year]</span><span class="materials">[Medium · dimensions · citation]</span></div></article>
-            <article class="work tk"><span class="accession">CAG-003</span><div class="title-line"><span class="title tk">[Work, title TK]</span><span class="year">[Year]</span><span class="materials">[Medium · dimensions · citation]</span></div></article>
-            <article class="work tk"><span class="accession">CAG-004</span><div class="title-line"><span class="title tk">[Work, title TK]</span><span class="year">[Year]</span><span class="materials">[Medium · dimensions · citation]</span></div></article>
-            <article class="work tk"><span class="accession">CAG-005</span><div class="title-line"><span class="title tk">[Work, title TK]</span><span class="year">[Year]</span><span class="materials">[Medium · dimensions · citation]</span></div></article>
+          <p>Together, the two paintings carry the show.</p>
+          <p><em>Vishwaroopa</em> shows the universe holding everything. <em>La Liberté de Guernica</em> shows what it feels like to live inside that collision as a human being. One painting is the architecture. The other is the inhabitant. Neither is complete without the other.</p>
+
+          <div class="plate spine-plate reveal" aria-label="The two paintings, installed together">
+            <div class="plate-frame">
+              <div class="plate-img-wrap">
+                <img src="./images/two%20paintings%20together.png" alt="Vishwaroopa and La Liberté de Guernica, installed together" loading="lazy" draggable="false" />
+              </div>
+              <div class="plate-cap">
+                <span class="ref">Vishwaroopa · La Liberté de Guernica</span>
+                <span>The spine, installed</span>
+              </div>
+            </div>
           </div>
+
+          <p>The pair sets the question the rest of the show responds to: what is the architecture that holds a life that has been undone, when no rescue is forthcoming? The other works in the room read against this pair. They argue, qualify, soften, sharpen. The spine does not bend.</p>
         </div>
       </div>
 
       <div class="clause reveal">
-        <div class="clause-num"><span class="big">§ 5</span><span class="label">Director's Note · Draft</span></div>
+        <div class="clause-num"><span class="big">§ 5</span><span class="label">Four Years</span></div>
         <div class="clause-body">
-          <p>The title is meant straight. Pluralism in 2026 is no longer a question of whether there are many gods, there are, and most of them are working. The question is which ones are currently on call, who is dialing, and what infrastructure mediates the connection.</p>
-          <p>Calling All Gods is an open invitation to whatever is currently being addressed in the world. The premise of the show is that <em>addressability</em>, not authenticity, is the contemporary criterion of divinity. A god is what gets called.<span class="marg">[Replace with your own. The above is a stub.]</span></p>
+          <div class="yearmark">
+            <span class="num">4</span>
+            <span class="label">Years of work<b>2022 – 2026</b></span>
+          </div>
+          <p>Both paintings were made over four years. Layers, returns, refusals, repaintings. Long stretches of holding the canvases without working on them. Days when the painting was changing and days when the painter was. The four years are part of what the work is.</p>
+          <p>The show is offered with the four years, not in spite of them. The duration is not a fact about the artist's labor schedule. It is internal to the argument the paintings make about holding.</p>
         </div>
       </div>
 
       <div class="clause reveal">
         <div class="clause-num"><span class="big">§ 6</span><span class="label">Sourcebook</span></div>
         <div class="clause-body">
-          <p>The work in this exhibition is in conversation with the artist's book <em>33M Gods</em>, offered here as the operating premise of the show. Visitors are encouraged to read it as inspiration material before viewing.</p>
+          <p>The exhibition sits next to the artist's book <em>33M Gods</em>, offered as the operating premise of the room. Pluralism in 2026 is no longer a question of whether there are many gods. There are, and most of them are working. The book is short. It is recommended before viewing.</p>
           <div class="sourcebook">
             <a href="./books/art%20books/33M%20Gods.pdf" download="33M Gods.pdf" class="source-card" aria-label="Download 33M Gods, artist book by Raghava KK">
               <img src="./images/books/art_33M_Gods.jpg" alt="33M Gods, cover" loading="lazy" />
@@ -467,9 +520,9 @@
 
   <footer class="colophon">
     <div class="col c-a">
-      <h3>Press &amp; submissions.</h3>
+      <h3>Press &amp; inquiries.</h3>
       <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
-      <span>Open call, write in</span>
+      <span>Write in</span>
     </div>
     <div class="col c-b">
       <span>Parsons · NYC</span>
