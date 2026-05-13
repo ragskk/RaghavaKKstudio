@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>RKK Studio · Composer</title>
-  <meta name="description" content="The studio's drop-page composer. Local editor for RKK." />
+  <title>Design Studio · RKK</title>
+  <meta name="description" content="Design Studio — the in-browser composer for Raghava KK's website. Local editor; not the public art studio." />
   <meta name="theme-color" content="#F4F1EA" />
   <link rel="icon" type="image/png" href="../images/Raghava%20KK%20Logo-02.png" />
   <meta name="robots" content="noindex, nofollow" />
@@ -18,7 +18,7 @@
 
   <header class="studio-toolbar" id="toolbar">
     <div class="studio-tb-group studio-tb-mark">
-      <span class="studio-mark">RKK · STUDIO</span>
+      <span class="studio-mark">DESIGN · STUDIO</span>
     </div>
 
     <div class="studio-tb-group" id="page-controls">
@@ -35,13 +35,20 @@
       <button class="studio-tb-btn" data-add="spec-sheet" title="Spec sheet">S SPEC</button>
       <button class="studio-tb-btn" data-add="single-field" title="Single field">F FIELD</button>
       <button class="studio-tb-btn" data-add="asterism" title="Asterism">· ASTERISM</button>
-      <button id="btn-section" class="studio-tb-btn" type="button" title="Insert section">+ SECTION</button>
+      <button id="btn-section" class="studio-tb-btn" type="button" title="Insert pre-baked template (bundle of elements)">+ TEMPLATE</button>
       <span class="studio-tb-hint">↳ IMAGE: DROP A PNG</span>
     </div>
 
     <div class="studio-tb-group" id="history-controls">
       <button id="btn-undo" class="studio-tb-btn" type="button" title="Undo (Cmd+Z)">UNDO</button>
       <button id="btn-redo" class="studio-tb-btn" type="button" title="Redo (Cmd+Shift+Z)">REDO</button>
+    </div>
+
+    <div class="studio-tb-group" id="viewport-controls">
+      <span class="studio-tb-label">VIEWPORT</span>
+      <button id="btn-vp-desktop" class="studio-tb-btn studio-vp-btn is-active" type="button" data-vp="desktop" title="Desktop view (full width)">DT</button>
+      <button id="btn-vp-tablet"  class="studio-tb-btn studio-vp-btn" type="button" data-vp="tablet"  title="Tablet view (1024px)">TB</button>
+      <button id="btn-vp-phone"   class="studio-tb-btn studio-vp-btn" type="button" data-vp="phone"   title="Phone view (375px)">PH</button>
     </div>
 
     <div class="studio-tb-group studio-tb-right">
@@ -105,7 +112,7 @@
 
   <div class="studio-section-picker" id="section-picker" hidden aria-hidden="true">
     <div class="studio-section-picker-head">
-      <span class="studio-section-title">SECTIONS</span>
+      <span class="studio-section-title">TEMPLATES</span>
       <button id="btn-section-picker-close" class="studio-icon-btn" type="button" title="Close">×</button>
     </div>
     <div class="studio-section-picker-grid" id="section-picker-grid"></div>

@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Field №01, A Drifting Network · Raghava KK</title>
-  <meta name="description" content="An experiment. Paintings drifting in a pencil-grey network. Sampled at random on every visit. A study in plurality." />
+  <title>The Library · Raghava KK</title>
+  <meta name="description" content="A small library of artist books and text-only booklets from the studio of Raghava KK. Held on a hand-drawn shelf." />
   <!-- Open Graph / social previews -->
-  <meta property="og:title" content="Field №01, A Drifting Network · Raghava KK" />
-  <meta property="og:description" content="An experiment. Paintings drifting in a pencil-grey network. Sampled at random on every visit. A study in plurality." />
+  <meta property="og:title" content="The Library · Raghava KK" />
+  <meta property="og:description" content="A small library of artist books and text-only booklets from the studio of Raghava KK. Held on a hand-drawn shelf." />
   <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
-  <meta property="og:url" content="https://raghavakkstudio.com/network" />
+  <meta property="og:url" content="https://raghavakkstudio.com/library2" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Raghava KK" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Field №01, A Drifting Network · Raghava KK" />
-  <meta name="twitter:description" content="An experiment. Paintings drifting in a pencil-grey network. Sampled at random on every visit. A study in plurality." />
+  <meta name="twitter:title" content="The Library · Raghava KK" />
+  <meta name="twitter:description" content="A small library of artist books and text-only booklets from the studio of Raghava KK. Held on a hand-drawn shelf." />
   <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
-  <link rel="canonical" href="https://raghavakkstudio.com/network" />
+  <link rel="canonical" href="https://raghavakkstudio.com/library2" />
   <meta name="theme-color" content="#F4F1EA" />
   <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
   <meta name="robots" content="index, follow, noai, noimageai" />
@@ -26,14 +26,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
-  <link rel="stylesheet" href="./css/network-field.css" />
+  <link rel="stylesheet" href="./css/book-modal.css" />
+  <link rel="stylesheet" href="./css/library-shelf.css" />
   <style>
     /* ───────────────────────────────────────────────────────────
-       RAGHAVA KK · FIELD №01 · A DRIFTING NETWORK
-       Page chrome only — the field's own styles live in
-       ./css/network-field.css (shared with Index2 embedding).
+       RAGHAVA KK · THE LIBRARY
+       Folio number for the library. Standard chrome. The shelf
+       module owns its own visual logic; this page only sets up
+       the broadsheet wrapper and the page head.
        ─────────────────────────────────────────────────────────── */
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     :root {
@@ -51,20 +52,16 @@
       --display:      'Instrument Serif', 'Fraunces', Georgia, serif;
       --mono:         'JetBrains Mono', ui-monospace, Menlo, monospace;
 
-      --gutter:       clamp(1rem, 2.4vw, 2rem);
       --edge:         clamp(1rem, 2.6vw, 2.4rem);
       --ease:         cubic-bezier(.2,.7,.2,1);
       --ease-out:     cubic-bezier(.16,1,.3,1);
     }
-
     html { font-size: 16.5px; }
     @media (min-width: 1280px) { html { font-size: 17.5px; } }
-
     html, body {
       background: var(--paper);
       color: var(--ink);
       font-family: var(--serif);
-      font-feature-settings: "ss01" 1, "ss02" 1, "kern" 1, "liga" 1;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
@@ -76,17 +73,15 @@
         radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px),
         linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
       background-size: 3px 3px, auto;
-      background-position: 0 0, 0 0;
     }
     body::before {
-      content: "";
-      position: fixed; inset: 0;
+      content: ""; position: fixed; inset: 0;
       pointer-events: none; z-index: 1;
       opacity: 0.5; mix-blend-mode: multiply;
       background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
     }
 
-    /* ─── TAPE ─── */
+    /* TAPE */
     .tape {
       position: relative; z-index: 3; width: 100%;
       background: var(--ink); color: var(--paper);
@@ -105,7 +100,7 @@
     .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
     @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ─── MASTHEAD ─── */
+    /* MASTHEAD */
     .masthead {
       position: relative; z-index: 3;
       display: grid;
@@ -130,19 +125,13 @@
       padding: 0.18rem 0.5rem;
       border: 1px solid var(--rule); border-radius: 999px;
     }
-    .masthead .stamp.live::before {
-      content: "";
-      width: 6px; height: 6px; background: var(--red); border-radius: 50%;
-      animation: pulse 1.6s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.35;transform:scale(.7);} }
     .home-link { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s var(--ease), border-color .2s var(--ease); }
     .home-link:hover { color: var(--red); border-bottom-color: var(--red); }
 
-    /* ─── PAGE HEADER ─── */
+    /* PAGE HEAD */
     .page-head {
       position: relative; z-index: 2;
-      padding: clamp(3rem, 7vh, 5rem) var(--edge) clamp(2rem, 4vh, 3rem);
+      padding: clamp(2.5rem, 6vh, 4.5rem) var(--edge) clamp(1.5rem, 3vh, 2.5rem);
       max-width: 1480px;
       margin: 0 auto;
     }
@@ -155,78 +144,69 @@
     .eyebrow .num { color: var(--muted); margin-right: 0.6rem; }
     .head-title {
       font-family: var(--display); font-style: italic; font-weight: 400;
-      font-size: clamp(2.4rem, 6.2vw, 5.4rem);
-      line-height: 1.02; letter-spacing: -0.015em;
+      font-size: clamp(2.4rem, 5.8vw, 4.8rem);
+      line-height: 1.04; letter-spacing: -0.015em;
       color: var(--ink); max-width: 22ch;
     }
-    .head-title em { font-style: italic; color: var(--red); }
+    .head-title em { color: var(--red); font-style: italic; }
     .head-dek {
-      margin-top: 1.2rem;
+      margin-top: 1rem;
       font-family: var(--display); font-style: italic;
-      font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+      font-size: clamp(1.0rem, 1.4vw, 1.2rem);
       line-height: 1.45;
-      color: var(--ink-2); max-width: 56ch;
+      color: var(--ink-2);
+      max-width: 60ch;
     }
     .head-dek b { color: var(--ink); font-weight: 400; font-style: normal; font-family: var(--serif); }
 
-    /* ─── FIELD WRAPPER ─── */
-    .field-wrap {
+    /* SHELF FRAME */
+    .library-frame {
       position: relative; z-index: 2;
       padding: 0 var(--edge) clamp(2rem, 4vh, 3rem);
       max-width: 1480px;
       margin: 0 auto;
     }
-    #field {
-      width: 100%;
-      height: clamp(560px, 78vh, 880px);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.15)),
-        var(--paper);
-      border: 1px solid var(--rule-soft);
-      touch-action: pan-y;
-      overflow: visible; /* hovered + edge-fading tiles can extend beyond */
-    }
-    .field-marg {
+
+    .library-frame .marg {
+      margin-top: 0.5rem;
       font-family: var(--mono);
       font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--muted);
-      margin-top: 0.5rem; padding: 0 0.1rem;
     }
-    .field-marg .accent { color: var(--red); }
+    .library-frame .marg .accent { color: var(--red); }
 
-    /* ─── CONTROLS STRIP ─── */
-    .controls {
+    /* LEGEND */
+    .legend {
       max-width: 1480px;
       margin: 0 auto;
-      padding: 0 var(--edge) clamp(3rem, 6vh, 5rem);
-      display: flex;
-      gap: 1.2rem;
-      align-items: baseline;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      padding: clamp(2rem, 4vh, 3rem) var(--edge) clamp(3rem, 7vh, 5rem);
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.6rem;
+      align-items: start;
     }
-    .controls .meta-line {
+    .legend .lab {
+      grid-column: 1 / span 4;
       font-family: var(--mono);
-      font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--ink-2);
-      max-width: 70ch;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--rule);
     }
-    .controls .meta-line em { font-style: italic; color: var(--red); text-transform: none; letter-spacing: 0.04em; }
-    .controls .actions { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
-    .actions button {
-      font-family: var(--mono);
-      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
-      padding: 0.5rem 0.85rem;
-      background: var(--paper); color: var(--ink);
-      border: 1px solid var(--rule); border-radius: 999px;
-      cursor: pointer;
-      transition: background .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+    .legend .copy {
+      grid-column: 5 / span 7;
+      font-family: var(--serif);
+      font-size: clamp(0.98rem, 1.05vw, 1.05rem);
+      line-height: 1.55;
+      color: var(--ink-2);
+      max-width: 60ch;
     }
-    .actions button:hover { background: var(--ink); color: var(--paper); transform: translateY(-1px); }
-    .actions button .glyph { display: inline-block; margin-right: 0.4rem; transition: transform .4s var(--ease); }
-    .actions button#reshuffle:hover .glyph { transform: rotate(180deg); }
+    .legend .copy em { color: var(--red); font-style: italic; }
+    @media (max-width: 880px) {
+      .legend .lab, .legend .copy { grid-column: 1 / -1; }
+    }
 
-    /* ─── COLOPHON ─── */
+    /* COLOPHON — canonical 3-column. Page-specific c-a; unified c-b/c-c. */
     .colophon {
       position: relative; z-index: 2;
       padding: clamp(2.5rem, 6vh, 4rem) var(--edge) clamp(2rem, 4vh, 3rem);
@@ -234,12 +214,13 @@
       background: var(--paper-2);
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 2rem; align-items: start;
+      gap: 2rem;
       font-family: var(--mono);
       font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--ink-2);
     }
-    .colophon .col { display: flex; flex-direction: column; gap: 0.35rem; }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.4rem; }
+    .colophon .col.c-c { align-items: flex-end; }
     .colophon h3 {
       font-family: var(--display); font-style: italic; font-weight: 400;
       font-size: 1.05rem; letter-spacing: 0.02em;
@@ -256,12 +237,11 @@
       margin-bottom: 0.6rem;
     }
     .colophon .seal img { width: 70%; height: 70%; object-fit: contain; }
-
     @media (max-width: 720px) {
       .colophon { grid-template-columns: 1fr; }
-      .head-title { font-size: clamp(2rem, 9vw, 3rem); }
-      #field { height: clamp(420px, 70vh, 640px); }
+      .colophon .col.c-c { align-items: flex-start; }
     }
+
     @media (prefers-reduced-motion: reduce) {
       .tape-track { animation: none; }
     }
@@ -271,78 +251,61 @@
   <div class="tape" role="presentation">
     <div class="tape-track">
       <span>Raghava KK</span><span class="dot"></span>
-      <span>Field №01</span><span class="dot"></span>
-      <span>A Drifting Network</span><span class="dot"></span>
-      <span>Random sample per visit</span><span class="dot"></span>
-      <span>Connections decorative, drift slow</span><span class="dot"></span>
-      <span>Pluralism is a practice, not a position</span><span class="dot"></span>
+      <span>The library</span><span class="dot"></span>
+      <span>Artist books and A5 booklets</span><span class="dot"></span>
+      <span>Pluck one off the shelf</span><span class="dot"></span>
       <span>Raghava KK</span><span class="dot"></span>
-      <span>Field №01</span><span class="dot"></span>
-      <span>A Drifting Network</span><span class="dot"></span>
-      <span>Random sample per visit</span><span class="dot"></span>
-      <span>Connections decorative, drift slow</span><span class="dot"></span>
-      <span>Pluralism is a practice, not a position</span><span class="dot"></span>
+      <span>The library</span><span class="dot"></span>
+      <span>Artist books and A5 booklets</span><span class="dot"></span>
+      <span>Pluck one off the shelf</span><span class="dot"></span>
     </div>
   </div>
 
   <header class="masthead" role="banner">
     <div class="left">
       <span><a class="home-link" href="./index.html">← Raghava KK</a></span>
-      <span class="stamp live">Experiment</span>
+      <span class="stamp">The library</span>
     </div>
     <div class="center">an artist working between gods &amp; algorithms</div>
     <div class="right">
-      <span id="dateStamp">SUN · 11 MAY 2026</span>
+      <span id="dateStamp">MON · 11 MAY 2026</span>
       <span id="timeStamp">--:--</span>
     </div>
   </header>
 
-  <main>
+  <main class="library-page">
     <section class="page-head">
-      <p class="eyebrow"><span class="num">Field №01</span>A studio experiment</p>
-      <h1 class="head-title">A drifting <em>network</em>, redrawn on every visit.</h1>
+      <p class="eyebrow"><span class="num">Folio · Library</span>Books made in the margins of the practice</p>
+      <h1 class="head-title">A small <em>library</em>.<br>Pick one to read.</h1>
       <p class="head-dek">
-        Around two dozen paintings, sampled at random from across the series, set to drift like a slow flock.
-        The lines are decorative. They wire and rewire by proximity, in graphite. Nothing is being argued.
-        The work is to sit with <b>more than one thing being true at once</b>, and to watch the
-        configurations the room keeps offering.
+        Thirteen books made in the margins of the practice. Some are artist books, with spreads to turn. Some are A5 booklets, text alone on paper. They lean a little. Pluck one off the shelf to read.
       </p>
     </section>
 
-    <section class="field-wrap">
-      <div id="field" aria-label="A field of drifting painting tiles connected by pencil lines"></div>
-      <p class="field-marg">fig. 01 · <span class="accent">live</span> · pencil on paper, after a fashion</p>
+    <section class="library-frame" aria-label="The library shelf">
+      <div id="libraryShelf"></div>
+      <p class="marg">fig. 01 · <span class="accent">live</span> · graphite on cream · click any book to read</p>
     </section>
 
-    <section class="controls">
-      <p class="meta-line" id="metaLine">
-        <span id="sampleCount">--</span> of <span id="totalCount">--</span> paintings on screen,
-        connections drawn between each tile and its nearest two neighbors. <em>Hover</em> to enlarge and read.
-      </p>
-      <div class="actions">
-        <button id="reshuffle" type="button" aria-label="Resample the field">
-          <span class="glyph">↻</span><span>resample</span>
-        </button>
-        <button id="freezeBtn" type="button" aria-pressed="false" aria-label="Pause drift">
-          <span class="label">pause</span>
-        </button>
-        <button id="hideBtn" type="button" aria-pressed="false" aria-label="Hide the field">
-          <span class="label">hide</span>
-        </button>
+    <section class="legend" aria-labelledby="legendHead">
+      <h2 class="lab" id="legendHead">How to read it</h2>
+      <div class="copy">
+        <p>
+          Art books face out, with their covers exposed. Text-only books stand spine out, with the title set vertical, the way they would on a real shelf. The shelf is a graphite line, hand drawn. A <em>red pulse</em> traveling along the line is the same signal you may have seen on the index hero, here a quieter version: one book in conversation with the one next to it. Click any book to open its spreads, or to download the PDF.
+        </p>
       </div>
     </section>
   </main>
 
   <footer class="colophon" role="contentinfo">
     <div class="col c-a">
-      <h3>Get in touch.</h3>
+      <h3>Library inquiries.</h3>
       <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
-      <span>Field experiment · ongoing · feedback welcome</span>
+      <span>Print copies · syndication · reading lists</span>
     </div>
     <div class="col c-b">
       <a href="./about2.html">Short bio →</a>
       <a href="./writings2.html">Writings →</a>
-      <a href="./library2.html">The library →</a>
       <a href="./sitemap2.html">Site map →</a>
       <span>Studio · Bengaluru</span>
       <span>Studio · New York</span>
@@ -353,59 +316,38 @@
     </div>
   </footer>
 
-  <!-- Shared network field: data, then physics module -->
-  <script src="./data/network-works.js"></script>
-  <script src="./js/network-field.js"></script>
+  <!-- Shared modules: book modal + library shelf -->
+  <script src="./js/book-modal.js"></script>
+  <script src="./data/library-rows.js"></script>
+  <script src="./js/library-shelf.js"></script>
 
   <script>
   (function () {
     'use strict';
 
-    /* Date + time stamp */
-    const dateEl = document.getElementById('dateStamp');
-    const timeEl = document.getElementById('timeStamp');
+    // Date + time stamp
     function fmt(n) { return n < 10 ? '0' + n : '' + n; }
     function tick() {
       const d = new Date();
       const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
       const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-      if (dateEl) dateEl.textContent = `${days[d.getDay()]} · ${fmt(d.getDate())} ${months[d.getMonth()]} ${d.getFullYear()}`;
-      if (timeEl) timeEl.textContent = `${fmt(d.getHours())}:${fmt(d.getMinutes())}:${fmt(d.getSeconds())}`;
+      const dateEl = document.getElementById('dateStamp');
+      const timeEl = document.getElementById('timeStamp');
+      if (dateEl) dateEl.textContent = days[d.getDay()] + ' · ' + fmt(d.getDate()) + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+      if (timeEl) timeEl.textContent = fmt(d.getHours()) + ':' + fmt(d.getMinutes()) + ':' + fmt(d.getSeconds());
     }
-    tick(); setInterval(tick, 1000);
+    tick();
+    setInterval(tick, 1000);
 
-    const sampleEl = document.getElementById('sampleCount');
-    const totalEl  = document.getElementById('totalCount');
-
-    const api = window.RaghavaNetwork.init({
-      container: '#field',
-      onSampleChange: (n) => { sampleEl.textContent = n; },
-    });
-    totalEl.textContent = api.totalCount();
-
-    const reshuffle = document.getElementById('reshuffle');
-    const freezeBtn = document.getElementById('freezeBtn');
-    const hideBtn   = document.getElementById('hideBtn');
-
-    reshuffle.addEventListener('click', () => api.resample());
-
-    freezeBtn.addEventListener('click', () => {
-      if (api.isRunning()) { api.pause(); freezeBtn.querySelector('.label').textContent = 'resume'; freezeBtn.setAttribute('aria-pressed', 'true'); }
-      else                  { api.resume(); freezeBtn.querySelector('.label').textContent = 'pause';  freezeBtn.setAttribute('aria-pressed', 'false'); }
-    });
-
-    hideBtn.addEventListener('click', () => {
-      if (api.isHidden()) {
-        api.show();
-        hideBtn.querySelector('.label').textContent = 'hide';
-        hideBtn.setAttribute('aria-pressed', 'false');
-      } else {
-        api.hide();
-        hideBtn.querySelector('.label').textContent = 'show';
-        hideBtn.setAttribute('aria-pressed', 'true');
-      }
-    });
+    // Init the shelf with curated rows
+    const container = document.getElementById('libraryShelf');
+    const rows = window.RKK_LIBRARY_ROWS || [];
+    if (container && window.RaghavaLibraryShelf) {
+      window.RaghavaLibraryShelf.init({ container: container, rows: rows, compact: false });
+    }
   })();
   </script>
+
+  <script src="./protect.js" defer></script>
 </body>
 </html>

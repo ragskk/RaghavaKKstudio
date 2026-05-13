@@ -1,0 +1,256 @@
+/* ────────────────────────────────────────────────────────────────
+   toys-grid.css
+   The toys shelf — visually identical to library2.html's bookshelf
+   (css/library-shelf.css). Same row+stage+canvas structure, same
+   graphite board with thickness, same lean / breathing / hover-rise
+   physics in JS, same mono-caps hover caption. The only difference
+   is the tiles hold 3D model-viewers instead of book covers.
+
+   Page-local graphite tokens are scoped to .toys-shelf so they do
+   NOT promote into the site palette. Single-accent (red) rule
+   elsewhere still binds.
+   ──────────────────────────────────────────────────────────────── */
+
+/* Outer broadsheet frame */
+.toys-frame {
+  position: relative; z-index: 2;
+  padding: 0 var(--edge) clamp(2rem, 4vh, 3rem);
+  max-width: 1480px;
+  margin: 0 auto;
+}
+
+.toys-frame .marg {
+  margin-top: 1.4rem;
+  font-family: var(--mono);
+  font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted);
+}
+.toys-frame .marg .accent { color: var(--red); }
+
+/* ─── Shelf container ─────────────────────────────────────────────
+   Same structural pattern as .library-shelf. */
+
+.toys-shelf {
+  --graphite:    rgba(70, 65, 56, 0.62);
+  --graphite-hi: rgba(20, 18, 14, 0.78);
+  --graphite-fade: rgba(58, 52, 44, 0.22);
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.2rem, 4vh, 3.2rem);
+}
+
+.toys-shelf .library-row {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.toys-shelf .library-row__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 0 0.2rem;
+  border-bottom: 1px solid var(--rule-soft, rgba(14,14,12,0.18));
+}
+.toys-shelf .library-row__label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.toys-shelf .library-row__note {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.toys-shelf .library-row__stage {
+  position: relative;
+  width: 100%;
+  /* Tall enough to hold the largest toy plus lean tipping + hover lift +
+     room below for the hover caption. Slightly taller than library
+     because 3D toys feel less "right" cropped tight. */
+  height: clamp(280px, 38vh, 340px);
+  overflow: hidden;
+}
+.toys-shelf .library-row__canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Toy tile (absolute on stage; JS sets left, transform) ───────
+   Same positioning rules as .book-tile in the library: rests on the
+   shelf at bottom: 24px, transform-origin at the foot, smooth
+   filter transition on hover. */
+
+.toys-shelf .toy-tile {
+  position: absolute;
+  bottom: 24px;                /* sits on the graphite shelf top */
+  /* width / height set inline by JS */
+  display: block;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  z-index: 2;
+  transform-origin: 50% 100%;
+  will-change: transform;
+  outline: none;
+  transition: filter .25s var(--ease);
+}
+
+.toys-shelf .toy-tile:focus-visible {
+  outline: 1.5px solid var(--red);
+  outline-offset: 4px;
+}
+
+.toys-shelf .toy-tile:hover { filter: brightness(1.04); z-index: 3; }
+
+/* The model-viewer host inside the tile. Square, fills the tile. */
+.toys-shelf .toy-tile .toy-viewer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background:
+    radial-gradient(ellipse at center 92%, rgba(14,14,12,0.10) 0%, transparent 55%),
+    transparent;
+}
+
+.toys-shelf .toy-tile model-viewer {
+  width: 100%;
+  height: 100%;
+  --poster-color: transparent;
+  background-color: transparent;
+  touch-action: pan-y;            /* zoom is disabled in JS; keep page scroll */
+}
+
+/* Placeholder shown before the model-viewer is mounted. Display-italic
+   title centered inside the tile area, with a small muted pulse. */
+.toys-shelf .toy-tile .toy-placeholder {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  text-align: center;
+  padding: 0.5rem;
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--ink-2);
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+.toys-shelf .toy-tile .toy-placeholder::after {
+  content: "";
+  position: absolute; left: 50%; bottom: 12px;
+  transform: translateX(-50%);
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--muted);
+  opacity: 0.4;
+  animation: toy-placeholder-pulse 2.2s ease-in-out infinite;
+}
+@keyframes toy-placeholder-pulse {
+  0%, 100% { opacity: 0.2;  transform: translateX(-50%) scale(1); }
+  50%      { opacity: 0.55; transform: translateX(-50%) scale(1.15); }
+}
+.toys-shelf .toy-tile[data-loading="1"] .toy-placeholder::after { background: var(--red); }
+.toys-shelf .toy-tile[data-preview="1"] .toy-placeholder::after { animation: none; opacity: 0; }
+
+/* Hover caption — title · year, mono caps, museum-label register,
+   appearing ABOVE the tile. Originally below the tile, but the
+   shelf board paints over the area immediately below the tile and
+   clipped the caption. Same anchor pattern as library books
+   (mirrored in css/library-shelf.css). */
+.toys-shelf .toy-tile .tile-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;          /* sits flush above the tile */
+  margin-bottom: 8px;    /* small gap between caption and tile top */
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .25s var(--ease);
+  pointer-events: none;
+}
+.toys-shelf .toy-tile:hover .tile-caption,
+.toys-shelf .toy-tile:focus-visible .tile-caption { opacity: 1; }
+
+/* ─── file:// fallback banner ──────────────────────────────────── */
+
+.toy-file-banner {
+  margin: 0 0 clamp(1.5rem, 3vh, 2.4rem);
+  padding: clamp(1.1rem, 1.8vw, 1.6rem) clamp(1.1rem, 2vw, 1.8rem);
+  background: var(--paper-3);
+  border-top: 1.5px solid var(--red);
+  border-bottom: 1.5px solid var(--red);
+}
+.toy-file-banner .banner-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.55rem;
+}
+.toy-file-banner .banner-body {
+  font-family: var(--serif);
+  font-size: clamp(0.95rem, 1vw, 1.02rem);
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 68ch;
+}
+.toy-file-banner .banner-body + .banner-body { margin-top: 0.55rem; }
+.toy-file-banner .banner-body strong {
+  color: var(--ink);
+  font-weight: 400;
+  font-family: var(--display);
+  font-style: italic;
+}
+.toy-file-banner .banner-body code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  letter-spacing: 0.02em;
+  background: var(--paper);
+  border: 1px solid var(--rule-soft);
+  border-radius: 3px;
+  padding: 0.05rem 0.4rem;
+  color: var(--ink);
+}
+.toy-file-banner .banner-body.banner-alt {
+  color: var(--muted);
+  font-size: clamp(0.85rem, 0.92vw, 0.93rem);
+}
+.toy-file-banner .banner-body.banner-alt code {
+  background: transparent; border-color: transparent; padding: 0; color: var(--ink-2);
+}
+
+/* ─── Mobile ──────────────────────────────────────────────────────
+   Drop the row metaphor in favor of a single horizontal scroll. */
+@media (max-width: 720px) {
+  .toys-shelf { gap: 1rem; }
+  .toys-shelf .library-row__head { padding: 0 1rem; }
+  .toys-shelf .library-row__stage {
+    height: clamp(250px, 35vh, 290px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .toys-shelf .library-row__stage::-webkit-scrollbar { height: 4px; }
+  .toys-shelf .library-row__stage::-webkit-scrollbar-thumb { background: var(--graphite-fade); }
+}
+
+/* Reduce motion: kill transitions, keep layout */
+@media (prefers-reduced-motion: reduce) {
+  .toys-shelf .toy-tile { transition: none; }
+}

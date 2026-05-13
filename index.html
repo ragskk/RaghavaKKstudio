@@ -5,15 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Raghava KK, God-Maker, Painter, Restless Lab</title>
   <meta name="description" content="Raghava KK. I make gods. Studio between Bengaluru and New York." />
+  <!-- Open Graph / social previews -->
+  <meta property="og:title" content="Raghava KK, God-Maker, Painter, Restless Lab" />
+  <meta property="og:description" content="Raghava KK. I make gods. Studio between Bengaluru and New York." />
+  <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Raghava KK" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Raghava KK, God-Maker, Painter, Restless Lab" />
+  <meta name="twitter:description" content="Raghava KK. I make gods. Studio between Bengaluru and New York." />
+  <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <link rel="canonical" href="https://raghavakkstudio.com/" />
   <meta name="theme-color" content="#F4F1EA" />
   <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
   <meta name="robots" content="index, follow, noai, noimageai" />
   <meta name="googlebot" content="index, follow, noai, noimageai" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
   <link rel="stylesheet" href="./css/network-field.css" />
+  <link rel="stylesheet" href="./css/book-modal.css" />
   <style>
     /* ───────────────────────────────────────────────────────────
        RAGHAVA KK · INDEX №2026 · COLLAGE EDITION
@@ -52,6 +66,7 @@
       --display:      'Instrument Serif', 'Fraunces', Georgia, serif;
       --grotesk:      'Space Grotesk', 'Inter', system-ui, sans-serif;
       --mono:         'JetBrains Mono', ui-monospace, Menlo, monospace;
+      --hand:         'Caveat', 'Bradley Hand', 'Marker Felt', cursive;
 
       /* Rhythm */
       --gutter:       clamp(1rem, 2.4vw, 2rem);
@@ -962,66 +977,83 @@
       .colophon .col.c-a, .colophon .col.c-b, .colophon .col.c-c { grid-column: 1 / -1; align-items: flex-start; }
     }
 
-    /* ─── MODAL (preserved + restyled) ─── */
-    .modal {
+    /* Modal styles for 33M Gods now live in css/book-modal.css —
+       same spread viewer as lab2 / library2. The bare-iframe modal that
+       used to live here was retired 2026-05-12. */
+
+    /* ─── EASTER EGG NOTES ───
+       Floating handwritten notes that bloom from the click point when
+       a user taps a red, non-linked word. Ink-on-paper sticker. */
+    .egg-note {
       position: fixed;
-      inset: 0;
-      background: rgba(14,14,12,0.94);
-      display: none;
-      align-items: stretch;
-      justify-content: center;
-      z-index: 1000;
-      padding: clamp(1rem, 3vh, 2rem);
+      z-index: 9000;
+      pointer-events: none;
+      font-family: var(--hand);
+      font-weight: 400;
+      font-size: clamp(1.25rem, 1.6vw, 1.6rem);
+      line-height: 1.05;
+      color: #1a1410; /* ink, slightly warmer than --ink */
+      max-width: 22ch;
+      padding: 0.5rem 0.8rem 0.7rem;
+      background:
+        linear-gradient(180deg,
+          rgba(244, 241, 234, 0.92) 0%,
+          rgba(236, 231, 218, 0.92) 100%);
+      box-shadow:
+        0 14px 28px rgba(14,14,12,0.18),
+        0 2px 0 rgba(14,14,12,0.06),
+        inset 0 0 0 0.5px rgba(14,14,12,0.10);
+      transform-origin: 12% 0%;
       opacity: 0;
-      transition: opacity .25s var(--ease);
+      transform: translate(-12%, -8%) rotate(var(--egg-rot, -3deg)) scale(0.85);
+      transition: opacity .35s var(--ease-out),
+                  transform .55s var(--ease-out);
+      filter: drop-shadow(0 1px 0 rgba(14,14,12,0.05));
     }
-    .modal[aria-hidden="false"] { display: flex; opacity: 1; }
-    .modal-frame {
-      background: var(--paper);
-      width: 100%;
-      max-width: 1180px;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--ink);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-      overflow: hidden;
+    .egg-note.in {
+      opacity: 1;
+      transform: translate(-12%, -8%) rotate(var(--egg-rot, -3deg)) scale(1);
     }
-    .modal-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.7rem 1rem;
-      border-bottom: 1px solid var(--rule);
-      background: var(--paper);
+    .egg-note.out {
+      opacity: 0;
+      transform: translate(-12%, -14%) rotate(var(--egg-rot, -3deg)) scale(0.96);
     }
-    .modal-title {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--ink);
+    /* The ink stroke under the words — feels like a wet pen edge. */
+    .egg-note::before {
+      content: "";
+      position: absolute;
+      left: 0.7rem; right: 0.7rem; bottom: 0.45rem;
+      height: 1.4px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(14,14,12,0.55) 18%,
+        rgba(14,14,12,0.7) 50%,
+        rgba(14,14,12,0.4) 82%,
+        transparent 100%);
+      filter: blur(0.3px);
+      opacity: 0.55;
     }
-    .modal-title .sep { color: var(--muted); margin: 0 0.55rem; }
-    .modal-close {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      background: var(--ink);
-      border: 1px solid var(--ink);
-      color: var(--paper);
-      padding: 0.5rem 0.8rem;
-      cursor: pointer;
-      transition: background .2s var(--ease), color .2s var(--ease);
+    /* A tiny dotted-ink fleck for texture. */
+    .egg-note::after {
+      content: "";
+      position: absolute;
+      top: -3px; right: -3px;
+      width: 7px; height: 7px;
+      background: #1a1410;
+      border-radius: 50%;
+      opacity: 0.65;
+      box-shadow:
+        -6px 3px 0 -2.5px #1a1410,
+        4px 8px 0 -2.5px #1a1410;
     }
-    .modal-close:hover { background: var(--red); border-color: var(--red); color: var(--paper); }
-    .modal-body { flex: 1; min-height: 70vh; background: #2a2a26; position: relative; }
-    .modal-body iframe { width: 100%; height: 100%; border: 0; display: block; background: #2a2a26; }
-    .modal-loading {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--muted); pointer-events: none;
+    /* Egg-wired words remain visually identical — discovery is the
+       point. The custom .cursor will already swap to the red ring on
+       the wordmark; we don't add a hover-color override here because
+       some egg targets have their own parent-driven hover effects
+       (e.g. .wordmark:hover .amp turns cobalt). */
+    .egg-hot { cursor: pointer; position: relative; }
+    @media (prefers-reduced-motion: reduce) {
+      .egg-note { transition: opacity .15s linear; }
     }
 
     /* ─── REVEAL on intersection ─── */
@@ -1124,14 +1156,14 @@
 
         <p class="thesis reveal">
           I make
-          <button type="button" class="gods-trigger" id="godsTrigger" aria-haspopup="dialog" aria-controls="godsModal" aria-label="Open: 33M Gods, an artist book">gods</button>
+          <button type="button" class="gods-trigger" id="godsTrigger" aria-haspopup="dialog" aria-controls="bookModal" aria-label="Open: 33M Gods, an artist book">gods</button>
          , and the systems they live in.
         </p>
 
         <div class="hero-meta">
           <div class="gods-counter reveal" id="godsCounter"
                role="button" tabindex="0"
-               aria-haspopup="dialog" aria-controls="godsModal"
+               aria-haspopup="dialog" aria-controls="bookModal"
                aria-label="Open 33,000,000 Gods, the ongoing artwork this live tally belongs to">
             <span>Gods made so far · live tally</span>
             <strong><span id="counterNum">0</span><em>.</em></strong>
@@ -1173,7 +1205,7 @@
         <a href="./calling2.html" class="door-row reveal">
           <span class="door-num">№ 01</span>
           <h3 class="door-title">Calling All Gods</h3>
-          <span class="door-spec"><span class="lab">Solo · Parsons · Dec 2026</span>An open call to deities currently in operational use.</span>
+          <span class="door-spec"><span class="lab">Upcoming Exhibition · Parsons · Dec 2026</span>The next show. Two paintings, four years. December at Parsons, New York.</span>
           <span class="door-arrow" aria-hidden="true">→</span>
           <span class="door-specimen" data-cap="Vishwaroopa"><img src="./images/Vishwaroopa.jpg" alt="" /></span>
         </a>
@@ -1181,7 +1213,7 @@
         <a href="./studio2.html" class="door-row reveal">
           <span class="door-num">№ 02</span>
           <h3 class="door-title">Studio</h3>
-          <span class="door-spec"><span class="lab">Practice · 15 Series · 2011 →</span>Paintings, sculptures, holograms, where the gods get tested.</span>
+          <span class="door-spec"><span class="lab">Art Series · Painting · 13 Series · 2011 →</span>The painting body of work. Thirteen series, with sculpture and hologram in the margins.</span>
           <span class="door-arrow" aria-hidden="true">→</span>
           <span class="door-specimen" data-cap="Studio"><img src="./images/two%20paintings%20together.png" alt="" /></span>
         </a>
@@ -1189,7 +1221,7 @@
         <a href="./lab2.html" class="door-row reveal">
           <span class="door-num">№ 03</span>
           <h3 class="door-title">Restless Lab</h3>
-          <span class="door-spec"><span class="lab">Margins · Toys · Books · Apps</span>Things made in the margins of paintings. Where the doodles get loud.</span>
+          <span class="door-spec"><span class="lab">Outside the Art · Toys · Books · Apps · Writings</span>What I make when I'm not painting. Smaller, louder, made for the world to handle.</span>
           <span class="door-arrow" aria-hidden="true">→</span>
           <span class="door-specimen" data-cap="Power Fluff"><img src="./toys/power%20fluff%20toys/9A.png" alt="" /></span>
         </a>
@@ -1197,7 +1229,7 @@
         <a href="./becoming2.html" class="door-row reveal">
           <span class="door-num">№ 04</span>
           <h3 class="door-title">Becoming Archived</h3>
-          <span class="door-spec"><span class="lab">Archive · 1979 → ongoing</span>A working archive. Held in process. Updated when something becomes addressable.</span>
+          <span class="door-spec"><span class="lab">My Life · 1979 → ongoing</span>Where I came from, what's happened since. A life kept in motion, archived as it goes.</span>
           <span class="door-arrow" aria-hidden="true">→</span>
           <span class="door-specimen" data-cap="33M Gods"><img src="./images/books/art_33M_Gods.jpg" alt="" /></span>
         </a>
@@ -1205,7 +1237,7 @@
         <a href="./excavate2.html" class="door-row reveal">
           <span class="door-num">№ 05</span>
           <h3 class="door-title">Excavate With Me</h3>
-          <span class="door-spec"><span class="lab">Collaborations · 2010 → ongoing</span>Ten projects made with people, institutions, and companies who arrived with a real question.</span>
+          <span class="door-spec"><span class="lab">Working with Me · 20 collaborations · 1999 →</span>Twenty projects made with people, institutions, and companies who arrived with a real question.</span>
           <span class="door-arrow" aria-hidden="true">→</span>
           <span class="door-specimen" data-cap="Cyborg Orgasm 1"><img src="./images/studio/06-orgasm-project/6B.jpg" alt="" /></span>
         </a>
@@ -1225,16 +1257,16 @@
   <footer class="colophon" role="contentinfo">
     <div class="col c-a">
       <h3>Get in touch.</h3>
-      <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
       <span>Press · Sales · Studio visits</span>
     </div>
     <div class="col c-b">
       <a href="./about2.html">Short bio →</a>
       <a href="./writings2.html">Writings →</a>
+      <a href="./library2.html">The library →</a>
       <a href="./sitemap2.html">Site map →</a>
       <span>Studio · Bengaluru</span>
       <span>Studio · New York</span>
-      <span>By appointment</span>
     </div>
     <div class="col c-c">
       <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
@@ -1242,19 +1274,8 @@
     </div>
   </footer>
 
-  <!-- 33M Gods Modal -->
-  <div class="modal" id="godsModal" role="dialog" aria-modal="true" aria-labelledby="godsModalTitle" aria-hidden="true">
-    <div class="modal-frame" role="document">
-      <div class="modal-bar">
-        <span class="modal-title" id="godsModalTitle">33M Gods <span class="sep">/</span> Raghava KK</span>
-        <button type="button" class="modal-close" id="godsModalClose" aria-label="Close">Close ×</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-loading" id="godsModalLoading">Loading · 33M Gods</div>
-        <iframe id="godsModalFrame" title="33M Gods, full book" loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
+  <!-- 33M Gods modal markup is auto-injected by ./js/book-modal.js
+       on first call to window.RaghavaBookModal.open(...) -->
 
   <!-- Living Archive: slim recent-facts feed (top 12 by date) -->
   <script src="./living-archive/recent.js" defer></script>
@@ -1471,49 +1492,116 @@
     // recent.js loads with defer; if it lands after DOMContentLoaded, retry once
     setTimeout(renderArchive, 200);
 
-    /* ─── Modal (33M Gods) ─── */
-    const trigger = document.getElementById('godsTrigger');
-    const modal = document.getElementById('godsModal');
-    const closeBtn = document.getElementById('godsModalClose');
-    const frame = document.getElementById('godsModalFrame');
-    const loading = document.getElementById('godsModalLoading');
-    const pdfPath = './books/art%20books/33M%20Gods.pdf';
-    let lastFocus = null;
+    /* ─── Easter egg: handwritten note on red-but-not-a-link clicks ───
+       Selectors below pick the red, non-anchor, non-button text on the
+       page. Clicking a wired word spawns a journal-style floating note
+       at the click point. Limited to index.html for now. */
+    const EGG_SELECTOR = [
+      '.wordmark .amp',         /* the red period after "KK"          */
+      '.hero-bio i',            /* "pluralism" in the colophon bio    */
+      '.quote em',              /* manifesto red words                 */
+      '.doors-head h2 em'       /* the red word in "Five doors..."    */
+    ].join(', ');
 
-    function openModal() {
-      lastFocus = document.activeElement;
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      if (!frame.src) {
-        frame.src = pdfPath + '#view=Fit';
-        frame.addEventListener('load', () => { loading.style.display = 'none'; }, { once: true });
-      } else {
-        loading.style.display = 'none';
+    const EGG_MESSAGES = [
+      'nice try.\nkeep clicking — there are more hidden things.',
+      'not a door.\nbut warm. keep going.',
+      'you found one.\nthere are others.',
+      'a red word is not\nalways a link.\nsometimes it is bait.',
+      'keep tapping.\nthe studio rewards\nthe curious.',
+      'not this one.\nsomething else is\nwaiting nearby.'
+    ];
+
+    function spawnEgg(e, target) {
+      const note = document.createElement('div');
+      note.className = 'egg-note';
+      const msg = EGG_MESSAGES[Math.floor(Math.random() * EGG_MESSAGES.length)];
+      // preserve newlines as <br>
+      note.innerHTML = msg.split('\n').map(s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')).join('<br>');
+      // Random rotation so each one feels handwritten/different
+      const rot = (-7 + Math.random() * 14).toFixed(2) + 'deg';
+      note.style.setProperty('--egg-rot', rot);
+      // Position at click point, lifted up slightly so it doesn't cover the finger.
+      const cx = (e.clientX || (target.getBoundingClientRect().left + target.getBoundingClientRect().width/2));
+      const cy = (e.clientY || target.getBoundingClientRect().top);
+      note.style.left = cx + 'px';
+      note.style.top  = (cy - 14) + 'px';
+      document.body.appendChild(note);
+      // animate in, then out
+      requestAnimationFrame(() => requestAnimationFrame(() => note.classList.add('in')));
+      const dwell = 2200 + Math.random() * 700;
+      setTimeout(() => {
+        note.classList.remove('in');
+        note.classList.add('out');
+        setTimeout(() => note.remove(), 600);
+      }, dwell);
+    }
+
+    function isInteractive(node) {
+      // Walk up to body; if we hit an <a>, <button>, gods-trigger, or door-row,
+      // the click is "real" navigation, skip the egg.
+      let n = node;
+      while (n && n !== document.body) {
+        const tag = (n.tagName || '').toLowerCase();
+        if (tag === 'a' || tag === 'button') return true;
+        if (n.classList && (n.classList.contains('gods-trigger') ||
+                            n.classList.contains('gods-counter') ||
+                            n.classList.contains('door-row') ||
+                            n.classList.contains('archive-link') ||
+                            n.classList.contains('shuffle') ||
+                            n.classList.contains('now-link'))) return true;
+        n = n.parentNode;
       }
-      setTimeout(() => closeBtn.focus(), 50);
+      return false;
     }
-    function closeModal() {
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
-    }
-    if (trigger) trigger.addEventListener('click', openModal);
-    const godsCounter = document.getElementById('godsCounter');
-    if (godsCounter) {
-      godsCounter.addEventListener('click', openModal);
-      godsCounter.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); }
+
+    function wireEggs() {
+      document.querySelectorAll(EGG_SELECTOR).forEach(el => {
+        if (isInteractive(el)) return; // skip anything wrapped in a link/button
+        el.classList.add('egg-hot');
+        el.addEventListener('click', (e) => {
+          if (e.target !== el && isInteractive(e.target)) return;
+          e.stopPropagation();
+          spawnEgg(e, el);
+        });
+        // Hook into the custom cursor so users get the red-ring hint.
+        if (cursor) {
+          el.addEventListener('pointerenter', () => cursor.classList.add('is-link'));
+          el.addEventListener('pointerleave', () => cursor.classList.remove('is-link'));
+        }
       });
     }
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
-    });
+    wireEggs();
+
+    /* ─── 33M Gods: open in the shared spread viewer ───
+       Same viewer as lab2 / library2. Powered by ./js/book-modal.js. */
+    function openGods() {
+      if (!window.RaghavaBookModal || typeof window.RaghavaBookModal.open !== 'function') {
+        // book-modal.js not loaded yet — try again on next tick
+        setTimeout(openGods, 80);
+        return;
+      }
+      window.RaghavaBookModal.open({
+        title:    '33M Gods',
+        thumb:    './images/books/art_33M_Gods.jpg',
+        pdf:      './books/art%20books/33M%20Gods.pdf',
+        filename: '33M Gods.pdf'
+      });
+    }
+    const trigger = document.getElementById('godsTrigger');
+    if (trigger) trigger.addEventListener('click', openGods);
+    const godsCounter = document.getElementById('godsCounter');
+    if (godsCounter) {
+      godsCounter.addEventListener('click', openGods);
+      godsCounter.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openGods(); }
+      });
+    }
 
   })();
   </script>
 
+  <script src="./js/book-modal.js" defer></script>
   <script src="./draw.js" defer></script>
   <script src="./protect.js" defer></script>
 

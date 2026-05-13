@@ -1,5 +1,5 @@
 // ───────────────────────────────────────────────────────────────────
-// RKK Studio · Section Library · v2
+// Design Studio · Section Library · v2
 // Pre-composed groups of elements. Each section returns a fresh
 // array of element objects with new ids. The studio appends them to
 // the current page; nothing is locked once placed.

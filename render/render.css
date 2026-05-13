@@ -40,6 +40,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  /* Establishes a CSS container so the responsive rules below can use
+     @container queries instead of @media. This lets the studio's
+     viewport-preview toggle (which constrains the stage width) trigger
+     the same breakpoint rules a real phone/tablet would, without the
+     studio having to load each preview into an iframe. On a deployed
+     page where .rkk-page fills the viewport, container width === viewport
+     width, so the behavior is identical to @media. */
+  container-type: inline-size;
+  container-name: rkk;
 }
 .rkk-page[data-bg="paper-2"] { background: var(--paper-2); }
 .rkk-page[data-bg="paper-3"] { background: var(--paper-3); }
@@ -114,6 +123,40 @@
      masthead. */
   min-height: 60vh;
 }
+
+/* When the canvas is broken into sections, each section sets its own
+   minimum height. The canvas itself doesn't need a min-height — the stack
+   of sections provides one — and it has no internal padding because the
+   sections shoulder that responsibility (so per-section backgrounds bleed
+   to the full canvas width). */
+.rkk-canvas-sectioned {
+  padding: 0;
+  min-height: 0;
+}
+
+/* ─── Sections ─────────────────────────────────────────── */
+
+.rkk-section {
+  position: relative;
+  width: 100%;
+  /* Clip content that overflows past the configured height. Keeps the
+     section's visual contract: it IS the canvas, not a hint. */
+  overflow: hidden;
+  /* Padding mirrors what .rkk-canvas used to provide so flow content
+     doesn't slam into the edges. Per-section bg fills the full bleed. */
+  padding: clamp(2rem, 5vw, 4rem) var(--edge);
+}
+
+/* First/last sections re-align with the broadsheet's vertical rhythm. */
+.rkk-section:first-child { padding-top: clamp(2rem, 5vw, 4rem); }
+.rkk-section:last-child { padding-bottom: clamp(3rem, 7vw, 5rem); }
+
+/* Section background variants. `bg=inherit` means: keep page bg
+   (no override). `paper` / `ink` / `red` flip to the brand palette. */
+.rkk-section[data-section-bg="paper"] { background: var(--paper); color: var(--ink); }
+.rkk-section[data-section-bg="ink"]   { background: var(--ink);   color: var(--paper); }
+.rkk-section[data-section-bg="red"]   { background: var(--red);   color: var(--paper); }
+.rkk-section[data-section-bg="cream"] { background: #EFE9DA;      color: var(--ink); }
 
 /* ─── Text element ─────────────────────────────────────── */
 
@@ -448,16 +491,67 @@
   }
 }
 
-/* ─── Mobile responsiveness ───────────────────────────── */
+/* ─── Responsive design — three breakpoints ──────────────
+   The studio composes at a fluid canvas where x/y/w/font-size are
+   stored as percentages of the canvas width. Everything therefore
+   already scales linearly with the viewport. These media queries
+   add the per-tier overrides that pure-scaling can't handle:
+   reflow rules (inline floats → full-width on phone), grid
+   collapses (spec sheet two-column → one), and chrome tightening.
 
-@media (max-width: 720px) {
+   • Phone     ≤ 640px   reflow + flatten decoratives
+   • Tablet  641–1024px  keep composition, tighten chrome
+   • Desktop ≥ 1025px   full composition as authored
+
+   Important: every page also gets `overflow-x: hidden` so that
+   rotated free-placed elements never cause horizontal scroll. */
+
+.rkk-page {
+  overflow-x: hidden;
+}
+
+/* ─── Tablet (641 – 1024px) ─────────────────────────────── */
+
+@container rkk (min-width: 641px) and (max-width: 1024px) {
+  /* Tighten the canvas edge so the column isn't choked. */
+  .rkk-canvas {
+    padding-left: clamp(1rem, 3vw, 1.6rem);
+    padding-right: clamp(1rem, 3vw, 1.6rem);
+  }
+  /* Inline images: float still works but cap width so prose stays readable. */
+  .rkk-image-inline {
+    max-width: 46%;
+  }
+  /* Masthead: keep the 3-column grid but reduce the tracking on the center. */
+  .rkk-masthead .rkk-center { letter-spacing: 0.22em; }
+  /* Tape marquee: shorter loop content reads better on tablet. */
+  .rkk-tape { padding-left: 1rem; padding-right: 1rem; }
+}
+
+/* ─── Phone (≤ 640px) ───────────────────────────────────── */
+
+@container rkk (max-width: 640px) {
+  /* Tighter canvas padding so content uses the full screen. */
+  .rkk-canvas {
+    padding-left: clamp(0.75rem, 4vw, 1.2rem);
+    padding-right: clamp(0.75rem, 4vw, 1.2rem);
+    padding-top: clamp(1.25rem, 5vw, 2rem);
+    padding-bottom: clamp(2rem, 7vw, 3rem);
+  }
+
+  /* Inline images: drop float, take full column width so text reads cleanly. */
   .rkk-image-inline {
     float: none !important;
     width: 100% !important;
+    max-width: 100% !important;
     margin: 1rem 0 !important;
     shape-outside: none !important;
   }
-  /* v2: collapse decorative elements to flow so the page is readable. */
+
+  /* Decorative elements (free-placed images and text): collapse to flow.
+     Absolute positioning of rotated/composed elements doesn't read on
+     phone — the page becomes unscrollable or crowded. Better to honor
+     the source order and full width, losing only the artistic placement. */
   .rkk-image-deco,
   .rkk-image-deco-fig,
   .rkk-text-deco {
@@ -468,9 +562,69 @@
     transform: none !important;
     margin: 1rem 0 !important;
   }
+
+  /* Masthead and colophon: collapse 3-column grid to a single stacked column.
+     Right-aligned cells become left-aligned so the line is consistent. */
   .rkk-masthead, .rkk-colophon {
     grid-template-columns: 1fr;
     text-align: left;
+    gap: 0.4rem;
   }
   .rkk-masthead-right, .rkk-colophon-right { text-align: left; }
+
+  /* Spec sheet: collapse two-column data block to a single stacked column.
+     Label and value each take a full line — label stays mono caps muted,
+     value stays serif. */
+  .rkk-spec {
+    grid-template-columns: 1fr;
+  }
+  .rkk-spec .rkk-spec-label,
+  .rkk-spec .rkk-spec-value {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Hero artifact: take more width on phone (60% authored → 88% on phone)
+     and let the caption breathe. */
+  .rkk-hero {
+    width: 88% !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .rkk-hero-caption { margin-top: 0.5rem; }
+
+  /* Stamp lines authored with indents lose them on phone (they read as
+     a single mono-caps column instead). */
+  .rkk-text.rkk-anchor-left,
+  .rkk-text.rkk-anchor-center,
+  .rkk-text.rkk-anchor-right {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: left !important;
+  }
+
+  /* Top tape: drop the marquee accessory items, keep only the title scrolling. */
+  .rkk-tape {
+    padding: 8px 0.75rem;
+    font-size: 0.66rem;
+  }
+  .rkk-tape > span:first-child,
+  .rkk-tape > span:last-child {
+    display: none;
+  }
+
+  /* Captions on phone: keep readable, don't shrink past 10px. */
+  .rkk-caption {
+    font-size: max(0.7rem, 10px);
+  }
+
+  /* Marquee bands: tighten height + speed comprehension on small screens. */
+  .rkk-marquee {
+    font-size: 0.78rem;
+  }
+
+  /* Drop cap on phone: keep but shrink so it doesn't dominate a narrow column. */
+  .rkk-text.rkk-dropcap .rkk-p:first-of-type::first-letter {
+    font-size: 3.4em;
+  }
 }

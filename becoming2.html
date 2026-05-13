@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Becoming Archived, The Living Archive, Raghava KK</title>
   <meta name="description" content="The Raghava KK Living Archive. Public layer. A working record of an artist's practice and life, held with vulnerability, not authority." />
+  <!-- Open Graph / social previews -->
+  <meta property="og:title" content="Becoming Archived, The Living Archive, Raghava KK" />
+  <meta property="og:description" content="The Raghava KK Living Archive. Public layer. A working record of an artist&#x27;s practice and life, held with vulnerability, not authority." />
+  <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/becoming2" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Raghava KK" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Becoming Archived, The Living Archive, Raghava KK" />
+  <meta name="twitter:description" content="The Raghava KK Living Archive. Public layer. A working record of an artist&#x27;s practice and life, held with vulnerability, not authority." />
+  <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <link rel="canonical" href="https://raghavakkstudio.com/becoming2" />
   <meta name="theme-color" content="#F4F1EA" />
   <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
   <meta name="robots" content="index, follow, noai, noimageai" />
@@ -551,7 +564,7 @@
 
   <header class="masthead">
     <div class="left">
-      <a href="./Index2.html" class="breadcrumb">← Raghava KK</a>
+      <a href="./index.html" class="breadcrumb">← Raghava KK</a>
       <span class="stamp live">Archive Active</span>
     </div>
     <div class="center">a permanent, self-owned institutional record</div>
@@ -609,7 +622,7 @@
             <span class="redaction" style="width: 88%">──────────</span>
             <span class="redaction" style="width: 60%">──────</span>
           </p>
-          <span class="lock"><strong>request access</strong> · studio@raghavakk.com</span>
+          <span class="lock"><strong>request access</strong> · studio@raghavakkstudio.com</span>
         </div>
         <div class="layer private">
           <span class="lvl">Private</span>
@@ -705,16 +718,19 @@
     </section>
   </main>
 
-  <footer class="colophon">
+  <footer class="colophon" role="contentinfo">
     <div class="col c-a">
-      <h4>Scholar &amp; biographer access.</h4>
-      <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
-      <span>Controlled-layer requests · per-record permission</span>
+      <h3>Scholar &amp; biographer access.</h3>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
+      <span id="archiveTimestamp">Controlled-layer · per-record permission · Schema v1.1</span>
     </div>
     <div class="col c-b">
+      <a href="./about2.html">Short bio →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./library2.html">The library →</a>
+      <a href="./sitemap2.html">Site map →</a>
       <span>Studio · Bengaluru</span>
       <span>Studio · New York</span>
-      <span id="archiveTimestamp">Schema v1.1 · April 2026</span>
     </div>
     <div class="col c-c">
       <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
@@ -1213,8 +1229,6 @@
       });
       if (leaks.length) {
         console.error('[archive] visibility leaks detected:', leaks);
-      } else {
-        console.info(`[archive] visibility audit clean · ${PUBLIC_FACTS.length} public facts · viewer: ${VIEWER_LEVEL}`);
       }
     }
     setTimeout(leakAudit, 200);

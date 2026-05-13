@@ -1,0 +1,38 @@
+# Vercel deploy exclusions — mirror of local-only directories.
+# Anything listed here will NOT be uploaded during `vercel deploy`.
+
+# Pass 1 triage holding zone (archives, raw assets, experiments)
+not-used/
+
+# Raw 3D source files for the toys page (STL/OBJ/.blend etc.)
+# Only the optimized GLBs in /toys/3d/ should ship. Source files
+# are 23–34 MB each and have no business on the CDN.
+toys-source/
+
+# Local backups
+_backups/
+
+# Stale git renames
+.git-stale-*/
+.git-*/
+
+# Oversized files (Vercel per-file limit is 100 MB).
+# Restless Frequency is 143 MB; book modal handles `requestOnly: true`
+# and offers a mailto button instead of the PDF.
+books/art books/Restless Frequency.pdf
+
+# OS / editor cruft (recursive)
+**/.DS_Store
+**/Thumbs.db
+.vscode/
+.idea/
+
+# Build scripts (run locally; not part of the deployed site)
+scripts/
+
+# Local notes folder
+_notes/
+
+# Source-control internals (Vercel doesn't need these)
+.git/
+.gitignore

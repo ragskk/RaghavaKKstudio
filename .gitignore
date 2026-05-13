@@ -16,6 +16,16 @@ node_modules/
 # Local backups (not source-of-truth)
 _backups/
 
+# Pass 1 triage holding zone — archives, raw assets, experiments.
+# Stays local, never ships, never enters git.
+/not-used/
+
+# Pass 2 working notes (TKs, scratch docs). Local-only.
+/_notes/
+
+# Build scripts run locally (sitemap.xml builder etc.)
+/scripts/
+
 # Secrets & env
 .env
 .env.*
@@ -50,6 +60,10 @@ npm-debug.log*
 /images/
 /paint strokes/
 /toys/
+
+# Raw 3D source files (STL/OBJ/.blend etc.) — stay local, never ship.
+# The optimized GLBs in /toys/3d/ deploy via Vercel CLI like the rest.
+/toys-source/
 
 # Art books (PDFs)
 /books/
@@ -100,3 +114,17 @@ npm-debug.log*
 *.tgz
 *.rar
 *.7z
+
+# 3D source/binary formats — outputs (GLB) live under /toys/3d/
+# which is already covered by /toys/ above, but the source-side
+# extensions get globbed here as belt-and-suspenders.
+*.stl
+*.obj
+*.mtl
+*.fbx
+*.usdz
+*.blend
+*.blend1
+*.gltf
+*.glb
+.vercel

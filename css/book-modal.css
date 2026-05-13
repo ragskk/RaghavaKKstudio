@@ -1,0 +1,64 @@
+/* ─────────────────────────────────────────────────────
+   BOOK MODAL — shared spread gallery
+   Extracted from lab2.html so multiple pages share one
+   implementation. Lab and library2 both include this.
+   Assumes the page defines: --paper, --ink, --red,
+   --mono, --serif, --ease, --muted, --rule.
+   ───────────────────────────────────────────────────── */
+
+/* Generic modal infrastructure (also used by lab's toy modal) */
+.modal { position: fixed; inset: 0; background: rgba(14,14,12,0.94); display: none; align-items: stretch; justify-content: center; z-index: 1000; padding: clamp(1rem, 3vh, 2rem); opacity: 0; transition: opacity .25s var(--ease); }
+.modal[aria-hidden="false"] { display: flex; opacity: 1; }
+.modal-frame { background: var(--paper); width: 100%; max-width: 1280px; display: flex; flex-direction: column; border: 1px solid var(--ink); box-shadow: 0 30px 80px rgba(0,0,0,0.5); overflow: hidden; }
+.modal-bar { display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1rem; border-bottom: 1px solid var(--rule); background: var(--paper); gap: 1rem; }
+.modal-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.modal-meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; color: var(--muted); white-space: nowrap; padding: 0 0.6rem; }
+.modal-actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
+.modal-action { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; background: var(--ink); border: 1px solid var(--ink); color: var(--paper); padding: 0.5rem 0.8rem; cursor: pointer; text-decoration: none; transition: background .2s var(--ease); }
+.modal-action:hover { background: var(--red); border-color: var(--red); color: var(--paper); }
+.modal-action.ghost { background: var(--paper); color: var(--ink); }
+.modal-action.ghost:hover { background: var(--ink); color: var(--paper); }
+
+/* Book-specific: spread stage */
+.spread-stage { flex: 1; min-height: 60vh; background: #1d1d1b; position: relative; display: flex; align-items: center; justify-content: center; padding: 1rem clamp(2rem, 6vw, 4rem); overflow: hidden; gap: 0; }
+/* In 2-up, a single 1px line of the dark stage shows as the spine */
+.spread-stage[data-mode="double"] { gap: 1px; }
+
+.spread-stage .spread-img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; box-shadow: 0 10px 40px rgba(0,0,0,0.5); user-select: none; -webkit-user-drag: none; opacity: 0; transition: opacity .35s var(--ease); }
+.spread-stage .spread-img.loaded { opacity: 1; }
+.spread-stage .spread-img.errored { opacity: 0.6; outline: 2px solid var(--red); outline-offset: 4px; }
+.spread-stage .spread-img.errored::after { content: "spread failed to load"; color: var(--red); }
+
+.spread-stage[data-mode="single"] .spread-img-2 { display: none; }
+.spread-stage[data-mode="double"] .spread-img,
+.spread-stage[data-mode="double"] .spread-img-2 { max-width: 50%; }
+.spread-stage[data-mode="double"] .spread-img-2.alone { display: none; }
+
+#bookModal .modal-frame:fullscreen,
+#bookModal .modal-frame:-webkit-full-screen { max-width: 100%; width: 100%; height: 100vh; max-height: 100vh; border: 0; }
+#bookModal .modal-frame:fullscreen .spread-stage,
+#bookModal .modal-frame:-webkit-full-screen .spread-stage { min-height: 0; flex: 1; }
+
+.spread-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border: 1px solid rgba(244,241,234,0.4); background: rgba(14,14,12,0.6); color: var(--paper); cursor: pointer; font-size: 1.4rem; display: grid; place-items: center; transition: background .2s var(--ease), border-color .2s var(--ease); }
+.spread-nav:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.spread-nav.prev { left: 1rem; }
+.spread-nav.next { right: 1rem; }
+.spread-nav:disabled { opacity: 0.25; cursor: not-allowed; }
+
+.spread-counter { position: absolute; bottom: 0.8rem; right: 1rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--paper); opacity: 0.7; }
+
+.spread-thumbs { background: var(--ink); border-top: 1px solid var(--ink); padding: 0.6rem 0.8rem; overflow-x: auto; overflow-y: hidden; display: flex; gap: 0.35rem; scrollbar-width: thin; scrollbar-color: rgba(244,241,234,0.3) transparent; }
+.spread-thumbs::-webkit-scrollbar { height: 6px; }
+.spread-thumbs::-webkit-scrollbar-thumb { background: rgba(244,241,234,0.3); border-radius: 3px; }
+.spread-thumb { flex-shrink: 0; width: 36px; height: 48px; border: 1px solid transparent; cursor: pointer; padding: 0; background: rgba(244,241,234,0.08); position: relative; transition: border-color .2s var(--ease), transform .2s var(--ease); }
+.spread-thumb:hover { transform: translateY(-2px); }
+.spread-thumb.active { border-color: var(--red); transform: translateY(-3px); }
+.spread-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.65; }
+.spread-thumb.active img { opacity: 1; }
+.spread-thumbs .label { display: inline-flex; align-items: center; padding: 0 0.6rem; flex-shrink: 0; font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,241,234,0.5); }
+
+/* Cover-only fallback (book has no exported spreads) */
+.cover-fallback { flex: 1; min-height: 60vh; background: #1d1d1b; display: grid; place-items: center; padding: 2rem; }
+.cover-fallback-inner { display: flex; flex-direction: column; align-items: center; gap: 1.4rem; max-width: 320px; text-align: center; }
+.cover-fallback img { max-width: 100%; box-shadow: 0 10px 40px rgba(0,0,0,0.5); user-select: none; -webkit-user-drag: none; }
+.cover-fallback p { color: var(--paper); font-family: var(--serif); font-style: italic; font-size: 0.95rem; opacity: 0.8; }

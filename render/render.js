@@ -725,27 +725,111 @@ export async function renderElement(elementData, parent, mode = 'view', options 
 
 // ─── Page render ──────────────────────────────────────────────────
 
-export async function renderPage(pageData, container, mode = 'view', options = {}) {
-  if (!container) throw new Error('renderPage: container is required');
-  clearChildren(container);
+// Normalize pageData so it always has a `sections` array and every
+// element has a sectionId. Mutates a shallow copy; does NOT mutate the
+// caller's pageData object. The studio writes the migration to disk on
+// next save; this auto-wrap keeps legacy pages rendering correctly until
+// then.
+function normalizePageSections(pageData) {
+  const elements = Array.isArray(pageData.elements) ? pageData.elements : [];
+  let sections = Array.isArray(pageData.sections) ? pageData.sections.slice() : null;
 
-  const page = el('div', { class: 'rkk-page' });
-  page.dataset.bg = pageData.canvas?.background || 'paper';
-  page.dataset.cursor = pageData.cursor || 'default';
-  page.dataset.signature = pageData.signature || 'none';
-  page.dataset.mode = mode;
+  if (!sections || !sections.length) {
+    // Legacy page → wrap everything in one default section. Use the page's
+    // old canvas.minHeight (in vh) as the section height to preserve the
+    // visual position of decoratives whose `top: y%` was previously being
+    // computed against the canvas height. Default 100vh matches the prior
+    // typical canvas height.
+    const legacyH = Number(pageData.canvas?.minHeight);
+    const defaultH = Number.isFinite(legacyH) && legacyH > 0 ? legacyH : 100;
+    // Legacy pages used min-height only — let flow content grow the section
+    // so nothing already on disk gets clipped on first render.
+    sections = [{ id: 'sec-default', height: defaultH, bg: 'inherit', clip: false }];
+  }
 
-  page.appendChild(buildTape(pageData));
-  page.appendChild(buildMasthead(pageData));
+  // Validate / fill section ids
+  const seenIds = new Set();
+  sections = sections.map((s, i) => {
+    let id = s.id;
+    if (!id || seenIds.has(id)) id = `sec-${i.toString(36)}-${Math.random().toString(36).slice(2, 6)}`;
+    seenIds.add(id);
+    return {
+      id,
+      height: Number.isFinite(s.height) ? Math.max(10, Math.min(400, s.height)) : 80,
+      // clip === true (default): exact height, overflow hidden. false: height
+      // is treated as a minimum, section can grow with content.
+      clip: s.clip !== false,
+      bg: s.bg || 'inherit',
+      bgColor: s.bgColor || null,
+      bgImage: s.bgImage || null,
+      label: s.label || null,
+    };
+  });
 
-  const canvas = el('main', { class: 'rkk-canvas' });
-  const maxW = pageData.canvas?.maxWidth || 1480;
-  const minH = pageData.canvas?.minHeight;
-  canvas.style.setProperty('--max', `${maxW}px`);
-  if (minH) canvas.style.minHeight = `${minH}vh`;
+  // Fall-through: any element without a known sectionId lands in section 0.
+  const firstId = sections[0].id;
+  const validIds = new Set(sections.map(s => s.id));
+  return {
+    sections,
+    elements: elements.map(e => {
+      if (!e.sectionId || !validIds.has(e.sectionId)) {
+        return Object.assign({}, e, { sectionId: firstId });
+      }
+      return e;
+    }),
+  };
+}
+
+// Pick where an element renders given its data shape.
+// Rule:
+//   - image-inline → float (anchored to a text element in the same section)
+//   - image-decorative → absolute (always, legacy)
+//   - text in decorative mode → absolute (legacy)
+//   - any element with positioned === true → absolute (promoted by the studio)
+//   - everything else → in-flow (text in flow mode, marquees, heroes, spec
+//     sheets, fields, asterisms)
+//
+// NOTE: we deliberately do NOT infer "absolute" from `x != null && y != null`.
+// Legacy text elements have x: 0, y: 0 as defaults from makeElement; treating
+// those as absolute would stack all flow text at the top-left. Promotion to
+// absolute must be an explicit `positioned: true` set by the studio when the
+// user actually drags a flow element.
+function placementOf(e) {
+  if (e.type === 'image-inline') return 'float';
+  if (e.type === 'image-decorative') return 'absolute';
+  if (e.type === 'text' && e.mode === 'decorative') return 'absolute';
+  if (e.positioned === true) return 'absolute';
+  return 'flow';
+}
+
+async function buildSection(secData, secElements, mode, options) {
+  const section = el('section', {
+    class: 'rkk-section',
+    'data-section-id': secData.id,
+    'data-section-bg': secData.bg || 'inherit',
+  });
+  // Height policy:
+  //  - height is ALWAYS a minimum, not a maximum, so flow content (text in
+  //    particular) can grow the section taller as font size or content
+  //    length increases. This keeps the text's bounding box honest.
+  //  - clip=true (default): overflow:hidden, which means an absolutely
+  //    positioned decorative placed past the section's CURRENT height is
+  //    clipped. That preserves the "section is a pane" feel for decoratives
+  //    without letting text content silently vanish.
+  //  - clip=false: overflow:visible, fully bleed-through, useful for
+  //    overlapping compositions where decoratives intentionally cross
+  //    section boundaries.
+  section.style.minHeight = `${secData.height}vh`;
+  section.style.overflow = secData.clip === false ? 'visible' : 'hidden';
+  if (secData.bgColor) section.style.background = secData.bgColor;
+  if (secData.bgImage) {
+    section.style.backgroundImage = `url("${secData.bgImage}")`;
+    section.style.backgroundSize = 'cover';
+    section.style.backgroundPosition = 'center';
+  }
 
   // Sort elements by z (stable for ties).
-  const elements = Array.isArray(pageData.elements) ? pageData.elements.slice() : [];
+  const elements = secElements.slice();
   elements.forEach((e, i) => { e.__order = i; });
   elements.sort((a, b) => {
     const za = a.z == null ? 0 : a.z;
@@ -759,73 +843,103 @@ export async function renderPage(pageData, container, mode = 'view', options = {
   for (const e of elements) {
     if (e.hidden && mode === 'view') continue;
     const node = await buildElement(e, mode);
+    // If an element was promoted to absolute (has x/y but isn't a legacy
+    // image-decorative / decorative-text), apply absolute positioning here.
+    const place = placementOf(e);
+    if (place === 'absolute' && e.type !== 'image-decorative' && !(e.type === 'text' && e.mode === 'decorative')) {
+      node.style.position = 'absolute';
+      if (e.x != null) node.style.left = `${e.x}%`;
+      if (e.y != null) node.style.top = `${e.y}%`;
+      if (e.w != null) node.style.width = `${e.w}%`;
+      else if (e.width != null) node.style.width = `${e.width}%`;
+      if (e.rotation) node.style.transform = `rotate(${e.rotation}deg)`;
+    }
     if (typeof options.onElementClick === 'function') {
       node.addEventListener('click', (ev) => options.onElementClick(e, ev));
     }
-    built.push({ data: e, node });
+    built.push({ data: e, node, place });
   }
 
-  // Two-pass: place text/marquee/hero/spec/field/asterism in flow.
-  // image-decorative are absolute → appended at end into canvas.
-  // image-inline are floats → inserted into the nearest preceding text element
-  // before paragraph N+1.
-  // v2: text elements with mode === 'decorative' are also absolute → join the decoratives bucket.
-  const flowNodes = []; // text(flow)/marquee/hero/spec/field/asterism
-  const inlineImages = [];
-  const decoratives = [];
+  // Bucket by placement.
+  const flowNodes = built.filter(b => b.place === 'flow');
+  const floats = built.filter(b => b.place === 'float');
+  const absolutes = built.filter(b => b.place === 'absolute');
 
-  for (const item of built) {
-    const t = item.data.type;
-    if (t === 'image-inline') inlineImages.push(item);
-    else if (t === 'image-decorative') decoratives.push(item);
-    else if (t === 'text' && item.data.mode === 'decorative') decoratives.push(item);
-    else flowNodes.push(item);
-  }
+  // Flow first.
+  for (const item of flowNodes) section.appendChild(item.node);
 
-  // First, place flow nodes in order.
-  for (const item of flowNodes) canvas.appendChild(item.node);
-
-  // Now, attach inline images. For each inline image, find the nearest
-  // preceding text element in the flow order, then insert the figure as
-  // the first child of paragraph N+1, OR before the text element if N === 0.
-  for (const item of inlineImages) {
+  // Floats: anchor to nearest preceding text in flow (same section).
+  for (const item of floats) {
     const data = item.data;
     const anchorAfter = data.anchor?.afterParagraph;
-    // Find nearest preceding text element in built order.
-    // Skip decorative-mode text blocks since they are not in the doc flow.
     let anchorText = null;
     const myIdx = built.indexOf(item);
     for (let i = myIdx - 1; i >= 0; i--) {
       const d = built[i].data;
-      if (d.type === 'text' && d.mode !== 'decorative') { anchorText = built[i]; break; }
+      if (d.type === 'text' && d.mode !== 'decorative' && built[i].place === 'flow') {
+        anchorText = built[i];
+        break;
+      }
     }
     if (!anchorText) {
-      // No preceding text → attach to canvas directly so it floats in canvas.
-      canvas.insertBefore(item.node, canvas.firstChild);
+      // No preceding text in this section → fall back to absolute.
+      item.node.style.position = 'absolute';
+      item.node.style.left = `${data.x ?? 4}%`;
+      item.node.style.top = `${data.y ?? 4}%`;
+      section.appendChild(item.node);
       continue;
     }
     const textNode = anchorText.node;
     const paras = textNode.querySelectorAll(':scope > .rkk-p');
     const after = anchorAfter == null ? 0 : Math.max(0, anchorAfter);
     if (after === 0) {
-      // Spec: insert before the text element entirely so the float clears
-      // upward and wrap propagates from the very first paragraph.
-      // Text element MUST be a single block so floats inside its previous
-      // sibling continue to wrap subsequent paragraphs as well.
       textNode.parentNode.insertBefore(item.node, textNode);
     } else if (paras.length === 0) {
       textNode.insertBefore(item.node, textNode.firstChild);
     } else {
-      // afterParagraph: N → insert into paragraph N+1 (zero-indexed: paras[N]).
       const targetIdx = Math.min(after, paras.length - 1);
       const target = paras[targetIdx];
       target.insertBefore(item.node, target.firstChild);
     }
   }
 
-  // Decoratives append last (absolute, won't affect flow).
-  // Canvas needs position:relative for absolute children, set in CSS.
-  for (const item of decoratives) canvas.appendChild(item.node);
+  // Absolutes last.
+  for (const item of absolutes) section.appendChild(item.node);
+
+  return section;
+}
+
+export async function renderPage(pageData, container, mode = 'view', options = {}) {
+  if (!container) throw new Error('renderPage: container is required');
+  clearChildren(container);
+
+  const page = el('div', { class: 'rkk-page' });
+  page.dataset.bg = pageData.canvas?.background || 'paper';
+  page.dataset.cursor = pageData.cursor || 'default';
+  page.dataset.signature = pageData.signature || 'none';
+  page.dataset.mode = mode;
+
+  page.appendChild(buildTape(pageData));
+  page.appendChild(buildMasthead(pageData));
+
+  // Section-aware rendering.
+  const { sections, elements } = normalizePageSections(pageData);
+
+  const canvas = el('main', { class: 'rkk-canvas rkk-canvas-sectioned' });
+  const maxW = pageData.canvas?.maxWidth || 1480;
+  canvas.style.setProperty('--max', `${maxW}px`);
+
+  // Build a bucket per section, then render each section in order.
+  const bySection = new Map(sections.map(s => [s.id, []]));
+  for (const e of elements) {
+    if (bySection.has(e.sectionId)) bySection.get(e.sectionId).push(e);
+    else bySection.get(sections[0].id).push(e);
+  }
+
+  for (const sec of sections) {
+    const node = await buildSection(sec, bySection.get(sec.id) || [], mode, options);
+    canvas.appendChild(node);
+  }
 
   page.appendChild(canvas);
   page.appendChild(buildColophon(pageData));

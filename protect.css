@@ -62,7 +62,7 @@ html.protected {
     visibility: hidden;
   }
   html.protected::before {
-    content: "Images on this site are reserved. Print disabled by design. Contact studio@raghavakk.com for licensing.";
+    content: "Images on this site are reserved. Print disabled by design. Contact studio@raghavakkstudio.com for licensing.";
     display: block;
     padding: 2em;
     font-family: serif;

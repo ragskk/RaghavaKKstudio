@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Site Map · Raghava KK</title>
   <meta name="description" content="A working map of every room in the studio." />
+  <!-- Open Graph / social previews -->
+  <meta property="og:title" content="Site Map · Raghava KK" />
+  <meta property="og:description" content="A working map of every room in the studio." />
+  <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/sitemap2" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Raghava KK" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Site Map · Raghava KK" />
+  <meta name="twitter:description" content="A working map of every room in the studio." />
+  <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <link rel="canonical" href="https://raghavakkstudio.com/sitemap2" />
   <meta name="theme-color" content="#F4F1EA" />
   <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
   <meta name="robots" content="index, follow, noai, noimageai" />
@@ -334,7 +347,7 @@
 
   <header class="masthead" role="banner">
     <div class="left">
-      <span><a class="home-link" href="./Index2.html">← Raghava KK</a></span>
+      <span><a class="home-link" href="./index.html">← Raghava KK</a></span>
       <span class="stamp">Site map</span>
     </div>
     <div class="center">an artist working between gods &amp; algorithms</div>
@@ -372,20 +385,21 @@
   </main>
 
   <footer class="colophon" role="contentinfo">
-    <div class="col">
+    <div class="col c-a">
       <h3>Get in touch.</h3>
-      <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
       <span>Press · Sales · Studio visits</span>
     </div>
-    <div class="col">
-      <a href="./Index2.html">Index →</a>
+    <div class="col c-b">
       <a href="./about2.html">Short bio →</a>
-      <a href="./network.html">Field №01 →</a>
       <a href="./writings2.html">Writings →</a>
+      <a href="./library2.html">The library →</a>
+      <span>Studio · Bengaluru</span>
+      <span>Studio · New York</span>
     </div>
-    <div class="col">
+    <div class="col c-c">
       <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
-      <span>&copy; 2026 Raghava KK · <a href="./terms.html">Terms</a></span>
+      <span>&copy; 2026 Raghava KK &middot; <a href="./terms.html">Terms</a></span>
     </div>
   </footer>
 
@@ -414,7 +428,7 @@
 
     /* Node definitions — positions are percentages of the map area. */
     const NODES = [
-      { id: 'index',    label: 'Raghava KK',          num: '№ 00', href: './Index2.html',    x: 50, y: 50, ring: 'center',
+      { id: 'index',    label: 'Raghava KK',          num: '№ 00', href: './index.html',    x: 50, y: 50, ring: 'center',
         desc: 'The index, every door starts here.' },
       // 5 primary doors — inner ring
       { id: 'calling',  label: 'Calling All Gods',    num: '№ 01', href: './calling2.html',  x: 25, y: 28, ring: 'inner',
@@ -435,7 +449,13 @@
       { id: 'field',    label: 'Field №01',           num: 'Lab',       href: './network.html',   x: 50, y: 92, ring: 'outer',
         desc: 'A drifting network of paintings.' },
       { id: 'terms',    label: 'Terms',               num: '§',         href: './terms.html',     x: 6, y: 86, ring: 'outer',
-        desc: 'Use, reproduction, AI policy.' }
+        desc: 'Use, reproduction, AI policy.' },
+      { id: 'library',  label: 'The Library',         num: 'Books',     href: './library2.html',  x: 90, y: 22, ring: 'outer',
+        desc: 'Artist books and text-only booklets.' },
+      { id: 'parsons',  label: 'Parsons Proposal',    num: '№ 01a',     href: './parsons-proposal.html', x: 10, y: 14, ring: 'outer',
+        desc: 'The proposal for Calling All Gods.' },
+      { id: 'timeline', label: 'Timeline',            num: 'Studio',    href: './timeline2.html', x: 78, y: 88, ring: 'outer',
+        desc: 'A chronological walk through <em>28 years</em>.' }
     ];
 
     /* Edges — pairs of node ids. Built so the index connects to everyone,
@@ -445,12 +465,18 @@
       // hub spokes
       ['index','calling'], ['index','studio'], ['index','lab'], ['index','becoming'], ['index','excavate'],
       ['index','about'],   ['index','writings'], ['index','field'], ['index','terms'],
+      ['index','library'], ['index','parsons'],
       // inner pentagon
       ['calling','studio'], ['studio','lab'], ['lab','becoming'], ['becoming','excavate'], ['excavate','calling'],
       // cross-links: Field samples Studio + Lab; About cross-refs Studio
       ['field','studio'], ['field','lab'], ['about','studio'],
       // bottom links: Excavate → Field (related practices); Becoming → Writings
-      ['excavate','field'], ['becoming','writings']
+      ['excavate','field'], ['becoming','writings'],
+      // new: Library connects to Studio (where books originate) + Writings (text kinship);
+      // Parsons proposal sits next to Calling (it IS the show's proposal)
+      ['library','studio'], ['library','writings'], ['parsons','calling'],
+      // timeline is studio's chronological reading — wire it to studio and to becoming-archived
+      ['index','timeline'], ['timeline','studio'], ['timeline','becoming']
     ];
 
     /* DOM build */

@@ -1,5 +1,7 @@
 // ───────────────────────────────────────────────────────────────────
-// RKK Studio · Editor · v2
+// Design Studio · Editor · v2
+// In-browser composer for Raghava KK's website.
+// (Distinct from the public "Raghava KK Studio" brand / studio2.html.)
 // Composes pages on top of the shared renderer. Writes via FSA.
 // v2 adds: multi-file drop, image bank, crop tool, tight bbox,
 // free text, page anchor, captions, split block, section library.
@@ -15,7 +17,12 @@ const state = {
   pages: [],                    // [{ slug }]
   currentSlug: null,
   pageData: null,               // current page.json contents
-  selectedId: null,
+  selectedId: null,             // primary selected element (for inspector etc.)
+  selectedIds: [],              // full selection (multi-select). Includes selectedId.
+  focusedSectionId: null,       // which section receives new elements / paste
+  clipboard: null,              // in-memory paste buffer: { elements: [...] }
+  selectedSectionId: null,      // section selected for inspector editing
+  dragging: false,              // true during a drag/resize/rotate; lets refreshSelectionChrome skip expensive paths
   editingTextId: null,          // id of text element currently being edited
   history: [],                  // [pageData snapshots]
   historyIdx: -1,
@@ -28,6 +35,13 @@ const state = {
   bankObjectUrls: [],           // tracked URLs to revoke on rescan
   crop: null,                   // { id, entryCrop, currentCrop }
 };
+
+// ─── Section constants ─────────────────────────────────────────────
+
+const SECTION_DEFAULT_HEIGHT = 80;   // vh
+const SECTION_MIN_HEIGHT = 20;       // vh
+const SECTION_MAX_HEIGHT = 300;      // vh
+const SECTION_BG_OPTIONS = ['inherit', 'paper', 'ink', 'red', 'cream'];
 
 const HISTORY_MAX = 50;
 const RENDER_DEBOUNCE = 16;
@@ -227,6 +241,8 @@ async function loadPage(slug) {
   revokeBankUrls();
   state.currentSlug = slug;
   state.selectedId = null;
+  state.selectedIds = [];
+  state.selectedSectionId = null;
   state.editingTextId = null;
   try {
     const pagesDir = await state.rootHandle.getDirectoryHandle('pages');
@@ -237,6 +253,8 @@ async function loadPage(slug) {
     console.error('loadPage failed', slug, e);
     state.pageData = defaultPageData(slug);
   }
+  migratePageData(state.pageData);
+  state.focusedSectionId = state.pageData.sections[0].id;
   state.history = [clone(state.pageData)];
   state.historyIdx = 0;
   setSaveState('saved');
@@ -248,19 +266,72 @@ async function loadPage(slug) {
 }
 
 function defaultPageData(slug) {
+  const firstSectionId = uid('sec');
   return {
-    version: 1,
+    version: 2,
     slug,
     title: slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
     dropNumber: '00',
     section: '',
-    canvas: { background: 'paper', maxWidth: 1480, minHeight: 100 },
+    canvas: { background: 'paper', maxWidth: 1480 },
     cursor: 'default',
     signature: 'none',
+    sections: [
+      { id: firstSectionId, height: SECTION_DEFAULT_HEIGHT, bg: 'inherit' },
+    ],
     elements: [],
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
+}
+
+// Mutate pageData in place so its sections + sectionId fields are valid.
+// Idempotent. Called on every loadPage; the next save persists the migration.
+//
+// Legacy migration: pages saved before the section model had canvas.minHeight
+// (in vh). To preserve the existing absolute positions of decoratives — whose
+// `top: y%` was being computed against the canvas height — the default
+// section adopts that same height. Any drift would only come from browsers
+// disagreeing on % of a min-height-only container vs. a definite-height one.
+function migratePageData(pd) {
+  if (!pd) return pd;
+  if (!Array.isArray(pd.sections) || pd.sections.length === 0) {
+    const legacyHeight = Number(pd.canvas?.minHeight);
+    const defH = Number.isFinite(legacyHeight) && legacyHeight > 0
+      ? Math.max(SECTION_MIN_HEIGHT, Math.min(SECTION_MAX_HEIGHT, legacyHeight))
+      : SECTION_DEFAULT_HEIGHT;
+    // Legacy pages used min-height (flow content could push past it). Match
+    // that here by disabling clip on the migrated default section so existing
+    // flow content keeps rendering. New sections still default to clip=true.
+    pd.sections = [{ id: uid('sec'), height: defH, bg: 'inherit', clip: false }];
+  }
+  // Validate / normalize each section.
+  const seen = new Set();
+  pd.sections = pd.sections.map((s, i) => {
+    let id = s.id;
+    if (!id || seen.has(id)) id = uid('sec');
+    seen.add(id);
+    return {
+      id,
+      height: Number.isFinite(s.height)
+        ? Math.max(SECTION_MIN_HEIGHT, Math.min(SECTION_MAX_HEIGHT, s.height))
+        : SECTION_DEFAULT_HEIGHT,
+      clip: s.clip !== false,
+      bg: s.bg || 'inherit',
+      bgColor: s.bgColor || null,
+      bgImage: s.bgImage || null,
+      label: s.label || null,
+    };
+  });
+  const firstId = pd.sections[0].id;
+  const validIds = new Set(pd.sections.map(s => s.id));
+  pd.elements = (pd.elements || []).map(e => {
+    if (!e.sectionId || !validIds.has(e.sectionId)) {
+      return Object.assign({}, e, { sectionId: firstId });
+    }
+    return e;
+  });
+  return pd;
 }
 
 // ─── Stub HTML generator ───────────────────────────────────────────
@@ -368,7 +439,9 @@ async function rerender() {
   await renderPage(state.pageData, els.pageRoot, state.mode, {
     onElementClick: (data, ev) => {
       ev.stopPropagation();
-      selectElement(data.id);
+      // Shift / Cmd / Meta extends the selection. Otherwise replace.
+      const additive = ev.shiftKey || ev.metaKey || ev.ctrlKey;
+      selectElement(data.id, additive ? 'toggle' : 'replace');
     }
   });
   attachContenteditableHooks();
@@ -507,6 +580,8 @@ function enterTextEditMode(node, x, y) {
   state.editingTextId = fullId; // bare id for text, "<id>-caption" for caption
   // Hide handles while editing (CSS toggles via .studio-editing).
   if (els.overlay) els.overlay.classList.add('studio-editing');
+  // Floating formatting toolbar next to the sprite.
+  showTextToolbar(node);
   // Focus and place caret at the click point.
   try {
     node.focus({ preventScroll: true });
@@ -575,14 +650,222 @@ function exitTextEditMode() {
   }
   state.editingTextId = null;
   if (els.overlay) els.overlay.classList.remove('studio-editing');
+  hideTextToolbar();
   refreshSelectionChrome();
   renderInspector();
 }
 
+// ─── Floating text-editing toolbar ─────────────────────────────────
+//
+// Shown next to a text element while it's in contenteditable mode.
+// Buttons apply formatting to the current Selection within the element.
+// We use a custom wrapSelection helper rather than execCommand for color
+// so the markup matches the brand convention (<span class="red">…</span>)
+// instead of inline style attributes.
+
+function showTextToolbar(node) {
+  hideTextToolbar();
+  if (!node) return;
+  const r = node.getBoundingClientRect();
+  const bar = document.createElement('div');
+  bar.id = 'studio-text-toolbar';
+  bar.className = 'studio-text-toolbar';
+  // Anchor to the right of the sprite if there's room, else above.
+  const viewportW = window.innerWidth;
+  const preferRight = r.right + 200 < viewportW - 16;
+  if (preferRight) {
+    bar.style.left = `${r.right + 10}px`;
+    bar.style.top  = `${Math.max(8, r.top)}px`;
+  } else {
+    bar.style.left = `${Math.max(8, r.left)}px`;
+    bar.style.top  = `${Math.max(8, r.top - 44)}px`;
+  }
+
+  // mousedown preventDefault keeps the contenteditable focused — without
+  // this, clicking a button blurs the text and the selection is lost
+  // before our handler can read it.
+  function makeButton(label, title, onActivate, opts = {}) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'studio-text-tb-btn' + (opts.extraClass ? ' ' + opts.extraClass : '');
+    b.title = title;
+    b.textContent = label;
+    if (opts.color) b.style.color = opts.color;
+    b.addEventListener('mousedown', (e) => e.preventDefault());
+    b.addEventListener('click', (e) => {
+      e.preventDefault();
+      onActivate();
+      // Re-focus the editing node so subsequent typing goes there.
+      const editingNode = state.editingTextId
+        ? els.pageRoot.querySelector(`[data-element-id="${CSS.escape(state.editingTextId)}"]`)
+        : null;
+      editingNode?.focus?.({ preventScroll: true });
+    });
+    return b;
+  }
+
+  bar.appendChild(makeButton('B', 'Bold', () => execFormatCommand('bold'), { extraClass: 'is-bold' }));
+  bar.appendChild(makeButton('I', 'Italic', () => execFormatCommand('italic'), { extraClass: 'is-italic' }));
+  bar.appendChild(makeButton('U', 'Underline', () => execFormatCommand('underline'), { extraClass: 'is-under' }));
+
+  const sep = document.createElement('span'); sep.className = 'studio-text-tb-sep'; bar.appendChild(sep);
+
+  bar.appendChild(makeButton('●', 'Red',   () => wrapSelectionWith('span', { class: 'red' }), { color: 'var(--red)' }));
+  bar.appendChild(makeButton('●', 'Ink',   () => wrapSelectionWith('span', { style: 'color: var(--ink)' }), { color: 'var(--ink)' }));
+  bar.appendChild(makeButton('●', 'Paper', () => wrapSelectionWith('span', { style: 'color: var(--paper); background: var(--ink); padding: 0 2px;' }), { color: '#bbb' }));
+  bar.appendChild(makeButton('×', 'Clear formatting on selection', () => clearSelectionFormatting()));
+
+  document.body.appendChild(bar);
+}
+
+function hideTextToolbar() {
+  document.getElementById('studio-text-toolbar')?.remove();
+}
+
+// Re-position the toolbar when scrolling/rotating/resizing — the
+// contenteditable node may have moved on screen.
+function repositionTextToolbar() {
+  if (!state.editingTextId) return;
+  const node = els.pageRoot.querySelector(`[data-element-id="${CSS.escape(state.editingTextId)}"]`);
+  if (!node) return;
+  const bar = document.getElementById('studio-text-toolbar');
+  if (!bar) return;
+  const r = node.getBoundingClientRect();
+  const viewportW = window.innerWidth;
+  const preferRight = r.right + 200 < viewportW - 16;
+  if (preferRight) {
+    bar.style.left = `${r.right + 10}px`;
+    bar.style.top  = `${Math.max(8, r.top)}px`;
+  } else {
+    bar.style.left = `${Math.max(8, r.left)}px`;
+    bar.style.top  = `${Math.max(8, r.top - 44)}px`;
+  }
+}
+
+function execFormatCommand(cmd) {
+  // execCommand is deprecated but remains the cleanest cross-browser way to
+  // toggle bold/italic/underline on a selection inside contenteditable.
+  // The deprecation has not actually removed the API in any browser.
+  try { document.execCommand(cmd, false, null); } catch (e) { /* ignore */ }
+  // Persist the change: serialize and write back to the element.
+  saveEditingTextState();
+}
+
+function wrapSelectionWith(tag, attrs) {
+  const sel = window.getSelection();
+  if (!sel || !sel.rangeCount) return;
+  const range = sel.getRangeAt(0);
+  if (range.collapsed) return;
+  const wrapper = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) wrapper.setAttribute(k, v);
+  try {
+    range.surroundContents(wrapper);
+  } catch (e) {
+    // Selection crosses element boundaries — extract + wrap + reinsert.
+    const contents = range.extractContents();
+    wrapper.appendChild(contents);
+    range.insertNode(wrapper);
+  }
+  // Reselect the wrapped content so the user can stack more formatting.
+  sel.removeAllRanges();
+  const fresh = document.createRange();
+  fresh.selectNodeContents(wrapper);
+  sel.addRange(fresh);
+  saveEditingTextState();
+}
+
+// Strip <strong>/<b>/<em>/<i>/<u>/<span> wrappers from the current selection.
+// Doesn't touch text outside the selection.
+function clearSelectionFormatting() {
+  try {
+    document.execCommand('removeFormat', false, null);
+  } catch (e) { /* ignore */ }
+  // removeFormat doesn't remove our class spans; do that manually.
+  const sel = window.getSelection();
+  if (sel && sel.rangeCount) {
+    const range = sel.getRangeAt(0);
+    const frag = range.cloneContents();
+    // Replace any <span class="red"> or color spans with their text.
+    const tmp = document.createElement('div');
+    tmp.appendChild(frag);
+    tmp.querySelectorAll('span').forEach(s => {
+      while (s.firstChild) s.parentNode.insertBefore(s.firstChild, s);
+      s.remove();
+    });
+    range.deleteContents();
+    range.insertNode(tmp.firstChild ? document.createTextNode(tmp.textContent) : document.createTextNode(''));
+  }
+  saveEditingTextState();
+}
+
+// Push the editing node's current HTML back into pageData so changes
+// survive rerenders and undo. Equivalent to what focusout does but
+// triggered immediately by toolbar actions.
+function saveEditingTextState() {
+  const fullId = state.editingTextId;
+  if (!fullId) return;
+  const node = els.pageRoot.querySelector(`[data-element-id="${CSS.escape(fullId)}"]`);
+  if (!node) return;
+  const isCaption = node.matches?.('figcaption.rkk-caption');
+  if (isCaption) {
+    const id = fullId.replace(/-caption$/, '');
+    const elData = state.pageData?.elements?.find(x => x.id === id);
+    if (elData?.caption) {
+      const next = node.innerText.trim();
+      if (next !== elData.caption.content) {
+        elData.caption.content = next;
+        commitHistory();
+      }
+    }
+  } else {
+    const elData = state.pageData?.elements?.find(x => x.id === fullId);
+    if (elData) {
+      const next = serializeTextContent(node);
+      if (next !== elData.content) {
+        elData.content = next;
+        commitHistory();
+      }
+    }
+  }
+}
+
 // ─── Selection ─────────────────────────────────────────────────────
 
-function selectElement(id) {
-  state.selectedId = id;
+// Selection model:
+// - state.selectedId is the PRIMARY selected element (the one the inspector
+//   targets when one isn't multi-selected).
+// - state.selectedIds is the full set of selected ids; always contains
+//   state.selectedId when one is set. Group drag/copy/delete operates on
+//   the full set.
+//
+// mode arg:
+//   'replace' (default) — clear previous, select this.
+//   'add'               — add to selection if not already; primary unchanged.
+//   'toggle'            — toggle this id in the set; primary updates to
+//                          this id when adding, falls back when removing.
+
+function selectElement(id, mode = 'replace') {
+  if (!id) return;
+  state.selectedSectionId = null;
+  if (mode === 'replace' || !state.selectedIds.length) {
+    state.selectedId = id;
+    state.selectedIds = [id];
+  } else if (mode === 'add') {
+    if (!state.selectedIds.includes(id)) state.selectedIds.push(id);
+    state.selectedId = id;
+  } else if (mode === 'toggle') {
+    if (state.selectedIds.includes(id)) {
+      state.selectedIds = state.selectedIds.filter(x => x !== id);
+      state.selectedId = state.selectedIds[state.selectedIds.length - 1] || null;
+    } else {
+      state.selectedIds.push(id);
+      state.selectedId = id;
+    }
+  }
+  // Focus the section containing the primary selection so new elements
+  // and paste land where the user is looking.
+  const sel = getSelected();
+  if (sel?.sectionId) state.focusedSectionId = sel.sectionId;
   refreshSelectionChrome();
   renderInspector();
   renderLayers();
@@ -590,6 +873,8 @@ function selectElement(id) {
 
 function deselect() {
   state.selectedId = null;
+  state.selectedIds = [];
+  state.selectedSectionId = null;
   state.editingTextId = null;
   if (els.overlay) els.overlay.classList.remove('studio-editing');
   refreshSelectionChrome();
@@ -602,6 +887,12 @@ function getSelected() {
   return state.pageData.elements.find(e => e.id === state.selectedId) || null;
 }
 
+function getSelectedAll() {
+  if (!state.pageData) return [];
+  const ids = new Set(state.selectedIds);
+  return state.pageData.elements.filter(e => ids.has(e.id));
+}
+
 function findRenderedNode(id) {
   if (!id) return null;
   return els.pageRoot.querySelector(`[data-element-id="${CSS.escape(id)}"]`);
@@ -609,8 +900,25 @@ function findRenderedNode(id) {
 
 async function refreshSelectionChrome() {
   els.overlay.innerHTML = '';
-  if (state.mode !== 'edit' || !state.selectedId) return;
+  if (state.mode !== 'edit') return;
   if (state.crop) return; // crop mode owns the overlay
+
+  // Always draw section dividers in edit mode (independent of element selection).
+  renderSectionOverlay();
+
+  if (!state.selectedId && state.selectedIds.length === 0) return;
+
+  // Secondary selections: simple ring on each non-primary selected element.
+  const secondaryIds = state.selectedIds.filter(id => id !== state.selectedId);
+  for (const id of secondaryIds) {
+    drawSimpleRing(id);
+  }
+  // Group union box (dashed): if 2+ selected, draw a union over all.
+  if (state.selectedIds.length >= 2) {
+    drawGroupBox();
+  }
+
+  if (!state.selectedId) return;
   const sel = getSelected();
   const node = findRenderedNode(state.selectedId);
   if (!sel || !node) return;
@@ -647,7 +955,10 @@ async function refreshSelectionChrome() {
       }
       // baked path: leave x/y/w/h as the measured rect — that already IS
       // the cropped pixel box.
-    } else if (sel.cutSrc || sel.src) {
+    } else if ((sel.cutSrc || sel.src) && !state.dragging) {
+      // Skip the alpha-bounds tighten during an active drag — the async
+      // await would create per-frame promises that resolve out of order
+      // and stall the ring. Fall back to the rect bbox while dragging.
       try {
         const ab = await getAlphaBounds(sel.cutSrc || sel.src, 0.1);
         if (ab && (ab.w < 99.5 || ab.h < 99.5 || ab.x > 0.5 || ab.y > 0.5)) {
@@ -660,10 +971,49 @@ async function refreshSelectionChrome() {
     }
   }
 
+  // Rotated chrome support: if the element is rotated, the measured rect
+  // (getBoundingClientRect) is the axis-aligned bbox of the rotated shape,
+  // which is larger than the element. To draw a ring that hugs the element,
+  // we use the element's UNROTATED dimensions (offsetWidth/Height) centered
+  // on the measured center, then apply the same rotation transform to the
+  // ring/handles so the chrome visually rotates with the element.
+  const rot = Number(sel.rotation) || 0;
+  const isRotated = rot !== 0 && (
+    sel.type === 'image-decorative' || sel.type === 'hero-artifact' ||
+    (sel.type === 'text' && sel.mode === 'decorative') ||
+    sel.positioned
+  );
+  if (isRotated) {
+    const cxScreen = (nRect.left + nRect.right) / 2 - cRect.left + container.scrollLeft;
+    const cyScreen = (nRect.top  + nRect.bottom) / 2 - cRect.top  + container.scrollTop;
+    const ow = measureNode.offsetWidth  || nRect.width;
+    const oh = measureNode.offsetHeight || nRect.height;
+    x = cxScreen - ow / 2;
+    y = cyScreen - oh / 2;
+    w = ow;
+    h = oh;
+  }
+
+  // For rotated elements, pivot all chrome around the element's center so
+  // the ring/handles/rotation handle visually rotate with the sprite.
+  const pivotCx = x + w / 2;
+  const pivotCy = y + h / 2;
+  const rotateChrome = (node) => {
+    if (!isRotated) return;
+    // Read the current left/top, compute the offset from the pivot, set
+    // transform-origin in pixel terms so rotation pivots around the
+    // element's center regardless of the node's own position.
+    const left = parseFloat(node.style.left);
+    const top  = parseFloat(node.style.top);
+    node.style.transformOrigin = `${pivotCx - left}px ${pivotCy - top}px`;
+    node.style.transform = `${node.style.transform || ''} rotate(${rot}deg)`.trim();
+  };
+
   const ring = document.createElement('div');
   ring.className = 'studio-sel-ring';
   ring.style.left = `${x}px`; ring.style.top = `${y}px`;
   ring.style.width = `${w}px`; ring.style.height = `${h}px`;
+  rotateChrome(ring);
   els.overlay.appendChild(ring);
 
   const handles = ['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'];
@@ -675,20 +1025,23 @@ async function refreshSelectionChrome() {
     const hy = h2.includes('n') ? y : h2.includes('s') ? y + h : y + h / 2;
     node2.style.left = `${hx}px`;
     node2.style.top = `${hy}px`;
+    rotateChrome(node2);
     node2.addEventListener('pointerdown', (e) => beginResize(e, h2));
     els.overlay.appendChild(node2);
   }
-  // Rotation stem & handle
+  // Rotation stem & handle (pivot at element center, sticks out above)
   const stem = document.createElement('div');
   stem.className = 'studio-rotation-stem';
   stem.style.left = `${x + w / 2}px`;
   stem.style.top = `${y - 22}px`;
   stem.style.height = '22px';
+  rotateChrome(stem);
   els.overlay.appendChild(stem);
   const rotH = document.createElement('div');
   rotH.className = 'studio-rotation-handle';
   rotH.style.left = `${x + w / 2}px`;
   rotH.style.top = `${y - 28}px`;
+  rotateChrome(rotH);
   rotH.addEventListener('pointerdown', beginRotate);
   els.overlay.appendChild(rotH);
 
@@ -714,9 +1067,233 @@ async function refreshSelectionChrome() {
   }
 }
 
+// ─── Selection chrome helpers ──────────────────────────────────────
+
+// Simple ring around any element (used for non-primary multi-selections).
+// No handles, no tight image bbox.
+function drawSimpleRing(id) {
+  const node = findRenderedNode(id);
+  if (!node) return;
+  const container = els.stageScroll;
+  const cRect = container.getBoundingClientRect();
+  const measureNode = (node.tagName === 'IMG' ? node : node.querySelector('img') || node);
+  const r = measureNode.getBoundingClientRect();
+  const x = r.left - cRect.left + container.scrollLeft;
+  const y = r.top  - cRect.top  + container.scrollTop;
+  const ring = document.createElement('div');
+  ring.className = 'studio-sel-ring studio-sel-ring-secondary';
+  ring.style.left = `${x}px`; ring.style.top = `${y}px`;
+  ring.style.width = `${r.width}px`; ring.style.height = `${r.height}px`;
+  ring.style.pointerEvents = 'auto';
+  ring.addEventListener('pointerdown', beginMove);
+  els.overlay.appendChild(ring);
+}
+
+// Dashed bounding box around the full selection set.
+function drawGroupBox() {
+  const container = els.stageScroll;
+  const cRect = container.getBoundingClientRect();
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  for (const id of state.selectedIds) {
+    const node = findRenderedNode(id);
+    if (!node) continue;
+    const r = node.getBoundingClientRect();
+    const x = r.left - cRect.left + container.scrollLeft;
+    const y = r.top  - cRect.top  + container.scrollTop;
+    if (x < minX) minX = x;
+    if (y < minY) minY = y;
+    if (x + r.width  > maxX) maxX = x + r.width;
+    if (y + r.height > maxY) maxY = y + r.height;
+  }
+  if (!Number.isFinite(minX)) return;
+  const box = document.createElement('div');
+  box.className = 'studio-group-box';
+  box.style.left = `${minX - 6}px`;
+  box.style.top  = `${minY - 6}px`;
+  box.style.width  = `${maxX - minX + 12}px`;
+  box.style.height = `${maxY - minY + 12}px`;
+  els.overlay.appendChild(box);
+}
+
+// Section dividers in the overlay (edit mode). Each divider gets:
+//  - a horizontal drag-bar that resizes the section above it
+//  - a "+ SECTION BELOW" button (and persistent "+ SECTION AT END" after the last section)
+//  - a label "§ NN · {height}vh"
+function renderSectionOverlay() {
+  if (!state.pageData?.sections?.length) return;
+  const container = els.stageScroll;
+  const cRect = container.getBoundingClientRect();
+  const sections = els.pageRoot.querySelectorAll('.rkk-section');
+  let idx = 0;
+  for (const node of sections) {
+    const r = node.getBoundingClientRect();
+    const x = r.left - cRect.left + container.scrollLeft;
+    const y = r.top  - cRect.top  + container.scrollTop;
+    const w = r.width, h = r.height;
+    const secId = node.dataset.sectionId;
+    const secData = state.pageData.sections.find(s => s.id === secId);
+    const isFocused = state.focusedSectionId === secId;
+    const isSelected = state.selectedSectionId === secId;
+    idx++;
+
+    // Faint section pill (label) at top-left of section, edit only.
+    const pill = document.createElement('div');
+    pill.className = 'studio-section-pill';
+    if (isFocused) pill.classList.add('is-focused');
+    if (isSelected) pill.classList.add('is-selected');
+    pill.style.left = `${x + 8}px`;
+    pill.style.top  = `${y + 8}px`;
+    pill.textContent = `§ ${String(idx).padStart(2, '0')} · ${secData?.height ?? '?'}vh`;
+    pill.addEventListener('click', (e) => {
+      e.stopPropagation();
+      state.selectedSectionId = secId;
+      state.focusedSectionId = secId;
+      state.selectedId = null;
+      state.selectedIds = [];
+      refreshSelectionChrome();
+      renderInspector();
+    });
+    els.overlay.appendChild(pill);
+
+    // Resize bar at the BOTTOM of this section (drag = resize this section).
+    const bar = document.createElement('div');
+    bar.className = 'studio-section-bar';
+    bar.style.left = `${x}px`;
+    bar.style.top = `${y + h - 6}px`;
+    bar.style.width = `${w}px`;
+    bar.addEventListener('pointerdown', (e) => beginSectionResize(e, secId));
+    els.overlay.appendChild(bar);
+
+    // "+ section below" anchored to the bar's right side.
+    const addBelow = document.createElement('button');
+    addBelow.type = 'button';
+    addBelow.className = 'studio-section-add';
+    addBelow.textContent = '+ SECTION BELOW';
+    addBelow.style.left = `${x + w - 168}px`;
+    addBelow.style.top  = `${y + h - 14}px`;
+    addBelow.addEventListener('click', (e) => {
+      e.stopPropagation();
+      addSectionAfter(secId);
+    });
+    els.overlay.appendChild(addBelow);
+  }
+
+  // Persistent "+ section at end" affordance below the last section.
+  const lastSec = sections[sections.length - 1];
+  if (lastSec) {
+    const r = lastSec.getBoundingClientRect();
+    const x = r.left - cRect.left + container.scrollLeft;
+    const y = r.top  - cRect.top  + container.scrollTop + r.height;
+    const tail = document.createElement('button');
+    tail.type = 'button';
+    tail.className = 'studio-section-tail-add';
+    tail.textContent = '+ SECTION AT END';
+    tail.style.left = `${x + r.width / 2 - 100}px`;
+    tail.style.top  = `${y + 12}px`;
+    tail.addEventListener('click', (e) => {
+      e.stopPropagation();
+      addSectionAfter(state.pageData.sections[state.pageData.sections.length - 1].id);
+    });
+    els.overlay.appendChild(tail);
+  }
+}
+
 // Recompute on scroll/resize
-window.addEventListener('resize', () => { refreshSelectionChrome(); });
-els.stageScroll.addEventListener('scroll', () => { refreshSelectionChrome(); }, { passive: true });
+window.addEventListener('resize', () => { refreshSelectionChrome(); repositionTextToolbar(); });
+els.stageScroll.addEventListener('scroll', () => { refreshSelectionChrome(); repositionTextToolbar(); }, { passive: true });
+
+// ─── Sections: add / delete / resize ──────────────────────────────
+
+function addSectionAfter(refId) {
+  if (!state.pageData) return;
+  const arr = state.pageData.sections;
+  const idx = arr.findIndex(s => s.id === refId);
+  const newSec = { id: uid('sec'), height: SECTION_DEFAULT_HEIGHT, bg: 'inherit' };
+  if (idx === -1) arr.push(newSec);
+  else arr.splice(idx + 1, 0, newSec);
+  state.focusedSectionId = newSec.id;
+  commitHistory();
+  rerender();
+}
+
+function deleteSection(secId) {
+  if (!state.pageData) return;
+  const arr = state.pageData.sections;
+  if (arr.length <= 1) {
+    alert('A page must have at least one section.');
+    return;
+  }
+  const idx = arr.findIndex(s => s.id === secId);
+  if (idx === -1) return;
+  const hasElements = state.pageData.elements.some(e => e.sectionId === secId);
+  if (hasElements) {
+    const choice = confirm(
+      `This section has elements inside it.\n\n` +
+      `OK   = delete the section AND its elements\n` +
+      `Cancel = keep the section`
+    );
+    if (!choice) return;
+    const deletedIds = new Set(
+      state.pageData.elements.filter(e => e.sectionId === secId).map(e => e.id)
+    );
+    state.pageData.elements = state.pageData.elements.filter(e => e.sectionId !== secId);
+    // Drop any deleted ids from the selection so the inspector doesn't try
+    // to render a vanished element.
+    state.selectedIds = state.selectedIds.filter(id => !deletedIds.has(id));
+    if (deletedIds.has(state.selectedId)) state.selectedId = state.selectedIds[state.selectedIds.length - 1] || null;
+  }
+  arr.splice(idx, 1);
+  if (state.focusedSectionId === secId) {
+    state.focusedSectionId = arr[Math.min(idx, arr.length - 1)].id;
+  }
+  state.selectedSectionId = null;
+  commitHistory();
+  rerender();
+  renderInspector();
+}
+
+function moveSection(secId, dir /* -1 up, +1 down */) {
+  const arr = state.pageData.sections;
+  const idx = arr.findIndex(s => s.id === secId);
+  if (idx === -1) return;
+  const target = idx + dir;
+  if (target < 0 || target >= arr.length) return;
+  const [moved] = arr.splice(idx, 1);
+  arr.splice(target, 0, moved);
+  commitHistory();
+  rerender();
+}
+
+function beginSectionResize(ev, secId) {
+  ev.preventDefault(); ev.stopPropagation();
+  const sec = state.pageData.sections.find(s => s.id === secId);
+  if (!sec) return;
+  const startY = ev.clientY;
+  const orig = sec.height;
+  // 1 vh in px
+  const vhPx = window.innerHeight / 100;
+  document.body.style.cursor = 'ns-resize';
+  function move(e) {
+    const dyPx = e.clientY - startY;
+    const dyVh = dyPx / vhPx;
+    sec.height = Math.max(SECTION_MIN_HEIGHT, Math.min(SECTION_MAX_HEIGHT, orig + dyVh));
+    // Live-update the rendered section node so the user sees the resize.
+    // Height is a minimum so flow content can still push the section taller.
+    const node = els.pageRoot.querySelector(`.rkk-section[data-section-id="${CSS.escape(secId)}"]`);
+    if (node) node.style.minHeight = `${sec.height}vh`;
+    refreshSelectionChrome();
+  }
+  function up() {
+    window.removeEventListener('pointermove', move);
+    window.removeEventListener('pointerup', up);
+    document.body.style.cursor = '';
+    sec.height = Math.round(sec.height);
+    rerender();
+    commitHistory();
+  }
+  window.addEventListener('pointermove', move);
+  window.addEventListener('pointerup', up);
+}
 
 // ─── Drag / move / resize / rotate ────────────────────────────────
 
@@ -725,49 +1302,373 @@ function pageWidthPx() {
   return root.getBoundingClientRect().width || 1;
 }
 
+// Return the rendered section node for an element. Falls back to canvas.
+function sectionNodeForElement(elData) {
+  if (!elData?.sectionId) return els.pageRoot.querySelector('.rkk-section') || els.pageRoot;
+  return els.pageRoot.querySelector(`.rkk-section[data-section-id="${CSS.escape(elData.sectionId)}"]`) || els.pageRoot;
+}
+
+// Which section (if any) contains the screen point (clientX, clientY)?
+// Returns the section's id, or null.
+function findSectionAtPoint(clientX, clientY) {
+  const sections = els.pageRoot.querySelectorAll('.rkk-section');
+  for (const sec of sections) {
+    const r = sec.getBoundingClientRect();
+    if (clientX >= r.left && clientX <= r.right &&
+        clientY >= r.top  && clientY <= r.bottom) {
+      return sec.dataset.sectionId;
+    }
+  }
+  return null;
+}
+
+// During a cross-section drag, sections need overflow: visible so the
+// dragged element is visible past section boundaries. We save the inline
+// style values and restore them on release.
+function suspendSectionClipping() {
+  const saved = new Map();
+  for (const sec of els.pageRoot.querySelectorAll('.rkk-section')) {
+    saved.set(sec, sec.style.overflow);
+    sec.style.overflow = 'visible';
+  }
+  return saved;
+}
+function restoreSectionClipping(saved) {
+  for (const [sec, prev] of saved) {
+    sec.style.overflow = prev || '';
+  }
+}
+
+// Convert an element to "absolutely positioned within its section" by
+// computing its current x/y based on the rendered position. Used to
+// promote a flow element on first drag.
+//
+// We OVERWRITE x/y here even if they were previously set. Reason: legacy
+// flow text has x: 0, y: 0 defaults from makeElement that have no spatial
+// meaning while the element is in flow. Without overwrite, the first drag
+// would teleport the element to (0,0) before applying the drag delta.
+function promoteToAbsolute(sel) {
+  if (sel.positioned) return; // already absolute
+  if (sel.type === 'image-decorative') return; // already absolute by type
+  if (sel.type === 'text' && sel.mode === 'decorative') return;
+  const node = findRenderedNode(sel.id);
+  const sec = sectionNodeForElement(sel);
+  if (!node || !sec) return;
+  const nr = node.getBoundingClientRect();
+  const sr = sec.getBoundingClientRect();
+  sel.x = ((nr.left - sr.left) / sr.width) * 100;
+  sel.y = ((nr.top  - sr.top)  / sr.height) * 100;
+  if (sel.w == null && sel.width == null) sel.w = (nr.width / sr.width) * 100;
+  sel.positioned = true;
+}
+
+// Pixel threshold for alignment snapping. Converted to section-% per axis
+// at drag start so behavior is resolution-independent.
+const SNAP_THRESHOLD_PX = 6;
+
+// Build snap targets for one section. Returns { xs: [{at, kind, ofId?}], ys: [...] }
+// where `at` is in % of section width (xs) or section height (ys).
+function buildSnapTargetsForSection(secNode, secData, excludeIds) {
+  const xs = [
+    { at: 0,   kind: 'section-left'    },
+    { at: 50,  kind: 'section-hcenter' },
+    { at: 100, kind: 'section-right'   },
+  ];
+  const ys = [
+    { at: 0,   kind: 'section-top'     },
+    { at: 50,  kind: 'section-vcenter' },
+    { at: 100, kind: 'section-bottom'  },
+  ];
+  // Look at every element rendered inside this section. Use the DOM to find
+  // them so we naturally handle decoratives, flow, floats. We exclude the
+  // currently-dragged ids and elements without data-element-id.
+  const sr = secNode.getBoundingClientRect();
+  if (sr.width <= 0 || sr.height <= 0) return { xs, ys };
+  const items = secNode.querySelectorAll('[data-element-id]');
+  for (const item of items) {
+    const id = item.dataset.elementId;
+    if (!id || excludeIds.has(id)) continue;
+    const r = item.getBoundingClientRect();
+    if (r.width <= 0 || r.height <= 0) continue;
+    const left   = ((r.left  - sr.left) / sr.width)  * 100;
+    const right  = ((r.right - sr.left) / sr.width)  * 100;
+    const hCent  = (left + right) / 2;
+    const top    = ((r.top    - sr.top) / sr.height) * 100;
+    const bot    = ((r.bottom - sr.top) / sr.height) * 100;
+    const vCent  = (top + bot) / 2;
+    xs.push({ at: left,  kind: 'el-left',    ofId: id });
+    xs.push({ at: hCent, kind: 'el-hcenter', ofId: id });
+    xs.push({ at: right, kind: 'el-right',   ofId: id });
+    ys.push({ at: top,   kind: 'el-top',     ofId: id });
+    ys.push({ at: vCent, kind: 'el-vcenter', ofId: id });
+    ys.push({ at: bot,   kind: 'el-bottom',  ofId: id });
+  }
+  return { xs, ys };
+}
+
+// Find the closest target to a value within threshold. Returns null if none.
+function findClosestSnap(value, targets, thresholdPct) {
+  let best = null;
+  let bestDist = Infinity;
+  for (const t of targets) {
+    const d = Math.abs(value - t.at);
+    if (d <= thresholdPct && d < bestDist) {
+      bestDist = d;
+      best = t;
+    }
+  }
+  return best;
+}
+
+// Try to snap the element's six anchors (left/hcenter/right; top/vcenter/
+// bottom) to the section's targets. Returns { x, y, guides[] }, where guides
+// are { axis: 'x'|'y', atPercent } for drawing.
+function applyAlignmentSnap(rawX, rawY, widthPct, heightPct, targets, thresholdXPct, thresholdYPct) {
+  const xAnchors = [
+    { pos: rawX,                   anchor: 'left'    },
+    { pos: rawX + widthPct / 2,    anchor: 'hcenter' },
+    { pos: rawX + widthPct,        anchor: 'right'   },
+  ];
+  const yAnchors = [
+    { pos: rawY,                   anchor: 'top'     },
+    { pos: rawY + heightPct / 2,   anchor: 'vcenter' },
+    { pos: rawY + heightPct,       anchor: 'bottom'  },
+  ];
+  // Pick the closest snapping anchor on each axis.
+  let xAdjust = 0, ySnap = 0;
+  let xGuide = null, yGuide = null;
+  let xBestDist = Infinity, yBestDist = Infinity;
+  for (const a of xAnchors) {
+    const t = findClosestSnap(a.pos, targets.xs, thresholdXPct);
+    if (t) {
+      const dist = Math.abs(t.at - a.pos);
+      if (dist < xBestDist) {
+        xBestDist = dist;
+        xAdjust = t.at - a.pos;
+        xGuide = { axis: 'x', atPercent: t.at, kind: t.kind, ofId: t.ofId };
+      }
+    }
+  }
+  for (const a of yAnchors) {
+    const t = findClosestSnap(a.pos, targets.ys, thresholdYPct);
+    if (t) {
+      const dist = Math.abs(t.at - a.pos);
+      if (dist < yBestDist) {
+        yBestDist = dist;
+        ySnap = t.at - a.pos;
+        yGuide = { axis: 'y', atPercent: t.at, kind: t.kind, ofId: t.ofId };
+      }
+    }
+  }
+  return {
+    x: rawX + xAdjust,
+    y: rawY + ySnap,
+    guides: [xGuide, yGuide].filter(Boolean),
+  };
+}
+
+// Draw snap guide lines in the overlay. `guides` is what applyAlignmentSnap
+// returned. Section context tells us which section's coords the guides are
+// in (so we can position them on screen).
+function drawSnapGuides(guides, secNode) {
+  // Remove any previous guides.
+  els.overlay.querySelectorAll('.studio-snap-guide').forEach(n => n.remove());
+  if (!guides.length || !secNode) return;
+  const container = els.stageScroll;
+  const cRect = container.getBoundingClientRect();
+  const sr = secNode.getBoundingClientRect();
+  const sx = sr.left - cRect.left + container.scrollLeft;
+  const sy = sr.top  - cRect.top  + container.scrollTop;
+  for (const g of guides) {
+    const line = document.createElement('div');
+    line.className = 'studio-snap-guide';
+    if (g.axis === 'x') {
+      // Vertical line at x% of section width.
+      const x = sx + sr.width * (g.atPercent / 100);
+      line.style.left = `${x - 0.5}px`;
+      line.style.top  = `${sy}px`;
+      line.style.width = '1px';
+      line.style.height = `${sr.height}px`;
+    } else {
+      // Horizontal line at y% of section height.
+      const y = sy + sr.height * (g.atPercent / 100);
+      line.style.top  = `${y - 0.5}px`;
+      line.style.left = `${sx}px`;
+      line.style.width = `${sr.width}px`;
+      line.style.height = '1px';
+    }
+    els.overlay.appendChild(line);
+  }
+}
+
 function beginMove(ev) {
   ev.preventDefault(); ev.stopPropagation();
-  const sel = getSelected(); if (!sel) return;
-  if (sel.locked) return;
+  const all = getSelectedAll();
+  if (!all.length) return;
+  // Locked elements are immovable; if every selected element is locked,
+  // bail entirely. Otherwise we just skip the locked ones in the loop.
+  if (all.every(e => e.locked)) return;
+
   const startX = ev.clientX, startY = ev.clientY;
   const wPx = pageWidthPx();
+
+  // For each selected element: capture original position, find section
+  // box, and prepare its live node.
+  const movables = [];
+  const excludeIds = new Set(all.map(e => e.id));
+  for (const sel of all) {
+    if (sel.locked) continue;
+    // image-inline is anchored by paragraph; we keep its old behavior
+    // (paragraph guide) ONLY when it is the lone selection. In a group
+    // drag we promote it to absolute.
+    if (sel.type === 'image-inline' && all.length === 1 && !sel.positioned) {
+      // Fall through to legacy single-image-inline anchor behavior below.
+      return beginMoveImageInlineAnchor(ev, sel);
+    }
+    promoteToAbsolute(sel);
+    const sec = sectionNodeForElement(sel);
+    const secRect = sec.getBoundingClientRect();
+    const liveNode = findRenderedNode(sel.id);
+    const lr = liveNode ? liveNode.getBoundingClientRect() : { width: 0, height: 0 };
+    movables.push({
+      sel,
+      orig: clone(sel),
+      liveNode,
+      secNode: sec,
+      secW: secRect.width || wPx,
+      secH: secRect.height || 1,
+      // Width/height of the rendered element in % of section coords, for
+      // computing anchor positions in snap math.
+      widthPct:  secRect.width  ? (lr.width  / secRect.width)  * 100 : (sel.w ?? sel.width ?? 0),
+      heightPct: secRect.height ? (lr.height / secRect.height) * 100 : 0,
+    });
+  }
+  if (!movables.length) return;
+
+  // Suspend section overflow clipping so the dragged element is visible
+  // when crossing section boundaries.
+  const savedOverflow = suspendSectionClipping();
+  // Mark dragging so the selection-chrome refresh skips the async alpha-
+  // bounds path (it'd queue per-frame promises and stall the ring).
+  state.dragging = true;
+
+  // Build snap targets only for single-element drag (group snap is a
+  // separate, more involved feature). Targets are computed per-section so
+  // a sibling in section 2 doesn't pull section 1's drag.
+  const isSingle = movables.length === 1;
+  const snapTargetsBySection = new Map();
+  if (isSingle) {
+    const m0 = movables[0];
+    const sd = state.pageData.sections.find(s => s.id === m0.sel.sectionId);
+    snapTargetsBySection.set(m0.sel.sectionId,
+      buildSnapTargetsForSection(m0.secNode, sd, excludeIds));
+  }
+
+  function move(e) {
+    let dx = e.clientX - startX;
+    let dy = e.clientY - startY;
+    // Alt/Option = free drag (no snap, no grid). Shift = 8px grid (only
+    // when Alt is not held). Otherwise = alignment snap (single-element).
+    const freeMode = e.altKey;
+    if (!freeMode && e.shiftKey) {
+      dx = Math.round(dx / 8) * 8;
+      dy = Math.round(dy / 8) * 8;
+    }
+
+    for (const m of movables) {
+      const dxPctX = (dx / m.secW) * 100;
+      const dyPctY = (dy / m.secH) * 100;
+      let nx = (m.orig.x ?? 0) + dxPctX;
+      let ny = (m.orig.y ?? 0) + dyPctY;
+
+      // Alignment snap: only for single-element drag, only when no modifier.
+      let guides = [];
+      if (isSingle && !freeMode && !e.shiftKey) {
+        const targets = snapTargetsBySection.get(m.sel.sectionId);
+        if (targets) {
+          // Threshold in % of section dimensions.
+          const tx = (SNAP_THRESHOLD_PX / m.secW) * 100;
+          const ty = (SNAP_THRESHOLD_PX / m.secH) * 100;
+          const snapped = applyAlignmentSnap(nx, ny, m.widthPct, m.heightPct, targets, tx, ty);
+          nx = snapped.x;
+          ny = snapped.y;
+          guides = snapped.guides;
+        }
+      }
+      m.sel.x = nx;
+      m.sel.y = ny;
+      if (m.liveNode) {
+        m.liveNode.style.position = 'absolute';
+        m.liveNode.style.left = `${m.sel.x}%`;
+        m.liveNode.style.top  = `${m.sel.y}%`;
+      }
+      // Guides for single drag only.
+      if (isSingle) drawSnapGuides(guides, m.secNode);
+    }
+    // Selection ring + handles need to follow the element. Skip alpha-
+    // bounds (state.dragging guards refreshSelectionChrome).
+    refreshSelectionChrome();
+  }
+  function up() {
+    window.removeEventListener('pointermove', move);
+    window.removeEventListener('pointerup', up);
+    state.dragging = false;
+    // Clean up drag UI.
+    els.overlay.querySelectorAll('.studio-snap-guide').forEach(n => n.remove());
+    restoreSectionClipping(savedOverflow);
+
+    // Cross-section reassignment: for each moved element, find which
+    // section its CENTER now sits in. If different from its current
+    // sectionId, reassign and recompute x/y as % of new section coords.
+    for (const m of movables) {
+      const node = m.liveNode;
+      if (!node) continue;
+      const r = node.getBoundingClientRect();
+      const cx = r.left + r.width  / 2;
+      const cy = r.top  + r.height / 2;
+      const newSecId = findSectionAtPoint(cx, cy);
+      if (newSecId && newSecId !== m.sel.sectionId) {
+        const newSec = els.pageRoot.querySelector(`.rkk-section[data-section-id="${CSS.escape(newSecId)}"]`);
+        if (newSec) {
+          const sr = newSec.getBoundingClientRect();
+          // Element's top-left re-expressed in the new section's % coords.
+          m.sel.x = ((r.left - sr.left) / sr.width)  * 100;
+          m.sel.y = ((r.top  - sr.top)  / sr.height) * 100;
+          m.sel.sectionId = newSecId;
+          state.focusedSectionId = newSecId;
+        }
+      }
+    }
+    rerender();
+    commitHistory();
+  }
+  window.addEventListener('pointermove', move);
+  window.addEventListener('pointerup', up);
+}
+
+// Legacy image-inline single-selection move: shows a paragraph anchor
+// guide and updates anchor.afterParagraph rather than x/y. Preserved so
+// existing inline-image-in-text behavior keeps working.
+function beginMoveImageInlineAnchor(ev, sel) {
+  ev.preventDefault(); ev.stopPropagation();
+  const startX = ev.clientX, startY = ev.clientY;
   const orig = clone(sel);
-  const liveNode = findRenderedNode(sel.id);
   const guide = document.createElement('div');
   guide.className = 'studio-paragraph-guide';
   let usingGuide = false;
   function move(e) {
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
-    const dxPct = (dx / wPx) * 100;
-    const dyPct = (dy / wPx) * 100;
-    const textIsDeco = sel.type === 'text' && sel.mode === 'decorative';
-    if (sel.type === 'image-decorative' || textIsDeco) {
-      sel.x = (orig.x ?? 0) + dxPct;
-      sel.y = (orig.y ?? 0) + dyPct;
-      // Cheap direct DOM update — avoid full rerender during drag.
-      if (liveNode) {
-        liveNode.style.left = `${sel.x}%`;
-        liveNode.style.top = `${sel.y}%`;
-      }
-    } else if (sel.type === 'image-inline') {
-      // Drop guide based on which paragraph the cursor is over.
-      // Anchor change is recorded in JSON now, but we DON'T rerender mid-drag —
-      // floats are anchored in flow and can only commit on release.
-      const target = document.elementFromPoint(e.clientX, e.clientY);
-      const para = target?.closest?.('.rkk-p');
-      if (para) {
-        const idx = parseInt(para.dataset.paraIndex || '0', 10);
-        sel.anchor = sel.anchor || {};
-        sel.anchor.afterParagraph = idx;
-        // Show guide
-        const cRect = els.stageScroll.getBoundingClientRect();
-        const pRect = para.getBoundingClientRect();
-        guide.style.left = `${pRect.left - cRect.left + els.stageScroll.scrollLeft}px`;
-        guide.style.top = `${pRect.top - cRect.top + els.stageScroll.scrollTop}px`;
-        guide.style.width = `${pRect.width}px`;
-        if (!usingGuide) { els.overlay.appendChild(guide); usingGuide = true; }
-      }
+    const target = document.elementFromPoint(e.clientX, e.clientY);
+    const para = target?.closest?.('.rkk-p');
+    if (para) {
+      const idx = parseInt(para.dataset.paraIndex || '0', 10);
+      sel.anchor = sel.anchor || {};
+      sel.anchor.afterParagraph = idx;
+      const cRect = els.stageScroll.getBoundingClientRect();
+      const pRect = para.getBoundingClientRect();
+      guide.style.left = `${pRect.left - cRect.left + els.stageScroll.scrollLeft}px`;
+      guide.style.top = `${pRect.top - cRect.top + els.stageScroll.scrollTop}px`;
+      guide.style.width = `${pRect.width}px`;
+      if (!usingGuide) { els.overlay.appendChild(guide); usingGuide = true; }
     }
   }
   function up() {
@@ -789,6 +1690,14 @@ function beginResize(ev, dir) {
   const wPx = pageWidthPx();
   const orig = clone(sel);
   const liveNode = findRenderedNode(sel.id);
+  state.dragging = true;
+  // For text elements: corner handles (NW/NE/SE/SW) scale the FONT
+  // proportionally to the width change, so the bounding box grows in
+  // both dimensions — the Photoshop / Illustrator convention. Side
+  // handles (N/S/E/W) keep the existing width-only behavior so you can
+  // still reflow text without scaling its size. Refresh selection chrome
+  // each frame so the ring tracks the visibly growing element.
+  const isCornerOnText = sel.type === 'text' && /^(nw|ne|sw|se)$/.test(dir);
   function move(e) {
     const dx = e.clientX - startX;
     const dxPct = (dx / wPx) * 100;
@@ -817,10 +1726,26 @@ function beginResize(ev, dir) {
         liveNode.style.left = `${sel.x}%`;
       }
     }
+    // Text + corner: scale font size proportionally with the width change.
+    if (isCornerOnText && liveNode) {
+      sel.style = sel.style || {};
+      const baseSize = orig.style?.size ?? 1.2;
+      // Ratio of new width to original width drives the font scale. Clamp
+      // so we never go below 0.3 (unreadably small) or above 80 (insane).
+      const ratio = baseWidth > 0 ? newWidth / baseWidth : 1;
+      const newSize = Math.max(0.3, Math.min(80, baseSize * ratio));
+      sel.style.size = Math.round(newSize * 100) / 100;
+      // Apply the new font size live so the user sees the bounding box grow.
+      liveNode.style.fontSize = `clamp(1rem, ${sel.style.size}vw, ${sel.style.size * 1.15}rem)`;
+    }
+    // Refresh the selection ring each frame so it tracks the growing box.
+    // (Cheap: just measures one rect and redraws the overlay.)
+    refreshSelectionChrome();
   }
   function up() {
     window.removeEventListener('pointermove', move);
     window.removeEventListener('pointerup', up);
+    state.dragging = false;
     rerender();
     commitHistory();
   }
@@ -849,6 +1774,7 @@ function beginRotate(ev) {
   document.body.appendChild(readout);
   let lastBakeAt = 0;
   const myGen = ++rotateGeneration;
+  state.dragging = true;
   // Cache the live img so we don't re-query every move.
   const liveImg = node.querySelector?.('img') || (node.tagName === 'IMG' ? node : null);
   // NOT async — we never await in the hot path. Fire-and-forget the bake.
@@ -893,12 +1819,17 @@ function beginRotate(ev) {
         }).catch(() => {});
       }
     }
-    // No refreshSelectionChrome here — too expensive at 60+ Hz.
+    // Rotate the selection chrome too so the ring and handles follow the
+    // element. refreshSelectionChrome reads sel.rotation and applies the
+    // rotation transform to the ring/handles around the element's center.
+    // state.dragging is set, so the async alpha-bounds path is skipped.
+    refreshSelectionChrome();
   }
   function up() {
     window.removeEventListener('pointermove', move);
     window.removeEventListener('pointerup', up);
     readout.remove();
+    state.dragging = false;
     // Bump generation again so any in-flight bakes resolving after this
     // point are dropped silently.
     rotateGeneration++;
@@ -977,6 +1908,7 @@ async function ingestImage(file, opts = {}) {
     type: 'image-inline',
     z: nextZ(),
     locked: false, hidden: false,
+    sectionId: state.focusedSectionId || state.pageData.sections?.[0]?.id || null,
     src: `/pages/${state.currentSlug}/assets/${origName}`,
     cutSrc: `/pages/${state.currentSlug}/assets/${cutName}`,
     side: 'right',
@@ -1010,7 +1942,8 @@ function nextZ() {
 }
 
 function makeElement(type) {
-  const base = { id: uid(type === 'asterism' ? 'ast' : type.slice(0, 3)), type, z: nextZ(), locked: false, hidden: false };
+  const secId = state.focusedSectionId || state.pageData?.sections?.[0]?.id || null;
+  const base = { id: uid(type === 'asterism' ? 'ast' : type.slice(0, 3)), type, z: nextZ(), locked: false, hidden: false, sectionId: secId };
   switch (type) {
     case 'text':
       return { ...base, x: 0, y: 0, w: 100,
@@ -1036,10 +1969,20 @@ function addElement(type) {
   if (!state.pageData) return;
   const e = makeElement(type);
   if (!e) return;
+  // Always drop new elements into the LAST section so there's one predictable
+  // place to find them. The user can then drag the element into whatever
+  // section they want it in.
+  const lastSec = state.pageData.sections[state.pageData.sections.length - 1];
+  if (lastSec) e.sectionId = lastSec.id;
   state.pageData.elements.push(e);
   commitHistory();
   rerender();
   selectElement(e.id);
+  // Scroll the new element into view so the user actually sees it.
+  setTimeout(() => {
+    const node = findRenderedNode(e.id);
+    node?.scrollIntoView?.({ behavior: 'smooth', block: 'center' });
+  }, 32);
 }
 
 // ─── Inspector ─────────────────────────────────────────────────────
@@ -1064,6 +2007,12 @@ function input(value, onChange, type = 'text') {
   const i = document.createElement('input');
   i.className = 'studio-input';
   i.type = type;
+  if (type === 'number') {
+    // Allow decimal increments. Without this the spinner steps by 1, which
+    // is too coarse for things like font size (1.2 → 2.2 → 3.2 jumps), and
+    // some browsers reject "1.5" as invalid against the default integer step.
+    i.step = 'any';
+  }
   i.value = value == null ? '' : value;
   i.addEventListener('input', () => onChange(type === 'number' ? Number(i.value) : i.value));
   return i;
@@ -1114,10 +2063,26 @@ function btn(label, onClick, opts = {}) {
 
 function renderInspector() {
   els.inspectorBody.innerHTML = '';
+  // 1) Section inspector wins if a section is currently selected.
+  if (state.selectedSectionId) {
+    els.inspectorTitle.textContent = 'SECTION';
+    renderSectionInspector();
+    return;
+  }
   const sel = getSelected();
   if (!sel) { els.inspectorTitle.textContent = 'PAGE'; renderPageInspector(); return; }
-  els.inspectorTitle.textContent = sel.type.replace(/-/g, ' ').toUpperCase();
+  // Multi-select indicator in title.
+  if (state.selectedIds.length > 1) {
+    els.inspectorTitle.textContent = `${state.selectedIds.length} SELECTED`;
+  } else {
+    els.inspectorTitle.textContent = sel.type.replace(/-/g, ' ').toUpperCase();
+  }
   const ins = (n) => els.inspectorBody.appendChild(n);
+  // Multi-select: show only the group-ops summary, not the per-type editor.
+  if (state.selectedIds.length > 1) {
+    renderMultiSelectInspector(ins);
+    return;
+  }
   switch (sel.type) {
     case 'text': renderTextInspector(sel, ins); break;
     case 'image-inline': renderImageInlineInspector(sel, ins); break;
@@ -1158,6 +2123,112 @@ function renderPageInspector() {
     field('Background.', select(p.canvas?.background || 'paper', ['paper', 'paper-2', 'paper-3', 'ink'], v => { p.canvas = p.canvas || {}; p.canvas.background = v; inspectorChange(); })),
     field('Cursor.', select(p.cursor || 'default', ['default', 'paint', 'crosshair', 'red-dot'], v => { p.cursor = v; inspectorChange(); })),
     field('Signature.', select(p.signature || 'none', ['none', 'draggable-stickers', 'paint-trail'], v => { p.signature = v; inspectorChange(); })),
+  ));
+
+  // Section list at the bottom of the page inspector. Click a row to
+  // open its section inspector; the row also exposes quick reorder/delete.
+  const secList = document.createElement('div');
+  secList.className = 'studio-section-list';
+  (p.sections || []).forEach((s, i) => {
+    const row = document.createElement('div');
+    row.className = 'studio-section-row';
+    if (state.focusedSectionId === s.id) row.classList.add('is-focused');
+    const label = document.createElement('button');
+    label.type = 'button';
+    label.className = 'studio-section-row-label';
+    label.textContent = `§ ${String(i + 1).padStart(2, '0')} · ${s.height}vh · ${s.bg || 'inherit'}`;
+    label.addEventListener('click', () => {
+      state.selectedSectionId = s.id;
+      state.focusedSectionId = s.id;
+      state.selectedId = null;
+      state.selectedIds = [];
+      refreshSelectionChrome();
+      renderInspector();
+    });
+    row.appendChild(label);
+
+    const up = document.createElement('button');
+    up.type = 'button'; up.className = 'studio-icon-btn'; up.textContent = '↑';
+    up.disabled = i === 0;
+    up.addEventListener('click', () => moveSection(s.id, -1));
+    row.appendChild(up);
+
+    const down = document.createElement('button');
+    down.type = 'button'; down.className = 'studio-icon-btn'; down.textContent = '↓';
+    down.disabled = i === p.sections.length - 1;
+    down.addEventListener('click', () => moveSection(s.id, +1));
+    row.appendChild(down);
+
+    secList.appendChild(row);
+  });
+  ins(section('SECTIONS', secList,
+    btn('+ ADD SECTION AT END', () => addSectionAfter(p.sections[p.sections.length - 1].id))
+  ));
+}
+
+// Section inspector — shown when the user clicks a section pill or a
+// section row in the page inspector. Edits live; commits to history.
+function renderSectionInspector() {
+  const p = state.pageData;
+  const sec = p?.sections?.find(s => s.id === state.selectedSectionId);
+  if (!sec) {
+    state.selectedSectionId = null;
+    renderInspector();
+    return;
+  }
+  const ins = (n) => els.inspectorBody.appendChild(n);
+  const idx = p.sections.indexOf(sec);
+  ins(section(`§ ${String(idx + 1).padStart(2, '0')}`,
+    field('Label (optional).', input(sec.label || '', v => { sec.label = v || null; inspectorChange(); })),
+    field(`Height (vh). Min ${SECTION_MIN_HEIGHT}, max ${SECTION_MAX_HEIGHT}.`,
+      input(sec.height, v => {
+        const n = Number(v);
+        if (Number.isFinite(n)) {
+          sec.height = Math.max(SECTION_MIN_HEIGHT, Math.min(SECTION_MAX_HEIGHT, n));
+          inspectorChange();
+        }
+      }, 'number')),
+    toggle('Clip overflow (off = section grows with content).',
+      sec.clip !== false, v => { sec.clip = v; inspectorChange(); }),
+  ));
+  ins(section('BACKGROUND',
+    field('Preset.', select(sec.bg || 'inherit', SECTION_BG_OPTIONS, v => { sec.bg = v; inspectorChange(); })),
+    field('Custom color (overrides preset).',
+      input(sec.bgColor || '', v => { sec.bgColor = v || null; inspectorChange(); })),
+    field('Image URL (overrides color).',
+      input(sec.bgImage || '', v => { sec.bgImage = v || null; inspectorChange(); })),
+  ));
+  ins(section('ORDER',
+    row(
+      btn('↑ MOVE UP', () => moveSection(sec.id, -1)),
+      btn('↓ MOVE DOWN', () => moveSection(sec.id, +1)),
+    )
+  ));
+  ins(section('',
+    btn('DELETE SECTION', () => deleteSection(sec.id), { danger: true }),
+    btn('CLOSE SECTION INSPECTOR', () => {
+      state.selectedSectionId = null;
+      refreshSelectionChrome();
+      renderInspector();
+    }),
+  ));
+}
+
+// Multi-select inspector — quick group ops without the per-element editor.
+function renderMultiSelectInspector(ins) {
+  const all = getSelectedAll();
+  ins(section('GROUP',
+    (() => {
+      const m = document.createElement('div');
+      m.className = 'studio-helper';
+      m.textContent = `${all.length} elements selected. Drag any one to move the group. ` +
+        `Cmd+C to copy, Cmd+V to paste, Delete to remove.`;
+      return m;
+    })(),
+    row(
+      btn('DUPLICATE GROUP', () => duplicateSelected()),
+      btn('DELETE GROUP', () => deleteSelection(), { danger: true }),
+    ),
   ));
 }
 
@@ -1215,8 +2286,10 @@ function renderTextInspector(sel, ins) {
   ins(section('TYPE',
     field('Family.', select(sel.style.family || 'serif', ['display', 'serif', 'mono'], v => { sel.style.family = v; inspectorChange(); })),
     row(
-      field('Size %', input(sel.style.size ?? 1.2, v => { sel.style.size = v; inspectorChange(); }, 'number')),
-      field('Weight', input(sel.style.weight ?? 400, v => { sel.style.weight = v; inspectorChange(); }, 'number')),
+      field('Size (vw). Drag a corner to scale visually.',
+        input(sel.style.size ?? 1.2, v => { sel.style.size = v; inspectorChange(); }, 'number')),
+      field('Weight',
+        input(sel.style.weight ?? 400, v => { sel.style.weight = v; inspectorChange(); }, 'number')),
     ),
     row(
       field('Leading', input(sel.style.leading ?? 1.5, v => { sel.style.leading = v; inspectorChange(); }, 'number')),
@@ -1717,6 +2790,7 @@ async function insertFromBank(payload, opts) {
     newEl = {
       id: uid('dec'), type: 'image-decorative', z: nextZ(),
       locked: false, hidden: false,
+      sectionId: state.focusedSectionId || state.pageData.sections?.[0]?.id || null,
       src, cutSrc,
       x: Math.round(xPct * 10) / 10, y: Math.round(yPct * 10) / 10,
       w: 22, rotation: 0, opacity: 1,
@@ -1727,6 +2801,7 @@ async function insertFromBank(payload, opts) {
     newEl = {
       id: uid('img'), type: 'image-inline', z: nextZ(),
       locked: false, hidden: false,
+      sectionId: state.focusedSectionId || state.pageData.sections?.[0]?.id || null,
       src, cutSrc,
       side: 'right', anchor: { afterParagraph: 1 },
       width: 38, rotation: 0, shapeMargin: 18, shapeThreshold: 0.35,
@@ -1782,9 +2857,11 @@ function insertSection(sec) {
   const baseY = existingDecoYs.length ? Math.max(...existingDecoYs) + 32 : 0;
   let firstId = null;
   let z = nextZ();
+  const targetSection = state.focusedSectionId || state.pageData.sections[state.pageData.sections.length - 1].id;
   for (const elDef of built) {
     elDef.id = uid(elDef.type === 'asterism' ? 'ast' : elDef.type.slice(0, 3));
     elDef.z = z++;
+    elDef.sectionId = targetSection;
     if (elDef.y != null && (elDef.type === 'image-decorative' || (elDef.type === 'text' && elDef.mode === 'decorative'))) {
       elDef.y = (Number(elDef.y) || 0) + baseY;
     }
@@ -2048,6 +3125,23 @@ document.addEventListener('keydown', (e) => {
   if (meta && (e.key === 'z' || e.key === 'Z') && !e.shiftKey) { e.preventDefault(); undo(); return; }
   if (meta && ((e.key === 'z' || e.key === 'Z') && e.shiftKey || e.key === 'y')) { e.preventDefault(); redo(); return; }
   if (meta && (e.key === 'd' || e.key === 'D')) { e.preventDefault(); duplicateSelected(); return; }
+  if (meta && (e.key === 'c' || e.key === 'C')) {
+    // Don't intercept when copying selected text inside contenteditable.
+    if (e.target.isContentEditable) return;
+    e.preventDefault(); copySelection(); return;
+  }
+  if (meta && (e.key === 'x' || e.key === 'X')) {
+    if (e.target.isContentEditable) return;
+    e.preventDefault(); copySelection(); deleteSelection(); return;
+  }
+  if (meta && (e.key === 'v' || e.key === 'V')) {
+    if (e.target.isContentEditable) return;
+    e.preventDefault(); pasteClipboard(); return;
+  }
+  if (meta && (e.key === 'a' || e.key === 'A')) {
+    if (e.target.isContentEditable) return;
+    e.preventDefault(); selectAllInFocusedSection(); return;
+  }
   // Escape inside an editable text/caption: exit edit mode but stay selected.
   // Checked BEFORE the inField guard so it fires while the contenteditable
   // node has focus.
@@ -2062,44 +3156,106 @@ document.addEventListener('keydown', (e) => {
     deselect(); return;
   }
   if (e.key === 'Delete' || e.key === 'Backspace') {
-    const sel = getSelected();
-    if (sel) {
-      const idx = state.pageData.elements.findIndex(x => x.id === sel.id);
-      if (idx >= 0) {
-        state.pageData.elements.splice(idx, 1);
-        state.selectedId = null;
-        commitHistory(); rerender(); renderInspector(); renderLayers();
-      }
+    if (state.selectedIds.length) {
+      e.preventDefault();
+      deleteSelection();
     }
+    return;
   }
   if (e.key.startsWith('Arrow')) {
-    const sel = getSelected();
-    if (!sel) return;
+    const all = getSelectedAll();
+    if (!all.length) return;
     const step = e.shiftKey ? 5 : 0.5;
     let dx = 0, dy = 0;
     if (e.key === 'ArrowLeft') dx = -step;
     if (e.key === 'ArrowRight') dx = step;
     if (e.key === 'ArrowUp') dy = -step;
     if (e.key === 'ArrowDown') dy = step;
-    const textIsDeco = sel.type === 'text' && sel.mode === 'decorative';
-    if (sel.type === 'image-decorative' || textIsDeco) {
-      sel.x = (sel.x ?? 0) + dx;
-      sel.y = (sel.y ?? 0) + dy;
+    let moved = false;
+    for (const sel of all) {
+      if (sel.locked) continue;
+      // Promote flow elements on first keyboard nudge.
+      promoteToAbsolute(sel);
+      if (sel.x != null || sel.y != null || sel.type === 'image-decorative' ||
+          (sel.type === 'text' && sel.mode === 'decorative') || sel.positioned) {
+        sel.x = (sel.x ?? 0) + dx;
+        sel.y = (sel.y ?? 0) + dy;
+        moved = true;
+      }
+    }
+    if (moved) {
       e.preventDefault();
       scheduleRerender(); commitHistory();
     }
   }
 });
 
+// ─── Clipboard / duplicate / delete (group-aware) ─────────────────
+
 function duplicateSelected() {
-  const sel = getSelected(); if (!sel) return;
-  const copy = clone(sel);
-  copy.id = uid(sel.type.slice(0, 3));
-  copy.z = nextZ();
-  if (copy.x != null) copy.x += 2;
-  if (copy.y != null) copy.y += 2;
-  state.pageData.elements.push(copy);
-  commitHistory(); rerender(); selectElement(copy.id);
+  const all = getSelectedAll();
+  if (!all.length) return;
+  const newIds = [];
+  for (const sel of all) {
+    const copy = clone(sel);
+    copy.id = uid(sel.type.slice(0, 3));
+    copy.z = nextZ();
+    if (copy.x != null) copy.x += 2;
+    if (copy.y != null) copy.y += 2;
+    state.pageData.elements.push(copy);
+    newIds.push(copy.id);
+  }
+  state.selectedId = newIds[newIds.length - 1] || null;
+  state.selectedIds = newIds;
+  commitHistory(); rerender(); refreshSelectionChrome(); renderInspector(); renderLayers();
+}
+
+function copySelection() {
+  const all = getSelectedAll();
+  if (!all.length) return;
+  state.clipboard = { elements: all.map(clone) };
+  showStudioToast(`Copied ${all.length} element${all.length === 1 ? '' : 's'}`);
+}
+
+function pasteClipboard() {
+  if (!state.clipboard?.elements?.length) return;
+  const targetSection = state.focusedSectionId ||
+    state.pageData.sections[state.pageData.sections.length - 1].id;
+  const newIds = [];
+  for (const src of state.clipboard.elements) {
+    const copy = clone(src);
+    copy.id = uid(src.type.slice(0, 3));
+    copy.z = nextZ();
+    copy.sectionId = targetSection;
+    if (copy.x != null) copy.x += 2;
+    if (copy.y != null) copy.y += 2;
+    state.pageData.elements.push(copy);
+    newIds.push(copy.id);
+  }
+  state.selectedId = newIds[newIds.length - 1] || null;
+  state.selectedIds = newIds;
+  commitHistory(); rerender(); refreshSelectionChrome(); renderInspector(); renderLayers();
+}
+
+function deleteSelection() {
+  if (!state.selectedIds.length) return;
+  const ids = new Set(state.selectedIds);
+  state.pageData.elements = state.pageData.elements.filter(e => !ids.has(e.id));
+  state.selectedId = null;
+  state.selectedIds = [];
+  commitHistory(); rerender(); renderInspector(); renderLayers();
+}
+
+function selectAllInFocusedSection() {
+  if (!state.pageData) return;
+  const sid = state.focusedSectionId || state.pageData.sections[0].id;
+  const ids = state.pageData.elements.filter(e => e.sectionId === sid).map(e => e.id);
+  if (!ids.length) return;
+  state.selectedIds = ids;
+  state.selectedId = ids[ids.length - 1];
+  refreshSelectionChrome();
+  renderInspector();
+  renderLayers();
 }
 
 // ─── Click-on-empty deselect ───────────────────────────────────────
@@ -2112,12 +3268,18 @@ function duplicateSelected() {
 els.stageScroll.addEventListener('click', (e) => {
   // Don't deselect when the click was on an interactive piece of the
   // selection chrome — handles, ring, rotation handle, paragraph guide.
+  // Also: don't deselect when interacting with section UI (pill, bar, add).
   if (e.target.closest && (
       e.target.closest('.studio-handle') ||
       e.target.closest('.studio-rotation-handle') ||
       e.target.closest('.studio-sel-ring') ||
       e.target.closest('.studio-crop-bar') ||
-      e.target.closest('.studio-crop-handle')
+      e.target.closest('.studio-crop-handle') ||
+      e.target.closest('.studio-section-pill') ||
+      e.target.closest('.studio-section-bar') ||
+      e.target.closest('.studio-section-add') ||
+      e.target.closest('.studio-section-tail-add') ||
+      e.target.closest('.studio-group-box')
     )) return;
   // If we're currently editing text, the FIRST click outside the editing
   // node exits edit mode but keeps the element selected. The second click
@@ -2168,6 +3330,24 @@ els.btnView.addEventListener('click', () => {
   els.btnView.textContent = isPreview ? 'EDIT' : 'PREVIEW';
   rerender();
 });
+
+// Viewport preview toggle: constrains the stage's max-width so the user
+// can verify how a composition reflows at each breakpoint (phone /
+// tablet / desktop) without resizing the browser window. The CSS rules
+// in render.css are already viewport-aware (3 breakpoints); this just
+// triggers them in-studio. After switching, selection chrome is refreshed
+// because rendered element rects have moved.
+for (const id of ['btn-vp-desktop', 'btn-vp-tablet', 'btn-vp-phone']) {
+  const b = document.getElementById(id);
+  if (!b) continue;
+  b.addEventListener('click', () => {
+    const vp = b.dataset.vp;
+    document.querySelectorAll('.studio-vp-btn').forEach(x => x.classList.toggle('is-active', x === b));
+    els.stage.classList.remove('vp-desktop', 'vp-tablet', 'vp-phone');
+    els.stage.classList.add('vp-' + vp);
+    refreshSelectionChrome();
+  });
+}
 
 els.btnLayersToggle?.addEventListener('click', () => {
   state.layersCollapsed = !state.layersCollapsed;

@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Restless Lab, Raghava KK</title>
   <meta name="description" content="Toys, books, apps, and toolkits from the studio of Raghava KK." />
+  <!-- Open Graph / social previews -->
+  <meta property="og:title" content="Restless Lab, Raghava KK" />
+  <meta property="og:description" content="Toys, books, apps, and toolkits from the studio of Raghava KK." />
+  <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/lab2" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Raghava KK" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Restless Lab, Raghava KK" />
+  <meta name="twitter:description" content="Toys, books, apps, and toolkits from the studio of Raghava KK." />
+  <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <link rel="canonical" href="https://raghavakkstudio.com/lab2" />
   <meta name="theme-color" content="#F4F1EA" />
   <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
   <meta name="robots" content="index, follow, noai, noimageai" />
@@ -13,6 +26,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
+  <link rel="stylesheet" href="./css/book-modal.css" />
+  <link rel="stylesheet" href="./css/library-shelf.css" />
+  <link rel="stylesheet" href="./css/toys-grid.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     :root {
@@ -313,61 +329,9 @@
     .kind-badge .badge-glyph { color: var(--red); font-family: var(--display); font-style: italic; margin-right: 0.25rem; font-size: 1.05em; line-height: 1; vertical-align: -1px; }
     @media (max-width: 880px) { .colophon .col.c-a, .colophon .col.c-b, .colophon .col.c-c { grid-column: 1 / -1; align-items: flex-start; } }
 
-    /* MODAL — shared shell */
-    .modal { position: fixed; inset: 0; background: rgba(14,14,12,0.94); display: none; align-items: stretch; justify-content: center; z-index: 1000; padding: clamp(1rem, 3vh, 2rem); opacity: 0; transition: opacity .25s var(--ease); }
-    .modal[aria-hidden="false"] { display: flex; opacity: 1; }
-    .modal-frame { background: var(--paper); width: 100%; max-width: 1280px; display: flex; flex-direction: column; border: 1px solid var(--ink); box-shadow: 0 30px 80px rgba(0,0,0,0.5); overflow: hidden; }
-    .modal-bar { display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 1rem; border-bottom: 1px solid var(--rule); background: var(--paper); gap: 1rem; }
-    .modal-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .modal-meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; color: var(--muted); white-space: nowrap; padding: 0 0.6rem; }
-    .modal-actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
-    .modal-action { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; background: var(--ink); border: 1px solid var(--ink); color: var(--paper); padding: 0.5rem 0.8rem; cursor: pointer; text-decoration: none; transition: background .2s var(--ease); }
-    .modal-action:hover { background: var(--red); border-color: var(--red); color: var(--paper); }
-    .modal-action.ghost { background: var(--paper); color: var(--ink); }
-    .modal-action.ghost:hover { background: var(--ink); color: var(--paper); }
-
-    /* SPREAD GALLERY */
-    .spread-stage { flex: 1; min-height: 60vh; background: #1d1d1b; position: relative; display: flex; align-items: center; justify-content: center; padding: 1rem clamp(2rem, 6vw, 4rem); overflow: hidden; gap: 0; }
-    /* In 2-up, a single 1px line of the dark stage shows as the spine */
-    .spread-stage[data-mode="double"] { gap: 1px; }
-    /* Force the spread image to fit (object-fit: contain) — overrides any
-       generic `img` rule via higher specificity inside the stage. */
-    .spread-stage .spread-img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; box-shadow: 0 10px 40px rgba(0,0,0,0.5); user-select: none; -webkit-user-drag: none; opacity: 0; transition: opacity .35s var(--ease); }
-    .spread-stage .spread-img.loaded { opacity: 1; }
-    .spread-stage .spread-img.errored { opacity: 0.6; outline: 2px solid var(--red); outline-offset: 4px; }
-    .spread-stage .spread-img.errored::after { content: "spread failed to load"; color: var(--red); }
-    /* Single vs. double spread view */
-    .spread-stage[data-mode="single"] .spread-img-2 { display: none; }
-    .spread-stage[data-mode="double"] .spread-img,
-    .spread-stage[data-mode="double"] .spread-img-2 { max-width: 50%; }
-    .spread-stage[data-mode="double"] .spread-img-2.alone { display: none; }
-    /* Fullscreen styling — the modal-frame goes edge-to-edge when entered */
-    #bookModal .modal-frame:fullscreen,
-    #bookModal .modal-frame:-webkit-full-screen { max-width: 100%; width: 100%; height: 100vh; max-height: 100vh; border: 0; }
-    #bookModal .modal-frame:fullscreen .spread-stage,
-    #bookModal .modal-frame:-webkit-full-screen .spread-stage { min-height: 0; flex: 1; }
-    .spread-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border: 1px solid rgba(244,241,234,0.4); background: rgba(14,14,12,0.6); color: var(--paper); cursor: pointer; font-size: 1.4rem; display: grid; place-items: center; transition: background .2s var(--ease), border-color .2s var(--ease); }
-    .spread-nav:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
-    .spread-nav.prev { left: 1rem; }
-    .spread-nav.next { right: 1rem; }
-    .spread-nav:disabled { opacity: 0.25; cursor: not-allowed; }
-    .spread-counter { position: absolute; bottom: 0.8rem; right: 1rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--paper); opacity: 0.7; }
-
-    .spread-thumbs { background: var(--ink); border-top: 1px solid var(--ink); padding: 0.6rem 0.8rem; overflow-x: auto; overflow-y: hidden; display: flex; gap: 0.35rem; scrollbar-width: thin; scrollbar-color: rgba(244,241,234,0.3) transparent; }
-    .spread-thumbs::-webkit-scrollbar { height: 6px; }
-    .spread-thumbs::-webkit-scrollbar-thumb { background: rgba(244,241,234,0.3); border-radius: 3px; }
-    .spread-thumb { flex-shrink: 0; width: 36px; height: 48px; border: 1px solid transparent; cursor: pointer; padding: 0; background: rgba(244,241,234,0.08); position: relative; transition: border-color .2s var(--ease), transform .2s var(--ease); }
-    .spread-thumb:hover { transform: translateY(-2px); }
-    .spread-thumb.active { border-color: var(--red); transform: translateY(-3px); }
-    .spread-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.65; }
-    .spread-thumb.active img { opacity: 1; }
-    .spread-thumbs .label { display: inline-flex; align-items: center; padding: 0 0.6rem; flex-shrink: 0; font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,241,234,0.5); }
-
-    /* COVER FALLBACK (books without spreads) */
-    .cover-fallback { flex: 1; min-height: 60vh; background: #1d1d1b; display: grid; place-items: center; padding: 2rem; }
-    .cover-fallback-inner { display: flex; flex-direction: column; align-items: center; gap: 1.4rem; max-width: 320px; text-align: center; }
-    .cover-fallback img { max-width: 100%; box-shadow: 0 10px 40px rgba(0,0,0,0.5); user-select: none; -webkit-user-drag: none; }
-    .cover-fallback p { color: var(--paper); font-family: var(--serif); font-style: italic; font-size: 0.95rem; opacity: 0.8; }
+    /* Book modal CSS now lives in ./css/book-modal.css (shared with library2.html).
+       That file also carries the generic .modal / .modal-frame / .modal-bar /
+       .modal-action shell rules, which the toy modal below inherits. */
 
     /* TOY MODAL — collage */
     .modal.toy .modal-frame { background: var(--paper); }
@@ -389,6 +353,33 @@
     .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
     ::selection { background: var(--red); color: var(--paper); }
+
+    /* ────────────────────────────────────────────────────────────
+       "See all" attention pulse
+       When the See-all link first scrolls into view, gently pulse
+       red twice to bring the eye there, then settle back to muted.
+       Triggered once per page load via IntersectionObserver — the
+       JS sets data-pulsed="1" after firing so it never repeats.
+       Reduced-motion users skip the animation entirely.
+       ──────────────────────────────────────────────────────────── */
+    @keyframes see-all-pulse {
+       0%,
+     100% { color: var(--ink-2); border-bottom-color: var(--rule-soft); text-shadow: none; }
+      50% { color: var(--red);   border-bottom-color: var(--red);
+            text-shadow: 0 0 6px rgba(230,61,34,0.32), 0 0 14px rgba(230,61,34,0.12); }
+    }
+    .see-all.is-pulsing {
+      animation: see-all-pulse 1.5s ease-in-out 1;
+    }
+    .see-all:hover,
+    .see-all:focus-visible {
+      color: var(--red);
+      border-bottom-color: var(--red);
+      transition: color .2s var(--ease), border-color .2s var(--ease);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .see-all.is-pulsing { animation: none; }
+    }
   </style>
 </head>
 <body>
@@ -409,7 +400,7 @@
 
   <header class="masthead">
     <div class="left">
-      <a href="./Index2.html" class="breadcrumb">← Raghava KK</a>
+      <a href="./index.html" class="breadcrumb">← Raghava KK</a>
       <span class="stamp live">Lab Active</span>
     </div>
     <div class="center">where the doodles get loud</div>
@@ -430,7 +421,7 @@
         <div class="meta-block reveal">
           <div>Catalog <span class="accent" id="catalogRange">RKK-LAB-001…</span></div>
           <div>Items <span id="itemCount">—</span></div>
-          <div>Press studio@raghavakk.com</div>
+          <div>Press studio@raghavakkstudio.com</div>
         </div>
       </div>
     </section>
@@ -442,6 +433,25 @@
         <div class="legend reveal">most recent · scroll →</div>
       </div>
       <div class="drops-carousel" id="dropsCarousel"></div>
+    </section>
+
+    <!-- LIBRARY SHELF — compact embed, links out to /library2.html for the full shelf -->
+    <section class="drops-section">
+      <div class="drops-head">
+        <h2 class="reveal">From the <em>library</em>.</h2>
+        <div class="legend reveal"><a href="./library2.html" class="see-all" data-attention="see-all-books" style="color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule-soft);">See all books →</a></div>
+      </div>
+      <div id="labLibraryShelf"></div>
+    </section>
+
+    <!-- TOYS SHELF — compact embed, links out to /toys2.html for the full shelves.
+         Same drops-section / drops-head pattern as the library above. -->
+    <section class="drops-section">
+      <div class="drops-head">
+        <h2 class="reveal">From the <em>toy store</em>.</h2>
+        <div class="legend reveal"><a href="./toys2.html" class="see-all" data-attention="see-all-toys" style="color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule-soft);">See all toys →</a></div>
+      </div>
+      <div id="labToysShelf"></div>
     </section>
 
     <!-- FILTER + INVENTORY -->
@@ -459,16 +469,19 @@
     </section>
   </main>
 
-  <footer class="colophon">
+  <footer class="colophon" role="contentinfo">
     <div class="col c-a">
       <h3>Lab inquiries.</h3>
-      <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
-      <span>Drops · Editions · Collaborations</span>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
+      <span>Drops · Editions · Collaborations · Inventory ongoing</span>
     </div>
     <div class="col c-b">
+      <a href="./about2.html">Short bio →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./library2.html">The library →</a>
+      <a href="./sitemap2.html">Site map →</a>
       <span>Studio · Bengaluru</span>
       <span>Studio · New York</span>
-      <span>Inventory · ongoing</span>
     </div>
     <div class="col c-c">
       <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
@@ -476,35 +489,7 @@
     </div>
   </footer>
 
-  <!-- BOOK MODAL — spread gallery -->
-  <div class="modal" id="bookModal" role="dialog" aria-modal="true" aria-labelledby="bookTitle" aria-hidden="true">
-    <div class="modal-frame">
-      <div class="modal-bar">
-        <span class="modal-title" id="bookTitle">Book</span>
-        <span class="modal-meta" id="bookMeta">—</span>
-        <div class="modal-actions">
-          <button type="button" id="bookSpreadMode" class="modal-action ghost" aria-label="Toggle 2-up spread view">2-up ⊟</button>
-          <button type="button" id="bookFullscreen" class="modal-action ghost" aria-label="Toggle full screen">Full ⤢</button>
-          <a href="#" id="bookOpenPdf" class="modal-action ghost" target="_blank" rel="noopener">Open PDF ↗</a>
-          <a href="#" id="bookDownload" class="modal-action ghost" download>Download</a>
-          <button type="button" id="bookClose" class="modal-action" aria-label="Close">Close ×</button>
-        </div>
-      </div>
-      <div class="spread-stage" id="spreadStage" data-mode="single">
-        <button type="button" class="spread-nav prev" id="spreadPrev" aria-label="Previous spread">‹</button>
-        <img class="spread-img" id="spreadImg" alt="" />
-        <img class="spread-img spread-img-2" id="spreadImg2" alt="" />
-        <button type="button" class="spread-nav next" id="spreadNext" aria-label="Next spread">›</button>
-        <span class="spread-counter" id="spreadCounter">— / —</span>
-        <div class="cover-fallback" id="coverFallback" hidden>
-          <div class="cover-fallback-inner">
-            <img id="coverFallbackImg" alt="" />
-          </div>
-        </div>
-      </div>
-      <div class="spread-thumbs" id="spreadThumbs"></div>
-    </div>
-  </div>
+  <!-- Book modal markup is injected by ./js/book-modal.js on first open(). -->
 
   <!-- TOY MODAL — collage -->
   <div class="modal toy" id="toyModal" role="dialog" aria-modal="true" aria-labelledby="toyTitle" aria-hidden="true">
@@ -526,18 +511,8 @@
   // LAB INVENTORY — single source of truth.
   // To add or remove: just edit this array.
   // ─────────────────────────────────────────────────────
-  const SPREADS = {
-    '33M Gods':                         { folder: '33M_Gods',            count: 26, pad: 2 },
-    'Chris book':                       { folder: 'Chris_book',          count: 7,  pad: 1 },
-    'MAYBE you KNOW ME':                { folder: 'MAYBE_you_KNOW_ME',   count: 24, pad: 2 },
-    'On Being me!':                     { folder: 'On_Being_me',         count: 30, pad: 2 },
-    'MASCULYNE':                        { folder: 'MASCULYNE',           count: 20, pad: 2 },
-    'Restless Frequency':               { folder: 'Restless_Frequency',  count: 110,pad: 3 },
-    'Superstar Rajinikanth Made Me':    { folder: 'Superstar_Rajinikanth',count: 30, pad: 2 },
-    'ATTITUDES':                        { folder: 'ATTITUDES',           count: 56, pad: 2 },
-    'Elite Sample':                     { folder: 'Elite_Sample',        count: 12, pad: 2 },
-    "The Machine Didn't Kill Me, It Rewrote Me": { folder: 'Machine_Rewrote_Me', count: 92, pad: 2 }
-  };
+  // Spread catalogue (SPREADS) is owned by the shared book modal module —
+  // ./js/book-modal.js — so library2 and lab share one source of truth.
 
   const TOY_DROPS = {
     'demi-gs':          { title: 'Demi-Gs', images: ['./images/toys/demi-gs/01.jpg','./images/toys/demi-gs/02.jpg','./images/toys/demi-gs/03.jpg','./images/toys/demi-gs/04.jpg'] },
@@ -561,7 +536,7 @@
     { kind: 'book', category: 'Books', subcategory: 'Art Books', title: 'MAYBE you KNOW ME',              year: 2024, date: '2024-08', accession: 7,  thumb: './images/books/art_MAYBE_you_KNOW_ME.jpg',                 pdf: './books/art%20books/MAYBE%20you%20KNOW%20ME.pdf',          filename: 'MAYBE you KNOW ME.pdf',              line: 'Artist book · 24 spreads · self-portrait under different names', status: 'shipped' },
     { kind: 'book', category: 'Books', subcategory: 'Art Books', title: 'On Being me!',                   year: 2024, date: '2024-07', accession: 8,  thumb: './images/books/art_On_Being_me!.jpg',                      pdf: './books/art%20books/On%20Being%20me!.pdf',                 filename: 'On Being me!.pdf',                   line: 'Artist book · 30 spreads · the practice as autobiography',    status: 'shipped' },
     { kind: 'book', category: 'Books', subcategory: 'Art Books', title: 'MASCULYNE',                      year: 2024, date: '2024-06', accession: 9,  thumb: './images/books/art_RKK_-_MASCULYNE.jpg',                   pdf: './books/art%20books/RKK%20-%20MASCULYNE.pdf',              filename: 'MASCULYNE.pdf',                      line: 'Artist book · 20 spreads · the body, masculinity, the mirror', status: 'shipped' },
-    { kind: 'book', category: 'Books', subcategory: 'Art Books', title: 'Restless Frequency',             year: 2024, date: '2024-05', accession: 10, thumb: './images/books/art_Restless_Frequency.jpg',                pdf: './books/art%20books/Restless%20Frequency.pdf',             filename: 'Restless Frequency.pdf',             line: 'Artist book · 110 spreads · long-form picture essay',         status: 'shipped' },
+    { kind: 'book', category: 'Books', subcategory: 'Art Books', title: 'Restless Frequency',             year: 2024, date: '2024-05', accession: 10, thumb: './images/books/art_Restless_Frequency.jpg',                pdf: '', requestOnly: true,                                                                  filename: 'Restless Frequency.pdf',             line: 'Artist book · 110 spreads · full edition on request',         status: 'shipped' },
     { kind: 'book', category: 'Books', subcategory: 'Art Books', title: 'Superstar Rajinikanth Made Me',  year: 2024, date: '2024-04', accession: 11, thumb: './images/books/art_Superstar_Rajinikanth_Made_Me.jpg',    pdf: './books/art%20books/Superstar%20Rajinikanth%20Made%20Me.pdf', filename: 'Superstar Rajinikanth Made Me.pdf', line: 'Artist book · 30 spreads · how cinema makes a self',          status: 'shipped' },
     // ─── BOOKS — TEXT ───
     { kind: 'book', category: 'Books', subcategory: 'Text-Only Books', title: 'ATTITUDES',                                         year: 2024, date: '2024-12', accession: 12, thumb: './images/books/text_ATTITUDES-Print.jpg',                       pdf: './books/text%20only%20books/ATTITUDES-Print.pdf',                                                  filename: 'ATTITUDES.pdf',                                            line: 'A5 booklet · 56 spreads · spine-to-Canva production',         status: 'shipped' },
@@ -793,7 +768,7 @@
         const id = card.dataset.id;
         const item = ITEMS.find(x => x.title === id);
         if (!item) return;
-        if (item.kind === 'book') openBook(item);
+        if (item.kind === 'book') window.RaghavaBookModal.open(item);
         else if (item.kind === 'toy') openToy(item.toy);
         else if (item.kind === 'app' && item.ext) window.open(item.ext, '_blank', 'noopener');
         else if (item.kind === 'writing' && item.ext) window.location.href = item.ext;
@@ -808,220 +783,8 @@
   renderInventory();
   bindCardClicks();
 
-  // ─────────────────────────────────────────────────────
-  // BOOK MODAL — spread gallery
-  // ─────────────────────────────────────────────────────
-  const bookModal = document.getElementById('bookModal');
-  const bookTitle = document.getElementById('bookTitle');
-  const bookMeta = document.getElementById('bookMeta');
-  const bookOpenPdf = document.getElementById('bookOpenPdf');
-  const bookDownload = document.getElementById('bookDownload');
-  const bookClose = document.getElementById('bookClose');
-  const spreadStage = document.getElementById('spreadStage');
-  const spreadImg = document.getElementById('spreadImg');
-  const spreadImg2 = document.getElementById('spreadImg2');
-  let spreadMode = 'single';
-  const spreadPrev = document.getElementById('spreadPrev');
-  const spreadNext = document.getElementById('spreadNext');
-  const spreadCounter = document.getElementById('spreadCounter');
-  const spreadThumbs = document.getElementById('spreadThumbs');
-  const coverFallback = document.getElementById('coverFallback');
-  const coverFallbackImg = document.getElementById('coverFallbackImg');
-
-  let currentBook = null;
-  let currentPage = 0;
-  let bookLastFocus = null;
-
-  function spreadUrl(book, n) {
-    const num = String(n).padStart(book.spreads.pad, '0');
-    return `./images/spreads/${book.spreads.folder}/p-${num}.jpg`;
-  }
-
-  function openBook(item) {
-    bookLastFocus = document.activeElement;
-    currentBook = { ...item, spreads: SPREADS[item.title] || null };
-    currentPage = 1;
-
-    bookTitle.textContent = item.title.toUpperCase();
-    bookOpenPdf.href = item.pdf;
-    bookDownload.href = item.pdf;
-    if (item.filename) bookDownload.setAttribute('download', item.filename);
-
-    if (currentBook.spreads) {
-      // Spread mode
-      spreadImg.style.display = '';
-      spreadPrev.style.display = '';
-      spreadNext.style.display = '';
-      spreadCounter.style.display = '';
-      spreadThumbs.style.display = '';
-      coverFallback.hidden = true;
-      bookMeta.textContent = '1 / ' + currentBook.spreads.count;
-      renderThumbs();
-      goToPage(1);
-    } else {
-      // Cover-only fallback
-      spreadImg.style.display = 'none';
-      spreadPrev.style.display = 'none';
-      spreadNext.style.display = 'none';
-      spreadCounter.style.display = 'none';
-      coverFallback.hidden = false;
-      coverFallbackImg.src = item.thumb;
-      coverFallbackImg.alt = item.title;
-      bookMeta.textContent = 'cover only';
-      spreadThumbs.innerHTML = '';
-      spreadThumbs.style.display = 'none';
-    }
-
-    bookModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => bookClose.focus(), 60);
-  }
-
-  function closeBook() {
-    bookModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    spreadImg.removeAttribute('src');
-    spreadImg.classList.remove('loaded');
-    if (bookLastFocus && typeof bookLastFocus.focus === 'function') bookLastFocus.focus();
-  }
-
-  function renderThumbs() {
-    if (!currentBook || !currentBook.spreads) return;
-    const total = currentBook.spreads.count;
-    const html = ['<span class="label">' + total + ' spreads</span>'];
-    for (let i = 1; i <= total; i++) {
-      html.push(`<button type="button" class="spread-thumb${i === currentPage ? ' active' : ''}" data-page="${i}" aria-label="Spread ${i}"><img src="${spreadUrl(currentBook, i)}" alt="" loading="lazy" decoding="async" /></button>`);
-    }
-    spreadThumbs.innerHTML = html.join('');
-    spreadThumbs.querySelectorAll('.spread-thumb').forEach(b => {
-      b.addEventListener('click', () => goToPage(parseInt(b.dataset.page, 10)));
-    });
-  }
-
-  // Helper: load a single page into a target img element.
-  function loadIntoImg(targetImg, n) {
-    if (!currentBook || !currentBook.spreads) return;
-    targetImg.classList.remove('loaded', 'errored', 'alone');
-    const url = spreadUrl(currentBook, n);
-    const onLoad = () => { targetImg.classList.add('loaded'); cleanup(); };
-    const onError = () => {
-      console.warn('[lab2] spread failed to load:', url);
-      targetImg.classList.add('errored');
-      cleanup();
-    };
-    function cleanup() {
-      targetImg.removeEventListener('load', onLoad);
-      targetImg.removeEventListener('error', onError);
-    }
-    targetImg.addEventListener('load', onLoad);
-    targetImg.addEventListener('error', onError);
-    targetImg.src = url;
-    targetImg.dataset.page = String(n);
-    // Cached-image race guard
-    if (targetImg.complete && targetImg.naturalWidth > 0) {
-      targetImg.classList.add('loaded');
-      cleanup();
-    }
-  }
-
-  function goToPage(n) {
-    if (!currentBook || !currentBook.spreads) return;
-    const total = currentBook.spreads.count;
-    if (n < 1 || n > total) return;
-    currentPage = n;
-
-    if (spreadMode === 'double') {
-      // 2-up: show pages [n, n+1]. If n+1 doesn't exist, show n alone.
-      loadIntoImg(spreadImg, n);
-      if (n + 1 <= total) {
-        loadIntoImg(spreadImg2, n + 1);
-        spreadImg2.classList.remove('alone');
-      } else {
-        spreadImg2.removeAttribute('src');
-        spreadImg2.classList.add('alone');
-      }
-      const right = Math.min(n + 1, total);
-      const label = (n === right) ? `${n} / ${total}` : `${n}-${right} / ${total}`;
-      spreadCounter.textContent = label;
-      bookMeta.textContent = label;
-    } else {
-      // Single
-      loadIntoImg(spreadImg, n);
-      spreadCounter.textContent = n + ' / ' + total;
-      bookMeta.textContent = n + ' / ' + total;
-    }
-
-    // Preload neighbors
-    const lookahead = spreadMode === 'double' ? 2 : 1;
-    for (let i = 1; i <= lookahead + 1; i++) {
-      if (n + i <= total) { const im = new Image(); im.src = spreadUrl(currentBook, n + i); }
-      if (n - i >= 1)     { const im = new Image(); im.src = spreadUrl(currentBook, n - i); }
-    }
-
-    spreadCounter.textContent = n + ' / ' + total;
-    bookMeta.textContent = n + ' / ' + total;
-    spreadPrev.disabled = n <= 1;
-    spreadNext.disabled = n >= total;
-
-    // active thumb
-    spreadThumbs.querySelectorAll('.spread-thumb').forEach(b => b.classList.toggle('active', parseInt(b.dataset.page,10) === n));
-    // scroll active thumb into view
-    const active = spreadThumbs.querySelector('.spread-thumb.active');
-    if (active) active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  }
-
-  function step() { return spreadMode === 'double' ? 2 : 1; }
-  spreadPrev.addEventListener('click', () => goToPage(currentPage - step()));
-  spreadNext.addEventListener('click', () => goToPage(currentPage + step()));
-
-  // 2-up / single toggle
-  const bookSpreadMode = document.getElementById('bookSpreadMode');
-  function setSpreadMode(mode) {
-    spreadMode = mode === 'double' ? 'double' : 'single';
-    spreadStage.dataset.mode = spreadMode;
-    bookSpreadMode.textContent = spreadMode === 'double' ? 'Single ⊞' : '2-up ⊟';
-    bookSpreadMode.setAttribute('aria-label', spreadMode === 'double' ? 'Switch to single page view' : 'Switch to 2-up spread view');
-    // Snap currentPage to a left-page anchor when going double (odd-aligned reading)
-    if (spreadMode === 'double' && currentPage % 2 === 0 && currentPage > 1) {
-      currentPage = currentPage - 1;
-    }
-    if (currentBook && currentBook.spreads) goToPage(currentPage);
-  }
-  bookSpreadMode.addEventListener('click', () => setSpreadMode(spreadMode === 'double' ? 'single' : 'double'));
-  bookClose.addEventListener('click', closeBook);
-  bookModal.addEventListener('click', (e) => { if (e.target === bookModal) closeBook(); });
-
-  // Fullscreen — toggle the modal-frame in/out of native fullscreen.
-  const bookFs = document.getElementById('bookFullscreen');
-  function toggleBookFullscreen() {
-    const target = bookModal.querySelector('.modal-frame');
-    if (!document.fullscreenElement) {
-      const req = target.requestFullscreen || target.webkitRequestFullscreen || target.msRequestFullscreen;
-      if (req) req.call(target).catch(() => {});
-    } else {
-      const exit = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
-      if (exit) exit.call(document).catch(() => {});
-    }
-  }
-  if (bookFs) bookFs.addEventListener('click', toggleBookFullscreen);
-  document.addEventListener('fullscreenchange', () => {
-    if (bookFs) bookFs.textContent = document.fullscreenElement ? 'Exit ⤡' : 'Full ⤢';
-  });
-
-  // touch swipe
-  let bookTx = null, bookTy = null;
-  spreadStage.addEventListener('touchstart', (e) => {
-    const t = e.touches[0]; bookTx = t.clientX; bookTy = t.clientY;
-  }, { passive: true });
-  spreadStage.addEventListener('touchend', (e) => {
-    if (bookTx === null) return;
-    const t = e.changedTouches[0];
-    const dx = t.clientX - bookTx, dy = t.clientY - bookTy;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-      if (dx < 0) goToPage(currentPage + 1); else goToPage(currentPage - 1);
-    }
-    bookTx = bookTy = null;
-  });
+  // Book modal logic (open/close, spread gallery, 2-up, fullscreen, swipe,
+  // keyboard) is owned by ./js/book-modal.js. Call window.RaghavaBookModal.open(item).
 
   // ─────────────────────────────────────────────────────
   // TOY MODAL — collage
@@ -1058,14 +821,10 @@
   // ─────────────────────────────────────────────────────
   // GLOBAL: keyboard, cursor, time, reveals
   // ─────────────────────────────────────────────────────
+  // Book modal keyboard is handled inside ./js/book-modal.js.
+  // This handler covers the toy modal only.
   document.addEventListener('keydown', (e) => {
-    if (bookModal.getAttribute('aria-hidden') === 'false') {
-      if (e.key === 'Escape') closeBook();
-      else if (e.key === 'ArrowRight') goToPage(currentPage + step());
-      else if (e.key === 'ArrowLeft')  goToPage(currentPage - step());
-      else if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleBookFullscreen(); }
-      else if (e.key === '2')                  { e.preventDefault(); setSpreadMode(spreadMode === 'double' ? 'single' : 'double'); }
-    } else if (toyModal.getAttribute('aria-hidden') === 'false') {
+    if (toyModal.getAttribute('aria-hidden') === 'false') {
       if (e.key === 'Escape') closeToy();
     }
   });
@@ -1124,6 +883,81 @@
       setTimeout(() => openToy(wantToy), 60);
     }
   } catch (_) { /* malformed URL — ignore */ }
+  </script>
+  <script src="./js/book-modal.js" defer></script>
+  <script src="./data/library-rows.js" defer></script>
+  <script src="./js/library-shelf.js" defer></script>
+
+  <!-- Toys shelf — same self-hosted model-viewer + manifest + shelf module
+       used by toys2.html. The vendor JS is ~935KB but cached after first
+       visit to either page. -->
+  <script type="module" src="./js/vendor/model-viewer/model-viewer.min.js"></script>
+  <script src="./toys/3d/manifest.js" defer></script>
+  <script src="./js/toys-lazy.js" defer></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      // Init the compact library shelf under "From the library."
+      const lib = document.getElementById('labLibraryShelf');
+      const libRows = window.RKK_LIBRARY_ROWS_COMPACT || window.RKK_LIBRARY_ROWS || [];
+      if (lib && window.RaghavaLibraryShelf && libRows.length) {
+        window.RaghavaLibraryShelf.init({ container: lib, rows: libRows, compact: true });
+      }
+
+      // Init the compact toys shelf. Pulls the first 4 toys from the
+      // manifest (manifest order ≈ Pantheon then Studio dolls), with the
+      // row head suppressed since the section H2 already names it. Click
+      // "See all toys →" for the full shelves on toys2.html.
+      const toys = document.getElementById('labToysShelf');
+      const m = window.RKK_TOYS_MANIFEST;
+      if (toys && window.RaghavaToysShelf && m && m.toys && m.toys.length) {
+        window.RaghavaToysShelf.init({
+          container: toys,
+          toys: m.toys.slice(0, 4),    // first 4 — Trump, Bezos, Musk, Zuck
+          compact: true,
+          hideHead: true,
+        });
+      }
+
+      // Attention pulse on "See all" links — fires a few times at
+      // intervals after the link first scrolls into view. Schedule:
+      // 0.2s + 1.8s as the initial "double take" (close together),
+      // then 14s and 28s as occasional reminders. Each pulse is a
+      // single 1.5s color cycle, so total animation time across the
+      // session is ~6s spread over ~30s. Pulses fire even if the
+      // user scrolls away, but skip silently when off-screen so the
+      // animation isn't wasted on an invisible element.
+      const seeAllLinks = document.querySelectorAll('.see-all');
+      if (seeAllLinks.length && 'IntersectionObserver' in window) {
+        const PULSE_SCHEDULE_MS = [200, 1800, 14000, 28000];
+        const PULSE_DURATION_MS = 1500;
+
+        function firePulse(link, visibleGetter) {
+          if (!visibleGetter()) return;
+          link.classList.remove('is-pulsing');
+          // Force reflow so the animation restarts cleanly even if a
+          // previous cycle hasn't fully unwound.
+          void link.offsetWidth;
+          link.classList.add('is-pulsing');
+          setTimeout(() => link.classList.remove('is-pulsing'), PULSE_DURATION_MS);
+        }
+
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            const link = e.target;
+            link._isVisible = e.isIntersecting;
+            if (link._isVisible && !link.dataset.pulseStarted) {
+              link.dataset.pulseStarted = '1';
+              const visibleGetter = () => link._isVisible;
+              PULSE_SCHEDULE_MS.forEach((delay) => {
+                setTimeout(() => firePulse(link, visibleGetter), delay);
+              });
+            }
+          });
+        }, { threshold: 0.6 });
+        seeAllLinks.forEach((a) => io.observe(a));
+      }
+    });
   </script>
   <script src="./protect.js" defer></script>
 </body>

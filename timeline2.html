@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Timeline, Raghava KK</title>
+  <meta name="description" content="A horizontal editorial spread of twenty-eight years. The studio, walked left to right. Each moment a panel, the work shown big." />
+  <meta property="og:title" content="Timeline, Raghava KK" />
+  <meta property="og:description" content="A horizontal editorial spread of twenty-eight years. The studio, walked left to right." />
+  <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/timeline2" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Raghava KK" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Timeline, Raghava KK" />
+  <meta name="twitter:description" content="A horizontal editorial spread of twenty-eight years." />
+  <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <link rel="canonical" href="https://raghavakkstudio.com/timeline2" />
+  <meta name="theme-color" content="#F4F1EA" />
+  <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
+  <meta name="robots" content="index, follow, noai, noimageai" />
+  <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./protect.css" />
+  <style>
+    /* ───────────────────────────────────────────────────────────
+       RAGHAVA KK · TIMELINE v3 · EDITORIAL SPREAD
+       Long horizontal broadsheet. Panels at varying vertical
+       anchors. Work shown big. Text where work isn't.
+       ─────────────────────────────────────────────────────────── */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --paper:#F4F1EA; --paper-2:#ECE7DA; --paper-3:#E3DCC8;
+      --ink:#0E0E0C; --ink-2:#2B2A26; --muted:#8B8579;
+      --rule:#1A1A17; --rule-soft:rgba(14,14,12,0.18);
+      --red:#E63D22; --red-deep:#B31E12;
+      --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+      --display:'Instrument Serif','Fraunces',Georgia,serif;
+      --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+      --edge:clamp(1rem,2.6vw,2.4rem);
+      --ease:cubic-bezier(.2,.7,.2,1);
+      --ease-out:cubic-bezier(.16,1,.3,1);
+    }
+
+    html { font-size: 16.5px; scroll-behavior: smooth; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
+
+    html, body {
+      background: var(--paper); color: var(--ink);
+      font-family: var(--serif);
+      font-feature-settings: "ss01" 1, "kern" 1, "liga" 1;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    body {
+      min-height: 100vh; cursor: none;
+      background-image:
+        radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      background-size: 3px 3px, auto;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none;
+      z-index: 1; opacity: 0.5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    /* CURSOR */
+    .cursor { position: fixed; top:0; left:0; width:18px; height:18px; border-radius:50%; background: var(--ink); mix-blend-mode: difference; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .25s var(--ease), height .25s var(--ease), background .25s var(--ease); }
+    .cursor.is-link { width: 56px; height: 56px; background: var(--red); mix-blend-mode: normal; }
+    .cursor.is-view { width: 88px; height: 88px; background: var(--red); mix-blend-mode: normal; }
+    .cursor.is-view::after { content: "open"; position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--paper); }
+    @media (hover: none), (pointer: coarse) { body { cursor: auto; } .cursor { display: none; } }
+
+    /* TAPE */
+    .tape { position: relative; z-index: 3; width: 100%; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; overflow: hidden; border-bottom: 1px solid var(--ink); }
+    .tape-track { display: flex; gap: 4rem; padding: 0.6rem 0; white-space: nowrap; animation: tape-scroll 60s linear infinite; width: max-content; }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* MASTHEAD */
+    .masthead { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; padding: 1.2rem var(--edge) 0.9rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); }
+    .masthead .left, .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center { font-family: var(--display); font-style: italic; font-size: clamp(0.95rem, 1.1vw, 1.05rem); letter-spacing: 0.04em; text-transform: none; color: var(--ink); }
+    .masthead .stamp { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.18rem 0.5rem; border: 1px solid var(--rule); border-radius: 999px; }
+    .masthead .stamp.live::before { content: ""; width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: pulse 1.6s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+    .masthead a { color: var(--ink); text-decoration: none; transition: color .2s var(--ease); }
+    .masthead a:hover { color: var(--red); }
+
+    /* PAGE HEAD */
+    .page-head {
+      position: relative; z-index: 2;
+      padding: clamp(2.5rem, 6vh, 4.5rem) var(--edge) 1rem;
+      max-width: 1480px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.4rem;
+      align-items: end;
+    }
+    .page-head .titleblock { grid-column: 1 / span 7; }
+    .page-head .meta { grid-column: 9 / span 4; align-self: end; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.65rem;
+      border: 1px solid var(--ink);
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+    .eyebrow .num { font-weight: 600; color: var(--red); }
+    .page-title {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.6rem, 6.6vw, 5.4rem); line-height: 0.95;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .page-title em { color: var(--red); font-style: italic; }
+    .page-lede {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.05rem, 1.4vw, 1.25rem); line-height: 1.45;
+      color: var(--ink-2);
+      margin-top: 1rem;
+      max-width: 60ch;
+    }
+    .page-lede em { font-style: italic; color: var(--red); }
+    .meta-block {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-2);
+      border-left: 1px solid var(--rule); padding-left: 0.9rem;
+      display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .meta-block .accent { color: var(--red); }
+
+    /* CONTROLS */
+    .controls {
+      max-width: 1480px; margin: 0 auto;
+      padding: 1rem var(--edge) 1.2rem;
+      display: flex; gap: 1.2rem;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .controls .meta-line {
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .controls .meta-line em {
+      font-style: italic; color: var(--red);
+      text-transform: none; letter-spacing: 0.04em;
+    }
+    .controls .actions { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+    .actions button, .actions a.btn {
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 0.5rem 0.85rem;
+      background: var(--paper); color: var(--ink);
+      border: 1px solid var(--rule); border-radius: 999px;
+      cursor: pointer; text-decoration: none;
+      transition: background .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+    }
+    .actions button:hover, .actions a.btn:hover { background: var(--ink); color: var(--paper); transform: translateY(-1px); }
+
+    /* ─── EDITORIAL STRIP ─── */
+    .spread-wrap {
+      position: relative; z-index: 2;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      background: var(--paper);
+    }
+    .spread-rail {
+      position: relative;
+      height: 16px;
+      background:
+        linear-gradient(to right,
+          transparent 0%, transparent 1px,
+          rgba(14,14,12,0.28) 1px, rgba(14,14,12,0.28) 2px,
+          transparent 2px, transparent 100%);
+      background-size: 16px 16px;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+
+    .spread-strip {
+      overflow-x: auto; overflow-y: hidden;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      padding: 0;
+      position: relative;
+    }
+    .spread-strip::-webkit-scrollbar { height: 10px; background: transparent; }
+    .spread-strip::-webkit-scrollbar-thumb { background: rgba(14,14,12,0.20); border-radius: 99px; }
+    .spread-strip::-webkit-scrollbar-thumb:hover { background: rgba(14,14,12,0.45); }
+
+    .spread-inner {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      min-width: max-content;
+      height: clamp(620px, 86vh, 880px);
+      padding: 2.4rem 1.2rem 3rem;
+    }
+
+    /* SPREAD HEAD — first item in the strip */
+    .spread-head {
+      flex: 0 0 auto;
+      width: clamp(260px, 22vw, 340px);
+      padding-right: 2.4rem;
+      border-right: 1px solid var(--rule-soft);
+      margin-right: 2.4rem;
+      align-self: flex-start;
+      padding-top: 0.5rem;
+    }
+    .spread-head .sh-eyebrow {
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2);
+      margin-bottom: 0.4rem;
+    }
+    .spread-head .sh-title {
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.4rem, 2.2vw, 2.1rem); line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 0.7rem;
+    }
+    .spread-head .sh-title em { color: var(--red); }
+    .spread-head .sh-body {
+      font-family: var(--serif); font-size: 12.5px; line-height: 1.55;
+      color: var(--ink-2);
+      max-width: 32ch;
+    }
+    .spread-head .sh-body em { color: var(--red); font-style: italic; }
+    .spread-head .sh-rule {
+      width: 36px; height: 2px; background: var(--red);
+      margin-top: 1.2rem; margin-bottom: 0.6rem;
+    }
+
+    /* PANEL */
+    .panel {
+      flex: 0 0 auto;
+      width: var(--panel-w, 264px);
+      margin-right: clamp(1.8rem, 3vw, 3.4rem);
+      display: flex; flex-direction: column;
+      position: relative;
+    }
+    .panel.wide { --panel-w: 360px; }
+    .panel.x-wide { --panel-w: 460px; }
+
+    .panel.anchor-top    { align-self: flex-start; padding-top: 0; }
+    .panel.anchor-mid    { align-self: center; }
+    .panel.anchor-bottom { align-self: flex-end; padding-bottom: 0; }
+
+    .panel-head {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
+      max-width: 28ch;
+    }
+    .panel-head .yr {
+      color: var(--red);
+      font-weight: 600;
+      margin-left: 0.35rem;
+    }
+
+    .panel-body {
+      font-family: var(--serif);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--ink-2);
+      max-width: 30ch;
+      margin-bottom: 1rem;
+    }
+    .panel-body em { color: var(--red); font-style: italic; }
+    .panel-body sup { color: var(--red); font-size: 9px; font-family: var(--mono); margin-left: 0.1rem; letter-spacing: 0; vertical-align: super; }
+
+    .panel.text-only .panel-body { max-width: 28ch; }
+    .panel.text-only { width: var(--panel-w, 220px); }
+
+    /* PANEL FIG */
+    .panel-fig { display: flex; flex-direction: column; gap: 0.6rem; margin: 0; }
+    .panel-fig.row { flex-direction: row; align-items: stretch; gap: 0.5rem; }
+    .panel-fig.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+    .panel-fig.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.4rem; }
+
+    .panel-img-wrap {
+      position: relative;
+      overflow: hidden;
+      background: var(--paper-2);
+      display: block;
+      text-decoration: none; color: inherit;
+      cursor: pointer;
+      border: 1px solid rgba(14,14,12,0.18);
+      transition: transform .35s var(--ease-out), border-color .25s var(--ease), box-shadow .35s var(--ease);
+    }
+    .panel-img-wrap.no-click { cursor: default; }
+    .panel-img-wrap:hover {
+      transform: translateY(-3px);
+      border-color: var(--red);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+    }
+    .panel-img-wrap.no-click:hover { transform: none; border-color: rgba(14,14,12,0.18); box-shadow: none; }
+    .panel-img-wrap img {
+      display: block; width: 100%; height: auto;
+      object-fit: cover;
+    }
+    .panel-img-wrap.hero img { width: 100%; height: auto; }
+    .panel-img-wrap.square img { aspect-ratio: 1 / 1; object-fit: cover; }
+    .panel-img-wrap.portrait img { aspect-ratio: 3 / 4; object-fit: cover; }
+    .panel-img-wrap.landscape img { aspect-ratio: 4 / 3; object-fit: cover; }
+    .panel-img-wrap.tall img { aspect-ratio: 2 / 3; object-fit: cover; }
+
+    .panel-cap {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      max-width: 30ch;
+      line-height: 1.4;
+    }
+    .panel-cap em {
+      font-family: var(--serif);
+      font-style: italic;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: var(--ink-2);
+      font-size: 11.5px;
+      display: block;
+      margin-bottom: 0.1rem;
+    }
+
+    /* SOFT FRAME for typographic specimen images (no jpg available) */
+    .panel-typo {
+      background: var(--paper-2);
+      background-image: repeating-linear-gradient(0deg, rgba(14,14,12,0.08) 0 1px, transparent 1px 6px);
+      border: 1px solid var(--rule-soft);
+      padding: 1rem 0.8rem;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 140px;
+      aspect-ratio: 4 / 3;
+    }
+    .panel-typo span {
+      font-family: var(--display); font-style: italic;
+      font-size: 1rem; line-height: 1.2; color: var(--ink);
+      text-align: center;
+    }
+
+    /* FLOURISH — section start markers between decades */
+    .panel.decade-marker {
+      width: clamp(200px, 18vw, 280px);
+      display: flex; flex-direction: column;
+      justify-content: center;
+      align-self: center;
+      padding: 0 1.5rem;
+      border-left: 1px solid var(--rule-soft);
+      border-right: 1px solid var(--rule-soft);
+      margin-right: clamp(1.8rem, 3vw, 3.4rem);
+    }
+    .panel.decade-marker .dm-num {
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      line-height: 0.95; color: var(--red);
+      margin-bottom: 0.3rem;
+    }
+    .panel.decade-marker .dm-label {
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .panel.decade-marker .dm-body {
+      font-family: var(--serif); font-style: italic;
+      font-size: 12px; line-height: 1.5;
+      color: var(--ink-2);
+      margin-top: 0.6rem;
+      max-width: 22ch;
+    }
+
+    /* FOOTNOTES PANEL — at the end of the strip */
+    .panel.footnotes {
+      width: clamp(320px, 28vw, 460px);
+      align-self: flex-end;
+      padding-top: 1rem;
+    }
+    .panel.footnotes h4 {
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink); margin-bottom: 0.6rem;
+    }
+    .panel.footnotes ol {
+      list-style: none;
+      counter-reset: fn;
+      font-family: var(--serif); font-size: 11px;
+      line-height: 1.45; color: var(--ink-2);
+      max-width: 36ch;
+    }
+    .panel.footnotes li {
+      counter-increment: fn;
+      padding-left: 1.4rem;
+      position: relative;
+      margin-bottom: 0.3rem;
+    }
+    .panel.footnotes li::before {
+      content: counter(fn);
+      position: absolute; left: 0; top: 0;
+      font-family: var(--mono); font-size: 9px;
+      color: var(--red);
+    }
+    .panel.footnotes li em {
+      font-style: italic; color: var(--ink-2);
+    }
+
+    /* CLOSER — the final "today" panel */
+    .panel.closer .panel-head { color: var(--red); }
+    .panel.closer .panel-body { font-style: italic; font-size: 14px; color: var(--ink); }
+
+    /* PROGRESS RAIL — bottom of the strip */
+    .progress-rail {
+      position: relative;
+      height: 2px;
+      background: rgba(14,14,12,0.08);
+    }
+    .progress-rail .fill {
+      height: 100%; background: var(--red);
+      width: 0%;
+      transition: width .15s linear;
+    }
+
+    /* RAIL CAPS — sticky labels at left/right of the strip */
+    .rail-caps {
+      position: absolute; left: 0; right: 0; top: 0;
+      display: flex; justify-content: space-between;
+      pointer-events: none;
+      padding: 0.8rem var(--edge);
+      z-index: 5;
+    }
+    .rail-caps span {
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2);
+      background: var(--paper);
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--rule-soft);
+      border-radius: 999px;
+    }
+
+    /* COLOPHON */
+    .colophon {
+      position: relative; z-index: 2;
+      padding: clamp(3rem, 7vh, 5rem) var(--edge) clamp(2rem, 4vh, 3rem);
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem; align-items: start;
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.35rem; }
+    .colophon .col.c-a { grid-column: 1; }
+    .colophon .col.c-b { grid-column: 2; }
+    .colophon .col.c-c { grid-column: 3; align-items: flex-end; }
+    .colophon h3 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: 1.05rem; letter-spacing: 0.02em;
+      color: var(--ink); text-transform: none;
+      margin-bottom: 0.2rem;
+    }
+    .colophon a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .seal {
+      width: 60px; height: 60px;
+      border: 1px solid var(--rule); border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--paper);
+      margin-bottom: 0.6rem;
+    }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; }
+
+    @media (max-width: 920px) {
+      .colophon { grid-template-columns: 1fr; }
+      .colophon .col.c-a, .colophon .col.c-b, .colophon .col.c-c {
+        grid-column: 1 / -1; align-items: flex-start;
+      }
+      .page-head .titleblock { grid-column: 1 / -1; }
+      .page-head .meta { grid-column: 1 / -1; }
+      .spread-inner { height: auto; flex-direction: column; align-items: stretch; padding: 1.5rem 1.2rem 2.5rem; gap: 1.8rem; }
+      .spread-head, .panel, .panel.text-only, .panel.decade-marker, .panel.footnotes {
+        width: 100%; margin-right: 0; align-self: stretch; border: 0;
+      }
+      .panel { padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule-soft); }
+      .panel-body, .panel-head, .panel.text-only .panel-body { max-width: none; }
+      .panel-fig.grid-3 { grid-template-columns: 1fr 1fr; }
+      .spread-strip { overflow-x: hidden; overflow-y: visible; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tape-track { animation: none; }
+      .masthead .stamp.live::before { animation: none; }
+      .panel-img-wrap { transition: none !important; }
+    }
+  </style>
+</head>
+<body oncontextmenu="return true">
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <!-- TAPE -->
+  <div class="tape" role="presentation">
+    <div class="tape-track">
+      <span>Timeline</span><span class="dot"></span>
+      <span>1998 → 2026</span><span class="dot"></span>
+      <span>Twenty-eight years</span><span class="dot"></span>
+      <span>An editorial spread of the studio</span><span class="dot"></span>
+      <span>Walk left to right</span><span class="dot"></span>
+      <span>Timeline</span><span class="dot"></span>
+      <span>1998 → 2026</span><span class="dot"></span>
+      <span>Twenty-eight years</span><span class="dot"></span>
+      <span>An editorial spread of the studio</span><span class="dot"></span>
+      <span>Walk left to right</span><span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <header class="masthead" role="banner">
+    <div class="left">
+      <a class="breadcrumb" href="./index.html">← Raghava KK</a>
+      <a class="breadcrumb" href="./studio2.html">Studio</a>
+      <span class="stamp live">Timeline</span>
+    </div>
+    <div class="center">a chronological reading of the studio</div>
+    <div class="right">
+      <span id="dateStamp">TUE · 12 MAY 2026</span>
+      <span id="timeStamp">--:--</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- HEAD -->
+    <section class="page-head">
+      <div class="titleblock">
+        <p class="eyebrow"><span class="num">Timeline</span>Studio · Editorial Spread</p>
+        <h1 class="page-title">A walk through <em>twenty-eight</em> years.</h1>
+        <p class="page-lede">
+          A broadsheet on its side. Each moment a panel, the work shown <em>big</em>, the year above,
+          the prose beside. Scroll right to walk forward. Click a painting and the studio opens.
+        </p>
+      </div>
+      <div class="meta">
+        <div class="meta-block">
+          <div>Range <span class="accent">1998 → 2026</span></div>
+          <div>Span 28 years</div>
+          <div>Panels <span id="metaPanels">--</span></div>
+          <div>Works visible <span id="metaWorks">--</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTROLS -->
+    <section class="controls" aria-label="Timeline controls">
+      <p class="meta-line">
+        <em>Editorial reading</em> · scroll right to walk forward · click a work to open it in the studio.
+      </p>
+      <div class="actions">
+        <button id="jumpStart" type="button">↤ 1998</button>
+        <button id="jumpMid" type="button">2013</button>
+        <button id="jumpNow" type="button">2026 ↦</button>
+      </div>
+    </section>
+
+    <!-- EDITORIAL STRIP -->
+    <section class="spread-wrap" aria-label="Timeline editorial spread">
+      <div class="spread-rail" aria-hidden="true"></div>
+      <div class="spread-strip" id="spreadStrip" tabindex="0" aria-label="Editorial spread — scroll horizontally">
+        <div class="spread-inner" id="spreadInner">
+          <!-- panels injected by JS -->
+        </div>
+      </div>
+      <div class="progress-rail"><div class="fill" id="progressFill"></div></div>
+    </section>
+  </main>
+
+  <footer class="colophon" role="contentinfo">
+    <div class="col c-a">
+      <h3>Studio inquiries.</h3>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
+      <span>Sales · Studio Visits · Loan Requests · Hi-res on request</span>
+    </div>
+    <div class="col c-b">
+      <a href="./about2.html">Short bio →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./library2.html">The library →</a>
+      <a href="./sitemap2.html">Site map →</a>
+      <span>Studio · Bengaluru</span>
+      <span>Studio · New York</span>
+    </div>
+    <div class="col c-c">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK &middot; <a href="./terms.html">Terms</a></span>
+    </div>
+  </footer>
+
+  <script>
+    /* ───────────────────────────────────────────────────────────
+       TIMELINE v3 — EDITORIAL PANELS
+       Curated array. Each panel is a year/moment with prose +
+       optional images. The strip renders panels left to right;
+       anchor controls vertical alignment within the row.
+       ─────────────────────────────────────────────────────────── */
+    (function () {
+      'use strict';
+
+      // ─────────────────────────────────────────────────────────
+      // PANEL CATALOGUE — hand-curated, in chronological order
+      // anchor: top | mid | bottom (vertical placement)
+      // size:   narrow | wide | x-wide (column width)
+      // images: array of { src, alt, ratio, deepLink?, cap?, caption_title? }
+      // ─────────────────────────────────────────────────────────
+
+      const PANELS = [
+        {
+          id: 'strasbourg-1997', year: '1997', title: 'Strasbourg', anchor: 'bottom', size: 'narrow', textOnly: true,
+          body: 'At seventeen, convinced the Government of India to send him to the World Trade Congress. Afterwards hitchhiked across Europe, bartering caricatures for food, shelter, and train tickets.',
+          note: 1
+        },
+        {
+          id: 'black-cadillac-1998', year: '1998', title: 'Black Cadillac', anchor: 'top', size: 'narrow', textOnly: true,
+          body: 'First solo exhibition at the Black Cadillac bar, Bangalore. After watching Milind Nayak paint fearlessly, Raghava painted fifteen canvases in one night. <em>The birth of his painting practice.</em> Shabana Azmi launched the show.',
+          note: 2
+        },
+        {
+          id: 'akkumal-1998', year: '1998', title: 'Akkumal Ramachander', anchor: 'mid', size: 'narrow', textOnly: true,
+          body: 'Art promoter Akkumal Ramachander discovers Raghava after uncovering painter Milind Nayak. The shift from cartooning to painting begins.',
+          note: 2
+        },
+        {
+          id: 'lee-n-rags-1998', year: '1998', title: 'Lee \'N\' Rags', anchor: 'bottom', size: 'narrow', textOnly: true,
+          body: 'Founds the Lee \'N\' Rags Cartoon Academy at seventeen. <em>Approximately 10,000 children</em> taught over the next years.',
+          note: 2
+        },
+        {
+          id: 'luigi-ontani-1999', year: '1999', title: 'Luigi Ontani', anchor: 'top', size: 'narrow', textOnly: true,
+          body: 'Meets Italian master painter Luigi Ontani in Rome. Mentorship begins.',
+          note: 2
+        },
+        {
+          id: 'bronx-1999', year: '1999', title: 'Bronx Murals', anchor: 'mid', size: 'narrow', textOnly: true,
+          body: 'Murals in the Bronx. <em>First public installation in the United States.</em>',
+          note: 2
+        },
+        {
+          id: 'when-paintings-dance-2000', year: '2000', title: 'When Paintings Dance', anchor: 'top', size: 'wide',
+          body: 'Performance with Velocity Circus in San Francisco, alongside Cirque du Soleil dancers. Anne Getty hosts the AIF gala.',
+          images: [{ src: './images/bio/paintings-dance.jpg', alt: 'When Paintings Dance performance', ratio: 'landscape', caption_title: '“When Paintings Dance”', cap: 'Velocity Circus · San Francisco · 2000' }],
+          note: 2
+        },
+        {
+          id: 'set-a-child-free-2000', year: '2000', title: 'Set A Child Free', anchor: 'bottom', size: 'narrow', textOnly: true,
+          body: 'Renaissance Art Gallery, Bangalore. The exhibition is opened by Shabana Azmi with Milind Nayak.',
+          note: 2
+        },
+        {
+          id: 'kamal-haasan-1999', year: '1999–2001', title: 'Kamal Haasan', anchor: 'mid', size: 'narrow', textOnly: true,
+          body: 'A close creative bond with the actor begins. He shuttles between New York and Bangalore, selling paintings on the East Coast.',
+          note: 2
+        },
+        {
+          id: 'morocco-2003', year: '2003', title: 'Morocco', anchor: 'top', size: 'wide',
+          body: 'Collaboration with Moroccan master Farid Belkahia. Creates a piece for Princess Lalla Salma. Work enters the collection of the <em>Moroccan Royal Family</em>.',
+          images: [{ src: './images/bio/teaching-morocco.jpg', alt: 'Teaching in Morocco', ratio: 'landscape', caption_title: 'Morocco', cap: 'With Farid Belkahia · 2003' }],
+          note: 2
+        },
+        {
+          id: 'robin-hood-2003', year: '2003', title: 'Robin Hood Library', anchor: 'bottom', size: 'wide',
+          body: 'Robin Hood Foundation Library Initiative, New York.',
+          images: [{ src: './images/bio/robin-hood-library.jpg', alt: 'Robin Hood Library', ratio: 'landscape', caption_title: 'Library Initiative', cap: 'NYC · 2003' }],
+          note: 2
+        },
+        {
+          id: 'collections-2005', year: '2005', title: 'Collections', anchor: 'top', size: 'narrow', textOnly: true,
+          body: 'Work enters collections of the Royal Family of Morocco, <em>Shah Rukh Khan, Amitabh Bachchan, Sachin Tendulkar</em>. Performances at Lincoln Center and London Fashion Week.',
+          note: 2
+        },
+        {
+          id: 'beaux-arts-2007', year: '2007', title: 'École des Beaux-Arts', anchor: 'mid', size: 'narrow', textOnly: true,
+          body: 'Lectures at the École des Beaux-Arts in Nîmes. Collaboration with flamenco singer Pepe Linares.',
+          note: 2
+        },
+        {
+          id: 'art-musings-2008', year: '2008', title: 'Art Musings', anchor: 'bottom', size: 'narrow', textOnly: true,
+          body: 'Joins Art Musings gallery, Mumbai. <em>Drawn &amp; Quartered</em>, <em>Brooklyn Bound R-Train</em>. Solo shows over the decade.',
+          note: 2
+        },
+        {
+          id: 'nyc-2009', year: '2009', title: 'New York', anchor: 'top', size: 'narrow', textOnly: true,
+          body: 'Moves to New York with Netra and a newborn, drawn by the Obama HOPE campaign. Aicon Gallery NYC, Giacobetti Paul, Skotta New Mexico.',
+          note: 2
+        },
+        {
+          id: 'ted-2010', year: '2010', title: 'TED · 33 Million Gods', anchor: 'mid', size: 'wide',
+          body: 'A TED talk on technology, mythology, and pluralism. <em>33,000,000 Gods</em>. Brainwave technology enters the work.',
+          images: [{ src: './images/bio/ted-brainwave.jpg', alt: 'TED brainwave', ratio: 'landscape', caption_title: 'TED · Brainwave', cap: 'TED · 2010' }],
+          note: 3
+        },
+
+        // ── decade marker ──
+        { id: 'dm-2010s', kind: 'decade-marker', label: '2010s · The Studio Begins', num: '10s', body: 'A studio practice consolidates. <em>Twelve years</em> of asking which gods survive translation.' },
+
+        {
+          id: 'history-series-2011', year: '2011–2015', title: 'The History Series', anchor: 'top', size: 'wide',
+          body: 'The studio begins. <em>Idol to image, image to algorithm,</em> algorithm back into the hand of someone who needs to believe.',
+          images: [
+            { src: './images/studio/01-history/1A.jpg', alt: 'A gallery of adorable boundaries', ratio: 'square', deepLink: './studio2.html?work=1A', caption_title: '“A gallery of adorable boundaries”', cap: '2011' },
+            { src: './images/studio/01-history/1B.jpg', alt: "That's all folks", ratio: 'square', deepLink: './studio2.html?work=1B', caption_title: '“That’s all folks”', cap: '2013' },
+            { src: './images/studio/01-history/1F.jpg', alt: '24.00', ratio: 'square', deepLink: './studio2.html?work=1F', caption_title: '“24.00”', cap: '2011' }
+          ],
+          note: 4
+        },
+        {
+          id: 'fidelio-2013', year: '2013', title: 'Fidelio', anchor: 'bottom', size: 'narrow', textOnly: true,
+          body: 'Paintings become the visual soul of Beethoven’s <em>Fidelio</em> at the Skylight Theatre Milwaukee. Brainwave technology integrated with conductor Visva Subbaraman.',
+          note: 2
+        },
+        {
+          id: 'indiaspora-netflix-2013', year: '2013', title: 'Netflix · Indiaspora', anchor: 'mid', size: 'narrow', textOnly: true,
+          body: 'Featured in Netflix’s <em>Creative Indians</em>. Opening panelist at Indiaspora.',
+          note: 2
+        },
+        {
+          id: 'fischl-2015', year: '2015', title: 'Eric Fischl Residency', anchor: 'top', size: 'narrow', textOnly: true,
+          body: 'Earns the Eric Fischl Residency in the Hamptons.',
+          note: 2
+        },
+        {
+          id: 'shanti-samsara-2015', year: '2015–2016', title: 'Shanti Samsara', anchor: 'bottom', size: 'wide',
+          body: 'Artistic producer for Rickey Kej’s <em>Shanti Samsara</em> — <b>200+ musicians, 60+ Grammy winners</b>. Launched at COP21 Paris by PM Modi and Ban Ki-Moon.',
+          images: [{ src: './images/bio/with-al-gore.jpg', alt: 'With Al Gore', ratio: 'landscape', caption_title: 'COP21 · Paris', cap: 'With Al Gore' }],
+          note: 2
+        },
+        {
+          id: 'sublime-machines-2017', year: '2017–2018', title: 'Sublime Machines', anchor: 'top', size: 'wide',
+          body: 'Six canvases. <em>Anthropocene as devotional vocabulary.</em> The machine sublime.',
+          images: [
+            { src: './images/studio/04-sublime-machines/4A.jpg', alt: 'Sublime Machine I', ratio: 'square', deepLink: './studio2.html?work=4A', caption_title: 'Sublime Machine I', cap: '2017' },
+            { src: './images/studio/04-sublime-machines/4D.jpg', alt: 'Sublime Machine VI', ratio: 'square', deepLink: './studio2.html?work=4D', caption_title: 'Sublime Machine VI', cap: '2018' }
+          ],
+          note: 5
+        },
+        {
+          id: 'impossible-bouquets-2018', year: '2018–2020', title: 'Impossible Bouquets', anchor: 'mid', size: 'x-wide',
+          body: 'Bouquets that cannot exist in any one season. Recomposed from <em>cross-pollinated time</em>.',
+          images: [
+            { src: './images/studio/02-impossible-bouquets/2A.jpg', alt: 'Impossible Living Machines', ratio: 'square', deepLink: './studio2.html?work=2A', caption_title: 'Impossible Living Machines', cap: '2020' },
+            { src: './images/studio/02-impossible-bouquets/2B.jpg', alt: 'Impossible Bouquet II', ratio: 'square', deepLink: './studio2.html?work=2B', caption_title: 'Impossible Bouquet II', cap: '2019' },
+            { src: './images/studio/02-impossible-bouquets/2D.jpg', alt: 'Impossible Bouquet VI', ratio: 'square', deepLink: './studio2.html?work=2D', caption_title: 'Impossible Bouquet VI', cap: '2020' }
+          ],
+          note: 5
+        },
+        {
+          id: 'strange-genders-2019', year: '2019–2021', title: 'Strange Genders', anchor: 'bottom', size: 'narrow', textOnly: true,
+          body: 'AI artwork with Harshit Agrawal and 64/1. Collected drawings <em>generate a spectrum</em> of gender forms.',
+          note: 2
+        },
+        {
+          id: 'bali-2019', year: '2019', title: 'Bali', anchor: 'top', size: 'narrow', textOnly: true,
+          body: 'Trains under master sculptor Aditya Budyasa in Bali. Friendship with Shilo Shiv Suleman.',
+          note: 2
+        },
+        {
+          id: 'edges-2020', year: '2020', title: 'Edges', anchor: 'mid', size: 'wide',
+          body: 'How would you tell a story <em>from the margins</em>? Nine canvases.',
+          images: [
+            { src: './images/studio/07-edges/7A.jpg', alt: 'How would you tell a story from the margins?', ratio: 'square', deepLink: './studio2.html?work=7A', caption_title: '“from the margins?”', cap: '2020' },
+            { src: './images/studio/07-edges/7B.jpg', alt: 'Edges', ratio: 'square', deepLink: './studio2.html?work=7B', caption_title: 'Edges II', cap: '2020' }
+          ],
+          note: 5
+        },
+        {
+          id: 'catch-em-2021', year: '2021', title: 'Catch ’em if you can', anchor: 'bottom', size: 'x-wide',
+          body: 'A series about the parts of the self <em>one step ahead</em> of the rest.',
+          images: [
+            { src: './images/studio/05-catch-em/5A.jpg', alt: 'He, whose story is always one step ahead of him', ratio: 'square', deepLink: './studio2.html?work=5A', caption_title: '“One step ahead”', cap: '2021' },
+            { src: './images/studio/05-catch-em/5B.jpg', alt: 'Lost In Goose Land', ratio: 'square', deepLink: './studio2.html?work=5B', caption_title: '“Lost in Goose Land”', cap: '2021' },
+            { src: './images/studio/05-catch-em/5D.jpg', alt: 'Selectively cute', ratio: 'square', deepLink: './studio2.html?work=5D', caption_title: '“Selectively cute”', cap: '2021' }
+          ],
+          note: 5
+        },
+        {
+          id: 'orgasm-project-2021', year: '2021–2022', title: 'The Orgasm Project', anchor: 'top', size: 'x-wide',
+          body: 'Cyborg orgasms via EEG with neuroscientist Abhijeet Satani. <em>La Petite Mort</em> sells for $94,500 at Sotheby’s NFT.',
+          images: [
+            { src: './images/studio/06-orgasm-project/6A.jpg', alt: 'La petite mort', ratio: 'square', deepLink: './studio2.html?work=6A', caption_title: 'La Petite Mort', cap: '2021' },
+            { src: './images/studio/06-orgasm-project/6B.jpg', alt: 'Cyborg Orgasm 1', ratio: 'square', deepLink: './studio2.html?work=6B', caption_title: 'Cyborg Orgasm I', cap: '2022' },
+            { src: './images/studio/06-orgasm-project/6C.jpg', alt: 'Cyborg Orgasm 2', ratio: 'square', deepLink: './studio2.html?work=6C', caption_title: 'Cyborg Orgasm II', cap: '2022' }
+          ],
+          note: 6
+        },
+        {
+          id: 'guernica-project-2015', year: '2015–2023', title: 'The Guernica Project', anchor: 'mid', size: 'x-wide',
+          body: 'Four Guernicas across eight years. <em>Reclaimed. 2.0. La Liberté. For the Siri-ocene.</em>',
+          images: [
+            { src: './images/studio/03-guernica/3A.jpg', alt: 'Guernica for the Siri-ocene', ratio: 'square', deepLink: './studio2.html?work=3A', caption_title: 'Guernica for the Siri-ocene', cap: '2021' },
+            { src: './images/studio/03-guernica/3B.jpg', alt: 'Guernica Reclaimed', ratio: 'square', deepLink: './studio2.html?work=3B', caption_title: 'Guernica Reclaimed', cap: '2018' },
+            { src: './images/studio/03-guernica/3D.jpg', alt: 'La Liberté De Guernica', ratio: 'square', deepLink: './studio2.html?work=3D', caption_title: 'La Liberté De Guernica', cap: '2023' }
+          ],
+          note: 5
+        },
+        {
+          id: 'mtf-2018', year: '2018–2022', title: 'Mysterium Tremendum', anchor: 'bottom', size: 'wide',
+          body: 'The numinous, painted directly. <em>Tremendum et Fascinans.</em>',
+          images: [
+            { src: './images/studio/08-mtf/8A.jpg', alt: 'Mysterium Tremendum I', ratio: 'square', deepLink: './studio2.html?work=8A', caption_title: 'Mysterium Tremendum I', cap: '2018' },
+            { src: './images/studio/08-mtf/8B.jpg', alt: 'Mysterium Tremendum II', ratio: 'square', deepLink: './studio2.html?work=8B', caption_title: 'Mysterium Tremendum II', cap: '2020' }
+          ],
+          note: 5
+        },
+        {
+          id: 'milan-2022', year: '2022', title: 'Milan · Dubai', anchor: 'top', size: 'narrow', textOnly: true,
+          body: 'The Edge Series at <em>Hub Artissima Milan</em>, represented by Nature Morte. Guernica Project at Dubai’s inaugural NFT edition. Recognition from the UAE Ministry of Culture.',
+          note: 2
+        },
+        {
+          id: 'impossible-23-2023', year: '2023', title: 'India Art Fair', anchor: 'mid', size: 'wide',
+          body: '<em>Impossible Bouquet</em> debuts as the opening exhibition of India Art Fair 2023.',
+          images: [
+            { src: './images/studio/14-impossible-bouquet-23/14A.jpg', alt: 'Impossible Bouquet 23', ratio: 'square', deepLink: './studio2.html?work=14A', caption_title: 'Impossible Bouquet (23)', cap: '2023' },
+            { src: './images/studio/14-impossible-bouquet-23/14C.jpg', alt: 'Impossible Bouquet 23 III', ratio: 'square', deepLink: './studio2.html?work=14C', caption_title: 'Impossible Bouquet III', cap: '2023' }
+          ],
+          note: 5
+        },
+        {
+          id: 'royal-enfield-2023', year: '2023', title: 'Royal Enfield', anchor: 'bottom', size: 'narrow', textOnly: true,
+          body: 'Site-specific installation, <em>Where the wind reads forgotten songs</em>, for the Royal Enfield Art Festival.',
+          note: 2
+        },
+        {
+          id: 'power-fluff-2022', year: '2022–2026', title: 'Soft Gods', anchor: 'top', size: 'wide',
+          body: 'The studio’s sculpture turn. <em>Power Fluff. Retired Gods. Doomscrollers.</em>',
+          images: [
+            { src: './images/toys/_thumbs/power-fluff-toys/01.jpg', alt: 'Power Fluff I', ratio: 'square', deepLink: './lab2.html?toy=power-fluff-toys', caption_title: 'Power Fluff I', cap: '2022' },
+            { src: './images/toys/_thumbs/retired-gods/01.jpg', alt: 'Retired God I', ratio: 'square', deepLink: './lab2.html?toy=retired-gods', caption_title: 'Retired God I', cap: '2026' },
+            { src: './images/toys/_thumbs/the-doomscrollers/01.jpg', alt: 'Doomscroller I', ratio: 'square', deepLink: './lab2.html?toy=the-doomscrollers', caption_title: 'Doomscroller I', cap: '2026' }
+          ],
+          note: 7
+        },
+        {
+          id: 'gods-vs-gods-2024', year: '2024–2026', title: 'Gods vs Gods', anchor: 'mid', size: 'wide',
+          body: 'The newer canvas. Gods tested <em>against</em> gods. The studio’s current question.',
+          images: [
+            { src: './images/studio/15-gods-vs-gods/15A.jpg', alt: 'Gods vs Gods I', ratio: 'square', deepLink: './studio2.html?work=15A', caption_title: 'Gods vs Gods I', cap: '2024' }
+          ],
+          note: 5
+        },
+        {
+          id: 'calling-2026', year: '2026', title: 'Calling All Gods', anchor: 'bottom', size: 'wide',
+          body: 'Parsons, NYC. <em>December 2026.</em> A show built around two paintings and the structural language of being undone, and held.',
+          images: [{ src: './images/bio/liberty-guernica.jpg', alt: 'La Liberté De Guernica', ratio: 'landscape', deepLink: './calling2.html', caption_title: 'La Liberté De Guernica', cap: 'Parsons · NYC · 2026' }],
+          note: 8
+        },
+        {
+          id: 'today-2026', year: '2026', title: 'Today', anchor: 'top', size: 'narrow', kind: 'closer',
+          body: 'On the easel this week. <em>The compass won’t hold.</em>',
+          note: null
+        }
+      ];
+
+      const FOOTNOTES = [
+        '<em>RKK Studio Archive</em>. facts.json (living-archive), generated 2026-05.',
+        '<em>About Raghava KK, 2025</em>. Studio biography, internal.',
+        'TED talk archive. <em>33,000,000 Gods</em>, 2010.',
+        'Studio catalogue, <em>The History Series</em>, 2011–2015.',
+        'Studio catalogue, current. See <em>studio2</em>.',
+        'Sotheby’s NFT auction record, <em>La Petite Mort</em>, 2021.',
+        'Sculpture and object studio · <em>Power Fluff, Retired Gods, The Doomscrollers</em>.',
+        'Forthcoming. <em>Calling All Gods</em>, Parsons NYC, December 2026.'
+      ];
+
+      // ─────────────────────────────────────────────────────────
+      // RENDER
+      // ─────────────────────────────────────────────────────────
+
+      const inner = document.getElementById('spreadInner');
+      const progressFill = document.getElementById('progressFill');
+      const strip = document.getElementById('spreadStrip');
+
+      function esc(s) {
+        return (s == null ? '' : String(s)).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+      }
+
+      function buildHead() {
+        const head = document.createElement('div');
+        head.className = 'spread-head';
+        head.innerHTML = `
+          <div class="sh-eyebrow">Timeline of the studio · 1998 → 2026</div>
+          <h2 class="sh-title">A broadsheet on its <em>side</em>.</h2>
+          <p class="sh-body">
+            Each panel is a moment. The work shown big. The year above, the prose beside. Footnotes at the far right.
+            Scroll <em>right</em> to walk forward.
+          </p>
+          <div class="sh-rule"></div>
+          <p class="sh-body">
+            Twenty-eight years. Some panels carry the work itself, some carry the conditions around it.
+          </p>
+        `;
+        return head;
+      }
+
+      function buildDecadeMarker(p) {
+        const el = document.createElement('div');
+        el.className = 'panel decade-marker';
+        el.innerHTML = `
+          <div class="dm-num">${esc(p.num)}</div>
+          <div class="dm-label">${esc(p.label)}</div>
+          <p class="dm-body">${p.body}</p>
+        `;
+        return el;
+      }
+
+      function ratioClass(r) {
+        return r ? r : 'square';
+      }
+
+      function buildPanel(p) {
+        if (p.kind === 'decade-marker') return buildDecadeMarker(p);
+
+        const el = document.createElement('div');
+        el.className = 'panel anchor-' + (p.anchor || 'top') + ' ' + (p.size || 'narrow');
+        if (p.textOnly) el.classList.add('text-only');
+        if (p.kind === 'closer') el.classList.add('closer');
+        el.dataset.id = p.id;
+        el.dataset.year = p.year || '';
+
+        const headEl = document.createElement('h3');
+        headEl.className = 'panel-head';
+        const yrSpan = p.year ? `<span class="yr">${esc(p.year)}</span>` : '';
+        headEl.innerHTML = esc(p.title) + ' ' + yrSpan;
+
+        const bodyEl = document.createElement('p');
+        bodyEl.className = 'panel-body';
+        bodyEl.innerHTML = (p.body || '') + (p.note ? `<sup>${p.note}</sup>` : '');
+
+        el.appendChild(headEl);
+        el.appendChild(bodyEl);
+
+        if (p.images && p.images.length) {
+          const fig = document.createElement('div');
+          fig.className = 'panel-fig';
+          if (p.images.length === 2) fig.classList.add('grid-2');
+          else if (p.images.length >= 3) fig.classList.add('grid-3');
+          p.images.forEach(img => {
+            const wrap = document.createElement(img.deepLink ? 'a' : 'div');
+            wrap.className = 'panel-img-wrap ' + ratioClass(img.ratio);
+            if (img.deepLink) {
+              wrap.setAttribute('href', img.deepLink);
+            } else {
+              wrap.classList.add('no-click');
+            }
+            const imgEl = document.createElement('img');
+            imgEl.src = img.src;
+            imgEl.alt = img.alt || p.title;
+            imgEl.loading = 'lazy';
+            imgEl.decoding = 'async';
+            imgEl.addEventListener('error', () => {
+              wrap.innerHTML = '';
+              const t = document.createElement('div');
+              t.className = 'panel-typo';
+              const s = document.createElement('span');
+              s.textContent = img.caption_title || img.alt || p.title;
+              t.appendChild(s);
+              wrap.appendChild(t);
+            });
+            wrap.appendChild(imgEl);
+            fig.appendChild(wrap);
+          });
+          el.appendChild(fig);
+
+          // captions row — group all captions under the figure
+          if (p.images.some(i => i.cap || i.caption_title)) {
+            const capWrap = document.createElement('div');
+            capWrap.className = 'panel-cap';
+            const html = p.images.map(i => {
+              if (!i.cap && !i.caption_title) return '';
+              return `<span>${i.caption_title ? '<em>' + esc(i.caption_title) + '</em>' : ''}${i.cap ? esc(i.cap) : ''}</span>`;
+            }).filter(Boolean).join(' · ');
+            capWrap.innerHTML = html;
+            el.appendChild(capWrap);
+          }
+        }
+
+        return el;
+      }
+
+      function buildFootnotes() {
+        const el = document.createElement('div');
+        el.className = 'panel footnotes';
+        el.innerHTML = '<h4>Footnotes</h4>';
+        const ol = document.createElement('ol');
+        FOOTNOTES.forEach(n => {
+          const li = document.createElement('li');
+          li.innerHTML = n;
+          ol.appendChild(li);
+        });
+        el.appendChild(ol);
+        return el;
+      }
+
+      // ─────────────────────────────────────────────────────────
+      // BOOT
+      // ─────────────────────────────────────────────────────────
+
+      inner.appendChild(buildHead());
+      PANELS.forEach(p => inner.appendChild(buildPanel(p)));
+      inner.appendChild(buildFootnotes());
+
+      // Meta counts
+      const panelCount = PANELS.filter(p => p.kind !== 'decade-marker').length;
+      const workCount = PANELS.reduce((acc, p) => acc + (Array.isArray(p.images) ? p.images.length : 0), 0);
+      document.getElementById('metaPanels').textContent = panelCount;
+      document.getElementById('metaWorks').textContent = workCount;
+
+      // Jump controls
+      document.getElementById('jumpStart').addEventListener('click', () => strip.scrollTo({ left: 0, behavior: 'smooth' }));
+      document.getElementById('jumpNow').addEventListener('click', () => strip.scrollTo({ left: strip.scrollWidth, behavior: 'smooth' }));
+      document.getElementById('jumpMid').addEventListener('click', () => {
+        // find the panel with year starting "2013" or nearest
+        const targets = Array.from(inner.querySelectorAll('.panel'));
+        const t = targets.find(el => (el.dataset.year || '').startsWith('2013')) || targets[Math.floor(targets.length / 2)];
+        if (t) t.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+
+      // Horizontal-scroll-on-vertical-wheel
+      strip.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          strip.scrollLeft += e.deltaY;
+          if (Math.abs(e.deltaY) > 2) e.preventDefault();
+        }
+      }, { passive: false });
+
+      // Keyboard
+      strip.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); strip.scrollBy({ left: 320, behavior: 'smooth' }); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); strip.scrollBy({ left: -320, behavior: 'smooth' }); }
+        else if (e.key === 'Home') { e.preventDefault(); strip.scrollTo({ left: 0, behavior: 'smooth' }); }
+        else if (e.key === 'End') { e.preventDefault(); strip.scrollTo({ left: strip.scrollWidth, behavior: 'smooth' }); }
+      });
+
+      // Progress
+      strip.addEventListener('scroll', () => {
+        const max = strip.scrollWidth - strip.clientWidth;
+        const pct = max <= 0 ? 0 : (strip.scrollLeft / max) * 100;
+        progressFill.style.width = pct.toFixed(2) + '%';
+      }, { passive: true });
+
+      // Boot — center on the History Series panel (the "studio begins" moment)
+      requestAnimationFrame(() => {
+        const target = inner.querySelector('[data-id="history-series-2011"]');
+        if (target) {
+          const r = target.getBoundingClientRect();
+          const stripRect = strip.getBoundingClientRect();
+          const desired = strip.scrollLeft + (r.left - stripRect.left) - (stripRect.width - r.width) / 2;
+          strip.scrollTo({ left: Math.max(0, desired), behavior: 'auto' });
+        }
+      });
+
+      // ─────────────────────────────────────────────────────────
+      // CURSOR + CLOCK
+      // ─────────────────────────────────────────────────────────
+      const cursor = document.getElementById('cursor');
+      let cx = 0, cy = 0, tx = 0, ty = 0;
+      window.addEventListener('mousemove', (e) => { tx = e.clientX; ty = e.clientY; });
+      (function tick() {
+        cx += (tx - cx) * 0.22; cy += (ty - cy) * 0.22;
+        cursor.style.transform = 'translate(' + (cx - 9) + 'px,' + (cy - 9) + 'px)';
+        requestAnimationFrame(tick);
+      })();
+      document.addEventListener('mouseover', (e) => {
+        const link = e.target.closest('a, button');
+        const img = e.target.closest('.panel-img-wrap');
+        cursor.classList.toggle('is-link', !!link && !img);
+        cursor.classList.toggle('is-view', !!(img && img.getAttribute && img.getAttribute('href')));
+      });
+
+      function clock() {
+        const t = document.getElementById('timeStamp');
+        const d = document.getElementById('dateStamp');
+        if (t) {
+          const now = new Date();
+          t.textContent = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+        }
+        if (d) {
+          const now = new Date();
+          const day = ['SUN','MON','TUE','WED','THU','FRI','SAT'][now.getDay()];
+          const dd = String(now.getDate()).padStart(2, '0');
+          const mo = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'][now.getMonth()];
+          d.textContent = day + ' · ' + dd + ' ' + mo + ' ' + now.getFullYear();
+        }
+      }
+      clock(); setInterval(clock, 30000);
+
+    })();
+  </script>
+</body>
+</html>

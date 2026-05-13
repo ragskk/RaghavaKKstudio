@@ -1,5 +1,5 @@
 # =====================================================================
-# robots.txt — raghavakk.com
+# robots.txt — raghavakkstudio.com
 # Last updated: 2026-05-09
 #
 # Policy:
@@ -165,12 +165,7 @@ Disallow: /
 # General pages remain accessible (the public site is meant to be read).
 User-agent: *
 Disallow: /images/
-Disallow: /paint%20strokes/
-Disallow: /paint strokes/
 Disallow: /toys/
 Disallow: /books/
-Disallow: /_backups/
-Disallow: /old%20website/
-Disallow: /old website/
 
-Sitemap: https://raghavakk.com/sitemap.xml
+Sitemap: https://raghavakkstudio.com/sitemap.xml

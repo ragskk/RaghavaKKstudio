@@ -1,0 +1,624 @@
+{
+  "version": 1,
+  "slug": "untitled-drop",
+  "title": "Untitled Drop",
+  "dropNumber": "00",
+  "section": "",
+  "canvas": {
+    "background": "paper-2",
+    "maxWidth": 1480,
+    "minHeight": 100
+  },
+  "cursor": "default",
+  "signature": "none",
+  "elements": [
+    {
+      "src": "/pages/untitled-drop/assets/90b702a9814d.png",
+      "cutSrc": "/pages/untitled-drop/assets/90b702a9814d.cut.png",
+      "rotation": 238,
+      "opacity": 1,
+      "id": "img-761f36",
+      "z": 1,
+      "locked": false,
+      "hidden": false,
+      "crop": null,
+      "caption": null,
+      "type": "image-decorative",
+      "x": 10.004432624113473,
+      "y": -2.79546210106383,
+      "w": 29.9,
+      "idleMotion": "none",
+      "draggableAtRuntime": false,
+      "__order": 0,
+      "sectionId": "sec-lyugw3"
+    },
+    {
+      "id": "tex-2wc5l3",
+      "type": "text",
+      "z": 2,
+      "locked": false,
+      "hidden": false,
+      "x": 6.069855385638299,
+      "y": 13.39095744680851,
+      "w": 36,
+      "content": "NEW DROP",
+      "style": {
+        "family": "display",
+        "size": 10,
+        "weight": 380,
+        "leading": 1.55,
+        "align": "left",
+        "italic": false,
+        "transform": "none",
+        "dropCap": false
+      },
+      "rotation": 0,
+      "wrapNeighbours": true,
+      "__order": 1,
+      "mode": "decorative",
+      "_flowW": 42.9,
+      "sectionId": "sec-lyugw3"
+    },
+    {
+      "id": "tex-im7h2d",
+      "type": "text",
+      "z": 10,
+      "locked": false,
+      "hidden": false,
+      "x": 0,
+      "y": 0,
+      "w": 45.8,
+      "content": "#34",
+      "style": {
+        "family": "serif",
+        "size": 1.2,
+        "weight": 380,
+        "leading": 35,
+        "align": "left",
+        "italic": false,
+        "transform": "none",
+        "dropCap": false
+      },
+      "rotation": 0,
+      "wrapNeighbours": true,
+      "__order": 2,
+      "sectionId": "sec-lyugw3"
+    },
+    {
+      "src": "/pages/untitled-drop/assets/eba7c3431963.png",
+      "cutSrc": "/pages/untitled-drop/assets/eba7c3431963.cut.png",
+      "rotation": 0,
+      "opacity": 1,
+      "id": "img-ekzd6b",
+      "z": 8,
+      "locked": false,
+      "hidden": false,
+      "crop": null,
+      "caption": null,
+      "type": "image-decorative",
+      "x": 67.66504598847519,
+      "y": 35.32244137039728,
+      "w": 22,
+      "idleMotion": "spin-slow",
+      "draggableAtRuntime": false,
+      "__order": 3,
+      "sectionId": "sec-lyugw3"
+    },
+    {
+      "id": "tex-qezmr9",
+      "type": "text",
+      "z": 5,
+      "locked": false,
+      "hidden": false,
+      "x": 41.27170211034464,
+      "y": 20.442019191603634,
+      "w": 14.9,
+      "content": "Type here. Two newlines makes a new paragraph.",
+      "style": {
+        "family": "mono",
+        "size": 1.2,
+        "weight": 380,
+        "leading": 1.55,
+        "align": "left",
+        "italic": false,
+        "transform": "none",
+        "dropCap": false
+      },
+      "rotation": 0,
+      "wrapNeighbours": true,
+      "__order": 4,
+      "mode": "decorative",
+      "_flowW": 100,
+      "sectionId": "sec-lyugw3"
+    },
+    {
+      "id": "tex-qssfly",
+      "type": "text",
+      "z": 15,
+      "locked": false,
+      "hidden": false,
+      "x": 38.05026872783689,
+      "y": 60.26359518047931,
+      "w": 23.9,
+      "content": "Type here. Two newlines makes a new paragraph.",
+      "style": {
+        "family": "serif",
+        "size": 1.2,
+        "weight": 380,
+        "leading": 2,
+        "align": "center",
+        "italic": false,
+        "transform": "none",
+        "dropCap": false
+      },
+      "rotation": 0,
+      "wrapNeighbours": true,
+      "__order": 5,
+      "pageAnchor": "center",
+      "sectionId": "sec-lyugw3",
+      "positioned": true
+    },
+    {
+      "id": "tex-wzzki9",
+      "type": "text",
+      "z": 16,
+      "locked": false,
+      "hidden": false,
+      "sectionId": "sec-nosnct",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "content": "frontend\n",
+      "style": {
+        "family": "serif",
+        "size": 1.2,
+        "weight": 380,
+        "leading": 1.55,
+        "align": "left",
+        "italic": false,
+        "transform": "none",
+        "dropCap": false
+      },
+      "rotation": 0,
+      "wrapNeighbours": true,
+      "__order": 0
+    },
+    {
+      "id": "sin-mu9wmn",
+      "type": "single-field",
+      "z": 17,
+      "locked": false,
+      "hidden": false,
+      "sectionId": "sec-nosnct",
+      "placeholder": "your.email@studio",
+      "buttonLabel": "JOIN THE DISPATCH",
+      "action": {
+        "type": "mailto",
+        "to": "studio@raghavakkstudio.com"
+      },
+      "__order": 1
+    },
+    {
+      "id": "tex-b6atq3",
+      "type": "text",
+      "z": 18,
+      "locked": false,
+      "hidden": false,
+      "mode": "flow",
+      "pageAnchor": "left",
+      "w": 60,
+      "rotation": 0,
+      "content": "The studio answers in italic serif and a single <span class='red'>red</span> word.",
+      "style": {
+        "family": "display",
+        "size": 5.2,
+        "weight": 400,
+        "leading": 0.98,
+        "align": "left",
+        "italic": true,
+        "transform": "none",
+        "dropCap": false
+      },
+      "wrapNeighbours": false,
+      "sectionId": "sec-nosnct",
+      "__order": 2,
+      "x": 3.40411679964539,
+      "y": 16.976510520027794,
+      "positioned": true
+    },
+    {
+      "id": "tex-3xg0yb",
+      "type": "text",
+      "z": 19,
+      "locked": false,
+      "hidden": false,
+      "mode": "flow",
+      "pageAnchor": "left",
+      "w": 36,
+      "rotation": 0,
+      "content": "A dek in serif italic. Quiet, accurate, not embarrassed by feeling.",
+      "style": {
+        "family": "serif",
+        "size": 1.2,
+        "weight": 380,
+        "leading": 1.5,
+        "align": "left",
+        "italic": true,
+        "transform": "none",
+        "dropCap": false
+      },
+      "wrapNeighbours": true,
+      "sectionId": "sec-nosnct",
+      "__order": 3
+    },
+    {
+      "id": "ima-mb0uf6",
+      "type": "image-inline",
+      "z": 20,
+      "locked": false,
+      "hidden": false,
+      "src": "",
+      "cutSrc": "",
+      "side": "right",
+      "anchor": {
+        "afterParagraph": 1
+      },
+      "width": 38,
+      "rotation": 0,
+      "shapeMargin": 18,
+      "shapeThreshold": 0.35,
+      "specimen": false,
+      "crop": null,
+      "caption": null,
+      "sectionId": "sec-nosnct",
+      "__order": 4
+    },
+    {
+      "id": "tex-wl82lz",
+      "type": "text",
+      "z": 21,
+      "locked": false,
+      "hidden": false,
+      "mode": "flow",
+      "w": 100,
+      "rotation": 0,
+      "content": "A first paragraph sets the room. The studio is a workbench, not an altar.\n\nA second paragraph admits the <span class='red'>obvious</span> thing the first refused to. The image floats here on the right and the type breathes around its silhouette.\n\nA third paragraph carries the argument forward without pressing.\n\nA fourth paragraph is shorter, a half-step.\n\nA fifth paragraph closes on something usable: a piece of work, a date, a small refusal.",
+      "style": {
+        "family": "serif",
+        "size": 1.15,
+        "weight": 400,
+        "leading": 1.55,
+        "align": "left",
+        "italic": false,
+        "transform": "none",
+        "dropCap": true
+      },
+      "wrapNeighbours": true,
+      "sectionId": "sec-nosnct",
+      "__order": 5
+    },
+    {
+      "id": "tex-oqq1zi",
+      "type": "text",
+      "z": 22,
+      "locked": false,
+      "hidden": false,
+      "mode": "flow",
+      "w": 100,
+      "rotation": 0,
+      "content": "SPECIMEN",
+      "style": {
+        "family": "mono",
+        "size": 0.78,
+        "weight": 500,
+        "leading": 1.2,
+        "align": "left",
+        "italic": false,
+        "transform": "uppercase",
+        "dropCap": false
+      },
+      "wrapNeighbours": false,
+      "sectionId": "sec-nosnct",
+      "__order": 6
+    },
+    {
+      "id": "spe-z65505",
+      "type": "spec-sheet",
+      "z": 23,
+      "locked": false,
+      "hidden": false,
+      "rows": [
+        {
+          "label": "MEDIUM",
+          "value": "CERAMIC, GLAZED"
+        },
+        {
+          "label": "DIMENSIONS",
+          "value": "21 × 18 × 14 CM"
+        },
+        {
+          "label": "EDITION",
+          "value": "1 / 1"
+        },
+        {
+          "label": "YEAR",
+          "value": "2025"
+        }
+      ],
+      "sectionId": "sec-nosnct",
+      "__order": 7
+    },
+    {
+      "id": "ast-ymbl97",
+      "type": "asterism",
+      "z": 24,
+      "locked": false,
+      "hidden": false,
+      "sectionId": "sec-nosnct",
+      "__order": 8
+    },
+    {
+      "id": "her-bxyv7r",
+      "type": "hero-artifact",
+      "z": 25,
+      "locked": false,
+      "hidden": false,
+      "sectionId": "sec-nosnct",
+      "src": "",
+      "w": 60,
+      "idleMotion": "none",
+      "specimen": false,
+      "caption": "",
+      "__order": 9
+    },
+    {
+      "id": "ima-l0ur2o",
+      "type": "image-decorative",
+      "z": 26,
+      "locked": false,
+      "hidden": false,
+      "src": "",
+      "x": 8,
+      "y": 79.5621952570922,
+      "w": 24,
+      "rotation": 0,
+      "opacity": 1,
+      "draggableAtRuntime": false,
+      "idleMotion": "none",
+      "crop": null,
+      "caption": {
+        "content": "ONE",
+        "style": {
+          "family": "mono",
+          "size": 0.78,
+          "transform": "uppercase",
+          "align": "center"
+        }
+      },
+      "sectionId": "sec-nosnct",
+      "__order": 10
+    },
+    {
+      "id": "ima-lkzg55",
+      "type": "image-decorative",
+      "z": 27,
+      "locked": false,
+      "hidden": false,
+      "src": "",
+      "x": 38,
+      "y": 79.5621952570922,
+      "w": 24,
+      "rotation": 0,
+      "opacity": 1,
+      "draggableAtRuntime": false,
+      "idleMotion": "none",
+      "crop": null,
+      "caption": {
+        "content": "TWO",
+        "style": {
+          "family": "mono",
+          "size": 0.78,
+          "transform": "uppercase",
+          "align": "center"
+        }
+      },
+      "sectionId": "sec-nosnct",
+      "__order": 11
+    },
+    {
+      "id": "ima-ktuvdi",
+      "type": "image-decorative",
+      "z": 28,
+      "locked": false,
+      "hidden": false,
+      "src": "",
+      "x": 68,
+      "y": 79.5621952570922,
+      "w": 24,
+      "rotation": 0,
+      "opacity": 1,
+      "draggableAtRuntime": false,
+      "idleMotion": "none",
+      "crop": null,
+      "caption": {
+        "content": "THREE",
+        "style": {
+          "family": "mono",
+          "size": 0.78,
+          "transform": "uppercase",
+          "align": "center"
+        }
+      },
+      "sectionId": "sec-nosnct",
+      "__order": 12
+    },
+    {
+      "id": "tex-qw06ko",
+      "type": "text",
+      "z": 29,
+      "locked": false,
+      "hidden": false,
+      "mode": "flow",
+      "w": 100,
+      "rotation": 0,
+      "content": "SPECIMEN",
+      "style": {
+        "family": "mono",
+        "size": 0.78,
+        "weight": 500,
+        "leading": 1.2,
+        "align": "left",
+        "italic": false,
+        "transform": "uppercase",
+        "dropCap": false
+      },
+      "wrapNeighbours": false,
+      "sectionId": "sec-nosnct",
+      "__order": 13
+    },
+    {
+      "id": "spe-ja2jys",
+      "type": "spec-sheet",
+      "z": 30,
+      "locked": false,
+      "hidden": false,
+      "rows": [
+        {
+          "label": "MEDIUM",
+          "value": "CERAMIC, GLAZED"
+        },
+        {
+          "label": "DIMENSIONS",
+          "value": "21 × 18 × 14 CM"
+        },
+        {
+          "label": "EDITION",
+          "value": "1 / 1"
+        },
+        {
+          "label": "YEAR",
+          "value": "2025"
+        }
+      ],
+      "sectionId": "sec-nosnct",
+      "__order": 14,
+      "x": 28.78787878787879,
+      "y": 83.64986446259,
+      "w": 42.42424242424242,
+      "positioned": true
+    },
+    {
+      "src": "/pages/untitled-drop/assets/b3fbb32632ed.png",
+      "cutSrc": "/pages/untitled-drop/assets/b3fbb32632ed.cut.png",
+      "rotation": 0,
+      "opacity": 1,
+      "id": "img-iszilz",
+      "z": 31,
+      "locked": false,
+      "hidden": false,
+      "crop": null,
+      "caption": null,
+      "type": "image-decorative",
+      "x": 78.66453076085301,
+      "y": 4.217712433579956,
+      "w": 12.9,
+      "idleMotion": "none",
+      "draggableAtRuntime": false,
+      "sectionId": "sec-lyugw3",
+      "__order": 6
+    },
+    {
+      "id": "ast-l77f3o",
+      "type": "asterism",
+      "z": 32,
+      "locked": false,
+      "hidden": false,
+      "sectionId": "sec-lyugw3",
+      "__order": 7
+    },
+    {
+      "id": "tex-26l91b",
+      "type": "text",
+      "z": 33,
+      "locked": false,
+      "hidden": false,
+      "mode": "flow",
+      "pageAnchor": "center",
+      "w": 60,
+      "rotation": 0,
+      "content": "What the studio keeps it keeps in <span class='red'>silence</span>.",
+      "style": {
+        "family": "display",
+        "size": 4.2,
+        "weight": 400,
+        "leading": 1.05,
+        "align": "center",
+        "italic": true,
+        "transform": "none",
+        "dropCap": false
+      },
+      "wrapNeighbours": false,
+      "sectionId": "sec-lyugw3",
+      "__order": 8
+    },
+    {
+      "id": "ast-o0rohq",
+      "type": "asterism",
+      "z": 34,
+      "locked": false,
+      "hidden": false,
+      "sectionId": "sec-lyugw3",
+      "__order": 9
+    },
+    {
+      "id": "tex-ra184e",
+      "type": "text",
+      "z": 35,
+      "locked": false,
+      "hidden": false,
+      "sectionId": "sec-lyugw3",
+      "x": 57.245955230496456,
+      "y": 93.36273401022285,
+      "w": 20.1,
+      "content": "Type here. Two newlines makes a new paragraph.",
+      "style": {
+        "family": "serif",
+        "size": 1.2,
+        "weight": 380,
+        "leading": 1.55,
+        "align": "left",
+        "italic": false,
+        "transform": "none",
+        "dropCap": false
+      },
+      "rotation": 0,
+      "wrapNeighbours": true,
+      "__order": 10,
+      "positioned": true,
+      "mode": "decorative",
+      "_flowW": 100
+    }
+  ],
+  "createdAt": "2026-05-11T14:02:15.562Z",
+  "updatedAt": "2026-05-12T09:50:29.333Z",
+  "sections": [
+    {
+      "id": "sec-lyugw3",
+      "height": 100,
+      "clip": false,
+      "bg": "inherit",
+      "bgColor": null,
+      "bgImage": null,
+      "label": null
+    },
+    {
+      "id": "sec-nosnct",
+      "height": 66,
+      "clip": true,
+      "bg": "inherit",
+      "bgColor": null,
+      "bgImage": null,
+      "label": null
+    }
+  ]
+}

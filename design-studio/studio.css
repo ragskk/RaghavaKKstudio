@@ -1,5 +1,6 @@
 /* ───────────────────────────────────────────────────────────
-   RKK Studio · Editor Chrome · v1
+   Design Studio · Editor Chrome · v1
+   In-browser composer chrome. Not the public art-studio page.
    Adds toolbar, layers, inspector, selection handles.
    Never styles rendered elements (those are render.css).
    All classes prefixed `studio-`.
@@ -304,6 +305,28 @@ input, select, textarea { font: inherit; color: inherit; }
   overflow: auto;
   position: relative;
 }
+
+/* ─── Viewport preview: constrains the page-root width so the
+   renderer's container-query breakpoints fire as if the user
+   were on a phone or tablet. Triggered by the toolbar's
+   VIEWPORT buttons (DT / TB / PH). Desktop is unconstrained. */
+
+.studio-stage.vp-tablet .studio-page-root {
+  max-width: 1024px;
+  margin: 0 auto;
+  box-shadow: 0 0 0 1px var(--rule-soft), 0 24px 60px rgba(14,14,12,0.08);
+}
+.studio-stage.vp-phone .studio-page-root {
+  max-width: 375px;
+  margin: 0 auto;
+  box-shadow: 0 0 0 1px var(--rule-soft), 0 24px 60px rgba(14,14,12,0.08);
+}
+
+/* Active state for the viewport buttons in the toolbar. */
+.studio-vp-btn.is-active {
+  background: var(--red);
+  color: var(--paper);
+}
 .studio-page-root {
   position: relative;
   margin: 0 auto;
@@ -376,6 +399,184 @@ input, select, textarea { font: inherit; color: inherit; }
 .studio-editing .studio-rotation-stem,
 .studio-editing .studio-rotation-readout { display: none; }
 .studio-editing .studio-sel-ring { opacity: 0.5; }
+
+/* Secondary multi-select rings (non-primary) — same red, dotted,
+   half-opacity so the primary stays the focal point. */
+.studio-sel-ring-secondary {
+  border-style: dotted;
+  opacity: 0.7;
+}
+
+/* Group bounding box surrounding all multi-selected elements. */
+.studio-group-box {
+  position: absolute;
+  border: 1px dashed rgba(196, 30, 58, 0.55); /* red, semi-transparent */
+  background: rgba(196, 30, 58, 0.04);
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+/* Alignment snap guide hairline. Drawn full-width or full-height across
+   the active section when a snap is engaged. Red so it's instantly
+   distinguishable from existing rulings; thin so it doesn't compete with
+   the dragged element. */
+.studio-snap-guide {
+  position: absolute;
+  background: var(--red);
+  pointer-events: none;
+  z-index: 80;
+  opacity: 0.85;
+}
+
+/* ─── Floating text-editing toolbar ─────────────────────── */
+
+/* Anchored next to the contenteditable text element. Holds bold / italic /
+   underline + a small palette + clear-formatting. mousedown on a button
+   preventDefaults to keep the contenteditable focused so the selection
+   isn't lost between click and apply. */
+.studio-text-toolbar {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 4px;
+  z-index: 999;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+.studio-text-tb-btn {
+  width: 28px; height: 28px;
+  background: transparent;
+  border: none;
+  color: var(--paper);
+  font: 600 0.78rem/1 var(--mono);
+  cursor: pointer;
+  border-radius: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: background .1s ease;
+}
+.studio-text-tb-btn:hover { background: rgba(244,241,234,0.12); }
+.studio-text-tb-btn:active { background: var(--red); color: var(--paper); }
+.studio-text-tb-btn.is-bold   { font-weight: 800; }
+.studio-text-tb-btn.is-italic { font-style: italic; }
+.studio-text-tb-btn.is-under  { text-decoration: underline; text-underline-offset: 2px; }
+.studio-text-tb-sep {
+  display: inline-block;
+  width: 1px; height: 18px;
+  background: rgba(244,241,234,0.2);
+  margin: 0 4px;
+}
+
+body.preview-mode .studio-text-toolbar { display: none; }
+
+/* ─── Section UI (in-overlay chrome) ────────────────────── */
+
+/* Pill = section label at top-left. Click → select section. */
+.studio-section-pill {
+  position: absolute;
+  font: 500 0.62rem/1 var(--mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 5px 8px;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.55;
+  transition: opacity .12s ease;
+  z-index: 60;
+}
+.studio-section-pill:hover { opacity: 1; }
+.studio-section-pill.is-focused { background: var(--red); opacity: 1; }
+.studio-section-pill.is-selected { background: var(--red); opacity: 1; outline: 2px solid var(--paper); outline-offset: -1px; }
+
+/* The drag bar = thin horizontal strip at the bottom of each section.
+   Drag vertically to resize the section above. */
+.studio-section-bar {
+  position: absolute;
+  height: 12px;
+  background: transparent;
+  border-top: 1px dashed rgba(20, 20, 20, 0.18);
+  border-bottom: 1px dashed rgba(20, 20, 20, 0.18);
+  cursor: ns-resize;
+  pointer-events: auto;
+  z-index: 55;
+  transition: background .12s ease, border-color .12s ease;
+}
+.studio-section-bar:hover {
+  background: rgba(196, 30, 58, 0.08);
+  border-top-color: var(--red);
+  border-bottom-color: var(--red);
+}
+
+/* "+ SECTION BELOW" button anchored to the bar. */
+.studio-section-add {
+  position: absolute;
+  font: 500 0.6rem/1 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 5px 9px;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 56;
+  opacity: 0.75;
+  transition: opacity .12s ease, background .12s ease, color .12s ease;
+}
+.studio-section-add:hover { opacity: 1; background: var(--ink); color: var(--paper); }
+
+/* "+ SECTION AT END" — bigger, centered, always visible. */
+.studio-section-tail-add {
+  position: absolute;
+  font: 500 0.65rem/1 var(--mono);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--red);
+  color: var(--paper);
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 56;
+}
+.studio-section-tail-add:hover { background: var(--ink); }
+
+/* Sections list inside the page inspector. */
+.studio-section-list {
+  display: flex; flex-direction: column; gap: 4px;
+  margin-bottom: 8px;
+}
+.studio-section-row {
+  display: flex; align-items: center; gap: 4px;
+  padding: 4px 6px;
+  border: 1px solid var(--rule);
+}
+.studio-section-row.is-focused { border-color: var(--red); }
+.studio-section-row-label {
+  flex: 1; text-align: left;
+  font: 500 0.62rem/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 2px;
+}
+.studio-section-row-label:hover { color: var(--red); }
+
+/* Hide section chrome when preview-mode is on (already the case for
+   the rest of the studio overlay). */
+body.preview-mode .studio-section-pill,
+body.preview-mode .studio-section-bar,
+body.preview-mode .studio-section-add,
+body.preview-mode .studio-section-tail-add,
+body.preview-mode .studio-group-box { display: none; }
 
 /* Cursor reflects the current affordance: default = drag/select; text =
    actively editing. Without these, browsers default to text-cursor for

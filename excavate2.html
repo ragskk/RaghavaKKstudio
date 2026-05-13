@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Excavate With Me, Raghava KK</title>
   <meta name="description" content="Collaborations: nineteen projects plus the 64/1 collective, made with institutions, companies, and researchers. Each entry records the client, brief, process, output, and where the work is now." />
+  <!-- Open Graph / social previews -->
+  <meta property="og:title" content="Excavate With Me, Raghava KK" />
+  <meta property="og:description" content="Collaborations: nineteen projects plus the 64/1 collective, made with institutions, companies, and researchers. Each entry records the client, brief, process, output, and where the work is now." />
+  <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/excavate2" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Raghava KK" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Excavate With Me, Raghava KK" />
+  <meta name="twitter:description" content="Collaborations: nineteen projects plus the 64/1 collective, made with institutions, companies, and researchers. Each entry records the client, brief, process, output, and where the work is now." />
+  <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <link rel="canonical" href="https://raghavakkstudio.com/excavate2" />
   <meta name="theme-color" content="#F4F1EA" />
   <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
   <meta name="robots" content="index, follow, noai, noimageai" />
@@ -684,7 +697,7 @@
   <!-- Masthead -->
   <header class="masthead">
     <div class="left">
-      <a href="./Index2.html" class="breadcrumb">← Raghava KK</a>
+      <a href="./index.html" class="breadcrumb">← Raghava KK</a>
       <span class="stamp live">Open file</span>
     </div>
     <div class="center">collaborations, a catalogue of eighteen projects + 64/1</div>
@@ -2053,7 +2066,7 @@
     <!-- Closing -->
     <section class="closing">
       <p>
-        For collaborations, write to <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>.
+        For collaborations, write to <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>.
       </p>
     </section>
   </main>
@@ -2062,16 +2075,16 @@
   <footer class="colophon" role="contentinfo">
     <div class="col c-a">
       <h3>Get in touch.</h3>
-      <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
       <span>Press · Sales · Studio visits · Collaborations</span>
     </div>
     <div class="col c-b">
-      <a href="./Index2.html">← Index</a>
-      <a href="./calling2.html">Calling All Gods</a>
-      <a href="./studio2.html">Studio</a>
-      <a href="./lab2.html">Restless Lab</a>
-      <a href="./becoming2.html">Becoming Archived</a>
-      <a href="./writings2.html">Writings</a>
+      <a href="./about2.html">Short bio →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./library2.html">The library →</a>
+      <a href="./sitemap2.html">Site map →</a>
+      <span>Studio · Bengaluru</span>
+      <span>Studio · New York</span>
     </div>
     <div class="col c-c">
       <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
@@ -2117,6 +2130,38 @@
 
     const heroFrame = document.getElementById('heroFrame');
     if (heroFrame) heroFrame.classList.add('in');
+
+    /* Accordion scroll compensation.
+       The <details name="folds"> accordion auto-closes any other open fold
+       when one is clicked. If the closing fold sits *above* the clicked one,
+       its collapse removes vertical space above the click point and the
+       clicked summary drifts up — the user's anchor moves out from under
+       them. The interpolate-size height transition (~400ms) makes this
+       drift visible across many frames, so we run a short rAF loop and
+       keep the clicked summary's viewport top pinned by adjusting scroll
+       instantly each frame. */
+    document.querySelectorAll('details.fold > summary').forEach(summary => {
+      summary.addEventListener('click', () => {
+        // Run on next frame so the browser has already applied the open/close
+        // attribute change and started the height transition.
+        let prevTop = summary.getBoundingClientRect().top;
+        const start = performance.now();
+        const DURATION = 520; // a touch longer than the .4s CSS transition
+        function tick(now) {
+          const curTop = summary.getBoundingClientRect().top;
+          const delta = curTop - prevTop;
+          if (delta !== 0) {
+            // Instant correction — bypasses scroll-behavior: smooth.
+            window.scrollTo({ top: window.pageYOffset + delta, behavior: 'instant' });
+            prevTop = summary.getBoundingClientRect().top;
+          } else {
+            prevTop = curTop;
+          }
+          if (now - start < DURATION) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    });
 
     /* Smooth-scroll on internal anchor clicks, with offset for the sticky tape.
        If the target contains a <details class="fold">, open it. The native

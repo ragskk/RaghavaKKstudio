@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Studio, Raghava KK</title>
   <meta name="description" content="The studio of Raghava KK, paintings, sculptures, holograms. 2011 onward. Held at specimen scale." />
+  <!-- Open Graph / social previews -->
+  <meta property="og:title" content="Studio, Raghava KK" />
+  <meta property="og:description" content="The studio of Raghava KK, paintings, sculptures, holograms. 2011 onward. Held at specimen scale." />
+  <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/studio2" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Raghava KK" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Studio, Raghava KK" />
+  <meta name="twitter:description" content="The studio of Raghava KK, paintings, sculptures, holograms. 2011 onward. Held at specimen scale." />
+  <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <link rel="canonical" href="https://raghavakkstudio.com/studio2" />
   <meta name="theme-color" content="#F4F1EA" />
   <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
   <meta name="robots" content="index, follow, noai, noimageai" />
@@ -168,6 +181,8 @@
       color: var(--ink-2);
     }
     .index-bar .right { color: var(--ink); }
+    .index-bar .right a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule-soft); padding-bottom: 1px; transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .index-bar .right a:hover { color: var(--red); border-bottom-color: var(--red); }
     .index-bar h3 { font-family: var(--display); font-style: italic; font-size: clamp(2rem, 4.5vw, 3.6rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.015em; color: var(--ink); text-transform: none; }
 
     /* SERIES INDEX */
@@ -341,6 +356,68 @@
       min-height: 0;
       isolation: isolate;
     }
+
+    /* Side-rail prev/next arrows flanking the specimen.
+       Gallery-convention navigators — large, unmistakable. */
+    .vitrine-rail {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(3.2rem, 4vw, 4.2rem);
+      height: clamp(3.2rem, 4vw, 4.2rem);
+      border-radius: 50%;
+      background: var(--paper);
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 1.55rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(14,14,12,0.20), 0 2px 0 rgba(14,14,12,0.06);
+      transition: background .25s var(--ease), color .25s var(--ease),
+                  transform .25s var(--ease), border-color .25s var(--ease);
+      z-index: 4;
+    }
+    .vitrine-rail.prev { left: clamp(-0.6rem, -0.4vw, 0rem); }
+    .vitrine-rail.next { right: clamp(-1.6rem, -1.2vw, -0.6rem); }
+    .vitrine-rail:hover:not(:disabled) {
+      background: var(--red);
+      color: var(--paper);
+      border-color: var(--red);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .vitrine-rail:disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    /* Hint label below each rail arrow */
+    .vitrine-rail::after {
+      content: attr(data-hint);
+      position: absolute;
+      top: calc(100% + 0.45rem);
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      white-space: nowrap;
+      opacity: 0.55;
+      transition: opacity .25s var(--ease);
+      pointer-events: none;
+    }
+    .vitrine-rail:hover::after { opacity: 1; }
+    @media (max-width: 880px) {
+      .vitrine-rail { width: 2.8rem; height: 2.8rem; font-size: 1.3rem; }
+      .vitrine-rail.prev { left: 0; }
+      .vitrine-rail.next { right: 0; }
+      .vitrine-rail::after { display: none; }
+    }
     .specimen {
       position: relative;
       max-width: min(360px, 80%);
@@ -469,46 +546,82 @@
       border-top: 1px solid var(--rule-soft); padding-top: 1rem;
     }
 
-    /* Vitrine controls */
+    /* Vitrine controls — bottom strip, secondary navigator (rail arrows are the primary). */
     .vitrine-controls {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; flex-wrap: wrap;
-      padding-top: 0.7rem; border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: auto auto 1fr auto;
+      align-items: center;
+      gap: 1rem 1.4rem;
+      padding-top: 1rem; margin-top: 0.6rem;
+      border-top: 1px solid var(--rule);
       font-family: var(--mono); font-size: 11px;
       letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-2);
     }
-    .vitrine-nav { display: flex; gap: 0.4rem; }
+    .vitrine-nav { display: flex; gap: 0.5rem; align-items: center; }
+    .vitrine-nav-label {
+      font-family: var(--mono); font-size: 9.5px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); margin-right: 0.3rem;
+    }
     .vitrine-btn {
-      width: 2.6rem; height: 2.6rem;
-      background: var(--paper); border: 1px solid var(--ink);
+      width: 3rem; height: 3rem;
+      background: var(--paper); border: 1.5px solid var(--ink);
       color: var(--ink); cursor: pointer;
       display: grid; place-items: center;
-      font-size: 1.2rem;
-      transition: background .2s var(--ease), color .2s var(--ease);
+      font-family: var(--display); font-style: italic;
+      font-size: 1.4rem; line-height: 1;
+      border-radius: 999px;
+      transition: background .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
     }
-    .vitrine-btn:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
+    .vitrine-btn:hover:not(:disabled) {
+      background: var(--red); color: var(--paper); border-color: var(--red);
+      transform: translateY(-1px);
+    }
     .vitrine-btn:disabled { opacity: 0.25; cursor: not-allowed; }
     .vitrine-counter strong { color: var(--ink); font-weight: 500; }
-    .vitrine-note { color: var(--muted); font-style: italic; font-family: var(--display); font-size: 0.92rem; letter-spacing: 0.01em; text-transform: none; }
-    .vitrine-thumbs {
-      display: flex; gap: 8px; flex-wrap: nowrap;
-      overflow-x: auto; overflow-y: hidden;
-      max-width: 100%; padding: 0.2rem 0;
-      scrollbar-width: thin; scrollbar-color: var(--paper-3) transparent;
+    .vitrine-note {
+      color: var(--muted); font-style: italic;
+      font-family: var(--display); font-size: 0.92rem;
+      letter-spacing: 0.01em; text-transform: none;
+      justify-self: end;
     }
-    .vitrine-thumbs::-webkit-scrollbar { height: 4px; }
-    .vitrine-thumbs::-webkit-scrollbar-track { background: transparent; }
-    .vitrine-thumbs::-webkit-scrollbar-thumb { background: var(--paper-3); border-radius: 2px; }
+    /* Thumbnails — promoted to their own full-width row below the controls.
+       Visible by default at full strength, not opacity-0.6 ghosts. */
+    .vitrine-thumbs-row {
+      grid-column: 1 / -1;
+      display: flex; align-items: center;
+      gap: 0.9rem;
+      padding-top: 0.8rem; margin-top: 0.2rem;
+      border-top: 1px dashed var(--rule-soft);
+    }
+    .vitrine-thumbs-row .label {
+      font-family: var(--mono); font-size: 9.5px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .vitrine-thumbs {
+      display: flex; gap: 10px; flex-wrap: nowrap;
+      overflow-x: auto; overflow-y: hidden;
+      flex: 1; min-width: 0;
+      padding: 0.3rem 0.2rem;
+      scrollbar-width: thin; scrollbar-color: var(--ink) transparent;
+    }
+    .vitrine-thumbs::-webkit-scrollbar { height: 6px; }
+    .vitrine-thumbs::-webkit-scrollbar-track { background: var(--paper-2); border-radius: 3px; }
+    .vitrine-thumbs::-webkit-scrollbar-thumb { background: var(--ink); border-radius: 3px; }
     .vitrine-thumb {
       flex-shrink: 0;
-      width: 48px; height: 60px;
+      width: 56px; height: 70px;
       background: var(--paper-2);
-      border: 1px solid var(--rule);
-      border-bottom: 2px solid transparent;
+      border: 1.5px solid var(--rule);
+      border-bottom: 3px solid transparent;
       padding: 0; cursor: pointer;
-      opacity: 0.6;
-      transition: opacity .2s var(--ease), transform .2s var(--ease), border-color .2s var(--ease);
+      opacity: 0.85;
+      transition: opacity .2s var(--ease), transform .2s var(--ease),
+                  border-color .2s var(--ease), box-shadow .2s var(--ease);
       overflow: hidden;
+      position: relative;
     }
     .vitrine-thumb img {
       width: 100%; height: 100%;
@@ -518,17 +631,26 @@
     .vitrine-thumb:hover {
       opacity: 1;
       transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(14,14,12,0.16);
+      border-color: var(--ink);
     }
     .vitrine-thumb.active {
       opacity: 1;
+      border-color: var(--ink);
       border-bottom-color: var(--red);
+      box-shadow: 0 0 0 1px var(--red) inset;
+    }
+    @media (max-width: 880px) {
+      .vitrine-controls { grid-template-columns: auto 1fr auto; font-size: 10px; gap: 0.6rem; }
+      .vitrine-btn { width: 2.6rem; height: 2.6rem; font-size: 1.2rem; }
+      .vitrine-note { display: none; }
+      .vitrine-thumb { width: 44px; height: 56px; }
     }
 
     @media (max-width: 880px) {
       .vitrine-stage { grid-template-columns: 1fr; gap: 1.5rem; align-content: start; overflow-y: auto; }
       .specimen { max-width: 280px; }
       .record .work-title { font-size: 2.2rem; }
-      .vitrine-controls { font-size: 10px; gap: 0.5rem; }
     }
 
     /* REVEAL */
@@ -563,7 +685,7 @@
   <!-- MASTHEAD -->
   <header class="masthead">
     <div class="left">
-      <a href="./Index2.html" class="breadcrumb">← Raghava KK</a>
+      <a href="./index.html" class="breadcrumb">← Raghava KK</a>
       <span class="stamp live">Studio Live</span>
     </div>
     <div class="center">where the gods get tested before consensus</div>
@@ -592,7 +714,7 @@
           <div>Range <span class="accent">2011 → ongoing</span></div>
           <div>Index 13 series</div>
           <div>Viewing specimen scale</div>
-          <div>Press studio@raghavakk.com</div>
+          <div>Press studio@raghavakkstudio.com</div>
         </div>
       </div>
     </section>
@@ -611,7 +733,7 @@
     <!-- INDEX BAR -->
     <div class="index-bar">
       <h3 class="reveal">Index<em>.</em></h3>
-      <span class="right">13 series · 70+ works</span>
+      <span class="right">13 series · 70+ works &nbsp;·&nbsp; <a href="./timeline2.html">Walk the timeline ↗</a></span>
     </div>
 
     <div class="index" id="seriesIndex" aria-label="Series">
@@ -619,16 +741,19 @@
     </div>
   </main>
 
-  <footer class="colophon">
+  <footer class="colophon" role="contentinfo">
     <div class="col c-a">
       <h3>Inquiries.</h3>
-      <a href="mailto:studio@raghavakk.com">studio@raghavakk.com</a>
-      <span>Sales · Studio Visits · Loan Requests</span>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
+      <span>Sales · Studio Visits · Loan Requests · Hi-res on request</span>
     </div>
     <div class="col c-b">
+      <a href="./about2.html">Short bio →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./library2.html">The library →</a>
+      <a href="./sitemap2.html">Site map →</a>
       <span>Studio · Bengaluru</span>
       <span>Studio · New York</span>
-      <span>Hi-res images on request</span>
     </div>
     <div class="col c-c">
       <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
@@ -650,6 +775,8 @@
 
       <div class="vitrine-stage">
         <div class="specimen-wrap">
+          <button type="button" class="vitrine-rail prev" id="vitrineRailPrev"
+                  data-hint="prev" aria-label="Previous work">‹</button>
           <div class="specimen">
             <span class="specimen-tape" aria-hidden="true"></span>
             <div class="specimen-img-wrap">
@@ -660,6 +787,8 @@
               <span>Plate</span>
             </div>
           </div>
+          <button type="button" class="vitrine-rail next" id="vitrineRailNext"
+                  data-hint="next" aria-label="Next work">›</button>
         </div>
 
         <aside class="record">
@@ -688,12 +817,17 @@
 
       <div class="vitrine-controls">
         <div class="vitrine-nav">
+          <span class="vitrine-nav-label">Prev / Next</span>
           <button type="button" class="vitrine-btn" id="vitrinePrev" aria-label="Previous work">‹</button>
           <button type="button" class="vitrine-btn" id="vitrineNext" aria-label="Next work">›</button>
         </div>
         <span class="vitrine-counter"><strong id="vitrineIdx">1</strong> / <span id="vitrineTotal">1</span></span>
+        <span></span>
         <span class="vitrine-note">held at specimen scale, hi-res on request</span>
-        <div class="vitrine-thumbs" id="vitrineThumbs" aria-hidden="true"></div>
+        <div class="vitrine-thumbs-row">
+          <span class="label">Works in this series</span>
+          <div class="vitrine-thumbs" id="vitrineThumbs" aria-label="Series thumbnails"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -885,6 +1019,8 @@
   const vClose = document.getElementById('vitrineClose');
   const vPrev = document.getElementById('vitrinePrev');
   const vNext = document.getElementById('vitrineNext');
+  const vRailPrev = document.getElementById('vitrineRailPrev');
+  const vRailNext = document.getElementById('vitrineRailNext');
   const vIdx = document.getElementById('vitrineIdx');
   const vTotal = document.getElementById('vitrineTotal');
   const vThumbs = document.getElementById('vitrineThumbs');
@@ -992,8 +1128,12 @@
       }
     });
 
-    vPrev.disabled = curIdx <= 0;
-    vNext.disabled = curIdx >= curSeries.works.length - 1;
+    const atStart = curIdx <= 0;
+    const atEnd   = curIdx >= curSeries.works.length - 1;
+    vPrev.disabled = atStart;
+    vNext.disabled = atEnd;
+    if (vRailPrev) vRailPrev.disabled = atStart;
+    if (vRailNext) vRailNext.disabled = atEnd;
   }
 
   function goTo(i) {
@@ -1005,6 +1145,8 @@
 
   vPrev.addEventListener('click', () => goTo(curIdx - 1));
   vNext.addEventListener('click', () => goTo(curIdx + 1));
+  if (vRailPrev) vRailPrev.addEventListener('click', () => goTo(curIdx - 1));
+  if (vRailNext) vRailNext.addEventListener('click', () => goTo(curIdx + 1));
   vClose.addEventListener('click', closeVitrine);
   vitrine.addEventListener('click', (e) => { if (e.target === vitrine) closeVitrine(); });
 
