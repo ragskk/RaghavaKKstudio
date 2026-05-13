@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-05-13T03:56:19",
+  "rows": [
+    {
+      "label": "Pantheon",
+      "note": "caricatured figures of contemporary power",
+      "slugs": [
+        "trump",
+        "bezos",
+        "musk",
+        "zuck"
+      ]
+    },
+    {
+      "label": "Studio dolls",
+      "note": "softer figures from the studio",
+      "slugs": [
+        "holo-1",
+        "tiwrk-01"
+      ]
+    }
+  ],
+  "toys": [
+    {
+      "slug": "trump",
+      "title": "Trump",
+      "year": "2025",
+      "medium": "Digital sculpt, 3D-printable",
+      "dimensions": "TK",
+      "note": "TK \u2014 one line on what this figure does in the work.",
+      "glb": "toys/3d/trump.glb",
+      "poster": null,
+      "sizeMB": 0.6
+    },
+    {
+      "slug": "bezos",
+      "title": "Bezos",
+      "year": "2025",
+      "medium": "Digital sculpt, 3D-printable",
+      "dimensions": "TK",
+      "note": "TK \u2014 one line on what this figure does in the work.",
+      "glb": "toys/3d/bezos.glb",
+      "poster": null,
+      "sizeMB": 0.6
+    },
+    {
+      "slug": "musk",
+      "title": "Musk",
+      "year": "2025",
+      "medium": "Digital sculpt, 3D-printable",
+      "dimensions": "TK",
+      "note": "TK \u2014 one line on what this figure does in the work.",
+      "glb": "toys/3d/musk.glb",
+      "poster": null,
+      "sizeMB": 0.6
+    },
+    {
+      "slug": "zuck",
+      "title": "Zuck",
+      "year": "2025",
+      "medium": "Digital sculpt, 3D-printable",
+      "dimensions": "TK",
+      "note": "TK \u2014 one line on what this figure does in the work.",
+      "glb": "toys/3d/zuck.glb",
+      "poster": null,
+      "sizeMB": 0.6
+    },
+    {
+      "slug": "holo-1",
+      "title": "Holo \u00b7 I",
+      "year": "2024",
+      "medium": "Resin + holographic film",
+      "dimensions": "TK",
+      "note": "TK \u2014 one line on what this figure does in the work.",
+      "glb": "toys/3d/holo-1.glb",
+      "poster": null,
+      "sizeMB": 1.64
+    },
+    {
+      "slug": "tiwrk-01",
+      "title": "TIWRK \u00b7 01",
+      "year": "2023",
+      "medium": "Cast resin, painted",
+      "dimensions": "TK",
+      "note": "TK \u2014 first of the cute-doll-of-india pantheon.",
+      "glb": "toys/3d/tiwrk-01.glb",
+      "poster": "toys/3d/tiwrk-01.poster.webp",
+      "sizeMB": 4.81
+    }
+  ]
+}
