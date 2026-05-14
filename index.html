@@ -32,9 +32,6 @@
       place-items: center;
       padding: 2rem 1.25rem;
       -webkit-font-smoothing: antialiased;
-      /* Hide everything until the auth-check JS has decided whether
-         to render the gate or bounce the visitor to /home. Prevents
-         a flash of the password form for already-authed visitors. */
       visibility: hidden;
     }
     body.ready { visibility: visible; }
@@ -148,25 +145,14 @@
   </main>
 
   <script>
-    // ─────────────────────────────────────────────────────────────────
-    // Client-side access gate. Friction, not security.
+    // Client-side access gate. SHA-256(password) compared to baked hash.
+    // On success: localStorage flag + redirect to /home.
+    // Every other HTML page has an inline auth-check at top of <head>
+    // that bounces unauth'd visitors back here before any content paints.
     //
-    // The access phrase is checked by hashing the user's input with
-    // SHA-256 and comparing against the EXPECTED_HASH baked in below.
-    // On success we set localStorage.studio_access = "ok" and redirect
-    // to /home (the real homepage, renamed from index.html).
-    //
-    // Anyone with dev tools can bypass this (clear the hash check,
-    // set the localStorage flag manually, etc.). It matches the rest
-    // of the site's friction-only stance and is acceptable during a
-    // private preview on the Hobby plan where server-side auth is
-    // unavailable.
-    //
-    // To rotate the password:
-    //   1. Pick a new phrase.
-    //   2. In Terminal:  printf '%s' 'your-new-phrase' | shasum -a 256
-    //   3. Replace EXPECTED_HASH below with the new digest. Commit.
-    // ─────────────────────────────────────────────────────────────────
+    // Rotate password:
+    //   printf '%s' 'new-phrase' | shasum -a 256
+    //   Replace EXPECTED_HASH below.
 
     const EXPECTED_HASH = '84c9648d2380ffa31ac2531ca65b216c0cdd058da5c17f6837919462ca3f8d58';
     const STORAGE_KEY   = 'studio_access';
@@ -178,14 +164,13 @@
       return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    // On load: if already authed, bounce to /home without ever showing the form.
     (function () {
       try {
         if (localStorage.getItem(STORAGE_KEY) === STORAGE_VAL) {
           window.location.replace(HOME_PATH);
           return;
         }
-      } catch (_) { /* localStorage blocked — fall through to form */ }
+      } catch (_) { /* localStorage blocked */ }
       document.body.classList.add('ready');
     })();
 

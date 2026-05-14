@@ -1,6 +1,15 @@
 # Staging area — deliberately off-site
 not-used/
 
+# Campaign app — separate sub-project, lives in its own repo
+/raghavakk-campaign-app/
+
+# Campaign app backups — never push these (each is a full clone, MBs each)
+/raghavakk-campaign-app.backup-*/
+
+# Vercel env dump — contains secrets, must stay local
+vercel-prod-env.txt
+
 # Local backups + notes (local-only; tags serve as rewind points)
 _backups/
 _notes/
@@ -10,6 +19,9 @@ toys-source/
 
 # Oversize file: 143 MB, exceeds GitHub's 100 MB single-file limit
 books/art books/Restless Frequency.pdf
+
+# TEMPORARILY IGNORE NEW EXCAVATE CHANGES!!
+excavate2.html
 
 # OS cruft
 .DS_Store
