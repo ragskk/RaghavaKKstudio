@@ -12,12 +12,21 @@
 // Middleware fails open in that case so the site never bricks itself.
 
 export const config = {
-  // Run on everything except: the gate page, the gate/logout endpoints,
-  // a handful of public assets, and Vercel infra paths.
-  matcher: [
-    '/((?!api/gate|api/logout|gate|gate\\.html|favicon\\.ico|robots\\.txt|llms\\.txt|sitemap\\.xml|_vercel|_next).*)',
-  ],
+  // Match everything; exclusions are handled in code below for portability
+  // (negative lookaheads in matcher aren't reliable on non-Next Vercel projects).
+  matcher: '/:path*',
 };
+
+const EXEMPT_EXACT = new Set([
+  '/gate',
+  '/gate.html',
+  '/favicon.ico',
+  '/robots.txt',
+  '/llms.txt',
+  '/sitemap.xml',
+]);
+
+const EXEMPT_PREFIXES = ['/api/gate', '/api/logout', '/_vercel', '/_next'];
 
 async function sha256Hex(input) {
   const data = new TextEncoder().encode(input);
@@ -41,6 +50,12 @@ function readCookie(header, name) {
 export default async function middleware(request) {
   const url = new URL(request.url);
   const path = url.pathname;
+
+  // Exempt paths — gate page, gate endpoints, infra, a few asset routes.
+  if (EXEMPT_EXACT.has(path)) return;
+  for (const prefix of EXEMPT_PREFIXES) {
+    if (path.startsWith(prefix)) return;
+  }
 
   // Fail open if SITE_PASSWORD isn't configured yet — first deploy
   // safety so we don't lock ourselves out before setting the env var.
