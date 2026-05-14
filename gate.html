@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>Studio access · Raghava KK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper:   #F4F1EA;
+      --paper-2: #ECE7DA;
+      --ink:     #0E0E0C;
+      --ink-2:   #2B2A26;
+      --muted:   #8B8579;
+      --rule:    rgba(14,14,12,0.18);
+      --red:     #E63D22;
+      --serif:   'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --display: 'Instrument Serif', 'Fraunces', Georgia, serif;
+      --mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: 2rem 1.25rem;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap {
+      width: 100%;
+      max-width: 28rem;
+    }
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      margin: 0 0 0.85rem;
+    }
+    h1 {
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      line-height: 0.98;
+      margin: 0 0 1.4rem;
+      color: var(--ink);
+    }
+    .lede {
+      font-family: var(--serif);
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--ink-2);
+      margin: 0 0 1.8rem;
+      max-width: 22rem;
+    }
+    form { display: grid; gap: 1.1rem; }
+    label { display: block; }
+    .label-text {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      display: block;
+      margin: 0 0 0.45rem;
+    }
+    input[type="password"] {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(14,14,12,0.4);
+      padding: 0.55rem 0;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    input[type="password"]:focus { border-bottom-color: var(--ink); }
+    button {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      padding: 0.65rem 1rem;
+      cursor: pointer;
+      justify-self: start;
+      transition: background 0.18s ease, color 0.18s ease;
+    }
+    button:hover, button:focus-visible {
+      background: var(--ink);
+      color: var(--paper);
+      outline: none;
+    }
+    .err {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin: 0;
+      min-height: 1.2em;
+    }
+    .foot {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="eyebrow">Raghava KK Studio · Private preview</p>
+    <h1>Studio <em>access</em>.</h1>
+    <p class="lede">
+      This site is currently behind a password while the studio finishes a working pass. Enter the access phrase to continue.
+    </p>
+
+    <form id="gateForm" action="/api/gate" method="POST" autocomplete="off">
+      <input type="hidden" name="from" id="fromField" value="/" />
+      <label>
+        <span class="label-text">Access phrase</span>
+        <input type="password" name="password" required autofocus aria-describedby="err" />
+      </label>
+      <p class="err" id="err" role="alert"></p>
+      <button type="submit">Enter studio</button>
+    </form>
+
+    <p class="foot">Raghava KK · Studio</p>
+  </main>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var from = params.get('from') || '/';
+      // Only accept relative paths.
+      if (typeof from !== 'string' || from.charAt(0) !== '/' || from.indexOf('//') === 0) from = '/';
+      document.getElementById('fromField').value = from;
+      if (params.get('error') === '1') {
+        document.getElementById('err').textContent = 'Wrong phrase. Try again.';
+      }
+    })();
+  </script>
+</body>
+</html>

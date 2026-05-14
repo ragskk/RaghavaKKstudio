@@ -69,3 +69,15 @@ html.protected {
     font-size: 14pt;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────
+   Hide the excavate hero-rail carousel (2026-05-14).
+   Belt-and-suspenders alongside the inline display:none on excavate2.html
+   and the .gitignore entry that keeps that file local-only.
+   Remove this block to restore the carousel.
+   ───────────────────────────────────────────────────────────────── */
+.hero-rail,
+.hero-rail-hint,
+.hero-fig {
+  display: none !important;
+}
