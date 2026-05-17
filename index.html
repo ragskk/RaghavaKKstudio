@@ -164,13 +164,28 @@
       return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    (function () {
+    (async function () {
       try {
         if (localStorage.getItem(STORAGE_KEY) === STORAGE_VAL) {
           window.location.replace(HOME_PATH);
           return;
         }
       } catch (_) { /* localStorage blocked */ }
+
+      // URL bypass: /?password=<phrase> — hash the param, compare to EXPECTED_HASH.
+      // Lets Raghava share a one-click link without exposing the phrase in code.
+      try {
+        const qp = new URLSearchParams(window.location.search).get('password');
+        if (qp) {
+          const h = await sha256Hex(qp);
+          if (h === EXPECTED_HASH) {
+            try { localStorage.setItem(STORAGE_KEY, STORAGE_VAL); } catch (_) {}
+            window.location.replace(HOME_PATH);
+            return;
+          }
+        }
+      } catch (_) { /* crypto blocked or malformed URL */ }
+
       document.body.classList.add('ready');
     })();
 
