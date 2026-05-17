@@ -202,6 +202,13 @@
       text-transform: none;
       color: var(--ink);
     }
+    /* Masthead phone override — collapse 3-column grid to a single
+       stacked column so the center title cannot crash into the right cell. */
+    @media (max-width: 640px) {
+      .masthead { grid-template-columns: 1fr; gap: 0.4rem; padding: 0.9rem var(--edge) 0.7rem; }
+      .masthead .left, .masthead .right { justify-content: flex-start; }
+      .masthead .center { text-align: left; }
+    }
     .masthead .stamp {
       display: inline-flex;
       align-items: center;
@@ -1207,7 +1214,7 @@
           <h3 class="door-title">Calling All Gods</h3>
           <span class="door-spec"><span class="lab">Upcoming Exhibition · Parsons · Dec 2026</span>The next show. Two paintings, four years. December at Parsons, New York.</span>
           <span class="door-arrow" aria-hidden="true">→</span>
-          <span class="door-specimen" data-cap="Vishwaroopa"><img src="./images/Vishwaroopa.jpg" alt="" /></span>
+          <span class="door-specimen" data-cap="Vishwaroopa"><img src="./images/Vishwaroopa.jpg" alt="" loading="lazy" decoding="async" /></span>
         </a>
 
         <a href="./studio2.html" class="door-row reveal">
@@ -1215,7 +1222,7 @@
           <h3 class="door-title">Studio</h3>
           <span class="door-spec"><span class="lab">Art Series · Painting · 13 Series · 2011 →</span>The painting body of work. Thirteen series, with sculpture and hologram in the margins.</span>
           <span class="door-arrow" aria-hidden="true">→</span>
-          <span class="door-specimen" data-cap="Studio"><img src="./images/two%20paintings%20together.png" alt="" /></span>
+          <span class="door-specimen" data-cap="Studio"><img src="./images/two%20paintings%20together.png" alt="" loading="lazy" decoding="async" /></span>
         </a>
 
         <a href="./lab2.html" class="door-row reveal">
@@ -1223,7 +1230,7 @@
           <h3 class="door-title">Restless Lab</h3>
           <span class="door-spec"><span class="lab">Outside the Art · Toys · Books · Apps · Writings</span>What I make when I'm not painting. Smaller, louder, made for the world to handle.</span>
           <span class="door-arrow" aria-hidden="true">→</span>
-          <span class="door-specimen" data-cap="Power Fluff"><img src="./toys/power%20fluff%20toys/9A.png" alt="" /></span>
+          <span class="door-specimen" data-cap="Power Fluff"><img src="./toys/power%20fluff%20toys/9A.png" alt="" loading="lazy" decoding="async" /></span>
         </a>
 
         <a href="./becoming2.html" class="door-row reveal">
@@ -1231,7 +1238,7 @@
           <h3 class="door-title">Becoming Archived</h3>
           <span class="door-spec"><span class="lab">My Life · 1979 → ongoing</span>Where I came from, what's happened since. A life kept in motion, archived as it goes.</span>
           <span class="door-arrow" aria-hidden="true">→</span>
-          <span class="door-specimen" data-cap="33M Gods"><img src="./images/books/art_33M_Gods.jpg" alt="" /></span>
+          <span class="door-specimen" data-cap="33M Gods"><img src="./images/books/art_33M_Gods.jpg" alt="" loading="lazy" decoding="async" /></span>
         </a>
 
         <a href="./excavate2.html" class="door-row reveal">
@@ -1239,7 +1246,7 @@
           <h3 class="door-title">Excavate With Me</h3>
           <span class="door-spec"><span class="lab">Working with Me · 20 collaborations · 1999 →</span>Twenty projects made with people, institutions, and companies who arrived with a real question.</span>
           <span class="door-arrow" aria-hidden="true">→</span>
-          <span class="door-specimen" data-cap="Cyborg Orgasm 1"><img src="./images/studio/06-orgasm-project/6B.jpg" alt="" /></span>
+          <span class="door-specimen" data-cap="Cyborg Orgasm 1"><img src="./images/studio/_thumbs/06-orgasm-project/6B.jpg" srcset="./images/studio/_thumbs/06-orgasm-project/6B.jpg 800w, ./images/studio/06-orgasm-project/6B.jpg 2400w" sizes="200px" alt="" loading="lazy" decoding="async" /></span>
         </a>
       </nav>
     </section>
@@ -1270,7 +1277,7 @@
     </div>
     <div class="col c-c">
       <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
-      <span>&copy; 2026 Raghava KK &middot; <a href="./terms.html">Terms</a></span>
+      <span>&copy; 2026 Raghava KK &middot; <a href="https://raghavakkstudio.com/?password=091217&amp;redirect=%2Fterms">Privacy Policy &amp; Terms</a></span>
     </div>
   </footer>
 
