@@ -164,23 +164,36 @@
       return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
+    // Sanitize ?redirect= — only same-origin paths like "/foo" or "/foo/bar".
+    // Rejects protocol-relative ("//evil.com"), absolute URLs, and anything not starting with "/".
+    function safeRedirect(raw) {
+      if (!raw || typeof raw !== 'string') return HOME_PATH;
+      if (!raw.startsWith('/')) return HOME_PATH;
+      if (raw.startsWith('//')) return HOME_PATH;
+      if (/[\s\\]/.test(raw)) return HOME_PATH;
+      return raw;
+    }
+
     (async function () {
+      const params = new URLSearchParams(window.location.search);
+      const target = safeRedirect(params.get('redirect'));
+
       try {
         if (localStorage.getItem(STORAGE_KEY) === STORAGE_VAL) {
-          window.location.replace(HOME_PATH);
+          window.location.replace(target);
           return;
         }
       } catch (_) { /* localStorage blocked */ }
 
-      // URL bypass: /?password=<phrase> — hash the param, compare to EXPECTED_HASH.
+      // URL bypass: /?password=<phrase>[&redirect=/path] — hash the param, compare to EXPECTED_HASH.
       // Lets Raghava share a one-click link without exposing the phrase in code.
       try {
-        const qp = new URLSearchParams(window.location.search).get('password');
+        const qp = params.get('password');
         if (qp) {
           const h = await sha256Hex(qp);
           if (h === EXPECTED_HASH) {
             try { localStorage.setItem(STORAGE_KEY, STORAGE_VAL); } catch (_) {}
-            window.location.replace(HOME_PATH);
+            window.location.replace(target);
             return;
           }
         }
