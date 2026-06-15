@@ -43,6 +43,7 @@ const EXEMPT_EXACT = new Set([
   '/images/two paintings together.png',
   '/images/studio/03-guernica.jpg',
   '/images/raghava-signature.png',
+  '/books/art books/Calling All Gods_Artist Book.pdf',  // no-JS book-link fallback
 ]);
 
 const EXEMPT_PREFIXES = [

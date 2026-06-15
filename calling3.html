@@ -139,6 +139,15 @@
     .band .eyebrow{ color:#fff; }
     .band .eyebrow::before{ background:#fff; }
 
+    /* pull-quote moment */
+    .quote{ background: var(--bg-2); }
+    .quote .pull{ font-family:var(--display); font-weight:800; letter-spacing:-.01em; line-height:1.04;
+      font-size: clamp(1.8rem, 5.4vw, 4.6rem); max-width: 22ch; color: var(--ink);
+      padding-left: clamp(1rem,3vw,2.4rem); border-left: 6px solid var(--accent); }
+    .quote .pull em{ font-style:normal; color: var(--accent); }
+    .quote .attr{ margin-top: clamp(.9rem,2vw,1.5rem); padding-left: clamp(1rem,3vw,2.4rem);
+      font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color: var(--mute); }
+
     /* PLATES bento */
     .plates{ background: var(--bg-2); }
     .plates .head{ display:flex; justify-content:space-between; align-items:flex-end; gap:1.5rem; flex-wrap:wrap; margin-bottom: clamp(2rem,4vw,3.5rem); }
@@ -208,6 +217,13 @@
     details.fnote .fb p{ font-size:.98rem; line-height:1.6; color: var(--on-dark-mute); max-width:56ch; }
     details.fnote .fb p + p{ margin-top:.8rem; }
     details.fnote .fb em{ color: var(--accent); font-style:italic; }
+    .fnotes .fn-book{ display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;
+      margin-top:.2rem; padding:1.1rem 0; border-top:1px solid rgba(255,255,255,.14); border-bottom:1px solid rgba(255,255,255,.14);
+      text-decoration:none; color:var(--on-dark); transition: padding .35s var(--ease-2); }
+    .fnotes .fn-book .fb-l{ font-family:var(--display); font-weight:600; font-size: clamp(1.05rem,1.5vw,1.3rem); line-height:1.15; }
+    .fnotes .fn-book .fb-cta{ font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); display:inline-flex; align-items:center; gap:.55rem; white-space:nowrap; }
+    .fnotes .fn-book .fb-cta .ar{ width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center; transition:transform .4s var(--ease-2); }
+    .fnotes .fn-book:hover .fb-cta .ar{ transform: translate(2px,-2px); }
 
     /* IN THE ROOM */
     .room{ background: var(--bg); }
@@ -326,6 +342,14 @@
     </div>
   </section>
 
+  <!-- PULL QUOTE -->
+  <section class="section quote">
+    <div class="wrap">
+      <blockquote class="pull rv">Because the alternative to held is not resolution. It is <em>violence or collapse</em>.</blockquote>
+      <p class="attr rv d1">From the artist statement</p>
+    </div>
+  </section>
+
   <!-- THE ASK -->
   <section class="section ask">
     <div class="wrap">
@@ -375,6 +399,10 @@
                 <p>The "same love" is not a moral statement. It is a confession. It admits that we adore our worst gods too. We just don't say it out loud.</p>
               </div>
             </details>
+            <a class="fn-book" id="openBook" href="./books/art%20books/Calling%20All%20Gods_Artist%20Book.pdf">
+              <span class="fb-l">The book is the statement too. Read it.</span>
+              <span class="fb-cta">Open Calling All Gods <span class="ar" aria-hidden="true">→</span></span>
+            </a>
           </div>
         </div>
       </details>
@@ -424,7 +452,6 @@
           <div class="trow"><span class="l">Dates</span><span class="v">December 2026 – March 2027</span></div>
           <div class="trow"><span class="l">Opening</span><span class="v tk">Date &amp; time TK</span></div>
           <div class="trow"><span class="l">Hours</span><span class="v tk">TK</span></div>
-          <div class="trow"><span class="l">Curator</span><span class="v tk">TK</span></div>
           <div class="trow"><span class="l">Contact</span><span class="v"><a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a></span></div>
         </div>
       </div>
@@ -476,6 +503,17 @@
       m.addEventListener('click', open);
       m.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
     });
+
+    // book = part of the statement → open the popup reader
+    var ob = document.getElementById('openBook');
+    if (ob) {
+      ob.addEventListener('click', function(e){
+        if (window.RaghavaBookModal && window.RaghavaBookModal.open) {
+          e.preventDefault();
+          window.RaghavaBookModal.open({ title:'Calling All Gods', thumb:'./images/books/art_Calling_All_Gods.jpg', pdf:'./books/art%20books/Calling%20All%20Gods_Artist%20Book.pdf', filename:'Calling All Gods_Artist Book.pdf' });
+        }
+      });
+    }
 
     window.addEventListener('DOMContentLoaded', function(){
       var el = document.getElementById('callingZineShelf');
