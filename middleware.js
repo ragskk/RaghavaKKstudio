@@ -24,9 +24,39 @@ const EXEMPT_EXACT = new Set([
   '/robots.txt',
   '/llms.txt',
   '/sitemap.xml',
+
+  // --- Calling All Gods (calling3): public standalone page, ungated ---
+  // The page itself plus the exact static assets it loads. Everything else
+  // on the site stays behind SITE_PASSWORD. Keep this list in sync with the
+  // asset references in calling3.html.
+  '/calling3',
+  '/calling3.html',
+  '/protect.css',
+  '/protect.js',
+  '/css/book-modal.css',
+  '/css/library-shelf.css',
+  '/data/library-rows.js',
+  '/js/book-modal.js',
+  '/js/library-shelf.js',
+  '/images/Raghava KK Logo-02.png',
+  '/images/Vishwaroopa.jpg',
+  '/images/two paintings together.png',
+  '/images/studio/03-guernica.jpg',
+  '/images/raghava-signature.png',
 ]);
 
-const EXEMPT_PREFIXES = ['/api/gate', '/api/logout', '/_vercel', '/_next'];
+const EXEMPT_PREFIXES = [
+  '/api/gate',
+  '/api/logout',
+  '/_vercel',
+  '/_next',
+
+  // --- Calling All Gods (calling3) asset directories ---
+  '/js/vendor/',        // model-viewer (+ any bundled decoders)
+  '/toys/3d/',          // pantheon GLB figures
+  '/images/books/',     // art-zine shelf covers
+  '/images/spreads/',   // popup book-reader spreads
+];
 
 async function sha256Hex(input) {
   const data = new TextEncoder().encode(input);
@@ -51,10 +81,20 @@ export default async function middleware(request) {
   const url = new URL(request.url);
   const path = url.pathname;
 
-  // Exempt paths — gate page, gate endpoints, infra, a few asset routes.
-  if (EXEMPT_EXACT.has(path)) return;
+  // Decode percent-encoding so exemptions match paths with spaces
+  // (e.g. "/images/two paintings together.png").
+  let decodedPath = path;
+  try {
+    decodedPath = decodeURIComponent(path);
+  } catch {
+    // Malformed encoding — fall back to the raw path.
+  }
+
+  // Exempt paths — gate page, gate endpoints, infra, the public calling3
+  // page and its assets.
+  if (EXEMPT_EXACT.has(decodedPath)) return;
   for (const prefix of EXEMPT_PREFIXES) {
-    if (path.startsWith(prefix)) return;
+    if (decodedPath.startsWith(prefix)) return;
   }
 
   // Fail open if SITE_PASSWORD isn't configured yet — first deploy

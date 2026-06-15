@@ -21,6 +21,7 @@
 
   // ── Catalogue: title → { folder under /images/spreads/, page count, zero-padding width }
   const SPREADS = {
+    'Calling All Gods':                          { folder: 'Calling_All_Gods',    count: 49,  pad: 2 },
     '33M Gods':                                  { folder: '33M_Gods',            count: 26,  pad: 2 },
     'Chris book':                                { folder: 'Chris_book',          count: 7,   pad: 1 },
     'MAYBE you KNOW ME':                         { folder: 'MAYBE_you_KNOW_ME',   count: 24,  pad: 2 },
