@@ -237,7 +237,7 @@
     .panel .lead{ color: var(--ink-2); max-width: 60ch; margin-bottom:1.4rem; font-size:1.05rem; }
     .pantheon{ display:grid; grid-template-columns: repeat(4,1fr); gap: clamp(.6rem,1.4vw,1.1rem); }
     .god{ position:relative; aspect-ratio: 3/4; background: var(--bg-2); border-radius:4px; overflow:hidden; display:flex; align-items:flex-end; }
-    .god model-viewer{ position:absolute; inset:0; width:100%; height:100%; background:transparent; --poster-color:transparent; }
+    .god model-viewer{ position:absolute; inset:0; width:100%; height:100%; background:transparent; --poster-color:transparent; transform: scale(.75); transform-origin: center; }
     .god .gname{ position:relative; z-index:2; width:100%; padding:.6rem .7rem; font-family:var(--display); font-weight:700; font-size: clamp(.85rem,1.1vw,1.05rem); text-transform:uppercase; letter-spacing:-.01em; background: linear-gradient(transparent, rgba(0,0,0,.05)); }
     .god .gph{ position:absolute; inset:0; display:grid; place-items:center; z-index:0; font-family:var(--display); font-weight:800; font-size: 2.4rem; color: rgba(10,10,10,.10); text-transform:uppercase; }
     @media (max-width:700px){ .pantheon{ grid-template-columns: repeat(2,1fr);} }
