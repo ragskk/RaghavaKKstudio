@@ -151,18 +151,13 @@
         linear-gradient(180deg, rgba(12,12,11,0.34) 0%, rgba(12,12,11,0.06) 30%, rgba(12,12,11,0.08) 62%, rgba(12,12,11,0.52) 100%),
         rgba(12,12,11,0.08);
     }
-    .hero .content {
-      position: relative; z-index: 2; max-width: 1100px;
-      padding: clamp(2.2rem, 4.5vw, 3.6rem) clamp(2.4rem, 6vw, 5rem);
-    }
-    /* edgeless frost behind the title — soft mask, no visible card */
+    .hero .content { position: relative; z-index: 2; max-width: 1100px; }
+    /* whisper of frost across the entire image — uniform, no visible zone */
     @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-      .hero .content::before {
-        content: ""; position: absolute; inset: 0; z-index: -1;
-        backdrop-filter: blur(16px) brightness(0.88) saturate(1.02);
-        -webkit-backdrop-filter: blur(16px) brightness(0.88) saturate(1.02);
-        -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 52%, transparent 98%);
-        mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 52%, transparent 98%);
+      .hero .frostveil {
+        position: absolute; inset: 0; z-index: 1; pointer-events: none;
+        backdrop-filter: blur(2px) brightness(0.97);
+        -webkit-backdrop-filter: blur(2px) brightness(0.97);
       }
     }
     .hero .kicker { color: rgba(255,255,255,0.85); justify-content: center; }
@@ -443,6 +438,7 @@
       <div class="slide" data-cap="Vishwaroopa · detail"><img src="./images/hero/vish-03-tiger.jpg" alt="Vishwaroopa, painting detail: tiger and sun" loading="lazy" /></div>
       <div class="slide" data-cap="Vishwaroopa · the central figure" style="--pos: 50% 18%;"><img src="./images/hero/vish-04-figure.jpg" alt="Vishwaroopa, painting detail: the central figure" loading="lazy" style="object-position: 50% 18%;" /></div>
       <div class="slide" data-cap="In production · Bengaluru"><img src="./images/hero/vish-05-making.jpg" alt="The painting laid out at full scale during production" loading="lazy" /></div>
+      <div class="frostveil" aria-hidden="true"></div>
       <div class="scrim" aria-hidden="true"></div>
 
       <div class="content">
