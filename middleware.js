@@ -52,9 +52,6 @@ const EXEMPT_EXACT = new Set([
   '/images/bio/liberty-guernica.jpg',
   '/images/bio/portrait.jpg',
   '/images/parsons-logo.svg',
-  '/toys/The Doomscrollers/doomscroller 1.png',
-  '/toys/The Doomscrollers/doomscroller 2.png',
-  '/toys/transparent/A Doggy Catch.png',
 ]);
 
 const EXEMPT_PREFIXES = [

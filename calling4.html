@@ -148,10 +148,23 @@
     .hero .scrim {
       position: absolute; inset: 0; z-index: 1; pointer-events: none;
       background:
-        linear-gradient(180deg, rgba(12,12,11,0.42) 0%, rgba(12,12,11,0.12) 30%, rgba(12,12,11,0.14) 62%, rgba(12,12,11,0.6) 100%),
-        rgba(12,12,11,0.16);
+        linear-gradient(180deg, rgba(12,12,11,0.34) 0%, rgba(12,12,11,0.06) 30%, rgba(12,12,11,0.08) 62%, rgba(12,12,11,0.52) 100%),
+        rgba(12,12,11,0.08);
     }
-    .hero .content { position: relative; z-index: 2; max-width: 1100px; }
+    .hero .content {
+      position: relative; z-index: 2; max-width: 1100px;
+      padding: clamp(2.2rem, 4.5vw, 3.6rem) clamp(2.4rem, 6vw, 5rem);
+    }
+    /* edgeless frost behind the title — soft mask, no visible card */
+    @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .hero .content::before {
+        content: ""; position: absolute; inset: 0; z-index: -1;
+        backdrop-filter: blur(16px) brightness(0.88) saturate(1.02);
+        -webkit-backdrop-filter: blur(16px) brightness(0.88) saturate(1.02);
+        -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 52%, transparent 98%);
+        mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 52%, transparent 98%);
+      }
+    }
     .hero .kicker { color: rgba(255,255,255,0.85); justify-content: center; }
     .hero h1 {
       margin-top: 1.3rem;
@@ -481,17 +494,17 @@
 
           <div class="withhold">
             <p>The paintings are not reproduced here. <span class="rd">A screen would lie.</span></p>
-            <p class="sub">Each canvas is twelve and a half feet high and twenty-five feet wide. You cannot see both at once; you walk. They are seen whole for the first time in the room, on December 10. Details only, below.</p>
+            <p class="sub">One canvas is eleven and a half feet high and twenty-three and a half feet wide; the other, twelve and a half by twenty-five. You cannot see both at once; you walk. They are seen whole for the first time in the room, on December 10. Details only, below.</p>
           </div>
 
           <article class="work">
             <div class="walllabel">
-              <p class="t"><span class="artist">Raghava KK</span><br /><span class="title">La Liberté de Guernica</span>, 2022–26<br />Acrylic on canvas, 12.5 × 25 ft (3.8 × 7.6 m)</p>
+              <p class="t"><span class="artist">Raghava KK</span><br /><span class="title">La Liberté de Guernica</span>, 2022–26<br />Acrylic on canvas, 11.5 × 23.5 ft (3.5 × 7.2 m)</p>
               <p class="note">A woman stands on the ruins of Guernica, a double-headed tiger beside her: not a symbol, but the actual weight of irreconcilable things that do not leave. They will call her Liberty. That is wrong. <span class="rd">She is not free. She is standing,</span> and the difference is everything.</p>
             </div>
             <div class="details">
-              <figure><img src="./images/studio/03-guernica/3A.jpg" alt="La Liberté de Guernica, detail" loading="lazy" /><figcaption class="label">Detail i</figcaption></figure>
-              <figure><img src="./images/studio/03-guernica/3B.jpg" alt="La Liberté de Guernica, detail" loading="lazy" /><figcaption class="label">Detail ii</figcaption></figure>
+              <figure><img src="./images/details/la-d1.jpg" alt="La Liberté de Guernica, detail" loading="lazy" /><figcaption class="label">Detail i</figcaption></figure>
+              <figure><img src="./images/details/la-d2.jpg" alt="La Liberté de Guernica, detail" loading="lazy" /><figcaption class="label">Detail ii</figcaption></figure>
               <figure><img src="./images/studio/03-guernica/3D.jpg" alt="La Liberté de Guernica, detail" loading="lazy" /><figcaption class="label">Detail iii</figcaption></figure>
             </div>
           </article>
@@ -530,9 +543,9 @@
         <div class="main">
           <p class="lede">Seven gods step down from the paintings and become <span class="rd">toys.</span></p>
           <div class="body-txt">
-            <p>The gods with no temple and the ones with no name: power, wealth, attention, distraction. Cast as playthings, small enough to hold, they are easier to admit to. Four of the seven turn live below; drag any figure to look at it from all sides.</p>
+            <p>The gods with no temple and the ones with no name: power, wealth, attention, distraction. Cast as playthings, small enough to hold, they are easier to admit to. Seven stand on pedestals in the room; four turn below. Drag any figure to look at it from all sides.</p>
           </div>
-          <div class="pantheon" style="margin-top: clamp(1.6rem, 3vw, 2.4rem);">
+          <div class="pantheon" style="margin-top: clamp(1.6rem, 3vw, 2.4rem); max-width: 880px;">
             <div class="god">
               <div class="stage"><span class="ord">01</span><model-viewer src="./toys/3d/trump.glb" camera-controls auto-rotate disable-zoom rotation-per-second="10deg" interaction-prompt="none" shadow-intensity="0.3" shadow-softness="0.9" exposure="1.05" environment-image="neutral" camera-orbit="18deg 82deg 2.4m" field-of-view="26deg" loading="lazy" reveal="auto" alt="The Quiet Piggy, toy sculpture after Donald Trump"></model-viewer></div>
               <div class="cap"><p class="nm">The Quiet Piggy</p><p class="sub">A pig, pointing · after Trump · <span class="rd">3D — drag to turn</span></p></div>
@@ -549,23 +562,8 @@
               <div class="stage"><span class="ord">04</span><model-viewer src="./toys/3d/musk.glb" camera-controls auto-rotate disable-zoom rotation-per-second="10deg" interaction-prompt="none" shadow-intensity="0.3" shadow-softness="0.9" exposure="1.05" environment-image="neutral" camera-orbit="18deg 82deg 2.4m" field-of-view="26deg" loading="lazy" reveal="auto" alt="Toy sculpture after Elon Musk"></model-viewer></div>
               <div class="cap"><p class="nm">The Engineer</p><p class="sub">After Musk · <span class="rd">3D — drag to turn</span></p></div>
             </div>
-            <div class="god">
-              <div class="stage"><span class="ord">05</span><div class="flat"><img src="./toys/The%20Doomscrollers/doomscroller%201.png" alt="The Doomscroller, god of doomscrolling, toy sculpture" loading="lazy" /></div></div>
-              <div class="cap"><p class="nm">The Doomscroller</p><p class="sub">God of doomscrolling</p></div>
-            </div>
-            <div class="god">
-              <div class="stage"><span class="ord">06</span><div class="flat"><img src="./toys/The%20Doomscrollers/doomscroller%202.png" alt="Doomscroller II, toy sculpture" loading="lazy" /></div></div>
-              <div class="cap"><p class="nm">Doomscroller II</p><p class="sub">God of doomscrolling</p></div>
-            </div>
-            <div class="god">
-              <div class="stage"><span class="ord">07</span><div class="flat"><img src="./toys/transparent/A%20Doggy%20Catch.png" alt="A Doggy Catch, toy sculpture" loading="lazy" /></div></div>
-              <div class="cap"><p class="nm">A Doggy Catch</p><p class="sub">God of patterns &amp; tools</p></div>
-            </div>
-            <div class="god">
-              <div class="stage" aria-hidden="true"></div>
-              <div class="cap"><p class="nm" style="color: var(--muted);">In the room</p><p class="sub">The full pantheon, on pedestals, at Parsons</p></div>
-            </div>
           </div>
+          <p class="label" style="margin-top: 1rem;">Four of the seven, shown as 3D studies · <span class="rd" style="color: var(--red);">the full pantheon assembles in the room</span></p>
         </div>
       </div>
     </section>
@@ -648,6 +646,7 @@
             <div class="vrow"><span class="l">Exhibition</span><span class="v">Calling All Gods — Raghava KK</span></div>
             <div class="vrow"><span class="l">Opens</span><span class="v">December 10, 2026</span></div>
             <div class="vrow"><span class="l">Venue</span><span class="v">Parsons School of Design, New York<br /><span class="v soft" style="font-size: 0.95rem;">Gallery to be announced</span></span></div>
+            <div class="vrow"><span class="l">Presented by</span><span class="v"><a href="https://volte.art" target="_blank" rel="noopener noreferrer">Volte Art Projects</a></span></div>
             <div class="vrow"><span class="l">Hours</span><span class="v soft">To be announced</span></div>
             <div class="vrow"><span class="l">Admission</span><span class="v soft">To be announced</span></div>
             <div class="vrow"><span class="l">Press &amp; sales</span><span class="v"><a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a><br /><span class="v soft" style="font-size: 0.92rem;">Full documentation of the paintings available to press and institutions on request</span></span></div>
@@ -663,7 +662,7 @@
         <div class="side"><h2>Credits</h2></div>
         <div class="main narrow">
           <div class="body-txt" style="margin-top: 0;">
-            <p><i>Calling All Gods</i> is presented at Parsons School of Design, The New School, New York, and organized by Raghava KK Studio, Bengaluru / New York.</p>
+            <p><i>Calling All Gods</i> is presented by <a href="https://volte.art" target="_blank" rel="noopener noreferrer" style="border-bottom: 2px solid var(--red); text-decoration: none;">Volte Art Projects</a> at Parsons School of Design, The New School, New York, and organized with Raghava KK Studio, Bengaluru / New York.</p>
             <p>The exhibition comprises two monumental paintings, a pantheon of sculptural editions, and a publication. Additional programming to be announced.</p>
           </div>
         </div>
