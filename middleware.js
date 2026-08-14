@@ -44,6 +44,17 @@ const EXEMPT_EXACT = new Set([
   '/images/studio/03-guernica.jpg',
   '/images/raghava-signature.png',
   '/books/art books/Calling All Gods_Artist Book.pdf',  // no-JS book-link fallback
+
+  // --- Calling All Gods (calling4): alternate institutional page, ungated ---
+  // Keep in sync with asset references in calling4.html.
+  '/calling4',
+  '/calling4.html',
+  '/images/bio/liberty-guernica.jpg',
+  '/images/bio/portrait.jpg',
+  '/images/parsons-logo.svg',
+  '/toys/The Doomscrollers/doomscroller 1.png',
+  '/toys/The Doomscrollers/doomscroller 2.png',
+  '/toys/transparent/A Doggy Catch.png',
 ]);
 
 const EXEMPT_PREFIXES = [
@@ -57,6 +68,7 @@ const EXEMPT_PREFIXES = [
   '/toys/3d/',          // pantheon GLB figures
   '/images/books/',     // art-zine shelf covers
   '/images/spreads/',   // popup book-reader spreads
+  '/images/studio/03-guernica/',  // calling4 painting detail crops
 ];
 
 async function sha256Hex(input) {
