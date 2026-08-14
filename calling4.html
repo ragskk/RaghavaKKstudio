@@ -128,29 +128,78 @@
       font-size: clamp(0.72rem, 1vw, 0.9rem); letter-spacing: 0.34em;
     }
 
-    /* ─── TITLE BLOCK ─── */
-    .titleblock { padding: clamp(3rem, 8vh, 6.5rem) 0 clamp(2rem, 5vh, 3.5rem); }
-    .titleblock .kicker { margin-bottom: 1.4rem; }
-    .titleblock h1 {
+    /* ─── HERO CAROUSEL ─── */
+    .hero {
+      position: relative;
+      min-height: calc(100dvh - 3.1rem);
+      background: var(--black); color: #fff;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      overflow: hidden;
+      text-align: center;
+      padding: clamp(4rem, 9vh, 6rem) var(--edge) clamp(4.6rem, 10vh, 6.4rem);
+    }
+    .hero .slide { position: absolute; inset: 0; z-index: 0; opacity: 0; transition: opacity 1.4s ease; }
+    .hero .slide.on { opacity: 1; }
+    .hero .slide img, .hero .slide video { width: 100%; height: 100%; object-fit: cover; }
+    .hero .scrim {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(12,12,11,0.42) 0%, rgba(12,12,11,0.12) 30%, rgba(12,12,11,0.14) 62%, rgba(12,12,11,0.6) 100%),
+        rgba(12,12,11,0.16);
+    }
+    .hero .content { position: relative; z-index: 2; max-width: 1100px; }
+    .hero .kicker { color: rgba(255,255,255,0.85); justify-content: center; }
+    .hero h1 {
+      margin-top: 1.3rem;
       font-family: var(--head); font-weight: 400;
-      font-size: clamp(3rem, 10.5vw, 9.8rem);
-      line-height: 0.95; letter-spacing: -0.01em; text-transform: uppercase;
-      max-width: 12ch;
+      font-size: clamp(2.9rem, 9.4vw, 8.6rem);
+      line-height: 0.95; letter-spacing: -0.005em; text-transform: uppercase;
+      text-shadow: 0 2px 34px rgba(0,0,0,0.45);
     }
-    .titleblock h1 .rd { color: var(--red); }
-    .titleblock .tag {
-      margin-top: clamp(1.2rem, 2.6vw, 2rem);
+    .hero h1 .rd { color: var(--red); }
+    .hero .tag {
+      margin: clamp(1.1rem, 2.2vw, 1.8rem) auto 0;
       font-family: var(--sans); font-weight: 300;
-      font-size: clamp(1.25rem, 2.6vw, 2.15rem); line-height: 1.28;
-      color: var(--ink); max-width: 30ch;
+      font-size: clamp(1.15rem, 2.2vw, 1.85rem); line-height: 1.3;
+      color: rgba(255,255,255,0.95); max-width: 34ch;
+      text-shadow: 0 1px 18px rgba(0,0,0,0.5);
     }
-    .titleblock .when {
-      margin-top: clamp(1.6rem, 3vw, 2.4rem);
-      display: flex; flex-wrap: wrap; gap: 0.4rem 2.8rem;
-      font-family: var(--sans); font-weight: 500; font-size: clamp(1rem, 1.3vw, 1.15rem);
+    .hero .when {
+      margin-top: clamp(1.3rem, 2.4vw, 2rem);
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 0.4rem 1.6rem;
+      font-family: var(--sans); font-weight: 500; font-size: clamp(0.98rem, 1.25vw, 1.12rem);
     }
-    .titleblock .when span b { font-weight: 600; }
-    .titleblock .when .sep { color: var(--red); }
+    .hero .when .sep { color: var(--red); }
+    .hero .lockup {
+      position: absolute; left: 0; right: 0; bottom: clamp(3.4rem, 7vh, 4.6rem); z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    }
+    .hero .lockup .pre { color: rgba(255,255,255,0.62); }
+    .hero .lockup .p1 {
+      font-family: var(--head); text-transform: uppercase;
+      font-size: clamp(1.1rem, 2vw, 1.6rem); letter-spacing: 0.01em; line-height: 1;
+    }
+    .hero .lockup .p2 {
+      margin-top: 0.3rem; display: block;
+      font-family: var(--sans); font-weight: 500; text-transform: uppercase;
+      font-size: clamp(0.6rem, 0.8vw, 0.72rem); letter-spacing: 0.32em; color: rgba(255,255,255,0.85);
+    }
+    .hero .dots {
+      position: absolute; left: 0; right: 0; bottom: 1.5rem; z-index: 3;
+      display: flex; justify-content: center; gap: 0.55rem;
+    }
+    .hero .dots button {
+      width: 7px; height: 7px; border-radius: 50%;
+      border: 0; padding: 0; cursor: pointer;
+      background: rgba(255,255,255,0.38); transition: background .2s ease, transform .2s ease;
+    }
+    .hero .dots button.on { background: var(--red); transform: scale(1.35); }
+    .hero .slidecap {
+      position: absolute; right: var(--edge); bottom: 1.35rem; z-index: 3;
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55); text-align: right;
+    }
+    @media (max-width: 720px) { .hero .slidecap { display: none; } .hero .lockup { bottom: 3rem; } }
 
     /* ─── FULL-BLEED FIGURE ─── */
     .bleed { width: 100%; }
@@ -358,37 +407,36 @@
   </div>
 
   <main>
-    <!-- TITLE -->
-    <header class="titleblock shell">
-      <p class="label kicker"><span class="rd">●</span>&ensp;Exhibition</p>
-      <h1>Calling All <span class="rd">Gods</span></h1>
-      <p class="tag">The capacity to stay standing in a fracturing world.</p>
-      <div class="when">
-        <span><b>Opens December 10, 2026</b></span>
-        <span class="sep" aria-hidden="true">/</span>
-        <span>New York</span>
+    <!-- HERO -->
+    <header class="hero" id="top">
+      <div class="slide on" data-cap="Installation view · two paintings, one wall"><img src="./images/hero/vish-01-install.jpg" alt="Calling All Gods: two monumental paintings installed side by side as one continuous wall" /></div>
+      <div class="slide" data-cap="Vishwaroopa · filmed in the studio" data-video><video src="./images/hero/vish-film.mp4" muted playsinline preload="metadata" style="object-position: center;"></video></div>
+      <div class="slide" data-cap="Vishwaroopa · detail"><img src="./images/hero/vish-02-heads.jpg" alt="Vishwaroopa, painting detail: the many heads of the universal form" loading="lazy" /></div>
+      <div class="slide" data-cap="Vishwaroopa · detail"><img src="./images/hero/vish-03-tiger.jpg" alt="Vishwaroopa, painting detail: tiger and sun" loading="lazy" /></div>
+      <div class="slide" data-cap="Vishwaroopa · the central figure" style="--pos: 50% 18%;"><img src="./images/hero/vish-04-figure.jpg" alt="Vishwaroopa, painting detail: the central figure" loading="lazy" style="object-position: 50% 18%;" /></div>
+      <div class="slide" data-cap="In production · Bengaluru"><img src="./images/hero/vish-05-making.jpg" alt="The painting laid out at full scale during production" loading="lazy" /></div>
+      <div class="scrim" aria-hidden="true"></div>
+
+      <div class="content">
+        <p class="label kicker" style="display:inline-flex;"><span class="rd">●</span>&ensp;Exhibition&ensp;·&ensp;Opens December 10, 2026</p>
+        <h1>Calling All <span class="rd">Gods</span></h1>
+        <p class="tag">The capacity to stay standing in a fracturing world.</p>
       </div>
-      <div class="venue-lockup" id="venueLockup">
+
+      <div class="lockup" id="venueLockup">
         <span class="label pre">Presented at</span>
-        <img class="official" src="./images/parsons-logo.svg" alt="Parsons School of Design, The New School" onload="document.getElementById('venueLockup').classList.add('has-logo')" onerror="this.remove()" />
         <span class="type-lockup" role="img" aria-label="Parsons School of Design, The New School">
           <span class="p1">Parsons</span>
-          <span class="p2">School of Design&ensp;·&ensp;The New School</span>
+          <span class="p2">School of Design&ensp;·&ensp;The New School&ensp;·&ensp;New York</span>
         </span>
       </div>
+
+      <div class="dots" id="heroDots" role="tablist" aria-label="Hero images"></div>
+      <p class="slidecap" id="heroCap">Installation view · two paintings, one wall</p>
     </header>
 
-    <!-- HERO IMAGE -->
-    <figure class="bleed">
-      <img src="./images/two%20paintings%20together.png" alt="Calling All Gods: two monumental paintings installed side by side as one continuous wall" />
-    </figure>
-    <div class="shell figcap">
-      <span class="label">Installation view — two paintings on one wall. You cannot see both at once. You walk.</span>
-      <span class="label">Each 12.5 × 25 ft · acrylic on canvas · 2022–2026</span>
-    </div>
-
     <!-- OVERVIEW -->
-    <section class="block" id="overview" style="margin-top: clamp(2rem, 5vh, 3.5rem);">
+    <section class="block" id="overview">
       <div class="in cols">
         <div class="side"><h2>Overview</h2></div>
         <div class="main narrow">
@@ -617,6 +665,53 @@
   <script>
   (function () {
     'use strict';
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // hero carousel
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.hero .slide'));
+    var dotsBox = document.getElementById('heroDots');
+    var capEl = document.getElementById('heroCap');
+    var cur = 0, timer = null, IMG_MS = 6000;
+    slides.forEach(function (s, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Slide ' + (i + 1));
+      if (i === 0) b.classList.add('on');
+      b.addEventListener('click', function () { go(i, true); });
+      dotsBox.appendChild(b);
+    });
+    var dots = Array.prototype.slice.call(dotsBox.children);
+    function go(n, manual) {
+      if (n === cur) { if (manual) restart(); return; }
+      var prev = slides[cur];
+      var pv = prev.querySelector('video');
+      if (pv) { pv.pause(); }
+      prev.classList.remove('on'); dots[cur].classList.remove('on');
+      cur = n;
+      var s = slides[cur];
+      s.classList.add('on'); dots[cur].classList.add('on');
+      if (capEl) capEl.textContent = s.getAttribute('data-cap') || '';
+      var v = s.querySelector('video');
+      if (v && !reduce) {
+        v.currentTime = 0;
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+      }
+      restart();
+    }
+    function next() { go((cur + 1) % slides.length); }
+    function restart() {
+      clearTimeout(timer);
+      if (reduce || slides.length < 2) return;
+      var v = slides[cur].querySelector('video');
+      if (v) {
+        v.onended = function () { next(); };
+        timer = setTimeout(next, 20000); // fallback if video stalls
+      } else {
+        timer = setTimeout(next, IMG_MS);
+      }
+    }
+    if (!reduce) restart();
+
     function openReader(e) {
       if (window.RaghavaBookModal && window.RaghavaBookModal.open) {
         if (e) e.preventDefault();

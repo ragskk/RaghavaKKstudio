@@ -69,6 +69,7 @@ const EXEMPT_PREFIXES = [
   '/images/books/',     // art-zine shelf covers
   '/images/spreads/',   // popup book-reader spreads
   '/images/studio/03-guernica/',  // calling4 painting detail crops
+  '/images/hero/',                // calling4 hero carousel (photos + film)
 ];
 
 async function sha256Hex(input) {
