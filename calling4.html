@@ -140,7 +140,11 @@
     }
     .hero .slide { position: absolute; inset: 0; z-index: 0; opacity: 0; transition: opacity 1.4s ease; }
     .hero .slide.on { opacity: 1; }
-    .hero .slide img, .hero .slide video { width: 100%; height: 100%; object-fit: cover; }
+    .hero .slide img, .hero .slide video {
+      width: 100%; height: 100%; object-fit: cover;
+      /* teaser: hero holds monochrome; the color reveals at The Paintings */
+      filter: grayscale(1) contrast(1.06);
+    }
     .hero .scrim {
       position: absolute; inset: 0; z-index: 1; pointer-events: none;
       background:
@@ -268,11 +272,6 @@
     .walllabel .note { font-size: clamp(0.98rem, 1.1vw, 1.06rem); line-height: 1.6; color: var(--ink-2); max-width: 52ch; }
     .walllabel .note .rd { color: var(--red); }
     @media (max-width: 880px) { .walllabel { grid-template-columns: 1fr; } }
-
-    .details { margin-top: clamp(1.6rem, 3vw, 2.4rem); display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.8rem, 1.6vw, 1.4rem); }
-    .details figure img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
-    .details figcaption { margin-top: 0.5rem; }
-    @media (max-width: 720px) { .details { grid-template-columns: 1fr; } .details figure img { aspect-ratio: 3 / 2; } }
 
     .scale-row { margin-top: clamp(2rem, 4vw, 3rem); display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(1.2rem, 2.4vw, 2.4rem); align-items: end; }
     .scale-row figure { grid-column: 1 / span 7; }
@@ -469,11 +468,6 @@
             <div class="walllabel">
               <p class="t"><span class="artist">Raghava KK</span><br /><span class="title">La Liberté de Guernica</span>, 2022–26<br />Acrylic on canvas, 12.5 × 25 ft (3.8 × 7.6 m)</p>
               <p class="note">A woman stands on the ruins of Guernica, a double-headed tiger beside her: not a symbol, but the actual weight of irreconcilable things that do not leave. They will call her Liberty. That is wrong. <span class="rd">She is not free. She is standing,</span> and the difference is everything.</p>
-            </div>
-            <div class="details">
-              <figure><img src="./images/studio/03-guernica/3A.jpg" alt="La Liberté de Guernica, detail" loading="lazy" /><figcaption class="label">Detail</figcaption></figure>
-              <figure><img src="./images/studio/03-guernica/3B.jpg" alt="La Liberté de Guernica, detail" loading="lazy" /><figcaption class="label">Detail</figcaption></figure>
-              <figure><img src="./images/studio/03-guernica/3D.jpg" alt="La Liberté de Guernica, detail" loading="lazy" /><figcaption class="label">Detail</figcaption></figure>
             </div>
           </article>
 

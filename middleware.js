@@ -68,7 +68,6 @@ const EXEMPT_PREFIXES = [
   '/toys/3d/',          // pantheon GLB figures
   '/images/books/',     // art-zine shelf covers
   '/images/spreads/',   // popup book-reader spreads
-  '/images/studio/03-guernica/',  // calling4 painting detail crops
   '/images/hero/',                // calling4 hero carousel (photos + film)
 ];
 
