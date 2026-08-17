@@ -282,7 +282,15 @@
 
     /* NATIVE VIDEO (self-hosted Instagram bodies) */
     .vstage.native { aspect-ratio: 4 / 5; }
-    .vstage.native video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: var(--ink); }
+    .vstage.native video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: contain; background: var(--ink);
+      filter: grayscale(1) contrast(1.04);
+      transition: filter .35s var(--ease);
+    }
+    .vstage.native:hover video,
+    .vstage.native:focus-within video,
+    .vstage.native.is-playing video { filter: grayscale(0) contrast(1); }
     .vstage .runtime {
       position: absolute; right: 0.7rem; bottom: 0.7rem; z-index: 2;
       font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
@@ -503,40 +511,30 @@
       <p class="marg" style="padding:0; margin-top:1.2rem;">fig. 03 · <span class="accent">one player at a time</span> · esc closes · everything else stays paper</p>
     </section>
 
-    <!-- №04 SELF-SHOT -->
-    <section class="talk-section" aria-labelledby="sec-self">
-      <div class="section-head">
-        <div class="no">
-          <p class="eyebrow"><span class="num">№04</span>A phone, a lockdown, six arguments</p>
-          <h2 id="sec-self">No <em>stage</em> at all.</h2>
-        </div>
-        <p class="note">SELF-SHOT · 2020</p>
-      </div>
-      <div class="video-grid" id="grid-self"></div>
-      <p class="marg" style="padding:0; margin-top:1.2rem;">fig. 04 · no venue, no interlocutor · the files play from this site, not from Meta</p>
-    </section>
-
-    <!-- №05 EYE CANDY -->
+    <!-- №04 EYE CANDY -->
     <section class="talk-section" aria-labelledby="sec-candy">
       <div class="section-head">
         <div class="no">
-          <p class="eyebrow"><span class="num">№05</span>India's first art show made natively on Instagram</p>
+          <p class="eyebrow"><span class="num">№04</span>India's first hybrid art show, made natively on Instagram</p>
           <h2 id="sec-candy">Eye <em>Candy</em>.</h2>
         </div>
-        <p class="note">A PROJECT · WITH UNDER25 STUDIOS · 2021</p>
+        <p class="note">A PROJECT · WITH UNDER25 STUDIOS · 2020 → 2021</p>
       </div>
       <p class="head-dek" style="margin-bottom:1.6rem;">
-        Six weeks in early 2021, an art show whose venue was the grid itself. Lives were streamed and are gone; these eight reels are what the show left behind. No talking in these. The paint does it.
+        A show whose venue was the grid itself, run through the lockdown months. Spoken essays to camera, paint filmed at skin distance, and streamed lives in between. The lives are gone — that was the wager of a show made of appearances. What remains plays here, from this site, not from Meta.
       </p>
+      <p class="marg" style="padding:0; margin:0 0 1.1rem;"><span class="accent">the essays</span> · six arguments, self-shot, 2020</p>
+      <div class="video-grid" id="grid-self"></div>
+      <p class="marg" style="padding:0; margin:2.2rem 0 1.1rem;"><span class="accent">the reels</span> · eleven to nineteen seconds each, 2021</p>
       <div class="candy-grid" id="grid-candy"></div>
-      <p class="marg" style="padding:0; margin-top:1.2rem;">fig. 05 · eight reels, eleven to nineteen seconds each · one plays at a time</p>
+      <p class="marg" style="padding:0; margin-top:1.2rem;">fig. 04 · one show, two registers · one plays at a time</p>
     </section>
 
-    <!-- №06 ELSEWHERE -->
+    <!-- №05 ELSEWHERE -->
     <section class="elsewhere" aria-labelledby="sec-else">
       <div class="section-head">
         <div class="no">
-          <p class="eyebrow"><span class="num">№06</span>Recorded, but not embeddable</p>
+          <p class="eyebrow"><span class="num">№05</span>Recorded, but not embeddable</p>
           <h2 id="sec-else">Elsewhere, behind other <em>doors</em>.</h2>
         </div>
         <p class="note">LINKS ONLY</p>
@@ -568,7 +566,7 @@
           <p class="tag">INK · 2021</p>
         </div>
       </div>
-      <p class="marg" style="padding:0; margin-top:0.9rem;">fig. 06 · what the studio cannot embed, it cites</p>
+      <p class="marg" style="padding:0; margin-top:0.9rem;">fig. 05 · what the studio cannot embed, it cites</p>
     </section>
   </main>
 
@@ -750,42 +748,43 @@
        No Meta script, no iframe, no cookie. CSP untouched.
        ───────────────────────────────────────────────────────── */
     const VDIR = './assets/video/instagram/';
+    const PDIR = './assets/video/instagram/posters/';
 
     const SELF = [
       {
         file: '2020-10-06_raghavakk_CGAW7sZJ7y-.mp4', ig: 'CGAW7sZJ7y-',
         title: 'Both Sides, Ep 1 — Conflict',
-        meta: ['Self-shot', 'October 2020', '5:27'],
-        body: 'The first episode of a series that never announced itself as one. On conflict as information: how dare you have a conflict with conviction and not examine what it is telling you.'
+        meta: ['Eye Candy', 'October 2020', '5:27'],
+        body: 'The show opens in speech, not paint. On conflict as information: how dare you have a conflict with conviction and not examine what it is telling you.'
       },
       {
         file: '2020-10-12_raghavakk_CGPlajDpkG5.mp4', ig: 'CGPlajDpkG5',
         title: 'Both Sides, Ep 2 — Balance',
-        meta: ['Self-shot', 'October 2020', '2:39'],
+        meta: ['Eye Candy', 'October 2020', '2:39'],
         body: 'The shortest of the six. Sometimes the argument requires shutting off, and the shutting off is not a retreat from the work but part of it.'
       },
       {
         file: '2020-10-21_raghavakk_CGnICdXp0NO.mp4', ig: 'CGnICdXp0NO',
         title: 'On Judgement',
-        meta: ['Self-shot', 'October 2020', '3:50'],
+        meta: ['Eye Candy', 'October 2020', '3:50'],
         body: 'What he told Rudra: we have no right to judge anybody, and nobody has a right to judge us. A father repeating the sentence until he believes it himself.'
       },
       {
         file: '2020-11-02_raghavakk_CHF-RXgJDEK.mp4', ig: 'CHF-RXgJDEK',
         title: 'A Small Request',
-        meta: ['Self-shot', 'November 2020', '5:14'],
+        meta: ['Eye Candy', 'November 2020', '5:14'],
         body: 'The one that opens with a question to the audience instead of a claim. The camera points at the artist; the question points back out.'
       },
       {
         file: '2020-11-18_raghavakk_CHu7ECaJAMf.mp4', ig: 'CHu7ECaJAMf',
         title: 'On Boundaries',
-        meta: ['Self-shot', 'November 2020', '5:21'],
+        meta: ['Eye Candy', 'November 2020', '5:21'],
         body: 'One of the toughest things learnt late: drawing boundaries with the people closest to you, and holding them without turning them into walls.'
       },
       {
         file: '2020-12-18_raghavakk_CI8aelqpgrF.mp4', ig: 'CI8aelqpgrF',
         title: 'On Loss',
-        meta: ['Self-shot', 'December 2020', '3:45'],
+        meta: ['Eye Candy', 'December 2020', '3:45'],
         body: 'Loss is never the end; the end is only when you think it is. The closest to the bone of the six, and the last one made.'
       }
     ];
@@ -879,7 +878,7 @@
       const runtime = v.meta[v.meta.length - 1];
       el.innerHTML =
         '<div class="vframe"><div class="vstage native">' +
-          '<video preload="metadata" controls playsinline src="' + VDIR + v.file + '"></video>' +
+          '<video preload="metadata" controls playsinline poster="' + PDIR + v.file.replace(/\.mp4$/, '.jpg') + '" src="' + VDIR + v.file + '"></video>' +
           '<span class="runtime">' + runtime + '</span>' +
         '</div></div>' +
         '<p class="vmeta">' + metaHTML + '</p>' +
