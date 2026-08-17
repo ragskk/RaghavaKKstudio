@@ -310,6 +310,33 @@
     @media (max-width: 1080px) { .candy-grid .video-card { grid-column: span 6; } }
     @media (max-width: 560px) { .candy-grid .video-card { grid-column: 1 / -1; } }
 
+    /* FEED STRIP (№06) — small thumbs, links out */
+    .feed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+      gap: clamp(0.7rem, 1.2vw, 1.1rem);
+    }
+    .feed-tile { display: block; text-decoration: none; }
+    .feed-tile .ft-frame {
+      position: relative; aspect-ratio: 1 / 1; overflow: hidden;
+      background: var(--ink); border: 1px solid var(--rule);
+    }
+    .feed-tile img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: grayscale(1) contrast(1.04);
+      transition: filter .3s var(--ease), transform .45s var(--ease-out);
+    }
+    .feed-tile:hover img, .feed-tile:focus-visible img { filter: grayscale(0) contrast(1); transform: scale(1.03); }
+    .feed-tile:focus-visible .ft-frame { outline: 2px solid var(--red); outline-offset: -2px; }
+    .feed-tile .ft-tag {
+      margin-top: 0.35rem;
+      font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .feed-tile:hover .ft-tag { color: var(--ink-2); }
+    .feed-tile .ft-tag .accent { color: var(--red); }
+
     /* Card text */
     .vmeta {
       margin-top: 0.75rem;
@@ -567,6 +594,22 @@
         </div>
       </div>
       <p class="marg" style="padding:0; margin-top:0.9rem;">fig. 05 · what the studio cannot embed, it cites</p>
+    </section>
+
+    <!-- №06 THE FEED -->
+    <section class="elsewhere" aria-labelledby="sec-feed">
+      <div class="section-head">
+        <div class="no">
+          <p class="eyebrow"><span class="num">№06</span>Everything else the grid holds</p>
+          <h2 id="sec-feed">The rest of the <em>feed</em>.</h2>
+        </div>
+        <p class="note">LINKS · PLAYED ON INSTAGRAM</p>
+      </div>
+      <p class="head-dek" style="margin-bottom:1.6rem;">
+        Gallery videobytes, summit clips, drop teasers, one piano confession. These play where they were posted. Red-tagged tiles were cut by other hands.
+      </p>
+      <div class="feed-grid" id="grid-feed"></div>
+      <p class="marg" style="padding:0; margin-top:1.2rem;">fig. 06 · thirty-two posts, cited not hosted · subject to pruning</p>
     </section>
   </main>
 
@@ -911,6 +954,25 @@
     fill('grid-canon', CANON);
     fill('grid-stages', STAGES);
     fill('grid-conv', CONV);
+
+    /* №06 — feed tiles, links out. Thumbs: assets/video/instagram/feed/ */
+    const FEED = [{"c": "DQy5fDRDe5Y", "k": "reel", "o": "ashvitasindia", "d": "2025-11-08", "cap": "For Raghava KK, the edge is more than a theme - it\u2019s a way of being. It\u2019s where artists confront uncertainty,"}, {"c": "DQmKaQejWzV", "k": "reel", "o": "ashvitasindia", "d": "2025-11-03", "cap": "From his early beginnings at Ashvita\u2019s in 2003 to his bold new Edges Series, artist Raghava KK reflects on his"}, {"c": "DTKODBbjfpf", "k": "reel", "o": "ashvitasindia", "d": "2026-01-06", "cap": "Introducing our artists for ART SG 2026! A curation of contemporary Indian practices that move beyond geograph"}, {"c": "DTCMcACCAQ9", "k": "reel", "o": "drneneofficial", "d": "2026-01-03", "cap": "It\u2019s been quite a ride in 2025 and now looking at creating in 2026 with all of you joining me. Am so grateful"}, {"c": "DSR6Uvxjdz8", "k": "reel", "o": "ashvitasindia", "d": "2025-12-15", "cap": "The edge is a place of transformation. For Raghava KK, the edge is not a boundary but a threshold - a fringe w"}, {"c": "CopCxgNAcs9", "k": "reel", "o": "gujralfoundation", "d": "2023-02-14", "cap": "#TheImpossibleBouquet Last few days to catch the wondrous show \u201dThe Impossible Bouquet\u201d! With an extraordinary"}, {"c": "DDpG7eazAC1", "k": "reel", "o": "kulsumshadabwahab", "d": "2024-12-16", "cap": "Together, we rise. Together, we transform. At the meetup of Hothur foundation with the courageous women w"}, {"c": "C-7pzrhyEjc", "k": "reel", "o": "under25official", "d": "2024-08-21", "cap": "Which colour heart are you?? lover / Dreamer / Hero / Figuring it out. Here we have @raghava talking abou"}, {"c": "C87Bg3mNmq3", "k": "reel", "o": "under25official", "d": "2024-07-02", "cap": "Comment one thing that students have, but adults don\u2019t. Wrong answers only! Here we had @raghavakk dropping"}, {"c": "C7jiGZ_xs96", "k": "reel", "o": "under25official", "d": "2024-05-29", "cap": "\u201dWhen people throw stones at you, build a bloody monument\u201d - Ratan Tata. Here we had @raghavakk dropping so"}, {"c": "C7wTHeINhh8", "k": "reel", "o": "under25official", "d": "2024-06-03", "cap": "You\u2019re an artist because you create YOU! Here we have @raghavakk at the Under 25 Summit, encouraging us to"}, {"c": "CQQV0q8J43_", "k": "p", "o": "raghavakk", "d": "2021-06-18", "cap": "With @abhijeetsatani"}, {"c": "DRt06AyjURy", "k": "reel", "o": "ashvitasindia", "d": "2025-12-01", "cap": "In Figuring the Edge, every painting embodies a unique character - an encounter that unfolds with every closer"}, {"c": "CoLI9n6O4NK", "k": "reel", "o": "matr.labs", "d": "2023-02-02", "cap": "Working alongside robotics, generative art, and the future of web3, we are so excited to bring you this amazin"}, {"c": "CqZvwy5o5s7", "k": "reel", "o": "raghavakk", "d": "2023-03-30", "cap": "(no caption)"}, {"c": "C8uTdgVveti", "k": "reel", "o": "raghavakk", "d": "2024-06-27", "cap": "Sneak peek. #raghavakkstudio #raghavakk #restlessfrequency"}, {"c": "DZ-KyndCdoO", "k": "reel", "o": "artcinemasocial", "d": "2026-06-24", "cap": "Something magical happens when artists who have never met before come together with nothing more than art mate"}, {"c": "C8pCnJcMJjD", "k": "reel", "o": "raghavakk", "d": "2024-06-25", "cap": "One day at a time. 4 days to go! #raghavakkstudio #raghavakk #restlessfrequency"}, {"c": "DUFWeXqjYGr", "k": "reel", "o": "ashvitasindia", "d": "2026-01-29", "cap": "Raghava KK\u2019s work explores how ideas move beyond the studio and reach the world. At India Art Fair 2026, his p"}, {"c": "C8hN8-3P57h", "k": "reel", "o": "raghavakk", "d": "2024-06-22", "cap": "7 days to go. #raghavakkstudio #raghavakk #whatjsitcalled"}, {"c": "DPqu_6CEoXy", "k": "reel", "o": "raghavakk", "d": "2025-10-11", "cap": "Having an amazing time at the GQ Heroes weekend with such a diverse community of creators from musicians to ch"}, {"c": "C8xAed_vfkz", "k": "reel", "o": "raghavakk", "d": "2024-06-28", "cap": "It\u2019s almost here. #raghavakkstudio #raghavakk #restlessfrequency"}, {"c": "C8eqDpOPiNA", "k": "reel", "o": "raghavakk", "d": "2024-06-21", "cap": "Something\u2019s cookin\u2019? #raghavakkstudio"}, {"c": "DWszzivjRPs", "k": "reel", "o": "ashvitasindia", "d": "2026-04-04", "cap": "What if AI could help you rethink the way you create? Raghava KK embraces AI not as a replacement for creativi"}, {"c": "C8mVf08PEZi", "k": "reel", "o": "raghavakk", "d": "2024-06-24", "cap": "Restless Frequency / 29th June, 2024 #raghavakkstudio #raghavakk #restlessfrequency"}, {"c": "C8yuVlNv-9T", "k": "reel", "o": "raghavakk", "d": "2024-06-29", "cap": "We are live! #raghavakkstudio #raghavakk #restlessfrequency"}, {"c": "C9cKsvZsIle", "k": "reel", "o": "raghavakk", "d": "2024-07-15", "cap": "Are you ready for the drop? Coming soon! #restlessfrequency #raghavakk #comingsoon"}, {"c": "CV0EgxMAjDY", "k": "p", "o": "jurgisdid", "d": "2021-11-03", "cap": "\u201dsing-thesis\u201d of the 6 things that make art exciting according to Raghava KK. An absolutely magical session"}, {"c": "CsvgdH7qe8q", "k": "p", "o": "raghavakk", "d": "2023-05-27", "cap": "Saturday to myself. been teaching myself the piano and now i\u2019m trying to muster up guts to share more and more"}, {"c": "C8rkQpiv_Az", "k": "reel", "o": "raghavakk", "d": "2024-06-26", "cap": "Fabric runs. #raghavakkstudio #raghavakk #restlessfrequency"}, {"c": "C_Uwe3Zsv14", "k": "reel", "o": "raghavakk", "d": "2024-08-31", "cap": "Restless Frequency drops at 12 PM tomorrow"}, {"c": "DaVVGmpCg2x", "k": "reel", "o": "artcinemasocial", "d": "2026-07-03", "cap": "Cartooning & Art Workshop with Raghava KK. What an inspiring afternoon of creativity, laughter, and storyt"}];
+    (function () {
+      const grid = document.getElementById('grid-feed');
+      if (!grid) return;
+      FEED.forEach(function (f) {
+        const a = document.createElement('a');
+        a.className = 'feed-tile';
+        a.href = 'https://www.instagram.com/' + (f.k === 'reel' ? 'reel' : 'p') + '/' + f.c + '/';
+        a.target = '_blank'; a.rel = 'noopener';
+        a.title = f.cap || f.c;
+        const mine = f.o === 'raghavakk';
+        a.innerHTML =
+          '<span class="ft-frame"><img loading="lazy" src="./assets/video/instagram/feed/feed_' + f.c + '.jpg" alt="" /></span>' +
+          '<span class="ft-tag">' + f.d.slice(0, 7) + (mine ? '' : ' · <span class="accent">@' + f.o + '</span>') + '</span>';
+        grid.appendChild(a);
+      });
+    })();
 
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') unmountLive();
