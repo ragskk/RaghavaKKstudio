@@ -280,6 +280,28 @@
     .poster:focus-visible { outline: 2px solid var(--red); outline-offset: -2px; }
     .vstage.is-live { box-shadow: inset 0 0 0 1px var(--red); }
 
+    /* NATIVE VIDEO (self-hosted Instagram bodies) */
+    .vstage.native { aspect-ratio: 4 / 5; }
+    .vstage.native video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: var(--ink); }
+    .vstage .runtime {
+      position: absolute; right: 0.7rem; bottom: 0.7rem; z-index: 2;
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+      color: var(--paper); background: rgba(14,14,12,0.82);
+      border: 1px solid rgba(244,241,234,0.35);
+      padding: 0.3rem 0.5rem; pointer-events: none;
+    }
+    .vstage.is-playing .runtime { display: none; }
+    .candy-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: clamp(1.2rem, 2vw, 1.8rem);
+    }
+    .candy-grid .video-card { grid-column: span 3; }
+    .candy-grid .vstage { aspect-ratio: 4 / 5; }
+    .candy-grid .vbody { font-size: 0.9rem; }
+    @media (max-width: 1080px) { .candy-grid .video-card { grid-column: span 6; } }
+    @media (max-width: 560px) { .candy-grid .video-card { grid-column: 1 / -1; } }
+
     /* Card text */
     .vmeta {
       margin-top: 0.75rem;
@@ -437,10 +459,10 @@
 
   <main class="talks-page">
     <section class="page-head">
-      <p class="eyebrow"><span class="num">Folio · Talks</span>Twenty-two recordings, held in one room</p>
+      <p class="eyebrow"><span class="num">Folio · Talks</span>Thirty-four recordings, held in one room</p>
       <h1 class="head-title">Sixteen years of saying it <em>out loud</em>.</h1>
       <p class="head-dek">
-        Three TED stages, an EEG headset, a shaken iPad, one Netflix detour. What follows is every recording of the artist speaking that still plays, in the order the argument was built. Nothing loads until you press play.
+        Three TED stages, an EEG headset, a shaken iPad, one Netflix detour — and two bodies of work that never needed a stage at all. What follows is every recording that still plays, in the order the argument was built. Nothing loads until you press play.
       </p>
     </section>
 
@@ -481,11 +503,40 @@
       <p class="marg" style="padding:0; margin-top:1.2rem;">fig. 03 · <span class="accent">one player at a time</span> · esc closes · everything else stays paper</p>
     </section>
 
-    <!-- №04 ELSEWHERE -->
+    <!-- №04 SELF-SHOT -->
+    <section class="talk-section" aria-labelledby="sec-self">
+      <div class="section-head">
+        <div class="no">
+          <p class="eyebrow"><span class="num">№04</span>A phone, a lockdown, six arguments</p>
+          <h2 id="sec-self">No <em>stage</em> at all.</h2>
+        </div>
+        <p class="note">SELF-SHOT · 2020</p>
+      </div>
+      <div class="video-grid" id="grid-self"></div>
+      <p class="marg" style="padding:0; margin-top:1.2rem;">fig. 04 · no venue, no interlocutor · the files play from this site, not from Meta</p>
+    </section>
+
+    <!-- №05 EYE CANDY -->
+    <section class="talk-section" aria-labelledby="sec-candy">
+      <div class="section-head">
+        <div class="no">
+          <p class="eyebrow"><span class="num">№05</span>India's first art show made natively on Instagram</p>
+          <h2 id="sec-candy">Eye <em>Candy</em>.</h2>
+        </div>
+        <p class="note">A PROJECT · WITH UNDER25 STUDIOS · 2021</p>
+      </div>
+      <p class="head-dek" style="margin-bottom:1.6rem;">
+        Six weeks in early 2021, an art show whose venue was the grid itself. Lives were streamed and are gone; these eight reels are what the show left behind. No talking in these. The paint does it.
+      </p>
+      <div class="candy-grid" id="grid-candy"></div>
+      <p class="marg" style="padding:0; margin-top:1.2rem;">fig. 05 · eight reels, eleven to nineteen seconds each · one plays at a time</p>
+    </section>
+
+    <!-- №06 ELSEWHERE -->
     <section class="elsewhere" aria-labelledby="sec-else">
       <div class="section-head">
         <div class="no">
-          <p class="eyebrow"><span class="num">№04</span>Recorded, but not embeddable</p>
+          <p class="eyebrow"><span class="num">№06</span>Recorded, but not embeddable</p>
           <h2 id="sec-else">Elsewhere, behind other <em>doors</em>.</h2>
         </div>
         <p class="note">LINKS ONLY</p>
@@ -516,13 +567,8 @@
           <p class="why">The INK talk on bursting your own bubbles. INK's page holds the video; the file itself is theirs to serve.</p>
           <p class="tag">INK · 2021</p>
         </div>
-        <div class="else-row">
-          <p class="what"><a href="https://www.instagram.com/raghavakk/" target="_blank" rel="noopener">Eye Candy, on Instagram ↗</a></p>
-          <p class="why">India's first hybrid art show made natively on Instagram, with Under25 Studios. Lives were streamed, reels remain, the grid is the archive.</p>
-          <p class="tag">Instagram · 2021</p>
-        </div>
       </div>
-      <p class="marg" style="padding:0; margin-top:0.9rem;">fig. 04 · what the studio cannot embed, it cites</p>
+      <p class="marg" style="padding:0; margin-top:0.9rem;">fig. 06 · what the studio cannot embed, it cites</p>
     </section>
   </main>
 
@@ -573,31 +619,31 @@
       {
         yt: 'I_4IK8CiLg8', feature: true,
         title: 'My 5 Lives as an Artist',
-        meta: ['TED2010', 'Long Beach', '2010', '17:38'],
+        meta: ['TED2010', 'Long Beach', '2010', '18:24'],
         body: 'The signature talk. Kicked out of school for a cartoon, then five lives in a row: cartoonist, painter, media darling, outcast, father. The claim underneath all of it, that <em>instability</em> is the material. Each collapse paid for the next reinvention. A million plays and counting.'
       },
       {
         yt: '64fDIZiV-SM',
         title: 'Shake Up Your Story',
-        meta: ['TEDGlobal 2011', 'Edinburgh', '2011', '4:13'],
+        meta: ['TEDGlobal 2011', 'Edinburgh', '2011', '4:31'],
         body: 'Pop-it, the children’s book you shake. Shake the iPad and the parents flip: two dads, two moms, a mom and a dad. Four minutes on teaching children perspective before teaching them anything else.'
       },
       {
         yt: 'Qzmt2wQMhYo',
         title: 'What’s Your 200-Year Plan?',
-        meta: ['TEDxSummit', 'Doha', '2012', '10:41'],
+        meta: ['TEDxSummit', 'Doha', '2012', '10:59'],
         body: 'Retire the five-year plan. A 200-year plan runs past your own death, which is exactly the point: it forces the question of what you are building that outlives you, and lets legacy become a creative medium.'
       },
       {
         yt: '6mGdsSHudXU',
         title: 'What Happens Now That I Can Read Your Brainwaves?',
-        meta: ['TEDMED 2013', 'Washington DC', '2013'],
+        meta: ['TEDMED 2013', 'Washington DC', '2013', '10:09'],
         body: 'If seeing is believing, what does belief look like? The EEG works, where the painting reads the viewer back. This is the lineage that produced Mona Lisa 2.0, and the boundary between artist and audience going soft.'
       },
       {
         yt: 'BXPGk0HXDpk',
         title: 'Coloring Outside the Lines',
-        meta: ['Nat Geo Live', 'Emerging Explorer', '2014'],
+        meta: ['Nat Geo Live', 'Emerging Explorer', '2014', '13:14'],
         body: 'The National Geographic stage, the year after they named him an Emerging Explorer. A self-taught path retold as exploration: the cartoons, the canvases, the participatory works, and why none of them stayed inside the lines.'
       }
     ];
@@ -606,43 +652,37 @@
       {
         yt: 'Hz0RsRg5ftY',
         title: 'Bringing Art to Life',
-        meta: ['INK', 'Lavasa', '2010'],
+        meta: ['INK', 'Lavasa', '2010', '3:00'],
         body: 'The inaugural INK Conference. Early statement of the whole program: paintings that refuse to stay still.'
       },
       {
         yt: 'FAbGbaLGJBw',
         title: 'One of the Most Remarkable People in the World',
-        meta: ['TEDxGateway', 'Mumbai', '2012'],
+        meta: ['TEDxGateway', 'Mumbai', '2012', '13:52'],
         body: 'The career talk in its Mumbai register: Pop-it, multiple perspectives, reinvention as method.'
       },
       {
         yt: 'QdVY9QOOAvE',
         title: 'Sharing the Art',
-        meta: ['TEDxMidwest', 'Chicago', '2012'],
+        meta: ['TEDxMidwest', 'Chicago', '2012', '9:59'],
         body: 'Art’s value lives in the sharing, not the owning. The audience is promoted to co-creator.'
       },
       {
         yt: 'nklmF5Nh180',
         title: 'My Many Lives as an Artist',
-        meta: ['TEDxSpenceSchool', 'New York', '2012'],
+        meta: ['TEDxSpenceSchool', 'New York', '2012', '10:23'],
         body: 'The five-lives story retold for a room of students. Failure as fuel, single perspectives as the thing to outgrow.'
-      },
-      {
-        yt: 'JgHE_tjt1LU',
-        title: 'Flipsicle: Where Art Meets Technology',
-        meta: ['TEDxGateway', 'Mumbai', '2015'],
-        body: 'The startup chapter. An app for seeing the world through other people’s photographs, which is to say other people’s eyes.'
       },
       {
         yt: '9kzRkHLZu_M',
         title: 'Art You Bring to Life',
-        meta: ['TED Archive', '2016'],
+        meta: ['TED Archive', '2016', '2:55'],
         body: 'A TED stage talk released years later through the archive. Living artworks that respond to the person in front of them.'
       },
       {
         yt: '17VUfgg4ibI',
         title: 'How Stories Shape Who We Are',
-        meta: ['INKWomen', '2025'],
+        meta: ['INKWomen', '2025', '12:34'],
         body: 'The most recent stage. Identity as a story you choose to keep telling: “We are not just the storytellers. We are the stories we choose to tell about ourselves.”'
       }
     ];
@@ -651,63 +691,114 @@
       {
         yt: 'zYiBVVA645E',
         title: 'My Mind Is an Impossible Mind',
-        meta: ['Asign · Artist film', '2024'],
+        meta: ['Asign · Artist film', '2024', '1:19'],
         body: 'The most recent portrait of the practice, and the most cinematic. On refusing a single style, on purpose.'
       },
       {
         yt: 'K6b2k-8VgnY',
         title: 'Behind the TEDTalk',
-        meta: ['TED2010 · Mini-documentary', '2010', '8 min'],
+        meta: ['TED2010 · Mini-documentary', '2010', '8:27'],
         body: 'Backstage before the signature talk: the first-time speaker and Sir Ken Robinson, TED’s most-watched, preparing for the same stage.'
       },
       {
         yt: 'JhV0EdDQ7Ps',
         title: 'The Future of NFTs',
-        meta: ['Business Today', '2022'],
+        meta: ['Business Today', '2022', '11:22'],
         body: 'The crypto chapter, interviewed at its peak, after La Petite Mort set the Sotheby’s record for an Indian artist.'
       },
       {
         yt: 'MUXU47e2drM',
         title: 'Pushing the Boundaries of Art and Life',
-        meta: ['Spotlight · Sandhya Mendonca', '2021'],
+        meta: ['Spotlight · Sandhya Mendonca', '2021', '24:37'],
         body: 'A career-spanning conversation from the Eye Candy era.'
       },
       {
         yt: 'ix8I10QFh4I',
         title: 'In Conversation with Raghava KK',
-        meta: ['NEWS9 Live', 'Bengaluru', '2021'],
+        meta: ['NEWS9 Live', 'Bengaluru', '2021', '22:26'],
         body: 'Hometown television. The Bengaluru artist explains the digital turn to the city that raised him.'
       },
       {
         yt: 'XzjAsF3j4Hg',
         title: 'On How He Creates Art',
-        meta: ['Perspectives · Part 2'],
+        meta: ['Perspectives · Part 2', '8:31'],
         body: 'On process: how the work actually gets made, across disciplines that refuse to stay separate.'
-      },
-      {
-        yt: 'R6IGs5slNio',
-        title: 'Founder of Flipsicle',
-        meta: ['TiEcon', 'Silicon Valley', '2015'],
-        body: 'The artist among the founders. On raising two million dollars without ever giving a normal pitch.'
       },
       {
         yt: 'okBxwCy6AEY',
         title: 'Respace and The ReCollective',
-        meta: ['Kstart', 'Bengaluru', '2017'],
+        meta: ['Kstart', 'Bengaluru', '2017', '9:06'],
         body: 'Art moved into the workplace: the Kalaari collaboration on collective creativity.'
       },
       {
         yt: '7CB7GEsJZq8',
         title: 'Raghava KK vs @KK',
-        meta: ['TEDxSummit', 'Doha', '2012'],
-        body: 'Two minutes outside the amphitheatre with photographer Kris Krüg, the other KK, settling what the initials stand for.'
+        meta: ['TEDxSummit', 'Doha', '2012', '0:20'],
+        body: 'Twenty seconds outside the amphitheatre with photographer Kris Krüg, the other KK, settling what the initials stand for.'
       },
       {
         yt: 'DpGK6yPiic4',
         title: 'India Platform, Art Stage Singapore',
-        meta: ['VernissageTV', 'Singapore', '2014'],
+        meta: ['VernissageTV', 'Singapore', '2014', '7:32'],
         body: 'A walkthrough of the India Platform with curator Bose Krishnamachari; the studio’s work hangs among six artists via Art Musings.'
       }
+    ];
+
+    /* ─────────────────────────────────────────────────────────
+       SELF-HOSTED · pulled from @raghavakk, served from this
+       site as plain <video>. Files: assets/video/instagram/
+       No Meta script, no iframe, no cookie. CSP untouched.
+       ───────────────────────────────────────────────────────── */
+    const VDIR = './assets/video/instagram/';
+
+    const SELF = [
+      {
+        file: '2020-10-06_raghavakk_CGAW7sZJ7y-.mp4', ig: 'CGAW7sZJ7y-',
+        title: 'Both Sides, Ep 1 — Conflict',
+        meta: ['Self-shot', 'October 2020', '5:27'],
+        body: 'The first episode of a series that never announced itself as one. On conflict as information: how dare you have a conflict with conviction and not examine what it is telling you.'
+      },
+      {
+        file: '2020-10-12_raghavakk_CGPlajDpkG5.mp4', ig: 'CGPlajDpkG5',
+        title: 'Both Sides, Ep 2 — Balance',
+        meta: ['Self-shot', 'October 2020', '2:39'],
+        body: 'The shortest of the six. Sometimes the argument requires shutting off, and the shutting off is not a retreat from the work but part of it.'
+      },
+      {
+        file: '2020-10-21_raghavakk_CGnICdXp0NO.mp4', ig: 'CGnICdXp0NO',
+        title: 'On Judgement',
+        meta: ['Self-shot', 'October 2020', '3:50'],
+        body: 'What he told Rudra: we have no right to judge anybody, and nobody has a right to judge us. A father repeating the sentence until he believes it himself.'
+      },
+      {
+        file: '2020-11-02_raghavakk_CHF-RXgJDEK.mp4', ig: 'CHF-RXgJDEK',
+        title: 'A Small Request',
+        meta: ['Self-shot', 'November 2020', '5:14'],
+        body: 'The one that opens with a question to the audience instead of a claim. The camera points at the artist; the question points back out.'
+      },
+      {
+        file: '2020-11-18_raghavakk_CHu7ECaJAMf.mp4', ig: 'CHu7ECaJAMf',
+        title: 'On Boundaries',
+        meta: ['Self-shot', 'November 2020', '5:21'],
+        body: 'One of the toughest things learnt late: drawing boundaries with the people closest to you, and holding them without turning them into walls.'
+      },
+      {
+        file: '2020-12-18_raghavakk_CI8aelqpgrF.mp4', ig: 'CI8aelqpgrF',
+        title: 'On Loss',
+        meta: ['Self-shot', 'December 2020', '3:45'],
+        body: 'Loss is never the end; the end is only when you think it is. The closest to the bone of the six, and the last one made.'
+      }
+    ];
+
+    const CANDY = [
+      { file: '2021-01-02_raghavakk_CJiuwtMJl8-.mp4', ig: 'CJiuwtMJl8-', title: 'Opening', meta: ['02 Jan 2021', '0:13'], body: 'Starting the year with candy. The show opens.' },
+      { file: '2021-01-09_raghavakk_CJ0uP9pJXZ7.mp4', ig: 'CJ0uP9pJXZ7', title: 'Favourite Colour', meta: ['09 Jan 2021', '0:16'], body: 'A question posed in pigment.' },
+      { file: '2021-01-28_raghavakk_CKlpB9YpNxG.mp4', ig: 'CKlpB9YpNxG', title: 'First Paint', meta: ['28 Jan 2021', '0:19'], body: 'When was the first time you played with paint?' },
+      { file: '2021-02-04_raghavakk_CK3rD_3JLRL.mp4', ig: 'CK3rD_3JLRL', title: 'Fingers Dance', meta: ['04 Feb 2021', '0:14'], body: 'The creative itch, filmed at skin distance.' },
+      { file: '2021-02-08_raghavakk_CLCSc_2JgZX.mp4', ig: 'CLCSc_2JgZX', title: 'Every Stroke Has a Sound', meta: ['08 Feb 2021', '0:14'], body: 'The show’s thesis in five words.' },
+      { file: '2021-02-11_raghavakk_CLJ3_4DpWGU.mp4', ig: 'CLJ3_4DpWGU', title: 'Dissolving', meta: ['11 Feb 2021', '0:13'], body: 'Dreaming of dissolving into a universe.' },
+      { file: '2021-02-15_raghavakk_CLUE73vJZKX.mp4', ig: 'CLUE73vJZKX', title: 'Main Squeeze', meta: ['15 Feb 2021', '0:16'], body: 'The tube, the hand, the pressure.' },
+      { file: '2021-02-16_raghavakk_CLXH61pJT8-.mp4', ig: 'CLXH61pJT8-', title: 'Tear to Reveal', meta: ['16 Feb 2021', '0:11'], body: 'Sometimes the surface has to go. The final act.' }
     ];
 
     /* ─────────────────────────────────────────────────────────
@@ -736,6 +827,7 @@
 
     function mount(stage, video) {
       unmountLive();
+      pauseAllNative(null);
       const iframe = document.createElement('iframe');
       iframe.src = 'https://www.youtube-nocookie.com/embed/' + video.yt + '?autoplay=1&rel=0';
       iframe.title = video.title;
@@ -772,6 +864,50 @@
       if (!grid) return;
       list.forEach(function (v) { grid.appendChild(card(v)); });
     }
+
+    /* Native players: one live thing on the page, iframe or video. */
+    function pauseAllNative(except) {
+      document.querySelectorAll('.vstage.native video').forEach(function (v) {
+        if (v !== except) { v.pause(); }
+      });
+    }
+
+    function nativeCard(v) {
+      const el = document.createElement('article');
+      el.className = 'video-card';
+      const metaHTML = v.meta.map(function (m) { return '<span>' + m + '</span>'; }).join('<span class="sep">·</span>');
+      const runtime = v.meta[v.meta.length - 1];
+      el.innerHTML =
+        '<div class="vframe"><div class="vstage native">' +
+          '<video preload="metadata" controls playsinline src="' + VDIR + v.file + '"></video>' +
+          '<span class="runtime">' + runtime + '</span>' +
+        '</div></div>' +
+        '<p class="vmeta">' + metaHTML + '</p>' +
+        '<h3 class="vtitle">' + v.title + '</h3>' +
+        '<p class="vbody">' + v.body + '</p>' +
+        '<p class="vlink"><a href="https://www.instagram.com/p/' + v.ig + '/" target="_blank" rel="noopener">The original post ↗</a></p>';
+      const stage = el.querySelector('.vstage');
+      const vid = el.querySelector('video');
+      vid.addEventListener('loadedmetadata', function () {
+        if (vid.videoWidth && vid.videoHeight) stage.style.aspectRatio = vid.videoWidth + ' / ' + vid.videoHeight;
+      });
+      vid.addEventListener('play', function () {
+        unmountLive();
+        pauseAllNative(vid);
+        stage.classList.add('is-playing');
+      });
+      vid.addEventListener('pause', function () { stage.classList.remove('is-playing'); });
+      return el;
+    }
+
+    function fillNative(gridId, list) {
+      const grid = document.getElementById(gridId);
+      if (!grid) return;
+      list.forEach(function (v) { grid.appendChild(nativeCard(v)); });
+    }
+
+    fillNative('grid-self', SELF);
+    fillNative('grid-candy', CANDY);
 
     fill('grid-canon', CANON);
     fill('grid-stages', STAGES);
