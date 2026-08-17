@@ -394,6 +394,7 @@
       <a href="./about2.html">Short bio →</a>
       <a href="./writings2.html">Writings →</a>
       <a href="./library2.html">The library →</a>
+      <a href="./talks2.html">Talks →</a>
       <span>Studio · Bengaluru</span>
       <span>Studio · New York</span>
     </div>
@@ -455,7 +456,9 @@
       { id: 'parsons',  label: 'Parsons Proposal',    num: '№ 01a',     href: './parsons-proposal.html', x: 10, y: 14, ring: 'outer',
         desc: 'The proposal for Calling All Gods.' },
       { id: 'timeline', label: 'Timeline',            num: 'Studio',    href: './timeline2.html', x: 78, y: 88, ring: 'outer',
-        desc: 'A chronological walk through <em>28 years</em>.' }
+        desc: 'A chronological walk through <em>28 years</em>.' },
+      { id: 'talks',    label: 'Talks',               num: '▶',         href: './talks2.html',    x: 22, y: 10, ring: 'outer',
+        desc: 'The spoken record, <em>2010 → 2025</em>. Press play.' }
     ];
 
     /* Edges — pairs of node ids. Built so the index connects to everyone,
@@ -476,7 +479,9 @@
       // Parsons proposal sits next to Calling (it IS the show's proposal)
       ['library','studio'], ['library','writings'], ['parsons','calling'],
       // timeline is studio's chronological reading — wire it to studio and to becoming-archived
-      ['index','timeline'], ['timeline','studio'], ['timeline','becoming']
+      ['index','timeline'], ['timeline','studio'], ['timeline','becoming'],
+      // talks: the spoken record — hub spoke, plus kinships with the bio and the writings
+      ['index','talks'], ['talks','about'], ['talks','writings']
     ];
 
     /* DOM build */

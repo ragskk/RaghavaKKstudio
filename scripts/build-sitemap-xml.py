@@ -53,6 +53,7 @@ PRIORITY = {
     "about2.html": "0.8",
     "writings2.html": "0.8",
     "library2.html": "0.8",
+    "talks2.html": "0.8",
     "network.html": "0.7",
     "parsons-proposal.html": "0.7",
     "sitemap2.html": "0.5",

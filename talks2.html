@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>html{visibility:hidden}</style><script>(function(){try{if(localStorage.getItem("studio_access")==="ok"){document.documentElement.style.visibility="visible";return;}}catch(_){}window.location.replace("/");})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Talks · Raghava KK</title>
+  <meta name="description" content="Sixteen years of Raghava KK saying it out loud. TED, TEDMED, INK, National Geographic, and the conversations in between. Every recording, one page, press play." />
+  <!-- Open Graph / social previews -->
+  <meta property="og:title" content="Talks · Raghava KK" />
+  <meta property="og:description" content="Sixteen years of Raghava KK saying it out loud. TED, TEDMED, INK, National Geographic, and the conversations in between." />
+  <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/talks2" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Raghava KK" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Talks · Raghava KK" />
+  <meta name="twitter:description" content="Sixteen years of Raghava KK saying it out loud. TED, TEDMED, INK, National Geographic, and the conversations in between." />
+  <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <link rel="canonical" href="https://raghavakkstudio.com/talks2" />
+  <meta name="theme-color" content="#F4F1EA" />
+  <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
+  <meta name="robots" content="index, follow, noai, noimageai" />
+  <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./protect.css" />
+  <style>
+    /* ───────────────────────────────────────────────────────────
+       RAGHAVA KK · TALKS
+       The spoken record, 2010 → 2025. Standard chrome. Every
+       player is click-to-load: zero iframes on page load, one
+       live player at a time. Posters come from i.ytimg.com;
+       frames come from youtube-nocookie.com. Both are in CSP.
+       ─────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --paper:        #F4F1EA;
+      --paper-2:      #ECE7DA;
+      --paper-3:      #E3DCC8;
+      --ink:          #0E0E0C;
+      --ink-2:        #2B2A26;
+      --muted:        #8B8579;
+      --rule:         #1A1A17;
+      --rule-soft:    rgba(14,14,12,0.18);
+      --red:          #E63D22;
+
+      --serif:        'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --display:      'Instrument Serif', 'Fraunces', Georgia, serif;
+      --mono:         'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+      --edge:         clamp(1rem, 2.6vw, 2.4rem);
+      --ease:         cubic-bezier(.2,.7,.2,1);
+      --ease-out:     cubic-bezier(.16,1,.3,1);
+    }
+    html { font-size: 16.5px; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
+    html, body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    body {
+      min-height: 100vh;
+      background-image:
+        radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      background-size: 3px 3px, auto;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0;
+      pointer-events: none; z-index: 1;
+      opacity: 0.5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    /* TAPE */
+    .tape {
+      position: relative; z-index: 3; width: 100%;
+      background: var(--ink); color: var(--paper);
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      overflow: hidden; border-bottom: 1px solid var(--ink);
+    }
+    .tape-track {
+      display: flex; gap: 4rem;
+      padding: 0.6rem 0;
+      white-space: nowrap;
+      animation: tape-scroll 60s linear infinite;
+      width: max-content;
+    }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* MASTHEAD */
+    .masthead {
+      position: relative; z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: end; gap: 1rem;
+      padding: 1.2rem var(--edge) 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .masthead .left, .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center {
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      letter-spacing: 0.04em; text-transform: none;
+      color: var(--ink);
+    }
+    .masthead .stamp {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.18rem 0.5rem;
+      border: 1px solid var(--rule); border-radius: 999px;
+    }
+    .home-link { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .home-link:hover { color: var(--red); border-bottom-color: var(--red); }
+
+    /* PAGE HEAD */
+    .page-head {
+      position: relative; z-index: 2;
+      padding: clamp(2.5rem, 6vh, 4.5rem) var(--edge) clamp(1.5rem, 3vh, 2.5rem);
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2);
+      margin-bottom: 0.9rem;
+    }
+    .eyebrow .num { color: var(--muted); margin-right: 0.6rem; }
+    .head-title {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.4rem, 5.8vw, 4.8rem);
+      line-height: 1.04; letter-spacing: -0.015em;
+      color: var(--ink); max-width: 22ch;
+    }
+    .head-title em { color: var(--red); font-style: italic; }
+    .head-dek {
+      margin-top: 1rem;
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.0rem, 1.4vw, 1.2rem);
+      line-height: 1.45;
+      color: var(--ink-2);
+      max-width: 60ch;
+    }
+
+    /* SECTION HEADS — 8/4 split, same shape as the rest of the site */
+    .talk-section {
+      position: relative; z-index: 2;
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: clamp(2rem, 4.5vh, 3.4rem) var(--edge) 0;
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.6rem;
+      align-items: end;
+      border-top: 1px solid var(--rule);
+      padding-top: 1rem;
+      margin-bottom: clamp(1.4rem, 3vh, 2.2rem);
+    }
+    .section-head .no {
+      grid-column: 1 / span 8;
+    }
+    .section-head .no .eyebrow { margin-bottom: 0.5rem; }
+    .section-head h2 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.7rem, 3.4vw, 2.7rem);
+      line-height: 1.06;
+      color: var(--ink);
+    }
+    .section-head h2 em { color: var(--red); font-style: italic; }
+    .section-head .note {
+      grid-column: 9 / span 4;
+      font-family: var(--mono);
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted);
+      text-align: right;
+      padding-bottom: 0.35rem;
+    }
+    @media (max-width: 880px) {
+      .section-head .no { grid-column: 1 / -1; }
+      .section-head .note { grid-column: 1 / -1; text-align: left; }
+    }
+
+    /* VIDEO GRID */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: clamp(1.4rem, 2.4vw, 2.2rem);
+    }
+    .video-card { grid-column: span 4; display: flex; flex-direction: column; }
+    .video-grid.canon .video-card { grid-column: span 6; }
+    /* Feature: 8/4 editorial split, frame left, text column right, baseline at the bottom. */
+    .video-grid.canon .video-card.feature {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 1fr auto auto auto;
+      column-gap: clamp(1.4rem, 2.4vw, 2.2rem);
+    }
+    .video-card.feature .vframe { grid-column: 1 / span 8; grid-row: 1 / span 4; }
+    .video-card.feature .vmeta,
+    .video-card.feature .vtitle,
+    .video-card.feature .vbody,
+    .video-card.feature .vlink { grid-column: 9 / span 4; }
+    .video-card.feature .vmeta { align-self: end; }
+    @media (max-width: 1080px) {
+      .video-card { grid-column: span 6; }
+    }
+    @media (max-width: 720px) {
+      .video-card, .video-grid.canon .video-card { grid-column: 1 / -1; }
+      .video-grid.canon .video-card.feature { display: flex; flex-direction: column; }
+    }
+
+    /* Frame: the player surface. Polaroid-adjacent: ink hairline, paper mat. */
+    .vframe {
+      position: relative;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      padding: 6px;
+      box-shadow: 0 1px 2px rgba(14,14,12,0.12), 0 10px 26px -18px rgba(14,14,12,0.45);
+    }
+    .vstage {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: var(--ink);
+      overflow: hidden;
+    }
+    .vstage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .poster {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      display: block;
+      border: 0; padding: 0;
+      background: var(--ink);
+      cursor: pointer;
+    }
+    .poster img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.25) contrast(1.02);
+      transition: filter .3s var(--ease), transform .5s var(--ease-out);
+    }
+    .poster:hover img, .poster:focus-visible img { filter: grayscale(0) contrast(1); transform: scale(1.015); }
+    .poster .play {
+      position: absolute; left: 0.7rem; bottom: 0.7rem;
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-family: var(--mono);
+      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--paper);
+      background: rgba(14,14,12,0.82);
+      border: 1px solid rgba(244,241,234,0.35);
+      padding: 0.34rem 0.62rem;
+      transition: background .2s var(--ease), border-color .2s var(--ease);
+    }
+    .poster .play::before {
+      content: "";
+      width: 0; height: 0;
+      border-style: solid;
+      border-width: 4px 0 4px 7px;
+      border-color: transparent transparent transparent var(--red);
+    }
+    .poster:hover .play, .poster:focus-visible .play { background: var(--red); border-color: var(--red); }
+    .poster:focus-visible { outline: 2px solid var(--red); outline-offset: -2px; }
+    .vstage.is-live { box-shadow: inset 0 0 0 1px var(--red); }
+
+    /* Card text */
+    .vmeta {
+      margin-top: 0.75rem;
+      font-family: var(--mono);
+      font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted);
+      display: flex; flex-wrap: wrap; gap: 0.35rem 0;
+    }
+    .vmeta .sep { margin: 0 0.45rem; color: var(--rule-soft); }
+    .vtitle {
+      margin-top: 0.35rem;
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.18rem, 1.7vw, 1.5rem);
+      line-height: 1.12;
+      color: var(--ink);
+    }
+    .video-grid.canon .vtitle { font-size: clamp(1.4rem, 2.2vw, 1.9rem); }
+    .vbody {
+      margin-top: 0.55rem;
+      font-family: var(--serif);
+      font-size: clamp(0.94rem, 1vw, 1.0rem);
+      line-height: 1.55;
+      color: var(--ink-2);
+      max-width: 62ch;
+    }
+    .vbody em { color: var(--red); font-style: italic; }
+    .vlink {
+      margin-top: 0.55rem;
+      font-family: var(--mono);
+      font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase;
+    }
+    .vlink a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .vlink a:hover { color: var(--red); border-color: var(--red); }
+
+    /* ELSEWHERE — link-only list, no players */
+    .elsewhere {
+      position: relative; z-index: 2;
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: clamp(2rem, 4.5vh, 3.4rem) var(--edge) clamp(3rem, 7vh, 5rem);
+    }
+    .else-list { border-top: 1px solid var(--rule); }
+    .else-row {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.6rem;
+      align-items: baseline;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .else-row .what {
+      grid-column: 1 / span 4;
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.02rem, 1.3vw, 1.2rem);
+      color: var(--ink);
+    }
+    .else-row .what a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .else-row .what a:hover { color: var(--red); border-color: var(--red); }
+    .else-row .why {
+      grid-column: 5 / span 6;
+      font-family: var(--serif);
+      font-size: 0.94rem; line-height: 1.5;
+      color: var(--ink-2);
+    }
+    .else-row .tag {
+      grid-column: 11 / span 2;
+      font-family: var(--mono);
+      font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted);
+      text-align: right;
+    }
+    @media (max-width: 880px) {
+      .else-row .what, .else-row .why { grid-column: 1 / -1; }
+      .else-row .tag { grid-column: 1 / -1; text-align: left; }
+    }
+
+    /* Margin note */
+    .marg {
+      max-width: 1480px;
+      margin: 0.9rem auto 0;
+      padding: 0 var(--edge);
+      font-family: var(--mono);
+      font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .marg .accent { color: var(--red); }
+
+    /* COLOPHON — canonical 3-column. Page-specific c-a; unified c-b/c-c. */
+    .colophon {
+      position: relative; z-index: 2;
+      padding: clamp(2.5rem, 6vh, 4rem) var(--edge) clamp(2rem, 4vh, 3rem);
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.4rem; }
+    .colophon .col.c-c { align-items: flex-end; }
+    .colophon h3 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: 1.05rem; letter-spacing: 0.02em;
+      color: var(--ink); text-transform: none;
+      margin-bottom: 0.2rem;
+    }
+    .colophon a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .seal {
+      width: 60px; height: 60px;
+      border: 1px solid var(--rule); border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--paper);
+      margin-bottom: 0.6rem;
+    }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; }
+    @media (max-width: 720px) {
+      .colophon { grid-template-columns: 1fr; }
+      .colophon .col.c-c { align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tape-track { animation: none; }
+      .poster img, .poster:hover img { transition: none; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tape" role="presentation">
+    <div class="tape-track">
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Talks</span><span class="dot"></span>
+      <span>The spoken record · 2010 → 2025</span><span class="dot"></span>
+      <span>Press play</span><span class="dot"></span>
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Talks</span><span class="dot"></span>
+      <span>The spoken record · 2010 → 2025</span><span class="dot"></span>
+      <span>Press play</span><span class="dot"></span>
+    </div>
+  </div>
+
+  <header class="masthead" role="banner">
+    <div class="left">
+      <span><a class="home-link" href="./index.html">← Raghava KK</a></span>
+      <span class="stamp">Talks</span>
+    </div>
+    <div class="center">an artist working between gods &amp; algorithms</div>
+    <div class="right">
+      <span id="dateStamp">MON · 17 AUG 2026</span>
+      <span id="timeStamp">--:--</span>
+    </div>
+  </header>
+
+  <main class="talks-page">
+    <section class="page-head">
+      <p class="eyebrow"><span class="num">Folio · Talks</span>Twenty-two recordings, held in one room</p>
+      <h1 class="head-title">Sixteen years of saying it <em>out loud</em>.</h1>
+      <p class="head-dek">
+        Three TED stages, an EEG headset, a shaken iPad, one Netflix detour. What follows is every recording of the artist speaking that still plays, in the order the argument was built. Nothing loads until you press play.
+      </p>
+    </section>
+
+    <!-- №01 THE CANON -->
+    <section class="talk-section" aria-labelledby="sec-canon">
+      <div class="section-head">
+        <div class="no">
+          <p class="eyebrow"><span class="num">№01</span>Five talks that carry the argument</p>
+          <h2 id="sec-canon">The <em>canon</em>.</h2>
+        </div>
+        <p class="note">TED · TEDMED · NAT GEO</p>
+      </div>
+      <div class="video-grid canon" id="grid-canon"></div>
+    </section>
+
+    <!-- №02 STAGES -->
+    <section class="talk-section" aria-labelledby="sec-stages">
+      <div class="section-head">
+        <div class="no">
+          <p class="eyebrow"><span class="num">№02</span>TEDx, INK, and the archive uploads</p>
+          <h2 id="sec-stages">The other <em>stages</em>.</h2>
+        </div>
+        <p class="note">2010 → 2025</p>
+      </div>
+      <div class="video-grid" id="grid-stages"></div>
+    </section>
+
+    <!-- №03 CONVERSATIONS -->
+    <section class="talk-section" aria-labelledby="sec-conv">
+      <div class="section-head">
+        <div class="no">
+          <p class="eyebrow"><span class="num">№03</span>Interviews, artist films, appearances</p>
+          <h2 id="sec-conv">Under <em>questioning</em>.</h2>
+        </div>
+        <p class="note">CAMERA POINTED THE OTHER WAY</p>
+      </div>
+      <div class="video-grid" id="grid-conv"></div>
+      <p class="marg" style="padding:0; margin-top:1.2rem;">fig. 03 · <span class="accent">one player at a time</span> · esc closes · everything else stays paper</p>
+    </section>
+
+    <!-- №04 ELSEWHERE -->
+    <section class="elsewhere" aria-labelledby="sec-else">
+      <div class="section-head">
+        <div class="no">
+          <p class="eyebrow"><span class="num">№04</span>Recorded, but not embeddable</p>
+          <h2 id="sec-else">Elsewhere, behind other <em>doors</em>.</h2>
+        </div>
+        <p class="note">LINKS ONLY</p>
+      </div>
+      <div class="else-list">
+        <div class="else-row">
+          <p class="what"><a href="https://www.netflix.com/title/81014811" target="_blank" rel="noopener">The Creative Indians, S4 E10 ↗</a></p>
+          <p class="why">A full documentary episode on the artist. Netflix keeps its doors shut; the episode plays only inside.</p>
+          <p class="tag">Netflix · 2017</p>
+        </div>
+        <div class="else-row">
+          <p class="what"><a href="https://blog.ted.com/mona-lisa-2-0-raghava-kk-at-ted2013/" target="_blank" rel="noopener">Mona Lisa 2.0, TED2013 ↗</a></p>
+          <p class="why">The brainwave portrait, demonstrated on the TED mainstage. TED never released the film. The blog recap is the surviving record.</p>
+          <p class="tag">TED · 2013</p>
+        </div>
+        <div class="else-row">
+          <p class="what"><a href="https://www.nvidia.com/en-us/on-demand/session/gtcspring21-SE2350/" target="_blank" rel="noopener">Art in Light of AI, NVIDIA GTC ↗</a></p>
+          <p class="why">64/1 and Harshit Agrawal on AI as tool, collaborator, and muse. Plays in NVIDIA's own player, sometimes behind a free login.</p>
+          <p class="tag">NVIDIA · 2021</p>
+        </div>
+        <div class="else-row">
+          <p class="what"><a href="https://bigthink.com/videos/outsider-thinking-what-doctors-can-learn-from-artists/" target="_blank" rel="noopener">Outsider Thinking, Big Think ↗</a></p>
+          <p class="why">Two minutes on what doctors can learn from artists. Now member-locked on Big Think's side.</p>
+          <p class="tag">Big Think</p>
+        </div>
+        <div class="else-row">
+          <p class="what"><a href="https://inktalks.com/talks/raghava-kk-how-to-burst-your-mind-bubbles/" target="_blank" rel="noopener">How to Burst Your Mind Bubbles, INK ↗</a></p>
+          <p class="why">The INK talk on bursting your own bubbles. INK's page holds the video; the file itself is theirs to serve.</p>
+          <p class="tag">INK · 2021</p>
+        </div>
+        <div class="else-row">
+          <p class="what"><a href="https://www.instagram.com/raghavakk/" target="_blank" rel="noopener">Eye Candy, on Instagram ↗</a></p>
+          <p class="why">India's first hybrid art show made natively on Instagram, with Under25 Studios. Lives were streamed, reels remain, the grid is the archive.</p>
+          <p class="tag">Instagram · 2021</p>
+        </div>
+      </div>
+      <p class="marg" style="padding:0; margin-top:0.9rem;">fig. 04 · what the studio cannot embed, it cites</p>
+    </section>
+  </main>
+
+  <footer class="colophon" role="contentinfo">
+    <div class="col c-a">
+      <h3>Speaking inquiries.</h3>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
+      <span>Keynotes · Panels · Commencements · Podcasts</span>
+    </div>
+    <div class="col c-b">
+      <a href="./about2.html">Short bio →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./library2.html">The library →</a>
+      <a href="./sitemap2.html">Site map →</a>
+      <span>Studio · Bengaluru</span>
+      <span>Studio · New York</span>
+    </div>
+    <div class="col c-c">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK &middot; <a href="./terms.html">Terms</a></span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // Date + time stamp
+    function fmt(n) { return n < 10 ? '0' + n : '' + n; }
+    function tick() {
+      const d = new Date();
+      const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+      const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      const dateEl = document.getElementById('dateStamp');
+      const timeEl = document.getElementById('timeStamp');
+      if (dateEl) dateEl.textContent = days[d.getDay()] + ' · ' + fmt(d.getDate()) + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+      if (timeEl) timeEl.textContent = fmt(d.getHours()) + ':' + fmt(d.getMinutes()) + ':' + fmt(d.getSeconds());
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    /* ─────────────────────────────────────────────────────────
+       THE RECORDINGS
+       Every ID verified live via YouTube oEmbed, 2026-08-17.
+       Full inventory with sources: _notes/talks-video-inventory.md
+       ───────────────────────────────────────────────────────── */
+    const CANON = [
+      {
+        yt: 'I_4IK8CiLg8', feature: true,
+        title: 'My 5 Lives as an Artist',
+        meta: ['TED2010', 'Long Beach', '2010', '17:38'],
+        body: 'The signature talk. Kicked out of school for a cartoon, then five lives in a row: cartoonist, painter, media darling, outcast, father. The claim underneath all of it, that <em>instability</em> is the material. Each collapse paid for the next reinvention. A million plays and counting.'
+      },
+      {
+        yt: '64fDIZiV-SM',
+        title: 'Shake Up Your Story',
+        meta: ['TEDGlobal 2011', 'Edinburgh', '2011', '4:13'],
+        body: 'Pop-it, the children’s book you shake. Shake the iPad and the parents flip: two dads, two moms, a mom and a dad. Four minutes on teaching children perspective before teaching them anything else.'
+      },
+      {
+        yt: 'Qzmt2wQMhYo',
+        title: 'What’s Your 200-Year Plan?',
+        meta: ['TEDxSummit', 'Doha', '2012', '10:41'],
+        body: 'Retire the five-year plan. A 200-year plan runs past your own death, which is exactly the point: it forces the question of what you are building that outlives you, and lets legacy become a creative medium.'
+      },
+      {
+        yt: '6mGdsSHudXU',
+        title: 'What Happens Now That I Can Read Your Brainwaves?',
+        meta: ['TEDMED 2013', 'Washington DC', '2013'],
+        body: 'If seeing is believing, what does belief look like? The EEG works, where the painting reads the viewer back. This is the lineage that produced Mona Lisa 2.0, and the boundary between artist and audience going soft.'
+      },
+      {
+        yt: 'BXPGk0HXDpk',
+        title: 'Coloring Outside the Lines',
+        meta: ['Nat Geo Live', 'Emerging Explorer', '2014'],
+        body: 'The National Geographic stage, the year after they named him an Emerging Explorer. A self-taught path retold as exploration: the cartoons, the canvases, the participatory works, and why none of them stayed inside the lines.'
+      }
+    ];
+
+    const STAGES = [
+      {
+        yt: 'Hz0RsRg5ftY',
+        title: 'Bringing Art to Life',
+        meta: ['INK', 'Lavasa', '2010'],
+        body: 'The inaugural INK Conference. Early statement of the whole program: paintings that refuse to stay still.'
+      },
+      {
+        yt: 'FAbGbaLGJBw',
+        title: 'One of the Most Remarkable People in the World',
+        meta: ['TEDxGateway', 'Mumbai', '2012'],
+        body: 'The career talk in its Mumbai register: Pop-it, multiple perspectives, reinvention as method.'
+      },
+      {
+        yt: 'QdVY9QOOAvE',
+        title: 'Sharing the Art',
+        meta: ['TEDxMidwest', 'Chicago', '2012'],
+        body: 'Art’s value lives in the sharing, not the owning. The audience is promoted to co-creator.'
+      },
+      {
+        yt: 'nklmF5Nh180',
+        title: 'My Many Lives as an Artist',
+        meta: ['TEDxSpenceSchool', 'New York', '2012'],
+        body: 'The five-lives story retold for a room of students. Failure as fuel, single perspectives as the thing to outgrow.'
+      },
+      {
+        yt: 'JgHE_tjt1LU',
+        title: 'Flipsicle: Where Art Meets Technology',
+        meta: ['TEDxGateway', 'Mumbai', '2015'],
+        body: 'The startup chapter. An app for seeing the world through other people’s photographs, which is to say other people’s eyes.'
+      },
+      {
+        yt: '9kzRkHLZu_M',
+        title: 'Art You Bring to Life',
+        meta: ['TED Archive', '2016'],
+        body: 'A TED stage talk released years later through the archive. Living artworks that respond to the person in front of them.'
+      },
+      {
+        yt: '17VUfgg4ibI',
+        title: 'How Stories Shape Who We Are',
+        meta: ['INKWomen', '2025'],
+        body: 'The most recent stage. Identity as a story you choose to keep telling: “We are not just the storytellers. We are the stories we choose to tell about ourselves.”'
+      }
+    ];
+
+    const CONV = [
+      {
+        yt: 'zYiBVVA645E',
+        title: 'My Mind Is an Impossible Mind',
+        meta: ['Asign · Artist film', '2024'],
+        body: 'The most recent portrait of the practice, and the most cinematic. On refusing a single style, on purpose.'
+      },
+      {
+        yt: 'K6b2k-8VgnY',
+        title: 'Behind the TEDTalk',
+        meta: ['TED2010 · Mini-documentary', '2010', '8 min'],
+        body: 'Backstage before the signature talk: the first-time speaker and Sir Ken Robinson, TED’s most-watched, preparing for the same stage.'
+      },
+      {
+        yt: 'JhV0EdDQ7Ps',
+        title: 'The Future of NFTs',
+        meta: ['Business Today', '2022'],
+        body: 'The crypto chapter, interviewed at its peak, after La Petite Mort set the Sotheby’s record for an Indian artist.'
+      },
+      {
+        yt: 'MUXU47e2drM',
+        title: 'Pushing the Boundaries of Art and Life',
+        meta: ['Spotlight · Sandhya Mendonca', '2021'],
+        body: 'A career-spanning conversation from the Eye Candy era.'
+      },
+      {
+        yt: 'ix8I10QFh4I',
+        title: 'In Conversation with Raghava KK',
+        meta: ['NEWS9 Live', 'Bengaluru', '2021'],
+        body: 'Hometown television. The Bengaluru artist explains the digital turn to the city that raised him.'
+      },
+      {
+        yt: 'XzjAsF3j4Hg',
+        title: 'On How He Creates Art',
+        meta: ['Perspectives · Part 2'],
+        body: 'On process: how the work actually gets made, across disciplines that refuse to stay separate.'
+      },
+      {
+        yt: 'R6IGs5slNio',
+        title: 'Founder of Flipsicle',
+        meta: ['TiEcon', 'Silicon Valley', '2015'],
+        body: 'The artist among the founders. On raising two million dollars without ever giving a normal pitch.'
+      },
+      {
+        yt: 'okBxwCy6AEY',
+        title: 'Respace and The ReCollective',
+        meta: ['Kstart', 'Bengaluru', '2017'],
+        body: 'Art moved into the workplace: the Kalaari collaboration on collective creativity.'
+      },
+      {
+        yt: '7CB7GEsJZq8',
+        title: 'Raghava KK vs @KK',
+        meta: ['TEDxSummit', 'Doha', '2012'],
+        body: 'Two minutes outside the amphitheatre with photographer Kris Krüg, the other KK, settling what the initials stand for.'
+      },
+      {
+        yt: 'DpGK6yPiic4',
+        title: 'India Platform, Art Stage Singapore',
+        meta: ['VernissageTV', 'Singapore', '2014'],
+        body: 'A walkthrough of the India Platform with curator Bose Krishnamachari; the studio’s work hangs among six artists via Art Musings.'
+      }
+    ];
+
+    /* ─────────────────────────────────────────────────────────
+       RENDER + PLAYER
+       Zero iframes at load. Click a poster, the iframe mounts
+       with autoplay; any previously live player is unmounted
+       and its poster restored. Esc unmounts the live player.
+       ───────────────────────────────────────────────────────── */
+    let live = null; // { stage, videoId, title }
+
+    function posterHTML(v) {
+      return '<button class="poster" type="button" aria-label="Play: ' + v.title.replace(/"/g, '&quot;') + '">' +
+        '<img src="https://i.ytimg.com/vi/' + v.yt + '/hqdefault.jpg" alt="" loading="lazy" />' +
+        '<span class="play">Play</span>' +
+      '</button>';
+    }
+
+    function unmountLive() {
+      if (!live) return;
+      const { stage, video } = live;
+      stage.classList.remove('is-live');
+      stage.innerHTML = posterHTML(video);
+      bindPoster(stage, video);
+      live = null;
+    }
+
+    function mount(stage, video) {
+      unmountLive();
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + video.yt + '?autoplay=1&rel=0';
+      iframe.title = video.title;
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      stage.innerHTML = '';
+      stage.appendChild(iframe);
+      stage.classList.add('is-live');
+      live = { stage, video };
+    }
+
+    function bindPoster(stage, video) {
+      const btn = stage.querySelector('.poster');
+      if (btn) btn.addEventListener('click', function () { mount(stage, video); });
+    }
+
+    function card(v) {
+      const el = document.createElement('article');
+      el.className = 'video-card' + (v.feature ? ' feature' : '');
+      const metaHTML = v.meta.map(function (m) { return '<span>' + m + '</span>'; }).join('<span class="sep">·</span>');
+      el.innerHTML =
+        '<div class="vframe"><div class="vstage">' + posterHTML(v) + '</div></div>' +
+        '<p class="vmeta">' + metaHTML + '</p>' +
+        '<h3 class="vtitle">' + v.title + '</h3>' +
+        '<p class="vbody">' + v.body + '</p>' +
+        '<p class="vlink"><a href="https://www.youtube.com/watch?v=' + v.yt + '" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>';
+      bindPoster(el.querySelector('.vstage'), v);
+      return el;
+    }
+
+    function fill(gridId, list) {
+      const grid = document.getElementById(gridId);
+      if (!grid) return;
+      list.forEach(function (v) { grid.appendChild(card(v)); });
+    }
+
+    fill('grid-canon', CANON);
+    fill('grid-stages', STAGES);
+    fill('grid-conv', CONV);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') unmountLive();
+    });
+  })();
+  </script>
+
+  <script src="./protect.js" defer></script>
+</body>
+</html>

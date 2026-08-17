@@ -30,6 +30,7 @@ The site issues machine-readable signals to that effect:
 - /calling2.html — Calling. Open submissions, programs, calls for participation.
 - /lab2.html — Lab. Editions, experiments, drops, collaborations.
 - /writings2.html — Writings. Essays, reflections, long-form text.
+- /talks2.html — Talks. Recorded talks and interviews, 2010 onward, with context.
 - /terms.html — Terms of use, copyright, and reservation of rights.
 
 ## Contact

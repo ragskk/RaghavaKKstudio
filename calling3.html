@@ -3,462 +3,602 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Calling All Gods, Raghava KK</title>
-  <meta name="description" content="Calling All Gods. Two paintings, 12.5 × 25 ft each. The gods we use, not the gods we believe in. Parsons School of Design, New York, December 2026 – March 2027." />
-  <meta property="og:title" content="Calling All Gods, Raghava KK" />
-  <meta property="og:description" content="The gods we use, not the gods we believe in. Two monumental paintings. Parsons School of Design, New York, December 2026 – March 2027." />
+  <title>Calling All Gods · Raghava KK</title>
+  <meta name="description" content="Calling All Gods. Two paintings at the scale of Guernica. The capacity to stay standing in a fracturing world. A solo exhibition at Parsons School of Design, New York, 10 December 2026." />
+  <meta property="og:title" content="Calling All Gods · Raghava KK" />
+  <meta property="og:description" content="The capacity to stay standing in a fracturing world. Two monumental paintings, seven gods turned to toys, one book. Parsons School of Design, New York, 10 December 2026." />
   <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/calling3" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Raghava KK" />
-  <meta name="theme-color" content="#0A0A0A" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Calling All Gods · Raghava KK" />
+  <meta name="twitter:description" content="The capacity to stay standing in a fracturing world. Parsons School of Design, New York, 10 December 2026." />
+  <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <link rel="canonical" href="https://raghavakkstudio.com/calling3" />
+  <meta name="theme-color" content="#F4F1EA" />
   <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
   <meta name="robots" content="index, follow, noai, noimageai" />
   <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
   <link rel="stylesheet" href="./css/book-modal.css" />
   <link rel="stylesheet" href="./css/library-shelf.css" />
   <style>
+    /* ───────────────────────────────────────────────────────────
+       RAGHAVA KK · CALLING ALL GODS
+       Editorial chrome matching the rest of the site.
+       Cream paper. Single red accent. No em-dashes. Mono caps for utility.
+       ─────────────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     :root {
-      --bg:#E8E8E5; --bg-2:#DEDEDA;
-      --ink:#0A0A0A; --ink-2:#26251F; --mute:#86857E;
-      --paper:#F2F2EF;
-      --dark:#0B0B0B; --dark-2:#151512; --on-dark:#EDEDE8; --on-dark-mute:#8E8D85;
-      --accent:#FF2E12; --accent-2:#1B33FF;
-      --display:'Helvetica Neue', 'Arial', system-ui, sans-serif;
-      --body:'Helvetica Neue', 'Arial', system-ui, sans-serif;
-      --mono:ui-monospace, Menlo, 'SF Mono', 'Courier New', monospace;
-      --ease:cubic-bezier(.16,1,.3,1);
-      --ease-2:cubic-bezier(.32,.72,0,1);
-      --edge:clamp(1.1rem, 5vw, 5rem);
+      --paper:        #F4F1EA;
+      --paper-2:      #ECE7DA;
+      --paper-3:      #E3DCC8;
+      --ink:          #0E0E0C;
+      --ink-2:        #2B2A26;
+      --muted:        #8B8579;
+      --rule:         #1A1A17;
+      --rule-soft:    rgba(14,14,12,0.18);
+      --red:          #E63D22;
+
+      --serif:        'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --display:      'Instrument Serif', 'Fraunces', Georgia, serif;
+      --mono:         'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+      --edge:         clamp(1rem, 2.6vw, 2.4rem);
+      --ease:         cubic-bezier(.2,.7,.2,1);
+      --ease-out:     cubic-bezier(.16,1,.3,1);
     }
-    html { font-size: 16px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    @media (min-width:1280px){ html{ font-size:17px; } }
+
+    html { font-size: 16.5px; scroll-behavior: smooth; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
+    html, body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-feature-settings: "ss01" 1, "ss02" 1, "kern" 1, "liga" 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
     body {
-      background: var(--bg); color: var(--ink);
-      font-family: var(--body); line-height: 1.5;
-      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden; min-height: 100vh;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      background-size: 3px 3px, auto;
     }
-    body::after {
-      content:""; position: fixed; inset:0; z-index: 60; pointer-events:none;
-      opacity:.035; mix-blend-mode: multiply;
-      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    body::before {
+      content: ""; position: fixed; inset: 0;
+      pointer-events: none; z-index: 1;
+      opacity: 0.5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
     }
-    img { max-width:100%; display:block; }
-    ::selection { background: var(--accent); color:#fff; }
+    img { max-width: 100%; display: block; }
+    ::selection { background: var(--red); color: #fff; }
     a { color: inherit; }
 
-    /* floating nav pill */
-    .nav {
-      position: fixed; top: clamp(.8rem,2vw,1.4rem); left:50%; transform: translateX(-50%);
-      z-index: 70; display:flex; align-items:center; gap:.9rem;
-      padding:.5rem .55rem .5rem 1.1rem; border-radius:999px;
-      background: rgba(12,12,12,.72); color: var(--on-dark);
-      backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2);
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: 0 10px 40px rgba(0,0,0,.28);
-      font-family: var(--mono); font-size: 11px; letter-spacing:.14em; text-transform: uppercase;
-      transition: transform .5s var(--ease), opacity .5s var(--ease);
-      max-width: calc(100vw - 2rem);
+    /* ─── TAPE ─── */
+    .tape {
+      position: relative; z-index: 3; width: 100%;
+      background: var(--ink); color: var(--paper);
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      overflow: hidden; border-bottom: 1px solid var(--ink);
     }
-    .nav .dot{ width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:pulse 1.8s ease-in-out infinite;}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-    .nav .nav-t{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .nav .nav-when{ color: var(--on-dark-mute); }
-    .nav a.nav-cta{
-      text-decoration:none; display:inline-flex; align-items:center; gap:.5rem;
-      background: var(--accent); color:#fff; padding:.45rem .5rem .45rem .85rem; border-radius:999px;
-      transition: transform .4s var(--ease-2);
+    .tape-track {
+      display: flex; gap: 4rem;
+      padding: 0.6rem 0;
+      white-space: nowrap;
+      animation: tape-scroll 60s linear infinite;
+      width: max-content;
     }
-    .nav a.nav-cta .arr{ width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;transition:transform .4s var(--ease-2);}
-    .nav a.nav-cta:hover{ transform: scale(.97); } .nav a.nav-cta:hover .arr{ transform: translate(2px,-2px); }
-    .nav.hide{ transform: translateX(-50%) translateY(-150%); opacity:0; }
-    @media (max-width:560px){ .nav .nav-when{ display:none; } }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* full-screen control, top right */
-    .fsbtn{ position:fixed; top: clamp(.8rem,2vw,1.4rem); right: clamp(.8rem,2vw,1.4rem); z-index:71;
-      display:inline-flex; align-items:center; gap:.5rem; cursor:pointer;
-      font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
-      color:var(--on-dark); background: rgba(12,12,12,.72); border:1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2);
-      padding:.5rem .55rem .5rem .95rem; border-radius:999px; box-shadow: 0 10px 40px rgba(0,0,0,.28);
-      transition: transform .4s var(--ease-2), background .4s var(--ease-2), opacity .5s var(--ease); }
-    .fsbtn .arr{ width:22px;height:22px;border-radius:50%; background:var(--accent); color:#fff; display:grid; place-items:center; font-size:12px; transition: transform .4s var(--ease-2); }
-    .fsbtn:hover{ transform: scale(.97); } .fsbtn:hover .arr{ transform: scale(1.08); }
-    @media (max-width:560px){ .fsbtn .fslbl{ display:none; } .fsbtn{ padding:.5rem; } }
+    /* ─── MASTHEAD ─── */
+    .masthead {
+      position: relative; z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: end; gap: 1rem;
+      padding: 1.2rem var(--edge) 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .masthead .left, .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center {
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      letter-spacing: 0.04em; text-transform: none;
+      color: var(--ink);
+    }
+    .masthead .stamp {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.18rem 0.5rem;
+      border: 1px solid var(--rule); border-radius: 999px;
+    }
+    .home-link { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .home-link:hover { color: var(--red); border-bottom-color: var(--red); }
+    @media (max-width: 720px) { .masthead .center { display: none; } }
 
-    /* reveal */
-    .rv{ opacity:0; transform: translateY(40px); filter: blur(8px); transition: opacity .9s var(--ease), transform .9s var(--ease), filter .9s var(--ease); }
-    .rv.in{ opacity:1; transform:none; filter:none; }
-    .rv.d1{ transition-delay:.08s } .rv.d2{ transition-delay:.16s } .rv.d3{ transition-delay:.24s }
-    @media (prefers-reduced-motion: reduce){ .rv{opacity:1;transform:none;filter:none;transition:none} *{animation:none!important} }
+    /* ─── REVEAL ─── */
+    .rv { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease-out), transform .8s var(--ease-out); }
+    .rv.in { opacity: 1; transform: none; }
+    .rv.d1 { transition-delay: .07s; } .rv.d2 { transition-delay: .14s; } .rv.d3 { transition-delay: .21s; }
 
-    /* shared bits */
-    .eyebrow{ display:inline-flex; align-items:center; gap:.6rem; font-family:var(--mono); font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-2); }
-    .eyebrow::before{ content:""; width:26px; height:1px; background: var(--accent); }
-    .eyebrow.on-dark{ color: var(--on-dark-mute); }
-    .kicker{ font-family:var(--mono); font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--mute); }
-    h1,h2,h3{ font-family:var(--display); font-weight:800; line-height:.96; letter-spacing:-.005em; }
-    .accent{ color: var(--accent); }
-    .section{ padding: clamp(4.5rem, 12vw, 11rem) var(--edge); position:relative; }
-    .wrap{ max-width: 1500px; margin:0 auto; }
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; z-index: 2;
+      padding: clamp(2.6rem, 7vh, 5.2rem) var(--edge) clamp(1.4rem, 3vh, 2.2rem);
+      max-width: 1480px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(12, 1fr);
+      gap: 1.6rem; align-items: start;
+    }
+    .hero .eyebrow {
+      grid-column: 1 / span 12;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2); padding-top: 0.4rem; border-top: 1px solid var(--rule);
+    }
+    .hero .eyebrow .num { color: var(--muted); margin-right: 0.7rem; }
+    .hero h1 {
+      grid-column: 1 / span 11;
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(3rem, 11vw, 8.2rem);
+      line-height: 0.98; letter-spacing: -0.02em; color: var(--ink);
+      margin-top: 0.7rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--red); }
+    .hero .dek {
+      grid-column: 1 / span 8;
+      margin-top: 1.1rem;
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.3rem, 2.4vw, 2rem);
+      line-height: 1.25; color: var(--ink); max-width: 26ch;
+    }
+    .hero .sub {
+      grid-column: 1 / span 7;
+      margin-top: 1.1rem;
+      font-family: var(--serif); font-size: clamp(1rem, 1.2vw, 1.14rem);
+      line-height: 1.6; color: var(--ink-2); max-width: 54ch;
+    }
+    .hero .meta {
+      grid-column: 1 / span 12;
+      margin-top: 1.8rem; padding-top: 1rem; border-top: 1px solid var(--rule-soft);
+      display: flex; flex-wrap: wrap; gap: clamp(1.4rem, 4vw, 3.4rem);
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+    }
+    .hero .meta b { display: block; margin-top: 0.35rem; color: var(--ink); font-weight: 500; font-size: 12.5px; letter-spacing: 0.06em; }
+    @media (max-width: 880px) {
+      .hero h1, .hero .dek, .hero .sub { grid-column: 1 / -1; }
+      .hero h1 { font-size: clamp(2.6rem, 15vw, 4rem); }
+    }
 
-    /* HERO */
-    .hero{ position:relative; min-height: 100dvh; display:flex; flex-direction:column; justify-content:flex-end;
-      background: var(--dark); color: var(--on-dark); overflow:hidden; padding: 0 var(--edge) clamp(2rem,5vw,4rem); }
-    .hero-img{ position:absolute; inset:0; z-index:0; }
-    .hero-img img{ width:100%; height:100%; object-fit:cover; opacity:.62; filter: contrast(1.04) saturate(1.05); }
-    .hero-img::after{ content:""; position:absolute; inset:0; background:
-       linear-gradient(180deg, rgba(11,11,11,.55) 0%, rgba(11,11,11,.18) 32%, rgba(11,11,11,.35) 60%, rgba(11,11,11,.92) 100%); }
-    .hero-top{ position:absolute; top: clamp(5.5rem,10vw,7rem); left: var(--edge); right: var(--edge); z-index:2;
-      display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
-    .hero-inner{ position:relative; z-index:2; }
-    .hero h1{ font-size: clamp(2.3rem, 10vw, 7.5rem); line-height:.92; text-transform:uppercase; letter-spacing:-.01em; }
-    .hero h1 .line{ display:block; white-space:nowrap; }
-    .hero h1 em{ font-style: normal; color: var(--accent); }
-    .hero-sub{ margin-top: clamp(1.2rem,2vw,2rem); max-width: 56ch; font-size: clamp(1.02rem,1.5vw,1.35rem); line-height:1.5; color: var(--on-dark); }
-    .hero-meta{ margin-top: clamp(1.4rem,2.5vw,2.4rem); display:flex; gap: clamp(1.2rem,3vw,3rem); flex-wrap:wrap;
-      font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--on-dark-mute); }
-    .hero-meta b{ display:block; color:var(--on-dark); font-weight:500; margin-top:.3rem; font-size:13px; letter-spacing:.06em; }
-    .scrollcue{ position:absolute; bottom: clamp(1.2rem,3vw,2rem); right: var(--edge); z-index:2; font-family:var(--mono); font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--on-dark-mute); display:flex; align-items:center; gap:.6rem; }
-    .scrollcue .bar{ width:1px; height:42px; background: linear-gradient(var(--accent), transparent); }
+    /* ─── PLATE (no crop) ─── */
+    .plate-wide {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(1rem, 3vh, 2rem) var(--edge) clamp(2rem, 5vh, 3.4rem);
+    }
+    .plate-frame {
+      background: #fff; padding: 10px 10px 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08), 0 20px 50px rgba(0,0,0,0.16);
+    }
+    .plate-frame img { width: 100%; height: auto; display: block; filter: saturate(0.98) contrast(1.02); }
+    .plate-cap {
+      margin-top: 0.7rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+    }
+    .plate-cap em { font-style: italic; color: var(--red); text-transform: none; letter-spacing: 0.03em; }
 
-    /* THESIS */
-    .thesis{ background: var(--bg); }
-    .thesis .lede{ font-size: clamp(1.15rem,1.7vw,1.5rem); line-height:1.5; max-width: 40ch; color: var(--ink-2); }
-    .megaquote{ font-family:var(--display); font-weight:800; letter-spacing:-.01em; line-height:1;
-      font-size: clamp(2.4rem, 8vw, 7rem); text-transform:uppercase; margin-top: clamp(2rem,5vw,4rem); }
-    .megaquote .a{ margin-right:.25em; }
-    .megaquote .a{ color: var(--ink); } .megaquote .b{ color: var(--accent); display:block; }
+    /* ─── PREMISE ─── */
+    .premise {
+      position: relative; z-index: 2;
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(2.4rem, 7vh, 5rem) var(--edge);
+    }
+    .premise .lab {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2); padding-top: 0.4rem; border-top: 1px solid var(--rule); display: inline-block;
+    }
+    .premise .lede {
+      margin-top: 1.2rem; font-family: var(--serif);
+      font-size: clamp(1.05rem, 1.4vw, 1.28rem); line-height: 1.55; color: var(--ink-2); max-width: 48ch;
+    }
+    .premise .big {
+      margin-top: clamp(1.4rem, 3vw, 2.4rem);
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.2rem, 7vw, 5.6rem); line-height: 1.02; letter-spacing: -0.01em; color: var(--ink);
+      max-width: 20ch;
+    }
+    .premise .big em { font-style: italic; color: var(--red); }
 
-    /* Picasso band */
-    .band{ background: var(--accent); color:#fff; }
-    .band .big{ font-family:var(--display); font-weight:700; font-size: clamp(1.8rem,4.4vw,4.2rem); line-height:1.04; letter-spacing:-.02em; max-width: 24ch; }
-    .band .eyebrow{ color:#fff; }
-    .band .eyebrow::before{ background:#fff; }
+    /* ─── PROSE BLOCK (statements) ─── */
+    .prose-block {
+      position: relative; z-index: 2;
+      padding: clamp(2rem, 5vh, 4rem) var(--edge);
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+    }
+    .prose-block.plain { background: transparent; }
+    .prose-grid {
+      max-width: 1480px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.6rem; align-items: start;
+    }
+    .prose-head {
+      grid-column: 1 / span 4;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2); padding-top: 0.4rem; border-top: 1px solid var(--rule);
+    }
+    .prose-col { grid-column: 5 / span 7; max-width: 62ch; }
+    .prose-col .open {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.5rem, 2.6vw, 2.3rem); line-height: 1.12; letter-spacing: -0.01em;
+      color: var(--ink); margin-bottom: 1.1rem; max-width: 24ch;
+    }
+    .prose-col .open em { color: var(--red); font-style: italic; }
+    .prose-col p {
+      font-family: var(--serif); font-size: clamp(1.0rem, 1.1vw, 1.12rem);
+      line-height: 1.66; color: var(--ink);
+    }
+    .prose-col p + p { margin-top: 1.05em; }
+    .prose-col em { color: var(--red); font-style: italic; }
+    .prose-col i { font-style: italic; color: var(--ink); }
+    @media (max-width: 880px) {
+      .prose-head, .prose-col { grid-column: 1 / -1; }
+    }
 
-    /* pull-quote moment */
-    .quote{ background: var(--bg-2); }
-    .quote .pull{ font-family:var(--display); font-weight:800; letter-spacing:-.01em; line-height:1.04;
-      font-size: clamp(1.8rem, 5.4vw, 4.6rem); max-width: 22ch; color: var(--ink);
-      padding-left: clamp(1rem,3vw,2.4rem); border-left: 6px solid var(--accent); }
-    .quote .pull em{ font-style:normal; color: var(--accent); }
-    .quote .attr{ margin-top: clamp(.9rem,2vw,1.5rem); padding-left: clamp(1rem,3vw,2.4rem);
-      font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color: var(--mute); }
+    /* ─── SECTION HEADER ─── */
+    .sect-head {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(3rem, 7vh, 5rem) var(--edge) clamp(1.4rem, 3vh, 2rem);
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.6rem; align-items: end;
+    }
+    .sect-head .lab {
+      grid-column: 1 / span 4;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2); padding-top: 0.4rem; border-top: 1px solid var(--rule);
+    }
+    .sect-head h2 {
+      grid-column: 5 / span 8;
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2rem, 4.6vw, 3.6rem); line-height: 1.04; color: var(--ink); max-width: 22ch;
+    }
+    .sect-head h2 em { color: var(--red); font-style: italic; }
+    .sect-head .dek {
+      grid-column: 5 / span 7; margin-top: 0.6rem;
+      font-family: var(--serif); font-size: clamp(0.98rem, 1.05vw, 1.08rem); line-height: 1.55; color: var(--ink-2); max-width: 60ch;
+    }
+    @media (max-width: 880px) {
+      .sect-head .lab, .sect-head h2, .sect-head .dek { grid-column: 1 / -1; }
+    }
 
-    /* PLATES bento */
-    .plates{ background: var(--bg-2); }
-    .plates .head{ display:flex; justify-content:space-between; align-items:flex-end; gap:1.5rem; flex-wrap:wrap; margin-bottom: clamp(2rem,4vw,3.5rem); }
-    .plates h2{ font-size: clamp(2.4rem,6vw,5rem); text-transform:uppercase; }
-    .bento{ display:grid; grid-template-columns: repeat(12,1fr); gap: clamp(1rem,2vw,1.8rem); }
-    .pcard{ position:relative; background: var(--dark); color:var(--on-dark); overflow:hidden; border-radius: 4px; display:flex; flex-direction:column; }
-    .pcard.left{ grid-column: 1 / span 6; } .pcard.right{ grid-column: 7 / span 6; }
-    .pcard .pic{ position:relative; overflow:hidden; }
-    .pcard .pic img{ width:100%; height:100%; object-fit:cover; aspect-ratio: 2 / 1; transition: transform 1.2s var(--ease); }
-    .pcard:hover .pic img{ transform: scale(1.04); }
-    .pcard .plate-no{ position:absolute; top:.8rem; left:1rem; z-index:2; font-family:var(--display); font-weight:800; font-size: clamp(2.5rem,6vw,5rem); color:#fff; mix-blend-mode: difference; line-height:.8; }
-    .pcard .body{ padding: clamp(1.3rem,2.4vw,2.2rem); display:flex; flex-direction:column; gap:.8rem; flex:1; }
-    .pcard .t{ font-family:var(--display); font-weight:700; font-size: clamp(1.4rem,2.4vw,2.2rem); letter-spacing:-.01em; line-height:1; }
-    .pcard .t em{ font-style:normal; color:var(--accent); }
-    .pcard .d{ color: var(--on-dark-mute); font-size:1rem; line-height:1.5; max-width: 44ch; }
-    .pcard .meta{ margin-top:auto; font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color: var(--on-dark-mute); }
-    .spine{ grid-column: 1 / -1; position:relative; background:var(--dark); overflow:hidden; border-radius:4px; }
-    .spine img{ width:100%; height:100%; object-fit:cover; max-height: 70vh; opacity:.9; }
-    .spine .overlay{ position:absolute; inset:0; display:flex; flex-direction:column; justify-content:space-between; padding: clamp(1.2rem,3vw,2.6rem); pointer-events:none;
-      background: linear-gradient(90deg, rgba(11,11,11,.65), rgba(11,11,11,0) 45%); }
-    .spine .ov-top{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color: var(--on-dark); }
-    .spine .ov-big{ font-family:var(--display); font-weight:800; color:#fff; font-size: clamp(2rem,6vw,5rem); line-height:.9; text-transform:uppercase; max-width:16ch; }
-    .spine .ov-big b{ color: var(--accent); font-weight:800; }
-    @media (max-width:820px){ .pcard.left,.pcard.right{ grid-column:1 / -1; } }
+    /* ─── TWO PAINTINGS ─── */
+    .works { max-width: 1480px; margin: 0 auto; padding: 0 var(--edge) clamp(1rem, 3vh, 2rem); }
+    .work { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.6rem; align-items: start; }
+    .work + .work { margin-top: clamp(2.4rem, 6vh, 4.4rem); }
+    .work .pic { grid-column: 1 / span 8; }
+    .work.flip .pic { grid-column: 5 / span 8; grid-row: 1; }
+    .work .pic .frame { background: #fff; padding: 10px 10px 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.08), 0 18px 44px rgba(0,0,0,0.16); }
+    .work .pic img { width: 100%; height: auto; display: block; filter: saturate(0.98) contrast(1.02); }
+    .work .info { grid-column: 9 / span 4; align-self: center; }
+    .work.flip .info { grid-column: 1 / span 4; grid-row: 1; align-self: center; }
+    .work .info .no {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted);
+      padding-top: 0.4rem; border-top: 1px solid var(--rule);
+    }
+    .work .info h3 {
+      margin-top: 0.7rem;
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.6rem, 2.6vw, 2.4rem); line-height: 1.06; color: var(--ink);
+    }
+    .work .info h3 em { color: var(--red); font-style: italic; }
+    .work .info p {
+      margin-top: 0.8rem; font-family: var(--serif); font-size: clamp(0.98rem, 1.05vw, 1.06rem); line-height: 1.6; color: var(--ink-2); max-width: 42ch;
+    }
+    .work .info .spec {
+      margin-top: 1rem; padding-top: 0.7rem; border-top: 1px solid var(--rule-soft);
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+    }
+    @media (max-width: 880px) {
+      .work .pic, .work.flip .pic, .work .info, .work.flip .info { grid-column: 1 / -1; grid-row: auto; }
+      .work .info { margin-top: 0.4rem; }
+    }
 
-    /* THE ASK */
-    .ask{ background: var(--dark); color: var(--on-dark); text-align:center; }
-    .ask .big{ font-family:var(--display); font-weight:800; text-transform:uppercase; letter-spacing:-.01em; line-height:.96; font-size: clamp(2.6rem,9vw,8.5rem); }
-    .ask .big .b{ display:block; color: var(--accent); }
-    .ask .tail{ margin-top: clamp(1.4rem,3vw,2.4rem); font-size: clamp(1.05rem,1.6vw,1.4rem); color: var(--on-dark-mute); max-width: 40ch; margin-left:auto; margin-right:auto; }
-    .ask .standout{ margin: clamp(1rem,2vw,1.6rem) auto 0; max-width: 26ch;
-      font-family:var(--display); font-weight:800; letter-spacing:-.01em; line-height:1.05;
-      font-size: clamp(1.4rem,3vw,2.6rem); color:#fff;
-      border-top:1px solid rgba(255,255,255,.16); border-bottom:1px solid rgba(255,255,255,.16); padding: clamp(.9rem,2vw,1.4rem) 0; }
-    .ask .standout::after{ content:""; }
-    .ask .standout em, .ask .standout b{ color: var(--accent); }
+    /* ─── PANTHEON ─── */
+    .pantheon-wrap { max-width: 1480px; margin: 0 auto; padding: 0 var(--edge) clamp(1rem, 3vh, 2rem); }
+    .pantheon-lead {
+      max-width: 62ch; margin-bottom: clamp(1.6rem, 3vw, 2.4rem);
+      font-family: var(--serif); font-size: clamp(1.0rem, 1.15vw, 1.14rem); line-height: 1.62; color: var(--ink);
+    }
+    .pantheon-lead em { color: var(--red); font-style: italic; }
+    .pantheon { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(0.8rem, 1.6vw, 1.4rem); }
+    .god {
+      display: flex; flex-direction: column;
+      background: var(--paper); border: 1px solid var(--rule-soft);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 12px 30px rgba(0,0,0,0.08);
+    }
+    .god .stage { position: relative; aspect-ratio: 3 / 4; overflow: hidden; background:
+      radial-gradient(120% 90% at 50% 20%, rgba(255,255,255,0.6), rgba(227,220,200,0.35)); }
+    .god model-viewer { position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; --poster-color: transparent; }
+    .god .gph {
+      position: absolute; inset: 0; display: grid; place-items: center; z-index: 0;
+      font-family: var(--display); font-style: italic; font-size: clamp(2.6rem, 5vw, 4rem); color: rgba(14,14,12,0.10);
+    }
+    .god .cap { padding: 0.7rem 0.85rem 0.85rem; border-top: 1px solid var(--rule-soft); }
+    .god .cap .nm { font-family: var(--display); font-style: italic; font-size: clamp(1rem, 1.4vw, 1.28rem); line-height: 1.05; color: var(--ink); }
+    .god .cap .tag { margin-top: 0.35rem; font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .god .cap .tag em { color: var(--red); font-style: normal; }
+    .pantheon-note {
+      margin-top: 1.2rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+    }
+    .pantheon-note em { color: var(--red); font-style: normal; }
+    @media (max-width: 700px) { .pantheon { grid-template-columns: repeat(2, 1fr); } }
 
-    /* STATEMENT collapsible */
-    .statement-sec{ background: var(--dark-2); color: var(--on-dark); }
-    details.statement{ border-top:1px solid rgba(255,255,255,.14); border-bottom:1px solid rgba(255,255,255,.14); }
-    details.statement > summary{ cursor:pointer; list-style:none; padding: clamp(1.4rem,3vw,2.4rem) 0; display:flex; align-items:center; gap:1.2rem; }
-    details.statement > summary::-webkit-details-marker{ display:none; }
-    details.statement > summary .lbl{ font-family:var(--display); font-weight:800; text-transform:uppercase; letter-spacing:-.02em; font-size: clamp(2rem,6vw,5rem); line-height:.9; }
-    details.statement > summary .lbl em{ font-style:normal; color: var(--accent); }
-    details.statement > summary .open-pill{ margin-left:auto; flex:0 0 auto; display:inline-flex; align-items:center; gap:.55rem; font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color: var(--on-dark);
-      border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:.6rem .7rem .6rem 1rem; transition: background .4s var(--ease-2), color .4s var(--ease-2); }
-    details.statement > summary .open-pill .arr{ width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center; transition: transform .5s var(--ease-2); }
-    details.statement[open] > summary .open-pill .arr{ transform: rotate(90deg); }
-    details.statement > summary:hover .open-pill{ background: var(--accent); border-color:var(--accent); }
-    .stmt-body{ display:grid; grid-template-columns: 1fr; gap: clamp(2rem,4vw,3rem); padding: clamp(1.5rem,3vw,2.5rem) 0 clamp(2rem,4vw,3.5rem); }
-    @media (min-width:980px){ .stmt-body{ grid-template-columns: 1fr 1fr; align-items:start; } }
-    .stmt-prose p{ font-size: clamp(1.05rem,1.35vw,1.18rem); line-height:1.65; color: var(--on-dark); max-width: 56ch; }
-    .stmt-prose p + p{ margin-top: 1rem; }
-    .stmt-prose .open{ font-family:var(--display); font-weight:700; font-size: clamp(1.5rem,2.4vw,2.1rem); line-height:1.12; letter-spacing:-.01em; color:#fff; margin-bottom:1.2rem; max-width: 22ch; }
-    .stmt-prose em{ color: var(--accent); font-style:italic; }
-    .stmt-prose .sign{ display:block; margin-top:1.6rem; font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color: var(--on-dark-mute); }
-    .fn-marker{ cursor:pointer; color: var(--accent); font-family:var(--mono); font-size:.7em; vertical-align:super; font-weight:600; }
-    .fnotes .fnh{ font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color: var(--on-dark-mute); margin-bottom:.6rem; }
-    details.fnote{ border-top:1px solid rgba(255,255,255,.14); }
-    details.fnote:last-child{ border-bottom:1px solid rgba(255,255,255,.14); }
-    details.fnote > summary{ cursor:pointer; list-style:none; padding:1rem 0; display:flex; align-items:baseline; gap:.7rem; font-family:var(--display); font-weight:600; font-size: clamp(1.05rem,1.5vw,1.3rem); line-height:1.2; color: var(--on-dark); }
-    details.fnote > summary::-webkit-details-marker{ display:none; }
-    details.fnote > summary .star{ font-family:var(--mono); color:var(--accent); flex:0 0 auto; }
-    details.fnote > summary .ch{ margin-left:auto; font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color: var(--on-dark-mute); }
-    details.fnote[open] > summary .ch{ color: var(--accent); }
-    details.fnote .fb{ padding:0 0 1.2rem 1.6rem; }
-    details.fnote .fb p{ font-size:.98rem; line-height:1.6; color: var(--on-dark-mute); max-width:56ch; }
-    details.fnote .fb p + p{ margin-top:.8rem; }
-    details.fnote .fb em{ color: var(--accent); font-style:italic; }
-    .fnotes .fn-book{ display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;
-      margin-top:.2rem; padding:1.1rem 0; border-top:1px solid rgba(255,255,255,.14); border-bottom:1px solid rgba(255,255,255,.14);
-      text-decoration:none; color:var(--on-dark); transition: padding .35s var(--ease-2); }
-    .fnotes .fn-book .fb-l{ font-family:var(--display); font-weight:600; font-size: clamp(1.05rem,1.5vw,1.3rem); line-height:1.15; }
-    .fnotes .fn-book .fb-cta{ font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); display:inline-flex; align-items:center; gap:.55rem; white-space:nowrap; }
-    .fnotes .fn-book .fb-cta .ar{ width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center; transition:transform .4s var(--ease-2); }
-    .fnotes .fn-book:hover .fb-cta .ar{ transform: translate(2px,-2px); }
+    /* ─── ZINE ─── */
+    .zine-wrap { max-width: 1480px; margin: 0 auto; padding: 0 var(--edge) clamp(1rem, 3vh, 2rem); }
+    .zine-lead { max-width: 62ch; margin-bottom: 1.4rem; font-family: var(--serif); font-size: clamp(1.0rem, 1.15vw, 1.14rem); line-height: 1.62; color: var(--ink); }
+    .zine-lead em { color: var(--red); font-style: italic; }
+    #callingZineShelf { min-height: 200px; }
+    .zine-cta {
+      display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 0.4rem;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink);
+      text-decoration: none; border-bottom: 1px solid var(--rule-soft); padding-bottom: 0.2rem;
+      transition: color .2s var(--ease), border-color .2s var(--ease);
+    }
+    .zine-cta .ar { width: 22px; height: 22px; border-radius: 50%; background: var(--red); color: #fff; display: grid; place-items: center; transition: transform .4s var(--ease-out); }
+    .zine-cta:hover { color: var(--red); border-color: var(--red); }
+    .zine-cta:hover .ar { transform: translate(2px, -2px); }
+    .zine-note { margin-top: 1rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
 
-    /* IN THE ROOM */
-    .room{ background: var(--bg); }
-    .room .head{ margin-bottom: clamp(2rem,4vw,3.5rem); }
-    .room h2{ font-size: clamp(2.4rem,6vw,5rem); text-transform:uppercase; }
-    .panel{ background: var(--paper); border-radius:6px; padding: clamp(1.4rem,3vw,2.6rem); box-shadow: 0 30px 60px -40px rgba(0,0,0,.4); }
-    .panel + .panel{ margin-top: clamp(1.2rem,2.5vw,2rem); }
-    .panel .ph{ display:flex; justify-content:space-between; align-items:baseline; gap:1rem; flex-wrap:wrap; margin-bottom:1.2rem; }
-    .panel .ph .t{ font-family:var(--display); font-weight:700; font-size: clamp(1.5rem,2.6vw,2.2rem); text-transform:uppercase; letter-spacing:-.01em; }
-    .panel .ph .n{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--mute); }
-    .panel .lead{ color: var(--ink-2); max-width: 60ch; margin-bottom:1.4rem; font-size:1.05rem; }
-    .pantheon{ display:grid; grid-template-columns: repeat(4,1fr); gap: clamp(.6rem,1.4vw,1.1rem); }
-    .god{ position:relative; aspect-ratio: 3/4; background: var(--bg-2); border-radius:4px; overflow:hidden; display:flex; align-items:flex-end; }
-    .god model-viewer{ position:absolute; inset:0; width:100%; height:100%; background:transparent; --poster-color:transparent; transform: scale(.75); transform-origin: center; }
-    .god .gname{ position:relative; z-index:2; width:100%; padding:.6rem .7rem; font-family:var(--display); font-weight:700; font-size: clamp(.85rem,1.1vw,1.05rem); text-transform:uppercase; letter-spacing:-.01em; background: linear-gradient(transparent, rgba(0,0,0,.05)); }
-    .god .gph{ position:absolute; inset:0; display:grid; place-items:center; z-index:0; font-family:var(--display); font-weight:800; font-size: 2.4rem; color: rgba(10,10,10,.10); text-transform:uppercase; }
-    @media (max-width:700px){ .pantheon{ grid-template-columns: repeat(2,1fr);} }
-    .panel .marg{ margin-top:.8rem; font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--mute); }
-    .panel .marg .accent{ color:var(--accent); }
-    #callingZineShelf{ min-height: 200px; }
+    /* ─── VISIT ─── */
+    .visit {
+      position: relative; z-index: 2;
+      border-top: 1px solid var(--rule); background: var(--paper-2);
+      padding: clamp(2.4rem, 6vh, 4.4rem) var(--edge);
+    }
+    .visit-grid { max-width: 1480px; margin: 0 auto; display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.6rem; align-items: start; }
+    .visit .lede { grid-column: 1 / span 5; }
+    .visit .lede .lab { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-2); padding-top: 0.4rem; border-top: 1px solid var(--rule); display: inline-block; }
+    .visit .lede h2 { margin-top: 0.8rem; font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.04; color: var(--ink); }
+    .visit .lede h2 em { color: var(--red); font-style: italic; }
+    .visit .lede .sig { display: block; width: clamp(170px, 22vw, 280px); margin-top: 1.4rem; opacity: 0.9; user-select: none; -webkit-user-drag: none; }
+    .visit .ticket { grid-column: 7 / span 6; }
+    .trow { display: grid; grid-template-columns: 120px 1fr; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--rule-soft); align-items: baseline; }
+    .trow .l { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .trow .v { font-family: var(--serif); font-size: 1.06rem; color: var(--ink); line-height: 1.4; }
+    .trow .v.tk { color: var(--muted); font-style: italic; }
+    .trow .v a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--red); }
+    .trow .v a:hover { color: var(--red); }
+    @media (max-width: 880px) {
+      .visit .lede, .visit .ticket { grid-column: 1 / -1; }
+      .trow { grid-template-columns: 92px 1fr; }
+    }
 
-    /* FOOTER */
-    .foot{ background: var(--dark); color: var(--on-dark); }
-    .foot .grid{ display:grid; grid-template-columns:1fr; gap: clamp(2rem,5vw,4rem); }
-    @media (min-width:860px){ .foot .grid{ grid-template-columns: 1.2fr 1fr; } }
-    .foot h2{ font-size: clamp(2.6rem,7vw,6rem); text-transform:uppercase; line-height:.94; }
-    .foot .sig{ display:block; width: clamp(190px, 24vw, 320px); margin-top: clamp(1.4rem,3vw,2.4rem); filter: brightness(0) invert(1); opacity:.95; user-select:none; -webkit-user-drag:none; }
-    .foot h2 em{ font-style:normal; color: var(--accent); }
-    .ticket{ display:grid; gap:0; }
-    .trow{ display:grid; grid-template-columns: 120px 1fr; gap:1rem; padding:1rem 0; border-bottom:1px solid rgba(255,255,255,.13); align-items:baseline; }
-    .trow .l{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color: var(--on-dark-mute); }
-    .trow .v{ font-family:var(--display); font-weight:600; font-size:1.1rem; }
-    .trow .v.tk{ color: var(--on-dark-mute); font-weight:400; font-family:var(--body); }
-    .trow .v a{ color:#fff; text-decoration:none; border-bottom:1px solid var(--accent); }
-    .foot .colo{ margin-top: clamp(2.5rem,6vw,5rem); display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color: var(--on-dark-mute); border-top:1px solid rgba(255,255,255,.13); padding-top:1.4rem; }
-    .foot .seal{ width:46px;height:46px;border:1px solid rgba(255,255,255,.3); border-radius:50%; display:grid; place-items:center; }
-    .foot .seal img{ width:64%; filter: invert(1) brightness(2); opacity:.85; }
+    /* ─── COLOPHON ─── */
+    .colophon {
+      position: relative; z-index: 2;
+      padding: clamp(2.5rem, 6vh, 4rem) var(--edge) clamp(2rem, 4vh, 3rem);
+      border-top: 1px solid var(--rule);
+      background: var(--paper);
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2);
+    }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.35rem; }
+    .colophon h3 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 1.05rem; letter-spacing: 0.02em; color: var(--ink); text-transform: none; margin-bottom: 0.2rem; }
+    .colophon a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .seal { width: 60px; height: 60px; border: 1px solid var(--rule); border-radius: 50%; display: grid; place-items: center; background: var(--paper); margin-bottom: 0.6rem; }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; }
+    @media (max-width: 720px) { .colophon { grid-template-columns: 1fr; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tape-track { animation: none; }
+      .rv { opacity: 1; transform: none; transition: none; }
+      * { animation: none !important; }
+    }
   </style>
 </head>
 <body>
-  <nav class="nav" id="nav" aria-label="Exhibition">
-    <span class="dot" aria-hidden="true"></span>
-    <span class="nav-t">Calling All Gods</span>
-    <span class="nav-when">Parsons · NY · Dec 2026 – Mar 2027</span>
-  </nav>
-  <button class="fsbtn" id="fsBtn" type="button" aria-label="Toggle full screen view"><span class="fslbl">Full screen</span> <span class="arr" aria-hidden="true">⤢</span></button>
+  <div class="tape" role="presentation">
+    <div class="tape-track">
+      <span>Calling All Gods</span><span class="dot"></span>
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Parsons School of Design · New York</span><span class="dot"></span>
+      <span>10 December 2026</span><span class="dot"></span>
+      <span>The gods we use, not the gods we believe in</span><span class="dot"></span>
+      <span>Calling All Gods</span><span class="dot"></span>
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Parsons School of Design · New York</span><span class="dot"></span>
+      <span>10 December 2026</span><span class="dot"></span>
+      <span>The gods we use, not the gods we believe in</span><span class="dot"></span>
+    </div>
+  </div>
 
-  <!-- HERO -->
-  <header class="hero" id="top">
-    <div class="hero-img"><img src="./images/two%20paintings%20together.png" alt="Calling All Gods, two monumental paintings installed side by side" /></div>
-    <div class="hero-top">
-      <span class="eyebrow on-dark">Raghava KK · Exhibition</span>
-      <span class="eyebrow on-dark">The gods we use</span>
+  <header class="masthead" role="banner">
+    <div class="left">
+      <span><a class="home-link" href="./index.html">← Raghava KK</a></span>
+      <span class="stamp">Exhibition</span>
     </div>
-    <div class="hero-inner wrap">
-      <h1 class="rv"><span class="line">Calling</span><span class="line">All <em>Gods</em></span></h1>
-      <p class="hero-sub rv d1">Two paintings, each twelve and a half feet high and twenty-five feet wide, stand side by side as one unbroken wall. From across the room they look like devotion: vast, intricate, more than the eye can hold. Walk closer and the gods start to misbehave: cartoons, memes, historical figures, villains, the faces nobody admits to praying to.</p>
-      <div class="hero-meta rv d2">
-        <span>Venue<b>Parsons School of Design · NY</b></span>
-        <span>Dates<b>December 2026 – March 2027</b></span>
-        <span>Scale<b>Two paintings · 12.5 × 25 ft each</b></span>
-      </div>
+    <div class="center">the capacity to stay standing in a fracturing world</div>
+    <div class="right">
+      <span id="dateStamp">THU · 13 AUG 2026</span>
+      <span id="timeStamp">--:--</span>
     </div>
-    <div class="scrollcue" aria-hidden="true"><span>Scroll</span><span class="bar"></span></div>
   </header>
 
-  <!-- THESIS -->
-  <section class="section thesis">
-    <div class="wrap">
-      <span class="eyebrow rv">§ 01 · The gods we use</span>
-      <p class="lede rv d1" style="margin-top:clamp(1.2rem,2vw,2rem)">Everyone alive right now is reaching for the most ridiculous and magnificent collection of gods imaginable, just to get through this century.</p>
-      <p class="megaquote rv d1"><span class="a">Not the gods we</span> <span class="b">believe in.</span> <span class="a">The gods we</span> <span class="b">use.</span></p>
-    </div>
-  </section>
-
-  <!-- PICASSO BAND -->
-  <section class="section band">
-    <div class="wrap">
-      <span class="eyebrow on-dark rv">§ 02 · What Guernica becomes</span>
-      <p class="big rv d1" style="margin-top:clamp(1.2rem,2vw,2rem)">Picasso painted one war, one town, one canvas. This is what Guernica becomes when every war is visible at once, and no one can look away.</p>
-    </div>
-  </section>
-
-  <!-- PLATES -->
-  <section class="section plates" id="works">
-    <div class="wrap">
-      <div class="head">
-        <h2 class="rv">The two<br>paintings</h2>
-        <span class="kicker rv d1">One body. One survivor. Side by side.</span>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <p class="eyebrow rv"><span class="num">Solo exhibition</span>Parsons School of Design, New York</p>
+      <h1 class="rv d1">Calling All <em>Gods</em></h1>
+      <p class="dek rv d1">The capacity to stay standing in a fracturing world.</p>
+      <p class="sub rv d2">Two paintings, each at the scale of Guernica, stand side by side as one unbroken wall. From across the room they read as devotion. Walk closer and the gods start to misbehave: myths and cartoons, saints and villains, the faces nobody admits to reaching for.</p>
+      <div class="meta rv d3">
+        <span>Venue<b>Parsons School of Design, NY</b></span>
+        <span>Date<b>10 December 2026</b></span>
+        <span>Scale<b>Two paintings · 12.5 × 25 ft each</b></span>
+        <span>Also<b>Seven gods as toys · one book</b></span>
       </div>
-      <div class="bento">
-        <article class="pcard left rv">
-          <div class="pic"><span class="plate-no">i</span><img src="./images/studio/03-guernica.jpg" alt="La Liberté de Guernica, painting by Raghava KK" loading="lazy" /></div>
-          <div class="body">
-            <div class="t">La Liberté de <em>Guernica</em></div>
-            <p class="d">On the left, a woman standing on the ruins of Guernica. Not free, not winning, still standing. Endurance without a rescue is its own kind of dignity.</p>
-            <span class="meta">Acrylic on canvas · 12.5 × 25 ft · 2022 – 2026</span>
-          </div>
-        </article>
-        <article class="pcard right rv d1">
-          <div class="pic"><span class="plate-no">ii</span><img src="./images/Vishwaroopa.jpg" alt="Vishwaroopa, painting by Raghava KK" loading="lazy" /></div>
-          <div class="body">
-            <div class="t"><em>Vishwaroopa</em></div>
-            <p class="d">On the right, the universal form from the Bhagavad Gita. One body holding everything that cannot be held together. Gods, ideologies, time, violence, contradiction, all at once. The terror is real and not talked down.</p>
-            <span class="meta">Acrylic on canvas · 12.5 × 25 ft · 2022 – 2026</span>
-          </div>
-        </article>
-        <div class="spine rv">
-          <img src="./images/two%20paintings%20together.png" alt="The two paintings installed together as one continuous wall" loading="lazy" />
-          <div class="overlay">
-            <div class="ov-top"><span>The spine, installed</span><span>One continuous wall · 25 × 25 ft</span></div>
-            <div class="ov-big">Four years.<br>One <b>architecture</b>,<br>one inhabitant.</div>
-          </div>
+    </section>
+
+    <!-- HERO PLATE -->
+    <div class="plate-wide rv">
+      <figure class="plate-frame">
+        <img src="./images/two%20paintings%20together.png" alt="Calling All Gods, two monumental paintings installed side by side as one wall" loading="eager" />
+      </figure>
+      <figcaption class="plate-cap">
+        <span><em>Two paintings on one wall.</em> You cannot see both at once. You walk.</span>
+        <span>One continuous wall · installed</span>
+      </figcaption>
+    </div>
+
+    <!-- PREMISE -->
+    <section class="premise">
+      <span class="lab rv">§ 01 · The premise</span>
+      <p class="lede rv d1">Everyone alive right now is reaching for the most ridiculous and magnificent collection of gods imaginable, just to get through this century.</p>
+      <p class="big rv d1">Not the gods we believe in. The gods we <em>use.</em></p>
+    </section>
+
+    <!-- ARTIST STATEMENT -->
+    <section class="prose-block" aria-labelledby="artist-statement">
+      <div class="prose-grid">
+        <h2 class="prose-head" id="artist-statement">Artist statement</h2>
+        <div class="prose-col">
+          <p class="open rv">What kind of human being can live in a fractured world without retreating into <em>simplistic answers?</em></p>
+          <p class="rv d1"><i>Calling All Gods</i> began as a personal search after my certainty collapsed. Over four years, these paintings became an attempt to answer a larger question: what kind of human being can live in a fractured world without retreating into simplistic answers?</p>
+          <p class="rv d1">Drawing from myth, history, memory and lived experience, the work does not seek to reconcile contradictions, but to enlarge the space that can hold them. The paintings ask whether maturity is not the elimination of complexity, but the capacity to remain fully present within it.</p>
+          <p class="rv d2" style="font-family:var(--mono);font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-top:1.6rem;">Raghava KK · Bengaluru · 2026</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PULL QUOTE -->
-  <section class="section quote">
-    <div class="wrap">
-      <blockquote class="pull rv">Because the alternative to held is not resolution. It is <em>violence or collapse</em>.</blockquote>
-      <p class="attr rv d1">From the artist statement</p>
-    </div>
-  </section>
-
-  <!-- THE ASK -->
-  <section class="section ask">
-    <div class="wrap">
-      <span class="eyebrow on-dark rv" style="justify-content:center; display:inline-flex">§ 03 · The ask</span>
-      <p class="big rv d1" style="margin-top:clamp(1.4rem,3vw,2.4rem)">Hold all of it.<span class="b">And keep standing.</span></p>
-      <p class="tail rv d2">The show offers no resolution. It asks one thing of you.</p>
-      <p class="standout rv d3">That you can is the <em>most hopeful thing</em> it knows.</p>
-    </div>
-  </section>
-
-  <!-- STATEMENT -->
-  <section class="section statement-sec">
-    <div class="wrap">
-      <details class="statement">
-        <summary>
-          <span class="lbl">Artist <em>statement</em></span>
-          <span class="open-pill">Read <span class="arr" aria-hidden="true">→</span></span>
-        </summary>
-        <div class="stmt-body">
-          <div class="stmt-prose">
-            <p class="open">I went looking for God and found a list instead. It was not a dignified list.</p>
-            <p>When my marriage ended and I was flat on my back in a desert, unable to stand, I did not call on the God I believe in. I called on everyone. Krishna. Jesus. Hanuman. Donald Duck. My own rage. Whatever was within reach.</p>
-            <p>That should embarrass me. It doesn't anymore, and that is the hopeful part.</p>
-            <p>Because here is what I learned face down in the dust. You are not who you believe you are. You are who you reach for when you are breaking<sup class="fn-marker" data-fn="fn1" role="button" tabindex="0" aria-label="Open footnote one">*</sup>. And that crowd you reach for is a circus. Gods and cartoons. Saints and villains. The Bhagavad Gita and a video game. The holy ones you would name in public, and the ones you would never admit to, the rage and the revenge and the denial, sitting right there in the same hand.</p>
-            <p>I painted all of them. With the same love. Because that is honestly how we use them<sup class="fn-marker" data-fn="fn2" role="button" tabindex="0" aria-label="Open footnote two">**</sup>.</p>
-            <p>And you do it too. Everyone alive right now is calling on something to get through this century, the whole species reaching at once for the most ridiculous and magnificent collection of gods imaginable. You are not broken for it. You are gloriously, hilariously human, in a time that gives no one solid ground.</p>
-            <p>So the painting does not ask you to clean up your list. You can't, and you shouldn't. It does not ask you to resolve yourself into one tidy person. There is no such person, and they would be unbearable company. It asks one thing. Hold it. The whole contradictory, sacred, embarrassing pile. The god and the devil and the duck. And keep standing.</p>
-            <p>That is the woman on the broken ground. She is not free. She is not winning. She is holding everything that will not reconcile, with what I am fairly sure is a small smile, and she has not fallen.</p>
-            <p>Neither have you. That is great news. Because the alternative to held is not resolution. It is violence or collapse.</p>
-            <span class="sign">Raghava KK · Bangalore · 2026</span>
-          </div>
-          <div class="fnotes">
-            <p class="fnh">Two notes, expand to read</p>
-            <details class="fnote" id="fn1">
-              <summary><span class="star">*</span><span>You are who you reach for when you are breaking</span><span class="ch">Open</span></summary>
-              <div class="fb">
-                <p>Plainly: in normal life you can curate yourself. You choose your words, your values, the image you present. So who you "are" looks like a decision you make. But when something breaks you, a death, a divorce, a war, real fear, you don't have time to curate. You reach. Automatically. For whatever actually steadies you. And that reflex shows what you genuinely run on, not what you claim to.</p>
-                <p>A few plain examples. Someone says they're rational and secular, then their kid gets sick and they find themselves praying. Someone says they forgive, then they get hurt and reach straight for revenge. Someone preaches calm, then panics and reaches for control. The crisis strips the performance and shows the actual operating system underneath. When you were breaking, which of these did you actually grab? <em>That one is you.</em></p>
-              </div>
-            </details>
-            <details class="fnote" id="fn2">
-              <summary><span class="star">**</span><span>Because that is honestly how we use them</span><span class="ch">Open</span></summary>
-              <div class="fb">
-                <p>It means the love in the painting is not Raghava approving of these gods. It is him being accurate about how we actually treat them.</p>
-                <p>In real life we don't keep our ugly impulses at arm's length. We don't reach for revenge reluctantly and Krishna warmly. We reach for both the same way: with full intensity, total intimacy, complete dependence. When someone wrongs you, the fantasy of revenge is not cold and clinical. It is comforting. You curl up in it. You feed it. You return to it like a shrine. That is devotion. Same with denial, with rage, with ego. We treat them like gods because that is functionally what they are to us, things we turn to, trust, and let run our lives in the bad moments.</p>
-                <p>So if Raghava painted the noble gods with love and the dark ones with disgust, he would be lying. The honesty is in the equal treatment. Hitler gets the same brushwork as Hanuman because the man on the floor reaching for certainty, or revenge, or someone to blame, is reaching with the same desperate tenderness he reaches for the holy.</p>
-                <p>The "same love" is not a moral statement. It is a confession. It admits that we adore our worst gods too. We just don't say it out loud.</p>
-              </div>
-            </details>
-            <a class="fn-book" id="openBook" href="./books/art%20books/Calling%20All%20Gods_Artist%20Book.pdf">
-              <span class="fb-l">The book is the statement too. Read it.</span>
-              <span class="fb-cta">Open Calling All Gods <span class="ar" aria-hidden="true">→</span></span>
-            </a>
-          </div>
+    <!-- EXHIBITION STATEMENT -->
+    <section class="prose-block plain" aria-labelledby="exhibition-statement">
+      <div class="prose-grid">
+        <h2 class="prose-head" id="exhibition-statement">Exhibition statement</h2>
+        <div class="prose-col">
+          <p class="rv">At a moment when public life rewards certainty, polarization and reduction, <i>Calling All Gods</i> offers a radically different proposition. Rather than asking viewers to choose between tradition and modernity, faith and doubt, or East and West, the exhibition proposes that our greatest challenge is to become large enough to hold these tensions without collapsing them into a single answer.</p>
+          <p class="rv d1">In doing so, it reframes painting not as an escape from contemporary life, but as a <em>practice for inhabiting complexity.</em></p>
         </div>
-      </details>
-    </div>
-  </section>
-
-  <!-- IN THE ROOM -->
-  <section class="section room" id="room">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow rv">§ 04 · In the room</span>
-        <h2 class="rv d1" style="margin-top:.8rem">Around the<br>paintings</h2>
       </div>
+    </section>
 
-      <div class="panel rv">
-        <div class="ph"><span class="t">The pantheon, on pedestals</span><span class="n">5–7 toy sculptures</span></div>
-        <p class="lead">The gods as objects you can hold. Drag any figure to turn it; let go and it spins on its own.</p>
-        <div class="pantheon" id="pantheon">
-          <div class="god"><span class="gph">T</span><model-viewer src="./toys/3d/trump.glb" camera-controls auto-rotate disable-zoom rotation-per-second="22deg" interaction-prompt="none" shadow-intensity="0.35" exposure="1.05" environment-image="neutral" camera-orbit="18deg 80deg 2.5m" field-of-view="26deg" loading="lazy" reveal="auto" alt="Trump toy sculpture"></model-viewer><span class="gname">Trump</span></div>
-          <div class="god"><span class="gph">B</span><model-viewer src="./toys/3d/bezos.glb" camera-controls auto-rotate disable-zoom rotation-per-second="22deg" interaction-prompt="none" shadow-intensity="0.35" exposure="1.05" environment-image="neutral" camera-orbit="18deg 80deg 2.5m" field-of-view="26deg" loading="lazy" reveal="auto" alt="Bezos toy sculpture"></model-viewer><span class="gname">Bezos</span></div>
-          <div class="god"><span class="gph">M</span><model-viewer src="./toys/3d/musk.glb" camera-controls auto-rotate disable-zoom rotation-per-second="22deg" interaction-prompt="none" shadow-intensity="0.35" exposure="1.05" environment-image="neutral" camera-orbit="18deg 80deg 2.5m" field-of-view="26deg" loading="lazy" reveal="auto" alt="Musk toy sculpture"></model-viewer><span class="gname">Musk</span></div>
-          <div class="god"><span class="gph">Z</span><model-viewer src="./toys/3d/zuck.glb" camera-controls auto-rotate disable-zoom rotation-per-second="22deg" interaction-prompt="none" shadow-intensity="0.35" exposure="1.05" environment-image="neutral" camera-orbit="18deg 80deg 2.5m" field-of-view="26deg" loading="lazy" reveal="auto" alt="Zuck toy sculpture"></model-viewer><span class="gname">Zuck</span></div>
+    <!-- THE TWO PAINTINGS -->
+    <header class="sect-head">
+      <p class="lab rv">§ 02 · The two paintings</p>
+      <h2 class="rv d1">One body. One survivor. <em>Side by side.</em></h2>
+      <p class="dek rv d1">Two canvases, each at the scale of Picasso's Guernica. Acrylic on canvas, painted across four years, 2022 to 2026.</p>
+    </header>
+    <section class="works">
+      <article class="work rv">
+        <div class="pic"><div class="frame"><img src="./images/studio/03-guernica.jpg" alt="La Liberte de Guernica, painting by Raghava KK" loading="lazy" /></div></div>
+        <div class="info">
+          <p class="no">Plate i</p>
+          <h3>La Liberté de <em>Guernica</em></h3>
+          <p>A woman stands on the ruins of Guernica. The ground beneath her is broken. Beside her, a double-headed tiger, not a symbol but the actual weight of irreconcilable things that do not leave. She is not riding it, not conquering it. She is standing. They will call her Liberty. That is wrong. She is not free. She is standing, and the difference is everything.</p>
+          <p class="spec">Acrylic on canvas · 12.5 × 25 ft · 2022–2026</p>
         </div>
-        <p class="marg"><span class="accent">live</span> · 3D objects · drag to turn · renders on the published site</p>
-      </div>
+      </article>
+      <article class="work flip rv">
+        <div class="pic"><div class="frame"><img src="./images/Vishwaroopa.jpg" alt="Vishwaroopa, painting by Raghava KK" loading="lazy" /></div></div>
+        <div class="info">
+          <p class="no">Plate ii</p>
+          <h3><em>Vishwaroopa</em></h3>
+          <p>The universal form from the Bhagavad Gita, one body holding everything that cannot be held together. Gods, ideologies, time, violence, contradiction, all at once. Arjuna once knelt at its feet. He has been removed. The figure the painting needs is the person standing in front of it now.</p>
+          <p class="spec">Acrylic on canvas · 12.5 × 25 ft · 2022–2026</p>
+        </div>
+      </article>
+    </section>
 
-      <div class="panel rv d1">
-        <div class="ph"><span class="t">Art-zines &amp; books</span><span class="n">pick one to read</span></div>
-        <p class="lead">At the exhibition these may be laid out page by page along a long wall, or stood up on a zine shelf. That is still being decided. Either way the show's own book, <span class="accent">Calling All Gods</span>, leads them. Pluck one off here to read it; the spreads turn.</p>
-        <div id="callingZineShelf"></div>
-        <p class="marg"><span class="accent">live</span> · click any book to open the reader</p>
+    <!-- THE PANTHEON -->
+    <header class="sect-head">
+      <p class="lab rv">§ 03 · The pantheon</p>
+      <h2 class="rv d1">The gods you can <em>hold.</em></h2>
+      <p class="dek rv d1">Not the gods anyone believes in. The gods we actually use, the ones with no temple and no name, brought down off the canvas and turned into toys.</p>
+    </header>
+    <section class="pantheon-wrap">
+      <p class="pantheon-lead rv">Seven of the gods step down from the wall and become playthings, small enough to hold. A pig that points a finger. A bald eagle. An infant crowned as a patron saint. A god of doomscrolling. A god of patterns and tools. Cast as toys, they are easier to admit to. <em>You use them too. You just haven't said it out loud.</em></p>
+      <div class="pantheon" id="pantheon">
+        <div class="god rv">
+          <div class="stage"><span class="gph">i</span><model-viewer src="./toys/3d/trump.glb" camera-controls auto-rotate disable-zoom rotation-per-second="11deg" interaction-prompt="none" shadow-intensity="0.3" shadow-softness="0.9" exposure="1.05" environment-image="neutral" camera-orbit="18deg 82deg 2.4m" field-of-view="26deg" loading="lazy" reveal="auto" alt="A toy god, after Trump"></model-viewer></div>
+          <div class="cap"><div class="nm">A pig, pointing</div><div class="tag"><em>3D</em> · drag to turn</div></div>
+        </div>
+        <div class="god rv d1">
+          <div class="stage"><span class="gph">ii</span><model-viewer src="./toys/3d/bezos.glb" camera-controls auto-rotate disable-zoom rotation-per-second="11deg" interaction-prompt="none" shadow-intensity="0.3" shadow-softness="0.9" exposure="1.05" environment-image="neutral" camera-orbit="18deg 82deg 2.4m" field-of-view="26deg" loading="lazy" reveal="auto" alt="A toy god, after Bezos"></model-viewer></div>
+          <div class="cap"><div class="nm">A bald eagle</div><div class="tag"><em>3D</em> · drag to turn</div></div>
+        </div>
+        <div class="god rv d2">
+          <div class="stage"><span class="gph">iii</span><model-viewer src="./toys/3d/zuck.glb" camera-controls auto-rotate disable-zoom rotation-per-second="11deg" interaction-prompt="none" shadow-intensity="0.3" shadow-softness="0.9" exposure="1.05" environment-image="neutral" camera-orbit="18deg 82deg 2.4m" field-of-view="26deg" loading="lazy" reveal="auto" alt="A toy god, an infant patron saint"></model-viewer></div>
+          <div class="cap"><div class="nm">The infant saint</div><div class="tag"><em>3D</em> · drag to turn</div></div>
+        </div>
+        <div class="god rv d3">
+          <div class="stage"><span class="gph">iv</span><model-viewer src="./toys/3d/musk.glb" camera-controls auto-rotate disable-zoom rotation-per-second="11deg" interaction-prompt="none" shadow-intensity="0.3" shadow-softness="0.9" exposure="1.05" environment-image="neutral" camera-orbit="18deg 82deg 2.4m" field-of-view="26deg" loading="lazy" reveal="auto" alt="A toy god"></model-viewer></div>
+          <div class="cap"><div class="nm">The engineer</div><div class="tag"><em>3D</em> · drag to turn</div></div>
+        </div>
       </div>
-    </div>
-  </section>
+      <p class="pantheon-note"><em>Four of the seven</em> turn here · the god of doomscrolling and the god of patterns and tools join them in the room · 3D renders on the published site</p>
+    </section>
 
-  <!-- FOOTER / PRACTICAL -->
-  <footer class="section foot" id="visit">
-    <div class="wrap">
-      <div class="grid">
-        <div>
-          <span class="eyebrow on-dark">§ 05 · Visit</span>
-          <h2 style="margin-top:1rem">Calling<br>All <em>Gods</em></h2>
+    <!-- THE BOOK / ZINE -->
+    <header class="sect-head">
+      <p class="lab rv">§ 04 · The book</p>
+      <h2 class="rv d1">The personal narrative, as a <em>zine.</em></h2>
+      <p class="dek rv d1">The measured version is on the wall. The raw one, the desert, the collapse, the four years, is in the book.</p>
+    </header>
+    <section class="zine-wrap">
+      <p class="zine-lead rv"><i>Calling All Gods</i> began in a desert, on a satellite phone, at the end of a marriage. The full first-person account behind the paintings lives in a zine that leads the show. <em>Pluck it off the shelf to read it; the spreads turn.</em></p>
+      <div id="callingZineShelf" class="rv"></div>
+      <a class="zine-cta" href="./books/art%20books/Calling%20All%20Gods_Artist%20Book.pdf" id="openBook">Open Calling All Gods <span class="ar" aria-hidden="true">→</span></a>
+      <p class="zine-note"><em>Live</em> · click any book to open the reader · 49 spreads</p>
+    </section>
+
+    <!-- VISIT -->
+    <section class="visit" aria-labelledby="visit">
+      <div class="visit-grid">
+        <div class="lede">
+          <span class="lab" id="visit">§ 05 · Visit</span>
+          <h2>Calling All <em>Gods</em></h2>
           <img class="sig" src="./images/raghava-signature.png" alt="Raghava KK" onerror="this.style.display='none'" />
         </div>
         <div class="ticket">
-          <div class="trow"><span class="l">Venue</span><span class="v">Parsons School of Design<br><span class="v tk" style="font-size:.95rem">New York · [Gallery TK]</span></span></div>
-          <div class="trow"><span class="l">Dates</span><span class="v">December 2026 – March 2027</span></div>
-          <div class="trow"><span class="l">Opening</span><span class="v tk">Date &amp; time TK</span></div>
+          <div class="trow"><span class="l">Venue</span><span class="v">Parsons School of Design<br><span class="v tk" style="font-size:0.95rem">New York · Gallery TK</span></span></div>
+          <div class="trow"><span class="l">Date</span><span class="v">10 December 2026</span></div>
+          <div class="trow"><span class="l">Opening</span><span class="v tk">Time and RSVP TK</span></div>
           <div class="trow"><span class="l">Hours</span><span class="v tk">TK</span></div>
           <div class="trow"><span class="l">Contact</span><span class="v"><a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a></span></div>
         </div>
       </div>
-      <div class="colo">
-        <span class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" /></span>
-        <span>&copy; 2026 Raghava KK · Studio Bengaluru / New York</span>
-      </div>
+    </section>
+  </main>
+
+  <footer class="colophon" role="contentinfo">
+    <div class="col c-a">
+      <h3>Inquiries.</h3>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
+      <span>Parsons · NYC · 10 December 2026 · By appointment</span>
+    </div>
+    <div class="col c-b">
+      <a href="./about2.html">Short bio →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./library2.html">The library →</a>
+      <a href="./talks2.html">Talks →</a>
+      <a href="./sitemap2.html">Site map →</a>
+      <span>Studio · Bengaluru</span>
+      <span>Studio · New York</span>
+    </div>
+    <div class="col c-c">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK &middot; <a href="./terms.html">Terms</a></span>
     </div>
   </footer>
 
@@ -467,63 +607,50 @@
   <script src="./data/library-rows.js"></script>
   <script src="./js/library-shelf.js"></script>
   <script>
-  (function(){
+  (function () {
     'use strict';
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-    }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
-    document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+    // reveal on scroll
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
 
-    // full-screen toggle
-    var fsBtn = document.getElementById('fsBtn');
-    if (fsBtn) {
-      var root = document.documentElement;
-      fsBtn.addEventListener('click', function(){
-        var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
-        if (!fsEl) { (root.requestFullscreen || root.webkitRequestFullscreen || function(){}).call(root); }
-        else { (document.exitFullscreen || document.webkitExitFullscreen || function(){}).call(document); }
-      });
-      var sync = function(){ var on = document.fullscreenElement || document.webkitFullscreenElement; var l = fsBtn.querySelector('.fslbl'); if (l) l.textContent = on ? 'Exit' : 'Full screen'; };
-      document.addEventListener('fullscreenchange', sync);
-      document.addEventListener('webkitfullscreenchange', sync);
+    // masthead clock
+    var dateEl = document.getElementById('dateStamp');
+    var timeEl = document.getElementById('timeStamp');
+    function fmt(n) { return n < 10 ? '0' + n : '' + n; }
+    function tick() {
+      var d = new Date();
+      var days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+      var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      if (dateEl) dateEl.textContent = days[d.getDay()] + ' · ' + fmt(d.getDate()) + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+      if (timeEl) timeEl.textContent = fmt(d.getHours()) + ':' + fmt(d.getMinutes()) + ':' + fmt(d.getSeconds());
     }
+    tick(); setInterval(tick, 1000);
 
-    var nav = document.getElementById('nav');
-    var lastY = window.scrollY;
-    addEventListener('scroll', function(){
-      var y = window.scrollY;
-      if (y > lastY && y > 600) nav.classList.add('hide'); else nav.classList.remove('hide');
-      lastY = y;
-    }, { passive:true });
-
-    document.querySelectorAll('.fn-marker').forEach(function(m){
-      function open(){ var t=document.getElementById(m.dataset.fn); if(!t)return; var s=t.closest('details.statement'); if(s) s.open=true; t.open=true; t.scrollIntoView({behavior: reduce?'auto':'smooth', block:'center'}); }
-      m.addEventListener('click', open);
-      m.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
-    });
-
-    // book = part of the statement → open the popup reader
+    // book = part of the statement, open the popup reader
     var ob = document.getElementById('openBook');
     if (ob) {
-      ob.addEventListener('click', function(e){
+      ob.addEventListener('click', function (e) {
         if (window.RaghavaBookModal && window.RaghavaBookModal.open) {
           e.preventDefault();
-          window.RaghavaBookModal.open({ title:'Calling All Gods', thumb:'./images/books/art_Calling_All_Gods.jpg', pdf:'./books/art%20books/Calling%20All%20Gods_Artist%20Book.pdf', filename:'Calling All Gods_Artist Book.pdf' });
+          window.RaghavaBookModal.open({ title: 'Calling All Gods', thumb: './images/books/art_Calling_All_Gods.jpg', pdf: './books/art%20books/Calling%20All%20Gods_Artist%20Book.pdf', filename: 'Calling All Gods_Artist Book.pdf' });
         }
       });
     }
 
-    window.addEventListener('DOMContentLoaded', function(){
+    // zine shelf
+    window.addEventListener('DOMContentLoaded', function () {
       var el = document.getElementById('callingZineShelf');
-      if(!el || !window.RaghavaLibraryShelf) return;
+      if (!el || !window.RaghavaLibraryShelf) return;
       var lib = window.RKK_LIBRARY_ROWS || [];
-      var artRow = lib.find(function(r){ return /art/i.test(r.label||''); }) || lib[0] || { books:[] };
-      var by = {}; (artRow.books||[]).forEach(function(b){ by[b.title]=b; });
-      var cag = { title:'Calling All Gods', year:2026, face:'cover', aspect:0.7041, thumb:'./images/books/art_Calling_All_Gods.jpg', pdf:'./books/art%20books/Calling%20All%20Gods_Artist%20Book.pdf', filename:'Calling All Gods_Artist Book.pdf' };
+      var artRow = lib.find(function (r) { return /art/i.test(r.label || ''); }) || lib[0] || { books: [] };
+      var by = {}; (artRow.books || []).forEach(function (b) { by[b.title] = b; });
+      var cag = { title: 'Calling All Gods', year: 2026, face: 'cover', aspect: 0.7041, thumb: './images/books/art_Calling_All_Gods.jpg', pdf: './books/art%20books/Calling%20All%20Gods_Artist%20Book.pdf', filename: 'Calling All Gods_Artist Book.pdf' };
       var books = [cag, by['33M Gods'], by['MAYBE you KNOW ME']].filter(Boolean);
-      window.RaghavaLibraryShelf.init({ container: el, rows:[{ label:'Art-zines', note:'pick one to read', books:books }], compact:true });
+      window.RaghavaLibraryShelf.init({ container: el, rows: [{ label: 'Art-zines', note: 'pick one to read', books: books }], compact: true });
     });
   })();
   </script>
