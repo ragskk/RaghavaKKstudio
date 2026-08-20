@@ -262,16 +262,21 @@
     .work:first-of-type { margin-top: 0; }
     .work .img { background: var(--bg); }
     .work .img img { width: 100%; height: auto; }
-    .walllabel {
-      margin-top: 1rem;
-      display: grid; grid-template-columns: minmax(0, 46ch) 1fr; gap: 1rem 3rem; align-items: start;
+    .work .wtitle {
+      font-family: var(--head); font-weight: 400; text-transform: uppercase;
+      font-size: clamp(1.5rem, 3.2vw, 2.8rem); line-height: 1.05; letter-spacing: 0.005em;
     }
-    .walllabel .t { font-size: clamp(1rem, 1.2vw, 1.12rem); line-height: 1.5; }
-    .walllabel .t .artist { font-weight: 600; }
-    .walllabel .t .title { font-style: italic; }
-    .walllabel .note { font-size: clamp(0.98rem, 1.1vw, 1.06rem); line-height: 1.6; color: var(--ink-2); max-width: 52ch; }
-    .walllabel .note .rd { color: var(--red); }
-    @media (max-width: 880px) { .walllabel { grid-template-columns: 1fr; } }
+    .work .wmeta {
+      margin-top: 0.6rem;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .work .wnote {
+      margin-top: 1rem;
+      font-size: clamp(0.98rem, 1.1vw, 1.06rem); line-height: 1.6;
+      color: var(--ink-2); max-width: 58ch;
+    }
+    .work .wnote .rd { color: var(--red); }
 
     .withhold {
       margin-bottom: clamp(2rem, 4vw, 3rem);
@@ -285,10 +290,11 @@
     .withhold p .rd { color: var(--red); }
     .withhold .sub { margin-top: 0.8rem; font-family: var(--sans); font-weight: 400; text-transform: none; font-size: clamp(0.98rem, 1.1vw, 1.06rem); color: var(--ink-2); max-width: 52ch; line-height: 1.6; }
 
-    .details { margin-top: 1rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.8rem, 1.6vw, 1.4rem); }
-    .details figure img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 5; }
-    .details figcaption { margin-top: 0.5rem; }
-    @media (max-width: 720px) { .details { grid-template-columns: 1fr; } .details figure img { aspect-ratio: 3 / 2; } }
+    .details { margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: clamp(0.6rem, 1.2vw, 1rem); }
+    .details figure { flex: 0 0 auto; width: clamp(120px, 15vw, 200px); }
+    .details figure img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+    .details figcaption { margin-top: 0.45rem; }
+    @media (max-width: 720px) { .details figure { width: calc(50% - 0.35rem); } }
 
     .scale-row { margin-top: clamp(2rem, 4vw, 3rem); display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(1.2rem, 2.4vw, 2.4rem); align-items: end; }
     .scale-row figure { grid-column: 1 / span 7; }
@@ -441,8 +447,8 @@
       <div class="lockup" id="venueLockup">
         <span class="label pre">Presented at</span>
         <span class="type-lockup" role="img" aria-label="Parsons School of Design, The New School">
-          <span class="p1">Parsons</span>
-          <span class="p2">School of Design&ensp;·&ensp;The New School&ensp;·&ensp;New York</span>
+          <span class="p1">Parsons School of Design</span>
+          <span class="p2">The New School&ensp;·&ensp;New York</span>
         </span>
       </div>
 
@@ -466,10 +472,10 @@
     </section>
 
     <!-- BLACK INTERRUPTION 1 -->
-    <section class="interrupt" aria-label="From the exhibition">
+    <section class="interrupt" aria-label="Raghava KK quote">
       <div class="in">
         <p>Not the gods we believe in. The gods we <span class="rd">use.</span></p>
-        <p class="label src">From the exhibition</p>
+        <p class="label src">Raghava KK</p>
       </div>
     </section>
 
@@ -481,26 +487,23 @@
 
           <div class="withhold">
             <p>The paintings are not reproduced here. <span class="rd">A screen would lie.</span></p>
-            <p class="sub">One canvas is eleven and a half feet high and twenty-three and a half feet wide; the other, twelve and a half by twenty-five. You cannot see both at once; you walk. They are seen whole for the first time in the room, on December 10. Details only, below.</p>
+            <p class="sub">Two canvases, each around 12 × 25 feet — the scale of Picasso's <i>Guernica</i>. You cannot see both at once; you walk. They are seen whole for the first time in the room, on December 10. Details only, below.</p>
           </div>
 
           <article class="work">
-            <div class="walllabel">
-              <p class="t"><span class="artist">Raghava KK</span><br /><span class="title">La Liberté de Guernica</span>, 2022–26<br />Acrylic on canvas, 11.5 × 23.5 ft (3.5 × 7.2 m)</p>
-              <p class="note">A woman stands on the ruins of Guernica, a double-headed tiger beside her: not a symbol, but the actual weight of irreconcilable things that do not leave. They will call her Liberty. That is wrong. <span class="rd">She is not free. She is standing,</span> and the difference is everything.</p>
-            </div>
+            <h3 class="wtitle">La Liberté de Guernica</h3>
+            <p class="wmeta">2022–26 · Acrylic on canvas · 11.5 × 23.5 ft (3.5 × 7.2 m)</p>
+            <p class="wnote">A woman stands on the ruins of Guernica, a double-headed tiger beside her: not a symbol, but the actual weight of irreconcilable things that do not leave. They will call her Liberty. That is wrong. <span class="rd">She is not free. She is standing,</span> and the difference is everything.</p>
             <div class="details">
               <figure><img src="./images/details/la-d1.jpg" alt="La Liberté de Guernica, detail" loading="lazy" /><figcaption class="label">Detail i</figcaption></figure>
               <figure><img src="./images/details/la-d2.jpg" alt="La Liberté de Guernica, detail" loading="lazy" /><figcaption class="label">Detail ii</figcaption></figure>
-              <figure><img src="./images/studio/03-guernica/3D.jpg" alt="La Liberté de Guernica, detail" loading="lazy" /><figcaption class="label">Detail iii</figcaption></figure>
             </div>
           </article>
 
           <article class="work">
-            <div class="walllabel">
-              <p class="t"><span class="artist">Raghava KK</span><br /><span class="title">Vishwaroopa</span>, 2022–26<br />Acrylic on canvas, 12.5 × 25 ft (3.8 × 7.6 m)</p>
-              <p class="note">The universal form from the Bhagavad Gita: one body holding what cannot be held together. Every god, every form, every contradiction, simultaneously. Arjuna once knelt before it; he has been removed. <span class="rd">The painting needs the person standing in front of it right now.</span></p>
-            </div>
+            <h3 class="wtitle">Vishwaroopa</h3>
+            <p class="wmeta">2022–26 · Acrylic on canvas · 12.5 × 25 ft (3.8 × 7.6 m)</p>
+            <p class="wnote">The universal form from the Bhagavad Gita: one body holding what cannot be held together. Every god, every form, every contradiction, simultaneously. Arjuna once knelt before it; he has been removed. <span class="rd">The painting needs the person standing in front of it right now.</span></p>
             <div class="details">
               <figure><img src="./images/details/vishw-d1.jpg" alt="Vishwaroopa, detail" loading="lazy" /><figcaption class="label">Detail i</figcaption></figure>
               <figure><img src="./images/details/vishw-d2.jpg" alt="Vishwaroopa, detail" loading="lazy" /><figcaption class="label">Detail ii</figcaption></figure>
@@ -514,7 +517,7 @@
               <figcaption class="label">The artist with <i>La Liberté de Guernica</i>, work in progress</figcaption>
             </figure>
             <div class="txt">
-              <p class="big">Four years. One <span class="rd">wall.</span></p>
+              <p class="big">Four years. One <span class="rd">show.</span></p>
               <p>Picasso painted one war, one town, one canvas. These paintings are made for a moment in which every war is visible at once, and no one can look away.</p>
             </div>
           </div>
@@ -556,10 +559,10 @@
     </section>
 
     <!-- BLACK INTERRUPTION 2 -->
-    <section class="interrupt" aria-label="From the zine">
+    <section class="interrupt" aria-label="Raghava KK quote">
       <div class="in">
         <p>Every person alive right now is calling on something <span class="rd">to get through this century.</span></p>
-        <p class="label src">From the zine</p>
+        <p class="label src">Raghava KK · 2026</p>
       </div>
     </section>
 
@@ -632,7 +635,8 @@
           <div class="visit-rows">
             <div class="vrow"><span class="l">Exhibition</span><span class="v">Calling All Gods — Raghava KK</span></div>
             <div class="vrow"><span class="l">Opens</span><span class="v">December 10, 2026</span></div>
-            <div class="vrow"><span class="l">Venue</span><span class="v">Parsons School of Design, New York<br /><span class="v soft" style="font-size: 0.95rem;">Gallery to be announced</span></span></div>
+            <div class="vrow"><span class="l">Opening</span><span class="v">By invitation<br /><span class="v soft" style="font-size: 0.95rem;">Request an invitation by emailing <a href="mailto:studio@raghavakkstudio.com?subject=Calling%20All%20Gods%20%C2%B7%20Opening%20Invitation">studio@raghavakkstudio.com</a></span></span></div>
+            <div class="vrow"><span class="l">Venue</span><span class="v">Anna-Maria &amp; Stephen Kellen Gallery<br /><span class="v soft" style="font-size: 0.95rem;">Parsons School of Design, The New School · New York</span></span></div>
             <div class="vrow"><span class="l">Presented by</span><span class="v"><a href="https://volte.art" target="_blank" rel="noopener noreferrer">Volte Art Projects</a></span></div>
             <div class="vrow"><span class="l">Hours</span><span class="v soft">To be announced</span></div>
             <div class="vrow"><span class="l">Admission</span><span class="v soft">To be announced</span></div>
@@ -649,7 +653,8 @@
         <div class="side"><h2>Credits</h2></div>
         <div class="main narrow">
           <div class="body-txt" style="margin-top: 0;">
-            <p><i>Calling All Gods</i> is presented by <a href="https://volte.art" target="_blank" rel="noopener noreferrer" style="border-bottom: 2px solid var(--red); text-decoration: none;">Volte Art Projects</a> at Parsons School of Design, The New School, New York, and organized with Raghava KK Studio, Bengaluru / New York.</p>
+            <p><i>Calling All Gods</i> is presented by <a href="https://volte.art" target="_blank" rel="noopener noreferrer" style="border-bottom: 2px solid var(--red); text-decoration: none;">Volte Art Projects</a> at the Anna-Maria &amp; Stephen Kellen Gallery, Parsons School of Design, The New School, New York.</p>
+            <p>Exhibition design by Aparna Nambiar, Vertex Inc. Supported by INK Foundation.</p>
             <p>The exhibition comprises two monumental paintings, a pantheon of sculptural editions, and a publication. Additional programming to be announced.</p>
           </div>
         </div>
