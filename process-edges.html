@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>html{visibility:hidden}</style><script>(function(){try{if(localStorage.getItem("studio_access")==="ok"){document.documentElement.style.visibility="visible";return;}}catch(_){}window.location.replace("/");})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>How Figure &amp; Edges Were Made, Raghava KK</title>
+  <meta name="description" content="Dossier № 01. How the Figurative and Edges series were born of one journey. Six months, one apparatus, three words. The process shown honestly, February to August 2020." />
+  <meta property="og:title" content="How Figure &amp; Edges Were Made, Raghava KK" />
+  <meta property="og:description" content="Dossier № 01. Two series born of one journey. The process shown honestly." />
+  <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/process-edges" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Raghava KK" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://raghavakkstudio.com/process-edges" />
+  <meta name="theme-color" content="#F4F1EA" />
+  <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
+  <meta name="robots" content="index, follow, noai, noimageai" />
+  <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./protect.css" />
+  <style>
+    /* ───────────────────────────────────────────────────────────
+       RAGHAVA KK · PROCESS DOSSIER № 01 · THE EDGES
+       A chronicle with an interruption. The page reads down like
+       a studio ledger; on 6 July 2020 the ground turns to ink,
+       because the canvases did. One gesture, held.
+       ─────────────────────────────────────────────────────────── */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --paper:#F4F1EA; --paper-2:#ECE7DA; --paper-3:#E3DCC8;
+      --ink:#0E0E0C; --ink-2:#2B2A26; --muted:#8B8579;
+      --rule:#1A1A17; --rule-soft:rgba(14,14,12,0.18);
+      --red:#E63D22; --red-deep:#B31E12;
+      --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+      --display:'Instrument Serif','Fraunces',Georgia,serif;
+      --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+      --edge:clamp(1rem,2.6vw,2.4rem);
+      --ease:cubic-bezier(.2,.7,.2,1);
+      --ease-out:cubic-bezier(.16,1,.3,1);
+    }
+
+    html { font-size: 16.5px; scroll-behavior: smooth; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
+
+    html, body {
+      background: var(--paper); color: var(--ink);
+      font-family: var(--serif);
+      font-feature-settings: "ss01" 1, "kern" 1, "liga" 1;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    body {
+      min-height: 100vh; cursor: none;
+      background-image:
+        radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      background-size: 3px 3px, auto;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none;
+      z-index: 1; opacity: 0.5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    /* CURSOR */
+    .cursor { position: fixed; top:0; left:0; width:18px; height:18px; border-radius:50%; background: var(--ink); mix-blend-mode: difference; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .25s var(--ease), height .25s var(--ease), background .25s var(--ease); }
+    .cursor.is-link { width: 56px; height: 56px; background: var(--red); mix-blend-mode: normal; }
+    .cursor.is-view { width: 88px; height: 88px; background: var(--red); mix-blend-mode: normal; }
+    .cursor.is-view::after { content: "open"; position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--paper); }
+    @media (hover: none), (pointer: coarse) { body { cursor: auto; } .cursor { display: none; } }
+
+    /* TAPE */
+    .tape { position: relative; z-index: 3; width: 100%; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; overflow: hidden; border-bottom: 1px solid var(--ink); }
+    .tape-track { display: flex; gap: 4rem; padding: 0.6rem 0; white-space: nowrap; animation: tape-scroll 60s linear infinite; width: max-content; }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* MASTHEAD */
+    .masthead { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; padding: 1.2rem var(--edge) 0.9rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); }
+    @media (max-width: 640px) {
+      .masthead { grid-template-columns: 1fr; gap: 0.4rem; padding: 0.9rem var(--edge) 0.7rem; }
+      .masthead .left, .masthead .right { justify-content: flex-start; }
+      .masthead .center { text-align: left; }
+    }
+    .masthead .left, .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center { font-family: var(--display); font-style: italic; font-size: clamp(0.95rem, 1.1vw, 1.05rem); letter-spacing: 0.04em; text-transform: none; color: var(--ink); }
+    .masthead .stamp { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.18rem 0.5rem; border: 1px solid var(--rule); border-radius: 999px; }
+    .masthead .stamp.live::before { content: ""; width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: pulse 1.6s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+    .masthead a { color: var(--ink); text-decoration: none; transition: color .2s var(--ease); }
+    .masthead a:hover { color: var(--red); }
+
+    /* PAGE HEAD */
+    .page-head {
+      position: relative; z-index: 2;
+      padding: clamp(2.5rem, 6vh, 4.5rem) var(--edge) 1.6rem;
+      max-width: 1480px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.4rem;
+      align-items: end;
+    }
+    .page-head .titleblock { grid-column: 1 / span 7; }
+    .page-head .meta { grid-column: 9 / span 4; align-self: end; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.65rem; border: 1px solid var(--ink);
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+    .eyebrow .num { font-weight: 600; color: var(--red); }
+    .page-title {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.6rem, 6.6vw, 5.4rem); line-height: 0.95;
+      letter-spacing: -0.01em; color: var(--ink);
+    }
+    .page-title em { color: var(--red); font-style: italic; }
+    .page-lede {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.05rem, 1.4vw, 1.25rem); line-height: 1.45;
+      color: var(--ink-2); margin-top: 1rem; max-width: 60ch;
+    }
+    .page-lede em { font-style: italic; color: var(--red); }
+    .meta-block {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-2);
+      border-left: 1px solid var(--rule); padding-left: 0.9rem;
+      display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .meta-block .accent { color: var(--red); }
+    @media (max-width: 920px) {
+      .page-head .titleblock, .page-head .meta { grid-column: 1 / -1; }
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 1040px; margin: 0 auto;
+      padding: 0 var(--edge) 0.4rem;
+    }
+    .hero .img-wrap { border: 1px solid var(--rule); }
+    .hero figcaption {
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--muted); margin-top: 0.45rem;
+    }
+    .hero-quote {
+      max-width: 1480px; margin: 0 auto;
+      padding: 1.8rem var(--edge) 2.4rem;
+      display: grid; grid-template-columns: repeat(12,1fr); gap: 1.4rem;
+    }
+    .hero-quote blockquote {
+      grid-column: 3 / span 8;
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.3rem, 2.4vw, 2rem); line-height: 1.3;
+      color: var(--ink); text-align: center;
+    }
+    .hero-quote blockquote em { color: var(--red); }
+    .hero-quote cite {
+      display: block; margin-top: 0.8rem;
+      font-family: var(--mono); font-style: normal; font-size: 10px;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-2);
+    }
+    @media (max-width: 920px) { .hero-quote blockquote { grid-column: 1 / -1; } }
+
+    /* IMG WRAP (shared) */
+    .img-wrap {
+      position: relative; overflow: hidden; background: var(--paper-2);
+      display: block; cursor: pointer;
+      border: 1px solid rgba(14,14,12,0.18);
+      transition: transform .35s var(--ease-out), border-color .25s var(--ease), box-shadow .35s var(--ease);
+    }
+    .img-wrap:hover { transform: translateY(-3px); border-color: var(--red); box-shadow: 0 14px 32px rgba(0,0,0,0.12); }
+    .img-wrap img { display: block; width: 100%; height: auto; }
+
+    /* ─── PROSE SECTIONS (condition / apparatus) ─── */
+    .prose-section {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(2.4rem,5vh,4rem) var(--edge);
+      display: grid; grid-template-columns: repeat(12,1fr); gap: 1.4rem;
+      border-top: 1px solid var(--rule);
+    }
+    .prose-section .sec-label {
+      grid-column: 1 / span 3;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--ink-2);
+    }
+    .prose-section .sec-label .n { color: var(--red); font-weight: 600; display: block; margin-bottom: 0.3rem; }
+    .prose-section .sec-body { grid-column: 4 / span 6; }
+    .prose-section .sec-side { grid-column: 10 / span 3; }
+    .prose-section h2 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.05;
+      margin-bottom: 1rem; color: var(--ink);
+    }
+    .prose-section h2 em { color: var(--red); }
+    .prose-section p {
+      font-family: var(--serif); font-size: 0.95rem; line-height: 1.65;
+      color: var(--ink-2); margin-bottom: 0.9rem; max-width: 62ch;
+    }
+    .prose-section p em { color: var(--red); font-style: italic; }
+    .prose-section p strong { font-weight: 600; color: var(--ink); }
+    @media (max-width: 920px) {
+      .prose-section .sec-label, .prose-section .sec-body, .prose-section .sec-side { grid-column: 1 / -1; }
+    }
+
+    /* ROLES (apparatus) */
+    .roles { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.9rem; margin-top: 1.2rem; max-width: 720px; }
+    .role { border: 1px solid var(--rule-soft); padding: 0.9rem; background: var(--paper); }
+    .role .r-name { font-family: var(--display); font-style: italic; font-size: 1.1rem; color: var(--ink); }
+    .role .r-title { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin: 0.25rem 0 0.5rem; }
+    .role .r-body { font-family: var(--serif); font-size: 12px; line-height: 1.5; color: var(--ink-2); }
+    @media (max-width: 720px) { .roles { grid-template-columns: 1fr; } }
+
+    /* ─── THE CHRONICLE ─── */
+    .chronicle {
+      position: relative; z-index: 2;
+      border-top: 1px solid var(--rule);
+    }
+    .chron-inner {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(2rem,4vh,3rem) var(--edge) clamp(3rem,6vh,5rem);
+      position: relative;
+    }
+    /* graphite spine */
+    .chron-inner::before {
+      content: ""; position: absolute; top: 0; bottom: 0;
+      left: calc(var(--edge) + clamp(72px, 9vw, 130px));
+      width: 1px; background: var(--rule-soft);
+    }
+    .entry {
+      position: relative;
+      display: grid;
+      grid-template-columns: clamp(72px, 9vw, 130px) 1fr;
+      gap: clamp(1.2rem, 3vw, 2.6rem);
+      padding: clamp(1.4rem,3vh,2.2rem) 0;
+    }
+    .entry + .entry { border-top: 1px dashed var(--rule-soft); }
+    .entry .when {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-2);
+      text-align: right; padding-right: clamp(0.9rem,1.6vw,1.4rem);
+      position: relative; line-height: 1.6;
+    }
+    .entry .when b { display: block; color: var(--ink); font-weight: 600; }
+    .entry .when::after {
+      content: ""; position: absolute; top: 0.35rem;
+      right: -3.5px; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--paper); border: 1.5px solid var(--ink);
+    }
+    .entry.key .when::after { background: var(--red); border-color: var(--red); }
+    .entry .what { min-width: 0; max-width: 720px; }
+    .entry h3 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.25rem, 2vw, 1.7rem); line-height: 1.1;
+      color: var(--ink); margin-bottom: 0.55rem;
+    }
+    .entry h3 em { color: var(--red); }
+    .entry .step-tag {
+      display: inline-block;
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red);
+      border: 1px solid var(--red); border-radius: 999px;
+      padding: 0.14rem 0.5rem; margin-bottom: 0.6rem;
+    }
+    .entry p {
+      font-family: var(--serif); font-size: 0.92rem; line-height: 1.62;
+      color: var(--ink-2); max-width: 58ch; margin-bottom: 0.75rem;
+    }
+    .entry p em { color: var(--red); font-style: italic; }
+    .entry p strong { font-weight: 600; color: var(--ink); }
+    .prompt {
+      font-family: var(--serif); font-style: italic;
+      font-size: 0.95rem; line-height: 1.55; color: var(--ink);
+      border-left: 2px solid var(--red);
+      padding: 0.35rem 0 0.35rem 0.9rem;
+      max-width: 52ch; margin: 0.9rem 0;
+    }
+    .prompt .p-label {
+      display: block; font-family: var(--mono); font-style: normal;
+      font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 0.25rem;
+    }
+
+    /* entry figures */
+    .figs { display: grid; gap: 0.55rem; margin-top: 1rem; max-width: 640px; }
+    .figs.c2 { grid-template-columns: 1fr 1fr; }
+    .figs.c3 { grid-template-columns: 1fr 1fr 1fr; }
+    .figs.c2-1 { grid-template-columns: 2fr 1fr; align-items: start; }
+    .figs figure { margin: 0; min-width: 0; }
+    /* uniform image heights within each section; the lightbox shows the full image */
+    .figs .img-wrap img { height: clamp(170px, 21vw, 250px); width: 100%; object-fit: cover; }
+    @media (max-width: 720px) { .figs .img-wrap img { height: clamp(160px, 44vw, 220px); } }
+    .figs figcaption {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+      margin-top: 0.35rem; line-height: 1.45;
+    }
+    .figs figcaption em {
+      font-family: var(--serif); font-style: italic; text-transform: none;
+      letter-spacing: 0.01em; color: var(--ink-2); font-size: 11px;
+      display: block; margin-bottom: 0.1rem;
+    }
+    @media (max-width: 720px) {
+      .figs.c2, .figs.c3, .figs.c2-1 { grid-template-columns: 1fr; }
+      .entry { grid-template-columns: 1fr; }
+      .entry .when { text-align: left; padding: 0 0 0.4rem; }
+      .entry .when::after { display: none; }
+      .chron-inner::before { display: none; }
+    }
+
+    /* JOURNAL INSERTS */
+    .journal {
+      margin-top: 1.1rem;
+      background: var(--paper-2);
+      border: 1px solid var(--rule-soft);
+      padding: 1rem 1.1rem;
+      max-width: 640px;
+    }
+    .journal .j-label {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem;
+    }
+    .journal p {
+      font-family: var(--serif); font-style: italic;
+      font-size: 0.92rem; line-height: 1.6; color: var(--ink);
+      margin-bottom: 0.5rem; max-width: none;
+    }
+    .journal p:last-child { margin-bottom: 0; }
+    .readpdf {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 0.9rem;
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink);
+      padding: 0.55rem 1rem; border: 1px solid var(--rule); border-radius: 999px;
+      text-decoration: none; background: var(--paper);
+      transition: background .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+    }
+    .readpdf:hover { background: var(--ink); color: var(--paper); transform: translateY(-1px); }
+    .readpdf .rp-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+    .interruption .readpdf { background: transparent; color: var(--paper); border-color: rgba(244,241,234,0.4); }
+    .interruption .readpdf:hover { background: var(--paper); color: var(--ink); }
+    .doclink {
+      display: inline-block; margin-top: 0.7rem;
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink);
+      text-decoration: none; border-bottom: 1px solid var(--rule-soft);
+      transition: color .2s var(--ease), border-color .2s var(--ease);
+    }
+    .doclink:hover { color: var(--red); border-color: var(--red); }
+    .interruption .doclink { color: var(--paper); border-color: rgba(244,241,234,0.3); }
+    .interruption .doclink:hover { color: var(--red); border-color: var(--red); }
+
+    /* ─── THE INTERRUPTION, ink ground ─── */
+    .interruption {
+      background: var(--ink); color: var(--paper);
+      border-top: 1px solid var(--ink);
+      position: relative; z-index: 2;
+    }
+    .interruption .break-head {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(3rem,8vh,6rem) var(--edge) clamp(1.5rem,3vh,2.5rem);
+      text-align: left;
+    }
+    .interruption .break-head .bh-date {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.9rem;
+    }
+    .interruption .break-head h2 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.2rem, 5.4vw, 4.4rem); line-height: 1;
+      color: var(--paper); max-width: 20ch;
+    }
+    .interruption .break-head h2 em { color: var(--red); }
+    .interruption .break-head .bh-note {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1rem,1.3vw,1.15rem); line-height: 1.5;
+      color: rgba(244,241,234,0.75); margin-top: 1rem; max-width: 52ch;
+    }
+    .interruption .chron-inner::before { background: rgba(244,241,234,0.22); }
+    .interruption .entry + .entry { border-top-color: rgba(244,241,234,0.18); }
+    .interruption .entry .when { color: rgba(244,241,234,0.7); }
+    .interruption .entry .when b { color: var(--paper); }
+    .interruption .entry .when::after { background: var(--ink); border-color: var(--paper); }
+    .interruption .entry.key .when::after { background: var(--red); border-color: var(--red); }
+    .interruption .entry h3 { color: var(--paper); }
+    .interruption .entry p { color: rgba(244,241,234,0.78); }
+    .interruption .entry p strong { color: var(--paper); }
+    .interruption .prompt { color: var(--paper); }
+    .interruption .figs figcaption { color: rgba(244,241,234,0.5); }
+    .interruption .figs figcaption em { color: rgba(244,241,234,0.85); }
+    .interruption .img-wrap { border-color: rgba(244,241,234,0.22); background: #171714; }
+    .interruption .img-wrap:hover { border-color: var(--red); }
+    .interruption .journal { background: #171714; border-color: rgba(244,241,234,0.18); }
+    .interruption .journal p { color: rgba(244,241,234,0.9); }
+
+    /* THE FULL STOP */
+    .fullstop {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(3rem,8vh,6rem) var(--edge);
+      text-align: center;
+    }
+    .fullstop p {
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.6rem, 3.4vw, 2.8rem); line-height: 1.25;
+      color: var(--paper); max-width: 26ch; margin: 0 auto;
+    }
+    .fullstop p em { color: var(--red); }
+    .fullstop .fs-note {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(244,241,234,0.55);
+      margin-top: 1.2rem;
+    }
+
+    /* ─── AFTER, back on paper ─── */
+    .after { border-top: 1px solid var(--rule); background: var(--paper); position: relative; z-index: 2; }
+
+    /* ─── FINISHED WORKS rail ─── */
+    .finished {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(2.4rem,5vh,4rem) var(--edge);
+      border-top: 1px solid var(--rule);
+    }
+    .fin-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 0.4rem; }
+    .finished .sec-label {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--ink-2); margin-bottom: 0.9rem;
+    }
+    .finished .sec-label .n { color: var(--red); margin-right: 0.7rem; }
+    .fin-title { font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(1.8rem, 3.4vw, 2.8rem); letter-spacing: 0.01em; }
+    .fin-title em { color: var(--red); }
+    .fin-dek { font-family: var(--serif); font-size: 1rem; color: var(--ink-2); max-width: 56ch; margin: 0.5rem 0 1.4rem; line-height: 1.55; }
+    .rail-nav { display: flex; gap: 0.5rem; }
+    .rail-btn {
+      width: 2.4rem; height: 2.4rem; display: grid; place-items: center;
+      font-size: 1.1rem; line-height: 1; color: var(--ink);
+      background: var(--paper); border: 1px solid var(--rule); border-radius: 50%;
+      cursor: pointer; transition: background .2s var(--ease), color .2s var(--ease);
+    }
+    .rail-btn:hover { background: var(--ink); color: var(--paper); }
+    @media (hover: none) { .rail-nav { display: none; } }
+    .works-rail {
+      display: flex; gap: clamp(0.9rem, 1.6vw, 1.4rem);
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      padding-bottom: 0.9rem;
+      scrollbar-width: thin;
+    }
+    .works-rail::-webkit-scrollbar { height: 6px; }
+    .works-rail::-webkit-scrollbar-track { background: var(--paper-2); }
+    .works-rail::-webkit-scrollbar-thumb { background: var(--ink); }
+    .work-card {
+      flex: 0 0 auto; scroll-snap-align: start;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 0.55rem;
+    }
+    .work-card img {
+      height: clamp(240px, 36vh, 340px); width: auto; display: block;
+      border: 1px solid var(--rule); background: var(--paper-2);
+      transition: transform .25s var(--ease);
+    }
+    .work-card:hover img { transform: translateY(-3px); }
+    .work-card .wc-cap {
+      max-width: 32ch;
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted); line-height: 1.7;
+    }
+    .work-card .wc-cap em {
+      display: block;
+      font-family: var(--display); font-style: italic; font-size: 0.98rem;
+      letter-spacing: 0.01em; text-transform: none; color: var(--ink);
+      margin-bottom: 0.15rem;
+    }
+    .work-card:hover .wc-cap em { color: var(--red); }
+    span.work-card { cursor: pointer; }
+    .work-card .img-wrap { display: block; }
+    .fin-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.2rem; }
+    .head-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.1rem; }
+    .head-actions .readpdf { margin-top: 0; }
+    .fin-actions .readpdf { margin-top: 0; }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(14,14,12,0.94);
+      display: none; align-items: center; justify-content: center;
+      padding: 3vh 3vw;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 94vw; max-height: 88vh; width: auto; height: auto; display: block; }
+    .lightbox .lb-cap {
+      position: absolute; left: 0; right: 0; bottom: 1.2rem;
+      text-align: center; font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,241,234,0.7);
+      padding: 0 var(--edge);
+    }
+    .lightbox .lb-close {
+      position: absolute; top: 1rem; right: 1.2rem;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--paper);
+      background: none; border: 1px solid rgba(244,241,234,0.4);
+      border-radius: 999px; padding: 0.45rem 0.85rem; cursor: pointer;
+    }
+    .lightbox .lb-close:hover { border-color: var(--red); color: var(--red); }
+
+    /* COLOPHON */
+    .colophon {
+      position: relative; z-index: 2;
+      padding: clamp(3rem, 7vh, 5rem) var(--edge) clamp(2rem, 4vh, 3rem);
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem; align-items: start;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-2);
+    }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.35rem; }
+    .colophon .col.c-c { align-items: flex-end; }
+    .colophon h3 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 1.05rem; letter-spacing: 0.02em; color: var(--ink); text-transform: none; margin-bottom: 0.2rem; }
+    .colophon a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .seal { width: 60px; height: 60px; border: 1px solid var(--rule); border-radius: 50%; display: grid; place-items: center; background: var(--paper); margin-bottom: 0.6rem; }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; }
+    @media (max-width: 920px) {
+      .colophon { grid-template-columns: 1fr; }
+      .colophon .col.c-c { align-items: flex-start; }
+    }
+
+    /* reveal */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tape-track { animation: none; }
+      .masthead .stamp.live::before { animation: none; }
+      .img-wrap, .reveal { transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body oncontextmenu="return true">
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <!-- TAPE -->
+  <div class="tape" role="presentation">
+    <div class="tape-track">
+      <span>The Process</span><span class="dot"></span>
+      <span>Dossier № 01 · Figure &amp; Edges</span><span class="dot"></span>
+      <span>February → August 2020</span><span class="dot"></span>
+      <span>Bengaluru, under lockdown</span><span class="dot"></span>
+      <span>The machine, shown</span><span class="dot"></span>
+      <span>The Process</span><span class="dot"></span>
+      <span>Dossier № 01 · Figure &amp; Edges</span><span class="dot"></span>
+      <span>February → August 2020</span><span class="dot"></span>
+      <span>Bengaluru, under lockdown</span><span class="dot"></span>
+      <span>The machine, shown</span><span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <header class="masthead" role="banner">
+    <div class="left">
+      <a class="breadcrumb" href="./index.html">← Raghava KK</a>
+      <a class="breadcrumb" href="./studio2.html">Studio</a>
+      <a class="breadcrumb" href="./process.html">Process</a>
+      <span class="stamp live">Dossier № 01</span>
+    </div>
+    <div class="center">a process record</div>
+    <div class="right">
+      <span id="dateStamp">--</span>
+      <span id="timeStamp">--:--</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- HEAD -->
+    <section class="page-head">
+      <div class="titleblock">
+        <p class="eyebrow"><span class="num">№ 01</span>Process · Figure &amp; Edges · 2020</p>
+        <h1 class="page-title">How Figure &amp; Edges <em>were made.</em></h1>
+        <p class="page-lede">
+          One journey, two series. The Figurative Series was built first, on paper and canvas;
+          the Edges Series broke out of its margins. February to August 2020, Bengaluru.
+          The exercises, the journals, the critiques, and the works, in order, as they happened.
+          On <em>6 July</em> the page turns dark, because the canvases did.
+        </p>
+        <div class="head-actions">
+          <a class="readpdf" href="#figure-works"><span class="rp-dot"></span>The Figure works ↓</a>
+          <a class="readpdf" href="#finished"><span class="rp-dot"></span>The Edges works ↓</a>
+          <a class="readpdf" href="./images/process/edges/docs/edges-catalog.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>The Edges catalog · 20 pages (pdf)</a>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="meta-block">
+          <div>Range <span class="accent">Feb → Aug 2020</span></div>
+          <div>Site · Bengaluru, lockdown</div>
+          <div>Apparatus · 64/1</div>
+          <div>Critic · Karthik Kalyanaraman</div>
+          <div>Record · kept as it happened</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERO -->
+    <section class="hero reveal">
+      <figure>
+        <span class="img-wrap" data-full="./images/process/edges/hero-edge.jpg" data-cap="The Edges Series · Oil on canvas · 2020">
+          <img src="./images/process/edges/_thumbs/hero-edge.jpg" srcset="./images/process/edges/_thumbs/hero-edge.jpg 800w, ./images/process/edges/hero-edge.jpg 2400w" sizes="(max-width: 920px) 96vw, 1400px" alt="An Edges series painting, thick oil marks on a black ground" />
+        </span>
+        <figcaption>The Edges Series · Oil on canvas · 2020</figcaption>
+      </figure>
+    </section>
+    <section class="hero-quote reveal">
+      <blockquote>
+        “My paintings cannot be photographed as they refuse to be turned to mere images.
+        They are <em>bodies</em> that confuse ideas and realities.”
+        <cite>Raghava KK · 2020</cite>
+      </blockquote>
+    </section>
+
+    <!-- THE CONDITION -->
+    <section class="prose-section reveal" id="condition">
+      <div class="sec-label"><span class="n">Prologue</span>The condition</div>
+      <div class="sec-body">
+        <h2>Two failures, early 2020.</h2>
+        <p>
+          <strong>Outside:</strong> March 2020. Commissioned work worth half a million dollars, cancelled
+          in one call. Weeks later, lockdown.
+        </p>
+        <p>
+          <strong>Inside, the real problem:</strong> the work had become formulaic. A recognisable
+          composition, a digital-to-canvas pipeline that ran reliably without its maker.
+          <em>Even my unpredictability became predictable.</em> The work no longer surprised the person making it.
+        </p>
+        <p>
+          The cancellations did not cause the reinvention. They removed the excuse not to. The formula was
+          already the problem. Also in the house: his brother, the art critic Karthik Kalyanaraman, back in
+          Bengaluru, starting over at the same time.
+        </p>
+      </div>
+      <div class="sec-side"></div>
+    </section>
+
+    <!-- THE APPARATUS -->
+    <section class="prose-section reveal" id="apparatus">
+      <div class="sec-label"><span class="n">The apparatus</span>64/1</div>
+      <div class="sec-body">
+        <h2>Before any painting: <em>64/1.</em></h2>
+        <p>
+          An artist alone cannot escape his own formula. So the first step was a structure of three people,
+          formalised with Karthik as <strong>64/1</strong>. Its objective: examine the history of the work,
+          critique the current body, and arrive, through the process itself, at something more original.
+        </p>
+        <div class="roles">
+          <div class="role">
+            <div class="r-name">Karthik Kalyanaraman</div>
+            <div class="r-title">The Critic</div>
+            <div class="r-body">Interrogates the history of the work. Sets the exercises. Refuses. In the artist's word, <em>midwifes</em> the series.</div>
+          </div>
+          <div class="role">
+            <div class="r-name">Raghava KK</div>
+            <div class="r-title">The Maker</div>
+            <div class="r-body">Paints the answers. Deliberately not the one setting the questions.</div>
+          </div>
+          <div class="role">
+            <div class="r-name">Sonia</div>
+            <div class="r-title">The Record</div>
+            <div class="r-body">Every experiment dated, photographed, filed as it happened. The record is an instrument of the process, not a marketing asset made afterwards.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sec-side"></div>
+    </section>
+
+    <!-- CHRONICLE · ACT I -->
+    <section class="chronicle" id="chronicle">
+      <div class="chron-inner">
+
+        <div class="entry reveal">
+          <div class="when"><b>Feb 2020</b>Spray</div>
+          <div class="what">
+            <h3>Spray works, and the Toy Trojan.</h3>
+            <p>
+              The record opens with aerosol on canvas, and the <em>Toy Trojan</em>: a 300-year-old
+              mahogany from Java, carved and sprayed pink. Painting already moving toward the object.
+            </p>
+            <div class="figs c3">
+              <figure><span class="img-wrap" data-full="./images/process/edges/spray-untitled.jpg" data-cap="Untitled · Acrylic aerosol on canvas · Feb 2020"><img loading="lazy" src="./images/process/edges/_thumbs/spray-untitled.jpg" alt="Spray series, aerosol on dark canvas" /></span><figcaption><em>Untitled</em>Acrylic aerosol on canvas · Feb 4</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/trojan-spraying.jpg" data-cap="Spraying the Toy Trojan · Feb 2020"><img loading="lazy" src="./images/process/edges/_thumbs/trojan-spraying.jpg" alt="Raghava spraying the Toy Trojan sculpture pink" /></span><figcaption><em>Toy Trojan</em>Spraying the carved mahogany · Feb 27</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/trojan-raghava.jpg" data-cap="Raghava with the Toy Trojan · 2020"><img loading="lazy" src="./images/process/edges/_thumbs/trojan-raghava.jpg" alt="Raghava seated by the Toy Trojan" /></span><figcaption><em>The Toy Trojan</em>Painting on wooden sculpture</figcaption></figure>
+            </div>
+            <a class="readpdf" href="./images/process/edges/docs/journey-painting-to-sculpture.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the pages · My journey from painting to sculpture (pdf)</a>
+          </div>
+        </div>
+
+        <div class="entry key reveal">
+          <div class="when"><b>Mar 2020</b>Whiteboard</div>
+          <div class="what">
+            <span class="step-tag">The interrogation</span>
+            <h3>Who is <em>Raghava?</em></h3>
+            <p>
+              A whiteboard and a question. How I see myself; how others see me; what the practice says
+              about me regardless of what I intend.
+            </p>
+            <p>
+              It ended in three words: <strong>play, pain, the construction of identity.</strong>
+              Everything after this is tested against them. The aesthetic is built to carry them.
+            </p>
+            <div class="figs c2">
+              <figure><span class="img-wrap" data-full="./images/process/edges/whiteboard-who-is-raghava.jpg" data-cap="The whiteboard, Who is Raghava? · March 2020"><img loading="lazy" src="./images/process/edges/_thumbs/whiteboard-who-is-raghava.jpg" alt="Whiteboard mapping play, pain and identity" /></span><figcaption><em>The whiteboard</em>Who is Raghava? · March 2020</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/karthik-blackboard.jpg" data-cap="Karthik Kalyanaraman at the blackboard · March 2020"><img loading="lazy" src="./images/process/edges/_thumbs/karthik-blackboard.jpg" alt="Karthik Kalyanaraman teaching at a blackboard" /></span><figcaption><em>The critic at work</em>Karthik at the blackboard</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>Mar 4–11</b>Guernica</div>
+          <div class="what">
+            <span class="step-tag">The ancestor</span>
+            <h3>Raghava vs <em>Picasso.</em></h3>
+            <p>
+              Guernica, printed large in black and white and laid on the floor. First its characteristics;
+              then the harder question: where, precisely, is the disagreement? The exercises that follow
+              are built from the answer.
+            </p>
+            <div class="figs c2">
+              <figure><span class="img-wrap" data-full="./images/process/edges/blackboard-guernica.jpg" data-cap="The Guernica brainstorm · blackboard · March 2020"><img loading="lazy" src="./images/process/edges/_thumbs/blackboard-guernica.jpg" alt="Blackboard with Guernica brainstorm notes" /></span><figcaption><em>The Guernica characteristics</em>Blackboard · March 4</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/guernica-prints-floor.jpg" data-cap="Composition discussion over black-and-white canvas prints · March 11"><img loading="lazy" src="./images/process/edges/_thumbs/guernica-prints-floor.jpg" alt="Large black and white prints laid on the floor for discussion" /></span><figcaption><em>Composition, argued on the floor</em>B&amp;W canvas prints · March 11</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>Mar 9–11</b>Paper</div>
+          <div class="what">
+            <span class="step-tag">The exercises</span>
+            <h3>Exercises on paper.</h3>
+            <p>
+              The critic sets prompts; the maker answers on paper. Pen and watercolour: a horse, a bull,
+              a mother and child. Dated like lab entries.
+            </p>
+            <div class="prompt"><span class="p-label">Exercise · March 9</span>Show pain using a horse sketch.</div>
+            <div class="prompt"><span class="p-label">Exercise · March 10</span>Since you find an issue with Picasso’s mother and child, exaggerate and push your concern about it.</div>
+<div class="figs c3">
+              <figure><span class="img-wrap" data-full="./images/process/edges/horse-red.jpg" data-cap="Pain, as a horse · Brush on paper · March 9"><img loading="lazy" src="./images/process/edges/_thumbs/horse-red.jpg" alt="Red brush drawing of a horse expressing pain" /></span><figcaption><em>Pain, as a horse</em>Brush on paper · March 9</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/horse-study-2.jpg" data-cap="Horse study · Brush over pen · March 9"><img loading="lazy" src="./images/process/edges/_thumbs/horse-study-2.jpg" alt="Orange horse head painted over a pen study" /></span><figcaption><em>Horse study</em>Brush over pen · March 9</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/bull-head-brush.jpg" data-cap="Bull head · Brush on paper · March 9"><img loading="lazy" src="./images/process/edges/_thumbs/bull-head-brush.jpg" alt="Dark brush sketch of a bull head" /></span><figcaption><em>Bull head</em>Brush on paper · March 9</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/mother-child-1.jpg" data-cap="Mother and Child 1 · Pen on paper · March 9"><img loading="lazy" src="./images/process/edges/_thumbs/mother-child-1.jpg" alt="Pen study of mother and child" /></span><figcaption><em>Mother and Child 1</em>Pen on paper · March 9</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/mother-child-2.jpg" data-cap="Mother and Child 2 · Pen on paper · March 10"><img loading="lazy" src="./images/process/edges/_thumbs/mother-child-2.jpg" alt="Pen study of mother and child, pushed further" /></span><figcaption><em>Mother and Child 2</em>Pen on paper · March 10</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/mother-child-3.jpg" data-cap="Mother and Child 3 · Pen on paper · March 10"><img loading="lazy" src="./images/process/edges/_thumbs/mother-child-3.jpg" alt="Third pen study of mother and child" /></span><figcaption><em>Mother and Child 3</em>Pen on paper · March 10</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/bull-sketch-1.jpg" data-cap="Bull sketch 1 · Pen &amp; watercolour · March 10"><img loading="lazy" src="./images/process/edges/_thumbs/bull-sketch-1.jpg" alt="Pen and watercolour bull study" /></span><figcaption><em>Bull sketch 1</em>Pen &amp; watercolour · March 10</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/bull-sketch-2.jpg" data-cap="Bull sketch 2 · Pen &amp; watercolour · March 10"><img loading="lazy" src="./images/process/edges/_thumbs/bull-sketch-2.jpg" alt="Second pen and watercolour bull study" /></span><figcaption><em>Bull sketch 2</em>Pen &amp; watercolour · March 10</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/hand-brush.jpg" data-cap="Study · Brush on paper · March 9"><img loading="lazy" src="./images/process/edges/_thumbs/hand-brush.jpg" alt="Orange brush study of a hand" /></span><figcaption><em>Study</em>Brush on paper · March 9</figcaption></figure>
+            </div>
+            <div class="figs c3" style="margin-top:0.7rem;">
+              <figure><span class="img-wrap" data-full="./images/process/edges/identity-watercolor-1.jpg" data-cap="Construction of identity · Watercolour · March 10–11"><img loading="lazy" src="./images/process/edges/_thumbs/identity-watercolor-1.jpg" alt="Watercolour, figure with phone" /></span><figcaption><em>Construction of identity</em>Watercolour · March 10–11</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/identity-watercolor-2.jpg" data-cap="Construction of identity · Watercolour · March 11"><img loading="lazy" src="./images/process/edges/_thumbs/identity-watercolor-2.jpg" alt="Watercolour of composite faces" /></span><figcaption><em>Construction of identity</em>Watercolour · March 11</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/identity-watercolor-3.jpg" data-cap="Construction of identity · Watercolour · March 11"><img loading="lazy" src="./images/process/edges/_thumbs/identity-watercolor-3.jpg" alt="Watercolour, rider with heart line" /></span><figcaption><em>Construction of identity</em>Watercolour · March 11</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/identity-watercolor-4.jpg" data-cap="Construction of identity · Watercolour · March 10"><img loading="lazy" src="./images/process/edges/_thumbs/identity-watercolor-4.jpg" alt="Watercolour, figure of many eyes" /></span><figcaption><em>Construction of identity</em>Watercolour · March 10</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/identity-watercolor-5.jpg" data-cap="Construction of identity · Watercolour · March 10"><img loading="lazy" src="./images/process/edges/_thumbs/identity-watercolor-5.jpg" alt="Watercolour, winged horse and rider" /></span><figcaption><em>Construction of identity</em>Watercolour · March 10</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry key reveal">
+          <div class="when"><b>Mar 13</b>First oils</div>
+          <div class="what">
+            <span class="step-tag">The medium</span>
+            <h3>First oils. Wanted for twenty years, <em>avoided</em> for twenty years.</h3>
+            <p>
+              Oil is what the masters used; it demands proficiency. No art school, a career built in acrylic
+              and pixels. Impasto both exciting and frightening. <strong>That was the reason to choose it.</strong>
+              These are the first oil paintings of his life.
+            </p>
+            <div class="prompt"><span class="p-label">Exercise · March 13</span>Create four works using any four colours: an abstract work that shows nihilism, play and self-construction.</div>
+            <p>
+              No figure permitted. Identify which marks worked; keep only those. The kept marks become
+              the <em>style vocabulary</em>, built before it is allowed to describe anything.
+            </p>
+            <div class="figs c3">
+              <figure><span class="img-wrap" data-full="./images/process/edges/first-oils.jpg" data-cap="The first experiment with oil paints · March 13, 2020"><img loading="lazy" src="./images/process/edges/_thumbs/first-oils.jpg" alt="Raghava on the studio floor making his first oil painting" /></span><figcaption><em>First oils</em>March 13, 2020</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/oil-study-1.jpg" data-cap="Study 1 · oil on paper · 2020"><img loading="lazy" src="./images/process/edges/_thumbs/oil-study-1.jpg" alt="Oil study 1, pink strokes on teal" /></span><figcaption><em>Study 1</em>Oil on paper</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/oil-study-2.jpg" data-cap="Study 2 · oil on paper · 2020"><img loading="lazy" src="./images/process/edges/_thumbs/oil-study-2.jpg" alt="Oil study 2, knife strokes over newspaper" /></span><figcaption><em>Study 2</em>Oil on paper</figcaption></figure>
+            </div>
+<div class="figs c3" style="margin-top:0.7rem;">
+              <figure><span class="img-wrap" data-full="./images/process/edges/oil-study-3.jpg" data-cap="Study 3 · Oil on paper"><img loading="lazy" src="./images/process/edges/_thumbs/oil-study-3.jpg" alt="Oil study 3, orange impasto" /></span><figcaption><em>Study 3</em>Oil on paper</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/oil-study-4.jpg" data-cap="Study 4 · Oil on paper"><img loading="lazy" src="./images/process/edges/_thumbs/oil-study-4.jpg" alt="Oil study 4, red strokes on newspaper" /></span><figcaption><em>Study 4</em>Oil on paper</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/blackboard-materials.jpg" data-cap="The materials board · Play · Nihilism · Self-construction"><img loading="lazy" src="./images/process/edges/_thumbs/blackboard-materials.jpg" alt="Blackboard listing materials and the three words" /></span><figcaption><em>The materials board</em>Play · Nihilism · Self-construction</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>Mar 19</b>Characters</div>
+          <div class="what">
+            <h3>The new style follows a form.</h3>
+            <p>
+              The prompt: <em>use the newly created style to follow a form.</em> Mickey, the Devil, Cuphead,
+              rebuilt in the new vocabulary. The pencil beside the oil shows the distance travelled.
+            </p>
+<div class="figs c3">
+              <figure><span class="img-wrap" data-full="./images/process/edges/mickey-pencil.jpg" data-cap="Mickey · Pencil · March 19"><img loading="lazy" src="./images/process/edges/_thumbs/mickey-pencil.jpg" alt="Pencil sketch of Mickey Mouse" /></span><figcaption><em>Mickey</em>Pencil · March 19</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/mickey-oil.jpg" data-cap="Mickey · Oil on paper · March 19"><img loading="lazy" src="./images/process/edges/_thumbs/mickey-oil.jpg" alt="Mickey rebuilt in thick oil strokes" /></span><figcaption><em>Mickey</em>Oil on paper · March 19</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/devil-pen.jpg" data-cap="The Devil · Pen · March 19"><img loading="lazy" src="./images/process/edges/_thumbs/devil-pen.jpg" alt="Pen sketch of the Devil with trident" /></span><figcaption><em>The Devil</em>Pen · March 19</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/devil-oil.jpg" data-cap="The Devil · Oil on paper · March 19"><img loading="lazy" src="./images/process/edges/_thumbs/devil-oil.jpg" alt="The Devil rebuilt in thick oil strokes" /></span><figcaption><em>The Devil</em>Oil on paper · March 19</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/cuphead-pencil.jpg" data-cap="Cuphead · Pencil · March 19"><img loading="lazy" src="./images/process/edges/_thumbs/cuphead-pencil.jpg" alt="Pencil sketch of Cuphead" /></span><figcaption><em>Cuphead</em>Pencil · March 19</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/cuphead-oil.jpg" data-cap="Cuphead · Oil on paper · March 19"><img loading="lazy" src="./images/process/edges/_thumbs/cuphead-oil.jpg" alt="Cuphead rebuilt in thick oil strokes" /></span><figcaption><em>Cuphead</em>Oil on paper · March 19</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>Apr 21</b>Print</div>
+          <div class="what">
+            <h3>Painting over the print.</h3>
+            <p>
+              The digital Guernica composition, the old pipeline’s product, printed archivally on canvas,
+              then painted over by hand in the new language. The old way underneath, the new way on top.
+            </p>
+            <div class="figs c2-1">
+              <figure><span class="img-wrap" data-full="./images/process/edges/painted-print.jpg" data-cap="Untitled · 4×6 ft · oil on archival print on canvas · April 21"><img loading="lazy" src="./images/process/edges/_thumbs/painted-print.jpg" alt="Oil painted over an archival print on canvas" /></span><figcaption><em>Untitled</em>4×6 ft · Oil on archival print on canvas · April 21</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>May 1</b>Writing</div>
+          <div class="what">
+            <span class="step-tag">The writings</span>
+            <h3>Essay: my relationship with art.</h3>
+            <p>
+              Written mid-process, published later in MARG. The essay states the position the work is being
+              built on: art and life need opposite mindsets, and <em>within the confines of a series,
+              integrity can have very specific goals.</em>
+            </p>
+            <a class="readpdf" href="./images/process/edges/docs/relationship-with-art.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the pages · My relationship with art (pdf)</a>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>May 2020</b>The loop</div>
+          <div class="what">
+            <span class="step-tag">The loop</span>
+            <h3>Question → incubation → attempt → <em>silence</em> → critique.</h3>
+            <p>
+              The working rhythm, February to August: Karthik poses a question. Days of journaling,
+              no painting yet. Then the attempt. Then silence: nobody judges fresh work. Then the critique.
+              Then the next question.
+            </p>
+            <p>
+              The delays are the point: they break the reflex that produces formula. And nobody steers
+              toward an outcome. The loop has questions and a filter, but <strong>no destination.</strong>
+            </p>
+            <div class="prompt"><span class="p-label">Exercise · May 12</span>Use the new style to create a large work. Look out for interesting marks &amp; happenings.</div>
+            <div class="figs c3">
+              <figure><span class="img-wrap" data-full="./images/process/edges/asura.jpg" data-cap="The Asura · oil on canvas · May 11"><img loading="lazy" src="./images/process/edges/_thumbs/asura.jpg" alt="The Asura, dark figurative oil" /></span><figcaption><em>The Asura</em>Oil on canvas · May 11</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/general-wip.jpg" data-cap="The General · version 1 · work in progress · May 12"><img loading="lazy" src="./images/process/edges/_thumbs/general-wip.jpg" alt="The General, work in progress" /></span><figcaption><em>The General</em>Version 1 · in progress</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/general-final.jpg" data-cap="The General · final version · oil on canvas · May 21"><img loading="lazy" src="./images/process/edges/_thumbs/general-final.jpg" alt="The General, final version" /></span><figcaption><em>The General</em>Final · May 21</figcaption></figure>
+            </div>
+<div class="figs c3" style="margin-top:0.7rem;">
+              <figure><span class="img-wrap" data-full="./images/process/edges/general-detail.jpg" data-cap="The General, detail · Oil on canvas · May 21"><img loading="lazy" src="./images/process/edges/_thumbs/general-detail.jpg" alt="Detail of impasto loops in The General" /></span><figcaption><em>The General, detail</em>Oil on canvas · May 21</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/poster-blend.jpg" data-cap="Poster works · Oil + linseed + turpentine · May 22"><img loading="lazy" src="./images/process/edges/_thumbs/poster-blend.jpg" alt="Poster work, material blend on paper" /></span><figcaption><em>Poster works</em>Oil + linseed + turpentine · May 22</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/poster-tiger.jpg" data-cap="Tiger · Oil + linseed + turpentine · May 26"><img loading="lazy" src="./images/process/edges/_thumbs/poster-tiger.jpg" alt="Tiger poster work on blue ground" /></span><figcaption><em>Tiger</em>Oil + linseed + turpentine · May 26</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>Jun 2020</b>Figurative</div>
+          <div class="what">
+            <span class="step-tag">The series</span>
+            <h3>The Figurative Series.</h3>
+            <p>
+              Canvases weekly through June and early July, characters carrying the three words. The palette
+              is written down on June 25, after it has proved itself. From the journals: <em>formula → lazy → broken.</em>
+              Every work treated as an individual.
+            </p>
+            <div class="figs c2">
+              <figure><span class="img-wrap" data-full="./images/process/edges/daffy-duck.jpg" data-cap="Daffy Duck · 3×2 ft · oil on canvas · June 17"><img loading="lazy" src="./images/process/edges/_thumbs/daffy-duck.jpg" alt="Daffy Duck in thick oil" /></span><figcaption><em>Daffy Duck</em>3×2 ft · June 17</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/mickey-riding-horse.jpg" data-cap="Mickey riding a horse · 6×4 ft · oil on canvas · June 27"><img loading="lazy" src="./images/process/edges/_thumbs/mickey-riding-horse.jpg" alt="Mickey riding a horse, oil on canvas" /></span><figcaption><em>Mickey riding a horse</em>6×4 ft · June 27</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/upside-down-woman.jpg" data-cap="The Upside Down Woman · 6×4 ft · oil on canvas · July 6"><img loading="lazy" src="./images/process/edges/_thumbs/upside-down-woman.jpg" alt="The Upside Down Woman" /></span><figcaption><em>The Upside Down Woman</em>6×4 ft · July 6</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/history-rework.jpg" data-cap="The History Series, reworked · oil on canvas · June 2"><img loading="lazy" src="./images/process/edges/_thumbs/history-rework.jpg" alt="The History Series being reworked in the studio" /></span><figcaption><em>The History Series, reworked</em>June 2</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>Jun 17</b>Writing</div>
+          <div class="what">
+            <span class="step-tag">The writings</span>
+            <h3>Essay: painting with oils.</h3>
+            <p>
+              Twenty-one written observations on the material itself, made after three months inside it.
+              The medium studied as a subject.
+            </p>
+            <div class="journal">
+              <div class="j-label">From the pages</div>
+              <p>“Every stroke of a brush, every mark of the knife is left behind beautifully… When you scratch thick paint, the marks look like wounds. The knife slips easily, creating very bold, confident accidents.”</p>
+              <p>“The paintings made from oil paints tell the story of their creation. Every stroke that went into creating a visual effect can be studied.”</p>
+            </div>
+            <div class="figs c2" style="margin-top:0.9rem;">
+              <figure><span class="img-wrap" data-full="./images/process/edges/chalkboard-oils.jpg" data-cap="Notes on viscosity, resistance, sculptability, the material studied as a subject"><img loading="lazy" src="./images/process/edges/_thumbs/chalkboard-oils.jpg" alt="Chalkboard notes on the properties of oil paint" /></span><figcaption><em>The material as subject</em>Viscosity · resistance · sculptability</figcaption></figure>
+            </div>
+            <a class="readpdf" href="./images/process/edges/docs/painting-with-oils.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the pages · Painting with oils (pdf)</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FIGURE WORKS -->
+    <section class="finished reveal" id="figure-works">
+      <div class="fin-head">
+        <div>
+          <div class="sec-label"><span class="n">Series one of two</span>The Figurative Series</div>
+          <h2 class="fin-title">The first born: fifteen <em>canvases.</em></h2>
+        </div>
+        <div class="rail-nav">
+          <button type="button" class="rail-btn" data-dir="-1" aria-label="Scroll works left">‹</button>
+          <button type="button" class="rail-btn" data-dir="1" aria-label="Scroll works right">›</button>
+        </div>
+      </div>
+      <p class="fin-dek">The series the whiteboard produced first. Characters carrying the three words, painted May to July. The impasto thickening at their edges is what became the second series. Tap a work to see it large.</p>
+      <div class="works-rail" aria-label="The finished Figurative works">
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/asura.jpg" data-cap="The Asura · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/asura.jpg" alt="The Asura" /></span>
+            <span class="wc-cap"><em>The Asura</em>Oil on canvas · May 11</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/general-final.jpg" data-cap="The General · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/general-final.jpg" alt="The General" /></span>
+            <span class="wc-cap"><em>The General</em>Oil on canvas · May 21</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/zen.jpg" data-cap="Zen · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/zen.jpg" alt="Zen" /></span>
+            <span class="wc-cap"><em>Zen</em>3.5′ × 2.5′ · Oil on canvas · June 2</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/amazon-wilderness.jpg" data-cap="The Amazon Wilderness · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/amazon-wilderness.jpg" alt="The Amazon Wilderness" /></span>
+            <span class="wc-cap"><em>The Amazon Wilderness</em>6′ × 4′ · Oil on canvas · June 5</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/the-magician.jpg" data-cap="The Magician · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/the-magician.jpg" alt="The Magician" /></span>
+            <span class="wc-cap"><em>The Magician</em>6′ × 4′ · Oil on canvas · June 5</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/green-monster.jpg" data-cap="The Green Monster · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/green-monster.jpg" alt="The Green Monster" /></span>
+            <span class="wc-cap"><em>The Green Monster</em>Oil on canvas · June 5</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/vomiting-rainbow.jpg" data-cap="The Vomiting Rainbow · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/vomiting-rainbow.jpg" alt="The Vomiting Rainbow" /></span>
+            <span class="wc-cap"><em>The Vomiting Rainbow</em>Oil on canvas · June 14</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/the-dog.jpg" data-cap="The Dog · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/the-dog.jpg" alt="The Dog" /></span>
+            <span class="wc-cap"><em>The Dog</em>Oil on canvas · June 17</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/daffy-duck.jpg" data-cap="Daffy Duck · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/daffy-duck.jpg" alt="Daffy Duck" /></span>
+            <span class="wc-cap"><em>Daffy Duck</em>3′ × 2′ · Oil on canvas · June 17</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/mickey-riding-horse.jpg" data-cap="Mickey riding a horse · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/mickey-riding-horse.jpg" alt="Mickey riding a horse" /></span>
+            <span class="wc-cap"><em>Mickey riding a horse</em>6′ × 4′ · Oil on canvas · June 27</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/the-smurfs.jpg" data-cap="The Smurfs · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/the-smurfs.jpg" alt="The Smurfs" /></span>
+            <span class="wc-cap"><em>The Smurfs</em>3.5′ × 2.5′ · Oil on canvas · June 29</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/mans-red-flower.jpg" data-cap="Man’s Red Flower · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/mans-red-flower.jpg" alt="Man’s Red Flower" /></span>
+            <span class="wc-cap"><em>Man’s Red Flower</em>6′ × 4′ · Oil on canvas · July 2</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/mickey-final.jpg" data-cap="Mickey · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/mickey-final.jpg" alt="Mickey" /></span>
+            <span class="wc-cap"><em>Mickey</em>6′ × 4′ · Oil on canvas · July 2</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/upside-down-woman.jpg" data-cap="The Upside Down Woman · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/upside-down-woman.jpg" alt="The Upside Down Woman" /></span>
+            <span class="wc-cap"><em>The Upside Down Woman</em>6′ × 4′ · Oil on canvas · July 6</span>
+          </span>
+          <span class="work-card"><span class="img-wrap" data-full="./images/process/edges/grey-and-yellow.jpg" data-cap="Grey and Yellow · The Figurative Series · 2020">
+            <img loading="lazy" src="./images/process/edges/_thumbs/grey-and-yellow.jpg" alt="Grey and Yellow" /></span>
+            <span class="wc-cap"><em>Grey and Yellow</em>6′ × 4′ · Oil on canvas · July 6</span>
+          </span>
+      </div>
+    </section>
+
+    <!-- ─── THE INTERRUPTION ─── -->
+    <section class="interruption" id="july6">
+      <div class="break-head reveal">
+        <div class="bh-date">6 July 2020</div>
+        <h2>The first <em>Edges</em> work.</h2>
+        <p class="bh-note">
+          A small diptych, 18 × 11 inches each. Unplanned. The impasto that had been building along the
+          edges of the figurative canvases stops being a side-effect and becomes the subject. The edge,
+          the ridge of paint, the side of the object, the part a photograph cannot capture, becomes the work. The second series is born.
+        </p>
+      </div>
+
+      <div class="chron-inner">
+
+        <div class="entry key reveal">
+          <div class="when"><b>Jul 6</b>The accident</div>
+          <div class="what">
+            <span class="step-tag">The accident</span>
+            <h3>The First Diptych.</h3>
+            <p>
+              The journals had already written the demand: <em>move away from painting as image, toward
+              painting as object.</em> An edge cannot be reproduced. It has to be seen in person.
+            </p>
+            <div class="figs c2">
+              <figure><span class="img-wrap" data-full="./images/process/edges/first-diptych.jpg" data-cap="The First Diptych · 18×11 in each · The Edges Series · July 6"><img loading="lazy" src="./images/process/edges/_thumbs/first-diptych.jpg" alt="The first Edges diptych, two small canvases" /></span><figcaption><em>The First Diptych</em>18×11 in each · July 6</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/edge-in-hand.jpg" data-cap="A painting held as an object, the edge is the work"><img loading="lazy" src="./images/process/edges/_thumbs/edge-in-hand.jpg" alt="A hand holding a small canvas, edge toward the camera" /></span><figcaption><em>The edge, in hand</em>Painting as object</figcaption></figure>
+            </div>
+            <div class="figs c2" style="margin-top:0.7rem;">
+              <figure><span class="img-wrap" data-full="./images/process/edges/painting-as-object.jpg" data-cap="A canvas on the table, seen from its side"><img loading="lazy" src="./images/process/edges/_thumbs/painting-as-object.jpg" alt="A painting lying flat, its painted edge visible" /></span><figcaption><em>Seen from the side</em>Oil on canvas · 2020</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/canvas-black-primed.jpg" data-cap="Canvas primed black, same day, a new preparation protocol · July 6"><img loading="lazy" src="./images/process/edges/_thumbs/canvas-black-primed.jpg" alt="A canvas primed black on an easel" /></span><figcaption><em>Primed black</em>Same day · new preparation · July 6</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry key reveal">
+          <div class="when"><b>Jul 7</b>Approval</div>
+          <div class="what">
+            <h3>The first large work. <em>Guruji approves.</em></h3>
+            <p>
+              Next day: the first large Edges canvas, 6 × 4 feet, marks on black. The critic’s reaction,
+              kept in the record: <em>this is fresh, this is original</em>, and the maker surprising
+              himself again, which is what the whole process was for.
+            </p>
+            <div class="figs c2">
+              <figure><span class="img-wrap" data-full="./images/process/edges/first-large-edges.jpg" data-cap="The First Large Work · 6×4 ft · The Edges Series · July 7"><img loading="lazy" src="./images/process/edges/_thumbs/first-large-edges.jpg" alt="The first large Edges painting on black" /></span><figcaption><em>The First Large Work</em>6×4 ft · July 7</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/guruji-approves.jpg" data-cap="“Guruji approves”, Karthik and Raghava with the work · July 7"><img loading="lazy" src="./images/process/edges/_thumbs/guruji-approves.jpg" alt="Karthik and Raghava celebrating in front of the black canvas" /></span><figcaption><em>“Guruji approves”</em>The critic and the maker · July 7</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>Jul 8</b>Journal</div>
+          <div class="what">
+            <span class="step-tag">The writings</span>
+            <h3>Journal: painting as body.</h3>
+            <p>
+              The day after the first large work, the thinking is written down: the painting as a body,
+              with twenty-seven experiment ideas for what a body can do.
+            </p>
+            <div class="journal">
+              <div class="j-label">From the pages</div>
+              <p>“An encounter with a painting is like an encounter with a person. The painting has body and spirit.”</p>
+              <p>“My stand: move away from painting as image → painting as object.”</p>
+            </div>
+            <a class="readpdf" href="./images/process/edges/docs/painting-as-body.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the pages · Painting as body (pdf)</a>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>Jul 10–17</b>The series</div>
+          <div class="what">
+            <h3>The series, weekly.</h3>
+            <p>
+              Goosebumps. The Monkey. The installation work. The critic inspects; the silence rule holds.
+              In the journals, display is already being sketched: works laid flat on platforms, canvases
+              inclined, viewing ramps, because <em>“the work has to look good from all sides, there is
+              no one direction to see the work.”</em>
+            </p>
+            <a class="readpdf" href="./images/process/edges/docs/display-of-the-edges.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the pages · Display of the Edges (pdf)</a>
+            <div class="figs c3">
+              <figure><span class="img-wrap" data-full="./images/process/edges/the-monkey.jpg" data-cap="The Monkey · 4×6 ft · The Edges Series · July 18"><img loading="lazy" src="./images/process/edges/_thumbs/the-monkey.jpg" alt="The Monkey, a blue arc on black" /></span><figcaption><em>The Monkey</em>4×6 ft · July 18</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/karthik-inspecting.jpg" data-cap="Dr. Karthik Kalyanaraman inspecting at the studio · July 11"><img loading="lazy" src="./images/process/edges/_thumbs/karthik-inspecting.jpg" alt="Karthik inspecting two works at the studio" /></span><figcaption><em>The critique</em>Karthik at the studio · July 11</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/installation-work.jpg" data-cap="The installation work · July 17"><img loading="lazy" src="./images/process/edges/_thumbs/installation-work.jpg" alt="Small canvases arranged as an installation" /></span><figcaption><em>The installation work</em>July 17</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry key reveal">
+          <div class="when"><b>Jul 19–24</b>Family</div>
+          <div class="what">
+            <h3>The family enters the work.</h3>
+            <p>
+              The subjects come from inside the house: <em>Jayamma</em>, a triptych. <em>Mother’s work.</em>
+              <em>Rudra. Aadya. Anaga. Jaya.</em> Play, pain, and the construction of identity, painted as
+              the people who constructed his.
+            </p>
+            <div class="figs c3">
+              <figure><span class="img-wrap" data-full="./images/process/edges/jayamma-triptych.jpg" data-cap="Jayamma Triptych · The Edges Series · July 19"><img loading="lazy" src="./images/process/edges/_thumbs/jayamma-triptych.jpg" alt="Jayamma triptych, three canvases on the floor" /></span><figcaption><em>Jayamma Triptych</em>July 19</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/jayamma.jpg" data-cap="Jayamma · The Edges Series · July 19"><img loading="lazy" src="./images/process/edges/_thumbs/jayamma.jpg" alt="Jayamma, white impasto work" /></span><figcaption><em>Jayamma</em>July 19</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/mothers-work.jpg" data-cap="Mother’s work · The Edges Series · July 24"><img loading="lazy" src="./images/process/edges/_thumbs/mothers-work.jpg" alt="Mother's work, marks on black" /></span><figcaption><em>Mother’s work</em>July 24</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/rudra.jpg" data-cap="Rudra · The Edges Series · July 24"><img loading="lazy" src="./images/process/edges/_thumbs/rudra.jpg" alt="Rudra, Edges series work" /></span><figcaption><em>Rudra</em>July 24</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/jaya.jpg" data-cap="Jaya · The Edges Series · July 24"><img loading="lazy" src="./images/process/edges/_thumbs/jaya.jpg" alt="Jaya, Edges series work" /></span><figcaption><em>Jaya</em>July 24</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/studio-night.jpg" data-cap="The Raghava KK Studio · Bengaluru · July 19"><img loading="lazy" src="./images/process/edges/_thumbs/studio-night.jpg" alt="The studio at night, works in progress everywhere" /></span><figcaption><em>The studio</em>Bengaluru · July 19</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>Jul 20</b>Research</div>
+          <div class="what">
+            <h3>How am I <em>different?</em></h3>
+            <p>
+              Two research lists, eighteen names from a friend, nine of the maker’s own, Auerbach to
+              Joan Mitchell to Altmejd, each examined in writing against one question. The notes are blunt:
+              more abstract than Auerbach. A strong body connection to Altmejd. Schulnik has painted on
+              edges, <em>but not as the main feature.</em>
+            </p>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>Jul 31</b>Writing</div>
+          <div class="what">
+            <span class="step-tag">The writings</span>
+            <h3>My truths, and the ultimate other.</h3>
+            <p>
+              Two texts close the journals: ten working truths written on July 31, and notes on the
+              ultimate other, August 2.
+            </p>
+            <div class="journal">
+              <div class="j-label">From the pages</div>
+              <p>“Every work of mine has to be an individual with a complex, beautiful personality.”</p>
+              <p>“Have the humility to know that you have absolutely no clue how your work will be received. Just be prepared to stand by it.”</p>
+            </div>
+            <a class="readpdf" href="./images/process/edges/docs/my-truths.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the pages · My truths (pdf)</a>
+            <a class="readpdf" href="./images/process/edges/docs/the-ultimate-other.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the pages · The ultimate other (pdf)</a>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>Aug 3–6</b>Late works</div>
+          <div class="what">
+            <h3>Bios vs Zoe · The Positive · The Negative.</h3>
+            <p>
+              The last recorded canvases: Bios vs Zoe, and a diptych: The Positive, The Negative.
+              Then, August 6: one day of sorting. Top candidates, secondary works, the rest let go.
+            </p>
+            <div class="figs c3">
+              <figure><span class="img-wrap" data-full="./images/process/edges/bios-vs-zoe.jpg" data-cap="Bios vs Zoe · 4×3 ft · The Edges Series · August 3"><img loading="lazy" src="./images/process/edges/_thumbs/bios-vs-zoe.jpg" alt="Bios vs Zoe, red diptych" /></span><figcaption><em>Bios vs Zoe</em>4×3 ft · August 3</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/the-positive.jpg" data-cap="The Positive · 6×4 ft · The Edges Series · August 3"><img loading="lazy" src="./images/process/edges/_thumbs/the-positive.jpg" alt="The Positive" /></span><figcaption><em>The Positive</em>6×4 ft · August 3</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/edges/the-negative.jpg" data-cap="The Negative · The Edges Series · August 3"><img loading="lazy" src="./images/process/edges/_thumbs/the-negative.jpg" alt="The Negative" /></span><figcaption><em>The Negative</em>August 3</figcaption></figure>
+            </div>
+            <div class="figs c2" style="margin-top:0.7rem;">
+              <figure><span class="img-wrap" data-full="./images/process/edges/painting-red.jpg" data-cap="Painting at the studio · August 3"><img loading="lazy" src="./images/process/edges/_thumbs/painting-red.jpg" alt="Raghava painting the red canvases" /></span><figcaption><em>At work</em>August 3</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FULL STOP -->
+      <div class="fullstop reveal">
+        <p>At one point I felt: I have arrived at something. <em>Right. Full stop.</em></p>
+        <div class="fs-note">The maker’s own verdict, after six months of a process built to keep him honest.</div>
+      </div>
+    </section>
+
+    <!-- AFTER -->
+    <section class="after">
+      <section class="prose-section reveal" id="after">
+        <div class="sec-label"><span class="n">Epilogue</span>After the full stop</div>
+        <div class="sec-body">
+          <h2>After the <em>series.</em></h2>
+          <p>
+            Selection: one day, every work sorted. Display: platforms, inclines, ramps, worked out on paper,
+            because the works read from all sides. The catalogue: made <strong>after</strong> the series was
+            finished. The record follows the work; it does not lead it.
+          </p>
+          <p>
+            The journals had already asked the question this page answers:
+            <em>“When the film world has accommodated making-of documentaries as films, why hasn’t the
+            process of art become as mainstream? Both are scared to reveal their tricks. It may lose value
+            then.”</em>
+          </p>
+
+        </div>
+        <div class="sec-side"></div>
+      </section>
+
+      <!-- FINISHED WORKS -->
+      <section class="finished reveal" id="finished">
+        <div class="fin-head">
+          <div>
+            <div class="sec-label"><span class="n">Series two of two</span>The Edges Series</div>
+            <h2 class="fin-title">Nine <em>canvases.</em></h2>
+          </div>
+          <div class="rail-nav">
+            <button type="button" class="rail-btn" data-dir="-1" aria-label="Scroll works left">‹</button>
+            <button type="button" class="rail-btn" data-dir="1" aria-label="Scroll works right">›</button>
+          </div>
+        </div>
+        <p class="fin-dek">The second series: black grounds, ridges of oil, titles that ask questions. Tap a work to see it in the studio.</p>
+        <div class="works-rail" id="worksRail" aria-label="The finished Edges works">
+          <a class="work-card" href="./studio2.html?work=7A">
+            <img loading="lazy" src="./images/studio/_thumbs/07-edges/7A.jpg" alt="How would you tell a story from the margins?" />
+            <span class="wc-cap"><em>How would you tell a story from the margins?</em>48″ × 72″ · Oil on canvas</span>
+          </a>
+          <a class="work-card" href="./studio2.html?work=7B">
+            <img loading="lazy" src="./images/studio/_thumbs/07-edges/7B.jpg" alt="The presence of the beloved’s absence." />
+            <span class="wc-cap"><em>The presence of the beloved’s absence.</em>72″ × 48″ · Oil on canvas</span>
+          </a>
+          <a class="work-card" href="./studio2.html?work=7C">
+            <img loading="lazy" src="./images/studio/_thumbs/07-edges/7C.jpg" alt="Can a landscape be miniaturized?" />
+            <span class="wc-cap"><em>Can a landscape be miniaturized?</em>12″ × 16″ · Oil on canvas</span>
+          </a>
+          <a class="work-card" href="./studio2.html?work=7D">
+            <img loading="lazy" src="./images/studio/_thumbs/07-edges/7D.jpg" alt="Is erotic attraction reducible to physics?" />
+            <span class="wc-cap"><em>Is erotic attraction reducible to physics?</em>72″ × 48″ · Oil on canvas</span>
+          </a>
+          <a class="work-card" href="./studio2.html?work=7E">
+            <img loading="lazy" src="./images/studio/_thumbs/07-edges/7E.jpg" alt="What kind of body do you possess in a dream?" />
+            <span class="wc-cap"><em>What kind of body do you possess in a dream?</em>72″ × 48″ · Oil on canvas</span>
+          </a>
+          <a class="work-card" href="./studio2.html?work=7F">
+            <img loading="lazy" src="./images/studio/_thumbs/07-edges/7F.jpg" alt="Can you easily organise bodies into types?" />
+            <span class="wc-cap"><em>Can you easily organise bodies into types?</em>48″ × 36″ · Oil on canvas, diptych</span>
+          </a>
+          <a class="work-card" href="./studio2.html?work=7G">
+            <img loading="lazy" src="./images/studio/_thumbs/07-edges/7G.jpg" alt="Can you be friends with your clone?" />
+            <span class="wc-cap"><em>Can you be friends with your clone?</em>24″ × 24″ · Oil on canvas, diptych</span>
+          </a>
+          <a class="work-card" href="./studio2.html?work=7I">
+            <img loading="lazy" src="./images/studio/_thumbs/07-edges/7I.jpg" alt="If my body were opened up, what would you see?" />
+            <span class="wc-cap"><em>If my body were opened up, what would you see?</em>72″ × 48″ · Oil on canvas</span>
+          </a>
+          <a class="work-card" href="./studio2.html?work=7J">
+            <img loading="lazy" src="./images/studio/_thumbs/07-edges/7J.jpg" alt="Is a dead body a body or a thing?" />
+            <span class="wc-cap"><em>Is a dead body a body or a thing?</em>72″ × 48″ · Oil on canvas</span>
+          </a>
+        </div>
+        <div class="fin-actions">
+          <a class="readpdf" href="./images/process/edges/docs/edges-catalog.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>The catalog · 20 pages (pdf)</a>
+          <a class="readpdf" href="./studio2.html?work=7A"><span class="rp-dot"></span>See the series in the studio</a>
+        </div>
+      </section>
+
+      <!-- CODA -->
+      <section class="prose-section reveal" id="coda">
+        <div class="sec-label"><span class="n">Coda</span>One series, one process</div>
+        <div class="sec-body">
+          <h2>This process belongs to Figure &amp; Edges <em>alone.</em></h2>
+          <p>
+            Nothing here is a method. The whiteboard, the critic, the delays, the black ground: these were
+            invented for this journey and end with it. Each new series begins by building its own process.
+          </p>
+        </div>
+        <div class="sec-side"></div>
+      </section>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+    <button class="lb-close" id="lbClose" type="button">Close ✕</button>
+    <img id="lbImg" src="" alt="" />
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+
+  <footer class="colophon" role="contentinfo">
+    <div class="col c-a">
+      <h3>Studio inquiries.</h3>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
+      <span>Sales · Studio Visits · Loan Requests · Hi-res on request</span>
+    </div>
+    <div class="col c-b">
+      <a href="./process.html">All process dossiers →</a>
+      <a href="./studio2.html">The studio →</a>
+      <a href="./timeline2.html">Timeline →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./sitemap2.html">Site map →</a>
+      <span>Studio · Bengaluru</span>
+      <span>Studio · New York</span>
+    </div>
+    <div class="col c-c">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK &middot; <a href="./terms.html">Terms</a></span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* cursor */
+      var cursor = document.getElementById('cursor');
+      if (cursor && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+        document.addEventListener('mousemove', function (e) {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('mouseover', function (e) {
+          if (e.target.closest('.img-wrap')) cursor.classList.add('is-view');
+          else if (e.target.closest('a, button')) cursor.classList.add('is-link');
+        });
+        document.addEventListener('mouseout', function () {
+          cursor.classList.remove('is-view'); cursor.classList.remove('is-link');
+        });
+      }
+
+      /* stamps */
+      var d = new Date();
+      var days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+      var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      var ds = document.getElementById('dateStamp');
+      if (ds) ds.textContent = days[d.getDay()] + ' · ' + String(d.getDate()).padStart(2,'0') + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+      function tick() {
+        var t = new Date();
+        var ts = document.getElementById('timeStamp');
+        if (ts) ts.textContent = String(t.getHours()).padStart(2,'0') + ':' + String(t.getMinutes()).padStart(2,'0');
+      }
+      tick(); setInterval(tick, 30000);
+
+      /* reveal on scroll */
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+      /* lightbox */
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lbImg');
+      var lbCap = document.getElementById('lbCap');
+      document.addEventListener('click', function (e) {
+        var w = e.target.closest('.img-wrap');
+        if (w && w.dataset.full) {
+          lbImg.src = w.dataset.full;
+          lbCap.textContent = w.dataset.cap || '';
+          lb.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+      function closeLb() { lb.classList.remove('open'); lbImg.src = ''; document.body.style.overflow = ''; }
+      document.getElementById('lbClose').addEventListener('click', closeLb);
+      lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+    })();
+    // WORKS RAILS
+  (function(){
+    document.querySelectorAll('.rail-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var section = btn.closest('.finished');
+        var rail = section && section.querySelector('.works-rail');
+        if (!rail) return;
+        var step = Math.max(rail.clientWidth * 0.7, 280) * Number(btn.dataset.dir || 1);
+        rail.scrollBy({ left: step, behavior: 'smooth' });
+      });
+    });
+  })();
+
+</script>
+</body>
+</html>

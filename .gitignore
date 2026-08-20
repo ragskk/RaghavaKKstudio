@@ -20,11 +20,20 @@ toys-source/
 # Oversize file: 143 MB, exceeds GitHub's 100 MB single-file limit
 books/art books/Restless Frequency.pdf
 
-# TEMPORARILY IGNORE NEW EXCAVATE CHANGES!!
-excavate2.html
 
 # OS cruft
 .DS_Store
 
 # Vercel CLI link
 .vercel/
+raghavakk-inventory-app/
+
+# Edges process source material — confidential working files (pricing, gallery lists, raw images); the public derivatives live in images/process/
+edges process/
+
+# Process source material (2.9 GB) — Toy Trojan, Orgasm Project, raw HEIC/MOV/INDD.
+# Confidential working files; the public derivatives live in images/process/
+process/
+
+# Scratch drop zone — device_bash cannot delete, so files are parked here for manual removal
+_to_delete/

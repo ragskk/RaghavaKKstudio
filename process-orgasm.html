@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>html{visibility:hidden}</style><script>(function(){try{if(localStorage.getItem("studio_access")==="ok"){document.documentElement.style.visibility="visible";return;}}catch(_){}window.location.replace("/");})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>How an Orgasm Became a Painting, Raghava KK</title>
+  <meta name="description" content="Dossier № 03. The Orgasm Project, 2017–2021. A brainwave recording of the artist's orgasm, visualised, interpreted, and returned to oil on canvas, shown step by step." />
+  <meta property="og:title" content="How an Orgasm Became a Painting, Raghava KK" />
+  <meta property="og:description" content="Dossier № 03. The Orgasm Project. The process shown step by step, 2017 to 2021." />
+  <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/process-orgasm" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Raghava KK" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://raghavakkstudio.com/process-orgasm" />
+  <meta name="theme-color" content="#F4F1EA" />
+  <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
+  <meta name="robots" content="index, follow, noai, noimageai" />
+  <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./protect.css" />
+  <style>
+    /* ───────────────────────────────────────────────────────────
+       RAGHAVA KK · PROCESS DOSSIER № 03 · THE ORGASM PROJECT
+       A museum plan of the process. Five numbered rooms on paper,
+       read in order; the gallery turns dark where the finished
+       works hang. Clean, literal, easy to walk through.
+       ─────────────────────────────────────────────────────────── */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --paper:#F4F1EA; --paper-2:#ECE7DA; --paper-3:#E3DCC8;
+      --ink:#0E0E0C; --ink-2:#2B2A26; --muted:#8B8579;
+      --rule:#1A1A17; --rule-soft:rgba(14,14,12,0.18);
+      --red:#E63D22; --red-deep:#B31E12;
+      --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+      --display:'Instrument Serif','Fraunces',Georgia,serif;
+      --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+      --edge:clamp(1rem,2.6vw,2.4rem);
+      --ease:cubic-bezier(.2,.7,.2,1);
+      --ease-out:cubic-bezier(.16,1,.3,1);
+    }
+
+    html { font-size: 16.5px; scroll-behavior: smooth; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
+
+    html, body {
+      background: var(--paper); color: var(--ink);
+      font-family: var(--serif);
+      font-feature-settings: "ss01" 1, "kern" 1, "liga" 1;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    body {
+      min-height: 100vh; cursor: none;
+      background-image:
+        radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      background-size: 3px 3px, auto;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none;
+      z-index: 1; opacity: 0.5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    /* CURSOR */
+    .cursor { position: fixed; top:0; left:0; width:18px; height:18px; border-radius:50%; background: var(--ink); mix-blend-mode: difference; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .25s var(--ease), height .25s var(--ease), background .25s var(--ease); }
+    .cursor.is-link { width: 56px; height: 56px; background: var(--red); mix-blend-mode: normal; }
+    .cursor.is-view { width: 88px; height: 88px; background: var(--red); mix-blend-mode: normal; }
+    .cursor.is-view::after { content: "open"; position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--paper); }
+    @media (hover: none), (pointer: coarse) { body { cursor: auto; } .cursor { display: none; } }
+
+    /* TAPE */
+    .tape { position: relative; z-index: 3; width: 100%; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; overflow: hidden; border-bottom: 1px solid var(--ink); }
+    .tape-track { display: flex; gap: 4rem; padding: 0.6rem 0; white-space: nowrap; animation: tape-scroll 60s linear infinite; width: max-content; }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* MASTHEAD */
+    .masthead { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; padding: 1.2rem var(--edge) 0.9rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); }
+    @media (max-width: 640px) {
+      .masthead { grid-template-columns: 1fr; gap: 0.4rem; padding: 0.9rem var(--edge) 0.7rem; }
+      .masthead .left, .masthead .right { justify-content: flex-start; }
+      .masthead .center { text-align: left; }
+    }
+    .masthead .left, .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center { font-family: var(--display); font-style: italic; font-size: clamp(0.95rem, 1.1vw, 1.05rem); letter-spacing: 0.04em; text-transform: none; color: var(--ink); }
+    .masthead .stamp { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.18rem 0.5rem; border: 1px solid var(--rule); border-radius: 999px; }
+    .masthead .stamp.live::before { content: ""; width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: pulse 1.6s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+    .masthead a { color: var(--ink); text-decoration: none; transition: color .2s var(--ease); }
+    .masthead a:hover { color: var(--red); }
+
+    /* PAGE HEAD */
+    .page-head {
+      position: relative; z-index: 2;
+      padding: clamp(2.5rem, 6vh, 4.5rem) var(--edge) 1.6rem;
+      max-width: 1480px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.4rem;
+      align-items: end;
+    }
+    .page-head .titleblock { grid-column: 1 / span 7; }
+    .page-head .meta { grid-column: 9 / span 4; align-self: end; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.65rem; border: 1px solid var(--ink);
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+    .eyebrow .num { font-weight: 600; color: var(--red); }
+    .page-title {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.6rem, 6.6vw, 5.4rem); line-height: 0.95;
+      letter-spacing: -0.01em; color: var(--ink);
+    }
+    .page-title em { color: var(--red); font-style: italic; }
+    .page-lede {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.05rem, 1.4vw, 1.25rem); line-height: 1.45;
+      color: var(--ink-2); margin-top: 1rem; max-width: 60ch;
+    }
+    .page-lede em { font-style: italic; color: var(--red); }
+    .meta-block {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-2);
+      border-left: 1px solid var(--rule); padding-left: 0.9rem;
+      display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .meta-block .accent { color: var(--red); }
+    @media (max-width: 920px) {
+      .page-head .titleblock, .page-head .meta { grid-column: 1 / -1; }
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 1040px; margin: 0 auto;
+      padding: 0 var(--edge) 0.4rem;
+    }
+    .hero .img-wrap { border: 1px solid var(--rule); }
+    .hero figcaption {
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--muted); margin-top: 0.45rem;
+    }
+    .hero-quote {
+      max-width: 1480px; margin: 0 auto;
+      padding: 1.8rem var(--edge) 2.4rem;
+      display: grid; grid-template-columns: repeat(12,1fr); gap: 1.4rem;
+    }
+    .hero-quote blockquote {
+      grid-column: 3 / span 8;
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.3rem, 2.4vw, 2rem); line-height: 1.3;
+      color: var(--ink); text-align: center;
+    }
+    .hero-quote blockquote em { color: var(--red); }
+    .hero-quote cite {
+      display: block; margin-top: 0.8rem;
+      font-family: var(--mono); font-style: normal; font-size: 10px;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-2);
+    }
+    @media (max-width: 920px) { .hero-quote blockquote { grid-column: 1 / -1; } }
+
+    /* IMG WRAP (shared) */
+    .img-wrap {
+      position: relative; overflow: hidden; background: var(--paper-2);
+      display: block; cursor: pointer;
+      border: 1px solid rgba(14,14,12,0.18);
+      transition: transform .35s var(--ease-out), border-color .25s var(--ease), box-shadow .35s var(--ease);
+    }
+    .img-wrap:hover { transform: translateY(-3px); border-color: var(--red); box-shadow: 0 14px 32px rgba(0,0,0,0.12); }
+    .img-wrap img { display: block; width: 100%; height: auto; }
+
+    /* PROSE SECTIONS */
+    .prose-section {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(2.4rem,5vh,4rem) var(--edge);
+      display: grid; grid-template-columns: repeat(12,1fr); gap: 1.4rem;
+      border-top: 1px solid var(--rule);
+    }
+    .prose-section .sec-label {
+      grid-column: 1 / span 3;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--ink-2);
+    }
+    .prose-section .sec-label .n { color: var(--red); font-weight: 600; display: block; margin-bottom: 0.3rem; }
+    .prose-section .sec-body { grid-column: 4 / span 6; }
+    .prose-section .sec-side { grid-column: 10 / span 3; }
+    .prose-section h2 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.05;
+      margin-bottom: 1rem; color: var(--ink);
+    }
+    .prose-section h2 em { color: var(--red); }
+    .prose-section p {
+      font-family: var(--serif); font-size: 0.95rem; line-height: 1.65;
+      color: var(--ink-2); margin-bottom: 0.9rem; max-width: 62ch;
+    }
+    .prose-section p em { color: var(--red); font-style: italic; }
+    .prose-section p strong { font-weight: 600; color: var(--ink); }
+    @media (max-width: 920px) {
+      .prose-section .sec-label, .prose-section .sec-body, .prose-section .sec-side { grid-column: 1 / -1; }
+    }
+
+    /* ROLES */
+    .roles { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 1.2rem; max-width: 720px; }
+    .role { border: 1px solid var(--rule-soft); padding: 0.9rem; background: var(--paper); }
+    .role .r-name { font-family: var(--display); font-style: italic; font-size: 1.1rem; color: var(--ink); }
+    .role .r-title { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin: 0.25rem 0 0.5rem; }
+    .role .r-body { font-family: var(--serif); font-size: 12px; line-height: 1.5; color: var(--ink-2); }
+    @media (max-width: 720px) { .roles { grid-template-columns: 1fr; } }
+
+    /* ─── THE STEPS · museum rooms ─── */
+    .step {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(2.8rem,6vh,4.6rem) var(--edge);
+      display: grid; grid-template-columns: repeat(12,1fr); gap: 1.4rem;
+      border-top: 1px solid var(--rule);
+    }
+    .step .s-head { grid-column: 1 / span 3; }
+    .step .s-num {
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(3rem, 6vw, 5.2rem); line-height: 0.9; color: var(--red);
+    }
+    .step .s-name {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--ink-2); margin-top: 0.7rem; line-height: 1.7;
+    }
+    .step .s-name b { display: block; color: var(--ink); font-weight: 600; }
+    .step .s-main { grid-column: 4 / span 9; min-width: 0; }
+    .step h2 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.8rem, 3.4vw, 2.8rem); line-height: 1.02;
+      color: var(--ink); margin-bottom: 0.9rem; max-width: 24ch;
+    }
+    .step h2 em { color: var(--red); }
+    .step .wall {
+      font-family: var(--serif); font-size: 0.97rem; line-height: 1.66;
+      color: var(--ink-2); max-width: 62ch; margin-bottom: 0.9rem;
+    }
+    .step .wall em { color: var(--red); font-style: italic; }
+    .step .wall strong { font-weight: 600; color: var(--ink); }
+    .pull {
+      font-family: var(--serif); font-style: italic;
+      font-size: 1rem; line-height: 1.55; color: var(--ink);
+      border-left: 2px solid var(--red);
+      padding: 0.35rem 0 0.35rem 0.9rem;
+      max-width: 52ch; margin: 1.1rem 0;
+    }
+    .pull .p-label {
+      display: block; font-family: var(--mono); font-style: normal;
+      font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 0.25rem;
+    }
+    @media (max-width: 920px) {
+      .step { grid-template-columns: 1fr; }
+      .step .s-head, .step .s-main { grid-column: 1 / -1; }
+      .step .s-head { display: flex; align-items: baseline; gap: 1rem; }
+      .step .s-name { margin-top: 0; }
+    }
+
+    /* figures */
+    .figs { display: grid; gap: 0.55rem; margin-top: 1.4rem; }
+    .figs.c2 { grid-template-columns: 1fr 1fr; }
+    .figs.c3 { grid-template-columns: 1fr 1fr 1fr; }
+    .figs.c4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    .figs.c2-1 { grid-template-columns: 2fr 1fr; align-items: start; }
+    .figs figure { margin: 0; min-width: 0; }
+    .figs figcaption {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+      margin-top: 0.35rem; line-height: 1.45;
+    }
+    .figs figcaption em {
+      font-family: var(--serif); font-style: italic; text-transform: none;
+      letter-spacing: 0.01em; color: var(--ink-2); font-size: 11px;
+      display: block; margin-bottom: 0.1rem;
+    }
+    @media (max-width: 720px) {
+      .figs.c2, .figs.c3, .figs.c4, .figs.c2-1 { grid-template-columns: 1fr 1fr; }
+      .figs.c2, .figs.c2-1 { grid-template-columns: 1fr; }
+    }
+
+    /* the brain-scan strip */
+    .scan-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.55rem; margin-top: 1.4rem; background: var(--ink); border: 1px solid var(--ink); padding: 0.55rem; }
+    .scan-strip figure { margin: 0; }
+    .scan-strip .img-wrap { border-color: rgba(244,241,234,0.2); background: #171714; }
+    .scan-strip figcaption { font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244,241,234,0.7); margin-top: 0.35rem; text-align: center; }
+    .scan-strip figcaption b { color: var(--red); font-weight: 600; }
+
+    /* video */
+    .vid-wrap { position: relative; border: 1px solid var(--rule-soft); background: #171714; margin-top: 1.4rem; }
+    .vid-wrap video { display: block; width: 100%; height: auto; }
+    .vid-wrap .vid-cap {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted); padding: 0.4rem 0.1rem 0.1rem; background: transparent;
+    }
+    .vid-note { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 0.35rem; line-height: 1.45; }
+    .vid-poster { position: absolute; inset: 0; cursor: pointer; display: grid; place-items: center; background-size: cover; background-position: center; }
+    .vid-poster::after {
+      content: "Play ▸"; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--paper); background: rgba(14,14,12,0.82);
+      border: 1px solid rgba(244,241,234,0.4); border-radius: 999px; padding: 0.65rem 1.15rem;
+      transition: background .2s var(--ease), border-color .2s var(--ease);
+    }
+    .vid-poster:hover::after { background: var(--red); border-color: var(--red); }
+
+    /* ─── THE GALLERY · dark room for the finished works ─── */
+    .gallery {
+      background: var(--ink); color: var(--paper);
+      border-top: 1px solid var(--ink);
+      position: relative; z-index: 2;
+    }
+    .gallery .g-head {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(3rem,8vh,6rem) var(--edge) clamp(1.5rem,3vh,2.5rem);
+    }
+    .gallery .g-head .gh-tag {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.9rem;
+    }
+    .gallery .g-head h2 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.2rem, 5.4vw, 4.4rem); line-height: 1;
+      color: var(--paper); max-width: 20ch;
+    }
+    .gallery .g-head h2 em { color: var(--red); }
+    .gallery .g-head .gh-note {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1rem,1.3vw,1.15rem); line-height: 1.5;
+      color: rgba(244,241,234,0.75); margin-top: 1rem; max-width: 56ch;
+    }
+    .gallery .g-inner { max-width: 1480px; margin: 0 auto; padding: 0 var(--edge) clamp(3rem,6vh,5rem); }
+    .gallery .g-main { max-width: 1040px; margin: 0 auto; }
+    .gallery .img-wrap { border-color: rgba(244,241,234,0.22); background: #171714; }
+    .gallery .img-wrap:hover { border-color: var(--red); }
+    .gallery .figs figcaption { color: rgba(244,241,234,0.5); }
+    .gallery .figs figcaption em { color: rgba(244,241,234,0.85); }
+    .gallery .g-wall {
+      font-family: var(--serif); font-size: 0.97rem; line-height: 1.66;
+      color: rgba(244,241,234,0.78); max-width: 62ch; margin: 2rem auto 0;
+    }
+    .gallery .g-wall strong { color: var(--paper); font-weight: 600; }
+    .gallery .g-wall em { color: var(--red); font-style: italic; }
+    .gallery .dedication {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(2.5rem,6vh,4.5rem) var(--edge);
+      text-align: center;
+    }
+    .gallery .dedication p {
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.5rem, 3.2vw, 2.6rem); line-height: 1.25;
+      color: var(--paper); max-width: 28ch; margin: 0 auto;
+    }
+    .gallery .dedication p em { color: var(--red); }
+    .gallery .dedication .d-note {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(244,241,234,0.55);
+      margin-top: 1.2rem;
+    }
+    .gallery .vid-wrap { border-color: rgba(244,241,234,0.22); }
+    .gallery .vid-wrap .vid-cap, .gallery .vid-note { color: rgba(244,241,234,0.5); }
+
+    /* AFTER · back on paper */
+    .after { border-top: 1px solid var(--rule); background: var(--paper); position: relative; z-index: 2; }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(14,14,12,0.94);
+      display: none; align-items: center; justify-content: center;
+      padding: 3vh 3vw;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 94vw; max-height: 88vh; width: auto; height: auto; display: block; }
+    .lightbox .lb-cap {
+      position: absolute; left: 0; right: 0; bottom: 1.2rem;
+      text-align: center; font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,241,234,0.7);
+      padding: 0 var(--edge);
+    }
+    .lightbox .lb-close {
+      position: absolute; top: 1rem; right: 1.2rem;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--paper);
+      background: none; border: 1px solid rgba(244,241,234,0.4);
+      border-radius: 999px; padding: 0.45rem 0.85rem; cursor: pointer;
+    }
+    .lightbox .lb-close:hover { border-color: var(--red); color: var(--red); }
+
+    /* COLOPHON */
+    .colophon {
+      position: relative; z-index: 2;
+      padding: clamp(3rem, 7vh, 5rem) var(--edge) clamp(2rem, 4vh, 3rem);
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem; align-items: start;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-2);
+    }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.35rem; }
+    .colophon .col.c-c { align-items: flex-end; }
+    .colophon h3 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 1.05rem; letter-spacing: 0.02em; color: var(--ink); text-transform: none; margin-bottom: 0.2rem; }
+    .colophon a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .seal { width: 60px; height: 60px; border: 1px solid var(--rule); border-radius: 50%; display: grid; place-items: center; background: var(--paper); margin-bottom: 0.6rem; }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; }
+    @media (max-width: 920px) {
+      .colophon { grid-template-columns: 1fr; }
+      .colophon .col.c-c { align-items: flex-start; }
+    }
+
+    /* reveal */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tape-track { animation: none; }
+      .masthead .stamp.live::before { animation: none; }
+      .img-wrap, .reveal { transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body oncontextmenu="return true">
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <!-- TAPE -->
+  <div class="tape" role="presentation">
+    <div class="tape-track">
+      <span>The Process</span><span class="dot"></span>
+      <span>Dossier № 03 · The Orgasm Project</span><span class="dot"></span>
+      <span>2017 → 2021</span><span class="dot"></span>
+      <span>Bengaluru · Mumbai · New York</span><span class="dot"></span>
+      <span>Five steps, shown plainly</span><span class="dot"></span>
+      <span>The Process</span><span class="dot"></span>
+      <span>Dossier № 03 · The Orgasm Project</span><span class="dot"></span>
+      <span>2017 → 2021</span><span class="dot"></span>
+      <span>Bengaluru · Mumbai · New York</span><span class="dot"></span>
+      <span>Five steps, shown plainly</span><span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <header class="masthead" role="banner">
+    <div class="left">
+      <a class="breadcrumb" href="./index.html">← Raghava KK</a>
+      <a class="breadcrumb" href="./studio2.html">Studio</a>
+      <a class="breadcrumb" href="./process.html">Process</a>
+      <span class="stamp live">Dossier № 03</span>
+    </div>
+    <div class="center">a process record</div>
+    <div class="right">
+      <span id="dateStamp">--</span>
+      <span id="timeStamp">--:--</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- HEAD -->
+    <section class="page-head">
+      <div class="titleblock">
+        <p class="eyebrow"><span class="num">№ 03</span>Process · The Orgasm Project · 2017 → 2021</p>
+        <h1 class="page-title">How an orgasm became <em>a painting.</em></h1>
+        <p class="page-lede">
+          A record of the process behind <em>La petite mort</em>. The artist's orgasm was recorded as
+          brainwave data, visualised neuron by neuron, interpreted by hand, and returned to oil on
+          canvas by a robot and a painter working together. Five steps, shown plainly.
+        </p>
+      </div>
+      <div class="meta">
+        <div class="meta-block">
+          <div>Range <span class="accent">2017 → 2021</span></div>
+          <div>Sites · Bengaluru · Mumbai · New York</div>
+          <div>Shown · Sotheby's HQ, New York · Oct 2021</div>
+          <div>Collaborators · Satani · Agrawal · Tritt / Artmatr</div>
+          <div>Register · the record, not the myth</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERO -->
+    <section class="hero reveal">
+      <figure>
+        <span class="img-wrap" data-full="./images/process/orgasm/lpm-1.jpg" data-cap="La Petite Mort I · 74.75 × 74.75 × 1.75 in · Oil on canvas · 2021">
+          <img src="./images/process/orgasm/_thumbs/lpm-1.jpg" srcset="./images/process/orgasm/_thumbs/lpm-1.jpg 800w, ./images/process/orgasm/lpm-1.jpg 2400w" sizes="(max-width: 920px) 96vw, 1000px" alt="La Petite Mort I, a dense tangle of painted neural threads studded with flowers, a red sphere at its centre" />
+        </span>
+        <figcaption>La Petite Mort I · 74.75 × 74.75 × 1.75 in · Oil on canvas · 2021</figcaption>
+      </figure>
+    </section>
+    <section class="hero-quote reveal">
+      <blockquote>
+        “If everything is digitizable, is everything also for sale?
+        <em>Does that sit right with you, ethically?</em>”
+        <cite>Karthik Kalyanaraman to Raghava KK · the question that started it</cite>
+      </blockquote>
+    </section>
+
+    <!-- THE PREMISE -->
+    <section class="prose-section reveal" id="premise">
+      <div class="sec-label"><span class="n">Prologue</span>The premise</div>
+      <div class="sec-body">
+        <h2>What cannot be <em>digitised?</em></h2>
+        <p>
+          <strong>Burning Man, 2017.</strong> After a heartbreaking divorce, Raghava went to the desert and
+          came back with a two-hundred-year plan for crypto art: a manifesto hybridised onto a business
+          plan, imagining a decentralised global repository of human imagination. The polarised worlds of
+          art and business would not come together to build it.
+        </p>
+        <p>
+          What survived was a question, sharpened in conversation with his brother, the critic
+          Karthik Kalyanaraman: everything seemed digitisable, so everything seemed sellable.
+          <strong>Then what is the craziest thing one could sell?</strong> The most intimate, personal,
+          non-sellable item imaginable.
+        </p>
+        <p>
+          The answer was the orgasm: <em>la petite mort</em>, the little death, the one experience where
+          the mental and the physical meld. The project takes a physical, emotional, visceral experience,
+          turns it into a digital record, and then brings it back into the physical world as a fresh
+          sensual encounter.
+        </p>
+      </div>
+      <div class="sec-side"></div>
+    </section>
+
+    <!-- THE COLLABORATORS -->
+    <section class="prose-section reveal" id="collaborators">
+      <div class="sec-label"><span class="n">The team</span>Four disciplines</div>
+      <div class="sec-body">
+        <h2>One artist, three <em>sciences.</em></h2>
+        <p>
+          No single discipline can move an orgasm from a body to a canvas. Each step of the process
+          belonged to a different collaborator.
+        </p>
+        <div class="roles">
+          <div class="role">
+            <div class="r-name">Raghava KK</div>
+            <div class="r-title">The Artist</div>
+            <div class="r-body">Supplies the orgasm, the question, and the hand. Interprets the data into an artwork and paints alongside the robots.</div>
+          </div>
+          <div class="role">
+            <div class="r-name">Abhijeet Satani</div>
+            <div class="r-title">The Neuroscientist</div>
+            <div class="r-body">Builds the brainwave equipment and captures the neural data: before, during, and after.</div>
+          </div>
+          <div class="role">
+            <div class="r-name">Harshit Agrawal</div>
+            <div class="r-title">The AI Artist</div>
+            <div class="r-body">Takes the raw neuro-data into 3D, turning every neuron into an individual brush stroke.</div>
+          </div>
+          <div class="role">
+            <div class="r-name">Ben Tritt · Artmatr</div>
+            <div class="r-title">The Material Scientist</div>
+            <div class="r-body">Prepares special oil pigments in a material-science lab and leads the robotic printing that returns the work to canvas.</div>
+          </div>
+        </div>
+        <p style="margin-top:1rem;">
+          Curatorial advisor: <strong>Myna Mukherjee</strong>. Master printer: <strong>Jeff Leonard</strong>.
+        </p>
+      </div>
+      <div class="sec-side"></div>
+    </section>
+
+    <!-- STEP 01 -->
+    <section class="step reveal" id="step-1">
+      <div class="s-head">
+        <div class="s-num">01</div>
+        <div class="s-name"><b>The Idea</b>2017 → 2019</div>
+      </div>
+      <div class="s-main">
+        <h2>An announcement, two years <em>early.</em></h2>
+        <p class="wall">
+          The idea travelled as a spoken promise before it was a work. In 2019, on stage at the FofX
+          festival in Uttarakhand, Raghava and the neuroscientist Abhijeet Satani announced that they
+          would one day capture Raghava's orgasm and turn it into art.
+        </p>
+        <div class="pull"><span class="p-label">The promise · FofX Festival · 2019</span>“One day soon, we shall capture our orgasm and turn it into art.”</div>
+        <div class="figs c2">
+          <figure>
+            <span class="img-wrap" data-full="./images/process/orgasm/karthik-raghava.jpg" data-cap="Karthik Kalyanaraman and Raghava KK, brothers and co-curators of 64/1">
+              <img loading="lazy" src="./images/process/orgasm/_thumbs/karthik-raghava.jpg" alt="Karthik Kalyanaraman and Raghava KK in front of a blackboard" />
+            </span>
+            <figcaption><em>The critic and the artist</em>Karthik Kalyanaraman &amp; Raghava KK · 64/1</figcaption>
+          </figure>
+          <figure>
+            <div class="vid-wrap" style="margin-top:0;">
+              <video controls preload="metadata" src="./images/process/orgasm/video/fofx-announcement.mp4"></video>
+            </div>
+            <figcaption><em>The announcement</em>FofX Festival · Uttarakhand · 2019 · Video: Lipan</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 02 -->
+    <section class="step reveal" id="step-2">
+      <div class="s-head">
+        <div class="s-num">02</div>
+        <div class="s-name"><b>Data Collection</b>Bengaluru · 2021</div>
+      </div>
+      <div class="s-main">
+        <h2>The orgasm is recorded as <em>brainwaves.</em></h2>
+        <p class="wall">
+          With equipment developed by Abhijeet Satani, the studio in Bengaluru became a recording room.
+          Electrodes were placed, the room prepared, and the capture rehearsed, first with music and
+          painting, to test how the brain read on the machine, before the orgasm itself was recorded
+          as neural data.
+        </p>
+        <div class="figs c3">
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/raghava-prep.jpg" data-cap="Raghava being prepped for the brainwave capture · Bengaluru · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/raghava-prep.jpg" alt="Raghava having electrodes applied to his scalp" /></span><figcaption><em>The prep</em>Electrodes placed · Bengaluru 2021</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/electrodes.jpg" data-cap="Placing the brainwave device · Bengaluru · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/electrodes.jpg" alt="Two people fitting a brainwave device" /></span><figcaption><em>The fitting</em>Brainwave device setup</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/brainwave-device.jpg" data-cap="Equipment developed by Abhijeet Satani for the capture · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/brainwave-device.jpg" alt="The proprietary brainwave device, coiled wires and sensor discs" /></span><figcaption><em>The instrument</em>Device by Abhijeet Satani</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/capture-test-painting.jpg" data-cap="Brainwave capture test while painting · Bengaluru · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/capture-test-painting.jpg" alt="Raghava painting while wearing the electrode cap" /></span><figcaption><em>The rehearsal</em>Capture test, with painting</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/monitoring.jpg" data-cap="Raghava and Abhijeet monitoring the brainwaves · Bengaluru · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/monitoring.jpg" alt="Raghava and Abhijeet reading brainwave data on a laptop" /></span><figcaption><em>The reading</em>Monitoring the signal</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/room-setup.jpg" data-cap="The room prepared for the capture · Bengaluru · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/room-setup.jpg" alt="The recording room, mattress and equipment laid out" /></span><figcaption><em>The room</em>Set for the capture</figcaption></figure>
+        </div>
+        <div class="scan-strip">
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/brain-before.jpg" data-cap="The brain, 15 seconds before orgasm · Image: Abhijeet Satani"><img loading="lazy" src="./images/process/orgasm/_thumbs/brain-before.jpg" alt="Brain visualisation before orgasm, sparse activity" /></span><figcaption><b>−15 sec</b> · before</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/brain-peak.jpg" data-cap="The brain at peak orgasm · Image: Abhijeet Satani"><img loading="lazy" src="./images/process/orgasm/_thumbs/brain-peak.jpg" alt="Brain visualisation at peak orgasm, dense activity across both hemispheres" /></span><figcaption><b>Peak</b> · during</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/brain-after.jpg" data-cap="The brain, 15 seconds after orgasm · Image: Abhijeet Satani"><img loading="lazy" src="./images/process/orgasm/_thumbs/brain-after.jpg" alt="Brain visualisation after orgasm, activity subsiding" /></span><figcaption><b>+15 sec</b> · after</figcaption></figure>
+        </div>
+        <div class="vid-wrap">
+          <video autoplay muted loop playsinline preload="metadata" src="./images/process/orgasm/video/primitive-viz.mp4"></video>
+        </div>
+        <p class="vid-note">Primitive visualisation of the recorded orgasm · Bengaluru 2021 · Video: Abhijeet Satani</p>
+      </div>
+    </section>
+
+    <!-- STEP 03 -->
+    <section class="step reveal" id="step-3">
+      <div class="s-head">
+        <div class="s-num">03</div>
+        <div class="s-name"><b>Data Visualisation</b>Mumbai · 2021</div>
+      </div>
+      <div class="s-main">
+        <h2>Every neuron becomes a <em>brush stroke.</em></h2>
+        <p class="wall">
+          Harshit Agrawal brought the neuro-data into Blender and rebuilt it in three dimensions.
+          The rule was set here, and it carries through to the finished painting:
+          <strong>each firing neuron is turned into an individual brush stroke.</strong> The data was
+          also rendered procedurally, and exported as a 3D brain object the artist could turn in his hands.
+        </p>
+        <div class="figs c3">
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/blender-brain.jpg" data-cap="Neuro-data brought into Blender for 3D render · 2021 · Image: Harshit Agrawal"><img loading="lazy" src="./images/process/orgasm/_thumbs/blender-brain.jpg" alt="Grey 3D brain render built from neural data" /></span><figcaption><em>The data in 3D</em>Blender render · Harshit Agrawal</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/blender-ui.jpg" data-cap="Working the neuro-data in Blender · Mumbai · 2021 · Image: Harshit Agrawal"><img loading="lazy" src="./images/process/orgasm/_thumbs/blender-ui.jpg" alt="Blender interface with the brain model" /></span><figcaption><em>The workbench</em>Blender · Mumbai 2021</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/neuron-strokes.jpg" data-cap="Each neuron turned into an individual brush stroke, stroke detail · 2021 · Image: Harshit Agrawal"><img loading="lazy" src="./images/process/orgasm/_thumbs/neuron-strokes.jpg" alt="Close detail of neurons rendered as stroke marks" /></span><figcaption><em>The rule</em>One neuron, one stroke</figcaption></figure>
+        </div>
+        <div class="vid-wrap">
+          <video autoplay muted loop playsinline preload="metadata" src="./images/process/orgasm/video/brain-loop.mp4"></video>
+        </div>
+        <p class="vid-note">The visualised brain, turning · 2021 · Video: Harshit Agrawal</p>
+      </div>
+    </section>
+
+    <!-- STEP 04 -->
+    <section class="step reveal" id="step-4">
+      <div class="s-head">
+        <div class="s-num">04</div>
+        <div class="s-name"><b>Creative Interpretation</b>New York · 2021</div>
+      </div>
+      <div class="s-main">
+        <h2>The artist chooses his <em>angle.</em></h2>
+        <p class="wall">
+          In New York, the science hands over to the hand. Raghava selected a single viewing angle of
+          the brain from the 3D file, then composed the artwork in layers: the tangle of neural
+          threads, and the garden of flowers and forms that grows on it. The data decides the structure;
+          the artist decides everything else.
+        </p>
+        <div class="figs c2">
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/brain-obj-ui.jpg" data-cap="Brain angle selection from the .obj file · New York · 2021 · Image: Raghava KK"><img loading="lazy" src="./images/process/orgasm/_thumbs/brain-obj-ui.jpg" alt="Photoshop with four views of the wireframe brain" /></span><figcaption><em>Choosing the angle</em>From the .obj file · New York 2021</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/layer-composite.jpg" data-cap="The composed digital artwork · Photoshop · New York · 2021 · Image: Raghava KK"><img loading="lazy" src="./images/process/orgasm/_thumbs/layer-composite.jpg" alt="The composite digital artwork glowing on a dark ground" /></span><figcaption><em>The composition</em>All layers together</figcaption></figure>
+        </div>
+        <div class="figs c3">
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/layer-linework.jpg" data-cap="Key layer: the neural linework · Image: Raghava KK"><img loading="lazy" src="./images/process/orgasm/_thumbs/layer-linework.jpg" alt="Layer of black tangled linework" /></span><figcaption><em>Layer</em>The neural threads</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/layer-flowers.jpg" data-cap="Key layer: the flowers and forms · Image: Raghava KK"><img loading="lazy" src="./images/process/orgasm/_thumbs/layer-flowers.jpg" alt="Layer of scattered flowers and small forms" /></span><figcaption><em>Layer</em>The garden</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/layer-white.jpg" data-cap="Key layer: the white mass · Image: Raghava KK"><img loading="lazy" src="./images/process/orgasm/_thumbs/layer-white.jpg" alt="Layer of the tangle rendered in white" /></span><figcaption><em>Layer</em>The white mass</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 05 -->
+    <section class="step reveal" id="step-5">
+      <div class="s-head">
+        <div class="s-num">05</div>
+        <div class="s-name"><b>Digital to Physical</b>New York · 2021</div>
+      </div>
+      <div class="s-main">
+        <h2>A robot and a painter, on the <em>same canvas.</em></h2>
+        <p class="wall">
+          At the Artmatr lab, the digital file was returned to matter. Special oil pigments were prepared
+          in a material-science lab set up by Artmatr in Israel. The contours of the artwork were turned
+          into G-code for the robots. Then months of experiments in mark making, testing how a machine
+          lays paint and how a hand answers it, before the final works were painted and printed,
+          Raghava working alongside the robots.
+        </p>
+        <div class="figs c3">
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/vials.jpg" data-cap="Special oil pigments prepared in a material-science lab set up by Artmatr in Israel · Image: Artmatr"><img loading="lazy" src="./images/process/orgasm/_thumbs/vials.jpg" alt="Four vials of pigment in a foam case" /></span><figcaption><em>The pigments</em>Prepared in Israel · Artmatr</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/sketch-1.jpg" data-cap="Study, the tangle in ink · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/sketch-1.jpg" alt="Ink study of the neural tangle" /></span><figcaption><em>Studies</em>The tangle in ink</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/sketch-4.jpg" data-cap="Study, the tangle in ink · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/sketch-4.jpg" alt="Second ink study of the tangle" /></span><figcaption><em>Studies</em>Study on paper</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/mark-impasto.jpg" data-cap="Experiments in mark making · New York · 2021 · Image: Artmatr"><img loading="lazy" src="./images/process/orgasm/_thumbs/mark-impasto.jpg" alt="Thick impasto mark-making test in blue and yellow" /></span><figcaption><em>Mark making</em>Impasto tests · Artmatr</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/mark-flowers-silver.jpg" data-cap="Experiments in mark making · New York · 2021 · Image: Artmatr"><img loading="lazy" src="./images/process/orgasm/_thumbs/mark-flowers-silver.jpg" alt="Printed flowers over silver ground with tangle linework" /></span><figcaption><em>Mark making</em>Flowers on silver</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/mark-white-flower.jpg" data-cap="Experiments in mark making · New York · 2021 · Image: Artmatr"><img loading="lazy" src="./images/process/orgasm/_thumbs/mark-white-flower.jpg" alt="A white sculpted flower form over dark printed texture" /></span><figcaption><em>Mark making</em>Relief tests</figcaption></figure>
+        </div>
+        <div class="figs c3">
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/artmatr-robot.jpg" data-cap="Raghava with the painting robot at the Artmatr lab · New York · 2021 · Image: Artmatr"><img loading="lazy" src="./images/process/orgasm/_thumbs/artmatr-robot.jpg" alt="Raghava beside the robotic painting arm" /></span><figcaption><em>The robot</em>At the Artmatr lab</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/painting-at-lab.jpg" data-cap="Raghava painting along with the Artmatr robots · New York · 2021 · Image: Artmatr"><img loading="lazy" src="./images/process/orgasm/_thumbs/painting-at-lab.jpg" alt="Raghava painting by hand on the print bed" /></span><figcaption><em>The hand</em>Painting with the robots</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/process/orgasm/printing-artwork.jpg" data-cap="Printing the artwork · New York · 2021 · Image: Artmatr"><img loading="lazy" src="./images/process/orgasm/_thumbs/printing-artwork.jpg" alt="Monitoring the print of the artwork on a laptop over the canvas" /></span><figcaption><em>The print</em>Watching it land</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── THE GALLERY ─── -->
+    <section class="gallery" id="artwork">
+      <div class="g-head reveal">
+        <div class="gh-tag">The Artwork · Sotheby's HQ, New York · October 2021</div>
+        <h2>La petite <em>mort.</em></h2>
+        <p class="gh-note">
+          The finished works: one large canvas and three studies, oil on canvas, painted and printed at
+          the Artmatr lab. Launched at Sotheby's HQ, New York, in October 2021, alongside
+          <em>Boundless Space: The Possibilities of Burning Man</em>, the charitable auction produced by
+          Sotheby's and the Burning Man Project.
+        </p>
+      </div>
+      <div class="g-inner">
+        <div class="g-main reveal">
+          <figure>
+            <span class="img-wrap" data-full="./images/process/orgasm/lpm-1.jpg" data-cap="La Petite Mort I · 74.75 × 74.75 × 1.75 in · Oil on canvas · 2021">
+              <img loading="lazy" src="./images/process/orgasm/_thumbs/lpm-1.jpg" srcset="./images/process/orgasm/_thumbs/lpm-1.jpg 800w, ./images/process/orgasm/lpm-1.jpg 2400w" sizes="(max-width: 920px) 96vw, 1000px" alt="La Petite Mort I, the large finished canvas" />
+            </span>
+          </figure>
+          <div class="figs c3">
+            <figure><span class="img-wrap" data-full="./images/process/orgasm/lpm-2.jpg" data-cap="La Petite Mort II · 24 × 24 × 1.25 in · Oil on canvas · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/lpm-2.jpg" alt="La Petite Mort II, small square canvas" /></span><figcaption><em>La Petite Mort II</em>24 × 24 in · Oil on canvas</figcaption></figure>
+            <figure><span class="img-wrap" data-full="./images/process/orgasm/lpm-3.jpg" data-cap="La Petite Mort III · 24 × 24 × 1.25 in · Oil on canvas · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/lpm-3.jpg" alt="La Petite Mort III, small square canvas" /></span><figcaption><em>La Petite Mort III</em>24 × 24 in · Oil on canvas</figcaption></figure>
+            <figure><span class="img-wrap" data-full="./images/process/orgasm/lpm-4.jpg" data-cap="La Petite Mort IV · 24 × 24 × 1.25 in · Oil on canvas · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/lpm-4.jpg" alt="La Petite Mort IV, small square canvas" /></span><figcaption><em>La Petite Mort IV</em>24 × 24 in · Oil on canvas</figcaption></figure>
+          </div>
+          <div class="figs c3">
+            <figure><span class="img-wrap" data-full="./images/process/orgasm/detail-1.jpg" data-cap="La petite mort, detail · Oil on canvas · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/detail-1.jpg" alt="Detail of the painted surface, flowers over threads" /></span><figcaption><em>Detail</em>The crown of flowers</figcaption></figure>
+            <figure><span class="img-wrap" data-full="./images/process/orgasm/detail-2.jpg" data-cap="La petite mort, detail · Oil on canvas · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/detail-2.jpg" alt="Detail of the painted threads in blue" /></span><figcaption><em>Detail</em>The threads</figcaption></figure>
+            <figure><span class="img-wrap" data-full="./images/process/orgasm/detail-3.jpg" data-cap="La petite mort, detail · Oil on canvas · 2021"><img loading="lazy" src="./images/process/orgasm/_thumbs/detail-3.jpg" alt="Detail of impasto flowers at the edge of the tangle" /></span><figcaption><em>Detail</em>Where hand met machine</figcaption></figure>
+          </div>
+          <p class="g-wall">
+            One physical, private experience now exists as data, as a 3D object, as a digital composition,
+            and as oil on canvas, each a different body for the same fifteen seconds.
+            <strong>The record can keep taking new forms;</strong> that is the point of having made it.
+          </p>
+          <div class="vid-wrap">
+            <video controls preload="none" poster="./images/process/orgasm/film-poster.jpg" src="./images/process/orgasm/video/orgasm-film.mp4"></video>
+          </div>
+          <p class="vid-note">The Orgasm Project, the film · 2 min 08 · 2021</p>
+        </div>
+      </div>
+
+      <!-- DEDICATION -->
+      <div class="dedication reveal">
+        <p>“There are some orgasms I regret and those that I don't.” <em>To Rudra, Anaga, Jaya and Aadya.</em></p>
+        <div class="d-note">The dedication, from the project's catalogue · 2021</div>
+      </div>
+    </section>
+
+    <!-- AFTER -->
+    <section class="after">
+      <section class="prose-section reveal" id="beyond">
+        <div class="sec-label"><span class="n">Beyond</span>The work stays alive</div>
+        <div class="sec-body">
+          <h2>After the canvas, the record <em>keeps going.</em></h2>
+          <p>
+            Because the source is data, the work does not have to end at the wall. An AI that studied
+            multiple orgasms generated new, synthetic ones, a <em>Fake Male Orgasm</em> and a
+            <em>Fake Female Orgasm</em>: a future series grown from the same method. And the installation
+            itself was designed to keep a robot in the room: a slow-moving arm built for human
+            collaboration, sketched for the Sotheby's floor.
+          </p>
+          <div class="figs c2">
+            <figure><span class="img-wrap" data-full="./images/process/orgasm/future-male.jpg" data-cap="Fake Male Orgasm, generated by an AI that studied multiple male orgasms · 2021 · Image: Raghava KK"><img loading="lazy" src="./images/process/orgasm/_thumbs/future-male.jpg" alt="Fake Male Orgasm, magenta wireframe tangle with flowers" /></span><figcaption><em>Fake Male Orgasm</em>Future series · 2021</figcaption></figure>
+            <figure><span class="img-wrap" data-full="./images/process/orgasm/future-female.jpg" data-cap="Fake Female Orgasm, generated by an AI that studied multiple female orgasms · 2021 · Image: Raghava KK"><img loading="lazy" src="./images/process/orgasm/_thumbs/future-female.jpg" alt="Fake Female Orgasm, silver wireframe tangle with flowers" /></span><figcaption><em>Fake Female Orgasm</em>Future series · 2021</figcaption></figure>
+          </div>
+          <div class="figs c2">
+            <figure><span class="img-wrap" data-full="./images/process/orgasm/install-sketch.jpg" data-cap="Sketch for the final installation at Sotheby's HQ, New York · 2021 · Image: Artmatr"><img loading="lazy" src="./images/process/orgasm/_thumbs/install-sketch.jpg" alt="Annotated sketch of the installation with robot and canvas" /></span><figcaption><em>The installation, planned</em>Sketch for Sotheby's HQ</figcaption></figure>
+            <figure><span class="img-wrap" data-full="./images/process/orgasm/test-install.jpg" data-cap="The test installation · New York · 2021 · Image: Artmatr"><img loading="lazy" src="./images/process/orgasm/_thumbs/test-install.jpg" alt="Test installation with robot arm facing the finished canvases" /></span><figcaption><em>The installation, tested</em>Robot and canvases · New York</figcaption></figure>
+          </div>
+        </div>
+        <div class="sec-side"></div>
+      </section>
+
+      <!-- CODA -->
+      <section class="prose-section reveal" id="coda">
+        <div class="sec-label"><span class="n">Coda</span>One series, one process</div>
+        <div class="sec-body">
+          <h2>This process belongs to the Orgasm Project <em>alone.</em></h2>
+          <p>
+            Nothing here is a method. The electrodes, the one-neuron-one-stroke rule, the robots, the
+            pigments made in a lab: these were invented for this work and end with it. Each series
+            begins by building its own process.
+          </p>
+        </div>
+        <div class="sec-side"></div>
+      </section>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+    <button class="lb-close" id="lbClose" type="button">Close ✕</button>
+    <img id="lbImg" src="" alt="" />
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+
+  <footer class="colophon" role="contentinfo">
+    <div class="col c-a">
+      <h3>Studio inquiries.</h3>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
+      <span>Sales · Studio Visits · Loan Requests · Hi-res on request</span>
+    </div>
+    <div class="col c-b">
+      <a href="./process.html">All process dossiers →</a>
+      <a href="./studio2.html">The studio →</a>
+      <a href="./timeline2.html">Timeline →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./sitemap2.html">Site map →</a>
+      <span>Studio · Bengaluru</span>
+      <span>Studio · New York</span>
+    </div>
+    <div class="col c-c">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK &middot; <a href="./terms.html">Terms</a></span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* cursor */
+      var cursor = document.getElementById('cursor');
+      if (cursor && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+        document.addEventListener('mousemove', function (e) {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('mouseover', function (e) {
+          if (e.target.closest('.img-wrap')) cursor.classList.add('is-view');
+          else if (e.target.closest('a, button, video, .vid-wrap')) cursor.classList.add('is-link');
+        });
+        document.addEventListener('mouseout', function () {
+          cursor.classList.remove('is-view'); cursor.classList.remove('is-link');
+        });
+      }
+
+      /* stamps */
+      var d = new Date();
+      var days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+      var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      var ds = document.getElementById('dateStamp');
+      if (ds) ds.textContent = days[d.getDay()] + ' · ' + String(d.getDate()).padStart(2,'0') + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+      function tick() {
+        var t = new Date();
+        var ts = document.getElementById('timeStamp');
+        if (ts) ts.textContent = String(t.getHours()).padStart(2,'0') + ':' + String(t.getMinutes()).padStart(2,'0');
+      }
+      tick(); setInterval(tick, 30000);
+
+      /* reveal on scroll */
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+      /* respect reduced motion for loops */
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('video[autoplay]').forEach(function (v) {
+          v.removeAttribute('autoplay'); v.pause(); v.setAttribute('controls','');
+        });
+      }
+
+      /* lightbox */
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lbImg');
+      var lbCap = document.getElementById('lbCap');
+      document.addEventListener('click', function (e) {
+        var w = e.target.closest('.img-wrap');
+        if (w && w.dataset.full) {
+          lbImg.src = w.dataset.full;
+          lbCap.textContent = w.dataset.cap || '';
+          lb.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+      function closeLb() { lb.classList.remove('open'); lbImg.src = ''; document.body.style.overflow = ''; }
+      document.getElementById('lbClose').addEventListener('click', closeLb);
+      lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+    })();
+  </script>
+</body>
+</html>

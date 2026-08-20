@@ -287,6 +287,18 @@
       margin-bottom: 1rem;
     }
     .panel-body em { color: var(--red); font-style: italic; }
+    .panel-body .proc-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 0.55rem;
+      font-family: var(--mono); font-size: 9.5px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px solid var(--rule-soft);
+      padding-bottom: 0.15rem;
+      transition: color .2s var(--ease), border-color .2s var(--ease);
+    }
+    .panel-body .proc-link::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--red); }
+    .panel-body .proc-link:hover { color: var(--red); border-color: var(--red); }
     .panel-body sup { color: var(--red); font-size: 9px; font-family: var(--mono); margin-left: 0.1rem; letter-spacing: 0; vertical-align: super; }
 
     .panel.text-only .panel-body { max-width: 28ch; }
@@ -780,12 +792,12 @@
         },
         {
           id: 'bali-2019', year: '2019', title: 'Bali', anchor: 'top', size: 'narrow', textOnly: true,
-          body: 'Trains under master sculptor Aditya Budyasa in Bali. Friendship with Shilo Shiv Suleman.',
+          body: 'Trains under master sculptor Aditya Budyasa in Bali. Friendship with Shilo Shiv Suleman. <a class="proc-link" href="./process-trojan.html">How the Toy Trojan was made · Dossier № 02</a>',
           note: 2
         },
         {
           id: 'edges-2020', year: '2020', title: 'Edges', anchor: 'mid', size: 'wide',
-          body: 'How would you tell a story <em>from the margins</em>? Nine canvases.',
+          body: 'How would you tell a story <em>from the margins</em>? Nine canvases. <a class="proc-link" href="./process-edges.html">How the series was made · Dossier № 01</a>',
           images: [
             { src: './images/studio/07-edges/7A.jpg', alt: 'How would you tell a story from the margins?', ratio: 'square', deepLink: './studio2.html?work=7A', caption_title: '“from the margins?”', cap: '2020' },
             { src: './images/studio/07-edges/7B.jpg', alt: 'Edges', ratio: 'square', deepLink: './studio2.html?work=7B', caption_title: 'Edges II', cap: '2020' }

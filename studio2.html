@@ -543,6 +543,26 @@
     .record .work-line .val { color: var(--ink); }
     .record .work-line .val.year { color: var(--red); }
     .record .work-line .val.size { font-family: var(--display); font-style: italic; font-size: 1.05rem; letter-spacing: 0.01em; text-transform: none; }
+    .tile-proc {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: var(--mono); font-size: 9.5px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .tile-proc::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--red); }
+    .tile:hover .tile-proc { color: var(--ink); }
+    .record-process {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 1rem;
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink); text-decoration: none;
+      padding: 0.5rem 0.9rem; border: 1px solid var(--rule); border-radius: 999px;
+      transition: background .2s var(--ease), color .2s var(--ease);
+    }
+    .record-process::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--red); }
+    .record-process:hover { background: var(--ink); color: var(--paper); }
+    .record-process[hidden] { display: none; }
     .record .intro {
       margin-top: 1rem;
       font-family: var(--display); font-style: italic;
@@ -820,6 +840,7 @@
             <span class="val" id="recordSeries">-</span>
           </div>
           <p class="intro" id="recordIntro">-</p>
+          <a class="record-process" id="recordProcess" href="#" hidden>How this series was made</a>
         </aside>
       </div>
 
@@ -892,6 +913,7 @@
         { id:'5E', title:'World Domination', year:'2021', medium:'Acrylic on canvas', size:'72" × 48"' }
       ]},
     { slug:'06-orgasm-project', num:'06', title:'The Orgasm Project', years:'2021, 2022',
+      process:'./process-orgasm.html', processNum:'03',
       intro:'Cyborg ecstasy as the secular sublime. La petite mort, six ways.',
       works:[
         { id:'6A', title:'La petite mort', year:'2021', medium:'Oil on canvas', size:'74" × 74"' },
@@ -902,6 +924,7 @@
         { id:'6F', title:'Cyborg Orgasm 5', year:'2022', medium:'Oil on canvas', size:'74" × 74"' }
       ]},
     { slug:'07-edges', num:'07', title:'Edges', years:'2020',
+      process:'./process-edges.html', processNum:'01',
       intro:'Paintings posed as questions. Each canvas an interrogation of where bodies, identities, and certainties come apart.',
       works:[
         { id:'7A', title:'How would you tell a story from the margins?', year:'2020', medium:'Oil on canvas', size:'48" × 72"' },
@@ -930,6 +953,7 @@
         { id:'10C', title:'Personality', year:'2020', medium:'Oil on canvas', size:'72" × 48"' }
       ]},
     { slug:'11-toy-trojan', num:'11', title:'The Toy Trojan', years:'2020',
+      process:'./process-trojan.html', processNum:'02',
       intro:"A wooden Trojan horse, hand-carved at the scale of a child's wish. What you let inside the gates because it looked like a gift.",
       works:[
         { id:'11A', title:'The Toy Trojan (front)', year:'2020', medium:'Hand-carved mahogany', size:'78" × 30" × 30"' },
@@ -995,6 +1019,7 @@
         <p class="tile-desc">${escAttr(s.intro || '')}</p>
         <div class="tile-foot">
           <span>${s.years}</span>
+          ${s.process ? '<span class="tile-proc">Process dossier</span>' : ''}
           <span class="count">${s.works.length} works</span>
         </div>
       </div>
@@ -1062,6 +1087,16 @@
     vTotal.textContent = curSeries.works.length;
     rIntro.textContent = curSeries.intro || '';
     rSeries.textContent = curSeries.title;
+    const rProc = document.getElementById('recordProcess');
+    if (rProc) {
+      if (curSeries.process) {
+        rProc.href = curSeries.process;
+        rProc.textContent = 'How this series was made \u00b7 Dossier \u2116 ' + (curSeries.processNum || '');
+        rProc.hidden = false;
+      } else {
+        rProc.hidden = true;
+      }
+    }
 
     // thumbnails
     vThumbs.innerHTML = '';

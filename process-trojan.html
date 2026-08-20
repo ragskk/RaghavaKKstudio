@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>html{visibility:hidden}</style><script>(function(){try{if(localStorage.getItem("studio_access")==="ok"){document.documentElement.style.visibility="visible";return;}}catch(_){}window.location.replace("/");})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>How the Toy Trojan Was Made, Raghava KK</title>
+  <meta name="description" content="Dossier № 02. How the Toy Trojan was made. One 300-year-old mahogany, found in the forest, asked for, felled, carved. The process shown honestly, 2019 to 2020." />
+  <meta property="og:title" content="How the Toy Trojan Was Made, Raghava KK" />
+  <meta property="og:description" content="Dossier № 02. How the Toy Trojan was made. One log, 300 years, one horse. The process shown honestly." />
+  <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/process-trojan" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Raghava KK" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://raghavakkstudio.com/process-trojan" />
+  <meta name="theme-color" content="#F4F1EA" />
+  <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
+  <meta name="robots" content="index, follow, noai, noimageai" />
+  <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./protect.css" />
+  <style>
+    /* ───────────────────────────────────────────────────────────
+       RAGHAVA KK · PROCESS DOSSIER № 02 · TOY TROJAN
+       A chronicle that begins in a forest and ends in a studio.
+       One log, three hundred years old, walked three kilometres
+       out and carved into a horse carrying everything else.
+       Structure and type inherited from Dossier № 01.
+       ─────────────────────────────────────────────────────────── */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --paper:#F4F1EA; --paper-2:#ECE7DA; --paper-3:#E3DCC8;
+      --ink:#0E0E0C; --ink-2:#2B2A26; --muted:#8B8579;
+      --rule:#1A1A17; --rule-soft:rgba(14,14,12,0.18);
+      --red:#E63D22; --red-deep:#B31E12;
+      --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+      --display:'Instrument Serif','Fraunces',Georgia,serif;
+      --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+      --edge:clamp(1rem,2.6vw,2.4rem);
+      --ease:cubic-bezier(.2,.7,.2,1);
+      --ease-out:cubic-bezier(.16,1,.3,1);
+    }
+
+    html { font-size: 16.5px; scroll-behavior: smooth; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
+
+    html, body {
+      background: var(--paper); color: var(--ink);
+      font-family: var(--serif);
+      font-feature-settings: "ss01" 1, "kern" 1, "liga" 1;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    body {
+      min-height: 100vh; cursor: none;
+      background-image:
+        radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      background-size: 3px 3px, auto;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none;
+      z-index: 1; opacity: 0.5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    /* CURSOR */
+    .cursor { position: fixed; top:0; left:0; width:18px; height:18px; border-radius:50%; background: var(--ink); mix-blend-mode: difference; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .25s var(--ease), height .25s var(--ease), background .25s var(--ease); }
+    .cursor.is-link { width: 56px; height: 56px; background: var(--red); mix-blend-mode: normal; }
+    .cursor.is-view { width: 88px; height: 88px; background: var(--red); mix-blend-mode: normal; }
+    .cursor.is-view::after { content: "open"; position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--paper); }
+    @media (hover: none), (pointer: coarse) { body { cursor: auto; } .cursor { display: none; } }
+
+    /* TAPE */
+    .tape { position: relative; z-index: 3; width: 100%; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; overflow: hidden; border-bottom: 1px solid var(--ink); }
+    .tape-track { display: flex; gap: 4rem; padding: 0.6rem 0; white-space: nowrap; animation: tape-scroll 60s linear infinite; width: max-content; }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* MASTHEAD */
+    .masthead { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; padding: 1.2rem var(--edge) 0.9rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); }
+    @media (max-width: 640px) {
+      .masthead { grid-template-columns: 1fr; gap: 0.4rem; padding: 0.9rem var(--edge) 0.7rem; }
+      .masthead .left, .masthead .right { justify-content: flex-start; }
+      .masthead .center { text-align: left; }
+    }
+    .masthead .left, .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center { font-family: var(--display); font-style: italic; font-size: clamp(0.95rem, 1.1vw, 1.05rem); letter-spacing: 0.04em; text-transform: none; color: var(--ink); }
+    .masthead .stamp { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.18rem 0.5rem; border: 1px solid var(--rule); border-radius: 999px; }
+    .masthead .stamp.live::before { content: ""; width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: pulse 1.6s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+    .masthead a { color: var(--ink); text-decoration: none; transition: color .2s var(--ease); }
+    .masthead a:hover { color: var(--red); }
+
+    /* PAGE HEAD */
+    .page-head {
+      position: relative; z-index: 2;
+      padding: clamp(2.5rem, 6vh, 4.5rem) var(--edge) 1.6rem;
+      max-width: 1480px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.4rem;
+      align-items: end;
+    }
+    .page-head .titleblock { grid-column: 1 / span 7; }
+    .page-head .meta { grid-column: 9 / span 4; align-self: end; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.65rem; border: 1px solid var(--ink);
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+    .eyebrow .num { font-weight: 600; color: var(--red); }
+    .page-title {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.6rem, 6.6vw, 5.4rem); line-height: 0.95;
+      letter-spacing: -0.01em; color: var(--ink);
+    }
+    .page-title em { color: var(--red); font-style: italic; }
+    .page-lede {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.05rem, 1.4vw, 1.25rem); line-height: 1.45;
+      color: var(--ink-2); margin-top: 1rem; max-width: 60ch;
+    }
+    .page-lede em { font-style: italic; color: var(--red); }
+    .meta-block {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-2);
+      border-left: 1px solid var(--rule); padding-left: 0.9rem;
+      display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .meta-block .accent { color: var(--red); }
+    @media (max-width: 920px) {
+      .page-head .titleblock, .page-head .meta { grid-column: 1 / -1; }
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 1040px; margin: 0 auto;
+      padding: 0 var(--edge) 0.4rem;
+    }
+    .hero .img-wrap { border: 1px solid var(--rule); }
+    .hero figcaption {
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--muted); margin-top: 0.45rem;
+    }
+    .hero-quote {
+      max-width: 1480px; margin: 0 auto;
+      padding: 1.8rem var(--edge) 2.4rem;
+      display: grid; grid-template-columns: repeat(12,1fr); gap: 1.4rem;
+    }
+    .hero-quote blockquote {
+      grid-column: 3 / span 8;
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.3rem, 2.4vw, 2rem); line-height: 1.3;
+      color: var(--ink); text-align: center;
+    }
+    .hero-quote blockquote em { color: var(--red); }
+    .hero-quote cite {
+      display: block; margin-top: 0.8rem;
+      font-family: var(--mono); font-style: normal; font-size: 10px;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-2);
+    }
+    @media (max-width: 920px) { .hero-quote blockquote { grid-column: 1 / -1; } }
+
+    /* IMG WRAP (shared) */
+    .img-wrap {
+      position: relative; overflow: hidden; background: var(--paper-2);
+      display: block; cursor: pointer;
+      border: 1px solid rgba(14,14,12,0.18);
+      transition: transform .35s var(--ease-out), border-color .25s var(--ease), box-shadow .35s var(--ease);
+    }
+    .img-wrap:hover { transform: translateY(-3px); border-color: var(--red); box-shadow: 0 14px 32px rgba(0,0,0,0.12); }
+    .img-wrap img { display: block; width: 100%; height: auto; }
+
+    /* ─── PROSE SECTIONS (condition / apparatus) ─── */
+    .prose-section {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(2.4rem,5vh,4rem) var(--edge);
+      display: grid; grid-template-columns: repeat(12,1fr); gap: 1.4rem;
+      border-top: 1px solid var(--rule);
+    }
+    .prose-section .sec-label {
+      grid-column: 1 / span 3;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--ink-2);
+    }
+    .prose-section .sec-label .n { color: var(--red); font-weight: 600; display: block; margin-bottom: 0.3rem; }
+    .prose-section .sec-body { grid-column: 4 / span 6; }
+    .prose-section .sec-side { grid-column: 10 / span 3; }
+    .prose-section h2 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.05;
+      margin-bottom: 1rem; color: var(--ink);
+    }
+    .prose-section h2 em { color: var(--red); }
+    .prose-section p {
+      font-family: var(--serif); font-size: 0.95rem; line-height: 1.65;
+      color: var(--ink-2); margin-bottom: 0.9rem; max-width: 62ch;
+    }
+    .prose-section p em { color: var(--red); font-style: italic; }
+    .prose-section p strong { font-weight: 600; color: var(--ink); }
+    @media (max-width: 920px) {
+      .prose-section .sec-label, .prose-section .sec-body, .prose-section .sec-side { grid-column: 1 / -1; }
+    }
+
+    /* ROLES (apparatus) */
+    .roles { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.9rem; margin-top: 1.2rem; max-width: 720px; }
+    .role { border: 1px solid var(--rule-soft); padding: 0.9rem; background: var(--paper); }
+    .role .r-name { font-family: var(--display); font-style: italic; font-size: 1.1rem; color: var(--ink); }
+    .role .r-title { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin: 0.25rem 0 0.5rem; }
+    .role .r-body { font-family: var(--serif); font-size: 12px; line-height: 1.5; color: var(--ink-2); }
+    @media (max-width: 720px) { .roles { grid-template-columns: 1fr; } }
+
+    /* ─── THE CHRONICLE ─── */
+    .chronicle {
+      position: relative; z-index: 2;
+      border-top: 1px solid var(--rule);
+    }
+    .chron-inner {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(2rem,4vh,3rem) var(--edge) clamp(3rem,6vh,5rem);
+      position: relative;
+    }
+    /* graphite spine */
+    .chron-inner::before {
+      content: ""; position: absolute; top: 0; bottom: 0;
+      left: calc(var(--edge) + clamp(72px, 9vw, 130px));
+      width: 1px; background: var(--rule-soft);
+    }
+    .entry {
+      position: relative;
+      display: grid;
+      grid-template-columns: clamp(72px, 9vw, 130px) 1fr;
+      gap: clamp(1.2rem, 3vw, 2.6rem);
+      padding: clamp(1.4rem,3vh,2.2rem) 0;
+    }
+    .entry + .entry { border-top: 1px dashed var(--rule-soft); }
+    .entry .when {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-2);
+      text-align: right; padding-right: clamp(0.9rem,1.6vw,1.4rem);
+      position: relative; line-height: 1.6;
+    }
+    .entry .when b { display: block; color: var(--ink); font-weight: 600; }
+    .entry .when::after {
+      content: ""; position: absolute; top: 0.35rem;
+      right: -3.5px; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--paper); border: 1.5px solid var(--ink);
+    }
+    .entry.key .when::after { background: var(--red); border-color: var(--red); }
+    .entry .what { min-width: 0; max-width: 720px; }
+    .entry h3 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.25rem, 2vw, 1.7rem); line-height: 1.1;
+      color: var(--ink); margin-bottom: 0.55rem;
+    }
+    .entry h3 em { color: var(--red); }
+    .entry .step-tag {
+      display: inline-block;
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red);
+      border: 1px solid var(--red); border-radius: 999px;
+      padding: 0.14rem 0.5rem; margin-bottom: 0.6rem;
+    }
+    .entry p {
+      font-family: var(--serif); font-size: 0.92rem; line-height: 1.62;
+      color: var(--ink-2); max-width: 58ch; margin-bottom: 0.75rem;
+    }
+    .entry p em { color: var(--red); font-style: italic; }
+    .entry p strong { font-weight: 600; color: var(--ink); }
+    .prompt {
+      font-family: var(--serif); font-style: italic;
+      font-size: 0.95rem; line-height: 1.55; color: var(--ink);
+      border-left: 2px solid var(--red);
+      padding: 0.35rem 0 0.35rem 0.9rem;
+      max-width: 52ch; margin: 0.9rem 0;
+    }
+    .prompt .p-label {
+      display: block; font-family: var(--mono); font-style: normal;
+      font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 0.25rem;
+    }
+
+    /* entry figures */
+    .figs { display: grid; gap: 0.55rem; margin-top: 1rem; max-width: 640px; }
+    .figs.c2 { grid-template-columns: 1fr 1fr; }
+    .figs.c3 { grid-template-columns: 1fr 1fr 1fr; }
+    .figs.c2-1 { grid-template-columns: 2fr 1fr; align-items: start; }
+    .figs figure { margin: 0; min-width: 0; }
+    /* uniform image heights within each section; the lightbox shows the full image */
+    .figs .img-wrap img { height: clamp(170px, 21vw, 250px); width: 100%; object-fit: cover; }
+    @media (max-width: 720px) { .figs .img-wrap img { height: clamp(160px, 44vw, 220px); } }
+    .figs figcaption {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+      margin-top: 0.35rem; line-height: 1.45;
+    }
+    .figs figcaption em {
+      font-family: var(--serif); font-style: italic; text-transform: none;
+      letter-spacing: 0.01em; color: var(--ink-2); font-size: 11px;
+      display: block; margin-bottom: 0.1rem;
+    }
+    @media (max-width: 720px) {
+      .figs.c2, .figs.c3, .figs.c2-1 { grid-template-columns: 1fr; }
+      .entry { grid-template-columns: 1fr; }
+      .entry .when { text-align: left; padding: 0 0 0.4rem; }
+      .entry .when::after { display: none; }
+      .chron-inner::before { display: none; }
+    }
+
+    /* JOURNAL INSERTS */
+    .journal {
+      margin-top: 1.1rem;
+      background: var(--paper-2);
+      border: 1px solid var(--rule-soft);
+      padding: 1rem 1.1rem;
+      max-width: 640px;
+    }
+    .journal .j-label {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem;
+    }
+    .journal p {
+      font-family: var(--serif); font-style: italic;
+      font-size: 0.92rem; line-height: 1.6; color: var(--ink);
+      margin-bottom: 0.5rem; max-width: none;
+    }
+    .journal p:last-child { margin-bottom: 0; }
+    .readpdf {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 0.9rem;
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink);
+      padding: 0.55rem 1rem; border: 1px solid var(--rule); border-radius: 999px;
+      text-decoration: none; background: var(--paper);
+      transition: background .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+    }
+    .readpdf:hover { background: var(--ink); color: var(--paper); transform: translateY(-1px); }
+    .readpdf .rp-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+    .interruption .readpdf { background: transparent; color: var(--paper); border-color: rgba(244,241,234,0.4); }
+    .interruption .readpdf:hover { background: var(--paper); color: var(--ink); }
+    .doclink {
+      display: inline-block; margin-top: 0.7rem;
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink);
+      text-decoration: none; border-bottom: 1px solid var(--rule-soft);
+      transition: color .2s var(--ease), border-color .2s var(--ease);
+    }
+    .doclink:hover { color: var(--red); border-color: var(--red); }
+    .interruption .doclink { color: var(--paper); border-color: rgba(244,241,234,0.3); }
+    .interruption .doclink:hover { color: var(--red); border-color: var(--red); }
+
+    /* ─── THE INTERRUPTION, ink ground ─── */
+    .interruption {
+      background: var(--ink); color: var(--paper);
+      border-top: 1px solid var(--ink);
+      position: relative; z-index: 2;
+    }
+    .interruption .break-head {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(3rem,8vh,6rem) var(--edge) clamp(1.5rem,3vh,2.5rem);
+      text-align: left;
+    }
+    .interruption .break-head .bh-date {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.9rem;
+    }
+    .interruption .break-head h2 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.2rem, 5.4vw, 4.4rem); line-height: 1;
+      color: var(--paper); max-width: 20ch;
+    }
+    .interruption .break-head h2 em { color: var(--red); }
+    .interruption .break-head .bh-note {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1rem,1.3vw,1.15rem); line-height: 1.5;
+      color: rgba(244,241,234,0.75); margin-top: 1rem; max-width: 52ch;
+    }
+    .interruption .chron-inner::before { background: rgba(244,241,234,0.22); }
+    .interruption .entry + .entry { border-top-color: rgba(244,241,234,0.18); }
+    .interruption .entry .when { color: rgba(244,241,234,0.7); }
+    .interruption .entry .when b { color: var(--paper); }
+    .interruption .entry .when::after { background: var(--ink); border-color: var(--paper); }
+    .interruption .entry.key .when::after { background: var(--red); border-color: var(--red); }
+    .interruption .entry h3 { color: var(--paper); }
+    .interruption .entry p { color: rgba(244,241,234,0.78); }
+    .interruption .entry p strong { color: var(--paper); }
+    .interruption .prompt { color: var(--paper); }
+    .interruption .figs figcaption { color: rgba(244,241,234,0.5); }
+    .interruption .figs figcaption em { color: rgba(244,241,234,0.85); }
+    .interruption .img-wrap { border-color: rgba(244,241,234,0.22); background: #171714; }
+    .interruption .img-wrap:hover { border-color: var(--red); }
+    .interruption .journal { background: #171714; border-color: rgba(244,241,234,0.18); }
+    .interruption .journal p { color: rgba(244,241,234,0.9); }
+
+    /* THE FINISHED WORK: the arrival, given scale; whole object, never cropped */
+    #finished-views .figs { max-width: 100%; }
+    #finished-views .figs .img-wrap img {
+      height: auto; aspect-ratio: 3 / 4; object-fit: cover;
+    }
+
+    /* THE FULL STOP */
+    .fullstop {
+      max-width: 1480px; margin: 0 auto;
+      padding: clamp(3rem,8vh,6rem) var(--edge);
+      text-align: center;
+    }
+    .fullstop p {
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(1.6rem, 3.4vw, 2.8rem); line-height: 1.25;
+      color: var(--paper); max-width: 26ch; margin: 0 auto;
+    }
+    .fullstop p em { color: var(--red); }
+    .fullstop .fs-note {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(244,241,234,0.55);
+      margin-top: 1.2rem;
+    }
+
+    /* ─── AFTER, back on paper ─── */
+    .after { border-top: 1px solid var(--rule); background: var(--paper); position: relative; z-index: 2; }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(14,14,12,0.94);
+      display: none; align-items: center; justify-content: center;
+      padding: 3vh 3vw;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 94vw; max-height: 88vh; width: auto; height: auto; display: block; }
+    .lightbox .lb-cap {
+      position: absolute; left: 0; right: 0; bottom: 1.2rem;
+      text-align: center; font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,241,234,0.7);
+      padding: 0 var(--edge);
+    }
+    .lightbox .lb-close {
+      position: absolute; top: 1rem; right: 1.2rem;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--paper);
+      background: none; border: 1px solid rgba(244,241,234,0.4);
+      border-radius: 999px; padding: 0.45rem 0.85rem; cursor: pointer;
+    }
+    .lightbox .lb-close:hover { border-color: var(--red); color: var(--red); }
+
+    /* COLOPHON */
+    .colophon {
+      position: relative; z-index: 2;
+      padding: clamp(3rem, 7vh, 5rem) var(--edge) clamp(2rem, 4vh, 3rem);
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem; align-items: start;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-2);
+    }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.35rem; }
+    .colophon .col.c-c { align-items: flex-end; }
+    .colophon h3 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 1.05rem; letter-spacing: 0.02em; color: var(--ink); text-transform: none; margin-bottom: 0.2rem; }
+    .colophon a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .seal { width: 60px; height: 60px; border: 1px solid var(--rule); border-radius: 50%; display: grid; place-items: center; background: var(--paper); margin-bottom: 0.6rem; }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; }
+    @media (max-width: 920px) {
+      .colophon { grid-template-columns: 1fr; }
+      .colophon .col.c-c { align-items: flex-start; }
+    }
+
+    /* reveal */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tape-track { animation: none; }
+      .masthead .stamp.live::before { animation: none; }
+      .img-wrap, .reveal { transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body oncontextmenu="return true">
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <!-- TAPE -->
+  <div class="tape" role="presentation">
+    <div class="tape-track">
+      <span>The Process</span><span class="dot"></span>
+      <span>Dossier № 02 · Toy Trojan</span><span class="dot"></span>
+      <span>2019 → 2020</span><span class="dot"></span>
+      <span>One log, three hundred years old</span><span class="dot"></span>
+      <span>Permission asked before the cut</span><span class="dot"></span>
+      <span>The Process</span><span class="dot"></span>
+      <span>Dossier № 02 · Toy Trojan</span><span class="dot"></span>
+      <span>2019 → 2020</span><span class="dot"></span>
+      <span>One log, three hundred years old</span><span class="dot"></span>
+      <span>Permission asked before the cut</span><span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <header class="masthead" role="banner">
+    <div class="left">
+      <a class="breadcrumb" href="./index.html">← Raghava KK</a>
+      <a class="breadcrumb" href="./studio2.html">Studio</a>
+      <a class="breadcrumb" href="./process.html">Process</a>
+      <span class="stamp live">Dossier № 02</span>
+    </div>
+    <div class="center">a process record</div>
+    <div class="right">
+      <span id="dateStamp">--</span>
+      <span id="timeStamp">--:--</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- HEAD -->
+    <section class="page-head">
+      <div class="titleblock">
+        <p class="eyebrow"><span class="num">№ 02</span>Process · Toy Trojan · 2020</p>
+        <h1 class="page-title">How the Toy Trojan <em>was made.</em></h1>
+        <p class="page-lede">
+          A record of one object. The main frame had to come out of a single piece of wood, so the work
+          began in a forest rather than a studio: a search that ran for months, a three-hundred-year-old
+          mahogany, a ritual asking permission before the cut, and a three-kilometre walk out on foot.
+          Only then the carving, and then the surface, into which <em>the whole present</em> was written.
+        </p>
+        <a class="readpdf" href="./images/process/trojan/docs/photo-essay-toy-trojan.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the brochure &middot; A Visual Essay of the Creation of the Toy Trojan (pdf)</a>
+      </div>
+      <div class="meta">
+        <div class="meta-block">
+          <div>Range <span class="accent">2019 → 2020</span></div>
+          <div>Material · one log, 300-year mahogany</div>
+          <div>Search · 30 people, 3–6 months</div>
+          <div>Carriage · 3 km on foot, ~16 people</div>
+          <div>Record · kept as it happened</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERO -->
+    <section class="hero reveal">
+      <figure>
+        <span class="img-wrap" data-full="./images/process/trojan/hero-trojan.jpg" data-cap="Toy Trojan · Carved mahogany · The finished carving, before paint · February 2020">
+          <img src="./images/process/trojan/_thumbs/hero-trojan.jpg" srcset="./images/process/trojan/_thumbs/hero-trojan.jpg 800w, ./images/process/trojan/hero-trojan.jpg 2400w" sizes="(max-width: 920px) 96vw, 1400px" alt="The Toy Trojan sculpture, a rearing carved horse with a skeletal rider, in raw mahogany" />
+        </span>
+        <figcaption>Toy Trojan · Carved mahogany · The finished carving, before paint · February 2020</figcaption>
+      </figure>
+    </section>
+    <section class="hero-quote reveal">
+      <blockquote>
+        “When they found this 300-year-old Mahogany tree, they carried out a ritual to Mother Nature as
+        permission to cut down the tree and <em>preserve the wisdom and knowledge</em> of the 300-year-old tree.”
+        <cite>Studio record · 2020</cite>
+      </blockquote>
+    </section>
+
+    <!-- THE PREMISE -->
+    <section class="prose-section reveal" id="premise">
+      <div class="sec-label"><span class="n">Prologue</span>The premise</div>
+      <div class="sec-body">
+        <h2>A gift with something <em>inside</em> it.</h2>
+        <p>
+          The Trojan horse is the oldest argument about form: an object offered as one thing while carrying
+          another. This sculpture takes the argument literally. A horse, at the scale of a monument, finished
+          to read as a <strong>toy</strong>, and packed, on its surface and through its opened body, with
+          everything a toy is supposed to keep out.
+        </p>
+        <p>
+          That decision set the constraints. A toy is one continuous moulded thing, so the frame could not be
+          assembled from parts: it had to be cut from <em>a single log.</em> And a single log large enough
+          meant a tree old enough to be worth asking permission of.
+        </p>
+      </div>
+      <div class="sec-side"></div>
+    </section>
+
+    <!-- CHRONICLE -->
+    <section class="chronicle" id="chronicle">
+      <div class="chron-inner">
+
+        <div class="entry reveal">
+          <div class="when"><b>2019</b>The search</div>
+          <div class="what">
+            <span class="step-tag">The material</span>
+            <h3>One tree, and three to six months to find it.</h3>
+            <p>
+              A team of thirty went into the forest with government permission and searched for a single
+              piece of wood large enough to carve the main frame. The hunt ran between three and six months.
+              What they found was a <strong>three-hundred-year-old mahogany.</strong>
+            </p>
+            <p>
+              Getting it out was its own operation. There was no vehicle access, so the log was carried
+              roughly three kilometres on foot across a damp paddy field: around sixteen people to a log.
+            </p>
+            <div class="figs c2">
+              <figure><span class="img-wrap" data-full="./images/process/trojan/tree-standing.jpg" data-cap="The three-hundred-year-old mahogany, standing · 2019"><img loading="lazy" src="./images/process/trojan/_thumbs/tree-standing.jpg" alt="A very large old mahogany tree standing in forest" /></span><figcaption><em>The tree</em>A 300-year-old mahogany, standing</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/trojan/tree-felling.jpg" data-cap="At the roots, after the ritual · 2019"><img loading="lazy" src="./images/process/trojan/_thumbs/tree-felling.jpg" alt="A worker with a chainsaw at the exposed roots of the felled tree" /></span><figcaption><em>The cut</em>At the roots, after the ritual</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry key reveal">
+          <div class="when"><b>2019</b>Permission</div>
+          <div class="what">
+            <span class="step-tag">The ritual</span>
+            <h3>Asking the tree <em>first.</em></h3>
+            <p>
+              Before the cut, a ceremony: a ritual to Mother Nature asking permission to take the tree, and
+              asking that the wisdom and knowledge of three hundred years be preserved in what the wood
+              becomes. Nothing about this is decorative. It is the first instruction the material receives.
+            </p>
+            <div class="figs c2">
+              <figure><span class="img-wrap" data-full="./images/process/trojan/ritual-dress.jpg" data-cap="Before the ceremony · 2019"><img loading="lazy" src="./images/process/trojan/_thumbs/ritual-dress.jpg" alt="Two men in white ceremonial dress and headcloths at a carved temple gate" /></span><figcaption><em>Before the ceremony</em>Ceremonial dress at the gate</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/trojan/ritual-ceremony.jpg" data-cap="The ceremony · 2019"><img loading="lazy" src="./images/process/trojan/_thumbs/ritual-ceremony.jpg" alt="The ceremony in progress at a temple, offerings laid out" /></span><figcaption><em>The ceremony</em>Permission asked, offerings laid</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>Dec 2019</b>Carving</div>
+          <div class="what">
+            <span class="step-tag">The form</span>
+            <h3>A crude horse, cut out of the log.</h3>
+            <p>
+              The first pass is subtraction only: the rearing form pulled out of the trunk in the roughest
+              possible terms, no detail permitted yet. Then sanding, until the whole surface is smooth
+              enough to be drawn on. The main foundation has to be finished before a single character
+              can be placed on it.
+            </p>
+            <div class="figs c2">
+              <figure><span class="img-wrap" data-full="./images/process/trojan/form-roughed.jpg" data-cap="The rearing form, roughed out of the single log"><img loading="lazy" src="./images/process/trojan/_thumbs/form-roughed.jpg" alt="A rearing horse roughly carved from a single log of mahogany" /></span><figcaption><em>The crude form</em>Pulled from the single log</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/trojan/form-yard.jpg" data-cap="The main foundation, complete, in the carving yard"><img loading="lazy" src="./images/process/trojan/_thumbs/form-yard.jpg" alt="The completed rough carving of the horse standing in an open carving yard" /></span><figcaption><em>The foundation</em>Complete, in the carving yard</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>Dec 2019</b>The hands</div>
+          <div class="what">
+            <h3>Not one maker. <em>A workshop.</em></h3>
+            <p>
+              The carving is done by a workshop, working from the artist's drawings and directly against the
+              maquette. The authorship here is shared and stays visible in the record: thirty in the forest,
+              a bench of carvers after it.
+            </p>
+            <div class="figs c2">
+              <figure><span class="img-wrap" data-full="./images/process/trojan/carving-team.jpg" data-cap="The carving team working at the maquette"><img loading="lazy" src="./images/process/trojan/_thumbs/carving-team.jpg" alt="Raghava and three carvers working together on a small wooden horse maquette" /></span><figcaption><em>The workshop</em>At the maquette</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/trojan/carving-raghava.jpg" data-cap="Raghava working the carved form"><img loading="lazy" src="./images/process/trojan/_thumbs/carving-raghava.jpg" alt="Raghava crouched over the carved form, working its surface" /></span><figcaption><em>At the bench</em>Working the surface</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry key reveal">
+          <div class="when"><b>Dec–Apr</b>The surface</div>
+          <div class="what">
+            <span class="step-tag">The population</span>
+            <h3>Everything the present is made of, carved into <em>one animal.</em></h3>
+            <p>
+              With the foundation smooth, the surface is drawn on: first digitally over a photograph of the
+              form, then in chalk directly on the wood. Then cut. What goes on is deliberately
+              unsorted: politics and cartoons and video games and gods at the same scale, because that is
+              the order in which they actually arrive.
+            </p>
+            <p>
+              Political opposites are amalgamated into single heads. Gandhi appears not as a saint but
+              <em>as he appears on a ₹2000 note.</em> A figure flees Picasso's Guernica. Kim Jong-un.
+              Frog Mario from <em>Super Mario Bros. 3.</em> Characters out of <em>Undertale.</em> The Garuda.
+            </p>
+            <div class="figs c3">
+              <figure><span class="img-wrap" data-full="./images/process/trojan/gandhi-figure.jpg" data-cap="Gandhi, carved · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/gandhi-figure.jpg" alt="A small carved figure of Gandhi with round glasses holding a hoop" /></span><figcaption><em>Gandhi</em>Carved figure, with a hoop</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/trojan/gandhi-note.jpg" data-cap="The carved figure beside its reference, a ₹2000 note"><img loading="lazy" src="./images/process/trojan/_thumbs/gandhi-note.jpg" alt="A carved Gandhi figure on the bench beside a printed reference of a 2000 rupee note" /></span><figcaption><em>The reference</em>The irony of Gandhi on a currency note</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/trojan/amalgam-head.jpg" data-cap="Political opposites, amalgamated into one head · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/amalgam-head.jpg" alt="A carved angry face with a swept fringe, combining political likenesses" /></span><figcaption><em>The amalgam</em>Political opposites in one head</figcaption></figure>
+            </div>
+            <div class="figs c3" style="margin-top:0.7rem;">
+              <figure><span class="img-wrap" data-full="./images/process/trojan/kim-jong-un.jpg" data-cap="Kim Jong-un · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/kim-jong-un.jpg" alt="A carved head of Kim Jong-un with fanned hair" /></span><figcaption><em>Kim Jong-un</em>Carved detail</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/trojan/frog-mario.jpg" data-cap="Frog Mario, from Super Mario Bros. 3 · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/frog-mario.jpg" alt="A carved Frog Mario character in a frog suit" /></span><figcaption><em>Frog Mario</em>Super Mario Bros. 3</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/trojan/guernica-flee.jpg" data-cap="The figure fleeing the site of violence, after Picasso's Guernica · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/guernica-flee.jpg" alt="A carved head with one large eye and a heavy moustache, mouth open" /></span><figcaption><em>Fleeing the site</em>After Picasso's Guernica</figcaption></figure>
+            </div>
+            <div class="figs c3" style="margin-top:0.7rem;">
+              <figure><span class="img-wrap" data-full="./images/process/trojan/undertale-block.jpg" data-cap="A pixel character carved in the round, after Undertale · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/undertale-block.jpg" alt="A blocky pixel-art character carved three-dimensionally in wood" /></span><figcaption><em>Pixels, in the round</em>After Undertale</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/trojan/scream-bloom.jpg" data-cap="Carved detail, the lower body · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/scream-bloom.jpg" alt="A carved screaming head beside a geometric flower form on the sculpture's lower body" /></span><figcaption><em>The scream and the bloom</em>Lower body, detail</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/trojan/garuda.jpg" data-cap="The Garuda · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/garuda.jpg" alt="A carved Garuda, eagle-headed, with feathered scrollwork" /></span><figcaption><em>The Garuda</em>Carved detail</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry key reveal">
+          <div class="when"><b>Feb 2020</b>The inside</div>
+          <div class="what">
+            <span class="step-tag">The interior</span>
+            <h3>The body is <em>opened.</em></h3>
+            <p>
+              The horse is not solid. Its torso is cut through to a ribcage, and inside the ribcage a
+              <strong>phoenix is being born from the pith of the stomach.</strong> Below that, death: a skull
+              and the skeletal population underneath. Above it all, the crest: the crown jewel of the
+              Trojan, its imagination and its future, and the narrative it is in the middle of making.
+            </p>
+            <p>
+              This is where the premise pays out. The outside is a toy; the inside is a birth and an
+              underworld, at the same time, in the same log.
+            </p>
+            <div class="figs c3">
+              <figure><span class="img-wrap" data-full="./images/process/trojan/phoenix-ribcage.jpg" data-cap="The phoenix, birthing from the pith of the stomach · February 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/phoenix-ribcage.jpg" alt="A carved phoenix inside the opened ribcage of the horse, hung with chains" /></span><figcaption><em>The phoenix</em>Birthing from the pith of the stomach</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/trojan/death-below.jpg" data-cap="Death and hell, lurking below · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/death-below.jpg" alt="A carved skull and skeletal figures on the lower part of the sculpture" /></span><figcaption><em>Below</em>Death and hell lurk under the body</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/trojan/crest-crown.jpg" data-cap="The crown jewel of the Trojan · February 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/crest-crown.jpg" alt="The elaborate carved crest rising from the horse's neck like a mane of figures" /></span><figcaption><em>The crown jewel</em>Its imagination, its future</figcaption></figure>
+            </div>
+            <div class="figs c2-1" style="margin-top:0.7rem;">
+              <figure><span class="img-wrap" data-full="./images/process/trojan/underside.jpg" data-cap="Bottom view of the unfinished work · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/underside.jpg" alt="The underside of the sculpture, crowded with carved faces and figures" /></span><figcaption><em>The underside</em>Bottom view of the unfinished work · April 2020</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="when"><b>2020</b>The skin</div>
+          <div class="what">
+            <h3>Painted to read as a toy.</h3>
+            <p>
+              The wood is primed dark first, so that the bright hue laid over it carries rather than sinks.
+              The top half is then painted to read as a toy, and the lower half left as wood.
+            </p>
+            <div class="figs c2">
+              <figure><span class="img-wrap" data-full="./images/process/trojan/spraying.jpg" data-cap="Spraying the upper body · 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/spraying.jpg" alt="Raghava in a respirator spraying the upper body of the sculpture" /></span><figcaption><em>Spraying</em>The upper body</figcaption></figure>
+              <figure><span class="img-wrap" data-full="./images/process/trojan/skin-half.jpg" data-cap="Painted above, wood below · 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/skin-half.jpg" alt="The sculpture with its upper body painted and its lower body left as raw wood" /></span><figcaption><em>The two halves</em>Painted above, wood below</figcaption></figure>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- THE FINISHED WORK -->
+    <section class="prose-section reveal" id="finished">
+      <div class="sec-label"><span class="n">The work</span>Finished</div>
+      <div class="sec-body">
+        <h2>The Toy Trojan, <em>finished.</em></h2>
+        <p>
+          Hand-carved mahogany, 78 by 30 by 30 inches, standing on a base cut from the same tree.
+          Three hundred years of growth, months of searching, and a workshop of hands, resolved into
+          one object.
+        </p>
+      </div>
+      <div class="sec-side"></div>
+    </section>
+
+    <section class="hero reveal">
+      <figure>
+        <span class="img-wrap" data-full="./images/studio/11-toy-trojan/11B.jpg" data-cap="The Toy Trojan &middot; Hand-carved mahogany &middot; 78&quot; × 30&quot; × 30&quot; &middot; 2020">
+          <img loading="lazy" src="./images/studio/_thumbs/11-toy-trojan/11B.jpg" srcset="./images/studio/_thumbs/11-toy-trojan/11B.jpg 400w, ./images/studio/11-toy-trojan/11B.jpg 960w" sizes="(max-width: 920px) 96vw, 1000px" alt="The finished Toy Trojan, a rearing horse carved in mahogany, seen from the side" />
+        </span>
+        <figcaption>The Toy Trojan &middot; Hand-carved mahogany &middot; 78&quot; × 30&quot; × 30&quot; &middot; 2020</figcaption>
+      </figure>
+    </section>
+
+    <section class="prose-section reveal" id="finished-views">
+      <div class="sec-label"><span class="n">Views</span>Front, rear, base</div>
+      <div class="sec-body">
+        <div class="figs c3">
+          <figure><span class="img-wrap" data-full="./images/studio/11-toy-trojan/11A.jpg" data-cap="The Toy Trojan, front &middot; Hand-carved mahogany &middot; 2020"><img loading="lazy" src="./images/studio/_thumbs/11-toy-trojan/11A.jpg" alt="The finished Toy Trojan seen from the front" /></span><figcaption><em>Front</em>Hand-carved mahogany</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/studio/11-toy-trojan/11D.jpg" data-cap="The Toy Trojan, rear &middot; Hand-carved mahogany &middot; 2020"><img loading="lazy" src="./images/studio/_thumbs/11-toy-trojan/11D.jpg" alt="The finished Toy Trojan seen from the rear" /></span><figcaption><em>Rear</em>Hand-carved mahogany</figcaption></figure>
+          <figure><span class="img-wrap" data-full="./images/studio/11-toy-trojan/11C.jpg" data-cap="The Toy Trojan, base &middot; Hand-carved mahogany &middot; 2020"><img loading="lazy" src="./images/studio/_thumbs/11-toy-trojan/11C.jpg" alt="Detail of the carved base of the finished Toy Trojan" /></span><figcaption><em>Base</em>Cut from the same tree</figcaption></figure>
+        </div>
+      </div>
+      <div class="sec-side"></div>
+    </section>
+
+    <!-- AFTER -->
+    <section class="after">
+      <section class="prose-section reveal" id="coda">
+        <div class="sec-label"><span class="n">Coda</span>One work, one process</div>
+        <div class="sec-body">
+          <h2>This process belongs to the Toy Trojan <em>alone.</em></h2>
+          <p>
+            A search party in a forest. A permission ritual. Government paperwork. Sixteen people and a
+            paddy field. A carving workshop working from a maquette. A surface written like a feed and cut
+            by hand. None of this is a method, and none of it repeats: the next work will require its own
+            impossible logistics, invented for it.
+          </p>
+          <p>
+            What survives is the constraint that produced all of it, <em>one frame, one piece of wood</em>,
+            and the fact that a decision made about form at the beginning turned into a season of work in a
+            forest three thousand kilometres from the studio.
+          </p>
+          <a class="readpdf" href="./images/process/trojan/docs/photo-essay-toy-trojan.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the brochure &middot; A Visual Essay of the Creation of the Toy Trojan (pdf)</a>
+        </div>
+        <div class="sec-side"></div>
+      </section>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+    <button class="lb-close" id="lbClose" type="button">Close ✕</button>
+    <img id="lbImg" src="" alt="" />
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+
+  <footer class="colophon" role="contentinfo">
+    <div class="col c-a">
+      <h3>Studio inquiries.</h3>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
+      <span>Sales · Studio Visits · Loan Requests · Hi-res on request</span>
+    </div>
+    <div class="col c-b">
+      <a href="./process.html">All process dossiers →</a>
+      <a href="./studio2.html">The studio →</a>
+      <a href="./timeline2.html">Timeline →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./sitemap2.html">Site map →</a>
+      <span>Studio · Bengaluru</span>
+      <span>Studio · New York</span>
+    </div>
+    <div class="col c-c">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK &middot; <a href="./terms.html">Terms</a></span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* cursor */
+      var cursor = document.getElementById('cursor');
+      if (cursor && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+        document.addEventListener('mousemove', function (e) {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('mouseover', function (e) {
+          if (e.target.closest('.img-wrap')) cursor.classList.add('is-view');
+          else if (e.target.closest('a, button')) cursor.classList.add('is-link');
+        });
+        document.addEventListener('mouseout', function () {
+          cursor.classList.remove('is-view'); cursor.classList.remove('is-link');
+        });
+      }
+
+      /* stamps */
+      var d = new Date();
+      var days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+      var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      var ds = document.getElementById('dateStamp');
+      if (ds) ds.textContent = days[d.getDay()] + ' · ' + String(d.getDate()).padStart(2,'0') + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+      function tick() {
+        var t = new Date();
+        var ts = document.getElementById('timeStamp');
+        if (ts) ts.textContent = String(t.getHours()).padStart(2,'0') + ':' + String(t.getMinutes()).padStart(2,'0');
+      }
+      tick(); setInterval(tick, 30000);
+
+      /* reveal on scroll */
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+      /* lightbox */
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lbImg');
+      var lbCap = document.getElementById('lbCap');
+      document.addEventListener('click', function (e) {
+        var w = e.target.closest('.img-wrap');
+        if (w && w.dataset.full) {
+          lbImg.src = w.dataset.full;
+          lbCap.textContent = w.dataset.cap || '';
+          lb.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+      function closeLb() { lb.classList.remove('open'); lbImg.src = ''; document.body.style.overflow = ''; }
+      document.getElementById('lbClose').addEventListener('click', closeLb);
+      lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+    })();
+  </script>
+</body>
+</html>
