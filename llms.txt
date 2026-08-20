@@ -27,7 +27,7 @@ The site issues machine-readable signals to that effect:
 - / — Index. Top-level introduction and navigation.
 - /studio2.html — Studio. Bodies of work, paintings, sculptures, projects.
 - /becoming2.html — Becoming. Biographical and archival material.
-- /calling2.html — Calling. Open submissions, programs, calls for participation.
+- /calling4.html — Calling All Gods. Solo show at Parsons, December 2026.
 - /lab2.html — Lab. Editions, experiments, drops, collaborations.
 - /writings2.html — Writings. Essays, reflections, long-form text.
 - /talks2.html — Talks. Recorded talks and interviews, 2010 onward, with context.

@@ -25,33 +25,21 @@ const EXEMPT_EXACT = new Set([
   '/llms.txt',
   '/sitemap.xml',
 
-  // --- Calling All Gods (calling3): public standalone page, ungated ---
+  // --- Calling All Gods (calling4): public standalone page, ungated ---
   // The page itself plus the exact static assets it loads. Everything else
   // on the site stays behind SITE_PASSWORD. Keep this list in sync with the
-  // asset references in calling3.html.
-  '/calling3',
-  '/calling3.html',
+  // asset references in calling4.html. (calling2/calling3 removed 2026-08-20;
+  // archived in not-used/archive-removed-pages-2026-08-20/.)
+  '/calling4',
+  '/calling4.html',
   '/protect.css',
   '/protect.js',
   '/css/book-modal.css',
-  '/css/library-shelf.css',
-  '/data/library-rows.js',
   '/js/book-modal.js',
-  '/js/library-shelf.js',
   '/images/Raghava KK Logo-02.png',
-  '/images/Vishwaroopa.jpg',
-  '/images/two paintings together.png',
-  '/images/studio/03-guernica.jpg',
-  '/images/raghava-signature.png',
-  '/books/art books/Calling All Gods_Artist Book.pdf',  // no-JS book-link fallback
-
-  // --- Calling All Gods (calling4): alternate institutional page, ungated ---
-  // Keep in sync with asset references in calling4.html.
-  '/calling4',
-  '/calling4.html',
   '/images/bio/liberty-guernica.jpg',
   '/images/bio/portrait.jpg',
-  '/images/parsons-logo.svg',
+  '/books/art books/Calling All Gods_Artist Book.pdf',  // no-JS book-link fallback
 ]);
 
 const EXEMPT_PREFIXES = [
@@ -60,14 +48,13 @@ const EXEMPT_PREFIXES = [
   '/_vercel',
   '/_next',
 
-  // --- Calling All Gods (calling3) asset directories ---
+  // --- Calling All Gods (calling4) asset directories ---
   '/js/vendor/',        // model-viewer (+ any bundled decoders)
   '/toys/3d/',          // pantheon GLB figures
   '/images/books/',     // art-zine shelf covers
   '/images/spreads/',   // popup book-reader spreads
-  '/images/hero/',                // calling4 hero carousel (photos + film)
-  '/images/details/',             // calling4 painting detail crops (Vishwaroopa)
-  '/images/studio/03-guernica/',  // calling4 painting detail crops (La Liberte)
+  '/images/hero/',      // hero carousel (photos + film)
+  '/images/details/',   // painting detail crops
 ];
 
 async function sha256Hex(input) {
@@ -102,7 +89,7 @@ export default async function middleware(request) {
     // Malformed encoding — fall back to the raw path.
   }
 
-  // Exempt paths — gate page, gate endpoints, infra, the public calling3
+  // Exempt paths — gate page, gate endpoints, infra, the public calling4
   // page and its assets.
   if (EXEMPT_EXACT.has(decodedPath)) return;
   for (const prefix of EXEMPT_PREFIXES) {
