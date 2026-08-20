@@ -41,7 +41,14 @@
   'use strict';
 
   // ── Static config ────────────────────────────────────────────────
-  const ACTIVE_CAP         = 6;
+  // Phones get a tighter cap so a low-memory device doesn't try to keep
+  // six Draco-decoded scenes alive simultaneously. The cap is set once
+  // at load — orientation change is a rare enough event that we don't
+  // re-evaluate at runtime.
+  const IS_PHONE = typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(max-width: 640px)').matches;
+  const ACTIVE_CAP         = IS_PHONE ? 2 : 6;
   const ROOT_MARGIN        = '200px 0px';
   const ROTATION_DEG_PER_S = 5;
   const MV_READY_TIMEOUT   = 4000;

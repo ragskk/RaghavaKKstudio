@@ -234,9 +234,9 @@
   function renderThumbs() {
     if (!currentBook || !currentBook.spreads) return;
     const total = currentBook.spreads.count;
-    const html = ['<span class="label">' + total + ' spreads</span>'];
+    const html = ['<span class="label">' + total + ' pages</span>'];
     for (let i = 1; i <= total; i++) {
-      html.push('<button type="button" class="spread-thumb' + (i === currentPage ? ' active' : '') + '" data-page="' + i + '" aria-label="Spread ' + i + '"><img src="' + spreadUrl(currentBook, i) + '" alt="" loading="lazy" decoding="async" /></button>');
+      html.push('<button type="button" class="spread-thumb' + (i === currentPage ? ' active' : '') + '" data-page="' + i + '" aria-label="Page ' + i + '"><img src="' + spreadUrl(currentBook, i) + '" alt="" loading="lazy" decoding="async" /></button>');
     }
     els.thumbs.innerHTML = html.join('');
     els.thumbs.querySelectorAll('.spread-thumb').forEach(b => {

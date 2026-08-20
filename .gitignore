@@ -38,3 +38,6 @@ raghavakk-inventory-app/
 
 # Scratch drop zone — device_bash cannot delete, so files are parked here for manual removal
 _to_delete/
+
+# raw Hunyuan exports (36-57MB each) — processed copies live in toys/3d/pantheon/
+/toys/final toys/

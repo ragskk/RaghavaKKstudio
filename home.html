@@ -1475,10 +1475,10 @@
         const date = fmtDate(f.date, f.date_precision);
         const what = shortClaim(f.claim, 100);
         const where = (f.work_type || 'event').replace(/-/g, ' ');
-        const href = `becoming2.html#${encodeURIComponent(f.id)}`;
+        const href = f.href || `becoming2.html#${encodeURIComponent(f.id)}`;
         return `
           <li class="reveal">
-            <a class="archive-link" href="${href}" aria-label="open in living archive: ${escAttr(f.claim || '')}">
+            <a class="archive-link" href="${escAttr(href)}" aria-label="open: ${escAttr(f.claim || '')}">
               <span class="date">${escAttr(date)}</span>
               <span class="what">${escAttr(what)}</span>
               <span class="where">${escAttr(where)}</span>

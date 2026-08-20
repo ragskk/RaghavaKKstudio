@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>html{visibility:hidden}</style><script>(function(){try{if(localStorage.getItem("studio_access")==="ok"){document.documentElement.style.visibility="visible";return;}}catch(_){}window.location.replace("/");})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Process, Raghava KK</title>
+  <meta name="description" content="Each series is born of a process invented only for it. These dossiers record them, one by one, honestly." />
+  <meta property="og:title" content="Process, Raghava KK" />
+  <meta property="og:description" content="Each series is born of a process invented only for it. Dossiers of how the work gets made." />
+  <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/process" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Raghava KK" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://raghavakkstudio.com/process" />
+  <meta name="theme-color" content="#F4F1EA" />
+  <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
+  <meta name="robots" content="index, follow, noai, noimageai" />
+  <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./protect.css" />
+  <style>
+    /* ───────────────────────────────────────────────────────────
+       RAGHAVA KK · PROCESS, THE DOSSIERS
+       An index of how each series was born. One process per
+       series, invented for it alone. No method survives.
+       ─────────────────────────────────────────────────────────── */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --paper:#F4F1EA; --paper-2:#ECE7DA; --paper-3:#E3DCC8;
+      --ink:#0E0E0C; --ink-2:#2B2A26; --muted:#8B8579;
+      --rule:#1A1A17; --rule-soft:rgba(14,14,12,0.18);
+      --red:#E63D22; --red-deep:#B31E12;
+      --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+      --display:'Instrument Serif','Fraunces',Georgia,serif;
+      --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+      --edge:clamp(1rem,2.6vw,2.4rem);
+      --ease:cubic-bezier(.2,.7,.2,1);
+      --ease-out:cubic-bezier(.16,1,.3,1);
+    }
+
+    html { font-size: 16.5px; scroll-behavior: smooth; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
+
+    html, body {
+      background: var(--paper); color: var(--ink);
+      font-family: var(--serif);
+      font-feature-settings: "ss01" 1, "kern" 1, "liga" 1;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    body {
+      min-height: 100vh; cursor: none;
+      background-image:
+        radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px),
+        linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      background-size: 3px 3px, auto;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none;
+      z-index: 1; opacity: 0.5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    .cursor { position: fixed; top:0; left:0; width:18px; height:18px; border-radius:50%; background: var(--ink); mix-blend-mode: difference; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .25s var(--ease), height .25s var(--ease), background .25s var(--ease); }
+    .cursor.is-link { width: 56px; height: 56px; background: var(--red); mix-blend-mode: normal; }
+    .cursor.is-view { width: 88px; height: 88px; background: var(--red); mix-blend-mode: normal; }
+    .cursor.is-view::after { content: "open"; position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--paper); }
+    @media (hover: none), (pointer: coarse) { body { cursor: auto; } .cursor { display: none; } }
+
+    /* TAPE */
+    .tape { position: relative; z-index: 3; width: 100%; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; overflow: hidden; border-bottom: 1px solid var(--ink); }
+    .tape-track { display: flex; gap: 4rem; padding: 0.6rem 0; white-space: nowrap; animation: tape-scroll 60s linear infinite; width: max-content; }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* MASTHEAD */
+    .masthead { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; padding: 1.2rem var(--edge) 0.9rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); }
+    @media (max-width: 640px) {
+      .masthead { grid-template-columns: 1fr; gap: 0.4rem; padding: 0.9rem var(--edge) 0.7rem; }
+      .masthead .left, .masthead .right { justify-content: flex-start; }
+      .masthead .center { text-align: left; }
+    }
+    .masthead .left, .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center { font-family: var(--display); font-style: italic; font-size: clamp(0.95rem, 1.1vw, 1.05rem); letter-spacing: 0.04em; text-transform: none; color: var(--ink); }
+    .masthead .stamp { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.18rem 0.5rem; border: 1px solid var(--rule); border-radius: 999px; }
+    .masthead .stamp.live::before { content: ""; width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: pulse 1.6s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+    .masthead a { color: var(--ink); text-decoration: none; transition: color .2s var(--ease); }
+    .masthead a:hover { color: var(--red); }
+
+    /* PAGE HEAD */
+    .page-head {
+      position: relative; z-index: 2;
+      padding: clamp(2.5rem, 6vh, 4.5rem) var(--edge) clamp(2rem,4vh,3rem);
+      max-width: 1480px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.4rem;
+      align-items: end;
+    }
+    .page-head .titleblock { grid-column: 1 / span 7; }
+    .page-head .meta { grid-column: 9 / span 4; align-self: end; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.65rem; border: 1px solid var(--ink);
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+    .eyebrow .num { font-weight: 600; color: var(--red); }
+    .page-title {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(2.6rem, 6.6vw, 5.4rem); line-height: 0.95;
+      letter-spacing: -0.01em; color: var(--ink);
+    }
+    .page-title em { color: var(--red); font-style: italic; }
+    .page-lede {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.05rem, 1.4vw, 1.25rem); line-height: 1.45;
+      color: var(--ink-2); margin-top: 1rem; max-width: 60ch;
+    }
+    .page-lede em { font-style: italic; color: var(--red); }
+    .meta-block {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-2);
+      border-left: 1px solid var(--rule); padding-left: 0.9rem;
+      display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .meta-block .accent { color: var(--red); }
+    @media (max-width: 920px) {
+      .page-head .titleblock, .page-head .meta { grid-column: 1 / -1; }
+    }
+
+    /* DOSSIER LIST */
+    .dossiers {
+      max-width: 1480px; margin: 0 auto;
+      padding: 0 var(--edge) clamp(3rem,7vh,5rem);
+    }
+    .dossier {
+      display: grid; grid-template-columns: repeat(12,1fr); gap: 1.4rem;
+      align-items: center;
+      border-top: 1px solid var(--rule);
+      padding: clamp(1.8rem,4vh,3rem) 0;
+      text-decoration: none; color: inherit;
+      transition: background .25s var(--ease);
+    }
+    .dossier:hover { background: rgba(14,14,12,0.025); }
+    .dossier .d-num {
+      grid-column: 1 / span 2;
+      font-family: var(--display); font-style: italic;
+      font-size: clamp(2.2rem,4.4vw,3.8rem); line-height: 0.95; color: var(--red);
+    }
+    .dossier .d-num small {
+      display: block; font-family: var(--mono); font-style: normal;
+      font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-2); margin-top: 0.4rem;
+    }
+    .dossier .d-main { grid-column: 3 / span 6; }
+    .dossier h2 {
+      font-family: var(--display); font-style: italic; font-weight: 400;
+      font-size: clamp(1.6rem,3vw,2.4rem); line-height: 1.05; color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .dossier h2 em { color: var(--red); }
+    .dossier .d-body {
+      font-family: var(--serif); font-size: 0.92rem; line-height: 1.6;
+      color: var(--ink-2); max-width: 52ch;
+    }
+    .dossier .d-body em { color: var(--red); font-style: italic; }
+    .dossier .d-open {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink); margin-top: 0.8rem;
+      display: inline-block; border-bottom: 1px solid var(--rule-soft);
+      transition: color .2s var(--ease), border-color .2s var(--ease);
+    }
+    .dossier:hover .d-open { color: var(--red); border-color: var(--red); }
+    .dossier .d-fig { grid-column: 9 / span 4; margin: 0; }
+    .dossier .d-fig .img-wrap {
+      display: block; overflow: hidden; border: 1px solid var(--rule-soft);
+      background: var(--paper-2);
+      transition: transform .35s var(--ease-out), border-color .25s var(--ease), box-shadow .35s var(--ease);
+    }
+    .dossier:hover .d-fig .img-wrap { transform: translateY(-3px); border-color: var(--red); box-shadow: 0 14px 32px rgba(0,0,0,0.12); }
+    .dossier .d-fig img { display: block; width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; }
+    .dossier .d-fig figcaption {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--muted); margin-top: 0.35rem;
+    }
+    @media (max-width: 920px) {
+      .dossier { grid-template-columns: 1fr; gap: 1rem; }
+      .dossier .d-num, .dossier .d-main, .dossier .d-fig { grid-column: 1 / -1; }
+    }
+
+    /* FORTHCOMING */
+    .forthcoming {
+      border-top: 1px solid var(--rule);
+      padding: clamp(1.6rem,3vh,2.4rem) 0 0;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .forthcoming em { font-family: var(--serif); font-style: italic; text-transform: none; letter-spacing: 0.01em; color: var(--ink-2); }
+
+    /* COLOPHON */
+    .colophon {
+      position: relative; z-index: 2;
+      padding: clamp(3rem, 7vh, 5rem) var(--edge) clamp(2rem, 4vh, 3rem);
+      border-top: 1px solid var(--rule);
+      background: var(--paper-2);
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem; align-items: start;
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--ink-2);
+    }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.35rem; }
+    .colophon .col.c-c { align-items: flex-end; }
+    .colophon h3 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 1.05rem; letter-spacing: 0.02em; color: var(--ink); text-transform: none; margin-bottom: 0.2rem; }
+    .colophon a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .seal { width: 60px; height: 60px; border: 1px solid var(--rule); border-radius: 50%; display: grid; place-items: center; background: var(--paper); margin-bottom: 0.6rem; }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; }
+    @media (max-width: 920px) {
+      .colophon { grid-template-columns: 1fr; }
+      .colophon .col.c-c { align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tape-track { animation: none; }
+      .masthead .stamp.live::before { animation: none; }
+      .dossier, .dossier .d-fig .img-wrap { transition: none !important; }
+    }
+  </style>
+</head>
+<body oncontextmenu="return true">
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <!-- TAPE -->
+  <div class="tape" role="presentation">
+    <div class="tape-track">
+      <span>Process</span><span class="dot"></span>
+      <span>One process per series</span><span class="dot"></span>
+      <span>Invented, used, abandoned</span><span class="dot"></span>
+      <span>The dossiers</span><span class="dot"></span>
+      <span>Process</span><span class="dot"></span>
+      <span>One process per series</span><span class="dot"></span>
+      <span>Invented, used, abandoned</span><span class="dot"></span>
+      <span>The dossiers</span><span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <header class="masthead" role="banner">
+    <div class="left">
+      <a class="breadcrumb" href="./index.html">← Raghava KK</a>
+      <a class="breadcrumb" href="./studio2.html">Studio</a>
+      <span class="stamp live">Process</span>
+    </div>
+    <div class="center">how the work gets made</div>
+    <div class="right">
+      <span id="dateStamp">--</span>
+      <span id="timeStamp">--:--</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- HEAD -->
+    <section class="page-head">
+      <div class="titleblock">
+        <p class="eyebrow"><span class="num">Process</span>Studio · The Dossiers</p>
+        <h1 class="page-title">Every series invents <em>its own process.</em></h1>
+        <p class="page-lede">
+          There is no method here. Each body of work begins by building the process that will produce it:
+          its own roles, its own exercises, its own rules. When the series ends, the process is
+          <em>abandoned with it.</em> These dossiers record them, one by one, honestly: only the series
+          whose making was documented as it happened.
+        </p>
+      </div>
+      <div class="meta">
+        <div class="meta-block">
+          <div>Dossiers <span class="accent">01</span></div>
+          <div>Criterion · documented as it happened</div>
+          <div>Register · the record, not the myth</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOSSIERS -->
+    <section class="dossiers" aria-label="Process dossiers">
+
+      <a class="dossier" href="./process-edges.html">
+        <div class="d-num">№ 01<small>Feb → Aug 2020</small></div>
+        <div class="d-main">
+          <h2>The <em>Edges.</em></h2>
+          <p class="d-body">
+            Six months, one apparatus, three words. A critic-brother sets exercises; the maker paints his
+            first oils; a small diptych arrives that nobody asked for, and the impasto edge of the painting
+            becomes the painting. The page turns dark when the canvases do.
+          </p>
+          <span class="d-open">Open the dossier →</span>
+        </div>
+        <figure class="d-fig">
+          <span class="img-wrap"><img loading="lazy" src="./images/process/edges/_thumbs/hero-edge.jpg" alt="An Edges series painting, oil marks on a black ground" /></span>
+          <figcaption>The Edges Series · Oil on canvas · 2020</figcaption>
+        </figure>
+      </a>
+
+      <p class="forthcoming"><em>Further dossiers as their records are prepared.</em> Only documented processes are shown. Nothing reconstructed from memory.</p>
+    </section>
+  </main>
+
+  <footer class="colophon" role="contentinfo">
+    <div class="col c-a">
+      <h3>Studio inquiries.</h3>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
+      <span>Sales · Studio Visits · Loan Requests · Hi-res on request</span>
+    </div>
+    <div class="col c-b">
+      <a href="./studio2.html">The studio →</a>
+      <a href="./timeline2.html">Timeline →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./sitemap2.html">Site map →</a>
+      <span>Studio · Bengaluru</span>
+      <span>Studio · New York</span>
+    </div>
+    <div class="col c-c">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK &middot; <a href="./terms.html">Terms</a></span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+      var cursor = document.getElementById('cursor');
+      if (cursor && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+        document.addEventListener('mousemove', function (e) {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('mouseover', function (e) {
+          if (e.target.closest('.dossier')) cursor.classList.add('is-view');
+          else if (e.target.closest('a, button')) cursor.classList.add('is-link');
+        });
+        document.addEventListener('mouseout', function () {
+          cursor.classList.remove('is-view'); cursor.classList.remove('is-link');
+        });
+      }
+      var d = new Date();
+      var days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+      var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      var ds = document.getElementById('dateStamp');
+      if (ds) ds.textContent = days[d.getDay()] + ' · ' + String(d.getDate()).padStart(2,'0') + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+      function tick() {
+        var t = new Date();
+        var ts = document.getElementById('timeStamp');
+        if (ts) ts.textContent = String(t.getHours()).padStart(2,'0') + ':' + String(t.getMinutes()).padStart(2,'0');
+      }
+      tick(); setInterval(tick, 30000);
+    })();
+  </script>
+</body>
+</html>
