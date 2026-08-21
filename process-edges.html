@@ -19,7 +19,7 @@
   <meta name="googlebot" content="index, follow, noai, noimageai" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
   <style>
     /* ───────────────────────────────────────────────────────────
@@ -291,6 +291,8 @@
     .figs.c2 { grid-template-columns: 1fr 1fr; }
     .figs.c3 { grid-template-columns: 1fr 1fr 1fr; }
     .figs.c2-1 { grid-template-columns: 2fr 1fr; align-items: start; }
+    .figs--follow { margin-top: 0.7rem; }
+    .figs--follow-lg { margin-top: 0.9rem; }
     .figs figure { margin: 0; min-width: 0; }
     /* uniform image heights within each section; the lightbox shows the full image */
     .figs .img-wrap img { height: clamp(170px, 21vw, 250px); width: 100%; object-fit: cover; }
@@ -344,16 +346,6 @@
     .readpdf .rp-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
     .interruption .readpdf { background: transparent; color: var(--paper); border-color: rgba(244,241,234,0.4); }
     .interruption .readpdf:hover { background: var(--paper); color: var(--ink); }
-    .doclink {
-      display: inline-block; margin-top: 0.7rem;
-      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--ink);
-      text-decoration: none; border-bottom: 1px solid var(--rule-soft);
-      transition: color .2s var(--ease), border-color .2s var(--ease);
-    }
-    .doclink:hover { color: var(--red); border-color: var(--red); }
-    .interruption .doclink { color: var(--paper); border-color: rgba(244,241,234,0.3); }
-    .interruption .doclink:hover { color: var(--red); border-color: var(--red); }
 
     /* ─── THE INTERRUPTION, ink ground ─── */
     .interruption {
@@ -755,7 +747,7 @@
               <figure><span class="img-wrap" data-full="./images/process/edges/bull-sketch-2.jpg" data-cap="Bull sketch 2 · Pen &amp; watercolour · March 10"><img loading="lazy" src="./images/process/edges/_thumbs/bull-sketch-2.jpg" alt="Second pen and watercolour bull study" /></span><figcaption><em>Bull sketch 2</em>Pen &amp; watercolour · March 10</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/edges/hand-brush.jpg" data-cap="Study · Brush on paper · March 9"><img loading="lazy" src="./images/process/edges/_thumbs/hand-brush.jpg" alt="Orange brush study of a hand" /></span><figcaption><em>Study</em>Brush on paper · March 9</figcaption></figure>
             </div>
-            <div class="figs c3" style="margin-top:0.7rem;">
+            <div class="figs c3 figs--follow">
               <figure><span class="img-wrap" data-full="./images/process/edges/identity-watercolor-1.jpg" data-cap="Construction of identity · Watercolour · March 10–11"><img loading="lazy" src="./images/process/edges/_thumbs/identity-watercolor-1.jpg" alt="Watercolour, figure with phone" /></span><figcaption><em>Construction of identity</em>Watercolour · March 10–11</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/edges/identity-watercolor-2.jpg" data-cap="Construction of identity · Watercolour · March 11"><img loading="lazy" src="./images/process/edges/_thumbs/identity-watercolor-2.jpg" alt="Watercolour of composite faces" /></span><figcaption><em>Construction of identity</em>Watercolour · March 11</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/edges/identity-watercolor-3.jpg" data-cap="Construction of identity · Watercolour · March 11"><img loading="lazy" src="./images/process/edges/_thumbs/identity-watercolor-3.jpg" alt="Watercolour, rider with heart line" /></span><figcaption><em>Construction of identity</em>Watercolour · March 11</figcaption></figure>
@@ -785,7 +777,7 @@
               <figure><span class="img-wrap" data-full="./images/process/edges/oil-study-1.jpg" data-cap="Study 1 · oil on paper · 2020"><img loading="lazy" src="./images/process/edges/_thumbs/oil-study-1.jpg" alt="Oil study 1, pink strokes on teal" /></span><figcaption><em>Study 1</em>Oil on paper</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/edges/oil-study-2.jpg" data-cap="Study 2 · oil on paper · 2020"><img loading="lazy" src="./images/process/edges/_thumbs/oil-study-2.jpg" alt="Oil study 2, knife strokes over newspaper" /></span><figcaption><em>Study 2</em>Oil on paper</figcaption></figure>
             </div>
-<div class="figs c3" style="margin-top:0.7rem;">
+<div class="figs c3 figs--follow">
               <figure><span class="img-wrap" data-full="./images/process/edges/oil-study-3.jpg" data-cap="Study 3 · Oil on paper"><img loading="lazy" src="./images/process/edges/_thumbs/oil-study-3.jpg" alt="Oil study 3, orange impasto" /></span><figcaption><em>Study 3</em>Oil on paper</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/edges/oil-study-4.jpg" data-cap="Study 4 · Oil on paper"><img loading="lazy" src="./images/process/edges/_thumbs/oil-study-4.jpg" alt="Oil study 4, red strokes on newspaper" /></span><figcaption><em>Study 4</em>Oil on paper</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/edges/blackboard-materials.jpg" data-cap="The materials board · Play · Nihilism · Self-construction"><img loading="lazy" src="./images/process/edges/_thumbs/blackboard-materials.jpg" alt="Blackboard listing materials and the three words" /></span><figcaption><em>The materials board</em>Play · Nihilism · Self-construction</figcaption></figure>
@@ -860,7 +852,7 @@
               <figure><span class="img-wrap" data-full="./images/process/edges/general-wip.jpg" data-cap="The General · version 1 · work in progress · May 12"><img loading="lazy" src="./images/process/edges/_thumbs/general-wip.jpg" alt="The General, work in progress" /></span><figcaption><em>The General</em>Version 1 · in progress</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/edges/general-final.jpg" data-cap="The General · final version · oil on canvas · May 21"><img loading="lazy" src="./images/process/edges/_thumbs/general-final.jpg" alt="The General, final version" /></span><figcaption><em>The General</em>Final · May 21</figcaption></figure>
             </div>
-<div class="figs c3" style="margin-top:0.7rem;">
+<div class="figs c3 figs--follow">
               <figure><span class="img-wrap" data-full="./images/process/edges/general-detail.jpg" data-cap="The General, detail · Oil on canvas · May 21"><img loading="lazy" src="./images/process/edges/_thumbs/general-detail.jpg" alt="Detail of impasto loops in The General" /></span><figcaption><em>The General, detail</em>Oil on canvas · May 21</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/edges/poster-blend.jpg" data-cap="Poster works · Oil + linseed + turpentine · May 22"><img loading="lazy" src="./images/process/edges/_thumbs/poster-blend.jpg" alt="Poster work, material blend on paper" /></span><figcaption><em>Poster works</em>Oil + linseed + turpentine · May 22</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/edges/poster-tiger.jpg" data-cap="Tiger · Oil + linseed + turpentine · May 26"><img loading="lazy" src="./images/process/edges/_thumbs/poster-tiger.jpg" alt="Tiger poster work on blue ground" /></span><figcaption><em>Tiger</em>Oil + linseed + turpentine · May 26</figcaption></figure>
@@ -901,7 +893,7 @@
               <p>“Every stroke of a brush, every mark of the knife is left behind beautifully… When you scratch thick paint, the marks look like wounds. The knife slips easily, creating very bold, confident accidents.”</p>
               <p>“The paintings made from oil paints tell the story of their creation. Every stroke that went into creating a visual effect can be studied.”</p>
             </div>
-            <div class="figs c2" style="margin-top:0.9rem;">
+            <div class="figs c2 figs--follow-lg">
               <figure><span class="img-wrap" data-full="./images/process/edges/chalkboard-oils.jpg" data-cap="Notes on viscosity, resistance, sculptability, the material studied as a subject"><img loading="lazy" src="./images/process/edges/_thumbs/chalkboard-oils.jpg" alt="Chalkboard notes on the properties of oil paint" /></span><figcaption><em>The material as subject</em>Viscosity · resistance · sculptability</figcaption></figure>
             </div>
             <a class="readpdf" href="./images/process/edges/docs/painting-with-oils.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the pages · Painting with oils (pdf)</a>
@@ -1015,7 +1007,7 @@
               <figure><span class="img-wrap" data-full="./images/process/edges/first-diptych.jpg" data-cap="The First Diptych · 18×11 in each · The Edges Series · July 6"><img loading="lazy" src="./images/process/edges/_thumbs/first-diptych.jpg" alt="The first Edges diptych, two small canvases" /></span><figcaption><em>The First Diptych</em>18×11 in each · July 6</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/edges/edge-in-hand.jpg" data-cap="A painting held as an object, the edge is the work"><img loading="lazy" src="./images/process/edges/_thumbs/edge-in-hand.jpg" alt="A hand holding a small canvas, edge toward the camera" /></span><figcaption><em>The edge, in hand</em>Painting as object</figcaption></figure>
             </div>
-            <div class="figs c2" style="margin-top:0.7rem;">
+            <div class="figs c2 figs--follow">
               <figure><span class="img-wrap" data-full="./images/process/edges/painting-as-object.jpg" data-cap="A canvas on the table, seen from its side"><img loading="lazy" src="./images/process/edges/_thumbs/painting-as-object.jpg" alt="A painting lying flat, its painted edge visible" /></span><figcaption><em>Seen from the side</em>Oil on canvas · 2020</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/edges/canvas-black-primed.jpg" data-cap="Canvas primed black, same day, a new preparation protocol · July 6"><img loading="lazy" src="./images/process/edges/_thumbs/canvas-black-primed.jpg" alt="A canvas primed black on an easel" /></span><figcaption><em>Primed black</em>Same day · new preparation · July 6</figcaption></figure>
             </div>
@@ -1140,7 +1132,7 @@
               <figure><span class="img-wrap" data-full="./images/process/edges/the-positive.jpg" data-cap="The Positive · 6×4 ft · The Edges Series · August 3"><img loading="lazy" src="./images/process/edges/_thumbs/the-positive.jpg" alt="The Positive" /></span><figcaption><em>The Positive</em>6×4 ft · August 3</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/edges/the-negative.jpg" data-cap="The Negative · The Edges Series · August 3"><img loading="lazy" src="./images/process/edges/_thumbs/the-negative.jpg" alt="The Negative" /></span><figcaption><em>The Negative</em>August 3</figcaption></figure>
             </div>
-            <div class="figs c2" style="margin-top:0.7rem;">
+            <div class="figs c2 figs--follow">
               <figure><span class="img-wrap" data-full="./images/process/edges/painting-red.jpg" data-cap="Painting at the studio · August 3"><img loading="lazy" src="./images/process/edges/_thumbs/painting-red.jpg" alt="Raghava painting the red canvases" /></span><figcaption><em>At work</em>August 3</figcaption></figure>
             </div>
           </div>

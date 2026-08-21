@@ -24,7 +24,7 @@
   <meta name="googlebot" content="index, follow, noai, noimageai" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -170,6 +170,9 @@
     .essay .body ul { margin: 0.4rem 0 1.4rem 1.6rem; }
     .essay .body li { margin-bottom: 0.6rem; }
     .essay .break { text-align: center; color: var(--red); letter-spacing: 0.8em; margin: 2.4rem 0; font-size: 1.2rem; }
+    .essay .body .subkick { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-top: -0.6rem; margin-bottom: 1.4rem; }
+    .essay .body .glossary { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); line-height: 1.7; }
+    .essay .body .glossary em { color: var(--ink); font-style: normal; }
     .essay .footer-note { margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--rule-soft); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; max-width: var(--read-width); margin-left: auto; margin-right: auto; }
     .essay .footer-note a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
     .essay .footer-note a:hover { color: var(--red); border-color: var(--red); }
@@ -341,7 +344,7 @@
         <div class="break">·  ·  ·</div>
 
         <h3>The Compass Won't Hold</h3>
-        <p style="font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-top: -0.6rem; margin-bottom: 1.4rem;">A field note from the body behind the ideas</p>
+        <p class="subkick">A field note from the body behind the ideas</p>
 
         <p>I didn't set out to write two essays. I wrote one with my head and then realized my body had been holding a different truth entirely. The intellectual version tries to understand what India can offer the world as a philosophy or a protocol. This one is the counterweight — the part of me that refuses to let my ideas drift too far from the fractures that shaped them.</p>
 
@@ -546,11 +549,11 @@
 
         <div class="break">·  ·  ·</div>
 
-        <p style="font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); line-height: 1.7;">
+        <p class="glossary">
           A note on terms used across these three essays:<br/><br/>
-          <em style="color: var(--ink); font-style: normal;">God</em> · the field, the constraint of perspectival coexistence (definition above).<br/>
-          <em style="color: var(--ink); font-style: normal;">gods</em> · emergent, local coalescings — memetic and ritual constructs that can be powerful without being ultimate.<br/>
-          <em style="color: var(--ink); font-style: normal;">"face" / "voice"</em> · how the field is experienced in practice. Not a claim that God is a person.
+          <em>God</em> · the field, the constraint of perspectival coexistence (definition above).<br/>
+          <em>gods</em> · emergent, local coalescings — memetic and ritual constructs that can be powerful without being ultimate.<br/>
+          <em>"face" / "voice"</em> · how the field is experienced in practice. Not a claim that God is a person.
         </p>
       </div>
 

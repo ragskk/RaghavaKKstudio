@@ -19,7 +19,7 @@
   <meta name="googlebot" content="index, follow, noai, noimageai" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
   <style>
     /* ───────────────────────────────────────────────────────────
@@ -209,14 +209,6 @@
       .prose-section .sec-label, .prose-section .sec-body, .prose-section .sec-side { grid-column: 1 / -1; }
     }
 
-    /* ROLES (apparatus) */
-    .roles { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.9rem; margin-top: 1.2rem; max-width: 720px; }
-    .role { border: 1px solid var(--rule-soft); padding: 0.9rem; background: var(--paper); }
-    .role .r-name { font-family: var(--display); font-style: italic; font-size: 1.1rem; color: var(--ink); }
-    .role .r-title { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin: 0.25rem 0 0.5rem; }
-    .role .r-body { font-family: var(--serif); font-size: 12px; line-height: 1.5; color: var(--ink-2); }
-    @media (max-width: 720px) { .roles { grid-template-columns: 1fr; } }
-
     /* ─── THE CHRONICLE ─── */
     .chronicle {
       position: relative; z-index: 2;
@@ -292,6 +284,7 @@
     .figs.c2 { grid-template-columns: 1fr 1fr; }
     .figs.c3 { grid-template-columns: 1fr 1fr 1fr; }
     .figs.c2-1 { grid-template-columns: 2fr 1fr; align-items: start; }
+    .figs--follow { margin-top: 0.7rem; }
     .figs figure { margin: 0; min-width: 0; }
     /* uniform image heights within each section; the lightbox shows the full image */
     .figs .img-wrap img { height: clamp(170px, 21vw, 250px); width: 100%; object-fit: cover; }
@@ -314,24 +307,6 @@
       .chron-inner::before { display: none; }
     }
 
-    /* JOURNAL INSERTS */
-    .journal {
-      margin-top: 1.1rem;
-      background: var(--paper-2);
-      border: 1px solid var(--rule-soft);
-      padding: 1rem 1.1rem;
-      max-width: 640px;
-    }
-    .journal .j-label {
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem;
-    }
-    .journal p {
-      font-family: var(--serif); font-style: italic;
-      font-size: 0.92rem; line-height: 1.6; color: var(--ink);
-      margin-bottom: 0.5rem; max-width: none;
-    }
-    .journal p:last-child { margin-bottom: 0; }
     .readpdf {
       display: inline-flex; align-items: center; gap: 0.5rem;
       margin-top: 0.9rem;
@@ -343,84 +318,11 @@
     }
     .readpdf:hover { background: var(--ink); color: var(--paper); transform: translateY(-1px); }
     .readpdf .rp-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
-    .interruption .readpdf { background: transparent; color: var(--paper); border-color: rgba(244,241,234,0.4); }
-    .interruption .readpdf:hover { background: var(--paper); color: var(--ink); }
-    .doclink {
-      display: inline-block; margin-top: 0.7rem;
-      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--ink);
-      text-decoration: none; border-bottom: 1px solid var(--rule-soft);
-      transition: color .2s var(--ease), border-color .2s var(--ease);
-    }
-    .doclink:hover { color: var(--red); border-color: var(--red); }
-    .interruption .doclink { color: var(--paper); border-color: rgba(244,241,234,0.3); }
-    .interruption .doclink:hover { color: var(--red); border-color: var(--red); }
-
-    /* ─── THE INTERRUPTION, ink ground ─── */
-    .interruption {
-      background: var(--ink); color: var(--paper);
-      border-top: 1px solid var(--ink);
-      position: relative; z-index: 2;
-    }
-    .interruption .break-head {
-      max-width: 1480px; margin: 0 auto;
-      padding: clamp(3rem,8vh,6rem) var(--edge) clamp(1.5rem,3vh,2.5rem);
-      text-align: left;
-    }
-    .interruption .break-head .bh-date {
-      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.24em;
-      text-transform: uppercase; color: var(--red); margin-bottom: 0.9rem;
-    }
-    .interruption .break-head h2 {
-      font-family: var(--display); font-style: italic; font-weight: 400;
-      font-size: clamp(2.2rem, 5.4vw, 4.4rem); line-height: 1;
-      color: var(--paper); max-width: 20ch;
-    }
-    .interruption .break-head h2 em { color: var(--red); }
-    .interruption .break-head .bh-note {
-      font-family: var(--serif); font-style: italic;
-      font-size: clamp(1rem,1.3vw,1.15rem); line-height: 1.5;
-      color: rgba(244,241,234,0.75); margin-top: 1rem; max-width: 52ch;
-    }
-    .interruption .chron-inner::before { background: rgba(244,241,234,0.22); }
-    .interruption .entry + .entry { border-top-color: rgba(244,241,234,0.18); }
-    .interruption .entry .when { color: rgba(244,241,234,0.7); }
-    .interruption .entry .when b { color: var(--paper); }
-    .interruption .entry .when::after { background: var(--ink); border-color: var(--paper); }
-    .interruption .entry.key .when::after { background: var(--red); border-color: var(--red); }
-    .interruption .entry h3 { color: var(--paper); }
-    .interruption .entry p { color: rgba(244,241,234,0.78); }
-    .interruption .entry p strong { color: var(--paper); }
-    .interruption .prompt { color: var(--paper); }
-    .interruption .figs figcaption { color: rgba(244,241,234,0.5); }
-    .interruption .figs figcaption em { color: rgba(244,241,234,0.85); }
-    .interruption .img-wrap { border-color: rgba(244,241,234,0.22); background: #171714; }
-    .interruption .img-wrap:hover { border-color: var(--red); }
-    .interruption .journal { background: #171714; border-color: rgba(244,241,234,0.18); }
-    .interruption .journal p { color: rgba(244,241,234,0.9); }
 
     /* THE FINISHED WORK: the arrival, given scale; whole object, never cropped */
     #finished-views .figs { max-width: 100%; }
     #finished-views .figs .img-wrap img {
       height: auto; aspect-ratio: 3 / 4; object-fit: cover;
-    }
-
-    /* THE FULL STOP */
-    .fullstop {
-      max-width: 1480px; margin: 0 auto;
-      padding: clamp(3rem,8vh,6rem) var(--edge);
-      text-align: center;
-    }
-    .fullstop p {
-      font-family: var(--display); font-style: italic;
-      font-size: clamp(1.6rem, 3.4vw, 2.8rem); line-height: 1.25;
-      color: var(--paper); max-width: 26ch; margin: 0 auto;
-    }
-    .fullstop p em { color: var(--red); }
-    .fullstop .fs-note {
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
-      text-transform: uppercase; color: rgba(244,241,234,0.55);
-      margin-top: 1.2rem;
     }
 
     /* ─── AFTER, back on paper ─── */
@@ -678,12 +580,12 @@
               <figure><span class="img-wrap" data-full="./images/process/trojan/gandhi-note.jpg" data-cap="The carved figure beside its reference, a ₹2000 note"><img loading="lazy" src="./images/process/trojan/_thumbs/gandhi-note.jpg" alt="A carved Gandhi figure on the bench beside a printed reference of a 2000 rupee note" /></span><figcaption><em>The reference</em>The irony of Gandhi on a currency note</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/trojan/amalgam-head.jpg" data-cap="Political opposites, amalgamated into one head · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/amalgam-head.jpg" alt="A carved angry face with a swept fringe, combining political likenesses" /></span><figcaption><em>The amalgam</em>Political opposites in one head</figcaption></figure>
             </div>
-            <div class="figs c3" style="margin-top:0.7rem;">
+            <div class="figs c3 figs--follow">
               <figure><span class="img-wrap" data-full="./images/process/trojan/kim-jong-un.jpg" data-cap="Kim Jong-un · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/kim-jong-un.jpg" alt="A carved head of Kim Jong-un with fanned hair" /></span><figcaption><em>Kim Jong-un</em>Carved detail</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/trojan/frog-mario.jpg" data-cap="Frog Mario, from Super Mario Bros. 3 · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/frog-mario.jpg" alt="A carved Frog Mario character in a frog suit" /></span><figcaption><em>Frog Mario</em>Super Mario Bros. 3</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/trojan/guernica-flee.jpg" data-cap="The figure fleeing the site of violence, after Picasso's Guernica · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/guernica-flee.jpg" alt="A carved head with one large eye and a heavy moustache, mouth open" /></span><figcaption><em>Fleeing the site</em>After Picasso's Guernica</figcaption></figure>
             </div>
-            <div class="figs c3" style="margin-top:0.7rem;">
+            <div class="figs c3 figs--follow">
               <figure><span class="img-wrap" data-full="./images/process/trojan/undertale-block.jpg" data-cap="A pixel character carved in the round, after Undertale · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/undertale-block.jpg" alt="A blocky pixel-art character carved three-dimensionally in wood" /></span><figcaption><em>Pixels, in the round</em>After Undertale</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/trojan/scream-bloom.jpg" data-cap="Carved detail, the lower body · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/scream-bloom.jpg" alt="A carved screaming head beside a geometric flower form on the sculpture's lower body" /></span><figcaption><em>The scream and the bloom</em>Lower body, detail</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/trojan/garuda.jpg" data-cap="The Garuda · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/garuda.jpg" alt="A carved Garuda, eagle-headed, with feathered scrollwork" /></span><figcaption><em>The Garuda</em>Carved detail</figcaption></figure>
@@ -711,7 +613,7 @@
               <figure><span class="img-wrap" data-full="./images/process/trojan/death-below.jpg" data-cap="Death and hell, lurking below · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/death-below.jpg" alt="A carved skull and skeletal figures on the lower part of the sculpture" /></span><figcaption><em>Below</em>Death and hell lurk under the body</figcaption></figure>
               <figure><span class="img-wrap" data-full="./images/process/trojan/crest-crown.jpg" data-cap="The crown jewel of the Trojan · February 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/crest-crown.jpg" alt="The elaborate carved crest rising from the horse's neck like a mane of figures" /></span><figcaption><em>The crown jewel</em>Its imagination, its future</figcaption></figure>
             </div>
-            <div class="figs c2-1" style="margin-top:0.7rem;">
+            <div class="figs c2-1 figs--follow">
               <figure><span class="img-wrap" data-full="./images/process/trojan/underside.jpg" data-cap="Bottom view of the unfinished work · April 2020"><img loading="lazy" src="./images/process/trojan/_thumbs/underside.jpg" alt="The underside of the sculpture, crowded with carved faces and figures" /></span><figcaption><em>The underside</em>Bottom view of the unfinished work · April 2020</figcaption></figure>
             </div>
           </div>

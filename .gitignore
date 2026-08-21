@@ -41,3 +41,6 @@ _to_delete/
 
 # raw Hunyuan exports (36-57MB each) — processed copies live in toys/3d/pantheon/
 /toys/final toys/
+
+# Typography audit working docs — reference material, not site content
+_typography-audit/

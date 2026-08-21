@@ -24,7 +24,7 @@
   <meta name="googlebot" content="index, follow, noai, noimageai" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
   <style>
     /* ───────────────────────────────────────────────────────────
@@ -38,11 +38,9 @@
       --paper:#F4F1EA; --paper-2:#ECE7DA; --paper-3:#E3DCC8;
       --ink:#0E0E0C; --ink-2:#2B2A26; --muted:#8B8579;
       --rule:#1A1A17; --rule-soft:rgba(14,14,12,0.18);
-      --red:#E63D22; --red-deep:#B31E12; --yellow:#F4D44A;
-      --cobalt:#2A4DD0; --green:#2EBF63; --pink:#F4A8B8; --violet:#5C2A9D;
+      --red:#E63D22; --yellow:#F4D44A;
       --serif:'Fraunces','Iowan Old Style',Georgia,serif;
       --display:'Instrument Serif','Fraunces',Georgia,serif;
-      --grotesk:'Space Grotesk','Inter',system-ui,sans-serif;
       --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
       --gutter:clamp(1rem,2.4vw,2rem);
       --edge:clamp(1rem,2.6vw,2.4rem);
@@ -344,6 +342,7 @@
     }
     .vitrine-bar .lead { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
     .vitrine-bar .num { color: var(--muted); }
+    .vitrine-bar .muted { color:var(--muted); }
     .vitrine-bar .title { color: var(--ink); font-family: var(--display); font-style: italic; font-size: clamp(1rem, 1.4vw, 1.2rem); letter-spacing: 0.02em; text-transform: none; }
     .vitrine-close { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; background: var(--ink); color: var(--paper); border: 1px solid var(--ink); padding: 0.55rem 0.9rem; cursor: pointer; transition: background .2s var(--ease); }
     .vitrine-close:hover { background: var(--red); border-color: var(--red); }
@@ -796,7 +795,7 @@
         <div class="lead">
           <span class="num" id="vitrineNum">№ 01</span>
           <span class="title" id="vitrineTitle">Series</span>
-          <span style="color:var(--muted)">/ specimen viewer</span>
+          <span class="muted">/ specimen viewer</span>
         </div>
         <button type="button" class="vitrine-close" id="vitrineClose" aria-label="Close vitrine">Close ×</button>
       </div>

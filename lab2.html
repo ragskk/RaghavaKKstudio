@@ -24,7 +24,7 @@
   <meta name="googlebot" content="index, follow, noai, noimageai" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
   <link rel="stylesheet" href="./css/book-modal.css" />
   <link rel="stylesheet" href="./css/library-shelf.css" />
@@ -95,6 +95,7 @@
     .drops-head h2 { grid-column: 1 / span 6; font-family: var(--display); font-style: italic; font-size: clamp(2rem, 5vw, 4rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.015em; color: var(--ink); }
     .drops-head h2 em { font-style: normal; color: var(--red); }
     .drops-head .legend { grid-column: 7 / span 6; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-2); border-top: 1px solid var(--rule-soft); padding-top: 0.55rem; line-height: 1.7; text-align: right; }
+    .drops-head .legend .see-all { color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule-soft); }
     @media (max-width: 880px) { .drops-head h2, .drops-head .legend { grid-column: 1 / -1; text-align: left; } }
     /* Carousel — horizontally scrollable, snap points, smaller cards */
     .drops-carousel {
@@ -164,6 +165,7 @@
     /* FILTER BAR */
     .filter-bar { max-width: 1480px; margin: 0 auto; padding: 0 var(--edge); display: flex; flex-wrap: wrap; gap: 0.5rem 0.6rem; align-items: baseline; border-top: 1px solid var(--rule); padding-top: 1.6rem; }
     .filter-bar .label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-right: 0.5rem; }
+    #filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
     .filter-chip { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; padding: 0.45rem 0.75rem; border: 1px solid var(--rule-soft); background: var(--paper); color: var(--ink-2); cursor: pointer; transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease); }
     .filter-chip:hover { border-color: var(--ink); color: var(--ink); }
     .filter-chip.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
@@ -446,7 +448,7 @@
     <section class="drops-section">
       <div class="drops-head">
         <h2 class="reveal">From the <em>library</em>.</h2>
-        <div class="legend reveal"><a href="./library2.html" class="see-all" data-attention="see-all-books" style="color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule-soft);">See all books →</a></div>
+        <div class="legend reveal"><a href="./library2.html" class="see-all" data-attention="see-all-books">See all books →</a></div>
       </div>
       <div id="labLibraryShelf"></div>
     </section>
@@ -456,7 +458,7 @@
     <section class="drops-section">
       <div class="drops-head">
         <h2 class="reveal">From the <em>toy store</em>.</h2>
-        <div class="legend reveal"><a href="./toys2.html" class="see-all" data-attention="see-all-toys" style="color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule-soft);">See all toys →</a></div>
+        <div class="legend reveal"><a href="./toys2.html" class="see-all" data-attention="see-all-toys">See all toys →</a></div>
       </div>
       <div id="labToysShelf"></div>
     </section>
@@ -464,7 +466,7 @@
     <!-- FILTER + INVENTORY -->
     <div class="filter-bar">
       <span class="label">Filter ·</span>
-      <div id="filters" style="display: flex; gap: 0.5rem; flex-wrap: wrap;"></div>
+      <div id="filters"></div>
       <div class="view-toggle" role="tablist" aria-label="View">
         <button type="button" class="view-btn active" data-view="list" role="tab">List</button>
         <button type="button" class="view-btn" data-view="grid" role="tab">Grid</button>

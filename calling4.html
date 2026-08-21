@@ -208,12 +208,6 @@
     /* ─── FULL-BLEED FIGURE ─── */
     .bleed { width: 100%; }
     .bleed img { width: 100%; height: auto; }
-    .figcap {
-      padding: 0.7rem 0 0;
-      display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
-    }
-    .figcap + * { margin-top: 0; }
-
     /* ─── SECTION SCAFFOLD ─── */
     section.block { border-top: 1px solid var(--rule); }
     .block .in { max-width: var(--maxw); margin: 0 auto; padding: clamp(2.4rem, 6vh, 4.5rem) var(--edge) clamp(3rem, 7vh, 5.5rem); }
@@ -394,6 +388,9 @@
     .vrow .v.soft { color: var(--muted); font-weight: 400; }
     .vrow .v a { text-decoration: none; border-bottom: 2px solid var(--red); }
     .vrow .v a:hover { color: var(--red); }
+    .vrow .v-note { font-size: 0.95rem; }
+    .vrow .v-note-sm { font-size: 0.92rem; }
+    .link-red { border-bottom: 2px solid var(--red); text-decoration: none; }
 
     /* ─── FOOTER ─── */
     footer { border-top: 1px solid var(--rule); background: var(--bg); }
@@ -553,7 +550,7 @@
               <div class="cap"><p class="nm">The Mountain-Bearer</p><p class="sub">Carried it whole · <span class="rd">3D — drag to turn</span></p></div>
             </div>
           </div>
-          <p class="label" style="margin-top: 1rem;">Four of the seven, shown as 3D studies · <span class="rd" style="color: var(--red);">the full pantheon assembles in the room</span></p>
+          <p class="label" style="margin-top: 1rem;">Four of the seven, shown as 3D studies · <span class="rd">the full pantheon assembles in the room</span></p>
         </div>
       </div>
     </section>
@@ -635,12 +632,12 @@
           <div class="visit-rows">
             <div class="vrow"><span class="l">Exhibition</span><span class="v">Calling All Gods — Raghava KK</span></div>
             <div class="vrow"><span class="l">Opens</span><span class="v">December 10, 2026</span></div>
-            <div class="vrow"><span class="l">Opening</span><span class="v">By invitation<br /><span class="v soft" style="font-size: 0.95rem;">Request an invitation by emailing <a href="mailto:studio@raghavakkstudio.com?subject=Calling%20All%20Gods%20%C2%B7%20Opening%20Invitation">studio@raghavakkstudio.com</a></span></span></div>
-            <div class="vrow"><span class="l">Venue</span><span class="v">Anna-Maria &amp; Stephen Kellen Gallery<br /><span class="v soft" style="font-size: 0.95rem;">Parsons School of Design, The New School · New York</span></span></div>
+            <div class="vrow"><span class="l">Opening</span><span class="v">By invitation<br /><span class="v soft v-note">Request an invitation by emailing <a href="mailto:studio@raghavakkstudio.com?subject=Calling%20All%20Gods%20%C2%B7%20Opening%20Invitation">studio@raghavakkstudio.com</a></span></span></div>
+            <div class="vrow"><span class="l">Venue</span><span class="v">Anna-Maria &amp; Stephen Kellen Gallery<br /><span class="v soft v-note">Parsons School of Design, The New School · New York</span></span></div>
             <div class="vrow"><span class="l">Presented by</span><span class="v"><a href="https://volte.art" target="_blank" rel="noopener noreferrer">Volte Art Projects</a></span></div>
             <div class="vrow"><span class="l">Hours</span><span class="v soft">To be announced</span></div>
             <div class="vrow"><span class="l">Admission</span><span class="v soft">To be announced</span></div>
-            <div class="vrow"><span class="l">Press &amp; sales</span><span class="v"><a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a><br /><span class="v soft" style="font-size: 0.92rem;">Full documentation of the paintings available to press and institutions on request</span></span></div>
+            <div class="vrow"><span class="l">Press &amp; sales</span><span class="v"><a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a><br /><span class="v soft v-note-sm">Full documentation of the paintings available to press and institutions on request</span></span></div>
           </div>
           <a class="btn" href="mailto:studio@raghavakkstudio.com?subject=Calling%20All%20Gods%20%C2%B7%20Visit">Contact the studio</a>
         </div>
@@ -653,7 +650,7 @@
         <div class="side"><h2>Credits</h2></div>
         <div class="main narrow">
           <div class="body-txt" style="margin-top: 0;">
-            <p><i>Calling All Gods</i> is presented by <a href="https://volte.art" target="_blank" rel="noopener noreferrer" style="border-bottom: 2px solid var(--red); text-decoration: none;">Volte Art Projects</a> at the Anna-Maria &amp; Stephen Kellen Gallery, Parsons School of Design, The New School, New York.</p>
+            <p><i>Calling All Gods</i> is presented by <a href="https://volte.art" target="_blank" rel="noopener noreferrer" class="link-red">Volte Art Projects</a> at the Anna-Maria &amp; Stephen Kellen Gallery, Parsons School of Design, The New School, New York.</p>
             <p>Exhibition design by Aparna Nambiar, Vertex Inc. Supported by INK Foundation.</p>
             <p>The exhibition comprises two monumental paintings, a pantheon of sculptural editions, and a publication. Additional programming to be announced.</p>
           </div>

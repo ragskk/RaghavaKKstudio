@@ -7,7 +7,7 @@
   <title>Studio access · Raghava KK</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --paper:   #F4F1EA;
@@ -53,6 +53,8 @@
       margin: 0 0 1.4rem;
       color: var(--ink);
     }
+    /* House convention: accent word un-italicizes and goes red. */
+    h1 em { font-style: normal; color: var(--red); }
     .lede {
       font-family: var(--serif);
       font-size: 1rem;
@@ -77,6 +79,8 @@
       background: transparent;
       border: 0;
       border-bottom: 1px solid rgba(14,14,12,0.4);
+      /* 44px minimum touch target so a thumb can land cleanly. */
+      min-height: 44px;
       padding: 0.55rem 0;
       font-family: var(--serif);
       font-size: 1.1rem;
@@ -93,6 +97,8 @@
       background: var(--paper);
       color: var(--ink);
       border: 1px solid var(--ink);
+      /* 44px minimum so the button is a comfortable thumb target. */
+      min-height: 44px;
       padding: 0.65rem 1rem;
       cursor: pointer;
       justify-self: start;

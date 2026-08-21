@@ -24,7 +24,7 @@
   <meta name="googlebot" content="index, follow, noai, noimageai" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -118,163 +118,6 @@
       font-size: clamp(1rem, 1.2vw, 1.13rem);
       line-height: 1.55; max-width: 64ch;
       color: var(--ink-2); margin-bottom: clamp(1.4rem, 3vh, 2rem);
-    }
-    /* Hero rail — perspective archive carousel.
-       Variable-width tiles preserve each photograph's native aspect
-       ratio (encoded in width/height attrs on each <img>). Tiles sit
-       on a 3D plane; rotation + Z-depth + idle breathing + image inner
-       parallax are driven from a single rAF loop. The whole rail's
-       perspective-origin tracks the cursor so the diorama tilts
-       toward the viewer's gaze. Reduced-motion falls back to a
-       static horizontal scroll.
-       Easings: cubic-bezier(0.16,1,0.3,1) — exponential out, no
-       bounce. (Per impeccable + high-end-visual-design.) */
-    .hero-rail {
-      position: relative; z-index: 2;
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
-      height: clamp(260px, 42vh, 340px);
-      perspective: 1500px;
-      perspective-origin: 50% 55%;
-      overflow: hidden;
-      cursor: grab;
-      user-select: none;
-      touch-action: pan-y;
-      transition: perspective-origin 1.4s cubic-bezier(0.16,1,0.3,1);
-      background: linear-gradient(180deg, transparent 0%, rgba(14,14,12,0.025) 100%);
-    }
-    .hero-rail.is-dragging { cursor: grabbing; }
-    .hero-rail::before,
-    .hero-rail::after {
-      content: ""; position: absolute; top: 0; bottom: 0;
-      width: clamp(80px, 16vw, 220px);
-      z-index: 5; pointer-events: none;
-    }
-    .hero-rail::before {
-      left: 0;
-      background: linear-gradient(90deg, var(--paper) 0%, rgba(244,241,234,0.6) 55%, transparent 100%);
-    }
-    .hero-rail::after {
-      right: 0;
-      background: linear-gradient(270deg, var(--paper) 0%, rgba(244,241,234,0.6) 55%, transparent 100%);
-    }
-    .rail-stage {
-      position: absolute; top: 50%; left: 50%;
-      width: 0; height: 0;
-      transform-style: preserve-3d;
-    }
-
-    .rail-tile {
-      position: absolute; top: 0; left: 0;
-      background: #FBF9F3;
-      padding: 7px 7px 22px;
-      box-shadow:
-        0 1px 0 rgba(14,14,12,0.05),
-        0 14px 30px rgba(14,14,12,0.12);
-      transform-style: preserve-3d;
-      filter: saturate(0.78) brightness(0.97);
-      transition:
-        box-shadow .7s cubic-bezier(0.16,1,0.3,1),
-        filter .8s  cubic-bezier(0.16,1,0.3,1);
-      will-change: transform;
-      /* width inherits from intrinsic image dimensions (height 180px + width/height attrs preserve ratio) */
-    }
-    .rail-tile img {
-      display: block;
-      height: 180px;
-      width: auto;
-      max-width: none;
-      user-select: none; -webkit-user-drag: none;
-      background: var(--paper-3);
-      will-change: transform;
-      /* aspect ratio preserved via width/height attrs on element */
-    }
-    .rail-tile::after {
-      content: attr(data-cap);
-      position: absolute; left: 7px; right: 7px; bottom: 6px;
-      font-family: var(--mono); font-size: 8px; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--ink-2); text-align: center;
-      line-height: 1.4;
-      opacity: 0;
-      transform: translateY(2px);
-      transition:
-        opacity .55s cubic-bezier(0.16,1,0.3,1),
-        transform .55s cubic-bezier(0.16,1,0.3,1);
-    }
-    .rail-tile.is-focus {
-      filter: saturate(1) brightness(1);
-      box-shadow:
-        0 1px 0 rgba(14,14,12,0.10),
-        0 30px 60px rgba(14,14,12,0.24);
-    }
-    .rail-tile.is-focus::after {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .rail-tile.is-focus::before {
-      content: ""; position: absolute; top: 7px; right: 7px;
-      width: 5px; height: 5px; background: var(--red); border-radius: 50%;
-      animation: pulse 1.6s ease-in-out infinite;
-      z-index: 2;
-    }
-
-    /* Staggered cinematic entry — engages when .in is added.
-       Tiles emerge from deep blur + desaturation, exponential-out. */
-    .hero-rail .rail-tile {
-      opacity: 0;
-      filter: saturate(0) brightness(0.6) blur(10px);
-    }
-    .hero-rail.in .rail-tile {
-      opacity: 1;
-      filter: saturate(0.78) brightness(0.97) blur(0);
-      transition:
-        opacity 1.2s cubic-bezier(0.16,1,0.3,1) var(--tile-delay, 0s),
-        filter  1.2s cubic-bezier(0.16,1,0.3,1) var(--tile-delay, 0s),
-        box-shadow .7s cubic-bezier(0.16,1,0.3,1);
-    }
-    .hero-rail.in .rail-tile.is-focus {
-      filter: saturate(1) brightness(1) blur(0);
-    }
-
-    .hero-rail-hint {
-      position: absolute; left: 50%; bottom: 0.7rem; transform: translateX(-50%);
-      z-index: 6; pointer-events: none;
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.28em;
-      text-transform: uppercase; color: var(--muted);
-      display: inline-flex; align-items: center; gap: 0.55rem;
-      opacity: 0;
-      transition: opacity 1.4s ease 1.6s;
-    }
-    .hero-rail.in .hero-rail-hint { opacity: 0.8; }
-    .hero-rail-hint .arr { color: var(--red); }
-
-    @media (max-width: 760px) {
-      .hero-rail { height: clamp(200px, 38vh, 260px); }
-      .rail-tile { padding: 5px 5px 17px; }
-      .rail-tile img { height: 130px; }
-      .rail-tile::after { font-size: 7.5px; letter-spacing: 0.14em; bottom: 4px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero-rail {
-        overflow-x: auto; overflow-y: hidden;
-        perspective: none; cursor: auto; height: auto;
-        padding: 1rem 0;
-      }
-      .rail-stage {
-        position: static; transform: none !important;
-        display: flex; gap: 14px;
-        width: max-content;
-        padding: 0 var(--edge);
-      }
-      .rail-tile {
-        position: static !important;
-        transform: none !important;
-        filter: none !important;
-        opacity: 1 !important;
-      }
-      .rail-tile::after { opacity: 1; transform: none; }
-      .hero-rail-hint { display: none; }
     }
     .hero-fig {
       padding-top: 0.45rem;
@@ -467,75 +310,6 @@
       .fold-title { font-size: clamp(1.2rem, 5vw, 1.7rem); }
     }
 
-    /* ─── CONTENTS (table of contents, legacy, retained but unused) ─── */
-    .contents {
-      position: relative; z-index: 2;
-      max-width: var(--container); margin: 0 auto;
-      padding: clamp(2rem, 5vh, 3.5rem) var(--edge) clamp(1rem, 3vh, 2rem);
-      border-top: 1px solid var(--rule);
-      scroll-margin-top: 80px;
-    }
-    .contents-head {
-      display: flex; justify-content: space-between; align-items: baseline;
-      gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;
-    }
-    .contents-head h2 {
-      font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--ink-2); font-weight: 500;
-    }
-    .contents-head .count {
-      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--muted);
-    }
-    .contents-list { list-style: none; }
-    .contents-list li { border-top: 1px solid var(--rule-soft); }
-    .contents-list li:last-child { border-bottom: 1px solid var(--rule-soft); }
-    .contents-row {
-      display: grid;
-      grid-template-columns: 64px minmax(180px, 1fr) 1.6fr 24px;
-      gap: clamp(0.8rem, 1.6vw, 1.4rem);
-      align-items: baseline;
-      padding: 0.85rem 0.4rem;
-      text-decoration: none; color: inherit;
-      transition: background .25s var(--ease), padding .35s var(--ease);
-      position: relative;
-    }
-    .contents-row:hover {
-      background: var(--paper-2);
-      padding-left: 0.8rem; padding-right: 0.8rem;
-    }
-    .contents-row .num {
-      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--muted);
-      transition: color .25s var(--ease);
-    }
-    .contents-row:hover .num { color: var(--red); }
-    .contents-row .ttl {
-      font-family: var(--display); font-style: italic; font-weight: 400;
-      font-size: clamp(1.05rem, 1.4vw, 1.35rem);
-      line-height: 1.18; color: var(--ink);
-      transition: transform .35s var(--ease);
-      transform-origin: left center;
-    }
-    .contents-row:hover .ttl { transform: translateX(4px); }
-    .contents-row .tease {
-      font-family: var(--serif);
-      font-size: 0.95rem; line-height: 1.4;
-      color: var(--ink-2); max-width: 60ch;
-    }
-    .contents-row .arrow {
-      font-family: var(--display); font-style: italic;
-      font-size: 1.1rem;
-      color: var(--muted);
-      transition: transform .35s var(--ease), color .25s var(--ease);
-      justify-self: end;
-    }
-    .contents-row:hover .arrow { color: var(--red); transform: translateX(6px); }
-    @media (max-width: 760px) {
-      .contents-row { grid-template-columns: 50px 1fr 20px; gap: 0.8rem; }
-      .contents-row .tease { display: none; }
-    }
-
     /* Back-to-index link injected at the foot of every entry */
     .back-up {
       margin-top: clamp(1.2rem, 3vh, 1.8rem);
@@ -717,6 +491,18 @@
       .stills, .stills.three { grid-template-columns: repeat(2, 1fr); }
     }
 
+    /* Full-container variants used by the 64/1 sister section
+       (promoted from former inline styles; values unchanged). */
+    .entry-body--wide {
+      max-width: var(--container);
+      margin: clamp(1.6rem,3vh,2.4rem) auto 0;
+    }
+    .stills--wide {
+      max-width: var(--container);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     /* Held / reserved entries */
     .held-block {
       max-width: 480px;
@@ -860,45 +646,7 @@
         A catalogue of nineteen collaborations made by the studio between 1999 and 2024, plus the 64/1 collective as a sister section.
         Each entry below lists the client, the brief, the process in brief, the output, the location and date, the collaborators, and any links.
       </p>
-      <!-- 3D perspective rail of studio-process photographs. Drift / drag / wheel-driven. -->
-      <!-- Hidden 2026-05-14 per Raghava: carousel pulled. Restore by removing inline style="display:none" on this div and .hero-fig below. -->
-      <div class="hero-rail" id="heroRail" role="region" aria-label="Studio process photographs, scroll horizontally" style="display:none">
-        <div class="rail-stage" id="railStage">
-          <figure class="rail-tile" data-cap="Studio portrait">
-            <img src="./images/bio/portrait.jpg" srcset="./images/bio/portrait_sm.jpg 800w, ./images/bio/portrait.jpg 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Raghava KK portrait" width="853" height="1280" loading="lazy" />
-          </figure>
-          <figure class="rail-tile" data-cap="TED · Painting with brainwaves">
-            <img src="./images/bio/ted-brainwave.jpg" srcset="./images/bio/ted-brainwave_sm.jpg 800w, ./images/bio/ted-brainwave.jpg 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Raghava KK at TED, painting with brainwaves" width="960" height="639" loading="lazy" />
-          </figure>
-          <figure class="rail-tile" data-cap="When Paintings Dance, performance">
-            <img src="./images/bio/paintings-dance.jpg" srcset="./images/bio/paintings-dance_sm.jpg 800w, ./images/bio/paintings-dance.jpg 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Anthropomorphisms / When Paintings Dance performance" width="450" height="300" loading="lazy" />
-          </figure>
-          <figure class="rail-tile" data-cap="With Benazir Bhutto, Harvard">
-            <img src="./images/bio/with-bhutto.jpg" srcset="./images/bio/with-bhutto_sm.jpg 800w, ./images/bio/with-bhutto.jpg 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="With Benazir Bhutto at Harvard" width="960" height="600" loading="lazy" />
-          </figure>
-          <figure class="rail-tile" data-cap="With Paul Simon">
-            <img src="./images/bio/with-paul-simon.jpg" srcset="./images/bio/with-paul-simon_sm.jpg 800w, ./images/bio/with-paul-simon.jpg 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="With Paul Simon" width="720" height="389" loading="lazy" />
-          </figure>
-          <figure class="rail-tile" data-cap="With Al Gore, TED 2010">
-            <img src="./images/bio/with-al-gore.jpg" srcset="./images/bio/with-al-gore_sm.jpg 800w, ./images/bio/with-al-gore.jpg 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="With Al Gore at TED 2010" width="951" height="634" loading="lazy" />
-          </figure>
-          <figure class="rail-tile" data-cap="With Kahneman + Anderson, NY 2011">
-            <img src="./images/bio/with-kahneman.jpg" srcset="./images/bio/with-kahneman_sm.jpg 800w, ./images/bio/with-kahneman.jpg 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="With Daniel Kahneman and Chris Anderson, New York 2011" width="1400" height="890" loading="lazy" />
-          </figure>
-          <figure class="rail-tile" data-cap="Teaching, Essaouira, Morocco">
-            <img src="./images/bio/teaching-morocco.jpg" srcset="./images/bio/teaching-morocco_sm.jpg 800w, ./images/bio/teaching-morocco.jpg 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Teaching cartooning to children in Essaouira, Morocco" width="1400" height="937" loading="lazy" />
-          </figure>
-          <figure class="rail-tile" data-cap="Robin Hood library installation">
-            <img src="./images/bio/robin-hood-library.jpg" srcset="./images/bio/robin-hood-library_sm.jpg 800w, ./images/bio/robin-hood-library.jpg 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Robin Hood Foundation library installation" width="1106" height="737" loading="lazy" />
-          </figure>
-          <figure class="rail-tile" data-cap="La Liberté de Guernica">
-            <img src="./images/bio/liberty-guernica.jpg" srcset="./images/bio/liberty-guernica_sm.jpg 800w, ./images/bio/liberty-guernica.jpg 2000w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Raghava KK with La Liberté de Guernica" width="1400" height="1050" loading="lazy" />
-          </figure>
-        </div>
-        <div class="hero-rail-hint" aria-hidden="true">
-          <span class="arr">◂</span><span>drag · scroll · drift</span><span class="arr">▸</span>
-        </div>
-      </div>
+      <!-- Hidden 2026-05-14 per Raghava: carousel pulled (rail markup since removed). Restore this caption by removing inline style="display:none" below. -->
       <div class="hero-fig" style="display:none">
         <span>Studio · ten frames from the working life, 2008 → 2024</span>
         <span>Drag, scroll, or let it drift</span>
@@ -2196,7 +1944,7 @@
         </div>
       </div>
 
-      <div class="entry-body" style="max-width: var(--container); margin: clamp(1.6rem,3vh,2.4rem) auto 0;">
+      <div class="entry-body entry-body--wide">
         <div class="entry-prose">
           <div class="section">
             <h4>What it is</h4>
@@ -2222,7 +1970,7 @@
         </aside>
       </div>
 
-      <div class="stills" style="max-width: var(--container); margin-left: auto; margin-right: auto;">
+      <div class="stills stills--wide">
         <div>
           <div class="plate"><img src="./images/excavate/19-sixty-four-by-one/extra-01.png" alt="64/1, additional documentation" loading="lazy" /></div>
           <div class="plate-cap"><span class="l">64/1 archive</span><span>64·A</span></div>
@@ -2307,208 +2055,6 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
     reveals.forEach(el => io.observe(el));
-
-    /* Hero rail — perspective archive carousel.
-       Variable-width tiles preserve photograph aspect ratios (encoded
-       in width/height attrs). Every frame the rAF loop recomputes
-       each tile's transform from a single `offset` value plus a
-       phase-shifted breathing sine and a counter-translate parallax
-       on the inner <img>. The whole rail's perspective-origin tracks
-       the cursor for a diorama-tilt effect.
-       Easings: cubic-bezier(0.16, 1, 0.3, 1) — exponential-out. */
-    (function initHeroRail() {
-      const rail = document.getElementById('heroRail');
-      if (!rail) return;
-      const stage = rail.querySelector('.rail-stage');
-      const tiles = Array.from(rail.querySelectorAll('.rail-tile'));
-      if (!tiles.length) return;
-
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduced) {
-        rail.classList.add('in');
-        return;
-      }
-
-      const isNarrow = () => window.innerWidth < 760;
-      const GAP_BASE = () => (isNarrow() ? 22 : 32);
-      const MAX_ROT = 38;
-      const FALLOFF = () => (isNarrow() ? 320 : 460);
-      const Z_FALLOFF = 240;
-      const BREATHE_PX = 3;            // idle vertical bob amplitude
-      const BREATHE_PERIOD = 4200;     // ms per cycle (slow, calm)
-      const PARALLAX_INNER = 0.06;     // image counter-translate ratio
-      const TILT_AMOUNT_X = 14;        // perspective-origin shift, %
-      const TILT_AMOUNT_Y = 14;
-
-      /* Measure tile widths once layout is settled. width/height attrs
-         on each <img> reserve correct intrinsic size immediately, so
-         offsetWidth is valid on first measure. */
-      let positions = [];
-      let widths = [];
-      let TOTAL = 0;
-
-      function measure() {
-        positions = [];
-        widths = [];
-        let cum = 0;
-        const gap = GAP_BASE();
-        tiles.forEach((t) => {
-          const w = t.offsetWidth || 220;
-          widths.push(w);
-          positions.push(cum + w / 2);
-          cum += w + gap;
-        });
-        TOTAL = cum;
-      }
-
-      let offset = 0;
-      let baseDrift = 0.30;
-      let drift = baseDrift;
-      let velocity = 0;
-      let dragging = false;
-      let lastX = 0;
-
-      /* perspective-origin tilt (mouse-tracked, smoothed) */
-      let targetPX = 50, targetPY = 55;
-      let curPX = 50, curPY = 55;
-
-      function wrap(x) {
-        return ((x % TOTAL) + TOTAL) % TOTAL - TOTAL / 2;
-      }
-
-      function layout(now) {
-        const t = now || performance.now();
-        const fall = FALLOFF();
-        tiles.forEach((tile, i) => {
-          const x = wrap(positions[i] - offset);
-          const absX = Math.abs(x);
-          const rot = Math.max(-MAX_ROT, Math.min(MAX_ROT, -(x / fall) * MAX_ROT));
-          const z = -Math.min(Z_FALLOFF, absX * 0.52);
-          /* phase-shifted idle breathing — different phase per tile */
-          const breathe = Math.sin((t / BREATHE_PERIOD) * Math.PI * 2 + i * 0.83) * BREATHE_PX;
-          tile.style.transform =
-            `translate3d(${x.toFixed(2)}px, ${breathe.toFixed(2)}px, ${z.toFixed(2)}px) rotateY(${rot.toFixed(2)}deg)`;
-          tile.style.zIndex = String(2000 - Math.round(absX));
-          /* inner image counter-parallax — depth within depth */
-          const img = tile.firstElementChild;
-          if (img && img.tagName === 'IMG') {
-            img.style.transform = `translate3d(${(-x * PARALLAX_INNER).toFixed(2)}px, 0, 0)`;
-          }
-          const focus = absX < (widths[i] || 200) * 0.55;
-          if (focus !== tile.classList.contains('is-focus')) {
-            tile.classList.toggle('is-focus', focus);
-          }
-        });
-        /* smooth perspective-origin toward target */
-        curPX += (targetPX - curPX) * 0.06;
-        curPY += (targetPY - curPY) * 0.06;
-        rail.style.perspectiveOrigin = `${curPX.toFixed(2)}% ${curPY.toFixed(2)}%`;
-      }
-
-      function tick(now) {
-        if (!dragging) {
-          offset += drift + velocity;
-          velocity *= 0.92;
-        }
-        layout(now);
-        requestAnimationFrame(tick);
-      }
-
-      function getX(e) { return e.touches ? e.touches[0].clientX : e.clientX; }
-      function onDown(e) {
-        dragging = true;
-        rail.classList.add('is-dragging');
-        lastX = getX(e);
-        velocity = 0;
-      }
-      function onMove(e) {
-        if (!dragging) return;
-        const x = getX(e);
-        const dx = lastX - x;
-        offset += dx;
-        velocity = dx * 0.85;
-        lastX = x;
-      }
-      function onUp() {
-        if (!dragging) return;
-        dragging = false;
-        rail.classList.remove('is-dragging');
-      }
-      rail.addEventListener('mousedown', onDown);
-      window.addEventListener('mousemove', onMove);
-      window.addEventListener('mouseup', onUp);
-      rail.addEventListener('touchstart', onDown, { passive: true });
-      rail.addEventListener('touchmove',  onMove, { passive: true });
-      rail.addEventListener('touchend',   onUp);
-      rail.addEventListener('touchcancel', onUp);
-
-      rail.addEventListener('mouseenter', () => { drift = 0.04; });
-      rail.addEventListener('mouseleave', () => {
-        drift = baseDrift;
-        targetPX = 50; targetPY = 55;
-      });
-
-      /* mouse-tracked perspective-origin shift */
-      rail.addEventListener('mousemove', (e) => {
-        const r = rail.getBoundingClientRect();
-        const nx = (e.clientX - r.left) / r.width;   // 0..1
-        const ny = (e.clientY - r.top)  / r.height;
-        targetPX = 50 + (nx - 0.5) * 2 * TILT_AMOUNT_X;
-        targetPY = 55 + (ny - 0.5) * 2 * TILT_AMOUNT_Y;
-      });
-
-      rail.addEventListener('wheel', (e) => {
-        const dx = Math.abs(e.deltaX);
-        const dy = Math.abs(e.deltaY);
-        if (dx > dy) {
-          offset += e.deltaX;
-          velocity = e.deltaX * 0.4;
-          e.preventDefault();
-        }
-      }, { passive: false });
-
-      window.addEventListener('resize', () => {
-        measure();
-        layout();
-      });
-
-      /* Hint fades out once user has moved the rail meaningfully. */
-      const hint = rail.querySelector('.hero-rail-hint');
-      let hintHidden = false;
-      function watchHint() {
-        if (hintHidden) return;
-        if (!hint) return;
-        if (Math.abs(offset) > 240) {
-          hint.style.transition = 'opacity .8s ease';
-          hint.style.opacity = '0';
-          hintHidden = true;
-        }
-      }
-      setInterval(watchHint, 320);
-
-      /* Staggered entry — sequence from rail centre outward.
-         Stagger uses index distance from the visually-centred tile (tile 4)
-         so the entry feels like the rail materialising from focus outward. */
-      function applyEntryDelays() {
-        const centreIdx = Math.floor(tiles.length / 2);
-        tiles.forEach((tile, i) => {
-          const d = Math.abs(i - centreIdx);
-          tile.style.setProperty('--tile-delay', (d * 0.09).toFixed(2) + 's');
-        });
-      }
-
-      measure();
-      applyEntryDelays();
-      /* start a quarter-revolution offset so the focus tile isn't at index 0 */
-      offset = -positions[0] - widths[0] / 2 + 30;
-      layout(performance.now());
-
-      /* Engage staggered entry after first layout, then start rAF loop. */
-      requestAnimationFrame(() => {
-        rail.classList.add('in');
-        requestAnimationFrame(tick);
-      });
-    })();
 
     /* Accordion scroll compensation.
        The <details name="folds"> accordion auto-closes any other open fold

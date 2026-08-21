@@ -19,7 +19,7 @@
   <meta name="googlebot" content="index, follow, noai, noimageai" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
   <style>
     /* ───────────────────────────────────────────────────────────
@@ -204,6 +204,7 @@
     }
     .prose-section p em { color: var(--red); font-style: italic; }
     .prose-section p strong { font-weight: 600; color: var(--ink); }
+    .p--follow { margin-top: 1rem; }
     @media (max-width: 920px) {
       .prose-section .sec-label, .prose-section .sec-body, .prose-section .sec-side { grid-column: 1 / -1; }
     }
@@ -296,6 +297,7 @@
 
     /* video */
     .vid-wrap { position: relative; border: 1px solid var(--rule-soft); background: #171714; margin-top: 1.4rem; }
+    .vid-wrap--flush { margin-top: 0; }
     .vid-wrap video { display: block; width: 100%; height: auto; }
     .vid-wrap .vid-cap {
       font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
@@ -561,7 +563,7 @@
             <div class="r-body">Prepares special oil pigments in a material-science lab and leads the robotic printing that returns the work to canvas.</div>
           </div>
         </div>
-        <p style="margin-top:1rem;">
+        <p class="p--follow">
           Curatorial advisor: <strong>Myna Mukherjee</strong>. Master printer: <strong>Jeff Leonard</strong>.
         </p>
       </div>
@@ -590,7 +592,7 @@
             <figcaption><em>The critic and the artist</em>Karthik Kalyanaraman &amp; Raghava KK · 64/1</figcaption>
           </figure>
           <figure>
-            <div class="vid-wrap" style="margin-top:0;">
+            <div class="vid-wrap vid-wrap--flush">
               <video controls preload="metadata" src="./images/process/orgasm/video/fofx-announcement.mp4"></video>
             </div>
             <figcaption><em>The announcement</em>FofX Festival · Uttarakhand · 2019 · Video: Lipan</figcaption>
