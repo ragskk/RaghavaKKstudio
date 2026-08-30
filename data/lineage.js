@@ -835,17 +835,6 @@ window.LINEAGE = {
    "touchedUntil": 2022
   },
   {
-   "id": "knma",
-   "kind": "event",
-   "label": "Kiran Nadar Museum acquisition",
-   "year": 2022,
-   "sphere": "professional",
-   "mode": "catalyst",
-   "summary": "Guernica for the Siri-ocene acquired; Hyperallergic writes on it in the context of Picasso's legacy.",
-   "source": "claude",
-   "touchedUntil": 2022
-  },
-  {
    "id": "power-fluff-toys",
    "kind": "series",
    "label": "Power Fluff Toys",
@@ -1826,15 +1815,6 @@ window.LINEAGE = {
    "conf": "A",
    "sentence": "The phygital coinage travels from the orgasm to the war painting: the Dubai NFT edition, 2022.",
    "n": 6
-  },
-  {
-   "source": "03-guernica",
-   "target": "knma",
-   "kind": "informs",
-   "source_of": "claude",
-   "conf": "A",
-   "sentence": "Guernica for the Siri-ocene enters the Kiran Nadar Museum, 2022.",
-   "n": 7
   },
   {
    "source": "gradient-descent-2018",
