@@ -1,49 +1,17 @@
-# Staging area — deliberately off-site
+# ── Off-site holding zone (root cleanup 2026-08-30) ──────────────────────
+# Everything not part of the live website lives here: source material,
+# unaccessioned books, archived pages/backups/experiments, notes, scratch.
 not-used/
 
-# Campaign app — separate sub-project, lives in its own repo
-/raghavakk-campaign-app/
+# Separate sub-projects (campaign app + its backups, inventory app) — own repos
+/sub-projects/
 
-# Campaign app backups — never push these (each is a full clone, MBs each)
-/raghavakk-campaign-app.backup-*/
-
-# Vercel env dump — contains secrets, must stay local
-vercel-prod-env.txt
-
-# Local backups + notes (local-only; tags serve as rewind points)
+# Local backups (tags are the rewind mechanism); pre-cleanup snapshot has ROLLBACK.sh
 _backups/
-_notes/
-
-# Raw 3D source — by design, never ships (23–34 MB STL/OBJ files)
-toys-source/
 
 # Oversize file: 143 MB, exceeds GitHub's 100 MB single-file limit
+# (book-modal serves it as requestOnly + mailto fallback)
 books/art books/Restless Frequency.pdf
-
-
-# OS cruft
-.DS_Store
-
-# Vercel CLI link
-.vercel/
-raghavakk-inventory-app/
-
-# Edges process source material — confidential working files (pricing, gallery lists, raw images); the public derivatives live in images/process/
-/edges process/
-
-# Process source material (2.9 GB) — Toy Trojan, Orgasm Project, raw HEIC/MOV/INDD.
-# Confidential working files; the public derivatives live in images/process/
-# NOTE: root-anchored on purpose. An unanchored "process/" also ignores images/process/.
-/process/
-
-# Scratch drop zone — device_bash cannot delete, so files are parked here for manual removal
-_to_delete/
-
-# raw Hunyuan exports (36-57MB each) — processed copies live in toys/3d/pantheon/
-/toys/final toys/
-
-# Typography audit working docs — reference material, not site content
-_typography-audit/
 
 # C2PA signing keys — private, never ship
 /_tools/c2pa/*.key
@@ -51,3 +19,7 @@ _typography-audit/
 /_tools/c2pa/*.srl
 /_tools/c2pa/*.pk8
 /_tools/__pycache__/
+
+# OS / tooling cruft
+.DS_Store
+.vercel/
