@@ -95,7 +95,6 @@
     .legend .l-informs { stroke: var(--graphite-line); stroke-width: 1; fill: none; }
     .legend .l-triggers { stroke: var(--graphite); stroke-width: 1.1; stroke-dasharray: 4 3; fill: none; }
     .legend .l-merges { stroke: var(--graphite); stroke-width: 2.3; fill: none; }
-    .legend .l-loop { stroke: var(--red); stroke-width: 1.2; fill: none; }
     .legend .sw-slip { display: inline-block; width: 22px; height: 12px; background: var(--paper); border: 1px solid var(--rule-soft); box-shadow: 0 1px 2px rgba(0,0,0,.12); transform: rotate(-2deg); margin-right: 0.4rem; vertical-align: middle; }
     .legend .sw-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--graphite); margin-right: 0.5rem; vertical-align: middle; }
     .counts { font-family: var(--mono); font-size: var(--mono-b); letter-spacing: var(--mono-b-track); text-transform: uppercase; color: var(--muted); margin: 0; }
@@ -114,7 +113,6 @@
     .howto-key .l-informs { stroke: var(--graphite-line); stroke-width: 1; fill: none; }
     .howto-key .l-triggers { stroke: var(--graphite); stroke-width: 1.1; stroke-dasharray: 4 3; fill: none; }
     .howto-key .l-merges { stroke: var(--graphite); stroke-width: 2.3; fill: none; }
-    .howto-key .l-loop { stroke: var(--red); stroke-width: 1.2; fill: none; }
     .k-plate { display: block; width: 30px; height: 34px; background: #fff; border: 1px solid var(--rule-soft); box-shadow: 0 1px 2px rgba(0,0,0,.10), 0 4px 10px rgba(0,0,0,.08); transform: rotate(-2deg); position: relative; }
     .k-plate::before { content: ""; position: absolute; left: 3px; right: 3px; top: 3px; height: 20px; background: var(--paper-3); }
     .k-slip { display: flex; flex-direction: column; gap: 1px; padding: 3px 6px 4px; background: var(--paper); border: 1px solid var(--rule-soft); box-shadow: 0 1px 1px rgba(0,0,0,.08), 0 3px 8px rgba(0,0,0,.06); transform: rotate(1.5deg); }
@@ -142,7 +140,10 @@
     .axis line { stroke: var(--graphite-soft); stroke-width: 1; }
     .axis text { font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; fill: var(--muted); }
     .cols line { stroke: rgba(58,52,44,0.07); stroke-width: 1; }
-    .cols .span-line { stroke: var(--graphite-soft); stroke-width: 0.8; stroke-dasharray: 1 3; }
+    .cols .tail { stroke: var(--graphite-soft); stroke-width: 0.8; }
+    .cols .tail-series { stroke: var(--graphite); stroke-width: 3; opacity: 0.28; stroke-linecap: round; }
+    .cols .tail-idea { stroke-dasharray: 1 4; stroke-linecap: round; opacity: 0.8; }
+    .cols .tail-period { stroke-dasharray: 1 3; }
 
     /* edges */
     .edges path { fill: none; stroke-linecap: round; transition: opacity .25s var(--ease), stroke .25s var(--ease); }
@@ -151,13 +152,11 @@
     .edges .triggers { stroke: var(--graphite); stroke-width: 1.1; stroke-dasharray: 4 3; opacity: 0.6; }
     .edges .triggers.web { opacity: 0.4; }
     .edges .merges { stroke: var(--graphite); stroke-width: 2.3; opacity: 0.7; }
-    .edges .loop { stroke: var(--red); opacity: 0.85; }
     .edges path.hid, .hits path.hid, .lin-node.hid { display: none; }
     .hits path { fill: none; stroke: transparent; stroke-width: 12px; pointer-events: stroke; cursor: pointer; }
     marker.arr path { fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
     marker.arr-informs path { stroke: var(--graphite-line); }
     marker.arr-triggers path, marker.arr-merges path { stroke: var(--graphite); }
-    marker.arr-loop path { stroke: var(--red); }
 
     /* focus: everything not in the ego set dims */
     .lin-stage.is-focus .edges path { opacity: 0.06; }
@@ -297,13 +296,13 @@
       <span>How the series made each other</span><span class="dot"></span>
       <span>A life above the line</span><span class="dot"></span>
       <span>My work below it</span><span class="dot"></span>
-      <span>Every arrow says this fed that</span><span class="dot"></span>
+      <span>Nothing feeds the past</span><span class="dot"></span>
       <span>Raghava KK</span><span class="dot"></span>
       <span>Lineage</span><span class="dot"></span>
       <span>How the series made each other</span><span class="dot"></span>
       <span>A life above the line</span><span class="dot"></span>
       <span>My work below it</span><span class="dot"></span>
-      <span>Every arrow says this fed that</span><span class="dot"></span>
+      <span>Nothing feeds the past</span><span class="dot"></span>
     </div>
   </div>
 
@@ -327,7 +326,7 @@
       <p class="head-dek">
         A map of cause, not a list of dates. The line is time. The framed pictures on it are the series, in the order I made them.
         Above the line is what happened in my life. Below it, what happened in my work.
-        Every arrow says <b>this fed that</b>. A few point backwards: a series that turned round and changed the life that made it.
+        Every arrow says <b>this fed that</b>, and every arrow runs forward. Nothing feeds the past. What came earlier informs what came later; what came later can only answer.
       </p>
     </section>
 
@@ -336,7 +335,7 @@
     <section class="howto" aria-label="How to read the board">
       <div class="howto-prose">
         <h2>How to <em>read</em> it.</h2>
-        <p>Start anywhere. Rest on a framed picture and its causes light up while the rest of the board fades. Click to hold it: what fed it turns black, what it fed turns red, and a card opens with both written out. Follow a slip or a dot the same way. Press Esc to let go. On a phone you get the ledger below instead, the same arrows written out.</p>
+        <p>Start anywhere. Rest on a framed picture and everything it touched lights up while the rest of the board fades. Click to hold it: what fed it turns black, what it fed turns red, and a card opens with both written out. Follow a slip or a dot the same way. Press Esc to let go. On a phone you get the ledger below instead, the same arrows written out.</p>
       </div>
       <dl class="howto-key">
         <div><dt><span class="k-plate"></span></dt><dd><b>A series.</b> On the line, in the order it was made. Click it a second time to open it in the Studio.</dd></div>
@@ -345,7 +344,7 @@
         <div><dt><svg viewBox="0 0 60 12"><path class="l-informs" d="M0 6 H60"/></svg></dt><dd><b>Informs.</b> This shaped that.</dd></div>
         <div><dt><svg viewBox="0 0 60 12"><path class="l-triggers" d="M0 6 H60"/></svg></dt><dd><b>Triggers.</b> This set that off.</dd></div>
         <div><dt><svg viewBox="0 0 60 12"><path class="l-merges" d="M0 6 H60"/></svg></dt><dd><b>Merges into.</b> This became part of that.</dd></div>
-        <div><dt><svg viewBox="0 0 60 12"><path class="l-loop" d="M0 6 H60"/></svg></dt><dd><b>Returns.</b> The arrow runs backwards. The series changed what made it.</dd></div>
+        <div><dt><svg viewBox="0 0 60 12"><circle cx="4" cy="6" r="3.2" fill="var(--graphite)"/><path d="M10 6 H60" style="stroke:var(--graphite-soft);stroke-width:1;stroke-dasharray:1 4;stroke-linecap:round;fill:none"/></svg></dt><dd><b>A tail.</b> The thing kept living. Later arrows reach it along the tail, at the year they touched it.</dd></div>
         <div><dt><span class="k-inout"><svg viewBox="0 0 60 12"><path d="M0 6 H26" style="stroke:var(--ink);stroke-width:1.3;fill:none"/><path d="M34 6 H60" style="stroke:var(--red);stroke-width:1.3;fill:none"/></svg></span></dt><dd><b>When you hold something.</b> Black arrows are what fed it. Red arrows are what it fed.</dd></div>
         <div><dt><span class="k-bands"><i>life</i><s></s><i>work</i></span></dt><dd><b>Above the line, my life. Below it, my work.</b> Two filters on the board let you look at one at a time.</dd></div>
       </dl>

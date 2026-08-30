@@ -25,7 +25,8 @@ window.LINEAGE = {
    "yearEnd": 1997,
    "summary": "Hindu boy, Christian school, Muslim neighbourhood, Muslim best friend. Plurality was never a theory for me. It was the floor.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "who-are-you",
@@ -37,7 +38,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "My father asked me, when I was seven.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2010
   },
   {
    "id": "photoshop-wacom",
@@ -49,7 +51,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Digital painting experiments. The foundation of the composite method.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 1997
   },
   {
    "id": "wacom",
@@ -61,7 +64,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "The tablet arrives; the hand goes digital.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 1999
   },
   {
    "id": "ingrid-alburquerque",
@@ -73,7 +77,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "A personal catastrophe led her to religion: the first time I saw faith arrive as a structure for surviving rather than for explaining. She asked me to write about God for the Times of India.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2010
   },
   {
    "id": "composition-collage",
@@ -85,7 +90,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Making the image in Photoshop, then painting it.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2020
   },
   {
    "id": "cartoonist-16",
@@ -95,7 +101,8 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "catalyst",
    "summary": "Published cartoons from 1998; Strasbourg, paying in caricatures.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "cartoon-series",
@@ -105,7 +112,8 @@ window.LINEAGE = {
    "yearEnd": 2003,
    "summary": "A cartooning school that taught thousands of children. Regular columns in the local papers from 1998.",
    "source": "rkk-export",
-   "offsite": true
+   "offsite": true,
+   "touchedUntil": 1997
   },
   {
    "id": "newspaper-cartoons",
@@ -117,7 +125,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Regular columns in the local newspapers.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2016
   },
   {
    "id": "quit-education",
@@ -129,7 +138,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "A lifelong sabbatical from school, taken after the twelfth-grade exams.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 1999
   },
   {
    "id": "mother-in-law-feminism",
@@ -142,7 +152,8 @@ window.LINEAGE = {
    "summary": "A feminism that made me feel terrible for being a man.",
    "source": "rkk-export",
    "tagBy": "claude",
-   "public": false
+   "public": false,
+   "touchedUntil": 2018
   },
   {
    "id": "protest-art",
@@ -152,7 +163,8 @@ window.LINEAGE = {
    "yearEnd": 2003,
    "summary": "Free art for protests. The first time politics and image-making were not separable.",
    "source": "rkk-export",
-   "offsite": true
+   "offsite": true,
+   "touchedUntil": 2018
   },
   {
    "id": "harvard-square",
@@ -164,7 +176,8 @@ window.LINEAGE = {
    "yearEnd": 2005,
    "summary": "Cambridge, civic life, the political formation of my early Boston years.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2002
   },
   {
    "id": "guernica-encounters",
@@ -175,7 +188,8 @@ window.LINEAGE = {
    "mode": "formation",
    "summary": "Multiple encounters with Picasso's original over ten years.",
    "source": "claude",
-   "yearEnd": 2015
+   "yearEnd": 2015,
+   "touchedUntil": 2015
   },
   {
    "id": "character-selection",
@@ -187,7 +201,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "How figures get chosen, weighted, and admitted onto a shared plane.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2018
   },
   {
    "id": "collage-aesthetic",
@@ -199,7 +214,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "The picture plane as accumulation. Sources visible, seams admitted.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "bhagavad-gita",
@@ -211,7 +227,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "The Gita and the yoga sutras. Consciousness as a craft, not a belief.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2016
   },
   {
    "id": "moved-to-america",
@@ -221,7 +238,8 @@ window.LINEAGE = {
    "sphere": "personal",
    "mode": "catalyst",
    "summary": "I moved to America and missed India.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2011
   },
   {
    "id": "guha-tharoor",
@@ -231,7 +249,8 @@ window.LINEAGE = {
    "sphere": "personal",
    "mode": "formation",
    "summary": "Ramachandra Guha and Shashi Tharoor in hand while I repainted another country's founding scenes.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2011
   },
   {
    "id": "children-born",
@@ -242,7 +261,8 @@ window.LINEAGE = {
    "mode": "catalyst",
    "summary": "Four children, 2008 to 2015.",
    "source": "claude",
-   "yearEnd": 2015
+   "yearEnd": 2015,
+   "touchedUntil": 2021
   },
   {
    "id": "plurality",
@@ -254,7 +274,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Many gods, many systems. Plurality as a fact rather than a problem to resolve.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2019
   },
   {
    "id": "mona-lisa-2",
@@ -265,7 +286,8 @@ window.LINEAGE = {
    "mode": "catalyst",
    "summary": "Brainwave as material: a painting that reads the viewer's mind.",
    "source": "claude",
-   "yearEnd": 2013
+   "yearEnd": 2013,
+   "touchedUntil": 2021
   },
   {
    "id": "ted",
@@ -276,7 +298,8 @@ window.LINEAGE = {
    "mode": "formation",
    "summary": "Black Cadillac 1998 to five TED talks: the stage practice.",
    "source": "claude",
-   "yearEnd": 2013
+   "yearEnd": 2013,
+   "touchedUntil": 2020
   },
   {
    "id": "pop-it",
@@ -286,18 +309,21 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "catalyst",
    "summary": "The iPad book that swapped parents when shaken.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2021
   },
   {
    "id": "01-history",
    "kind": "series",
    "label": "The History Series",
    "year": 2011,
+   "yearEnd": 2015,
    "origin": 2008,
    "summary": "I moved to America, missed India, and made a series inspired by Shashi Tharoor, with Ramachandra Guha in hand.",
    "source": "rkk-export",
    "thumb": "images/studio/_thumbs/01-history/1A.jpg",
-   "href": "./studio2.html?work=1A"
+   "href": "./studio2.html?work=1A",
+   "touchedUntil": 2018
   },
   {
    "id": "sozo",
@@ -307,17 +333,20 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "catalyst",
    "summary": "With Artmatr; the robots that later returned La petite mort to canvas.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2021
   },
   {
    "id": "03-guernica",
    "kind": "series",
    "label": "The Guernica Project",
    "year": 2015,
+   "yearEnd": 2023,
    "summary": "Launched at Volte. Picasso's painting restaged for current conflicts, four times over.",
    "source": "rkk-export",
    "thumb": "images/studio/_thumbs/03-guernica/3A.jpg",
-   "href": "./studio2.html?work=3A"
+   "href": "./studio2.html?work=3A",
+   "touchedUntil": 2022
   },
   {
    "id": "many-characters",
@@ -329,7 +358,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Crowd as content. Plurality made into composition.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "ganeshas",
@@ -341,7 +371,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Ganesha paintings, after reading my father's translation of his great-grandfather's book on Ganesha as Advaita.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2016
   },
   {
    "id": "noise-functions",
@@ -351,7 +382,8 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "formation",
    "summary": "Seeing how a noise function can inspire transcendent art.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2017
   },
   {
    "id": "double-headed-tiger",
@@ -363,7 +395,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Duality as a creature, not a concept. The body that holds both.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "burning-man",
@@ -373,17 +406,20 @@ window.LINEAGE = {
    "sphere": "personal",
    "mode": "catalyst",
    "summary": "A satellite phone in the desert; a 200-year plan for crypto art that no one would build; the massive god I saw there.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "04-sublime-machines",
    "kind": "series",
    "label": "Sublime Machines",
    "year": 2017,
+   "yearEnd": 2018,
    "summary": "Tech and transcendence. Working with technology, I saw how a noise function can produce something transcendent.",
    "source": "rkk-voice",
    "thumb": "images/studio/_thumbs/04-sublime-machines/4A.jpg",
-   "href": "./studio2.html?work=4A"
+   "href": "./studio2.html?work=4A",
+   "touchedUntil": 2018
   },
   {
    "id": "brother-religious",
@@ -395,7 +431,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "A parallel inquiry into faith systems, running alongside my own.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "divorce",
@@ -407,7 +444,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "The breaking apart that became a generative form. Not a wound to hide, a structure to use.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2021
   },
   {
    "id": "reality-shattered",
@@ -419,7 +457,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "The feeling that reality itself had broken.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2021
   },
   {
    "id": "broken-falling-apart",
@@ -431,7 +470,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "The paintings hold themselves on the verge of dispersing.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "multiple-gods",
@@ -443,7 +483,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Old gods, new gods, gods generated by machines. All in one frame.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "brother-divorce",
@@ -455,7 +496,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "The same year. We both land in Bangalore.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2018
   },
   {
    "id": "64-1-founded",
@@ -467,7 +509,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Philosophy, art history, art criticism, encounter theory: the fundamental questions about art and the practice, revisited with Karthik.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2018
   },
   {
    "id": "karthik-question",
@@ -477,7 +520,8 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "catalyst",
    "summary": "If everything is digitisable, is everything also for sale?",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2021
   },
   {
    "id": "gradient-descent-2018",
@@ -487,18 +531,21 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "catalyst",
    "summary": "I co-curated AI art's gallery debut with Karthik; the photography-moment thesis.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2018
   },
   {
    "id": "02-impossible-bouquets",
    "kind": "series",
    "label": "Impossible Bouquets",
    "year": 2018,
+   "yearEnd": 2023,
    "origin": 2014,
    "summary": "After the Dutch still life: a method for selecting flowers from different seasons and admitting them to one impossible arrangement.",
    "source": "rkk-export",
    "thumb": "images/studio/_thumbs/02-impossible-bouquets/2C.jpg",
-   "href": "./studio2.html?work=2C"
+   "href": "./studio2.html?work=2C",
+   "touchedUntil": 2026
   },
   {
    "id": "08-mtf",
@@ -508,7 +555,8 @@ window.LINEAGE = {
    "summary": "A series made with robots, to try to forget a wife who was leaving.",
    "source": "rkk-export",
    "thumb": "images/studio/_thumbs/08-mtf/8A.jpg",
-   "href": "./studio2.html?work=8A"
+   "href": "./studio2.html?work=8A",
+   "touchedUntil": 2021
   },
   {
    "id": "64x1-essay",
@@ -517,7 +565,8 @@ window.LINEAGE = {
    "year": 2018,
    "summary": "Sixty-four pieces by one mind, with my brother.",
    "source": "rkk-export",
-   "offsite": true
+   "offsite": true,
+   "touchedUntil": 2023
   },
   {
    "id": "william-james",
@@ -529,7 +578,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "The Varieties of Religious Experience. A permission slip for taking religious phenomenology seriously.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2020
   },
   {
    "id": "bali-carver",
@@ -539,7 +589,8 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "catalyst",
    "summary": "Trained under Aditya Budyasa; the Toy Trojan carved from one 300-year mahogany.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2019
   },
   {
    "id": "fofx-promise",
@@ -549,7 +600,8 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "catalyst",
    "summary": "\"One day soon, we shall capture our orgasm and turn it into art.\" Announced two years before the work.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2021
   },
   {
    "id": "11-toy-trojan",
@@ -560,7 +612,8 @@ window.LINEAGE = {
    "summary": "A wooden Trojan horse, hand-carved at the scale of a child's wish.",
    "source": "claude",
    "thumb": "images/studio/_thumbs/11-toy-trojan/11A.jpg",
-   "href": "./process-trojan.html"
+   "href": "./process-trojan.html",
+   "touchedUntil": 2022
   },
   {
    "id": "covid-lockdown",
@@ -572,7 +625,8 @@ window.LINEAGE = {
    "yearEnd": 2022,
    "summary": "Shared confinement, unspecified time, the held breath. The audience for the painting was inside the house.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2020
   },
   {
    "id": "covid-experiments",
@@ -584,7 +638,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "The pandemic's pressure on what these paintings could mean. Loneliness as the actual subject.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2023
   },
   {
    "id": "reinvent",
@@ -596,7 +651,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Karthik helps me recreate myself, and tells me to look at my own art history.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2023
   },
   {
    "id": "commission-cancelled",
@@ -606,7 +662,8 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "catalyst",
    "summary": "March 2020, in one call. It removed the excuse not to reinvent.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2020
   },
   {
    "id": "whiteboard",
@@ -616,17 +673,20 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "formation",
    "summary": "Who is Raghava? Three words everything after is tested against.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2020
   },
   {
    "id": "12-figure",
    "kind": "series",
    "label": "The Figure Series",
    "year": 2020,
+   "yearEnd": 2021,
    "summary": "Built first, on paper and canvas, under lockdown. Edges broke out of its margins.",
    "source": "claude",
    "thumb": "images/studio/_thumbs/12-figure/12A.jpg",
-   "href": "./studio2.html?work=12A"
+   "href": "./studio2.html?work=12A",
+   "touchedUntil": 2020
   },
   {
    "id": "07-edges",
@@ -636,7 +696,8 @@ window.LINEAGE = {
    "summary": "Composition itself became the political subject. Edges as ethics. Made when I wanted to reinvent myself completely, after my life had broken.",
    "source": "rkk-export",
    "thumb": "images/studio/_thumbs/07-edges/7A.jpg",
-   "href": "./process-edges.html"
+   "href": "./process-edges.html",
+   "touchedUntil": 2025
   },
   {
    "id": "10-eye-candy",
@@ -646,7 +707,8 @@ window.LINEAGE = {
    "summary": "Trying to be relevant to a new generation when everything I knew was falling apart. An exhibition on Instagram.",
    "source": "rkk-voice",
    "thumb": "images/studio/_thumbs/10-eye-candy/10A.jpg",
-   "href": "./studio2.html?work=10A"
+   "href": "./studio2.html?work=10A",
+   "touchedUntil": 2020
   },
   {
    "id": "tushar-guernica",
@@ -658,7 +720,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Tushar signs the Guernica commission. The scale trigger.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "liberty-figure",
@@ -670,7 +733,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Freedom as a body in the field. Not an abstraction, a person carrying it.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "children-leaving",
@@ -682,7 +746,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "My idea of reality completely broke.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2021
   },
   {
    "id": "sothebys",
@@ -692,7 +757,8 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "catalyst",
    "summary": "First Indian artist to launch an NFT at Sotheby's; I coined 'phygital' the same year.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2021
   },
   {
    "id": "05-catch-em",
@@ -702,18 +768,21 @@ window.LINEAGE = {
    "summary": "Children dealing with their personalities.",
    "source": "rkk-export",
    "thumb": "images/studio/_thumbs/05-catch-em/5A.jpg",
-   "href": "./studio2.html?work=5A"
+   "href": "./studio2.html?work=5A",
+   "touchedUntil": 2021
   },
   {
    "id": "06-orgasm-project",
    "kind": "series",
    "label": "The Orgasm Project",
    "year": 2021,
+   "yearEnd": 2022,
    "origin": 2017,
    "summary": "An orgasm recorded as brainwave data, returned to oil on canvas by robots and a painter.",
    "source": "claude",
    "thumb": "images/studio/_thumbs/06-orgasm-project/6A.jpg",
-   "href": "./process-orgasm.html"
+   "href": "./process-orgasm.html",
+   "touchedUntil": 2021
   },
   {
    "id": "encounter-design-lineage",
@@ -725,7 +794,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "The inherited and developed practice of building encounters, not images. A picture you can stand inside.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2024
   },
   {
    "id": "commission-origin",
@@ -737,7 +807,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Someone asks for a god painting the size of Guernica. Tushar says: make it your god painting, the massive god you have wanted since Burning Man.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2023
   },
   {
    "id": "volte-dubai",
@@ -749,7 +820,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "A painting 22.5 by 12.5 feet, at Volte, Dubai.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "ukraine",
@@ -759,7 +831,8 @@ window.LINEAGE = {
    "sphere": "personal",
    "mode": "catalyst",
    "summary": "The war that Guernica for the Siri-ocene and Power Fluff Toys answered.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "knma",
@@ -769,7 +842,8 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "catalyst",
    "summary": "Guernica for the Siri-ocene acquired; Hyperallergic writes on it in the context of Picasso's legacy.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2022
   },
   {
    "id": "power-fluff-toys",
@@ -779,7 +853,8 @@ window.LINEAGE = {
    "summary": "The first digital 3D toys: gods and power figures, shown at Volte and Art Dubai Digital.",
    "source": "rkk-export",
    "thumb": "images/studio/_thumbs/09-powerfluff/9A.jpg",
-   "href": "./toys2.html"
+   "href": "./toys2.html",
+   "touchedUntil": 2022
   },
   {
    "id": "toy-series",
@@ -791,6 +866,7 @@ window.LINEAGE = {
    "source": "rkk-export",
    "thumb": "images/studio/_thumbs/13-toy-faces/13A.jpg",
    "href": "./toys2.html",
+   "touchedUntil": 2022,
    "sortYear": 2024
   },
   {
@@ -807,6 +883,7 @@ window.LINEAGE = {
    ],
    "thumb": "images/studio/_thumbs/15-gods-vs-gods/15A.jpg",
    "href": "./calling4.html",
+   "touchedUntil": 2026,
    "sortYear": 2025
   },
   {
@@ -819,7 +896,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "A collector who asked for gods like Guernica, then vanished. The brief survived him.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2023
   },
   {
    "id": "encounter-design",
@@ -831,7 +909,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "The viewer feels undone and held at the same time.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2023
   },
   {
    "id": "ai-gods-64-1",
@@ -841,6 +920,7 @@ window.LINEAGE = {
    "summary": "Deity figures and composites generated through learned models. New gods made by a new tool.",
    "source": "rkk-export",
    "note": "Labelled 'Gradient Descent' in the 2026 export; the 2018 Nature Morte show has that name on the site. Confirm label.",
+   "touchedUntil": 2023,
    "sortYear": 2023.2
   },
   {
@@ -852,6 +932,7 @@ window.LINEAGE = {
    "source": "rkk-export",
    "thumb": "images/studio/_thumbs/14-impossible-bouquet-23/14A.jpg",
    "href": "./studio2.html?work=14A",
+   "touchedUntil": 2023,
    "sortYear": 2023.4
   },
   {
@@ -864,7 +945,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "An exhibition on alternate encounters in the age of AI. The encounter framed as the unit of art.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2024
   },
   {
    "id": "cannot-show",
@@ -876,7 +958,8 @@ window.LINEAGE = {
    "yearEnd": null,
    "summary": "Too controversial for the Indian sensibility, too religious for Dubai. We need a new place to show it.",
    "source": "rkk-export",
-   "tagBy": "claude"
+   "tagBy": "claude",
+   "touchedUntil": 2024
   },
   {
    "id": "ashvitas-2025",
@@ -886,7 +969,8 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "catalyst",
    "summary": "Edges at the gallery where my career began in 2003.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2025
   },
   {
    "id": "parsons",
@@ -896,7 +980,8 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "catalyst",
    "summary": "A show that became a curriculum. Pitch stage.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2026
   },
   {
    "id": "kula",
@@ -906,7 +991,8 @@ window.LINEAGE = {
    "sphere": "professional",
    "mode": "catalyst",
    "summary": "The bouquet becomes a way of painting a family.",
-   "source": "claude"
+   "source": "claude",
+   "touchedUntil": 2026
   }
  ],
  "edges": [
@@ -1198,11 +1284,13 @@ window.LINEAGE = {
    "conf": "R"
   },
   {
-   "source": "bhagavad-gita",
-   "target": "multi-faith",
+   "source": "multi-faith",
+   "target": "bhagavad-gita",
    "kind": "informs",
    "source_of": "rkk-export",
-   "conf": "R"
+   "conf": "R",
+   "flipped": true,
+   "sentence": ""
   },
   {
    "source": "children-leaving",
@@ -1341,18 +1429,22 @@ window.LINEAGE = {
    "conf": "R"
   },
   {
-   "source": "quit-education",
-   "target": "wacom",
-   "kind": "triggers",
+   "source": "wacom",
+   "target": "quit-education",
+   "kind": "informs",
    "source_of": "rkk-export",
-   "conf": "R"
+   "conf": "R",
+   "flipped": true,
+   "sentence": ""
   },
   {
-   "source": "quit-education",
-   "target": "newspaper-cartoons",
-   "kind": "triggers",
+   "source": "newspaper-cartoons",
+   "target": "quit-education",
+   "kind": "informs",
    "source_of": "rkk-export",
-   "conf": "R"
+   "conf": "R",
+   "flipped": true,
+   "sentence": ""
   },
   {
    "source": "who-are-you",
@@ -1383,22 +1475,8 @@ window.LINEAGE = {
    "conf": "R"
   },
   {
-   "source": "multiple-gods",
-   "target": "many-characters",
-   "kind": "informs",
-   "source_of": "rkk-export",
-   "conf": "R"
-  },
-  {
    "source": "collage-aesthetic",
    "target": "many-characters",
-   "kind": "informs",
-   "source_of": "rkk-export",
-   "conf": "R"
-  },
-  {
-   "source": "many-characters",
-   "target": "collage-aesthetic",
    "kind": "informs",
    "source_of": "rkk-export",
    "conf": "R"
@@ -1455,18 +1533,22 @@ window.LINEAGE = {
    "n": 17
   },
   {
-   "source": "covid-experiments",
-   "target": "08-mtf",
+   "source": "08-mtf",
+   "target": "covid-experiments",
    "kind": "informs",
    "source_of": "rkk-export",
-   "conf": "R"
+   "conf": "R",
+   "flipped": true,
+   "sentence": ""
   },
   {
-   "source": "william-james",
-   "target": "08-mtf",
+   "source": "08-mtf",
+   "target": "william-james",
    "kind": "informs",
    "source_of": "rkk-export",
-   "conf": "R"
+   "conf": "R",
+   "flipped": true,
+   "sentence": ""
   },
   {
    "source": "william-james",
@@ -1476,11 +1558,13 @@ window.LINEAGE = {
    "conf": "R"
   },
   {
-   "source": "liberty-figure",
-   "target": "08-mtf",
+   "source": "08-mtf",
+   "target": "liberty-figure",
    "kind": "informs",
    "source_of": "rkk-export",
-   "conf": "R"
+   "conf": "R",
+   "flipped": true,
+   "sentence": ""
   },
   {
    "source": "composition-collage",

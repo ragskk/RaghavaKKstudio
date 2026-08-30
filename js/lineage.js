@@ -30,7 +30,7 @@
     for (const [a, b, px] of SEG) { if (y <= a) break; x += (Math.min(y, b) - a) * px; }
     return x;
   };
-  const W = xOf(Y1) + PAD_R;
+  let W = xOf(Y1) + PAD_R;
 
   /* ── seeded jitter (mulberry32, same family as timeline2 / Field №01) ── */
   function mulberry32(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
@@ -42,15 +42,11 @@
   const edges = DATA.edges.filter(e => byId.has(e.source) && byId.has(e.target));
   const adj = new Map(nodes.map(n => [n.id, { out: [], in: [] }]));
   edges.forEach((e, i) => { e._i = i; adj.get(e.source).out.push(e); adj.get(e.target).in.push(e); });
-  // loop legs: if A->B and B->A both exist, the later-year source's leg is the return
-  const key = (e) => e.source + '>' + e.target;
-  const set = new Set(edges.map(key));
-  edges.forEach(e => {
-    if (set.has(e.target + '>' + e.source)) {
-      const a = byId.get(e.source), b = byId.get(e.target);
-      e.loop = (a.year || 0) > (b.year || 0) || ((a.year || 0) === (b.year || 0) && a.id > b.id);
-    }
-  });
+  // Time rule (Raghava): nothing feeds the past. Every arrow runs earlier → later and touches each
+  // node at the moment of contact: the later of the two start years, clamped to the node's living span.
+  const start = (n) => n.year || Y0;
+  const aliveUntil = (n) => n.yearEnd ? n.yearEnd : (n.kind === 'event' && n.mode === 'formation' ? (n.touchedUntil || n.year) : (n.year || Y0));
+  const contactYear = (a, b) => Math.max(start(a), start(b));
 
   const series = nodes.filter(n => n.kind === 'series').sort((a, b) => (a.sortYear || a.year) - (b.sortYear || b.year) || a.id.localeCompare(b.id));
   const events = nodes.filter(n => n.kind === 'event');
@@ -69,6 +65,23 @@
     }
   }
   series.forEach(n => { n.y = SPINE_Y; });
+  // plates get pushed off their true year by collision, so the spine has its own year → x map:
+  // piecewise-linear between plate positions, so a series' tail lines up with the plates that follow it
+  const spineKnots = [];
+  series.forEach(n => { if (!spineKnots.length || n.year > spineKnots[spineKnots.length - 1].year) spineKnots.push({ year: n.year, x: n.x }); });
+  function spineX(year) {
+    if (!spineKnots.length) return xOf(year);
+    if (year <= spineKnots[0].year) return xOf(year) + (spineKnots[0].x - xOf(spineKnots[0].year));
+    for (let i = 1; i < spineKnots.length; i++) {
+      const a = spineKnots[i - 1], b = spineKnots[i];
+      if (year <= b.year) return a.x + (b.x - a.x) * (year - a.year) / (b.year - a.year);
+    }
+    const last = spineKnots[spineKnots.length - 1];
+    return last.x + (xOf(year) - xOf(last.year));
+  }
+
+  // From here on every year → x goes through the spine's warp, so an event of 2020 sits under the 2020 plates.
+  W = Math.max(W, spineX(Y1) + PAD_R);
 
   /* ── layout: events lane-packed away from the spine ── */
   function labelWidth(n) {
@@ -84,7 +97,7 @@
       const touches = adj.get(n.id).out.concat(adj.get(n.id).in).some(e => byId.get(e.source).kind === 'series' || byId.get(e.target).kind === 'series');
       n.depth = touches ? 0 : 1;
       const rnd = mulberry32(hashStr(n.id))();
-      n.x = xOf(n.year || Y0) + (rnd - 0.5) * 22;
+      n.x = spineX(n.year || Y0) + (rnd - 0.5) * 22;
       n.lw = labelWidth(n);
     });
     // lane packing: depth-0 nodes first, then the rest, each into the first lane that has room
@@ -122,7 +135,7 @@
 
   // markers
   const defs = document.createElementNS(NS, 'defs');
-  defs.innerHTML = ['informs', 'triggers', 'merges', 'loop', 'in', 'out'].map(k =>
+  defs.innerHTML = ['informs', 'triggers', 'merges', 'in', 'out'].map(k =>
     `<marker id="arr-${k}" class="arr arr-${k}" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="${k === 'merges' ? 11 : 8}" markerHeight="${k === 'merges' ? 11 : 8}" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9"/></marker>`
   ).join('');
   svg.appendChild(defs);
@@ -141,7 +154,7 @@
   const gAxis = document.createElementNS(NS, 'g'); gAxis.setAttribute('class', 'axis');
   let ax = `<line x1="${PAD_L - 40}" y1="${AXIS_Y}" x2="${W - PAD_R + 60}" y2="${AXIS_Y}"/>`;
   for (let y = 1985; y <= 2026; y++) {
-    const x = xOf(y); const big = y % 5 === 0;
+    const x = spineX(y); const big = y % 5 === 0;
     ax += `<line x1="${x}" y1="${AXIS_Y}" x2="${x}" y2="${AXIS_Y - (big ? 10 : 5)}"/>`;
     if (big) ax += `<text x="${x}" y="${AXIS_Y + 16}" text-anchor="middle">${y}</text>`;
   }
@@ -150,7 +163,7 @@
   // faint year columns through the bands
   const gCols = document.createElementNS(NS, 'g'); gCols.setAttribute('class', 'cols');
   let cols = '';
-  for (let y = 1985; y <= 2026; y += 5) cols += `<line x1="${xOf(y)}" y1="40" x2="${xOf(y)}" y2="${AXIS_Y - 14}"/>`;
+  for (let y = 1985; y <= 2026; y += 5) cols += `<line x1="${spineX(y)}" y1="40" x2="${spineX(y)}" y2="${AXIS_Y - 14}"/>`;
   gCols.innerHTML = cols; svg.appendChild(gCols);
 
   const gEdges = document.createElementNS(NS, 'g'); gEdges.setAttribute('class', 'edges'); svg.appendChild(gEdges);
@@ -160,13 +173,22 @@
 
   /* ── node elements ── */
   const el = new Map();
-  function anchor(n, towardY) {
-    // where an edge meets this node
+  // x of a node at a given year: its own position, or along its tail if it lived on
+  function xAt(n, year) {
+    if (year <= start(n)) return n.x;
+    const end = aliveUntil(n);
+    if (year > end) return n.tailX != null ? n.tailX : n.x;
+    // series plates are pushed off their year by collision; their tails follow the spine's own year map
+    return Math.max(n.x, spineX(Math.min(year, end)));
+  }
+  function anchor(n, year, towardY) {
+    const x = xAt(n, year);
     if (n.kind === 'series') {
-      const dy = towardY < n.y ? -n.h / 2 - 2 : (towardY > n.y ? n.h / 2 - 22 : 0);
-      return { x: n.x, y: n.y + dy };
+      const onPlate = x <= n.x + 2;
+      if (onPlate) { const dy = towardY < n.y ? -n.h / 2 - 2 : (towardY > n.y ? n.h / 2 - 22 : 0); return { x: n.x, y: n.y + dy }; }
+      return { x, y: n.y + (towardY < n.y ? -6 : 6) };   // on the spine tail
     }
-    return { x: n.x, y: n.y };
+    return { x, y: n.y };
   }
   nodes.forEach(n => {
     const d = document.createElement(n.href && n.kind === 'series' ? 'a' : 'div');
@@ -199,11 +221,17 @@
       if (n.mode === 'catalyst') d.style.setProperty('--tilt', ((mulberry32(hashStr(n.id + 't'))() - 0.5) * 2.4).toFixed(2) + 'deg');
     }
     layer.appendChild(d); el.set(n.id, d);
-    if (n.yearEnd && n.kind === 'event') {
-      // span line for a period: dot at start + line (his tool's "Dot at start + line")
+    // the tail a node lives on: series along the spine to yearEnd; a formation until the last thing that touched it;
+    // a catalyst only when it was a period (dot at start + line, his tool's convention)
+    const until = aliveUntil(n);
+    const tailEnd = n.kind === 'series' ? (n.yearEnd ? spineX(n.yearEnd) : null)
+                  : (n.mode === 'formation' ? (until > start(n) ? spineX(until) : null) : (n.yearEnd ? spineX(n.yearEnd) : null));
+    if (tailEnd != null && tailEnd > n.x + 8) {
+      n.tailX = tailEnd;
       const ln = document.createElementNS(NS, 'line');
-      ln.setAttribute('class', 'span-line');
-      ln.setAttribute('x1', n.x); ln.setAttribute('x2', xOf(n.yearEnd)); ln.setAttribute('y1', n.y); ln.setAttribute('y2', n.y);
+      ln.setAttribute('class', 'tail ' + (n.kind === 'series' ? 'tail-series' : n.mode === 'formation' ? 'tail-idea' : 'tail-period'));
+      ln.setAttribute('x1', n.x + (n.kind === 'series' ? n.w / 2 - 6 : 4)); ln.setAttribute('x2', tailEnd);
+      ln.setAttribute('y1', n.y + (n.kind === 'series' ? 0 : 0)); ln.setAttribute('y2', n.y);
       gCols.appendChild(ln);
     }
   });
@@ -211,30 +239,34 @@
   /* ── edge paths ── */
   function pathFor(e) {
     const a = byId.get(e.source), b = byId.get(e.target);
-    const p = anchor(a, b.y), q = anchor(b, a.y);
+    const t = contactYear(a, b);
+    const p = anchor(a, t, b.y), q = anchor(b, t, a.y);
     const dx = q.x - p.x, dy = q.y - p.y;
     if (a.kind === 'series' && b.kind === 'series') {
-      // along the spine: arc above (forward) or below (return leg)
-      const lift = e.loop ? 1 : -1; const amp = Math.min(150, 40 + Math.abs(dx) * 0.18);
+      // plate to plate along the spine (a body of work informs a later one): an arc above;
+      // the reverse leg of a same-year pair arcs below
+      const sx = a.x, tx = b.x, ddx = tx - sx;
+      const below = (e.source > e.target) && edges.some(o => o.source === e.target && o.target === e.source);
+      const lift = below ? 1 : -1; const amp = Math.min(150, 40 + Math.abs(ddx) * 0.18);
       const y = SPINE_Y + lift * amp + (lift < 0 ? -42 : 30);
-      return `M ${p.x} ${p.y + (lift < 0 ? -58 : 34)} C ${p.x + dx * 0.25} ${y}, ${q.x - dx * 0.25} ${y}, ${q.x} ${q.y + (lift < 0 ? -58 : 34)}`;
+      const off = (lift < 0 ? -58 : 34);
+      return `M ${sx} ${SPINE_Y + off} C ${sx + ddx * 0.25} ${y}, ${tx - ddx * 0.25} ${y}, ${tx} ${SPINE_Y + off}`;
     }
     if (Math.abs(dy) < 40) {
       // same band, near-horizontal: bow it away from the spine
-      const away = (a.kind === 'event' ? (a.sphere === 'personal' ? -1 : 1) : 1) * (e.loop ? -1 : 1);
+      const away = (a.kind === 'event' ? (a.sphere === 'personal' ? -1 : 1) : 1);
       const amp = Math.min(90, 24 + Math.abs(dx) * 0.14);
       return `M ${p.x} ${p.y} C ${p.x + dx * 0.3} ${p.y + away * amp}, ${q.x - dx * 0.3} ${q.y + away * amp}, ${q.x} ${q.y}`;
     }
-    const bend = e.loop ? 0.62 : 0.42;
-    return `M ${p.x} ${p.y} C ${p.x} ${p.y + dy * bend}, ${q.x} ${q.y - dy * bend}, ${q.x} ${q.y}`;
+    return `M ${p.x} ${p.y} C ${p.x} ${p.y + dy * 0.42}, ${q.x} ${q.y - dy * 0.42}, ${q.x} ${q.y}`;
   }
   const edgeEl = [];
   edges.forEach(e => {
     const p = document.createElementNS(NS, 'path');
     const web = byId.get(e.source).kind === 'event' && byId.get(e.target).kind === 'event';
-    p.setAttribute('class', `edge ${e.kind}` + (e.loop ? ' loop' : '') + (web ? ' web' : ''));
+    p.setAttribute('class', `edge ${e.kind}` + (web ? ' web' : '') + (e.flipped ? ' flipped' : ''));
     p.setAttribute('d', pathFor(e));
-    p.setAttribute('marker-end', `url(#arr-${e.loop ? 'loop' : e.kind})`);
+    p.setAttribute('marker-end', `url(#arr-${e.kind})`);
     p.dataset.i = e._i;
     gEdges.appendChild(p);
     const h = document.createElementNS(NS, 'path');
@@ -262,13 +294,13 @@
       // direction colour, only when a single node is the centre: what fed it in ink, what it fed in red
       const dir = (on && centre) ? (e.target === centre ? 'in' : 'out') : null;
       p.classList.toggle('in', dir === 'in'); p.classList.toggle('out', dir === 'out');
-      p.setAttribute('marker-end', dir ? `url(#arr-${dir})` : `url(#arr-${e.loop ? 'loop' : e.kind})`);
+      p.setAttribute('marker-end', dir ? `url(#arr-${dir})` : `url(#arr-${e.kind})`);
     });
   }
   function clearFocus() {
     stage.classList.remove('is-focus');
     el.forEach(d => d.classList.remove('on', 'centre'));
-    edgeEl.forEach((p, i) => { p.classList.remove('on', 'in', 'out'); const e = edges[i]; p.setAttribute('marker-end', `url(#arr-${e.loop ? 'loop' : e.kind})`); });
+    edgeEl.forEach((p, i) => { p.classList.remove('on', 'in', 'out'); const e = edges[i]; p.setAttribute('marker-end', `url(#arr-${e.kind})`); });
   }
   const KIND = { informs: 'informs', triggers: 'triggers', merges: 'merges into' };
   function chip(n) {
@@ -277,8 +309,7 @@
   }
   function edgeLine(e, from) {
     const other = byId.get(from === 'in' ? e.source : e.target);
-    const loop = e.loop ? ' <span class="ret">↩ returns</span>' : '';
-    return `<li><span class="k ${e.kind}">${from === 'in' ? '' : '→ '}${KIND[e.kind]}${from === 'in' ? ' ←' : ''}</span> <button type="button" class="jump" data-id="${other.id}">${esc(other.label)}</button>${loop}${e.sentence ? `<p>${esc(e.sentence)}</p>` : ''}</li>`;
+    return `<li><span class="k ${e.kind}">${from === 'in' ? '' : '→ '}${KIND[e.kind]}${from === 'in' ? ' ←' : ''}</span> <button type="button" class="jump" data-id="${other.id}">${esc(other.label)}</button>${e.sentence ? `<p>${esc(e.sentence)}</p>` : ''}</li>`;
   }
   function showNode(n) {
     const a = adj.get(n.id);
@@ -297,7 +328,7 @@
     const a = byId.get(e.source), b = byId.get(e.target);
     card.innerHTML = `
       <button type="button" class="close" aria-label="Close">×</button>
-      <p class="kick"><span class="chip">${KIND[e.kind]}</span>${e.loop ? '<span class="chip red">return leg</span>' : ''}${e.via ? `<span class="chip">via ${e.via === 'vishwarupa' ? 'Vishwaroopa' : 'La Liberté'}</span>` : ''}</p>
+      <p class="kick"><span class="chip">${KIND[e.kind]}</span>${e.via ? `<span class="chip">via ${e.via === 'vishwarupa' ? 'Vishwaroopa' : 'La Liberté'}</span>` : ''}</p>
       <h3><button type="button" class="jump" data-id="${a.id}">${esc(a.label)}</button> <span class="arrow">→</span> <button type="button" class="jump" data-id="${b.id}">${esc(b.label)}</button></h3>
       ${e.sentence ? `<p class="sum">${esc(e.sentence)}</p>` : `<p class="sum muted">${esc(a.summary || '')}</p>`}`;
     card.hidden = false;
@@ -383,7 +414,7 @@
   if (cnt) cnt.textContent = `${series.length} series · ${events.length} events · ${edges.length} arrows`;
 
   /* ── scroll to the present on load (the right end), then let the reader walk back ── */
-  requestAnimationFrame(() => { scroller.scrollLeft = Math.max(0, xOf(2013) - 120); });
+  requestAnimationFrame(() => { scroller.scrollLeft = Math.max(0, spineX(2013) - 120); });
 
   /* ── ledger ── */
   const ledger = document.getElementById('lineageLedger');
@@ -393,7 +424,7 @@
       const li = (e, dir) => {
         const o = byId.get(dir === 'in' ? e.source : e.target);
         const who = o.kind === 'series' ? 'series' : `${o.sphere} · ${o.mode}`;
-        return `<li><span class="k ${e.kind}">${KIND[e.kind]}</span> <span class="who"><i>${esc(o.label)}</i> <small>${who}${o.year ? ' · ' + o.year : ''}</small></span>${e.loop ? ' <span class="ret">↩</span>' : ''}${e.sentence ? `<p>${esc(e.sentence)}</p>` : (dir === 'in' && o.summary ? `<p>${esc(o.summary)}</p>` : '')}</li>`;
+        return `<li><span class="k ${e.kind}">${KIND[e.kind]}</span> <span class="who"><i>${esc(o.label)}</i> <small>${who}${o.year ? ' · ' + o.year : ''}</small></span>${e.sentence ? `<p>${esc(e.sentence)}</p>` : (dir === 'in' && o.summary ? `<p>${esc(o.summary)}</p>` : '')}</li>`;
       };
       const num = String(i + 1).padStart(2, '0');
       return `<article class="led" id="led-${n.id}">
@@ -410,5 +441,5 @@
 
   function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
 
-  window.RaghavaLineage = { nodes, edges, pin: pinNode, unpin };
+  window.RaghavaLineage = { nodes, edges, pin: pinNode, unpin, spineX, xAt, pathFor };
 })();
