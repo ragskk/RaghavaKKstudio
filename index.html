@@ -834,6 +834,10 @@
     .colophon .col.c-a { grid-column: 1 / span 4; }
     .colophon .col.c-b { grid-column: 5 / span 4; }
     .colophon .col.c-c { grid-column: 9 / span 4; align-items: flex-end; }
+    /* Socials: one quiet serif line under the contact column (home only). */
+    .colophon .socials { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+    .colophon .socials a { color: var(--ink-2); border-bottom-color: var(--rule-soft); }
+    .colophon .socials a:hover { color: var(--red); border-bottom-color: var(--red); }
     .colophon h3 {
       font-family: var(--display);
       font-style: italic;
@@ -1153,6 +1157,7 @@
       <h3>Get in touch.</h3>
       <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
       <span>Press · Sales · Studio visits</span>
+      <span class="socials"><a href="https://www.instagram.com/raghavakk/" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://www.linkedin.com/in/raghavakk/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="https://x.com/raghavakk" target="_blank" rel="noopener noreferrer">X</a></span>
     </div>
     <div class="col c-b">
       <a href="./about2.html">Short bio →</a>
