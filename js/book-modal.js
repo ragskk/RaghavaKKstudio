@@ -41,6 +41,20 @@
     'Artist Not Found':                          { folder: 'Artist_Not_Found',    count: 184, pad: 3 },
     'The Raghava KK Studio Projects Book':       { folder: 'Studio_Projects_Book', count: 160, pad: 3 },
     'the duck forgot it was whole':              { folder: 'duck_forgot',         count: 196, pad: 3 },
+    // Show brochures + catalogues (library shelves five and six, 2026-08-30). The three studio
+    // catalogues were exported as landscape spreads with a wraparound cover: each sheet is split
+    // into halves, the front cover leads, the back cover closes (count = halves).
+    'Figuring the Edge':                         { folder: 'Figuring_the_Edge',   count: 22,  pad: 2 },
+    'La petite mort':                            { folder: 'La_petite_mort',      count: 71,  pad: 2 },
+    "Catch 'em if you can!":                     { folder: 'Catch_em_if_you_can', count: 22,  pad: 2 },
+    'Advaitha Ganesha':                          { folder: 'Advaitha_Ganesha',    count: 11,  pad: 2 },
+    'Ceramics':                                  { folder: 'Ceramics',            count: 17,  pad: 2 },
+    'Impossible Bouquet':                        { folder: 'Impossible_Bouquet',  count: 18,  pad: 2 },
+    'Reimagining History':                       { folder: 'Reimagining_History', count: 22,  pad: 2 },
+    // Miscellany (shelf seven)
+    'Lookbook':                                  { folder: 'Lookbook',            count: 38,  pad: 2 },
+    'Delicate Grace':                            { folder: 'Delicate_Grace',      count: 56,  pad: 2 },
+    'Leela':                                     { folder: 'Leela',               count: 28,  pad: 2 },
     // Process dossier documents (process-edges.html, process-trojan.html) — same reader, same rules.
     'The Edges catalog':                         { folder: 'Edges_Catalog',       count: 20,  pad: 2 },
     'My journey from painting to sculpture':     { folder: 'Journey_Painting_to_Sculpture', count: 20, pad: 2 },

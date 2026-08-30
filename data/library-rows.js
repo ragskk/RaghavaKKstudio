@@ -20,8 +20,9 @@
                     matches the real book proportions.)
      - spineHue    (optional 'cream' | 'ink' | 'red' — defaults 'cream')
 
-   Scaffold below is the default: all 19 books, four rows
-   (art books split over two shelves; books about Raghava last), art books face-out,
+   Scaffold below is the default: all 29 books, seven rows
+   (art books split over two shelves; books about Raghava; then show
+   brochures, catalogues, and a miscellany shelf), covers face-out,
    text books spine-only. Reorder, drop,
    or split as needed.
    ───────────────────────────────────────────────────── */
@@ -67,6 +68,34 @@ window.RKK_LIBRARY_ROWS = [
       { title: 'About Raghava KK',             year: 2025, face: 'cover', aspect: 0.7009, thumb: './images/books/about_About_Raghava_KK.jpg',            pdf: './books/books%20about%20Raghava/About%20Raghava%20KK,%202025.pdf',        filename: 'About Raghava KK, 2025.pdf' },
       { title: 'Art Archive Book',             year: 2025, face: 'cover', aspect: 0.7038, thumb: './images/books/about_Art_Archive_Book.jpg',            pdf: './books/books%20about%20Raghava/Art%20Archive%20Book%20-%20April%202025.pdf', filename: 'Art Archive Book - April 2025.pdf' },
       { title: '64/1',                         year: 2023, face: 'cover', aspect: 0.7038, thumb: './images/books/about_64_1.jpg',                        pdf: './books/books%20about%20Raghava/641.pdf',                                 filename: '64-1.pdf' }
+    ]
+  },
+  {
+    label: 'Show brochures',
+    note: 'covers face out',
+    books: [
+      { title: 'Figuring the Edge',            year: 2025, face: 'cover', aspect: 0.7066, thumb: './images/books/brochure_Figuring_the_Edge.jpg',        pdf: './books/brochures/Figuring%20the%20Edge.pdf',                 filename: 'Figuring the Edge.pdf' },
+      { title: 'La petite mort',               year: 2021, face: 'cover', aspect: 0.7047, thumb: './images/books/brochure_La_petite_mort.jpg',           pdf: './books/brochures/La%20petite%20mort.pdf',                    filename: 'La petite mort.pdf' },
+      { title: "Catch 'em if you can!",        year: 2021, face: 'cover', aspect: 0.7143, thumb: './images/books/brochure_Catch_em_if_you_can.jpg',      pdf: './books/brochures/Catch%20%27em%20if%20you%20can.pdf',        filename: "Catch 'em if you can.pdf" }
+    ]
+  },
+  {
+    label: 'Catalogues',
+    note: 'covers face out',
+    books: [
+      { title: 'Advaitha Ganesha',             year: 2025, face: 'cover', aspect: 0.6662, thumb: './images/books/brochure_Advaitha_Ganesha.jpg',         pdf: './books/brochures/Advaitha%20Ganesha.pdf',                    filename: 'Advaitha Ganesha.pdf' },
+      { title: 'Ceramics',                     year: 2025, face: 'cover', aspect: 0.6662, thumb: './images/books/brochure_Ceramics.jpg',                 pdf: './books/brochures/Ceramics.pdf',                              filename: 'Ceramics.pdf' },
+      { title: 'Impossible Bouquet',           year: 2020, face: 'cover', aspect: 0.7143, thumb: './images/books/brochure_Impossible_Bouquet.jpg',       pdf: './books/brochures/Impossible%20Bouquet.pdf',                  filename: 'Impossible Bouquet.pdf' },
+      { title: 'Reimagining History',          year: 2015, face: 'cover', aspect: 0.7143, thumb: './images/books/brochure_Reimagining_History.jpg',      pdf: './books/brochures/Reimagining%20History.pdf',                 filename: 'Reimagining History.pdf' }
+    ]
+  },
+  {
+    label: 'Miscellany',
+    note: 'covers face out',
+    books: [
+      { title: 'Lookbook',                     year: 2026, face: 'cover', aspect: 0.7038, thumb: './images/books/misc_Lookbook.jpg',                     pdf: './books/misc/Lookbook.pdf',                                   filename: 'Lookbook.pdf' },
+      { title: 'Delicate Grace',               year: 2026, face: 'cover', aspect: 1.0,    thumb: './images/books/misc_Delicate_Grace.jpg',               pdf: './books/misc/Delicate%20Grace.pdf',                           filename: 'Delicate Grace.pdf' },
+      { title: 'Leela',                        year: 2022, face: 'cover', aspect: 0.7038, thumb: './images/books/misc_Leela.jpg',                        pdf: './books/misc/Leela.pdf',                                      filename: 'Leela.pdf' }
     ]
   }
 ];
