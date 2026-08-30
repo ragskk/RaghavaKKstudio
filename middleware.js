@@ -20,6 +20,7 @@ export const config = {
 const EXEMPT_EXACT = new Set([
   '/gate',
   '/gate.html',
+  '/css/type.css',      // the gate page stylesheet: type and ground tokens
   '/favicon.ico',
   '/robots.txt',
   '/llms.txt',
@@ -47,6 +48,7 @@ const EXEMPT_PREFIXES = [
   '/api/logout',
   '/_vercel',
   '/_next',
+  '/fonts/',            // self-hosted woff2 faces loaded by /css/type.css
 
   // --- Calling All Gods (calling4) asset directories ---
   '/js/vendor/',        // model-viewer (+ any bundled decoders)
