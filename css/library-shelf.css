@@ -44,17 +44,20 @@
 }
 
 .library-row__label {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  font-variant-caps: small-caps;
+  text-transform: lowercase;
   color: var(--ink);
 }
 
 .library-row__note {
-  font-family: var(--display);
+  font-family: var(--serif);
   font-style: italic;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--muted);
 }
 
@@ -225,8 +228,8 @@
   left: 0; right: 0;
   text-align: center;
   font-family: var(--mono);
-  font-size: 8.5px;
-  letter-spacing: 0.16em;
+  font-size: var(--mono-c);
+  letter-spacing: var(--mono-c-track);
   text-transform: uppercase;
   opacity: 0.6;
   pointer-events: none;
@@ -264,8 +267,8 @@
   margin-bottom: 8px;      /* small gap between caption and book top */
   transform: translateX(-50%);
   font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.2em;
+  font-size: var(--mono-c);
+  letter-spacing: var(--mono-c-track);
   text-transform: uppercase;
   color: var(--muted);
   white-space: nowrap;

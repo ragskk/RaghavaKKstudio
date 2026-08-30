@@ -87,13 +87,13 @@ a.rk-tile { cursor: grab; }
 .rk-tile:hover .rk-tile-cap { opacity: 1; }
 
 .rk-tile-cap .rk-id {
-  font-family: var(--mono, 'JetBrains Mono', monospace);
-  font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase;
+  font-family: var(--mono, 'iA Writer Mono', monospace);
+  font-size: var(--mono-c, 9px); letter-spacing: var(--mono-c-track, 0.16em); text-transform: uppercase;
   color: var(--muted, #8B8579);
   display: block;
 }
 .rk-tile-cap .rk-title {
-  font-family: var(--display, 'Instrument Serif', serif);
+  font-family: var(--display, 'Erode', serif);
   font-style: italic;
   font-size: 0.98rem; line-height: 1.25;
   color: var(--ink, #0E0E0C);
@@ -101,8 +101,8 @@ a.rk-tile { cursor: grab; }
   margin-top: 0.18rem;
 }
 .rk-tile-cap .rk-meta {
-  font-family: var(--mono, 'JetBrains Mono', monospace);
-  font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase;
+  font-family: var(--mono, 'iA Writer Mono', monospace);
+  font-size: var(--mono-c, 9px); letter-spacing: var(--mono-c-track, 0.16em); text-transform: uppercase;
   color: var(--ink-2, #2B2A26);
   display: block;
   margin-top: 0.35rem;

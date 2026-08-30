@@ -18,29 +18,19 @@
   <meta name="twitter:description" content="Terms of use, copyright, and reservation of rights for Raghava KK studio website." />
   <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
   <link rel="canonical" href="https://raghavakkstudio.com/terms" />
-  <meta name="theme-color" content="#F4F1EA" />
+  <meta name="theme-color" content="#FCFCFA" />
   <meta name="robots" content="index, follow, noai, noimageai" />
   <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
+  <link rel="stylesheet" href="./css/type.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --paper: #F4F1EA;
-      --paper-2: #ECE7DA;
-      --ink: #0E0E0C;
-      --ink-2: #2B2A26;
-      --muted: #8B8579;
-      --rule: #1A1A17;
-      --rule-soft: rgba(14,14,12,0.18);
-      --red: #E63D22;
-    }
+    html { font-size: 16.5px; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
     html, body { background: var(--paper); color: var(--ink); }
     body {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 17px;
+      font-family: var(--serif);
+      font-size: var(--text);
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       padding: 6vh max(5vw, 28px);
@@ -48,9 +38,9 @@
       margin: 0 auto;
     }
     .pre-meta {
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      font-size: 11px;
-      letter-spacing: 0.18em;
+      font-family: var(--mono);
+      font-size: var(--mono-a);
+      letter-spacing: var(--mono-a-track);
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 1.5em;
@@ -64,26 +54,27 @@
     .pre-meta a { color: var(--ink); text-decoration: none; }
     .pre-meta a:hover { color: var(--red); }
     h1 {
-      font-family: "Fraunces", serif;
-      font-weight: 300;
-      font-size: clamp(40px, 7vw, 84px);
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 4.6vw, 4.6rem);
       line-height: 0.95;
       letter-spacing: -0.02em;
       margin: 0.4em 0 0.1em;
     }
-    h1 em { font-style: italic; color: var(--red); font-weight: 300; }
+    h1 em { font-style: normal; color: var(--red); }
     .deck {
-      font-family: "Fraunces", serif;
+      font-family: var(--serif);
       font-style: italic;
-      font-size: clamp(18px, 2.3vw, 22px);
+      font-size: 1.15rem;
       color: var(--ink-2);
       max-width: 36em;
       margin-bottom: 3em;
     }
     h2 {
-      font-family: "Fraunces", serif;
-      font-weight: 400;
-      font-size: 24px;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1.2rem;
       letter-spacing: -0.01em;
       margin-top: 2.4em;
       margin-bottom: 0.6em;
@@ -91,10 +82,10 @@
       padding-top: 1.2em;
     }
     h2 .num {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
+      font-family: var(--mono);
+      font-size: var(--mono-b);
+      font-weight: 400;
+      letter-spacing: var(--mono-b-track);
       color: var(--muted);
       display: block;
       margin-bottom: 0.2em;
@@ -105,13 +96,14 @@
     li { margin-bottom: 0.4em; }
     a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule-soft); text-underline-offset: 3px; }
     a:hover { color: var(--red); text-decoration-color: var(--red); }
+    code { font-family: var(--mono); font-size: 0.85em; }
     .last-rev {
       margin-top: 4em;
       padding-top: 1.5em;
       border-top: 1px solid var(--rule);
-      font-family: "JetBrains Mono", monospace;
-      font-size: 11px;
-      letter-spacing: 0.12em;
+      font-family: var(--mono);
+      font-size: var(--mono-b);
+      letter-spacing: var(--mono-b-track);
       text-transform: uppercase;
       color: var(--muted);
       display: flex;
@@ -119,7 +111,7 @@
       gap: 2em;
     }
     @media (max-width: 600px) {
-      body { font-size: 16px; padding: 4vh 22px; }
+      body { padding: 4vh 22px; }
       .pre-meta, .last-rev { flex-direction: column; gap: 0.4em; }
     }
   </style>

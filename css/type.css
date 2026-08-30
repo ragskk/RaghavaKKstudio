@@ -1,0 +1,94 @@
+/* ───────────────────────────────────────────────────────────
+   RKK Studio · Type + Ground foundation · v1 (2026-08-30)
+   The single source of truth for typefaces and palette.
+   Introduced in the typography rollout: Erode (display) /
+   Literata (text) / iA Writer Mono (apparatus), on the white
+   ground. Load AFTER protect.css, BEFORE each page's inline
+   <style>. Pages keep layout tokens (--edge, --ease, …) local.
+   Fonts are self-hosted in /fonts/ — Erode ships under the ITF
+   Free Font License v2.0 and MUST NOT be subset or re-encoded.
+   ─────────────────────────────────────────────────────────── */
+
+/* ── Faces ── */
+@font-face { font-family:'Erode'; src:url('../fonts/Erode-Regular.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Erode'; src:url('../fonts/Erode-Italic.woff2') format('woff2'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Literata'; src:url('../fonts/Literata-Regular.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Literata'; src:url('../fonts/Literata-Italic.woff2') format('woff2'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Literata'; src:url('../fonts/Literata-SemiBold.woff2') format('woff2'); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:'Literata'; src:url('../fonts/Literata-Bold.woff2') format('woff2'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'iA Writer Mono'; src:url('../fonts/iAWriterMonoS-Regular.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'iA Writer Mono'; src:url('../fonts/iAWriterMonoS-Italic.woff2') format('woff2'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'iA Writer Mono'; src:url('../fonts/iAWriterMonoS-Bold.woff2') format('woff2'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Caveat'; src:url('../fonts/Caveat-Regular.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Caveat'; src:url('../fonts/Caveat-SemiBold.woff2') format('woff2'); font-weight:600; font-style:normal; font-display:swap; }
+
+:root {
+  /* ── Type tokens ── */
+  --display: 'Erode', Georgia, serif;
+  --serif:   'Literata', 'Iowan Old Style', Georgia, serif;
+  --mono:    'iA Writer Mono', ui-monospace, Menlo, monospace;
+  --hand:    'Caveat', 'Bradley Hand', 'Marker Felt', cursive;
+
+  /* ── Ground: paper white (chosen 2026-08-30; replaces cream) ── */
+  --paper:     #FCFCFA;
+  --paper-2:   #F3F3F0;
+  --paper-3:   #E9E9E4;
+  --ink:       #111110;
+  --ink-2:     #2C2B28;
+  --muted:     #8A867D;
+  --rule:      #1A1A18;
+  --rule-soft: rgba(17,17,16,0.16);
+  --red:       #E03A1F;
+
+  /* ── Mono ladder (TYPE-SPEC: three tiers, nothing else) ── */
+  --mono-a: 11px;  --mono-a-track: 0.22em;  /* masthead, stamps, folios */
+  --mono-b: 10px;  --mono-b-track: 0.18em;  /* meta, dates, marginalia, footnotes */
+  --mono-c: 9px;   --mono-c-track: 0.16em;  /* caption metadata, plate codes */
+
+  /* ── One reading size ── */
+  --text: clamp(0.98rem, 1.05vw, 1.05rem);
+}
+
+/* ── Diet utilities: what leaves mono lands on one of these ── */
+/* Label register (ex mono-caps labels/legends/rubrics): true small caps via Literata smcp. */
+.sc-label {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  font-variant-caps: small-caps;
+  text-transform: lowercase;
+  color: var(--ink-2);
+}
+.sc-label--red { color: var(--red); }
+.sc-label--muted { color: var(--muted); }
+
+/* Kicker/aside register (ex mono kickers under titles, hints): quiet serif italic. */
+.kick-note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--muted);
+}
+
+/* Interactive register (ex mono buttons/nav/chips): serif small caps, geometry unchanged. */
+.ui-type {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  font-variant-caps: small-caps;
+  text-transform: lowercase;
+}
+
+/* Live-ticking numerals: Erode has no tabular figures — tick in Literata italic instead. */
+.num-live {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}

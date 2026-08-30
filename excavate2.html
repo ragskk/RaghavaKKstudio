@@ -18,25 +18,16 @@
   <meta name="twitter:description" content="Collaborations: nineteen projects plus the 64/1 collective, made with institutions, companies, and researchers. Each entry records the client, brief, process, output, and where the work is now." />
   <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
   <link rel="canonical" href="https://raghavakkstudio.com/excavate2" />
-  <meta name="theme-color" content="#F4F1EA" />
+  <meta name="theme-color" content="#FCFCFA" />
   <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
   <meta name="robots" content="index, follow, noai, noimageai" />
   <meta name="googlebot" content="index, follow, noai, noimageai" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
+  <link rel="stylesheet" href="./css/type.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     :root {
-      --paper:#F4F1EA; --paper-2:#ECE7DA; --paper-3:#E3DCC8;
-      --ink:#0E0E0C; --ink-2:#2B2A26; --muted:#8B8579;
-      --rule:#1A1A17; --rule-soft:rgba(14,14,12,0.18);
-      --red:#E63D22;
-      --serif:'Fraunces','Iowan Old Style',Georgia,serif;
-      --display:'Instrument Serif','Fraunces',Georgia,serif;
-      --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
       --edge:clamp(1rem,2.6vw,2.4rem);
       --ease:cubic-bezier(.2,.7,.2,1);
       --ease-out:cubic-bezier(.16,1,.3,1);
@@ -44,11 +35,11 @@
     }
 
     html { font-size: 16.5px; scroll-behavior: smooth; }
-    @media (min-width: 1280px) { html { font-size: 17px; } }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
 
     html, body {
       background: var(--paper); color: var(--ink); font-family: var(--serif);
-      font-feature-settings: "ss01" 1, "ss02" 1, "kern" 1, "liga" 1;
+      font-feature-settings: "kern" 1, "liga" 1;
       -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility; overflow-x: hidden;
     }
@@ -70,13 +61,13 @@
     @media (hover: none), (pointer: coarse) { body { cursor: auto; } .cursor { display: none; } }
 
     /* TAPE + MASTHEAD */
-    .tape { position: relative; z-index: 3; width: 100%; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; overflow: hidden; border-bottom: 1px solid var(--ink); }
+    .tape { position: relative; z-index: 3; width: 100%; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: var(--mono-a); letter-spacing: var(--mono-a-track); text-transform: uppercase; overflow: hidden; border-bottom: 1px solid var(--ink); }
     .tape-track { display: flex; gap: 4rem; padding: 0.6rem 0; white-space: nowrap; animation: tape-scroll 60s linear infinite; width: max-content; }
     .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
     .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
     @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    .masthead { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; padding: 1.2rem var(--edge) 0.9rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); background: var(--paper); }
+    .masthead { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; padding: 1.2rem var(--edge) 0.9rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: var(--mono-a); letter-spacing: var(--mono-a-track); text-transform: uppercase; color: var(--ink-2); background: var(--paper); }
     /* Masthead phone override — collapse 3-column grid to a single
        stacked column so the center title cannot crash into the right cell. */
     @media (max-width: 640px) {
@@ -102,7 +93,7 @@
     .hero-stamp {
       display: inline-flex; align-items: center; gap: 0.5rem;
       padding: 0.3rem 0.65rem; border: 1px solid var(--ink);
-      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      font-family: var(--mono); font-size: var(--mono-a); letter-spacing: var(--mono-a-track); text-transform: uppercase;
       color: var(--ink); background: var(--paper);
       margin-bottom: 0.9rem;
     }
@@ -121,7 +112,7 @@
     }
     .hero-fig {
       padding-top: 0.45rem;
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+      font-family: var(--mono); font-size: var(--mono-c); letter-spacing: var(--mono-c-track); text-transform: uppercase;
       color: var(--muted);
       display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
     }
@@ -139,15 +130,16 @@
       align-items: start;
     }
     .note h2 {
-      font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--ink-2); font-weight: 500;
+      font-family: var(--serif); font-size: 0.82rem; letter-spacing: 0.12em;
+      font-variant-caps: small-caps; text-transform: lowercase;
+      font-style: normal; color: var(--ink-2); font-weight: 400;
       padding-top: 0.4rem;
       border-top: 1px solid var(--rule);
     }
     .note-body {
       font-family: var(--serif);
-      font-size: clamp(1.05rem, 1.25vw, 1.18rem);
-      line-height: 1.55;
+      font-size: var(--text);
+      line-height: 1.6;
       color: var(--ink);
       display: flex; flex-direction: column; gap: 0.9rem;
       max-width: 68ch;
@@ -192,7 +184,7 @@
     }
 
     .fold-num {
-      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
+      font-family: var(--mono); font-size: var(--mono-a); letter-spacing: var(--mono-a-track);
       text-transform: uppercase; color: var(--muted);
       transition: color .25s var(--ease);
       align-self: start;
@@ -216,7 +208,7 @@
     .fold-title em { font-style: normal; color: var(--red); }
     .fold > summary:hover .fold-title { transform: translateX(4px); }
     .fold-meta {
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+      font-family: var(--mono); font-size: var(--mono-b); letter-spacing: var(--mono-b-track);
       text-transform: uppercase; color: var(--ink-2);
       line-height: 1.4;
     }
@@ -273,7 +265,7 @@
     .fold-specimen::after {
       content: attr(data-cap);
       position: absolute; left: 7px; right: 7px; bottom: 4px;
-      font-family: var(--mono); font-size: 8px; letter-spacing: 0.22em;
+      font-family: var(--mono); font-size: var(--mono-c); letter-spacing: var(--mono-c-track);
       text-transform: uppercase; color: var(--ink-2); text-align: center;
     }
     .fold:not([open]) > summary:hover .fold-specimen {
@@ -301,8 +293,8 @@
       .fold[open] .fold-body { opacity: 1; }
     }
     /* Visual breathing room when expanded */
-    .fold[open] { background: linear-gradient(180deg, rgba(236,231,218,0.35) 0%, rgba(244,241,234,0) 60%); }
-    .fold[open] > summary { background: rgba(236,231,218,0.6); padding-left: 1rem; padding-right: 1rem; }
+    .fold[open] { background: linear-gradient(180deg, rgba(243,243,240,0.35) 0%, rgba(252,252,250,0) 60%); }
+    .fold[open] > summary { background: rgba(243,243,240,0.6); padding-left: 1rem; padding-right: 1rem; }
 
     @media (max-width: 720px) {
       .fold > summary { grid-template-columns: 60px minmax(0, 1fr) 36px; gap: 0.7rem; }
@@ -319,8 +311,8 @@
     }
     .back-up a {
       display: inline-flex; align-items: center; gap: 0.4rem;
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--muted);
+      font-family: var(--serif); font-style: italic; font-size: 0.9rem; letter-spacing: 0.01em;
+      text-transform: none; color: var(--muted);
       text-decoration: none;
       transition: color .25s var(--ease), gap .25s var(--ease);
     }
@@ -338,8 +330,8 @@
       border-top: 1px solid var(--rule);
       display: flex; justify-content: space-between; align-items: baseline;
       gap: 1rem; flex-wrap: wrap;
-      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--muted);
+      font-family: var(--serif); font-style: italic; font-size: 0.85rem; letter-spacing: 0.01em;
+      text-transform: none; color: var(--muted);
     }
     .timeline-head .red { color: var(--red); }
 
@@ -352,7 +344,7 @@
     }
     .entry-num {
       display: inline-block;
-      font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+      font-family: var(--mono); font-size: var(--mono-a); letter-spacing: var(--mono-a-track);
       text-transform: uppercase; color: var(--muted);
       margin-bottom: 0.6rem;
     }
@@ -392,13 +384,14 @@
       max-width: 64ch;
     }
     .entry-prose h4 {
-      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--muted); font-weight: 500;
+      font-family: var(--serif); font-size: 0.82rem; letter-spacing: 0.12em;
+      font-variant-caps: small-caps; text-transform: lowercase;
+      color: var(--muted); font-weight: 400;
       margin-bottom: 0.2rem;
     }
     .entry-prose p {
       font-family: var(--serif);
-      font-size: clamp(1rem, 1.15vw, 1.1rem);
+      font-size: var(--text);
       line-height: 1.6;
       color: var(--ink);
     }
@@ -420,7 +413,7 @@
     }
     .entry-meta dl > div:last-child { border-bottom: 0; padding-bottom: 0; }
     .entry-meta dt {
-      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.22em;
+      font-family: var(--mono); font-size: var(--mono-b); letter-spacing: var(--mono-b-track);
       text-transform: uppercase; color: var(--muted); font-weight: 500;
       padding-top: 0.1rem;
     }
@@ -464,14 +457,14 @@
     .plate.wide { aspect-ratio: 16 / 9; }
     .plate .placeholder-tag {
       position: absolute; top: 8px; left: 8px;
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+      font-family: var(--mono); font-size: var(--mono-c); letter-spacing: var(--mono-c-track); text-transform: uppercase;
       color: var(--paper); background: var(--red);
       padding: 0.18rem 0.4rem; z-index: 2;
     }
 
     /* Caption beneath any plate */
     .plate-cap {
-      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      font-family: var(--mono); font-size: var(--mono-c); letter-spacing: var(--mono-c-track); text-transform: uppercase;
       color: var(--muted); padding-top: 0.4rem;
       display: flex; justify-content: space-between; gap: 0.8rem;
     }
@@ -513,7 +506,7 @@
       border: 1px dashed var(--rule-soft);
     }
     .held-block .ts-stamp {
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+      font-family: var(--mono); font-size: var(--mono-b); letter-spacing: var(--mono-b-track);
       text-transform: uppercase; color: var(--red);
       text-align: center;
     }
@@ -549,7 +542,7 @@
       padding: clamp(1.4rem, 4vh, 2.4rem);
       display: grid; place-items: center;
       aspect-ratio: 4 / 5;
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+      font-family: var(--mono); font-size: var(--mono-b); letter-spacing: var(--mono-b-track);
       text-transform: uppercase; color: var(--muted);
       text-align: center;
     }
@@ -578,7 +571,7 @@
     .closing p a:hover { color: var(--red); border-color: var(--red); }
 
     /* ─── COLOPHON ─── */
-    .colophon { position: relative; z-index: 2; padding: clamp(2rem, 5vh, 3.5rem) var(--edge); display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.2rem; max-width: 1480px; margin: 0 auto; align-items: end; font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); border-top: 1px solid var(--rule); }
+    .colophon { position: relative; z-index: 2; padding: clamp(2rem, 5vh, 3.5rem) var(--edge); display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.2rem; max-width: 1480px; margin: 0 auto; align-items: end; font-family: var(--serif); font-size: 0.88rem; letter-spacing: 0.01em; text-transform: none; color: var(--ink-2); border-top: 1px solid var(--rule); }
     .colophon a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: color .25s var(--ease), border-color .25s var(--ease); }
     .colophon a:hover { color: var(--red); border-color: var(--red); }
     .colophon .col { display: flex; flex-direction: column; gap: 0.4rem; }

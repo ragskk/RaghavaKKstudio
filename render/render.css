@@ -8,21 +8,19 @@
    variables yet, declare them here so the renderer is self-sufficient.
    The host page's own :root will win where it exists. */
 :root {
-  --paper:      #F4F1EA;
-  --paper-2:    #ECE7DA;
-  --paper-3:    #E3DCC8;
-  --ink:        #0E0E0C;
-  --ink-2:      #2B2A26;
-  --muted:      #8B8579;
-  --rule:       #1A1A17;
-  --rule-soft:  rgba(14,14,12,0.18);
-  --red:        #E63D22;
-  --red-deep:   #B31E12;
+  --paper:      #FCFCFA;
+  --paper-2:    #F3F3F0;
+  --paper-3:    #E9E9E4;
+  --ink:        #111110;
+  --ink-2:      #2C2B28;
+  --muted:      #8A867D;
+  --rule:       #1A1A18;
+  --rule-soft:  rgba(17,17,16,0.16);
+  --red:        #E03A1F;
 
-  --serif:   'Fraunces', 'Iowan Old Style', Georgia, serif;
-  --display: 'Instrument Serif', 'Fraunces', Georgia, serif;
-  --grotesk: 'Space Grotesk', 'Inter', system-ui, sans-serif;
-  --mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --serif:   'Literata', 'Iowan Old Style', Georgia, serif;
+  --display: 'Erode', Georgia, serif;
+  --mono:    'iA Writer Mono', ui-monospace, Menlo, monospace;
 
   --gutter: clamp(1rem, 2.4vw, 2rem);
   --edge:   clamp(1rem, 2.6vw, 2.4rem);
@@ -36,7 +34,7 @@
   color: var(--ink);
   font-family: var(--serif);
   min-height: 100vh;
-  font-feature-settings: "ss01" 1, "ss02" 1, "kern" 1, "liga" 1;
+  font-feature-settings: "kern" 1, "liga" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -175,7 +173,7 @@
 .rkk-text .rkk-p:last-child { margin-bottom: 0; }
 .rkk-text .red { color: var(--red); }
 
-/* Drop cap, broadsheet convention, Instrument Serif red */
+/* Drop cap, broadsheet convention, display italic red */
 .rkk-text.rkk-dropcap .rkk-p:first-of-type::first-letter {
   font-family: var(--display);
   font-style: italic;

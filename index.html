@@ -5,23 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow, noarchive" />
   <title>Studio access · Raghava KK</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/type.css" />
   <style>
-    :root {
-      --paper:   #F4F1EA;
-      --paper-2: #ECE7DA;
-      --ink:     #0E0E0C;
-      --ink-2:   #2B2A26;
-      --muted:   #8B8579;
-      --rule:    rgba(14,14,12,0.18);
-      --red:     #E63D22;
-      --serif:   'Fraunces', 'Iowan Old Style', Georgia, serif;
-      --display: 'Instrument Serif', 'Fraunces', Georgia, serif;
-      --mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
-    }
     * { box-sizing: border-box; }
+    html { font-size: 16.5px; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
     html, body { margin: 0; padding: 0; }
     body {
       background: var(--paper);
@@ -37,10 +25,12 @@
     body.ready { visibility: visible; }
     .wrap { width: 100%; max-width: 28rem; }
     .eyebrow {
-      font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      font-variant-caps: small-caps;
+      text-transform: lowercase;
       color: var(--ink-2);
       margin: 0 0 0.85rem;
     }
@@ -66,10 +56,12 @@
     form { display: grid; gap: 1.1rem; }
     label { display: block; }
     .label-text {
-      font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      font-variant-caps: small-caps;
+      text-transform: lowercase;
       color: var(--ink-2);
       display: block;
       margin: 0 0 0.45rem;
@@ -90,10 +82,12 @@
     }
     input[type="password"]:focus { border-bottom-color: var(--ink); }
     button {
-      font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      font-variant-caps: small-caps;
+      text-transform: lowercase;
       background: var(--paper);
       color: var(--ink);
       border: 1px solid var(--ink);
@@ -110,21 +104,23 @@
       outline: none;
     }
     .err {
-      font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+      text-transform: none;
       color: var(--red);
       margin: 0;
       min-height: 1.2em;
     }
+    /* Folio-ish signature line — keeps mono, tier B. */
     .foot {
       margin-top: 2.5rem;
       padding-top: 1rem;
-      border-top: 1px solid var(--rule);
+      border-top: 1px solid var(--rule-soft);
       font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.22em;
+      font-size: var(--mono-b);
+      letter-spacing: var(--mono-b-track);
       text-transform: uppercase;
       color: var(--muted);
     }

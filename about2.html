@@ -18,14 +18,12 @@
   <meta name="twitter:description" content="Raghava KK is a contemporary artist working between Bengaluru and New York. He makes gods out of the contradictions you live but refuse to name." />
   <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
   <link rel="canonical" href="https://raghavakkstudio.com/about2" />
-  <meta name="theme-color" content="#F4F1EA" />
+  <meta name="theme-color" content="#FCFCFA" />
   <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
   <meta name="robots" content="index, follow, noai, noimageai" />
   <meta name="googlebot" content="index, follow, noai, noimageai" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
+  <link rel="stylesheet" href="./css/type.css" />
   <style>
     /* ───────────────────────────────────────────────────────────
        RAGHAVA KK · ABOUT / SHORT BIO  (rebuilt 2026-08-30)
@@ -39,20 +37,6 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     :root {
-      --paper:        #F4F1EA;
-      --paper-2:      #ECE7DA;
-      --paper-3:      #E3DCC8;
-      --ink:          #0E0E0C;
-      --ink-2:        #2B2A26;
-      --muted:        #8B8579;
-      --rule:         #1A1A17;
-      --rule-soft:    rgba(14,14,12,0.18);
-      --red:          #E63D22;
-
-      --serif:        'Fraunces', 'Iowan Old Style', Georgia, serif;
-      --display:      'Instrument Serif', 'Fraunces', Georgia, serif;
-      --mono:         'JetBrains Mono', ui-monospace, Menlo, monospace;
-
       --edge:         clamp(1rem, 2.6vw, 2.4rem);
       --ease:         cubic-bezier(.2,.7,.2,1);
       --ease-out:     cubic-bezier(.16,1,.3,1);
@@ -66,7 +50,7 @@
       background: var(--paper);
       color: var(--ink);
       font-family: var(--serif);
-      font-feature-settings: "ss01" 1, "ss02" 1, "kern" 1, "liga" 1;
+      font-feature-settings: "kern" 1, "liga" 1;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
@@ -92,8 +76,8 @@
     .tape {
       position: relative; z-index: 3; width: 100%;
       background: var(--ink); color: var(--paper);
-      font-family: var(--mono); font-size: 11px;
-      letter-spacing: 0.22em; text-transform: uppercase;
+      font-family: var(--mono); font-size: var(--mono-a);
+      letter-spacing: var(--mono-a-track); text-transform: uppercase;
       overflow: hidden; border-bottom: 1px solid var(--ink);
     }
     .tape-track {
@@ -116,7 +100,7 @@
       padding: 1.2rem var(--edge) 0.9rem;
       border-bottom: 1px solid var(--rule);
       font-family: var(--mono);
-      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      font-size: var(--mono-a); letter-spacing: var(--mono-a-track); text-transform: uppercase;
       color: var(--ink-2);
     }
     /* Masthead phone override: collapse 3-column grid to a single
@@ -165,8 +149,8 @@
       display: inline-flex; align-items: center; gap: 0.6rem;
       padding: 0.24rem 0.62rem;
       border: 1px solid var(--rule); border-radius: 999px;
-      font-family: var(--mono); font-size: 11px;
-      letter-spacing: 0.22em; text-transform: uppercase;
+      font-family: var(--mono); font-size: var(--mono-a);
+      letter-spacing: var(--mono-a-track); text-transform: uppercase;
       color: var(--ink-2);
     }
     .kicker .num { color: var(--muted); }
@@ -174,7 +158,7 @@
     /* Caption component: serif-italic title over tier-C mono meta */
     .cap { margin-top: 0.55rem; line-height: 1.3; }
     .cap .t { display: block; font-family: var(--serif); font-style: italic; font-size: 0.9rem; color: var(--ink); }
-    .cap .m { display: block; margin-top: 0.18rem; font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .cap .m { display: block; margin-top: 0.18rem; font-family: var(--mono); font-size: var(--mono-c); letter-spacing: var(--mono-c-track); text-transform: uppercase; color: var(--muted); }
     .cap a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
     .cap a:hover { color: var(--red); border-color: var(--red); }
 
@@ -321,7 +305,7 @@
     .inst-row:last-child { border-bottom: 1px solid var(--rule-soft); }
     .inst-row .no {
       grid-column: 1 / span 2;
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+      font-family: var(--mono); font-size: var(--mono-b); letter-spacing: var(--mono-b-track); text-transform: uppercase;
       color: var(--muted);
       padding-top: 0.55rem;
       line-height: 1.6;
@@ -388,8 +372,8 @@
       transition: opacity .25s var(--ease);
     }
     .rec-row .y {
-      font-family: var(--mono); font-size: 10px;
-      letter-spacing: 0.18em; text-transform: uppercase;
+      font-family: var(--mono); font-size: var(--mono-b);
+      letter-spacing: var(--mono-b-track); text-transform: uppercase;
       color: var(--muted);
       transition: color .2s var(--ease);
     }
@@ -522,8 +506,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 2rem;
-      font-family: var(--mono);
-      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      font-family: var(--serif);
+      font-size: 0.88rem; letter-spacing: 0.01em; text-transform: none;
       color: var(--ink-2);
     }
     .colophon .col { display: flex; flex-direction: column; gap: 0.35rem; }

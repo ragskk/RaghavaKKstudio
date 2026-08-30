@@ -18,14 +18,12 @@
   <meta name="twitter:description" content="Raghava KK. I make gods. Studio between Bengaluru and New York." />
   <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
   <link rel="canonical" href="https://raghavakkstudio.com/" />
-  <meta name="theme-color" content="#F4F1EA" />
+  <meta name="theme-color" content="#FCFCFA" />
   <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
   <meta name="robots" content="index, follow, noai, noimageai" />
   <meta name="googlebot" content="index, follow, noai, noimageai" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./protect.css" />
+  <link rel="stylesheet" href="./css/type.css" />
   <link rel="stylesheet" href="./css/network-field.css" />
   <link rel="stylesheet" href="./css/book-modal.css" />
   <style>
@@ -42,31 +40,12 @@
     }
 
     :root {
-      /* Surface */
-      --paper:        #F4F1EA;
-      --paper-2:      #ECE7DA;
-      --paper-3:      #E3DCC8;
-      --ink:          #0E0E0C;
-      --ink-2:        #2B2A26;
-      --muted:        #8B8579;
-      --rule:         #1A1A17;
-      --rule-soft:    rgba(14,14,12,0.18);
-
-      /* Accents (Yale-ish, chromatic, calibrated) */
-      --red:          #E63D22;
-      --red-deep:     #B31E12;
+      /* Accents (Yale-ish, chromatic, calibrated) — page-local */
       --yellow:       #F4D44A;
       --cobalt:       #2A4DD0;
       --green:        #2EBF63;
       --pink:         #F4A8B8;
       --violet:       #5C2A9D;
-
-      /* Typography */
-      --serif:        'Fraunces', 'Iowan Old Style', Georgia, serif;
-      --display:      'Instrument Serif', 'Fraunces', Georgia, serif;
-      --grotesk:      'Space Grotesk', 'Inter', system-ui, sans-serif;
-      --mono:         'JetBrains Mono', ui-monospace, Menlo, monospace;
-      --hand:         'Caveat', 'Bradley Hand', 'Marker Felt', cursive;
 
       /* Rhythm */
       --gutter:       clamp(1rem, 2.4vw, 2rem);
@@ -85,7 +64,7 @@
       background: var(--paper);
       color: var(--ink);
       font-family: var(--serif);
-      font-feature-settings: "ss01" 1, "ss02" 1, "kern" 1, "liga" 1;
+      font-feature-settings: "kern" 1, "liga" 1;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
@@ -141,8 +120,8 @@
       background: var(--ink);
       color: var(--paper);
       font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.22em;
+      font-size: var(--mono-a);
+      letter-spacing: var(--mono-a-track);
       text-transform: uppercase;
       overflow: hidden;
       border-bottom: 1px solid var(--ink);
@@ -173,8 +152,8 @@
       padding: 1.2rem var(--edge) 0.9rem;
       border-bottom: 1px solid var(--rule);
       font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.18em;
+      font-size: var(--mono-a);
+      letter-spacing: var(--mono-a-track);
       text-transform: uppercase;
       color: var(--ink-2);
     }
@@ -239,11 +218,13 @@
       gap: 0.6rem 0.9rem;
       flex-wrap: wrap;
       align-items: center;
-      font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--ink-2);
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.82rem;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: var(--muted);
       margin-bottom: 1.2rem;
     }
     /* Flat editorial labels — not buttons. The status pill is the only
@@ -263,6 +244,7 @@
 
     .wordmark {
       font-family: var(--display);
+      font-style: italic;
       font-weight: 400;
       font-size: clamp(4.2rem, 14vw, 13rem);
       line-height: 0.86;
@@ -273,7 +255,7 @@
       cursor: pointer;
     }
     .wordmark .amp {
-      font-style: italic;
+      font-style: normal;
       color: var(--red);
       display: inline-block;
       transition: transform .6s var(--ease), color .4s var(--ease);
@@ -312,7 +294,7 @@
       padding: 0 0.05em;
       cursor: pointer;
       letter-spacing: inherit;
-      font-style: italic;
+      font-style: normal;
       position: relative;
       transition: color .25s var(--ease);
     }
@@ -337,8 +319,8 @@
     .gods-counter {
       grid-column: 1 / span 6;
       font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.2em;
+      font-size: var(--mono-a);
+      letter-spacing: var(--mono-a-track);
       text-transform: uppercase;
       color: var(--ink-2);
       cursor: pointer;
@@ -349,9 +331,10 @@
     .gods-counter:focus-visible small { color: var(--red); }
     .gods-counter:focus-visible { outline: 1.5px solid var(--ink); outline-offset: 6px; }
     .gods-counter small .open-cue { color: var(--red); font-style: italic; text-transform: none; letter-spacing: 0; }
+    /* Live-ticking numeral — num-live treatment (Erode lacks tabular figures). */
     .gods-counter strong {
       display: block;
-      font-family: var(--display);
+      font-family: var(--serif);
       font-style: italic;
       font-weight: 400;
       font-size: clamp(2.6rem, 6.5vw, 5.4rem);
@@ -359,6 +342,7 @@
       letter-spacing: -0.02em;
       color: var(--ink);
       font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1;
       margin-top: 0.1em;
     }
     .gods-counter strong em {
@@ -376,8 +360,11 @@
     .gods-counter small {
       display: block;
       margin-top: 0.4rem;
-      font-size: 10.5px;
-      letter-spacing: 0.18em;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.85rem;
+      letter-spacing: 0.01em;
+      text-transform: none;
       color: var(--muted);
     }
 
@@ -395,8 +382,8 @@
       position: absolute;
       top: -1.4rem; left: 0;
       font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.18em;
+      font-size: var(--mono-b);
+      letter-spacing: var(--mono-b-track);
       text-transform: uppercase;
       color: var(--muted);
     }
@@ -427,12 +414,14 @@
     }
     .manifesto h2 {
       grid-column: 1 / span 4;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: normal;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      font-variant-caps: small-caps;
+      text-transform: lowercase;
       color: var(--ink-2);
-      font-weight: 500;
       padding-top: 0.4rem;
       border-top: 1px solid var(--rule);
     }
@@ -449,13 +438,13 @@
       letter-spacing: -0.01em;
       color: var(--ink);
     }
-    .quote em { color: var(--red); font-style: italic; }
+    .quote em { color: var(--red); font-style: normal; }
     .quote .marg {
       display: block;
       margin-top: 0.45rem;
       font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.18em;
+      font-size: var(--mono-b);
+      letter-spacing: var(--mono-b-track);
       text-transform: uppercase;
       color: var(--muted);
       font-style: normal;
@@ -508,8 +497,8 @@
       gap: 0.18rem;
       align-items: flex-end;
       font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.18em;
+      font-size: var(--mono-b);
+      letter-spacing: var(--mono-b-track);
       text-transform: uppercase;
       color: var(--ink-2);
       pointer-events: auto;
@@ -573,11 +562,13 @@
     .doors-head h2 em { font-style: normal; color: var(--red); }
     .doors-head .legend {
       grid-column: 9 / span 4;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--ink-2);
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.82rem;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: var(--muted);
       line-height: 1.7;
       border-top: 1px solid var(--rule);
       padding-top: 0.6rem;
@@ -610,8 +601,8 @@
 
     .door-num {
       font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.22em;
+      font-size: var(--mono-a);
+      letter-spacing: var(--mono-a-track);
       text-transform: uppercase;
       color: var(--muted);
       transition: color .3s var(--ease);
@@ -641,11 +632,12 @@
     }
     .door-spec .lab {
       display: block;
-      font-family: var(--mono);
-      font-style: normal;
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.82rem;
+      letter-spacing: 0.01em;
+      text-transform: none;
       color: var(--muted);
       margin-bottom: 0.3rem;
     }
@@ -686,8 +678,8 @@
     .door-specimen::after {
       content: attr(data-cap);
       position: absolute; left: 8px; right: 8px; bottom: 5px;
-      font-family: var(--mono); font-size: 8.5px;
-      letter-spacing: 0.22em; text-transform: uppercase;
+      font-family: var(--mono); font-size: var(--mono-c);
+      letter-spacing: var(--mono-c-track); text-transform: uppercase;
       color: var(--ink-2); text-align: center;
     }
     .door-row:hover .door-specimen { opacity: 1; transform: translate(0, -50%) rotate(-4deg) scale(1); }
@@ -761,8 +753,8 @@
     .archive li::before {
       content: counter(archive, decimal-leading-zero);
       font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.22em;
+      font-size: var(--mono-a);
+      letter-spacing: var(--mono-a-track);
       color: var(--muted);
     }
     .archive .archive-link {
@@ -789,8 +781,8 @@
     }
     .archive li .date {
       font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.18em;
+      font-size: var(--mono-b);
+      letter-spacing: var(--mono-b-track);
       text-transform: uppercase;
       color: var(--ink-2);
     }
@@ -799,8 +791,8 @@
     .archive li .what--loading { color: var(--muted); }
     .archive li .where {
       font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.18em;
+      font-size: var(--mono-b);
+      letter-spacing: var(--mono-b-track);
       text-transform: uppercase;
       color: var(--muted);
       text-align: right;
@@ -822,13 +814,21 @@
       max-width: 1480px;
       margin: 0 auto;
       align-items: end;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      font-family: var(--serif);
+      font-size: 0.88rem;
+      letter-spacing: 0.01em;
+      text-transform: none;
       color: var(--ink-2);
     }
     .colophon a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: color .25s var(--ease), border-color .25s var(--ease); }
+    /* Short pure-folio © line keeps the mono register (tier B). */
+    .colophon .folio {
+      font-family: var(--mono);
+      font-size: var(--mono-b);
+      letter-spacing: var(--mono-b-track);
+      text-transform: uppercase;
+    }
+    .colophon .folio a { border-bottom-color: var(--rule-soft); }
     .colophon a:hover { color: var(--red); border-color: var(--red); }
     .colophon .col { display: flex; flex-direction: column; gap: 0.4rem; }
     .colophon .col.c-a { grid-column: 1 / span 4; }
@@ -887,13 +887,13 @@
       font-weight: 400;
       font-size: clamp(1.25rem, 1.6vw, 1.6rem);
       line-height: 1.05;
-      color: #1a1410; /* ink, slightly warmer than --ink */
+      color: #191815; /* warm dark ink, retuned for the white ground */
       max-width: 22ch;
       padding: 0.5rem 0.8rem 0.7rem;
       background:
         linear-gradient(180deg,
-          rgba(244, 241, 234, 0.92) 0%,
-          rgba(236, 231, 218, 0.92) 100%);
+          rgba(252, 252, 250, 0.92) 0%,
+          rgba(243, 243, 240, 0.92) 100%);
       box-shadow:
         0 14px 28px rgba(14,14,12,0.18),
         0 2px 0 rgba(14,14,12,0.06),
@@ -934,12 +934,12 @@
       position: absolute;
       top: -3px; right: -3px;
       width: 7px; height: 7px;
-      background: #1a1410;
+      background: #191815;
       border-radius: 50%;
       opacity: 0.65;
       box-shadow:
-        -6px 3px 0 -2.5px #1a1410,
-        4px 8px 0 -2.5px #1a1410;
+        -6px 3px 0 -2.5px #191815,
+        4px 8px 0 -2.5px #191815;
     }
     /* Egg-wired words remain visually identical — discovery is the
        point. The custom .cursor will already swap to the red ring on
@@ -1165,7 +1165,7 @@
     </div>
     <div class="col c-c">
       <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
-      <span>&copy; 2026 Raghava KK &middot; <a href="https://raghavakkstudio.com/?password=091217&amp;redirect=%2Fterms">Privacy Policy &amp; Terms</a></span>
+      <span class="folio">&copy; 2026 Raghava KK &middot; <a href="https://raghavakkstudio.com/?password=091217&amp;redirect=%2Fterms">Privacy Policy &amp; Terms</a></span>
     </div>
   </footer>
 
