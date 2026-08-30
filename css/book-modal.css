@@ -59,6 +59,8 @@
 
 /* Cover-only fallback (book has no exported spreads) */
 .cover-fallback { flex: 1; min-height: 60vh; background: #1d1d1b; display: grid; place-items: center; padding: 2rem; }
+/* [hidden] must win over display:grid, or the hidden fallback still takes flex space and shoves a lone cover off-centre */
+.cover-fallback[hidden] { display: none; }
 .cover-fallback-inner { display: flex; flex-direction: column; align-items: center; gap: 1.4rem; max-width: 320px; text-align: center; }
 .cover-fallback img { max-width: 100%; box-shadow: 0 10px 40px rgba(0,0,0,0.5); user-select: none; -webkit-user-drag: none; }
 .cover-fallback p { color: var(--paper); font-family: var(--serif); font-style: italic; font-size: 0.95rem; opacity: 0.8; }

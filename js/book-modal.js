@@ -22,6 +22,8 @@
   // ── Catalogue: title → { folder under /images/spreads/, page count, zero-padding width }
   const SPREADS = {
     'Calling All Gods':                          { folder: 'Calling_All_Gods',    count: 49,  pad: 2 },
+    'too fast':                                  { folder: 'too_fast',            count: 25,  pad: 2 },
+    'PASSPORT':                                  { folder: 'PASSPORT',            count: 27,  pad: 2 },
     '33M Gods':                                  { folder: '33M_Gods',            count: 26,  pad: 2 },
     'Chris book':                                { folder: 'Chris_book',          count: 7,   pad: 1 },
     'MAYBE you KNOW ME':                         { folder: 'MAYBE_you_KNOW_ME',   count: 24,  pad: 2 },
@@ -31,7 +33,10 @@
     'Superstar Rajinikanth Made Me':             { folder: 'Superstar_Rajinikanth', count: 30, pad: 2 },
     'ATTITUDES':                                 { folder: 'ATTITUDES',           count: 56,  pad: 2 },
     'Elite Sample':                              { folder: 'Elite_Sample',        count: 12,  pad: 2 },
-    "The Machine Didn't Kill Me, It Rewrote Me": { folder: 'Machine_Rewrote_Me',  count: 92,  pad: 2 }
+    "The Machine Didn't Kill Me, It Rewrote Me": { folder: 'Machine_Rewrote_Me',  count: 92,  pad: 2 },
+    'Artist Not Found':                          { folder: 'Artist_Not_Found',    count: 184, pad: 3 },
+    'The Raghava KK Studio Projects Book':       { folder: 'Studio_Projects_Book', count: 160, pad: 3 },
+    'the duck forgot it was whole':              { folder: 'duck_forgot',         count: 196, pad: 3 }
   };
 
   let mounted = false;
@@ -119,8 +124,8 @@
       fullscreenBtn:   document.getElementById('bookFullscreen')
     };
 
-    els.prev.addEventListener('click', () => goToPage(currentPage - step()));
-    els.next.addEventListener('click', () => goToPage(currentPage + step()));
+    els.prev.addEventListener('click', () => goToPage(prevOf(currentPage)));
+    els.next.addEventListener('click', () => goToPage(nextOf(currentPage)));
     els.spreadModeBtn.addEventListener('click', () => setSpreadMode(spreadMode === 'double' ? 'single' : 'double'));
     els.close.addEventListener('click', close);
     els.modal.addEventListener('click', (e) => { if (e.target === els.modal) close(); });
@@ -139,7 +144,7 @@
       const t = e.changedTouches[0];
       const dx = t.clientX - tx, dy = t.clientY - ty;
       if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-        if (dx < 0) goToPage(currentPage + 1); else goToPage(currentPage - 1);
+        if (dx < 0) goToPage(nextOf(currentPage)); else goToPage(prevOf(currentPage));
       }
       tx = ty = null;
     });
@@ -148,8 +153,8 @@
     document.addEventListener('keydown', (e) => {
       if (!els.modal || els.modal.getAttribute('aria-hidden') !== 'false') return;
       if      (e.key === 'Escape')     close();
-      else if (e.key === 'ArrowRight') goToPage(currentPage + step());
-      else if (e.key === 'ArrowLeft')  goToPage(currentPage - step());
+      else if (e.key === 'ArrowRight') goToPage(nextOf(currentPage));
+      else if (e.key === 'ArrowLeft')  goToPage(prevOf(currentPage));
       else if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFullscreen(); }
       else if (e.key === '2')                  { e.preventDefault(); setSpreadMode(spreadMode === 'double' ? 'single' : 'double'); }
     });
@@ -273,19 +278,23 @@
     if (!currentBook || !currentBook.spreads) return;
     const total = currentBook.spreads.count;
     if (n < 1 || n > total) return;
+    // In 2-up mode, anchor to the physical spread: the cover sits alone,
+    // then pages 2-3, 4-5... (the same imposition as the printed book and
+    // the site PDFs). So the left page of every spread after the cover is even.
+    if (spreadMode === 'double') n = anchorOf(n);
     currentPage = n;
 
     if (spreadMode === 'double') {
       loadIntoImg(els.img, n);
-      if (n + 1 <= total) {
+      const hasRight = n > 1 && n + 1 <= total;
+      if (hasRight) {
         loadIntoImg(els.img2, n + 1);
         els.img2.classList.remove('alone');
       } else {
         els.img2.removeAttribute('src');
         els.img2.classList.add('alone');
       }
-      const right = Math.min(n + 1, total);
-      const label = (n === right) ? (n + ' / ' + total) : (n + '-' + right + ' / ' + total);
+      const label = hasRight ? (n + '-' + (n + 1) + ' / ' + total) : (n + ' / ' + total);
       els.counter.textContent = label;
       els.meta.textContent = label;
     } else {
@@ -302,15 +311,28 @@
     }
 
     els.prev.disabled = n <= 1;
-    els.next.disabled = n >= total;
+    els.next.disabled = (spreadMode === 'double') ? (n + 1 >= total) : (n >= total);
 
     // active thumb
-    els.thumbs.querySelectorAll('.spread-thumb').forEach(b => b.classList.toggle('active', parseInt(b.dataset.page, 10) === n));
+    els.thumbs.querySelectorAll('.spread-thumb').forEach(b => {
+      const p = parseInt(b.dataset.page, 10);
+      b.classList.toggle('active', p === n || (spreadMode === 'double' && n > 1 && p === n + 1));
+    });
     const active = els.thumbs.querySelector('.spread-thumb.active');
     if (active) active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
 
-  function step() { return spreadMode === 'double' ? 2 : 1; }
+  // Spread anchors. Single mode: every page is its own anchor.
+  // Double mode: 1 (cover alone), then 2, 4, 6... (left page of each spread).
+  function anchorOf(n) { return (n > 1 && n % 2 === 1) ? n - 1 : n; }
+  function nextOf(n) {
+    if (spreadMode !== 'double') return n + 1;
+    return n === 1 ? 2 : anchorOf(n) + 2;
+  }
+  function prevOf(n) {
+    if (spreadMode !== 'double') return n - 1;
+    return n <= 2 ? 1 : anchorOf(n) - 2;
+  }
 
   function setSpreadMode(mode) {
     spreadMode = mode === 'double' ? 'double' : 'single';
@@ -318,10 +340,8 @@
     els.spreadModeBtn.textContent = spreadMode === 'double' ? 'Single ⊞' : '2-up ⊟';
     els.spreadModeBtn.setAttribute('aria-label', spreadMode === 'double' ? 'Switch to single page view' : 'Switch to 2-up spread view');
     writeStoredMode(spreadMode);
-    // Snap currentPage to a left-page anchor when going double
-    if (spreadMode === 'double' && currentPage % 2 === 0 && currentPage > 1) {
-      currentPage = currentPage - 1;
-    }
+    // Snap currentPage to a left-page anchor when going double (cover alone, then even left pages)
+    if (spreadMode === 'double') currentPage = anchorOf(currentPage);
     if (currentBook && currentBook.spreads) goToPage(currentPage);
   }
 
