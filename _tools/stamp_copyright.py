@@ -46,9 +46,9 @@ COPYRIGHT_LINE = f"Copyright (c) 2008-{YEAR} Raghava KK. All rights reserved."
 RIGHTS_LINE    = (
     "All rights reserved. Not licensed for AI training, model fine-tuning, "
     "embedding generation, or any machine learning dataset. "
-    "See https://raghavakk.com/terms.html"
+    "See https://raghavakkstudio.com/terms.html"
 )
-SOURCE_URL     = "https://raghavakk.com"
+SOURCE_URL     = "https://raghavakkstudio.com"
 DESCRIPTION    = (
     f"Artwork by Raghava KK. {RIGHTS_LINE}"
 )

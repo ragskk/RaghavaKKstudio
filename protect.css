@@ -4,12 +4,12 @@
    dev tools or a screenshot tool defeats it in seconds. It exists to
    stop casual right-click-saving and drag-to-desktop, which is ~90%
    of unauthorized image copying. Real protection lives in:
-     - 2400px web cap (publish quality, never source quality)
+     - 1600px web cap (_tools/cap_1600.py) (publish quality, never source quality)
      - vercel.json X-Robots-Tag: noai, noimageai
      - robots.txt training-bot bans
      - terms.html copyright reservation
      - EXIF copyright stamps embedded in the files themselves
-     - C2PA content credentials on signed exports (future)
+     - C2PA Content Credentials embedded in every file (_tools/c2pa_sign.py)
    See terms.html and llms.txt for the full reservation of rights.
    ───────────────────────────────────────────────────────────────── */
 

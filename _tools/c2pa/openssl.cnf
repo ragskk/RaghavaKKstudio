@@ -1,0 +1,17 @@
+[req]
+distinguished_name = dn
+prompt = no
+[dn]
+C = IN
+O = Raghava KK Studio
+CN = Raghava KK Studio Content Credentials
+[ca_ext]
+basicConstraints = critical, CA:TRUE, pathlen:0
+keyUsage = critical, keyCertSign, cRLSign
+subjectKeyIdentifier = hash
+[leaf_ext]
+basicConstraints = critical, CA:FALSE
+keyUsage = critical, digitalSignature
+extendedKeyUsage = critical, emailProtection
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid

@@ -44,3 +44,10 @@ _to_delete/
 
 # Typography audit working docs — reference material, not site content
 _typography-audit/
+
+# C2PA signing keys — private, never ship
+/_tools/c2pa/*.key
+/_tools/c2pa/*.csr
+/_tools/c2pa/*.srl
+/_tools/c2pa/*.pk8
+/_tools/__pycache__/

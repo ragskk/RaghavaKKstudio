@@ -107,6 +107,27 @@ export default async function middleware(request) {
 
   if (token && token === expectedHash) return;
 
+  // Share-link bypass: /any/path?password=<phrase> → set the auth cookie and
+  // redirect to the same URL with the param stripped, so the phrase never
+  // lingers in the address bar or in referrers. Replaces the old client-side
+  // ?password= share links (retired 2026-08-30).
+  const shared = url.searchParams.get('password');
+  if (shared !== null) {
+    if (shared === expected) {
+      url.searchParams.delete('password');
+      const clean = url.pathname + (url.search || '');
+      return new Response(null, {
+        status: 302,
+        headers: {
+          Location: clean,
+          'Set-Cookie': `site_auth=${expectedHash}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=${60 * 60 * 24 * 30}`,
+          'Cache-Control': 'no-store',
+        },
+      });
+    }
+    // Wrong phrase in the link: fall through to the gate.
+  }
+
   // Not authenticated → redirect to gate, preserving the original target.
   // Use /gate (cleanUrls form) so we don't bounce through a 308 on /gate.html.
   const gateUrl = new URL('/gate', request.url);

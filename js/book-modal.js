@@ -22,6 +22,10 @@
   // ── Catalogue: title → { folder under /images/spreads/, page count, zero-padding width }
   const SPREADS = {
     'Calling All Gods':                          { folder: 'Calling_All_Gods',    count: 49,  pad: 2 },
+    'The Yali Project':                          { folder: 'Yali_Project',        count: 4,   pad: 2 },
+    'About Raghava KK':                          { folder: 'About_Raghava_KK',    count: 58,  pad: 2 },
+    'Art Archive Book':                          { folder: 'Art_Archive_Book',    count: 208, pad: 3 },
+    '64/1':                                      { folder: '64_1',                count: 64,  pad: 2 },
     'too fast':                                  { folder: 'too_fast',            count: 25,  pad: 2 },
     'PASSPORT':                                  { folder: 'PASSPORT',            count: 27,  pad: 2 },
     '33M Gods':                                  { folder: '33M_Gods',            count: 26,  pad: 2 },

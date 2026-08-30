@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><style>html{visibility:hidden}</style><script>(function(){try{if(localStorage.getItem("studio_access")==="ok"){document.documentElement.style.visibility="visible";return;}}catch(_){}window.location.replace("/");})();</script>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Studio, Raghava KK</title>
@@ -996,12 +996,12 @@
     tile.dataset.slug = s.slug;
     tile.style.transitionDelay = `${Math.min(i * 35, 280)}ms`;
     // Index tiles are small (~300px on desktop, smaller on phone) — the
-    // 800px _thumbs variant is plenty. Saves ~16x bytes vs the 2400px hero.
+    // 800px _thumbs variant is plenty. Saves ~16x bytes vs the 1600px hero.
     tile.innerHTML = `
       <span class="accent" aria-hidden="true"></span>
       <div class="tile-frame">
         <img src="./images/studio/_thumbs/${s.slug}/${heroId}.jpg"
-             srcset="./images/studio/_thumbs/${s.slug}/${heroId}.jpg 800w, ./images/studio/${s.slug}/${heroId}.jpg 2400w"
+             srcset="./images/studio/_thumbs/${s.slug}/${heroId}.jpg 800w, ./images/studio/${s.slug}/${heroId}.jpg 1600w"
              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
              alt="${escAttr(s.title)}, specimen"
              loading="lazy" decoding="async" draggable="false" />
@@ -1145,12 +1145,12 @@
         specimen.classList.add('is-square');
       }
 
-      // Vitrine specimen is the detail view — keep the 2400px hero, but
+      // Vitrine specimen is the detail view — keep the 1600px hero, but
       // let phones (or any slow connection) pick the 800px _thumbs variant
       // when the browser determines it's enough. The matchMedia + DPR-aware
       // sizing in srcset/sizes lets the browser decide.
       const thumbSrc = `./images/studio/_thumbs/${curSeries.slug}/${w.id}.jpg`;
-      sImg.srcset = `${thumbSrc} 800w, ${src} 2400w`;
+      sImg.srcset = `${thumbSrc} 800w, ${src} 1600w`;
       sImg.sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 70vw";
       sImg.src = src;
       sImg.alt = w.title + ', ' + curSeries.title;
