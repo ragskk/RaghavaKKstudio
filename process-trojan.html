@@ -19,6 +19,7 @@
   <meta name="googlebot" content="index, follow, noai, noimageai" />
   <link rel="stylesheet" href="./protect.css" />
   <link rel="stylesheet" href="./css/type.css" />
+  <link rel="stylesheet" href="./css/book-modal.css" />
   <style>
     /* ───────────────────────────────────────────────────────────
        RAGHAVA KK · PROCESS DOSSIER № 02 · TOY TROJAN
@@ -425,7 +426,7 @@
           mahogany, a ritual asking permission before the cut, and a three-kilometre walk out on foot.
           Only then the carving, and then the surface, into which <em>the whole present</em> was written.
         </p>
-        <a class="readpdf" href="./images/process/trojan/docs/photo-essay-toy-trojan.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the brochure &middot; A Visual Essay of the Creation of the Toy Trojan (pdf)</a>
+        <a class="readpdf" data-book="A Visual Essay of the Creation of the Toy Trojan" href="./images/process/trojan/docs/photo-essay-toy-trojan.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the brochure &middot; A Visual Essay of the Creation of the Toy Trojan (pdf)</a>
       </div>
       <div class="meta">
         <div class="meta-block">
@@ -681,7 +682,7 @@
             and the fact that a decision made about form at the beginning turned into a season of work in a
             forest three thousand kilometres from the studio.
           </p>
-          <a class="readpdf" href="./images/process/trojan/docs/photo-essay-toy-trojan.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the brochure &middot; A Visual Essay of the Creation of the Toy Trojan (pdf)</a>
+          <a class="readpdf" data-book="A Visual Essay of the Creation of the Toy Trojan" href="./images/process/trojan/docs/photo-essay-toy-trojan.pdf" target="_blank" rel="noopener"><span class="rp-dot"></span>Read the brochure &middot; A Visual Essay of the Creation of the Toy Trojan (pdf)</a>
         </div>
         <div class="sec-side"></div>
       </section>
@@ -772,6 +773,25 @@
       document.getElementById('lbClose').addEventListener('click', closeLb);
       lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+    })();
+  </script>
+  <!-- PDF documents open in the shared book reader (./js/book-modal.js), the same
+       pop-up every book on the site uses. The href stays as the no-JS fallback. -->
+  <script src="./js/book-modal.js" defer></script>
+  <script>
+    (function () {
+      document.querySelectorAll('a.readpdf[data-book]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          if (!window.RaghavaBookModal || typeof window.RaghavaBookModal.open !== 'function') return;
+          e.preventDefault();
+          var href = a.getAttribute('href');
+          window.RaghavaBookModal.open({
+            title: a.dataset.book,
+            pdf: href,
+            filename: decodeURIComponent(href.split('/').pop())
+          });
+        });
+      });
     })();
   </script>
   <script src="./protect.js" defer></script>

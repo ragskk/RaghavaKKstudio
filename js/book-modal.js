@@ -13,7 +13,7 @@
    Each book row passed to open() needs at minimum:
      - title    (string, matches a SPREADS key for spread mode)
      - thumb    (cover image URL, used in fallback)
-     - pdf      (URL of the full PDF, opens in new tab)
+     - pdf      (URL of the full PDF, offered as Open PDF / Download inside the reader)
      - filename (optional download filename)
    ───────────────────────────────────────────────────── */
 (function () {
@@ -40,7 +40,19 @@
     "The Machine Didn't Kill Me, It Rewrote Me": { folder: 'Machine_Rewrote_Me',  count: 92,  pad: 2 },
     'Artist Not Found':                          { folder: 'Artist_Not_Found',    count: 184, pad: 3 },
     'The Raghava KK Studio Projects Book':       { folder: 'Studio_Projects_Book', count: 160, pad: 3 },
-    'the duck forgot it was whole':              { folder: 'duck_forgot',         count: 196, pad: 3 }
+    'the duck forgot it was whole':              { folder: 'duck_forgot',         count: 196, pad: 3 },
+    // Process dossier documents (process-edges.html, process-trojan.html) — same reader, same rules.
+    'The Edges catalog':                         { folder: 'Edges_Catalog',       count: 20,  pad: 2 },
+    'My journey from painting to sculpture':     { folder: 'Journey_Painting_to_Sculpture', count: 20, pad: 2 },
+    'My relationship with art':                  { folder: 'Relationship_with_Art', count: 1, pad: 2 },
+    'Painting with oils':                        { folder: 'Painting_with_Oils',  count: 4,   pad: 2 },
+    'Painting as body':                          { folder: 'Painting_as_Body',    count: 6,   pad: 2 },
+    'Display of the Edges':                      { folder: 'Display_of_the_Edges', count: 4,  pad: 2 },
+    'My truths':                                 { folder: 'My_Truths',           count: 3,   pad: 2 },
+    'The ultimate other':                        { folder: 'The_Ultimate_Other',  count: 24,  pad: 2 },
+    // Toy Trojan essay: the PDF is exported as landscape spreads; each spread is split
+    // into left/right halves here so 2-up mode reassembles it (cover alone, then 2-3, 4-5…).
+    'A Visual Essay of the Creation of the Toy Trojan': { folder: 'Toy_Trojan_Essay', count: 35, pad: 2 }
   };
 
   let mounted = false;
