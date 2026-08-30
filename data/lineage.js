@@ -859,21 +859,42 @@ window.LINEAGE = {
    "sortYear": 2024
   },
   {
+   "id": "vishwaroopa",
+   "kind": "series",
+   "label": "Vishwaroopa",
+   "year": 2022,
+   "yearEnd": 2026,
+   "summary": "The painting. Multiple gods, the cosmic form revealed. Began as a god-painting commission at Guernica's scale; the collector vanished and the brief survived. First shown as Gods vs Gods, 2023.",
+   "source": "rkk-export",
+   "thumb": "images/studio/_thumbs/15-gods-vs-gods/15A.jpg",
+   "href": "./calling4.html",
+   "touchedUntil": 2024,
+   "sortYear": 2024.8
+  },
+  {
+   "id": "liberty-guernica",
+   "kind": "series",
+   "label": "La Liberté de Guernica",
+   "year": 2022,
+   "yearEnd": 2026,
+   "summary": "The painting. Broken, free, double-headed. The fourth Guernica, at Guernica's scale, four years in the making.",
+   "source": "rkk-export",
+   "thumb": "images/details/la-d1.jpg",
+   "href": "./calling4.html",
+   "touchedUntil": 2023,
+   "sortYear": 2024.6
+  },
+  {
    "id": "calling-all-gods",
    "kind": "series",
    "label": "Calling All Gods",
    "year": 2022,
    "yearEnd": 2026,
-   "summary": "Vishwaroopa and La Liberté de Guernica, each at Guernica's scale, four years in the making. First titled Gods vs Gods, 2023. Parsons, December 2026.",
+   "summary": "The show. Parsons, December 2026: the two paintings on one wall and the shelf of gods cast as toys.",
    "source": "rkk-export",
-   "parts": [
-    "vishwaroopa",
-    "liberty-guernica"
-   ],
-   "thumb": "images/studio/_thumbs/15-gods-vs-gods/15A.jpg",
    "href": "./calling4.html",
    "touchedUntil": 2026,
-   "sortYear": 2025
+   "sortYear": 2025.5
   },
   {
    "id": "disappeared-collector",
@@ -1183,59 +1204,73 @@ window.LINEAGE = {
   },
   {
    "source": "double-headed-tiger",
-   "target": "calling-all-gods",
+   "target": "liberty-guernica",
    "kind": "merges",
    "source_of": "rkk-export",
-   "conf": "R",
-   "via": "liberty-guernica"
+   "conf": "R"
   },
   {
    "source": "liberty-figure",
-   "target": "calling-all-gods",
+   "target": "liberty-guernica",
    "kind": "merges",
    "source_of": "rkk-export",
-   "conf": "R",
-   "via": "liberty-guernica"
+   "conf": "R"
   },
   {
    "source": "broken-falling-apart",
-   "target": "calling-all-gods",
+   "target": "liberty-guernica",
    "kind": "merges",
    "source_of": "rkk-export",
-   "conf": "R",
-   "via": "liberty-guernica"
+   "conf": "R"
   },
   {
    "source": "multiple-gods",
-   "target": "calling-all-gods",
+   "target": "vishwaroopa",
    "kind": "merges",
    "source_of": "rkk-export",
-   "conf": "R",
-   "via": "vishwarupa"
+   "conf": "R"
   },
   {
    "source": "collage-aesthetic",
-   "target": "calling-all-gods",
+   "target": "vishwaroopa",
    "kind": "merges",
    "source_of": "rkk-export",
-   "conf": "R",
-   "via": "vishwarupa"
+   "conf": "R"
+  },
+  {
+   "source": "collage-aesthetic",
+   "target": "liberty-guernica",
+   "kind": "merges",
+   "source_of": "rkk-export",
+   "conf": "R"
   },
   {
    "source": "many-characters",
-   "target": "calling-all-gods",
+   "target": "vishwaroopa",
    "kind": "merges",
    "source_of": "rkk-export",
-   "conf": "R",
-   "via": "vishwarupa"
+   "conf": "R"
+  },
+  {
+   "source": "many-characters",
+   "target": "liberty-guernica",
+   "kind": "merges",
+   "source_of": "rkk-export",
+   "conf": "R"
   },
   {
    "source": "encounter-design",
-   "target": "calling-all-gods",
+   "target": "vishwaroopa",
    "kind": "merges",
    "source_of": "rkk-export",
-   "conf": "R",
-   "via": "vishwarupa"
+   "conf": "R"
+  },
+  {
+   "source": "encounter-design",
+   "target": "liberty-guernica",
+   "kind": "merges",
+   "source_of": "rkk-export",
+   "conf": "R"
   },
   {
    "source": "plurality",
@@ -1376,14 +1411,13 @@ window.LINEAGE = {
   },
   {
    "source": "commission-origin",
-   "target": "calling-all-gods",
+   "target": "vishwaroopa",
    "kind": "informs",
    "source_of": "rkk-export",
-   "conf": "R",
-   "via": "vishwarupa"
+   "conf": "R"
   },
   {
-   "source": "calling-all-gods",
+   "source": "vishwaroopa",
    "target": "cannot-show",
    "kind": "informs",
    "source_of": "rkk-export",
@@ -1395,6 +1429,15 @@ window.LINEAGE = {
    "kind": "triggers",
    "source_of": "rkk-export",
    "conf": "R"
+  },
+  {
+   "source": "liberty-guernica",
+   "target": "calling-all-gods",
+   "kind": "merges",
+   "source_of": "both",
+   "conf": "R",
+   "sentence": "The other painting on the wall.",
+   "n": "50"
   },
   {
    "source": "who-are-you",
@@ -1441,6 +1484,15 @@ window.LINEAGE = {
    "kind": "informs",
    "source_of": "rkk-export",
    "conf": "R"
+  },
+  {
+   "source": "vishwaroopa",
+   "target": "calling-all-gods",
+   "kind": "merges",
+   "source_of": "both",
+   "conf": "R",
+   "sentence": "One of the two paintings on the wall.",
+   "n": "49"
   },
   {
    "source": "07-edges",
@@ -1585,11 +1637,17 @@ window.LINEAGE = {
   },
   {
    "source": "02-impossible-bouquets",
-   "target": "calling-all-gods",
+   "target": "liberty-guernica",
    "kind": "informs",
    "source_of": "rkk-export",
-   "conf": "R",
-   "via": "liberty-guernica"
+   "conf": "R"
+  },
+  {
+   "source": "liberty-guernica",
+   "target": "vishwaroopa",
+   "kind": "informs",
+   "source_of": "rkk-export",
+   "conf": "R"
   },
   {
    "source": "64-1-founded",
@@ -1628,11 +1686,17 @@ window.LINEAGE = {
   },
   {
    "source": "03-guernica",
-   "target": "calling-all-gods",
+   "target": "liberty-guernica",
    "kind": "informs",
    "source_of": "rkk-export",
-   "conf": "R",
-   "via": "liberty-guernica"
+   "conf": "R"
+  },
+  {
+   "source": "03-guernica",
+   "target": "vishwaroopa",
+   "kind": "informs",
+   "source_of": "rkk-export",
+   "conf": "R"
   },
   {
    "source": "03-guernica",
@@ -1833,6 +1897,15 @@ window.LINEAGE = {
    "conf": "A",
    "sentence": "The bouquet returns as paint on digital print, AI-assisted at Gujral, opening India Art Fair 2023. Same argument, new machine.",
    "n": 11
+  },
+  {
+   "source": "02-impossible-bouquets",
+   "target": "vishwaroopa",
+   "kind": "informs",
+   "source_of": "claude",
+   "conf": "B",
+   "sentence": "Things that cannot coexist held in one frame, scaled from a vase to the universal form.",
+   "n": 12
   },
   {
    "source": "02-impossible-bouquets",
@@ -2061,12 +2134,21 @@ window.LINEAGE = {
   },
   {
    "source": "burning-man",
-   "target": "calling-all-gods",
+   "target": "liberty-guernica",
    "kind": "triggers",
    "source_of": "claude",
    "conf": "A",
    "sentence": "\"The collapse, the calling on everything within reach, and the four years of painting that followed.\"",
    "n": 44
+  },
+  {
+   "source": "burning-man",
+   "target": "vishwaroopa",
+   "kind": "informs",
+   "source_of": "claude",
+   "conf": "B",
+   "sentence": "The massive god seen in the desert, the one I had wanted ever since.",
+   "n": "44b"
   },
   {
    "source": "calling-all-gods",
