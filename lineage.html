@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Lineage, Raghava KK</title>
+  <meta name="description" content="How the series made each other. Nineteen bodies of work on one line, a life above it, a career below it, and every arrow a claim that this fed that." />
+  <meta property="og:title" content="Lineage · Raghava KK" />
+  <meta property="og:description" content="How the series made each other. Nineteen bodies of work on one line, a life above it, a career below it, and every arrow a claim that this fed that." />
+  <meta property="og:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <meta property="og:url" content="https://raghavakkstudio.com/lineage" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Raghava KK" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lineage · Raghava KK" />
+  <meta name="twitter:description" content="How the series made each other." />
+  <meta name="twitter:image" content="https://raghavakkstudio.com/images/Raghava%20KK%20Logo-02.png" />
+  <link rel="canonical" href="https://raghavakkstudio.com/lineage" />
+  <meta name="theme-color" content="#FCFCFA" />
+  <link rel="icon" type="image/png" href="./images/Raghava%20KK%20Logo-02.png" />
+  <meta name="robots" content="index, follow, noai, noimageai" />
+  <meta name="googlebot" content="index, follow, noai, noimageai" />
+  <link rel="stylesheet" href="./protect.css" />
+  <link rel="stylesheet" href="./css/type.css" />
+  <style>
+    /* ───────────────────────────────────────────────────────────
+       RAGHAVA KK · LINEAGE · how the series made each other
+       Chrome canonical (tape, masthead, page-head, colophon).
+       The board between the borders is the page's one loud room:
+       a graphite spine, series plates on it, a life above, a
+       career below. Renderer: ./js/lineage.js · data: ./data/lineage.js
+       ─────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    :root {
+      --gutter: clamp(1rem, 2.4vw, 2rem);
+      --edge:   clamp(1rem, 2.6vw, 2.4rem);
+      --ease:   cubic-bezier(.2,.7,.2,1);
+      --ease-out: cubic-bezier(.16,1,.3,1);
+      --graphite: #3A342C;
+      --graphite-line: rgba(58,52,44,0.55);
+      --graphite-soft: rgba(58,52,44,0.22);
+    }
+    html { font-size: 16.5px; }
+    @media (min-width: 1280px) { html { font-size: 17.5px; } }
+    html, body { background: var(--paper); color: var(--ink); font-family: var(--serif); -webkit-font-smoothing: antialiased; }
+    body {
+      min-height: 100vh; position: relative;
+      background-image: radial-gradient(rgba(14,14,12,0.045) 1px, transparent 1px), linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+      background-size: 3px 3px, auto;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    /* ─── TAPE ─── */
+    .tape { position: relative; z-index: 3; width: 100%; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: var(--mono-a); letter-spacing: var(--mono-a-track); text-transform: uppercase; overflow: hidden; border-bottom: 1px solid var(--ink); }
+    .tape-track { display: flex; gap: 4rem; padding: 0.6rem 0; white-space: nowrap; animation: tape-scroll 60s linear infinite; width: max-content; }
+    .tape-track > span { display: inline-flex; align-items: center; gap: 1rem; }
+    .tape-track .dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; }
+    @keyframes tape-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── MASTHEAD ─── */
+    .masthead { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; padding: 1.2rem var(--edge) 0.9rem; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: var(--mono-a); letter-spacing: var(--mono-a-track); text-transform: uppercase; color: var(--ink-2); }
+    .masthead .left, .masthead .right { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
+    .masthead .right { justify-content: flex-end; }
+    .masthead .center { font-family: var(--display); font-style: italic; font-size: clamp(0.95rem, 1.1vw, 1.05rem); letter-spacing: 0.04em; text-transform: none; color: var(--ink); }
+    .masthead .stamp { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.18rem 0.5rem; border: 1px solid var(--rule); border-radius: 999px; }
+    .home-link { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .home-link:hover { color: var(--red); border-bottom-color: var(--red); }
+
+    /* ─── PAGE HEAD ─── */
+    .page-head { position: relative; z-index: 2; padding: clamp(3rem, 7vh, 5rem) var(--edge) clamp(1.6rem, 3vh, 2.4rem); max-width: 1480px; margin: 0 auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.3rem 0.65rem; border: 1px solid var(--ink); font-family: var(--mono); font-size: var(--mono-a); letter-spacing: var(--mono-a-track); text-transform: uppercase; margin-bottom: 0.9rem; }
+    .eyebrow .num { font-weight: 600; color: var(--red); }
+    .head-title { font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(2.4rem, 5.8vw, 4.8rem); line-height: 1.02; letter-spacing: -0.015em; color: var(--ink); max-width: 22ch; }
+    .head-title em { font-style: normal; color: var(--red); }
+    .head-dek { margin-top: 1.2rem; font-family: var(--serif); font-style: italic; font-size: clamp(1.0rem, 1.4vw, 1.2rem); line-height: 1.45; color: var(--ink-2); max-width: 60ch; }
+    .head-dek b { color: var(--ink); font-weight: 400; font-style: normal; }
+
+    /* ─── CONTROLS ─── */
+    .controls { position: relative; z-index: 2; max-width: 1480px; margin: 0 auto; padding: 0 var(--edge) 0.9rem; display: flex; gap: 1.2rem 2rem; align-items: center; flex-wrap: wrap; justify-content: space-between; }
+    .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden; }
+    .seg button, .btn { font-family: var(--serif); font-weight: 400; font-size: 0.9rem; letter-spacing: 0.06em; font-variant-caps: small-caps; text-transform: lowercase; padding: 0.42rem 0.85rem; background: var(--paper); color: var(--ink); border: 0; cursor: pointer; transition: background .2s var(--ease), color .2s var(--ease); }
+    .seg button + button { border-left: 1px solid var(--rule-soft); }
+    .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+    .seg button:hover:not([aria-pressed="true"]) { background: var(--paper-3); }
+    .btn { border: 1px solid var(--rule); border-radius: 999px; }
+    .btn[aria-pressed="false"] { color: var(--muted); }
+    .btn:hover { background: var(--paper-3); }
+    .ctl-group { display: flex; gap: 0.7rem; align-items: center; flex-wrap: wrap; }
+    .legend { display: flex; gap: 1.1rem; align-items: center; flex-wrap: wrap; font-family: var(--serif); font-size: 0.82rem; letter-spacing: 0.12em; font-variant-caps: small-caps; text-transform: lowercase; color: var(--ink-2); }
+    .legend svg { width: 44px; height: 12px; overflow: visible; vertical-align: middle; margin-right: 0.35rem; }
+    .legend .l-informs { stroke: var(--graphite-line); stroke-width: 1; fill: none; }
+    .legend .l-triggers { stroke: var(--graphite); stroke-width: 1.1; stroke-dasharray: 4 3; fill: none; }
+    .legend .l-merges { stroke: var(--graphite); stroke-width: 2.3; fill: none; }
+    .legend .l-loop { stroke: var(--red); stroke-width: 1.2; fill: none; }
+    .legend .sw-slip { display: inline-block; width: 22px; height: 12px; background: var(--paper); border: 1px solid var(--rule-soft); box-shadow: 0 1px 2px rgba(0,0,0,.12); transform: rotate(-2deg); margin-right: 0.4rem; vertical-align: middle; }
+    .legend .sw-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--graphite); margin-right: 0.5rem; vertical-align: middle; }
+    .counts { font-family: var(--mono); font-size: var(--mono-b); letter-spacing: var(--mono-b-track); text-transform: uppercase; color: var(--muted); margin: 0; }
+
+    /* ─── HOW TO READ IT ─── */
+    .howto { position: relative; z-index: 2; max-width: 1480px; margin: 0 auto; padding: 0 var(--edge) clamp(1.6rem, 3vh, 2.4rem); display: grid; grid-template-columns: 4fr 8fr; gap: 2rem 3rem; align-items: start; }
+    .howto-prose h2 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.05; margin-bottom: 0.6rem; }
+    .howto-prose h2 em { font-style: normal; color: var(--red); }
+    .howto-prose p { font-family: var(--serif); font-size: 0.95rem; line-height: 1.55; color: var(--ink-2); max-width: 44ch; }
+    .howto-key { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem 2rem; border-top: 1px solid var(--rule); padding-top: 0.9rem; }
+    .howto-key > div { display: grid; grid-template-columns: 74px 1fr; gap: 0.8rem; align-items: center; padding: 0.35rem 0; border-bottom: 1px dashed var(--rule-soft); }
+    .howto-key dt { display: flex; align-items: center; justify-content: center; min-height: 34px; }
+    .howto-key dd { font-family: var(--serif); font-size: 0.86rem; line-height: 1.4; color: var(--ink-2); }
+    .howto-key dd b { font-weight: 400; color: var(--ink); font-variant-caps: small-caps; text-transform: lowercase; letter-spacing: 0.08em; }
+    .howto-key svg { width: 60px; height: 12px; overflow: visible; }
+    .howto-key .l-informs { stroke: var(--graphite-line); stroke-width: 1; fill: none; }
+    .howto-key .l-triggers { stroke: var(--graphite); stroke-width: 1.1; stroke-dasharray: 4 3; fill: none; }
+    .howto-key .l-merges { stroke: var(--graphite); stroke-width: 2.3; fill: none; }
+    .howto-key .l-loop { stroke: var(--red); stroke-width: 1.2; fill: none; }
+    .k-plate { display: block; width: 30px; height: 34px; background: #fff; border: 1px solid var(--rule-soft); box-shadow: 0 1px 2px rgba(0,0,0,.10), 0 4px 10px rgba(0,0,0,.08); transform: rotate(-2deg); position: relative; }
+    .k-plate::before { content: ""; position: absolute; left: 3px; right: 3px; top: 3px; height: 20px; background: var(--paper-3); }
+    .k-slip { display: flex; flex-direction: column; gap: 1px; padding: 3px 6px 4px; background: var(--paper); border: 1px solid var(--rule-soft); box-shadow: 0 1px 1px rgba(0,0,0,.08), 0 3px 8px rgba(0,0,0,.06); transform: rotate(1.5deg); }
+    .k-slip b { font-family: var(--mono); font-weight: 400; font-size: 8px; letter-spacing: 0.16em; color: var(--muted); }
+    .k-slip i { font-family: var(--serif); font-style: italic; font-size: 0.72rem; color: var(--ink); }
+    .k-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--graphite); margin-right: 5px; }
+    .k-dotlab { font-family: var(--serif); font-style: italic; font-size: 0.74rem; color: var(--ink-2); opacity: 0.7; }
+    .k-bands { display: flex; flex-direction: column; align-items: center; gap: 3px; font-family: var(--serif); font-style: italic; font-size: 0.7rem; color: var(--muted); }
+    .k-bands s { display: block; width: 60px; height: 1px; background: var(--graphite-line); text-decoration: none; }
+    @media (max-width: 980px) { .howto { grid-template-columns: 1fr; } .howto-key { grid-template-columns: 1fr; } }
+
+    /* ─── BOARD ─── */
+    .board-wrap { position: relative; z-index: 2; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--paper); }
+    .lin-scroll { overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; scrollbar-color: var(--graphite-soft) transparent; cursor: default; }
+    .lin-stage { position: relative; user-select: none; }
+    .lin-svg { position: absolute; inset: 0; display: block; }
+    .lin-nodes { position: absolute; inset: 0; pointer-events: none; }
+    .lin-band { position: absolute; left: 0; padding: 0 var(--edge); font-family: var(--serif); font-size: 0.82rem; letter-spacing: 0.12em; font-variant-caps: small-caps; text-transform: lowercase; color: var(--muted); pointer-events: none; position: sticky; }
+    .lin-band { position: absolute; }
+    .lin-band.hid { display: none; }
+
+    /* spine + axis */
+    .spine-main { fill: none; stroke: var(--graphite-line); stroke-width: 1.1; stroke-linecap: round; }
+    .spine-ghost { fill: none; stroke: var(--graphite-soft); stroke-width: 0.8; }
+    .axis line { stroke: var(--graphite-soft); stroke-width: 1; }
+    .axis text { font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; fill: var(--muted); }
+    .cols line { stroke: rgba(58,52,44,0.07); stroke-width: 1; }
+    .cols .span-line { stroke: var(--graphite-soft); stroke-width: 0.8; stroke-dasharray: 1 3; }
+
+    /* edges */
+    .edges path { fill: none; stroke-linecap: round; transition: opacity .25s var(--ease), stroke .25s var(--ease); }
+    .edges .informs { stroke: var(--graphite-line); stroke-width: 0.9; opacity: 0.4; }
+    .edges .informs.web { opacity: 0.22; }
+    .edges .triggers { stroke: var(--graphite); stroke-width: 1.1; stroke-dasharray: 4 3; opacity: 0.6; }
+    .edges .triggers.web { opacity: 0.4; }
+    .edges .merges { stroke: var(--graphite); stroke-width: 2.3; opacity: 0.7; }
+    .edges .loop { stroke: var(--red); opacity: 0.85; }
+    .edges path.hid, .hits path.hid, .lin-node.hid { display: none; }
+    .hits path { fill: none; stroke: transparent; stroke-width: 12px; pointer-events: stroke; cursor: pointer; }
+    marker.arr path { fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+    marker.arr-informs path { stroke: var(--graphite-line); }
+    marker.arr-triggers path, marker.arr-merges path { stroke: var(--graphite); }
+    marker.arr-loop path { stroke: var(--red); }
+
+    /* focus: everything not in the ego set dims */
+    .lin-stage.is-focus .edges path { opacity: 0.06; }
+    .lin-stage.is-focus .edges path.on { opacity: 1; }
+    .lin-stage.is-focus .edges path.on.informs { stroke-width: 1.2; }
+    /* direction colour while a node is held: in = ink (what fed it), out = red (what it fed) */
+    .lin-stage.is-focus .edges path.on.in { stroke: var(--ink); }
+    .lin-stage.is-focus .edges path.on.out { stroke: var(--red); }
+    marker.arr-in path { stroke: var(--ink); }
+    marker.arr-out path { stroke: var(--red); }
+    .lin-stage.is-focus .lin-node { opacity: 0.18; }
+    .lin-stage.is-focus .lin-node.on { opacity: 1; }
+    .lin-stage.is-focus .lin-node.on .lab { color: var(--ink); }
+
+    /* nodes */
+    .lin-node { position: absolute; transform: translate(-50%, -50%); pointer-events: auto; cursor: pointer; text-decoration: none; color: inherit; transition: opacity .25s var(--ease), transform .3s var(--ease-out); }
+    .lin-node.series { transform: translate(-50%, -50%) rotate(var(--tilt, 0deg)); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .lin-node.series:hover, .lin-node.series.on { transform: translate(-50%, -50%) rotate(0deg) translateY(-2px); }
+    .lin-node.series .frame { display: block; width: 92px; padding: 5px 5px 7px; background: #fff; border: 1px solid var(--rule-soft); box-shadow: 0 1px 2px rgba(0,0,0,.10), 0 6px 14px rgba(0,0,0,.08); }
+    .lin-node.series .frame img { display: block; width: 100%; height: 76px; object-fit: contain; background: var(--paper-2); filter: saturate(.92); }
+    .lin-node.series .frame.txt { width: 84px; height: 84px; display: grid; place-items: center; padding: 8px; text-align: center; background: repeating-linear-gradient(0deg, transparent 0 9px, rgba(17,17,16,0.08) 9px 10px), var(--paper); }
+    .lin-node.series .frame.txt i { font-family: var(--display); font-style: italic; font-size: 0.86rem; line-height: 1.12; color: var(--ink); }
+    .lin-node.series .cap { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; max-width: 150px; }
+    .lin-node.series .cap i { font-family: var(--display); font-style: italic; font-size: 0.92rem; line-height: 1.1; color: var(--ink); }
+    .lin-node.series .cap b { font-family: var(--mono); font-weight: 400; font-size: 9px; letter-spacing: 0.16em; color: var(--muted); }
+    .lin-node.series.on .cap b { color: var(--ink-2); }
+    .lin-node.series.centre .cap b, .lin-node.series:hover .cap b { color: var(--red); }
+
+    .lin-node.event.catalyst .slip { display: flex; flex-direction: column; gap: 1px; padding: 5px 9px 6px; background: var(--paper); border: 1px solid var(--rule-soft); box-shadow: 0 1px 1px rgba(0,0,0,.08), 0 3px 8px rgba(0,0,0,.06); transform: rotate(var(--tilt, 0deg)); max-width: 176px; transition: transform .25s var(--ease), border-color .25s var(--ease); }
+    .lin-node.event.catalyst .slip b { font-family: var(--mono); font-weight: 400; font-size: 9px; letter-spacing: 0.16em; color: var(--muted); }
+    .lin-node.event.catalyst .slip i { font-family: var(--serif); font-style: italic; font-size: 0.8rem; line-height: 1.15; color: var(--ink); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .lin-node.event.catalyst:hover .slip, .lin-node.event.catalyst.on .slip { transform: rotate(0deg); border-color: var(--rule); }
+    .lin-node.event.catalyst.on .slip b { color: var(--ink-2); }
+    .lin-node.event.catalyst.centre .slip b { color: var(--red); }
+
+    .lin-node.event.formation { display: flex; align-items: center; gap: 6px; opacity: 0.62; }
+    .lin-node.event.formation .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--graphite); flex: none; }
+    .lin-node.event.formation .lab { font-family: var(--serif); font-style: italic; font-size: 0.78rem; line-height: 1.12; color: var(--ink-2); max-width: 150px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .lin-node.event.formation:hover, .lin-node.event.formation.on { opacity: 1; }
+    .lin-node.event.formation.on .dot { background: var(--ink); }
+    .lin-node.event.formation.centre .dot { background: var(--red); }
+
+    /* card */
+    .lin-card { position: fixed; left: var(--edge); bottom: 1.2rem; z-index: 20; width: min(440px, calc(100vw - 2 * var(--edge))); max-height: min(60vh, 560px); overflow: auto; background: var(--paper); border: 1px solid var(--rule); box-shadow: 0 10px 30px rgba(0,0,0,.12); padding: 1rem 1.1rem 1.1rem; scrollbar-width: thin; }
+    .lin-card[hidden] { display: none; }
+    .lin-card .close { position: absolute; top: 0.4rem; right: 0.55rem; border: 0; background: none; font-family: var(--serif); font-size: 1.2rem; color: var(--muted); cursor: pointer; }
+    .lin-card .close:hover { color: var(--red); }
+    .lin-card .kick { display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.45rem; }
+    .lin-card .chip, .lin-card .yr { font-family: var(--serif); font-size: 0.72rem; letter-spacing: 0.12em; font-variant-caps: small-caps; text-transform: lowercase; color: var(--ink-2); padding: 0.1rem 0.45rem; border: 1px solid var(--rule-soft); border-radius: 999px; }
+    .lin-card .chip.red { color: var(--red); border-color: var(--red); }
+    .lin-card .yr { border: 0; padding-left: 0.2rem; color: var(--muted); font-family: var(--mono); font-variant-caps: normal; text-transform: uppercase; font-size: 9px; letter-spacing: 0.16em; }
+    .lin-card h3 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 1.35rem; line-height: 1.1; color: var(--ink); margin-bottom: 0.5rem; padding-right: 1.2rem; }
+    .lin-card h3 .arrow { color: var(--red); font-style: normal; }
+    .lin-card h3 .jump { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; border-bottom: 1px solid var(--rule-soft); }
+    .lin-card h3 .jump:hover { color: var(--red); border-color: var(--red); }
+    .lin-card .sum { font-family: var(--serif); font-size: 0.9rem; line-height: 1.5; color: var(--ink-2); margin-bottom: 0.6rem; }
+    .lin-card .sum.muted { color: var(--muted); font-style: italic; }
+    .lin-card h4 { font-family: var(--serif); font-weight: 400; font-size: 0.78rem; letter-spacing: 0.14em; font-variant-caps: small-caps; text-transform: lowercase; color: var(--muted); margin: 0.7rem 0 0.25rem; border-top: 1px solid var(--rule-soft); padding-top: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .lin-card h4::before, .led h4::before { content: ""; width: 22px; height: 0; border-top: 1.5px solid var(--muted); }
+    .lin-card h4.h-in::before, .led h4.h-in::before { border-color: var(--ink); }
+    .lin-card h4.h-out::before, .led h4.h-out::before { border-color: var(--red); }
+    .lin-card h4.h-out, .led h4.h-out { color: var(--red); }
+    .lin-card ul { list-style: none; }
+    .lin-card li { font-size: 0.86rem; line-height: 1.4; margin-bottom: 0.4rem; }
+    .lin-card li .k { font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-right: 0.35rem; }
+    .lin-card li .k.triggers { color: var(--ink); }
+    .lin-card li .k.merges { color: var(--ink); font-weight: 700; }
+    .lin-card li .jump { font-family: var(--serif); font-style: italic; font-size: 0.9rem; color: var(--ink); background: none; border: 0; padding: 0; cursor: pointer; border-bottom: 1px solid var(--rule-soft); }
+    .lin-card li .jump:hover { color: var(--red); border-color: var(--red); }
+    .lin-card li .ret { color: var(--red); font-family: var(--serif); font-size: 0.76rem; font-style: italic; margin-left: 0.3rem; }
+    .lin-card li p { color: var(--ink-2); margin-top: 0.15rem; font-size: 0.84rem; }
+    .lin-card .go { display: inline-block; margin-top: 0.7rem; font-family: var(--serif); font-size: 0.86rem; letter-spacing: 0.06em; font-variant-caps: small-caps; text-transform: lowercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+    .lin-card .go:hover { color: var(--red); border-color: var(--red); }
+
+    .board-marg { max-width: 1480px; margin: 0 auto; padding: 0.55rem var(--edge) 0; font-family: var(--mono); font-size: var(--mono-b); letter-spacing: var(--mono-b-track); text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .board-marg .accent { color: var(--red); }
+    .board-marg .hint { font-family: var(--serif); font-style: italic; font-size: 0.82rem; letter-spacing: 0.01em; text-transform: none; color: var(--muted); }
+
+    /* ─── LEDGER (the readable version; the only version on phones) ─── */
+    .ledger-wrap { position: relative; z-index: 2; max-width: 1480px; margin: 0 auto; padding: clamp(3rem, 7vh, 5rem) var(--edge) clamp(3rem, 6vh, 5rem); }
+    .ledger-head { display: grid; grid-template-columns: 8fr 4fr; gap: 2rem; align-items: end; margin-bottom: 2.2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+    .ledger-head h2 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.05; }
+    .ledger-head h2 em { font-style: normal; color: var(--red); }
+    .ledger-head p { font-family: var(--serif); font-style: italic; font-size: 0.92rem; color: var(--ink-2); line-height: 1.45; }
+    .led { display: grid; grid-template-columns: 110px 1fr; gap: 1.2rem; padding: 1.4rem 0; border-bottom: 1px solid var(--rule-soft); }
+    .led-num { font-family: var(--mono); font-size: var(--mono-a); letter-spacing: var(--mono-a-track); color: var(--red); padding-top: 0.35rem; }
+    .led-body { max-width: 720px; }
+    .led-meta { font-family: var(--mono); font-size: var(--mono-b); letter-spacing: var(--mono-b-track); text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+    .led-meta a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule-soft); }
+    .led-meta a:hover { color: var(--red); border-color: var(--red); }
+    .led h3 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 1.5rem; line-height: 1.1; color: var(--ink); margin-bottom: 0.45rem; }
+    .led-sum { font-family: var(--serif); font-size: var(--text); line-height: 1.55; color: var(--ink-2); margin-bottom: 0.6rem; }
+    .led h4 { font-family: var(--serif); font-weight: 400; font-size: 0.8rem; letter-spacing: 0.14em; font-variant-caps: small-caps; text-transform: lowercase; color: var(--muted); margin: 0.9rem 0 0.35rem; display: flex; align-items: center; gap: 0.5rem; }
+    .led ul { list-style: none; }
+    .led li { display: grid; grid-template-columns: 96px 1fr; gap: 0.2rem 0.8rem; align-items: baseline; padding: 0.35rem 0; border-top: 1px dashed var(--rule-soft); font-size: 0.92rem; line-height: 1.45; }
+    .led li .k { font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .led li .k.triggers { color: var(--ink); }
+    .led li .k.merges { color: var(--ink); font-weight: 700; }
+    .led li .who i { font-family: var(--serif); font-style: italic; color: var(--ink); }
+    .led li .who small { font-family: var(--serif); font-size: 0.72rem; letter-spacing: 0.1em; font-variant-caps: small-caps; text-transform: lowercase; color: var(--muted); margin-left: 0.4rem; }
+    .led li .ret { color: var(--red); }
+    .led li p { grid-column: 2; color: var(--ink-2); font-size: 0.88rem; }
+
+    /* ─── COLOPHON ─── */
+    .colophon { position: relative; z-index: 2; padding: clamp(2.5rem, 6vh, 4rem) var(--edge) clamp(2rem, 4vh, 3rem); border-top: 1px solid var(--rule); background: var(--paper-2); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: start; font-family: var(--serif); font-size: 0.88rem; letter-spacing: 0.01em; color: var(--ink-2); }
+    .colophon .col { display: flex; flex-direction: column; gap: 0.35rem; }
+    .colophon h3 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 1.05rem; letter-spacing: 0.02em; color: var(--ink); margin-bottom: 0.2rem; }
+    .colophon a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule-soft); transition: color .2s var(--ease), border-color .2s var(--ease); }
+    .colophon a:hover { color: var(--red); border-color: var(--red); }
+    .colophon .seal { width: 60px; height: 60px; border: 1px solid var(--rule); border-radius: 50%; display: grid; place-items: center; background: var(--paper); margin-bottom: 0.6rem; }
+    .colophon .seal img { width: 70%; height: 70%; object-fit: contain; }
+
+    @media (max-width: 720px) {
+      .colophon { grid-template-columns: 1fr; }
+      .head-title { font-size: clamp(2rem, 9vw, 3rem); }
+      .controls, .board-wrap, .board-marg, .lin-card, .howto-key { display: none; }
+      .phone-note { display: block; }
+      .ledger-head { grid-template-columns: 1fr; }
+      .led { grid-template-columns: 1fr; gap: 0.3rem; }
+      .led li { grid-template-columns: 1fr; }
+      .led li p { grid-column: 1; }
+      .masthead { grid-template-columns: 1fr; gap: 0.5rem; }
+      .masthead .center, .masthead .right { display: none; }
+    }
+    .phone-note { display: none; max-width: 1480px; margin: 0 auto; padding: 0 var(--edge) 1rem; font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: var(--muted); }
+    @media (prefers-reduced-motion: reduce) {
+      .tape-track { animation: none; }
+      .lin-node, .edges path, .lin-node.event.catalyst .slip { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tape" role="presentation">
+    <div class="tape-track">
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Lineage</span><span class="dot"></span>
+      <span>How the series made each other</span><span class="dot"></span>
+      <span>A life above the line</span><span class="dot"></span>
+      <span>My work below it</span><span class="dot"></span>
+      <span>Every arrow says this fed that</span><span class="dot"></span>
+      <span>Raghava KK</span><span class="dot"></span>
+      <span>Lineage</span><span class="dot"></span>
+      <span>How the series made each other</span><span class="dot"></span>
+      <span>A life above the line</span><span class="dot"></span>
+      <span>My work below it</span><span class="dot"></span>
+      <span>Every arrow says this fed that</span><span class="dot"></span>
+    </div>
+  </div>
+
+  <header class="masthead" role="banner">
+    <div class="left">
+      <span><a class="home-link" href="./index.html">← Raghava KK</a></span>
+      <span><a class="home-link" href="./studio2.html">Studio</a></span>
+      <span class="stamp">Lineage</span>
+    </div>
+    <div class="center">what fed what, and what fed back</div>
+    <div class="right">
+      <span id="dateStamp">SUN · 30 AUG 2026</span>
+      <span id="timeStamp">--:--</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <p class="eyebrow"><span class="num">Studio</span>Lineage</p>
+      <h1 class="head-title">How the series <em>made</em> each other.</h1>
+      <p class="head-dek">
+        A map of cause, not a list of dates. The line is time. The framed pictures on it are the series, in the order I made them.
+        Above the line is what happened in my life. Below it, what happened in my work.
+        Every arrow says <b>this fed that</b>. A few point backwards: a series that turned round and changed the life that made it.
+      </p>
+    </section>
+
+    <p class="phone-note">The board opens on a wider screen. On a phone you get the ledger: the same arrows, written out.</p>
+
+    <section class="howto" aria-label="How to read the board">
+      <div class="howto-prose">
+        <h2>How to <em>read</em> it.</h2>
+        <p>Start anywhere. Rest on a framed picture and its causes light up while the rest of the board fades. Click to hold it: what fed it turns black, what it fed turns red, and a card opens with both written out. Follow a slip or a dot the same way. Press Esc to let go. On a phone you get the ledger below instead, the same arrows written out.</p>
+      </div>
+      <dl class="howto-key">
+        <div><dt><span class="k-plate"></span></dt><dd><b>A series.</b> On the line, in the order it was made. Click it a second time to open it in the Studio.</dd></div>
+        <div><dt><span class="k-slip"><b>2018</b><i>a shock</i></span></dt><dd><b>Something that happened.</b> A divorce, a lockdown, a commission. It arrived from outside and set things off.</dd></div>
+        <div><dt><span class="k-dot"></span><i class="k-dotlab">an idea</i></dt><dd><b>An idea that formed.</b> Plurality, the collage aesthetic, multiple gods. It grew inside and kept working.</dd></div>
+        <div><dt><svg viewBox="0 0 60 12"><path class="l-informs" d="M0 6 H60"/></svg></dt><dd><b>Informs.</b> This shaped that.</dd></div>
+        <div><dt><svg viewBox="0 0 60 12"><path class="l-triggers" d="M0 6 H60"/></svg></dt><dd><b>Triggers.</b> This set that off.</dd></div>
+        <div><dt><svg viewBox="0 0 60 12"><path class="l-merges" d="M0 6 H60"/></svg></dt><dd><b>Merges into.</b> This became part of that.</dd></div>
+        <div><dt><svg viewBox="0 0 60 12"><path class="l-loop" d="M0 6 H60"/></svg></dt><dd><b>Returns.</b> The arrow runs backwards. The series changed what made it.</dd></div>
+        <div><dt><span class="k-inout"><svg viewBox="0 0 60 12"><path d="M0 6 H26" style="stroke:var(--ink);stroke-width:1.3;fill:none"/><path d="M34 6 H60" style="stroke:var(--red);stroke-width:1.3;fill:none"/></svg></span></dt><dd><b>When you hold something.</b> Black arrows are what fed it. Red arrows are what it fed.</dd></div>
+        <div><dt><span class="k-bands"><i>life</i><s></s><i>work</i></span></dt><dd><b>Above the line, my life. Below it, my work.</b> Two filters on the board let you look at one at a time.</dd></div>
+      </dl>
+    </section>
+
+    <section class="controls" aria-label="Board controls">
+      <div class="ctl-group">
+        <div class="seg" role="group" aria-label="Which events to show">
+          <button type="button" data-sphere-filter="both" aria-pressed="true">both</button>
+          <button type="button" data-sphere-filter="personal" aria-pressed="false">my life</button>
+          <button type="button" data-sphere-filter="professional" aria-pressed="false">my work</button>
+        </div>
+        <button type="button" class="btn" id="ideasBtn" aria-pressed="true"><span class="label">ideas shown</span></button>
+      </div>
+      <p class="counts"><span id="lineageCounts">--</span> · scroll sideways · Esc lets go</p>
+    </section>
+
+    <section class="board-wrap" aria-label="The lineage board">
+      <div class="lin-scroll" id="lineageScroll">
+        <div class="lin-stage" id="lineageStage" role="figure" aria-label="Series on a spine, personal events above, professional events below, arrows between"></div>
+      </div>
+    </section>
+    <p class="board-marg">
+      <span>fig. 01 · <span class="accent">graphite on paper</span> · a life above the line, my work below it</span>
+      <span class="hint">Rest on anything to see what it touches. Click to hold it and read.</span>
+    </p>
+
+    <aside class="lin-card" id="lineageCard" hidden aria-live="polite"></aside>
+
+    <section class="ledger-wrap" aria-label="The ledger">
+      <div class="ledger-head">
+        <h2>The same arrows, <em>written</em> out.</h2>
+        <p>One entry per series, oldest first. Fed by: what came in. Fed into: where it went. Entries are the studio's own account, edited for the page; the board above draws exactly this.</p>
+      </div>
+      <div id="lineageLedger"></div>
+    </section>
+  </main>
+
+  <footer class="colophon" role="contentinfo">
+    <div class="col c-a">
+      <h3>Inquiries.</h3>
+      <a href="mailto:studio@raghavakkstudio.com">studio@raghavakkstudio.com</a>
+      <span>Lineage · a working record · corrections welcome</span>
+      <a href="./timeline2.html">Prefer dates only? The plain timeline →</a>
+    </div>
+    <div class="col c-b">
+      <a href="./about2.html">Short bio →</a>
+      <a href="./writings2.html">Writings →</a>
+      <a href="./library2.html">The library →</a>
+      <a href="./talks2.html">Talks →</a>
+      <a href="./sitemap2.html">Site map →</a>
+      <span>Studio · Bengaluru</span>
+      <span>Studio · New York</span>
+    </div>
+    <div class="col c-c">
+      <div class="seal" aria-hidden="true"><img src="./images/Raghava%20KK%20Logo-02.png" alt="" loading="lazy" /></div>
+      <span>&copy; 2026 Raghava KK &middot; <a href="./terms.html">Terms</a></span>
+    </div>
+  </footer>
+
+  <script src="./data/lineage.js"></script>
+  <script src="./js/lineage.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const dateEl = document.getElementById('dateStamp');
+    const timeEl = document.getElementById('timeStamp');
+    function fmt(n) { return n < 10 ? '0' + n : '' + n; }
+    function tick() {
+      const d = new Date();
+      const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+      const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      if (dateEl) dateEl.textContent = `${days[d.getDay()]} · ${fmt(d.getDate())} ${months[d.getMonth()]} ${d.getFullYear()}`;
+      if (timeEl) timeEl.textContent = `${fmt(d.getHours())}:${fmt(d.getMinutes())}:${fmt(d.getSeconds())}`;
+    }
+    tick(); setInterval(tick, 1000);
+  })();
+  </script>
+  <script src="./protect.js" defer></script>
+</body>
+</html>
