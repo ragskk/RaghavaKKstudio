@@ -24,6 +24,7 @@
   <meta name="googlebot" content="index, follow, noai, noimageai" />
   <link rel="stylesheet" href="./protect.css" />
   <link rel="stylesheet" href="./css/type.css" />
+  <link rel="stylesheet" href="./css/book-modal.css" />
   <style>
     /* ───────────────────────────────────────────────────────────
        RAGHAVA KK · TALKS
@@ -301,7 +302,54 @@
     @media (max-width: 1080px) { .candy-grid .video-card { grid-column: span 6; } }
     @media (max-width: 560px) { .candy-grid .video-card { grid-column: 1 / -1; } }
 
-    /* FEED STRIP (№06) — small thumbs, links out */
+    /* DECK GRID (№05) — one slide per tile, opens in the shared reader.
+       Mixed page shapes (most 16:9, a few portrait) sit inside one 16:9 ink
+       stage, contained not cropped, so the rows stay level. */
+    .deck-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: clamp(1.2rem, 2vw, 1.8rem);
+    }
+    .deck-tile { grid-column: span 3; display: flex; flex-direction: column; }
+    /* The frame + meta + title are one link; the context line and cross-reference sit outside it. */
+    .deck-tile .deck-open { display: block; text-decoration: none; color: inherit; }
+    .deck-tile .dstage {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: var(--ink);
+      overflow: hidden;
+    }
+    .deck-tile .dstage img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: block;
+      filter: grayscale(0.25) contrast(1.02);
+      transition: filter .3s var(--ease), transform .5s var(--ease-out);
+    }
+    .deck-open:hover .dstage img, .deck-open:focus-visible .dstage img { filter: grayscale(0) contrast(1); transform: scale(1.015); }
+    .deck-tile .read {
+      position: absolute; left: 0.7rem; bottom: 0.7rem;
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-family: var(--mono);
+      font-size: var(--mono-b); letter-spacing: var(--mono-b-track); text-transform: uppercase;
+      color: var(--paper);
+      background: rgba(14,14,12,0.82);
+      border: 1px solid rgba(244,241,234,0.35);
+      padding: 0.34rem 0.62rem;
+      transition: background .2s var(--ease), border-color .2s var(--ease);
+    }
+    .deck-tile .read::before { content: ""; width: 6px; height: 6px; background: var(--red); }
+    .deck-open:hover .read, .deck-open:focus-visible .read { background: var(--red); border-color: var(--red); }
+    .deck-open:hover .vtitle { color: var(--red); }
+    .deck-open:focus-visible { outline: none; }
+    .deck-open:focus-visible .vframe { outline: 2px solid var(--red); outline-offset: 2px; }
+    .deck-grid .vtitle { font-size: clamp(1.05rem, 1.3vw, 1.25rem); }
+    .deck-grid .vbody { font-size: 0.9rem; }
+    @media (max-width: 1080px) { .deck-tile { grid-column: span 6; } }
+    @media (max-width: 560px) { .deck-tile { grid-column: 1 / -1; } }
+
+    /* FEED STRIP (№07) — small thumbs, links out */
     .feed-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
@@ -453,7 +501,8 @@
 
     @media (prefers-reduced-motion: reduce) {
       .tape-track { animation: none; }
-      .poster img, .poster:hover img { transition: none; transform: none; }
+      .poster img, .poster:hover img,
+      .deck-open .dstage img, .deck-open:hover .dstage img { transition: none; transform: none; }
     }
   </style>
 </head>
@@ -548,11 +597,27 @@
       <p class="marg" style="padding:0; margin-top:1.2rem;">fig. 04 · one show, two registers · one plays at a time</p>
     </section>
 
-    <!-- №05 ELSEWHERE -->
+    <!-- №05 THE DECKS -->
+    <section class="talk-section" aria-labelledby="sec-decks">
+      <div class="section-head">
+        <div class="no">
+          <p class="eyebrow"><span class="num">№05</span>Twenty-four presentations, the slides without the speaking</p>
+          <h2 id="sec-decks">The <em>decks</em>.</h2>
+        </div>
+        <p class="note">Slides · one at a time</p>
+      </div>
+      <p class="head-dek" style="margin-bottom:1.6rem;">
+        Slides made to be talked over, kept here without the talking. Show proposals, brochures, workshop decks, consultancy pitches, and a few of the studio's own internal arguments. Dated decks first, newest on top; the undated close the set. Each opens in the reader one slide at a time, with the PDF inside.
+      </p>
+      <div class="deck-grid" id="grid-decks"></div>
+      <p class="marg" style="padding:0; margin-top:1.2rem;">fig. 05 · twenty-four decks · <span class="accent">one slide at a time</span> · esc closes</p>
+    </section>
+
+    <!-- №06 ELSEWHERE -->
     <section class="elsewhere" aria-labelledby="sec-else">
       <div class="section-head">
         <div class="no">
-          <p class="eyebrow"><span class="num">№05</span>Recorded, but not embeddable</p>
+          <p class="eyebrow"><span class="num">№06</span>Recorded, but not embeddable</p>
           <h2 id="sec-else">Elsewhere, behind other <em>doors</em>.</h2>
         </div>
         <p class="note">Links only</p>
@@ -584,14 +649,14 @@
           <p class="tag">INK · 2021</p>
         </div>
       </div>
-      <p class="marg" style="padding:0; margin-top:0.9rem;">fig. 05 · what the studio cannot embed, it cites</p>
+      <p class="marg" style="padding:0; margin-top:0.9rem;">fig. 06 · what the studio cannot embed, it cites</p>
     </section>
 
-    <!-- №06 THE FEED -->
+    <!-- №07 THE FEED -->
     <section class="elsewhere" aria-labelledby="sec-feed">
       <div class="section-head">
         <div class="no">
-          <p class="eyebrow"><span class="num">№06</span>Everything else the grid holds</p>
+          <p class="eyebrow"><span class="num">№07</span>Everything else the grid holds</p>
           <h2 id="sec-feed">The rest of the <em>feed</em>.</h2>
         </div>
         <p class="note">Links · played on Instagram</p>
@@ -600,7 +665,7 @@
         Gallery videobytes, summit clips, drop teasers, one piano confession. These play where they were posted. Red-tagged tiles were cut by other hands.
       </p>
       <div class="feed-grid" id="grid-feed"></div>
-      <p class="marg" style="padding:0; margin-top:1.2rem;">fig. 06 · thirty-two posts, cited not hosted · subject to pruning</p>
+      <p class="marg" style="padding:0; margin-top:1.2rem;">fig. 07 · thirty-two posts, cited not hosted · subject to pruning</p>
     </section>
   </main>
 
@@ -881,6 +946,7 @@
     function card(v) {
       const el = document.createElement('article');
       el.className = 'video-card' + (v.feature ? ' feature' : '');
+      el.id = 'v-' + v.yt; // anchor target, so a deck can point at its recording
       const metaHTML = v.meta.map(function (m) { return '<span>' + m + '</span>'; }).join('<span class="sep">·</span>');
       el.innerHTML =
         '<div class="vframe"><div class="vstage">' + posterHTML(v) + '</div></div>' +
@@ -946,7 +1012,102 @@
     fill('grid-stages', STAGES);
     fill('grid-conv', CONV);
 
-    /* №06 — feed tiles, links out. Thumbs: assets/video/instagram/feed/ */
+    /* ─────────────────────────────────────────────────────────
+       №05 — THE DECKS
+       Slides rendered to images/spreads/decks/<slug>/p-NN.jpg,
+       PDFs in books/decks/<slug>.pdf. Each tile opens the shared
+       reader (js/book-modal.js) pinned to one slide at a time;
+       the href stays as the no-JS fallback. `title` must equal
+       a SPREADS key in book-modal.js exactly. `video` is the
+       YouTube id of the same talk higher on this page, if any.
+       Context lines come from the deck transcripts; a year only
+       where the deck states one. Source: not-used/source-material/decks/
+       ───────────────────────────────────────────────────────── */
+    const DECKS = [
+      { title: 'God as the sum of all perspectives', slug: 'god-as-the-sum-of-all-perspectives', count: 20, aspect: 1.778,
+        context: 'A philosophical inquiry: a theory of God without being, will, or moral authority, built on the gyre, 2026.' },
+      { title: 'La Petite Mort, brochure', slug: 'orgasm-project-brochure', count: 14, aspect: 1.429,
+        context: 'Catalogue for the La Petite Mort NFT drop with Volte Art Projects, Dubai, 2022: the series note and the Power Fluff Toys, edition by edition.' },
+      { title: 'C3, a carbon-credit DAO', slug: 'fd-labs', count: 37, aspect: 1.778,
+        context: 'Working deck with FD Labs for C3, a stable coin tied to carbon credits, with an artists’ collective attached, 2022.' },
+      { title: '#encapsuled!', slug: 'encapsuled', count: 14, aspect: 1.778,
+        context: 'Proposal for a six-month virtual solo on Terrain: one artist, one world, a hundred works, 2021.' },
+      { title: 'A vision for Art 3x', slug: 'art3x-vision', count: 12, aspect: 1.778,
+        context: 'A working draft of a manifesto for art after March 2020, in seven principles, 2021.' },
+      { title: 'Transcendent art', slug: 'transcendent-art', count: 4, aspect: 1.778,
+        context: 'A definition of transcendent art, drawn from the essay with Karthik Kalyanaraman, 2021.' },
+      { title: 'Resource mapping, or un-networking', slug: 'resource-mapping-2021', count: 23, aspect: 1.778,
+        context: 'A workshop on community building, 2021, with the exercises filled in on his own life as the worked example.' },
+      { title: 'What is ___? A 64/1 show proposal', slug: '64-1-ai-show-proposal', count: 23, aspect: 0.707,
+        context: 'Curatorial proposal to RMZ Foundation for an AI art show with Harshit Agrawal and Karthik Kalyanaraman, planned for early 2020.' },
+      { title: 'MTF: Mysterium, Tremendum et Fascinans', slug: 'mtf-brochure', count: 12, aspect: 0.773,
+        context: 'Brochure for the MTF works, shown with Artmatr in New York, September 2018. Transcendence, written from the middle of it.' },
+      { title: 'Journey into the spirit of Islam', slug: 'spirit-of-islam', count: 20, aspect: 1.778,
+        context: 'A concept for Abu Dhabi: public art experiences built on the core values of Islam, laid out as a visitor’s journey, January 2017.' },
+      { title: 'Introduction to storytelling', slug: 'introduction-to-storytelling', count: 37, aspect: 1.778,
+        context: 'A workshop deck on making a talk: why stories work, what to tell, and how to build the case, 2017.' },
+      { title: 'Gallery in the Woods', slug: 'gallery-in-the-woods', count: 14, aspect: 1.778,
+        context: 'Sponsorship deck, 2017: seven paintings experienced as installations in a forest, with the costs and the tiers.' },
+      { title: 'The periodic table of Sudbury', slug: 'periodic-table-of-sudbury', count: 11, aspect: 1.778,
+        context: 'With Netra, March 2017: the elements of a Sudbury education, laid out as a periodic table of creativity.' },
+      { title: 'Fellowship: making life worth living', slug: 'story-master', count: 87, aspect: 1.778,
+        context: 'The master deck for a RoundGlass fellowship, with Nihal and Nithya: a periodic table of wellbeing and a hero’s journey, planned across 2016 and 2017.' },
+      { title: 'The MAR method for designing anything', slug: 'mar-method', count: 25, aspect: 1.777,
+        context: 'Myth, art, and ritual as a method for turning any story into an experience. Raghava KK Inc., New York.' },
+      { title: 'The MAR method for creative education', slug: 'mar-educational-consultancy', count: 22, aspect: 1.777,
+        context: 'The education consultancy deck: the same method applied to learning, with the record of schools and stages behind it. Raghava KK Inc., New York.' },
+      { title: 'Transcendence for the digital anthropocene', slug: 'thesis', count: 5, aspect: 0.707,
+        context: 'The 64/1 curation thesis, written with Karthik Kalyanaraman: art as transcendence, and why the definition has to change.' },
+      { title: 'Re-collective', slug: 're-collective-kstart', count: 24, aspect: 1.778, video: 'okBxwCy6AEY',
+        context: 'The slides behind the Kstart talk: art taken out of the gallery, and the three rules of the ReCollective.' },
+      { title: 'Learning vision for RoundGlass', slug: 'roundglass-learning-vision', count: 28, aspect: 1.778,
+        context: 'For RoundGlass: a set of shifts from education as delivered to learning as experienced, aimed at fourteen to nineteen year olds.' },
+      { title: 'Art-life', slug: 'art-vision', count: 9, aspect: 1.778,
+        context: 'A philosophy for work and life, written with Netra Srikanth: live, authentic, holistic.' },
+      { title: 'Raghava KK Inc', slug: 'raghava-kk-inc', count: 11, aspect: 1.778,
+        context: 'An internal deck: the studio’s promise as a scorecard, past projects rated against it, and possible directions.' },
+      { title: 'Visualize relationship', slug: 'raghava-netra', count: 5, aspect: 1.778,
+        context: 'Five diagrams drawn with Netra: the negative spiral, the positive spiral, and who holds what.' },
+      { title: 'The Lived South', slug: 'lived-south', count: 4, aspect: 1.778,
+        context: 'Draft one of a movement for creators: third spaces, the values, and how to build alternate institutions.' },
+      { title: 'Disrupt and discover', slug: 'disrupt-and-discover', count: 2, aspect: 1.778,
+        context: 'A single working slide: backward-facing art set against future-facing art, with notes toward episodes.' }
+    ];
+
+    function deckTile(d) {
+      const pdf = './books/decks/' + d.slug + '.pdf';
+      const thumb = './images/spreads/decks/' + d.slug + '/p-01.jpg';
+      const w = 1600, h = Math.round(1600 / (d.aspect || 1.778));
+      const el = document.createElement('article');
+      el.className = 'deck-tile';
+      el.innerHTML =
+        '<a class="deck-open" href="' + pdf + '" target="_blank" rel="noopener" data-book="' + d.title.replace(/"/g, '&quot;') + '">' +
+          '<div class="vframe"><div class="dstage">' +
+            '<img src="' + thumb + '" width="' + w + '" height="' + h + '" alt="" loading="lazy" decoding="async" />' +
+            '<span class="read">Read</span>' +
+          '</div></div>' +
+          '<p class="vmeta"><span>' + d.count + ' slide' + (d.count === 1 ? '' : 's') + '</span></p>' +
+          '<h3 class="vtitle">' + d.title + '</h3>' +
+        '</a>' +
+        '<p class="vbody">' + d.context + '</p>' +
+        (d.video ? '<p class="vlink"><a href="#v-' + d.video + '">The recording, above ↑</a></p>' : '');
+      el.querySelector('.deck-open').addEventListener('click', function (e) {
+        if (!window.RaghavaBookModal || typeof window.RaghavaBookModal.open !== 'function') return; // no reader: the href opens the PDF
+        e.preventDefault();
+        unmountLive();
+        pauseAllNative(null);
+        window.RaghavaBookModal.open({ title: d.title, thumb: thumb, pdf: pdf, filename: d.slug + '.pdf' });
+      });
+      return el;
+    }
+
+    (function () {
+      const grid = document.getElementById('grid-decks');
+      if (!grid) return;
+      DECKS.forEach(function (d) { grid.appendChild(deckTile(d)); });
+    })();
+
+    /* №07 — feed tiles, links out. Thumbs: assets/video/instagram/feed/ */
     const FEED = [{"c": "DQy5fDRDe5Y", "k": "reel", "o": "ashvitasindia", "d": "2025-11-08", "cap": "For Raghava KK, the edge is more than a theme - it\u2019s a way of being. It\u2019s where artists confront uncertainty,"}, {"c": "DQmKaQejWzV", "k": "reel", "o": "ashvitasindia", "d": "2025-11-03", "cap": "From his early beginnings at Ashvita\u2019s in 2003 to his bold new Edges Series, artist Raghava KK reflects on his"}, {"c": "DTKODBbjfpf", "k": "reel", "o": "ashvitasindia", "d": "2026-01-06", "cap": "Introducing our artists for ART SG 2026! A curation of contemporary Indian practices that move beyond geograph"}, {"c": "DTCMcACCAQ9", "k": "reel", "o": "drneneofficial", "d": "2026-01-03", "cap": "It\u2019s been quite a ride in 2025 and now looking at creating in 2026 with all of you joining me. Am so grateful"}, {"c": "DSR6Uvxjdz8", "k": "reel", "o": "ashvitasindia", "d": "2025-12-15", "cap": "The edge is a place of transformation. For Raghava KK, the edge is not a boundary but a threshold - a fringe w"}, {"c": "CopCxgNAcs9", "k": "reel", "o": "gujralfoundation", "d": "2023-02-14", "cap": "#TheImpossibleBouquet Last few days to catch the wondrous show \u201dThe Impossible Bouquet\u201d! With an extraordinary"}, {"c": "DDpG7eazAC1", "k": "reel", "o": "kulsumshadabwahab", "d": "2024-12-16", "cap": "Together, we rise. Together, we transform. At the meetup of Hothur foundation with the courageous women w"}, {"c": "C-7pzrhyEjc", "k": "reel", "o": "under25official", "d": "2024-08-21", "cap": "Which colour heart are you?? lover / Dreamer / Hero / Figuring it out. Here we have @raghava talking abou"}, {"c": "C87Bg3mNmq3", "k": "reel", "o": "under25official", "d": "2024-07-02", "cap": "Comment one thing that students have, but adults don\u2019t. Wrong answers only! Here we had @raghavakk dropping"}, {"c": "C7jiGZ_xs96", "k": "reel", "o": "under25official", "d": "2024-05-29", "cap": "\u201dWhen people throw stones at you, build a bloody monument\u201d - Ratan Tata. Here we had @raghavakk dropping so"}, {"c": "C7wTHeINhh8", "k": "reel", "o": "under25official", "d": "2024-06-03", "cap": "You\u2019re an artist because you create YOU! Here we have @raghavakk at the Under 25 Summit, encouraging us to"}, {"c": "CQQV0q8J43_", "k": "p", "o": "raghavakk", "d": "2021-06-18", "cap": "With @abhijeetsatani"}, {"c": "DRt06AyjURy", "k": "reel", "o": "ashvitasindia", "d": "2025-12-01", "cap": "In Figuring the Edge, every painting embodies a unique character - an encounter that unfolds with every closer"}, {"c": "CoLI9n6O4NK", "k": "reel", "o": "matr.labs", "d": "2023-02-02", "cap": "Working alongside robotics, generative art, and the future of web3, we are so excited to bring you this amazin"}, {"c": "CqZvwy5o5s7", "k": "reel", "o": "raghavakk", "d": "2023-03-30", "cap": "(no caption)"}, {"c": "C8uTdgVveti", "k": "reel", "o": "raghavakk", "d": "2024-06-27", "cap": "Sneak peek. #raghavakkstudio #raghavakk #restlessfrequency"}, {"c": "DZ-KyndCdoO", "k": "reel", "o": "artcinemasocial", "d": "2026-06-24", "cap": "Something magical happens when artists who have never met before come together with nothing more than art mate"}, {"c": "C8pCnJcMJjD", "k": "reel", "o": "raghavakk", "d": "2024-06-25", "cap": "One day at a time. 4 days to go! #raghavakkstudio #raghavakk #restlessfrequency"}, {"c": "DUFWeXqjYGr", "k": "reel", "o": "ashvitasindia", "d": "2026-01-29", "cap": "Raghava KK\u2019s work explores how ideas move beyond the studio and reach the world. At India Art Fair 2026, his p"}, {"c": "C8hN8-3P57h", "k": "reel", "o": "raghavakk", "d": "2024-06-22", "cap": "7 days to go. #raghavakkstudio #raghavakk #whatjsitcalled"}, {"c": "DPqu_6CEoXy", "k": "reel", "o": "raghavakk", "d": "2025-10-11", "cap": "Having an amazing time at the GQ Heroes weekend with such a diverse community of creators from musicians to ch"}, {"c": "C8xAed_vfkz", "k": "reel", "o": "raghavakk", "d": "2024-06-28", "cap": "It\u2019s almost here. #raghavakkstudio #raghavakk #restlessfrequency"}, {"c": "C8eqDpOPiNA", "k": "reel", "o": "raghavakk", "d": "2024-06-21", "cap": "Something\u2019s cookin\u2019? #raghavakkstudio"}, {"c": "DWszzivjRPs", "k": "reel", "o": "ashvitasindia", "d": "2026-04-04", "cap": "What if AI could help you rethink the way you create? Raghava KK embraces AI not as a replacement for creativi"}, {"c": "C8mVf08PEZi", "k": "reel", "o": "raghavakk", "d": "2024-06-24", "cap": "Restless Frequency / 29th June, 2024 #raghavakkstudio #raghavakk #restlessfrequency"}, {"c": "C8yuVlNv-9T", "k": "reel", "o": "raghavakk", "d": "2024-06-29", "cap": "We are live! #raghavakkstudio #raghavakk #restlessfrequency"}, {"c": "C9cKsvZsIle", "k": "reel", "o": "raghavakk", "d": "2024-07-15", "cap": "Are you ready for the drop? Coming soon! #restlessfrequency #raghavakk #comingsoon"}, {"c": "CV0EgxMAjDY", "k": "p", "o": "jurgisdid", "d": "2021-11-03", "cap": "\u201dsing-thesis\u201d of the 6 things that make art exciting according to Raghava KK. An absolutely magical session"}, {"c": "CsvgdH7qe8q", "k": "p", "o": "raghavakk", "d": "2023-05-27", "cap": "Saturday to myself. been teaching myself the piano and now i\u2019m trying to muster up guts to share more and more"}, {"c": "C8rkQpiv_Az", "k": "reel", "o": "raghavakk", "d": "2024-06-26", "cap": "Fabric runs. #raghavakkstudio #raghavakk #restlessfrequency"}, {"c": "C_Uwe3Zsv14", "k": "reel", "o": "raghavakk", "d": "2024-08-31", "cap": "Restless Frequency drops at 12 PM tomorrow"}, {"c": "DaVVGmpCg2x", "k": "reel", "o": "artcinemasocial", "d": "2026-07-03", "cap": "Cartooning & Art Workshop with Raghava KK. What an inspiring afternoon of creativity, laughter, and storyt"}];
     (function () {
       const grid = document.getElementById('grid-feed');
@@ -971,6 +1132,9 @@
   })();
   </script>
 
+  <!-- The decks open in the shared book reader (./js/book-modal.js), the same
+       pop-up every PDF on the site uses. Each tile's href stays as the no-JS fallback. -->
+  <script src="./js/book-modal.js" defer></script>
   <script src="./protect.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,78 @@
+---
+source: "disrupt and discover.pptx"
+slides: 2
+slide_size: 10.00in x 5.62in
+extracted: 2026-08-30
+---
+
+# disrupt and discover
+
+## Slide 1
+
+- BACKWARD
+- FACING
+
+ACADEMIC
+
+COMMODITY
+
+EXCLUSIVE
+
+HOPELESS
+
+- CAUSING
+- ANXIETY
+
+FUTURE FACING
+
+RELEVANT
+
+WAY OF LIFE
+
+INCLUSIVE & ACCESSIBLE
+
+HOPEFUL
+
+HEALING
+
+TAKING ART BEYOND THE GALLERY
+
+IMAGINE NEW REALITIES
+
+BUILD COMMUNITY & CONNECTIONS
+
+USE NEW POST-HUMAN TOOLS
+
+NEW PATRONS, AUDIENCES
+
+- COLLECTIVES
+- PERISHABLE ART
+- ART AS LIFE
+
+COLLABORATIONS
+
+CROWDFUNDING
+
+PARENTING
+
+LOVE
+
+ARTIST #1
+
+ARTIST #2
+
+ARTIST #3
+
+ARTIST #4
+
+ARTIST #5
+
+ENVIRONMENT (community/ studio/ old footage)
+
+ALL SENSES (sight/ smell/ taste/ touch/ sound)
+
+TREATMENT (artsy postmodern treatment - varies based on episode)
+
+## Slide 2
+
+*(blank)*

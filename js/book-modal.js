@@ -15,6 +15,11 @@
      - thumb    (cover image URL, used in fallback)
      - pdf      (URL of the full PDF, offered as Open PDF / Download inside the reader)
      - filename (optional download filename)
+
+   A SPREADS entry may carry `single: true` (slide decks): the
+   reader then shows one page at a time for that book only, the
+   Single / 2-up toggle is hidden, the `2` key is inert, and the
+   viewer's stored double/single preference is left untouched.
    ───────────────────────────────────────────────────── */
 (function () {
   'use strict';
@@ -66,7 +71,34 @@
     'The ultimate other':                        { folder: 'The_Ultimate_Other',  count: 24,  pad: 2 },
     // Toy Trojan essay: the PDF is exported as landscape spreads; each spread is split
     // into left/right halves here so 2-up mode reassembles it (cover alone, then 2-3, 4-5…).
-    'A Visual Essay of the Creation of the Toy Trojan': { folder: 'Toy_Trojan_Essay', count: 35, pad: 2 }
+    'A Visual Essay of the Creation of the Toy Trojan': { folder: 'Toy_Trojan_Essay', count: 35, pad: 2 },
+    // Slide decks (talks2.html, №05 The decks, 2026-08-30). Rendered one slide per image into
+    // images/spreads/decks/<slug>/; PDFs in books/decks/. Slides are not spreads: `single: true`
+    // pins the reader to 1-up for these and hides the toggle. count = slides in the manifest.
+    'God as the sum of all perspectives':        { folder: 'decks/god-as-the-sum-of-all-perspectives', count: 20, pad: 2, single: true },
+    'La Petite Mort, brochure':                  { folder: 'decks/orgasm-project-brochure',  count: 14, pad: 2, single: true },
+    'C3, a carbon-credit DAO':                   { folder: 'decks/fd-labs',                  count: 37, pad: 2, single: true },
+    '#encapsuled!':                              { folder: 'decks/encapsuled',               count: 14, pad: 2, single: true },
+    'A vision for Art 3x':                       { folder: 'decks/art3x-vision',             count: 12, pad: 2, single: true },
+    'Transcendent art':                          { folder: 'decks/transcendent-art',         count: 4,  pad: 2, single: true },
+    'Resource mapping, or un-networking':        { folder: 'decks/resource-mapping-2021',    count: 23, pad: 2, single: true },
+    'What is ___? A 64/1 show proposal':         { folder: 'decks/64-1-ai-show-proposal',    count: 23, pad: 2, single: true },
+    'MTF: Mysterium, Tremendum et Fascinans':    { folder: 'decks/mtf-brochure',             count: 12, pad: 2, single: true },
+    'Journey into the spirit of Islam':          { folder: 'decks/spirit-of-islam',          count: 20, pad: 2, single: true },
+    'Introduction to storytelling':              { folder: 'decks/introduction-to-storytelling', count: 37, pad: 2, single: true },
+    'The MAR method for designing anything':     { folder: 'decks/mar-method',               count: 25, pad: 2, single: true },
+    'The MAR method for creative education':     { folder: 'decks/mar-educational-consultancy', count: 22, pad: 2, single: true },
+    'Gallery in the Woods':                      { folder: 'decks/gallery-in-the-woods',     count: 14, pad: 2, single: true },
+    'The periodic table of Sudbury':             { folder: 'decks/periodic-table-of-sudbury', count: 11, pad: 2, single: true },
+    'Fellowship: making life worth living':      { folder: 'decks/story-master',             count: 87, pad: 2, single: true },
+    'Transcendence for the digital anthropocene': { folder: 'decks/thesis',                  count: 5,  pad: 2, single: true },
+    'Re-collective':                             { folder: 'decks/re-collective-kstart',     count: 24, pad: 2, single: true },
+    'Learning vision for RoundGlass':            { folder: 'decks/roundglass-learning-vision', count: 28, pad: 2, single: true },
+    'Art-life':                                  { folder: 'decks/art-vision',               count: 9,  pad: 2, single: true },
+    'Raghava KK Inc':                            { folder: 'decks/raghava-kk-inc',           count: 11, pad: 2, single: true },
+    'Visualize relationship':                    { folder: 'decks/raghava-netra',            count: 5,  pad: 2, single: true },
+    'The Lived South':                           { folder: 'decks/lived-south',              count: 4,  pad: 2, single: true },
+    'Disrupt and discover':                      { folder: 'decks/disrupt-and-discover',     count: 2,  pad: 2, single: true }
   };
 
   let mounted = false;
@@ -87,6 +119,14 @@
   }
   let spreadMode = readStoredMode();
   let bookLastFocus = null;
+
+  // Slide decks are pinned to 1-up regardless of the stored preference.
+  // `spreadMode` keeps holding the viewer's preference; `mode()` is what
+  // the reader actually renders with for the book that is open.
+  function isSingleBook() {
+    return !!(currentBook && currentBook.spreads && currentBook.spreads.single);
+  }
+  function mode() { return isSingleBook() ? 'single' : spreadMode; }
 
   // ── Inject modal markup once, attach all event listeners.
   function mount() {
@@ -156,7 +196,10 @@
 
     els.prev.addEventListener('click', () => goToPage(prevOf(currentPage)));
     els.next.addEventListener('click', () => goToPage(nextOf(currentPage)));
-    els.spreadModeBtn.addEventListener('click', () => setSpreadMode(spreadMode === 'double' ? 'single' : 'double'));
+    els.spreadModeBtn.addEventListener('click', () => {
+      if (isSingleBook()) return;
+      setSpreadMode(spreadMode === 'double' ? 'single' : 'double');
+    });
     els.close.addEventListener('click', close);
     els.modal.addEventListener('click', (e) => { if (e.target === els.modal) close(); });
     if (els.fullscreenBtn) els.fullscreenBtn.addEventListener('click', toggleFullscreen);
@@ -186,7 +229,11 @@
       else if (e.key === 'ArrowRight') goToPage(nextOf(currentPage));
       else if (e.key === 'ArrowLeft')  goToPage(prevOf(currentPage));
       else if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFullscreen(); }
-      else if (e.key === '2')                  { e.preventDefault(); setSpreadMode(spreadMode === 'double' ? 'single' : 'double'); }
+      else if (e.key === '2') {
+        if (isSingleBook()) return; // slide decks: the 2 key is inert
+        e.preventDefault();
+        setSpreadMode(spreadMode === 'double' ? 'single' : 'double');
+      }
     });
   }
 
@@ -236,8 +283,21 @@
       els.coverFallback.hidden = true;
       els.meta.textContent = '1 / ' + currentBook.spreads.count;
       renderThumbs();
-      // Apply the stored / default spread mode (2-up by default) and render.
-      setSpreadMode(spreadMode);
+      if (isSingleBook()) {
+        // Slide deck: pin the stage to 1-up, hide the toggle, leave the
+        // stored preference alone, and label the controls as slides.
+        els.stage.dataset.mode = 'single';
+        els.spreadModeBtn.style.display = 'none';
+        els.prev.setAttribute('aria-label', 'Previous slide');
+        els.next.setAttribute('aria-label', 'Next slide');
+        goToPage(1);
+      } else {
+        els.spreadModeBtn.style.display = '';
+        els.prev.setAttribute('aria-label', 'Previous spread');
+        els.next.setAttribute('aria-label', 'Next spread');
+        // Apply the stored / default spread mode (2-up by default) and render.
+        setSpreadMode(spreadMode);
+      }
     } else {
       // Cover-only fallback — silent (no apologia)
       els.img.style.display = 'none';
@@ -269,9 +329,10 @@
   function renderThumbs() {
     if (!currentBook || !currentBook.spreads) return;
     const total = currentBook.spreads.count;
-    const html = ['<span class="label">' + total + ' pages</span>'];
+    const noun = isSingleBook() ? 'slide' : 'page';
+    const html = ['<span class="label">' + total + ' ' + noun + 's</span>'];
     for (let i = 1; i <= total; i++) {
-      html.push('<button type="button" class="spread-thumb' + (i === currentPage ? ' active' : '') + '" data-page="' + i + '" aria-label="Page ' + i + '"><img src="' + spreadUrl(currentBook, i) + '" alt="" loading="lazy" decoding="async" /></button>');
+      html.push('<button type="button" class="spread-thumb' + (i === currentPage ? ' active' : '') + '" data-page="' + i + '" aria-label="' + (noun === 'slide' ? 'Slide ' : 'Page ') + i + '"><img src="' + spreadUrl(currentBook, i) + '" alt="" loading="lazy" decoding="async" /></button>');
     }
     els.thumbs.innerHTML = html.join('');
     els.thumbs.querySelectorAll('.spread-thumb').forEach(b => {
@@ -311,10 +372,11 @@
     // In 2-up mode, anchor to the physical spread: the cover sits alone,
     // then pages 2-3, 4-5... (the same imposition as the printed book and
     // the site PDFs). So the left page of every spread after the cover is even.
-    if (spreadMode === 'double') n = anchorOf(n);
+    const double = mode() === 'double';
+    if (double) n = anchorOf(n);
     currentPage = n;
 
-    if (spreadMode === 'double') {
+    if (double) {
       loadIntoImg(els.img, n);
       const hasRight = n > 1 && n + 1 <= total;
       if (hasRight) {
@@ -334,19 +396,19 @@
     }
 
     // Preload neighbors
-    const lookahead = spreadMode === 'double' ? 2 : 1;
+    const lookahead = double ? 2 : 1;
     for (let i = 1; i <= lookahead + 1; i++) {
       if (n + i <= total) { const im = new Image(); im.src = spreadUrl(currentBook, n + i); }
       if (n - i >= 1)     { const im = new Image(); im.src = spreadUrl(currentBook, n - i); }
     }
 
     els.prev.disabled = n <= 1;
-    els.next.disabled = (spreadMode === 'double') ? (n + 1 >= total) : (n >= total);
+    els.next.disabled = double ? (n + 1 >= total) : (n >= total);
 
     // active thumb
     els.thumbs.querySelectorAll('.spread-thumb').forEach(b => {
       const p = parseInt(b.dataset.page, 10);
-      b.classList.toggle('active', p === n || (spreadMode === 'double' && n > 1 && p === n + 1));
+      b.classList.toggle('active', p === n || (double && n > 1 && p === n + 1));
     });
     const active = els.thumbs.querySelector('.spread-thumb.active');
     if (active) active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
@@ -356,16 +418,18 @@
   // Double mode: 1 (cover alone), then 2, 4, 6... (left page of each spread).
   function anchorOf(n) { return (n > 1 && n % 2 === 1) ? n - 1 : n; }
   function nextOf(n) {
-    if (spreadMode !== 'double') return n + 1;
+    if (mode() !== 'double') return n + 1;
     return n === 1 ? 2 : anchorOf(n) + 2;
   }
   function prevOf(n) {
-    if (spreadMode !== 'double') return n - 1;
+    if (mode() !== 'double') return n - 1;
     return n <= 2 ? 1 : anchorOf(n) - 2;
   }
 
-  function setSpreadMode(mode) {
-    spreadMode = mode === 'double' ? 'double' : 'single';
+  // Sets and persists the viewer's preference. Never called while a
+  // single-pinned deck is open (the toggle and the 2 key are guarded).
+  function setSpreadMode(next) {
+    spreadMode = next === 'double' ? 'double' : 'single';
     els.stage.dataset.mode = spreadMode;
     els.spreadModeBtn.textContent = spreadMode === 'double' ? 'Single ⊞' : '2-up ⊟';
     els.spreadModeBtn.setAttribute('aria-label', spreadMode === 'double' ? 'Switch to single page view' : 'Switch to 2-up spread view');
